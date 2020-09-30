@@ -1,0 +1,28 @@
+name: Integration
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+env:
+  GOPROXY: https://proxy.golang.org
+  NIFCLOUD_ACCESS_KEY_ID: ${{ secrets.NIFCLOUD_ACCESS_KEY_ID }}
+  NIFCLOUD_SECRET_ACCESS_KEY: ${{ secrets.NIFCLOUD_SECRET_ACCESS_KEY }}
+jobs:
+  integration-test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        go: [ '1.15', '1.14', '1.13' ]
+    name: Go ${{ matrix.go }} integration-test
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: ${{ matrix.go }}
+
+      - name: Integration tests
+        run: make client-integ

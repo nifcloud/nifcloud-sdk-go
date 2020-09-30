@@ -1,0 +1,18 @@
+{
+    "version": 1,
+    "defaultRegion": "jp-east-1",
+    "testCases": [
+        {
+            "operationName": "DescribeNASSecurityGroups",
+            "input": {},
+            "errorExpectedFromService": false
+        },
+        {
+            "operationName": "DescribeNASInstances",
+            "input": {
+                "NASInstanceIdentifier": "fake-id"
+            },
+            "errorExpectedFromService": true
+        }
+    ]
+}

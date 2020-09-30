@@ -1,0 +1,18 @@
+{
+    "version": 1,
+    "defaultRegion": "jp-east-1",
+    "testCases": [
+        {
+            "operationName": "DescribeDBEngineVersions",
+            "input": {},
+            "errorExpectedFromService": false
+        },
+        {
+            "operationName": "DescribeDBInstances",
+            "input": {
+                "DBInstanceIdentifier": "fake-id"
+            },
+            "errorExpectedFromService": true
+        }
+    ]
+}
