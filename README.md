@@ -1,6 +1,9 @@
 # NIFCLOUD SDK for Go
 
 ![build](https://github.com/nifcloud/nifcloud-sdk-go/workflows/Build/badge.svg)
+[![Github stars](https://img.shields.io/github/stars/nifcloud/nifcloud-sdk-go)](https://github.com/nifcloud/nifcloud-sdk-go/stargazers)
+[![Github top language](https://img.shields.io/github/languages/top/nifcloud/nifcloud-sdk-go)](https://github.com/nifcloud/nifcloud-sdk-go/)
+[![Github license](https://img.shields.io/github/license/nifcloud/nifcloud-sdk-go)](https://github.com/nifcloud/nifcloud-sdk-go/)
 
 nifcloud-sdk-go is data-driven SDK for the Go programming language.
 It works by feeding AWS-SDK-compatible model JSONs to [github.com/aws/aws-sdk-go-v2](https://github.com/aws/aws-sdk-go-v2).
