@@ -4609,6 +4609,8 @@ type NetworkInterfaceSetOfNiftyDescribeRouters struct {
 
 	Dhcp *bool `locationName:"dhcp" type:"boolean"`
 
+	DhcpConfigId *string `locationName:"dhcpConfigId" type:"string"`
+
 	DhcpOptionsId *string `locationName:"dhcpOptionsId" type:"string"`
 
 	IpAddress *string `locationName:"ipAddress" type:"string"`
