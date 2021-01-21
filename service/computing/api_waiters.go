@@ -284,6 +284,16 @@ func (c *Client) WaitUntilElasticLoadBalancerDeleted(ctx context.Context, input 
 				Expected: "Client.InvalidParameterNotFound.ElasticLoadBalancer",
 			},
 			{
+				State:    aws.SuccessWaiterState,
+				Matcher:  aws.ErrorWaiterMatch,
+				Expected: "Client.InvalidParameterNotFound.Protocol.or.ElasticLoadBalancerPort",
+			},
+			{
+				State:    aws.SuccessWaiterState,
+				Matcher:  aws.ErrorWaiterMatch,
+				Expected: "Client.InvalidParameterNotFound.ElasticLoadBalancerPort",
+			},
+			{
 				State:   aws.RetryWaiterState,
 				Matcher: aws.PathWaiterMatch, Argument: "length(NiftyDescribeElasticLoadBalancersResult.ElasticLoadBalancerDescriptions[]) > `0`",
 				Expected: true,
