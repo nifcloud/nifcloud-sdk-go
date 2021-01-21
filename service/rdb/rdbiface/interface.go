@@ -122,6 +122,8 @@ type ClientAPI interface {
 
 	ModifyDBInstanceRequest(*rdb.ModifyDBInstanceInput) rdb.ModifyDBInstanceRequest
 
+	ModifyDBInstanceNetworkRequest(*rdb.ModifyDBInstanceNetworkInput) rdb.ModifyDBInstanceNetworkRequest
+
 	ModifyDBParameterGroupRequest(*rdb.ModifyDBParameterGroupInput) rdb.ModifyDBParameterGroupRequest
 
 	ModifyEventSubscriptionRequest(*rdb.ModifyEventSubscriptionInput) rdb.ModifyEventSubscriptionRequest
