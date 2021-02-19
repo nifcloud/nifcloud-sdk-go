@@ -202,8 +202,6 @@ type ClientAPI interface {
 
 	DescribeSecurityActivitiesRequest(*computing.DescribeSecurityActivitiesInput) computing.DescribeSecurityActivitiesRequest
 
-	DescribeSecurityGroupOptionRequest(*computing.DescribeSecurityGroupOptionInput) computing.DescribeSecurityGroupOptionRequest
-
 	DescribeSecurityGroupsRequest(*computing.DescribeSecurityGroupsInput) computing.DescribeSecurityGroupsRequest
 
 	DescribeServiceStatusRequest(*computing.DescribeServiceStatusInput) computing.DescribeServiceStatusRequest
@@ -505,8 +503,6 @@ type ClientAPI interface {
 	UpdateLoadBalancerOptionRequest(*computing.UpdateLoadBalancerOptionInput) computing.UpdateLoadBalancerOptionRequest
 
 	UpdateSecurityGroupRequest(*computing.UpdateSecurityGroupInput) computing.UpdateSecurityGroupRequest
-
-	UpdateSecurityGroupOptionRequest(*computing.UpdateSecurityGroupOptionInput) computing.UpdateSecurityGroupOptionRequest
 
 	UploadIsoImageRequest(*computing.UploadIsoImageInput) computing.UploadIsoImageRequest
 

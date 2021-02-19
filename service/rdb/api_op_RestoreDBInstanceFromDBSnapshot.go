@@ -40,7 +40,7 @@ type RestoreDBInstanceFromDBSnapshotInput struct {
 
 	NiftyNetworkId *string `locationName:"NiftyNetworkId" type:"string"`
 
-	NiftyReadReplicaDBInstanceIdentifier *int64 `locationName:"NiftyReadReplicaDBInstanceIdentifier" type:"integer"`
+	NiftyReadReplicaDBInstanceIdentifier *string `locationName:"NiftyReadReplicaDBInstanceIdentifier" type:"string"`
 
 	NiftyReadReplicaPrivateAddress *string `locationName:"NiftyReadReplicaPrivateAddress" type:"string"`
 
