@@ -1,6 +1,10 @@
 
 # CHANGELOG
 
+## v1.3.0
+
+* fix: Fix computing model json for typo (#6 by fuku2014, #7 by tunakyonn)
+
 ## v1.2.0
 
 * feature: Update computing model for remove rip api (#5 by fuku2014)
