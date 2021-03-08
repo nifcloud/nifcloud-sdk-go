@@ -4850,7 +4850,7 @@ type NiftyIpsecConfigurationOfDescribeVpnConnections struct {
 
 	DiffieHellmanGroup *int64 `locationName:"diffieHellmanGroup" type:"integer"`
 
-	EncapsulatiingSecurityPayloadLifetime *int64 `locationName:"encapsulatiingSecurityPayloadLifetime" type:"integer"`
+	EncapsulatingSecurityPayloadLifetime *int64 `locationName:"encapsulatingSecurityPayloadLifetime" type:"integer"`
 
 	EncryptionAlgorithm *string `locationName:"encryptionAlgorithm" type:"string"`
 
