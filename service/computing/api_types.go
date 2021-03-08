@@ -432,7 +432,7 @@ type AttachmentOfDescribeInstances struct {
 
 	AttachTime *time.Time `locationName:"attachTime" type:"timestamp"`
 
-	AttachmentID *string `locationName:"attachmentID" type:"string"`
+	AttachmentId *string `locationName:"attachmentId" type:"string"`
 
 	DeleteOnTermination *bool `locationName:"deleteOnTermination" type:"boolean"`
 
