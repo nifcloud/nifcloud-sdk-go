@@ -3696,6 +3696,53 @@ func (s ListenersOfNiftyRegisterPortWithElasticLoadBalancer) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
+type LiveMigrationHubMonthlyRateSet struct {
+	_ struct{} `type:"structure"`
+
+	Charge *int64 `locationName:"charge" type:"integer"`
+
+	Type *string `locationName:"type" type:"string"`
+
+	Unit *string `locationName:"unit" type:"string"`
+
+	Value *int64 `locationName:"value" type:"integer"`
+}
+
+// String returns the string representation
+func (s LiveMigrationHubMonthlyRateSet) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+type LiveMigrationInfo struct {
+	_ struct{} `type:"structure"`
+
+	LiveMigrationHubMonthlyRateSet []LiveMigrationHubMonthlyRateSet `locationName:"liveMigrationHubMonthlyRateSet" locationNameList:"item" type:"list"`
+
+	LiveMigrationOperationMonthlyRateSet []LiveMigrationOperationMonthlyRateSet `locationName:"liveMigrationOperationMonthlyRateSet" locationNameList:"item" type:"list"`
+}
+
+// String returns the string representation
+func (s LiveMigrationInfo) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+type LiveMigrationOperationMonthlyRateSet struct {
+	_ struct{} `type:"structure"`
+
+	Charge *int64 `locationName:"charge" type:"integer"`
+
+	Type *string `locationName:"type" type:"string"`
+
+	Unit *string `locationName:"unit" type:"string"`
+
+	Value *int64 `locationName:"value" type:"integer"`
+}
+
+// String returns the string representation
+func (s LiveMigrationOperationMonthlyRateSet) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
 type LoadBalancerDescriptions struct {
 	_ struct{} `type:"structure"`
 
@@ -3811,6 +3858,19 @@ type LogSet struct {
 
 // String returns the string representation
 func (s LogSet) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+type MigrationHubItemSet struct {
+	_ struct{} `type:"structure"`
+
+	Count *int64 `locationName:"count" type:"integer"`
+
+	Type *string `locationName:"type" type:"string"`
+}
+
+// String returns the string representation
+func (s MigrationHubItemSet) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
@@ -7921,6 +7981,8 @@ type ResourceInfo struct {
 	InstanceItemSet []InstanceItemSet `locationName:"instanceItemSet" locationNameList:"item" type:"list"`
 
 	LoadBalancerCount *int64 `locationName:"loadBalancerCount" type:"integer"`
+
+	MigrationHubItemSet []MigrationHubItemSet `locationName:"migrationHubItemSet" locationNameList:"item" type:"list"`
 
 	MonitoringRuleCount *int64 `locationName:"monitoringRuleCount" type:"integer"`
 

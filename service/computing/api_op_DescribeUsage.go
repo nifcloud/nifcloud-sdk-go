@@ -49,6 +49,8 @@ type DescribeUsageOutput struct {
 
 	LicenseInfo *LicenseInfo `locationName:"licenseInfo" type:"structure"`
 
+	LiveMigrationInfo *LiveMigrationInfo `locationName:"liveMigrationInfo" type:"structure"`
+
 	LoadBalancerInfo *LoadBalancerInfo `locationName:"loadBalancerInfo" type:"structure"`
 
 	MultiAccountInfo *MultiAccountInfo `locationName:"multiAccountInfo" type:"structure"`
