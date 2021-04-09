@@ -572,6 +572,8 @@ type ClientAPI interface {
 
 	WaitUntilSnapshotNormal(context.Context, *computing.NiftyDescribeInstanceSnapshotsInput, ...aws.WaiterOption) error
 
+	WaitUntilVolumeAttached(context.Context, *computing.DescribeVolumesInput, ...aws.WaiterOption) error
+
 	WaitUntilVolumeAvailable(context.Context, *computing.DescribeVolumesInput, ...aws.WaiterOption) error
 
 	WaitUntilVolumeDeleted(context.Context, *computing.DescribeVolumesInput, ...aws.WaiterOption) error
