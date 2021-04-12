@@ -1,6 +1,11 @@
 
 # CHANGELOG
 
+## v1.4.0
+
+* feature: Add WaitUntilVolumeAttached (#9 by tunakyonn)
+* feature: Update computing model for add live migration api (#8 by miyuush)
+
 ## v1.3.0
 
 * fix: Fix computing model json for typo (#6 by fuku2014, #7 by tunakyonn)
