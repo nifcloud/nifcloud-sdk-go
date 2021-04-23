@@ -18,7 +18,7 @@ type NiftyModifyVpnGatewayAttributeInput struct {
 
 	NiftyVpnGatewayName *string `locationName:"NiftyVpnGatewayName" type:"string"`
 
-	Value ValueOfNiftyModifyVpnGatewayAttributeRequest `locationName:"Value" type:"string" enum:"true"`
+	Value *string `locationName:"Value" type:"string"`
 
 	VpnGatewayId *string `locationName:"VpnGatewayId" type:"string"`
 }
