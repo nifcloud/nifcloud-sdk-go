@@ -9,6 +9,9 @@
 package nasiface
 
 import (
+	"context"
+
+	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/nifcloud/nifcloud-sdk-go/service/nas"
 )
 
@@ -86,6 +89,36 @@ type ClientAPI interface {
 	RevokeNASSecurityGroupIngressRequest(*nas.RevokeNASSecurityGroupIngressInput) nas.RevokeNASSecurityGroupIngressRequest
 
 	UpgradeNASInstanceRequest(*nas.UpgradeNASInstanceInput) nas.UpgradeNASInstanceRequest
+
+	WaitUntilNASInstanceAvailable(context.Context, *nas.DescribeNASInstancesInput, ...aws.WaiterOption) error
+
+	WaitUntilNASInstanceDeleted(context.Context, *nas.DescribeNASInstancesInput, ...aws.WaiterOption) error
+
+	WaitUntilNASInstanceExists(context.Context, *nas.DescribeNASInstancesInput, ...aws.WaiterOption) error
+
+	WaitUntilNASInstanceFailed(context.Context, *nas.DescribeNASInstancesInput, ...aws.WaiterOption) error
+
+	WaitUntilNASInstanceStorageFull(context.Context, *nas.DescribeNASInstancesInput, ...aws.WaiterOption) error
+
+	WaitUntilNASSecurityGroupDeleted(context.Context, *nas.DescribeNASSecurityGroupsInput, ...aws.WaiterOption) error
+
+	WaitUntilNASSecurityGroupExists(context.Context, *nas.DescribeNASSecurityGroupsInput, ...aws.WaiterOption) error
+
+	WaitUntilNASSecurityGroupIPRangesAuthFailed(context.Context, *nas.DescribeNASSecurityGroupsInput, ...aws.WaiterOption) error
+
+	WaitUntilNASSecurityGroupIPRangesAuthorized(context.Context, *nas.DescribeNASSecurityGroupsInput, ...aws.WaiterOption) error
+
+	WaitUntilNASSecurityGroupIPRangesEmptied(context.Context, *nas.DescribeNASSecurityGroupsInput, ...aws.WaiterOption) error
+
+	WaitUntilNASSecurityGroupIPRangesRevokeFailed(context.Context, *nas.DescribeNASSecurityGroupsInput, ...aws.WaiterOption) error
+
+	WaitUntilNASSecurityGroupSecurityGroupsAuthFailed(context.Context, *nas.DescribeNASSecurityGroupsInput, ...aws.WaiterOption) error
+
+	WaitUntilNASSecurityGroupSecurityGroupsAuthorized(context.Context, *nas.DescribeNASSecurityGroupsInput, ...aws.WaiterOption) error
+
+	WaitUntilNASSecurityGroupSecurityGroupsEmptied(context.Context, *nas.DescribeNASSecurityGroupsInput, ...aws.WaiterOption) error
+
+	WaitUntilNASSecurityGroupSecurityGroupsRevokeFailed(context.Context, *nas.DescribeNASSecurityGroupsInput, ...aws.WaiterOption) error
 }
 
 var _ ClientAPI = (*nas.Client)(nil)
