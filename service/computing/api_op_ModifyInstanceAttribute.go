@@ -22,7 +22,7 @@ type ModifyInstanceAttributeInput struct {
 
 	Tenancy TenancyOfModifyInstanceAttributeRequest `locationName:"Tenancy" type:"string" enum:"true"`
 
-	Value ValueOfModifyInstanceAttributeRequest `locationName:"Value" type:"string" enum:"true"`
+	Value *string `locationName:"Value" type:"string"`
 }
 
 // String returns the string representation

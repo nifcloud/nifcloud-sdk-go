@@ -20,7 +20,7 @@ type NiftyModifyRouterAttributeInput struct {
 
 	RouterName *string `locationName:"RouterName" type:"string"`
 
-	Value ValueOfNiftyModifyRouterAttributeRequest `locationName:"Value" type:"string" enum:"true"`
+	Value *string `locationName:"Value" type:"string"`
 }
 
 // String returns the string representation
