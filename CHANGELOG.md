@@ -1,6 +1,11 @@
 
 # CHANGELOG
 
+## v1.5.0
+
+* feature: Update computing service JSON (#10 by aokumasan)
+* feature: Add waiter JSON for NAS (#10 by aokumasan)
+
 ## v1.4.0
 
 * feature: Add WaitUntilVolumeAttached (#9 by tunakyonn)
