@@ -14,7 +14,8 @@ type NiftyUpdateSeparateInstanceRuleInput struct {
 
 	SeparateInstanceRuleDescriptionUpdate *string `locationName:"SeparateInstanceRuleDescriptionUpdate" type:"string"`
 
-	SeparateInstanceRuleName *string `locationName:"SeparateInstanceRuleName" type:"string"`
+	// SeparateInstanceRuleName is a required field
+	SeparateInstanceRuleName *string `locationName:"SeparateInstanceRuleName" type:"string" required:"true"`
 
 	SeparateInstanceRuleNameUpdate *string `locationName:"SeparateInstanceRuleNameUpdate" type:"string"`
 }
@@ -22,6 +23,20 @@ type NiftyUpdateSeparateInstanceRuleInput struct {
 // String returns the string representation
 func (s NiftyUpdateSeparateInstanceRuleInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *NiftyUpdateSeparateInstanceRuleInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "NiftyUpdateSeparateInstanceRuleInput"}
+
+	if s.SeparateInstanceRuleName == nil {
+		invalidParams.Add(aws.NewErrParamRequired("SeparateInstanceRuleName"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type NiftyUpdateSeparateInstanceRuleOutput struct {

@@ -14,7 +14,8 @@ type ModifyNASSecurityGroupInput struct {
 
 	NASSecurityGroupDescription *string `locationName:"NASSecurityGroupDescription" type:"string"`
 
-	NASSecurityGroupName *string `locationName:"NASSecurityGroupName" type:"string"`
+	// NASSecurityGroupName is a required field
+	NASSecurityGroupName *string `locationName:"NASSecurityGroupName" type:"string" required:"true"`
 
 	NewNASSecurityGroupName *string `locationName:"NewNASSecurityGroupName" type:"string"`
 }
@@ -22,6 +23,20 @@ type ModifyNASSecurityGroupInput struct {
 // String returns the string representation
 func (s ModifyNASSecurityGroupInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *ModifyNASSecurityGroupInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "ModifyNASSecurityGroupInput"}
+
+	if s.NASSecurityGroupName == nil {
+		invalidParams.Add(aws.NewErrParamRequired("NASSecurityGroupName"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type ModifyNASSecurityGroupOutput struct {

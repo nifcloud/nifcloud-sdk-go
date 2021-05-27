@@ -14,12 +14,27 @@ type DisassociateRouteTableInput struct {
 
 	Agreement *bool `locationName:"Agreement" type:"boolean"`
 
-	AssociationId *string `locationName:"AssociationId" type:"string"`
+	// AssociationId is a required field
+	AssociationId *string `locationName:"AssociationId" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s DisassociateRouteTableInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *DisassociateRouteTableInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "DisassociateRouteTableInput"}
+
+	if s.AssociationId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("AssociationId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type DisassociateRouteTableOutput struct {

@@ -14,14 +14,34 @@ type NiftyCreateInstanceSnapshotInput struct {
 
 	Description *string `locationName:"Description" type:"string"`
 
-	InstanceId *string `locationName:"InstanceId" type:"string"`
+	// InstanceId is a required field
+	InstanceId *string `locationName:"InstanceId" type:"string" required:"true"`
 
-	SnapshotName *string `locationName:"SnapshotName" type:"string"`
+	// SnapshotName is a required field
+	SnapshotName *string `locationName:"SnapshotName" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s NiftyCreateInstanceSnapshotInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *NiftyCreateInstanceSnapshotInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "NiftyCreateInstanceSnapshotInput"}
+
+	if s.InstanceId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("InstanceId"))
+	}
+
+	if s.SnapshotName == nil {
+		invalidParams.Add(aws.NewErrParamRequired("SnapshotName"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type NiftyCreateInstanceSnapshotOutput struct {

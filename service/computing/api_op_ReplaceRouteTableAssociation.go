@@ -14,14 +14,34 @@ type ReplaceRouteTableAssociationInput struct {
 
 	Agreement *bool `locationName:"Agreement" type:"boolean"`
 
-	AssociationId *string `locationName:"AssociationId" type:"string"`
+	// AssociationId is a required field
+	AssociationId *string `locationName:"AssociationId" type:"string" required:"true"`
 
-	RouteTableId *string `locationName:"RouteTableId" type:"string"`
+	// RouteTableId is a required field
+	RouteTableId *string `locationName:"RouteTableId" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s ReplaceRouteTableAssociationInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *ReplaceRouteTableAssociationInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "ReplaceRouteTableAssociationInput"}
+
+	if s.AssociationId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("AssociationId"))
+	}
+
+	if s.RouteTableId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("RouteTableId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type ReplaceRouteTableAssociationOutput struct {

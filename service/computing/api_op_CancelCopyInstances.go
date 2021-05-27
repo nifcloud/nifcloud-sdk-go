@@ -12,12 +12,27 @@ import (
 type CancelCopyInstancesInput struct {
 	_ struct{} `type:"structure"`
 
-	InstanceId *string `locationName:"InstanceId" type:"string"`
+	// InstanceId is a required field
+	InstanceId *string `locationName:"InstanceId" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s CancelCopyInstancesInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *CancelCopyInstancesInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "CancelCopyInstancesInput"}
+
+	if s.InstanceId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("InstanceId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type CancelCopyInstancesOutput struct {

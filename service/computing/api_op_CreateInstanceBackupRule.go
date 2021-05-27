@@ -12,20 +12,45 @@ import (
 type CreateInstanceBackupRuleInput struct {
 	_ struct{} `type:"structure"`
 
-	BackupInstanceMaxCount *int64 `locationName:"BackupInstanceMaxCount" type:"integer"`
+	// BackupInstanceMaxCount is a required field
+	BackupInstanceMaxCount *int64 `locationName:"BackupInstanceMaxCount" type:"integer" required:"true"`
 
 	Description *string `locationName:"Description" type:"string"`
 
 	InstanceBackupRuleName *string `locationName:"InstanceBackupRuleName" type:"string"`
 
-	InstanceUniqueId []string `locationName:"InstanceUniqueId" type:"list"`
+	// InstanceUniqueId is a required field
+	InstanceUniqueId []string `locationName:"InstanceUniqueId" type:"list" required:"true"`
 
-	TimeSlotId *string `locationName:"TimeSlotId" type:"string"`
+	// TimeSlotId is a required field
+	TimeSlotId *string `locationName:"TimeSlotId" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s CreateInstanceBackupRuleInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *CreateInstanceBackupRuleInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "CreateInstanceBackupRuleInput"}
+
+	if s.BackupInstanceMaxCount == nil {
+		invalidParams.Add(aws.NewErrParamRequired("BackupInstanceMaxCount"))
+	}
+
+	if s.InstanceUniqueId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("InstanceUniqueId"))
+	}
+
+	if s.TimeSlotId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("TimeSlotId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type CreateInstanceBackupRuleOutput struct {

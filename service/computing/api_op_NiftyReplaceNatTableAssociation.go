@@ -14,14 +14,34 @@ type NiftyReplaceNatTableAssociationInput struct {
 
 	Agreement *bool `locationName:"Agreement" type:"boolean"`
 
-	AssociationId *string `locationName:"AssociationId" type:"string"`
+	// AssociationId is a required field
+	AssociationId *string `locationName:"AssociationId" type:"string" required:"true"`
 
-	NatTableId *string `locationName:"NatTableId" type:"string"`
+	// NatTableId is a required field
+	NatTableId *string `locationName:"NatTableId" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s NiftyReplaceNatTableAssociationInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *NiftyReplaceNatTableAssociationInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "NiftyReplaceNatTableAssociationInput"}
+
+	if s.AssociationId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("AssociationId"))
+	}
+
+	if s.NatTableId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("NatTableId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type NiftyReplaceNatTableAssociationOutput struct {

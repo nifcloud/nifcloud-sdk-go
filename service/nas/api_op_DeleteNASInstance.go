@@ -16,12 +16,27 @@ type DeleteNASInstanceInput struct {
 
 	DirectoryServiceAdministratorPassword *string `locationName:"DirectoryServiceAdministratorPassword" type:"string"`
 
-	NASInstanceIdentifier *string `locationName:"NASInstanceIdentifier" type:"string"`
+	// NASInstanceIdentifier is a required field
+	NASInstanceIdentifier *string `locationName:"NASInstanceIdentifier" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s DeleteNASInstanceInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *DeleteNASInstanceInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "DeleteNASInstanceInput"}
+
+	if s.NASInstanceIdentifier == nil {
+		invalidParams.Add(aws.NewErrParamRequired("NASInstanceIdentifier"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type DeleteNASInstanceOutput struct {

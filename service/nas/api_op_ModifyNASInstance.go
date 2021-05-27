@@ -30,7 +30,8 @@ type ModifyNASInstanceInput struct {
 
 	NASInstanceDescription *string `locationName:"NASInstanceDescription" type:"string"`
 
-	NASInstanceIdentifier *string `locationName:"NASInstanceIdentifier" type:"string"`
+	// NASInstanceIdentifier is a required field
+	NASInstanceIdentifier *string `locationName:"NASInstanceIdentifier" type:"string" required:"true"`
 
 	NASSecurityGroups []string `locationName:"NASSecurityGroups" locationNameList:"member" type:"list"`
 
@@ -44,6 +45,20 @@ type ModifyNASInstanceInput struct {
 // String returns the string representation
 func (s ModifyNASInstanceInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *ModifyNASInstanceInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "ModifyNASInstanceInput"}
+
+	if s.NASInstanceIdentifier == nil {
+		invalidParams.Add(aws.NewErrParamRequired("NASInstanceIdentifier"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type ModifyNASInstanceOutput struct {

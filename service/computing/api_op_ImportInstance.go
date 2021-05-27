@@ -30,9 +30,10 @@ type ImportInstanceInput struct {
 
 	Monitoring *RequestMonitoringOfImportInstance `locationName:"Monitoring" type:"structure"`
 
-	NetworkInterface []RequestNetworkInterfaceOfImportInstance `locationName:"NetworkInterface" type:"list"`
+	NetworkInterface []RequestNetworkInterface `locationName:"NetworkInterface" type:"list"`
 
-	Ovf *string `locationName:"Ovf" type:"string"`
+	// Ovf is a required field
+	Ovf *string `locationName:"Ovf" type:"string" required:"true"`
 
 	Placement *RequestPlacementOfImportInstance `locationName:"Placement" type:"structure"`
 
@@ -52,6 +53,20 @@ type ImportInstanceInput struct {
 // String returns the string representation
 func (s ImportInstanceInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *ImportInstanceInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "ImportInstanceInput"}
+
+	if s.Ovf == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Ovf"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type ImportInstanceOutput struct {

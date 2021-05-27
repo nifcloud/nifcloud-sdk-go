@@ -186,21 +186,6 @@ func (s AppCookieStickinessPolicies) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type AssociateUsersResult struct {
-	_ struct{} `type:"structure"`
-
-	AssociateUsersResult *AssociateUsersResult `locationName:"AssociateUsersResult" type:"structure"`
-
-	ResponseMetadata *ResponseMetadataOfAssociateUsers `locationName:"ResponseMetadata" type:"structure"`
-
-	Users []Users `locationName:"Users" locationNameList:"member" type:"list"`
-}
-
-// String returns the string representation
-func (s AssociateUsersResult) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
 type Association struct {
 	_ struct{} `type:"structure"`
 
@@ -257,23 +242,6 @@ type AssociationOfCreateNetworkInterface struct {
 
 // String returns the string representation
 func (s AssociationOfCreateNetworkInterface) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type AssociationOfDescribeInstances struct {
-	_ struct{} `type:"structure"`
-
-	IpOwnerId *string `locationName:"ipOwnerId" type:"string"`
-
-	PublicDnsName *string `locationName:"publicDnsName" type:"string"`
-
-	PublicIp *string `locationName:"publicIp" type:"string"`
-
-	PublicIpV6 *string `locationName:"publicIpV6" type:"string"`
-}
-
-// String returns the string representation
-func (s AssociationOfDescribeInstances) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
@@ -427,25 +395,6 @@ func (s AttachmentOfCreateNetworkInterface) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type AttachmentOfDescribeInstances struct {
-	_ struct{} `type:"structure"`
-
-	AttachTime *time.Time `locationName:"attachTime" type:"timestamp"`
-
-	AttachmentId *string `locationName:"attachmentId" type:"string"`
-
-	DeleteOnTermination *bool `locationName:"deleteOnTermination" type:"boolean"`
-
-	DeviceIndex *int64 `locationName:"deviceIndex" type:"integer"`
-
-	Status *string `locationName:"status" type:"string"`
-}
-
-// String returns the string representation
-func (s AttachmentOfDescribeInstances) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
 type AttachmentOfDescribeNetworkInterfaces struct {
 	_ struct{} `type:"structure"`
 
@@ -581,7 +530,7 @@ type AutoScalingReservationSet struct {
 
 	Description *string `locationName:"description" type:"string"`
 
-	GroupSet []GroupSetOfNiftyDescribeAutoScalingGroups `locationName:"groupSet" locationNameList:"item" type:"list"`
+	GroupSet []GroupSet `locationName:"groupSet" locationNameList:"item" type:"list"`
 
 	ImageId *string `locationName:"imageId" type:"string"`
 
@@ -597,7 +546,7 @@ type AutoScalingReservationSet struct {
 
 	MinSize *int64 `locationName:"minSize" type:"integer"`
 
-	Placement *PlacementOfNiftyDescribeAutoScalingGroups `locationName:"placement" type:"structure"`
+	Placement *Placement `locationName:"placement" type:"structure"`
 
 	Scaleout *int64 `locationName:"scaleout" type:"integer"`
 
@@ -623,19 +572,6 @@ type Autoscaling struct {
 
 // String returns the string representation
 func (s Autoscaling) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type AutoscalingOfDescribeInstances struct {
-	_ struct{} `type:"structure"`
-
-	AutoScalingGroupName *string `locationName:"autoScalingGroupName" type:"string"`
-
-	ExpireTime *time.Time `locationName:"expireTime" type:"timestamp"`
-}
-
-// String returns the string representation
-func (s AutoscalingOfDescribeInstances) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
@@ -668,17 +604,6 @@ type BackupInformation struct {
 
 // String returns the string representation
 func (s BackupInformation) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type BackupInformationOfCreateVpnGateway struct {
-	_ struct{} `type:"structure"`
-
-	IsBackup *bool `locationName:"isBackup" type:"boolean"`
-}
-
-// String returns the string representation
-func (s BackupInformationOfCreateVpnGateway) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
@@ -723,21 +648,6 @@ func (s BackupInstancesSet) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type BackupInstancesSetOfDescribeInstanceBackupRules struct {
-	_ struct{} `type:"structure"`
-
-	BackupInstanceCreateTime *string `locationName:"backupInstanceCreateTime" type:"string"`
-
-	BackupInstanceUniqueId *string `locationName:"backupInstanceUniqueId" type:"string"`
-
-	Status *string `locationName:"status" type:"string"`
-}
-
-// String returns the string representation
-func (s BackupInstancesSetOfDescribeInstanceBackupRules) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
 type BlockDeviceMapping struct {
 	_ struct{} `type:"structure"`
 
@@ -751,19 +661,6 @@ func (s BlockDeviceMapping) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type BlockDeviceMappingOfCopyFromBackupInstance struct {
-	_ struct{} `type:"structure"`
-
-	DeviceName *string `locationName:"deviceName" type:"string"`
-
-	Ebs *EbsOfCopyFromBackupInstance `locationName:"ebs" type:"structure"`
-}
-
-// String returns the string representation
-func (s BlockDeviceMappingOfCopyFromBackupInstance) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
 type BlockDeviceMappingOfDescribeImages struct {
 	_ struct{} `type:"structure"`
 
@@ -774,19 +671,6 @@ type BlockDeviceMappingOfDescribeImages struct {
 
 // String returns the string representation
 func (s BlockDeviceMappingOfDescribeImages) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type BlockDeviceMappingOfDescribeInstances struct {
-	_ struct{} `type:"structure"`
-
-	DeviceName *string `locationName:"deviceName" type:"string"`
-
-	Ebs *EbsOfDescribeInstances `locationName:"ebs" type:"structure"`
-}
-
-// String returns the string representation
-func (s BlockDeviceMappingOfDescribeInstances) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
@@ -813,19 +697,6 @@ type BypassInterface struct {
 
 // String returns the string representation
 func (s BypassInterface) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type BypassInterfaceOfNiftyDescribeWebProxies struct {
-	_ struct{} `type:"structure"`
-
-	NetworkId *string `locationName:"networkId" type:"string"`
-
-	NetworkName *string `locationName:"networkName" type:"string"`
-}
-
-// String returns the string representation
-func (s BypassInterfaceOfNiftyDescribeWebProxies) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
@@ -869,27 +740,6 @@ type CertInfo struct {
 
 // String returns the string representation
 func (s CertInfo) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type CertInfoOfDescribeSslCertificateAttribute struct {
-	_ struct{} `type:"structure"`
-
-	CountryName *string `locationName:"countryName" type:"string"`
-
-	EmailAddress *string `locationName:"emailAddress" type:"string"`
-
-	LocationName *string `locationName:"locationName" type:"string"`
-
-	OrganizationName *string `locationName:"organizationName" type:"string"`
-
-	OrganizationUnitName *string `locationName:"organizationUnitName" type:"string"`
-
-	StateName *string `locationName:"stateName" type:"string"`
-}
-
-// String returns the string representation
-func (s CertInfoOfDescribeSslCertificateAttribute) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
@@ -956,21 +806,6 @@ type ChargeDetailInfo struct {
 
 // String returns the string representation
 func (s ChargeDetailInfo) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type ConfigureHealthCheckResult struct {
-	_ struct{} `type:"structure"`
-
-	ConfigureHealthCheckResult *ConfigureHealthCheckResult `locationName:"ConfigureHealthCheckResult" type:"structure"`
-
-	HealthCheck *HealthCheck `locationName:"HealthCheck" type:"structure"`
-
-	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
-}
-
-// String returns the string representation
-func (s ConfigureHealthCheckResult) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
@@ -1058,21 +893,6 @@ func (s CreateImage) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type CreateLoadBalancerResult struct {
-	_ struct{} `type:"structure"`
-
-	CreateLoadBalancerResult *CreateLoadBalancerResult `locationName:"CreateLoadBalancerResult" type:"structure"`
-
-	DNSName *string `locationName:"DNSName" type:"string"`
-
-	ResponseMetadata *ResponseMetadataOfCreateLoadBalancer `locationName:"ResponseMetadata" type:"structure"`
-}
-
-// String returns the string representation
-func (s CreateLoadBalancerResult) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
 type CreateSslCertSet struct {
 	_ struct{} `type:"structure"`
 
@@ -1103,32 +923,6 @@ func (s CurrentState) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type CurrentStateOfStopInstances struct {
-	_ struct{} `type:"structure"`
-
-	Code *int64 `locationName:"code" type:"integer"`
-
-	Name *string `locationName:"name" type:"string"`
-}
-
-// String returns the string representation
-func (s CurrentStateOfStopInstances) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type CurrentStateOfTerminateInstances struct {
-	_ struct{} `type:"structure"`
-
-	Code *int64 `locationName:"code" type:"integer"`
-
-	Name *string `locationName:"name" type:"string"`
-}
-
-// String returns the string representation
-func (s CurrentStateOfTerminateInstances) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
 type CustomerGateway struct {
 	_ struct{} `type:"structure"`
 
@@ -1148,7 +942,7 @@ type CustomerGateway struct {
 
 	State *string `locationName:"state" type:"string"`
 
-	TagSet []TagSetOfCreateCustomerGateway `locationName:"tagSet" locationNameList:"item" type:"list"`
+	TagSet []TagSet `locationName:"tagSet" locationNameList:"item" type:"list"`
 }
 
 // String returns the string representation
@@ -1175,7 +969,7 @@ type CustomerGatewaySet struct {
 
 	State *string `locationName:"state" type:"string"`
 
-	TagSet []TagSetOfDescribeCustomerGateways `locationName:"tagSet" locationNameList:"item" type:"list"`
+	TagSet []TagSet `locationName:"tagSet" locationNameList:"item" type:"list"`
 }
 
 // String returns the string representation
@@ -1232,66 +1026,6 @@ func (s Day) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type DeregisterInstancesFromLoadBalancerResult struct {
-	_ struct{} `type:"structure"`
-
-	DeregisterInstancesFromLoadBalancerResult *DeregisterInstancesFromLoadBalancerResult `locationName:"DeregisterInstancesFromLoadBalancerResult" type:"structure"`
-
-	Instances []Instances `locationName:"Instances" locationNameList:"member" type:"list"`
-
-	ResponseMetadata *ResponseMetadataOfDeregisterInstancesFromLoadBalancer `locationName:"ResponseMetadata" type:"structure"`
-}
-
-// String returns the string representation
-func (s DeregisterInstancesFromLoadBalancerResult) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type DescribeAssociatedUsersResult struct {
-	_ struct{} `type:"structure"`
-
-	DescribeAssociatedUsersResult *DescribeAssociatedUsersResult `locationName:"DescribeAssociatedUsersResult" type:"structure"`
-
-	ResponseMetadata *ResponseMetadataOfDescribeAssociatedUsers `locationName:"ResponseMetadata" type:"structure"`
-
-	Users []UsersOfDescribeAssociatedUsers `locationName:"Users" locationNameList:"member" type:"list"`
-}
-
-// String returns the string representation
-func (s DescribeAssociatedUsersResult) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type DescribeInstanceHealthResult struct {
-	_ struct{} `type:"structure"`
-
-	DescribeInstanceHealthResult *DescribeInstanceHealthResult `locationName:"DescribeInstanceHealthResult" type:"structure"`
-
-	InstanceStates []InstanceStates `locationName:"InstanceStates" locationNameList:"member" type:"list"`
-
-	ResponseMetadata *ResponseMetadataOfDescribeInstanceHealth `locationName:"ResponseMetadata" type:"structure"`
-}
-
-// String returns the string representation
-func (s DescribeInstanceHealthResult) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type DescribeLoadBalancersResult struct {
-	_ struct{} `type:"structure"`
-
-	DescribeLoadBalancersResult *DescribeLoadBalancersResult `locationName:"DescribeLoadBalancersResult" type:"structure"`
-
-	LoadBalancerDescriptions []LoadBalancerDescriptions `locationName:"LoadBalancerDescriptions" locationNameList:"member" type:"list"`
-
-	ResponseMetadata *ResponseMetadataOfDescribeLoadBalancers `locationName:"ResponseMetadata" type:"structure"`
-}
-
-// String returns the string representation
-func (s DescribeLoadBalancersResult) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
 type Description struct {
 	_ struct{} `type:"structure"`
 
@@ -1303,17 +1037,6 @@ func (s Description) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type DescriptionOfDescribeSslCertificateAttribute struct {
-	_ struct{} `type:"structure"`
-
-	Value *string `locationName:"value" type:"string"`
-}
-
-// String returns the string representation
-func (s DescriptionOfDescribeSslCertificateAttribute) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
 type Destination struct {
 	_ struct{} `type:"structure"`
 
@@ -1322,28 +1045,6 @@ type Destination struct {
 
 // String returns the string representation
 func (s Destination) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type DestinationOfNiftyCreateNatRule struct {
-	_ struct{} `type:"structure"`
-
-	Port *int64 `locationName:"port" type:"integer"`
-}
-
-// String returns the string representation
-func (s DestinationOfNiftyCreateNatRule) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type DestinationOfNiftyReplaceNatRule struct {
-	_ struct{} `type:"structure"`
-
-	Port *int64 `locationName:"port" type:"integer"`
-}
-
-// String returns the string representation
-func (s DestinationOfNiftyReplaceNatRule) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
@@ -1405,19 +1106,6 @@ func (s DhcpConfigurationSet) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type DhcpConfigurationSetOfDescribeDhcpOptions struct {
-	_ struct{} `type:"structure"`
-
-	Key *string `locationName:"key" type:"string"`
-
-	ValueSet []ValueSetOfDescribeDhcpOptions `locationName:"valueSet" locationNameList:"item" type:"list"`
-}
-
-// String returns the string representation
-func (s DhcpConfigurationSetOfDescribeDhcpOptions) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
 type DhcpIpAddressInformation struct {
 	_ struct{} `type:"structure"`
 
@@ -1468,7 +1156,7 @@ func (s DhcpOptions) String() string {
 type DhcpOptionsSet struct {
 	_ struct{} `type:"structure"`
 
-	DhcpConfigurationSet []DhcpConfigurationSetOfDescribeDhcpOptions `locationName:"dhcpConfigurationSet" locationNameList:"item" type:"list"`
+	DhcpConfigurationSet []DhcpConfigurationSet `locationName:"dhcpConfigurationSet" locationNameList:"item" type:"list"`
 
 	DhcpOptionsId *string `locationName:"dhcpOptionsId" type:"string"`
 }
@@ -1501,21 +1189,6 @@ type DisableApiTermination struct {
 
 // String returns the string representation
 func (s DisableApiTermination) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type DissociateUsersResult struct {
-	_ struct{} `type:"structure"`
-
-	DissociateUsersResult *DissociateUsersResult `locationName:"DissociateUsersResult" type:"structure"`
-
-	ResponseMetadata *ResponseMetadataOfDissociateUsers `locationName:"ResponseMetadata" type:"structure"`
-
-	Users []UsersOfDissociateUsers `locationName:"Users" locationNameList:"member" type:"list"`
-}
-
-// String returns the string representation
-func (s DissociateUsersResult) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
@@ -1570,23 +1243,6 @@ func (s Ebs) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type EbsOfCopyFromBackupInstance struct {
-	_ struct{} `type:"structure"`
-
-	AttachTime *time.Time `locationName:"attachTime" type:"timestamp"`
-
-	DeleteOnTermination *bool `locationName:"deleteOnTermination" type:"boolean"`
-
-	Status *string `locationName:"status" type:"string"`
-
-	VolumeId *string `locationName:"volumeId" type:"string"`
-}
-
-// String returns the string representation
-func (s EbsOfCopyFromBackupInstance) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
 type EbsOfDescribeImages struct {
 	_ struct{} `type:"structure"`
 
@@ -1601,23 +1257,6 @@ type EbsOfDescribeImages struct {
 
 // String returns the string representation
 func (s EbsOfDescribeImages) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type EbsOfDescribeInstances struct {
-	_ struct{} `type:"structure"`
-
-	AttachTime *time.Time `locationName:"attachTime" type:"timestamp"`
-
-	DeleteOnTermination *bool `locationName:"deleteOnTermination" type:"boolean"`
-
-	Status *string `locationName:"status" type:"string"`
-
-	VolumeId *string `locationName:"volumeId" type:"string"`
-}
-
-// String returns the string representation
-func (s EbsOfDescribeInstances) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
@@ -1774,23 +1413,6 @@ func (s ElasticLoadBalancingSet) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type ElasticLoadBalancingSetOfNiftyDescribePrivateLans struct {
-	_ struct{} `type:"structure"`
-
-	ElasticLoadBalancerName *string `locationName:"elasticLoadBalancerName" type:"string"`
-
-	ElasticLoadBalancerPort *int64 `locationName:"elasticLoadBalancerPort" type:"integer"`
-
-	InstancePort *int64 `locationName:"instancePort" type:"integer"`
-
-	Protocol *string `locationName:"protocol" type:"string"`
-}
-
-// String returns the string representation
-func (s ElasticLoadBalancingSetOfNiftyDescribePrivateLans) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
 type EmailAddressSet struct {
 	_ struct{} `type:"structure"`
 
@@ -1810,17 +1432,6 @@ type Expectation struct {
 
 // String returns the string representation
 func (s Expectation) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type ExpectationOfNiftyDescribeElasticLoadBalancers struct {
-	_ struct{} `type:"structure"`
-
-	HttpCode *int64 `locationName:"HttpCode" type:"integer"`
-}
-
-// String returns the string representation
-func (s ExpectationOfNiftyDescribeElasticLoadBalancers) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
@@ -1865,19 +1476,6 @@ func (s Filter) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type FilterOfSetFilterForLoadBalancer struct {
-	_ struct{} `type:"structure"`
-
-	FilterType *string `locationName:"FilterType" type:"string"`
-
-	IPAddresses []IPAddressesOfSetFilterForLoadBalancer `locationName:"IPAddresses" locationNameList:"member" type:"list"`
-}
-
-// String returns the string representation
-func (s FilterOfSetFilterForLoadBalancer) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
 type GroupId struct {
 	_ struct{} `type:"structure"`
 
@@ -1897,105 +1495,6 @@ type GroupSet struct {
 
 // String returns the string representation
 func (s GroupSet) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type GroupSetOfCopyFromBackupInstance struct {
-	_ struct{} `type:"structure"`
-
-	GroupId *string `locationName:"groupId" type:"string"`
-}
-
-// String returns the string representation
-func (s GroupSetOfCopyFromBackupInstance) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type GroupSetOfCreateNetworkInterface struct {
-	_ struct{} `type:"structure"`
-
-	GroupId *string `locationName:"groupId" type:"string"`
-}
-
-// String returns the string representation
-func (s GroupSetOfCreateNetworkInterface) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type GroupSetOfCreateVpnGateway struct {
-	_ struct{} `type:"structure"`
-
-	GroupId *string `locationName:"groupId" type:"string"`
-}
-
-// String returns the string representation
-func (s GroupSetOfCreateVpnGateway) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type GroupSetOfDescribeNetworkInterfaces struct {
-	_ struct{} `type:"structure"`
-
-	GroupId *string `locationName:"groupId" type:"string"`
-}
-
-// String returns the string representation
-func (s GroupSetOfDescribeNetworkInterfaces) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type GroupSetOfDescribeVpnGateways struct {
-	_ struct{} `type:"structure"`
-
-	GroupId *string `locationName:"groupId" type:"string"`
-}
-
-// String returns the string representation
-func (s GroupSetOfDescribeVpnGateways) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type GroupSetOfNiftyCreateRouter struct {
-	_ struct{} `type:"structure"`
-
-	GroupId *string `locationName:"groupId" type:"string"`
-}
-
-// String returns the string representation
-func (s GroupSetOfNiftyCreateRouter) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type GroupSetOfNiftyDescribeAutoScalingGroups struct {
-	_ struct{} `type:"structure"`
-
-	GroupId *string `locationName:"groupId" type:"string"`
-}
-
-// String returns the string representation
-func (s GroupSetOfNiftyDescribeAutoScalingGroups) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type GroupSetOfNiftyDescribeRouters struct {
-	_ struct{} `type:"structure"`
-
-	GroupId *string `locationName:"groupId" type:"string"`
-}
-
-// String returns the string representation
-func (s GroupSetOfNiftyDescribeRouters) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type GroupSetOfRunInstances struct {
-	_ struct{} `type:"structure"`
-
-	GroupId *string `locationName:"groupId" type:"string"`
-}
-
-// String returns the string representation
-func (s GroupSetOfRunInstances) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
@@ -2034,7 +1533,7 @@ type HealthCheckOfDescribeLoadBalancers struct {
 
 	HealthyThreshold *int64 `locationName:"HealthyThreshold" type:"integer"`
 
-	InstanceStates []InstanceStatesOfDescribeLoadBalancers `locationName:"InstanceStates" locationNameList:"member" type:"list"`
+	InstanceStates []InstanceStates `locationName:"InstanceStates" locationNameList:"member" type:"list"`
 
 	Interval *int64 `locationName:"Interval" type:"integer"`
 
@@ -2072,9 +1571,9 @@ func (s HealthCheckOfNiftyConfigureElasticLoadBalancerHealthCheck) String() stri
 type HealthCheckOfNiftyDescribeElasticLoadBalancers struct {
 	_ struct{} `type:"structure"`
 
-	Expectation []ExpectationOfNiftyDescribeElasticLoadBalancers `locationName:"Expectation" locationNameList:"member" type:"list"`
+	Expectation []Expectation `locationName:"Expectation" locationNameList:"member" type:"list"`
 
-	InstanceStates []InstanceStatesOfNiftyDescribeElasticLoadBalancers `locationName:"InstanceStates" locationNameList:"member" type:"list"`
+	InstanceStates []InstanceStates `locationName:"InstanceStates" locationNameList:"member" type:"list"`
 
 	Interval *int64 `locationName:"Interval" type:"integer"`
 
@@ -2101,17 +1600,6 @@ func (s IPAddresses) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type IPAddressesOfSetFilterForLoadBalancer struct {
-	_ struct{} `type:"structure"`
-
-	IPAddress *string `locationName:"IPAddress" type:"string"`
-}
-
-// String returns the string representation
-func (s IPAddressesOfSetFilterForLoadBalancer) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
 type Image struct {
 	_ struct{} `type:"structure"`
 
@@ -2135,19 +1623,6 @@ type ImageInfo struct {
 
 // String returns the string representation
 func (s ImageInfo) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type ImageOfDescribeUploads struct {
-	_ struct{} `type:"structure"`
-
-	Format *string `locationName:"format" type:"string"`
-
-	Size *int64 `locationName:"size" type:"integer"`
-}
-
-// String returns the string representation
-func (s ImageOfDescribeUploads) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
@@ -2194,7 +1669,7 @@ type ImagesSet struct {
 
 	Platform *string `locationName:"platform" type:"string"`
 
-	ProductCodes []ProductCodesOfDescribeImages `locationName:"productCodes" locationNameList:"item" type:"list"`
+	ProductCodes []ProductCodes `locationName:"productCodes" locationNameList:"item" type:"list"`
 
 	RamdiskId *string `locationName:"ramdiskId" type:"string"`
 
@@ -2204,7 +1679,7 @@ type ImagesSet struct {
 
 	RootDeviceType *string `locationName:"rootDeviceType" type:"string"`
 
-	StateReason *StateReasonOfDescribeImages `locationName:"stateReason" type:"structure"`
+	StateReason *StateReason `locationName:"stateReason" type:"structure"`
 }
 
 // String returns the string representation
@@ -2268,7 +1743,7 @@ type ImportInstanceOfDescribeUploads struct {
 
 	AvailabilityZone *string `locationName:"availabilityZone" type:"string"`
 
-	Image *ImageOfDescribeUploads `locationName:"image" type:"structure"`
+	Image *Image `locationName:"image" type:"structure"`
 
 	InstanceId *string `locationName:"instanceId" type:"string"`
 
@@ -2293,32 +1768,6 @@ func (s InboundInterface) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type InboundInterfaceOfNiftyCreateNatRule struct {
-	_ struct{} `type:"structure"`
-
-	NetworkId *string `locationName:"networkId" type:"string"`
-
-	NetworkName *string `locationName:"networkName" type:"string"`
-}
-
-// String returns the string representation
-func (s InboundInterfaceOfNiftyCreateNatRule) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type InboundInterfaceOfNiftyReplaceNatRule struct {
-	_ struct{} `type:"structure"`
-
-	NetworkId *string `locationName:"networkId" type:"string"`
-
-	NetworkName *string `locationName:"networkName" type:"string"`
-}
-
-// String returns the string representation
-func (s InboundInterfaceOfNiftyReplaceNatRule) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
 type Instance struct {
 	_ struct{} `type:"structure"`
 
@@ -2330,7 +1779,7 @@ type Instance struct {
 
 	Architecture *string `locationName:"architecture" type:"string"`
 
-	BlockDeviceMapping []BlockDeviceMappingOfCopyFromBackupInstance `locationName:"blockDeviceMapping" locationNameList:"item" type:"list"`
+	BlockDeviceMapping []BlockDeviceMapping `locationName:"blockDeviceMapping" locationNameList:"item" type:"list"`
 
 	Description *string `locationName:"description" type:"string"`
 
@@ -2342,7 +1791,7 @@ type Instance struct {
 
 	InstanceLifecycle *string `locationName:"instanceLifecycle" type:"string"`
 
-	InstanceState *InstanceStateOfCopyFromBackupInstance `locationName:"instanceState" type:"structure"`
+	InstanceState *InstanceState `locationName:"instanceState" type:"structure"`
 
 	InstanceType *string `locationName:"instanceType" type:"string"`
 
@@ -2360,13 +1809,13 @@ type Instance struct {
 
 	LaunchTime *string `locationName:"launchTime" type:"string"`
 
-	Monitoring *MonitoringOfCopyFromBackupInstance `locationName:"monitoring" type:"structure"`
+	Monitoring *Monitoring `locationName:"monitoring" type:"structure"`
 
 	NetworkInterfaceSet []NetworkInterfaceSetOfCopyFromBackupInstance `locationName:"networkInterfaceSet" locationNameList:"item" type:"list"`
 
 	NiftyPrivateIpType *string `locationName:"niftyPrivateIpType" type:"string"`
 
-	Placement *PlacementOfCopyFromBackupInstance `locationName:"placement" type:"structure"`
+	Placement *Placement `locationName:"placement" type:"structure"`
 
 	Platform *string `locationName:"platform" type:"string"`
 
@@ -2376,7 +1825,7 @@ type Instance struct {
 
 	PrivateIpAddressV6 *string `locationName:"privateIpAddressV6" type:"string"`
 
-	ProductCodes []ProductCodesOfCopyFromBackupInstance `locationName:"productCodes" locationNameList:"item" type:"list"`
+	ProductCodes []ProductCodes `locationName:"productCodes" locationNameList:"item" type:"list"`
 
 	RamdiskId *string `locationName:"ramdiskId" type:"string"`
 
@@ -2388,7 +1837,7 @@ type Instance struct {
 
 	SpotInstanceRequestId *string `locationName:"spotInstanceRequestId" type:"string"`
 
-	StateReason *StateReasonOfCopyFromBackupInstance `locationName:"stateReason" type:"structure"`
+	StateReason *StateReason `locationName:"stateReason" type:"structure"`
 
 	SubnetId *string `locationName:"subnetId" type:"string"`
 
@@ -2656,45 +2105,6 @@ func (s InstanceState) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type InstanceStateOfCopyFromBackupInstance struct {
-	_ struct{} `type:"structure"`
-
-	Code *int64 `locationName:"code" type:"integer"`
-
-	Name *string `locationName:"name" type:"string"`
-}
-
-// String returns the string representation
-func (s InstanceStateOfCopyFromBackupInstance) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type InstanceStateOfNiftyDescribeAutoScalingGroups struct {
-	_ struct{} `type:"structure"`
-
-	Code *int64 `locationName:"code" type:"integer"`
-
-	Name *string `locationName:"name" type:"string"`
-}
-
-// String returns the string representation
-func (s InstanceStateOfNiftyDescribeAutoScalingGroups) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type InstanceStateOfRunInstances struct {
-	_ struct{} `type:"structure"`
-
-	Code *int64 `locationName:"code" type:"integer"`
-
-	Name *string `locationName:"name" type:"string"`
-}
-
-// String returns the string representation
-func (s InstanceStateOfRunInstances) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
 type InstanceStates struct {
 	_ struct{} `type:"structure"`
 
@@ -2711,63 +2121,6 @@ type InstanceStates struct {
 
 // String returns the string representation
 func (s InstanceStates) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type InstanceStatesOfDescribeLoadBalancers struct {
-	_ struct{} `type:"structure"`
-
-	Description *string `locationName:"Description" type:"string"`
-
-	InstanceId *string `locationName:"InstanceId" type:"string"`
-
-	InstanceUniqueId *string `locationName:"InstanceUniqueId" type:"string"`
-
-	ReasonCode *string `locationName:"ReasonCode" type:"string"`
-
-	State *string `locationName:"State" type:"string"`
-}
-
-// String returns the string representation
-func (s InstanceStatesOfDescribeLoadBalancers) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type InstanceStatesOfNiftyDescribeElasticLoadBalancers struct {
-	_ struct{} `type:"structure"`
-
-	Description *string `locationName:"Description" type:"string"`
-
-	InstanceId *string `locationName:"InstanceId" type:"string"`
-
-	InstanceUniqueId *string `locationName:"InstanceUniqueId" type:"string"`
-
-	ReasonCode *string `locationName:"ReasonCode" type:"string"`
-
-	State *string `locationName:"State" type:"string"`
-}
-
-// String returns the string representation
-func (s InstanceStatesOfNiftyDescribeElasticLoadBalancers) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type InstanceStatesOfNiftyDescribeInstanceElasticLoadBalancerHealth struct {
-	_ struct{} `type:"structure"`
-
-	Description *string `locationName:"Description" type:"string"`
-
-	InstanceId *string `locationName:"InstanceId" type:"string"`
-
-	InstanceUniqueId *string `locationName:"InstanceUniqueId" type:"string"`
-
-	ReasonCode *string `locationName:"ReasonCode" type:"string"`
-
-	State *string `locationName:"State" type:"string"`
-}
-
-// String returns the string representation
-func (s InstanceStatesOfNiftyDescribeInstanceElasticLoadBalancerHealth) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
@@ -2806,45 +2159,6 @@ func (s Instances) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type InstancesOfDescribeLoadBalancers struct {
-	_ struct{} `type:"structure"`
-
-	InstanceId *string `locationName:"InstanceId" type:"string"`
-
-	InstanceUniqueId *string `locationName:"InstanceUniqueId" type:"string"`
-}
-
-// String returns the string representation
-func (s InstancesOfDescribeLoadBalancers) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type InstancesOfNiftyDescribeElasticLoadBalancers struct {
-	_ struct{} `type:"structure"`
-
-	InstanceId *string `locationName:"InstanceId" type:"string"`
-
-	InstanceUniqueId *string `locationName:"InstanceUniqueId" type:"string"`
-}
-
-// String returns the string representation
-func (s InstancesOfNiftyDescribeElasticLoadBalancers) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type InstancesOfRegisterInstancesWithLoadBalancer struct {
-	_ struct{} `type:"structure"`
-
-	InstanceId *string `locationName:"InstanceId" type:"string"`
-
-	InstanceUniqueId *string `locationName:"InstanceUniqueId" type:"string"`
-}
-
-// String returns the string representation
-func (s InstancesOfRegisterInstancesWithLoadBalancer) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
 type InstancesSet struct {
 	_ struct{} `type:"structure"`
 
@@ -2854,9 +2168,9 @@ type InstancesSet struct {
 
 	Architecture *string `locationName:"architecture" type:"string"`
 
-	Autoscaling *AutoscalingOfDescribeInstances `locationName:"autoscaling" type:"structure"`
+	Autoscaling *Autoscaling `locationName:"autoscaling" type:"structure"`
 
-	BlockDeviceMapping []BlockDeviceMappingOfDescribeInstances `locationName:"blockDeviceMapping" locationNameList:"item" type:"list"`
+	BlockDeviceMapping []BlockDeviceMapping `locationName:"blockDeviceMapping" locationNameList:"item" type:"list"`
 
 	CopyInfo *string `locationName:"copyInfo" type:"string"`
 
@@ -2896,7 +2210,7 @@ type InstancesSet struct {
 
 	LaunchTime *time.Time `locationName:"launchTime" type:"timestamp"`
 
-	Loadbalancing []LoadbalancingOfDescribeInstances `locationName:"loadbalancing" locationNameList:"item" type:"list"`
+	Loadbalancing []Loadbalancing `locationName:"loadbalancing" locationNameList:"item" type:"list"`
 
 	Monitoring *Monitoring `locationName:"monitoring" type:"structure"`
 
@@ -2906,7 +2220,7 @@ type InstancesSet struct {
 
 	NextMonthAccountingType *string `locationName:"nextMonthAccountingType" type:"string"`
 
-	NiftyElasticLoadBalancing []NiftyElasticLoadBalancingOfDescribeInstances `locationName:"niftyElasticLoadBalancing" locationNameList:"item" type:"list"`
+	NiftyElasticLoadBalancing []NiftyElasticLoadBalancing `locationName:"niftyElasticLoadBalancing" locationNameList:"item" type:"list"`
 
 	NiftyPrivateIpType *string `locationName:"niftyPrivateIpType" type:"string"`
 
@@ -2941,6 +2255,8 @@ type InstancesSet struct {
 	SubnetId *string `locationName:"subnetId" type:"string"`
 
 	Tenancy *string `locationName:"tenancy" type:"string"`
+
+	VmTools *VmTools `locationName:"vmTools" type:"structure"`
 
 	VpcId *string `locationName:"vpcId" type:"string"`
 }
@@ -2994,7 +2310,7 @@ func (s InstancesSetOfDeregisterInstancesFromSecurityGroup) String() string {
 type InstancesSetOfDescribeInstanceBackupRules struct {
 	_ struct{} `type:"structure"`
 
-	BackupInstancesSet []BackupInstancesSetOfDescribeInstanceBackupRules `locationName:"backupInstancesSet" locationNameList:"item" type:"list"`
+	BackupInstancesSet []BackupInstancesSet `locationName:"backupInstancesSet" locationNameList:"item" type:"list"`
 
 	InstanceId *string `locationName:"instanceId" type:"string"`
 
@@ -3095,7 +2411,7 @@ type InstancesSetOfNiftyDescribeAutoScalingGroups struct {
 
 	InstanceId *string `locationName:"instanceId" type:"string"`
 
-	InstanceState *InstanceStateOfNiftyDescribeAutoScalingGroups `locationName:"instanceState" type:"structure"`
+	InstanceState *InstanceState `locationName:"instanceState" type:"structure"`
 
 	InstanceType *string `locationName:"instanceType" type:"string"`
 
@@ -3180,7 +2496,7 @@ type InstancesSetOfRunInstances struct {
 
 	InstanceId *string `locationName:"instanceId" type:"string"`
 
-	InstanceState *InstanceStateOfRunInstances `locationName:"instanceState" type:"structure"`
+	InstanceState *InstanceState `locationName:"instanceState" type:"structure"`
 
 	InstanceType *string `locationName:"instanceType" type:"string"`
 
@@ -3198,13 +2514,13 @@ type InstancesSetOfRunInstances struct {
 
 	LaunchTime *time.Time `locationName:"launchTime" type:"timestamp"`
 
-	Monitoring *MonitoringOfRunInstances `locationName:"monitoring" type:"structure"`
+	Monitoring *Monitoring `locationName:"monitoring" type:"structure"`
 
 	NetworkInterfaceSet []NetworkInterfaceSetOfRunInstances `locationName:"networkInterfaceSet" locationNameList:"item" type:"list"`
 
 	NiftyPrivateIpType *string `locationName:"niftyPrivateIpType" type:"string"`
 
-	Placement *PlacementOfRunInstances `locationName:"placement" type:"structure"`
+	Placement *Placement `locationName:"placement" type:"structure"`
 
 	Platform *string `locationName:"platform" type:"string"`
 
@@ -3246,13 +2562,15 @@ func (s InstancesSetOfStartInstances) String() string {
 type InstancesSetOfStopInstances struct {
 	_ struct{} `type:"structure"`
 
-	CurrentState *CurrentStateOfStopInstances `locationName:"currentState" type:"structure"`
+	CurrentState *CurrentState `locationName:"currentState" type:"structure"`
 
 	InstanceId *string `locationName:"instanceId" type:"string"`
 
 	InstanceUniqueId *string `locationName:"instanceUniqueId" type:"string"`
 
-	PreviousState *PreviousStateOfStopInstances `locationName:"previousState" type:"structure"`
+	PreviousState *PreviousState `locationName:"previousState" type:"structure"`
+
+	Tenancy *string `locationName:"tenancy" type:"string"`
 }
 
 // String returns the string representation
@@ -3263,13 +2581,13 @@ func (s InstancesSetOfStopInstances) String() string {
 type InstancesSetOfTerminateInstances struct {
 	_ struct{} `type:"structure"`
 
-	CurrentState *CurrentStateOfTerminateInstances `locationName:"currentState" type:"structure"`
+	CurrentState *CurrentState `locationName:"currentState" type:"structure"`
 
 	InstanceId *string `locationName:"instanceId" type:"string"`
 
 	InstanceUniqueId *string `locationName:"instanceUniqueId" type:"string"`
 
-	PreviousState *PreviousStateOfTerminateInstances `locationName:"previousState" type:"structure"`
+	PreviousState *PreviousState `locationName:"previousState" type:"structure"`
 }
 
 // String returns the string representation
@@ -3418,17 +2736,6 @@ type Ipv6AddressesSet struct {
 
 // String returns the string representation
 func (s Ipv6AddressesSet) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type Ipv6AddressesSetOfDescribeNetworkInterfaces struct {
-	_ struct{} `type:"structure"`
-
-	Ipv6Address *string `locationName:"ipv6Address" type:"string"`
-}
-
-// String returns the string representation
-func (s Ipv6AddressesSetOfDescribeNetworkInterfaces) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
@@ -3584,19 +2891,6 @@ func (s ListenInterface) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type ListenInterfaceOfNiftyDescribeWebProxies struct {
-	_ struct{} `type:"structure"`
-
-	NetworkId *string `locationName:"networkId" type:"string"`
-
-	NetworkName *string `locationName:"networkName" type:"string"`
-}
-
-// String returns the string representation
-func (s ListenInterfaceOfNiftyDescribeWebProxies) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
 type Listener struct {
 	_ struct{} `type:"structure"`
 
@@ -3642,7 +2936,7 @@ type ListenerOfNiftyDescribeElasticLoadBalancers struct {
 
 	InstancePort *int64 `locationName:"InstancePort" type:"integer"`
 
-	Instances []InstancesOfNiftyDescribeElasticLoadBalancers `locationName:"Instances" locationNameList:"member" type:"list"`
+	Instances []Instances `locationName:"Instances" locationNameList:"member" type:"list"`
 
 	Protocol *string `locationName:"Protocol" type:"string"`
 
@@ -3760,7 +3054,7 @@ type LoadBalancerDescriptions struct {
 
 	HealthCheck *HealthCheckOfDescribeLoadBalancers `locationName:"HealthCheck" type:"structure"`
 
-	Instances []InstancesOfDescribeLoadBalancers `locationName:"Instances" locationNameList:"member" type:"list"`
+	Instances []Instances `locationName:"Instances" locationNameList:"member" type:"list"`
 
 	ListenerDescriptions []ListenerDescriptions `locationName:"ListenerDescriptions" locationNameList:"member" type:"list"`
 
@@ -3829,23 +3123,6 @@ func (s Loadbalancing) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type LoadbalancingOfDescribeInstances struct {
-	_ struct{} `type:"structure"`
-
-	InstancePort *int64 `locationName:"instancePort" type:"integer"`
-
-	LoadBalancerName *string `locationName:"loadBalancerName" type:"string"`
-
-	LoadBalancerPort *int64 `locationName:"loadBalancerPort" type:"integer"`
-
-	State *string `locationName:"State" type:"string"`
-}
-
-// String returns the string representation
-func (s LoadbalancingOfDescribeInstances) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
 type LogSet struct {
 	_ struct{} `type:"structure"`
 
@@ -3882,28 +3159,6 @@ type Monitoring struct {
 
 // String returns the string representation
 func (s Monitoring) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type MonitoringOfCopyFromBackupInstance struct {
-	_ struct{} `type:"structure"`
-
-	State *string `locationName:"state" type:"string"`
-}
-
-// String returns the string representation
-func (s MonitoringOfCopyFromBackupInstance) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type MonitoringOfRunInstances struct {
-	_ struct{} `type:"structure"`
-
-	State *string `locationName:"state" type:"string"`
-}
-
-// String returns the string representation
-func (s MonitoringOfRunInstances) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
@@ -3963,6 +3218,8 @@ type MultiIpAddressGroupOfCreateMultiIpAddressGroup struct {
 	_ struct{} `type:"structure"`
 
 	AvailabilityZone *string `locationName:"availabilityZone" type:"string"`
+
+	CreateTime *string `locationName:"createTime" type:"string"`
 
 	Description *string `locationName:"description" type:"string"`
 
@@ -4089,17 +3346,6 @@ func (s MultiIpAddressesSet) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type MultiIpAddressesSetOfDescribeInstances struct {
-	_ struct{} `type:"structure"`
-
-	IpAddress *string `locationName:"ipAddress" type:"string"`
-}
-
-// String returns the string representation
-func (s MultiIpAddressesSetOfDescribeInstances) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
 type MultiIpMonthlyRate struct {
 	_ struct{} `type:"structure"`
 
@@ -4122,52 +3368,25 @@ type NatRule struct {
 
 	Description *string `locationName:"description" type:"string"`
 
-	Destination *DestinationOfNiftyCreateNatRule `locationName:"destination" type:"structure"`
+	Destination *Destination `locationName:"destination" type:"structure"`
 
-	InboundInterface *InboundInterfaceOfNiftyCreateNatRule `locationName:"inboundInterface" type:"structure"`
+	InboundInterface *InboundInterface `locationName:"inboundInterface" type:"structure"`
 
 	NatType *string `locationName:"natType" type:"string"`
 
-	OutboundInterface *OutboundInterfaceOfNiftyCreateNatRule `locationName:"outboundInterface" type:"structure"`
+	OutboundInterface *OutboundInterface `locationName:"outboundInterface" type:"structure"`
 
 	Protocol *string `locationName:"protocol" type:"string"`
 
 	RuleNumber *string `locationName:"ruleNumber" type:"string"`
 
-	Source *SourceOfNiftyCreateNatRule `locationName:"source" type:"structure"`
+	Source *Source `locationName:"source" type:"structure"`
 
-	Translation *TranslationOfNiftyCreateNatRule `locationName:"translation" type:"structure"`
+	Translation *Translation `locationName:"translation" type:"structure"`
 }
 
 // String returns the string representation
 func (s NatRule) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type NatRuleOfNiftyReplaceNatRule struct {
-	_ struct{} `type:"structure"`
-
-	Description *string `locationName:"description" type:"string"`
-
-	Destination *DestinationOfNiftyReplaceNatRule `locationName:"destination" type:"structure"`
-
-	InboundInterface *InboundInterfaceOfNiftyReplaceNatRule `locationName:"inboundInterface" type:"structure"`
-
-	NatType *string `locationName:"natType" type:"string"`
-
-	OutboundInterface *OutboundInterfaceOfNiftyReplaceNatRule `locationName:"outboundInterface" type:"structure"`
-
-	Protocol *string `locationName:"protocol" type:"string"`
-
-	RuleNumber *string `locationName:"ruleNumber" type:"string"`
-
-	Source *SourceOfNiftyReplaceNatRule `locationName:"source" type:"structure"`
-
-	Translation *TranslationOfNiftyReplaceNatRule `locationName:"translation" type:"structure"`
-}
-
-// String returns the string representation
-func (s NatRuleOfNiftyReplaceNatRule) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
@@ -4203,7 +3422,7 @@ type NatTable struct {
 
 	NatTableId *string `locationName:"natTableId" type:"string"`
 
-	TagSet []TagSetOfNiftyCreateNatTable `locationName:"tagSet" locationNameList:"item" type:"list"`
+	TagSet []TagSet `locationName:"tagSet" locationNameList:"item" type:"list"`
 }
 
 // String returns the string representation
@@ -4220,7 +3439,7 @@ type NatTableSet struct {
 
 	NatTableId *string `locationName:"natTableId" type:"string"`
 
-	TagSet []TagSetOfNiftyDescribeNatTables `locationName:"tagSet" locationNameList:"item" type:"list"`
+	TagSet []TagSet `locationName:"tagSet" locationNameList:"item" type:"list"`
 }
 
 // String returns the string representation
@@ -4267,7 +3486,7 @@ type NetworkInterface struct {
 
 	Description *string `locationName:"description" type:"string"`
 
-	GroupSet []GroupSetOfCreateNetworkInterface `locationName:"groupSet" locationNameList:"item" type:"list"`
+	GroupSet []GroupSet `locationName:"groupSet" locationNameList:"item" type:"list"`
 
 	InterfaceType *string `locationName:"interfaceType" type:"string"`
 
@@ -4406,7 +3625,7 @@ type NetworkInterfaceSetOfCopyFromBackupInstance struct {
 
 	Description *string `locationName:"description" type:"string"`
 
-	GroupSet []GroupSetOfCopyFromBackupInstance `locationName:"groupSet" locationNameList:"item" type:"list"`
+	GroupSet []GroupSet `locationName:"groupSet" locationNameList:"item" type:"list"`
 
 	MacAddress *string `locationName:"macAddress" type:"string"`
 
@@ -4456,9 +3675,9 @@ func (s NetworkInterfaceSetOfCreateVpnGateway) String() string {
 type NetworkInterfaceSetOfDescribeInstances struct {
 	_ struct{} `type:"structure"`
 
-	Association *AssociationOfDescribeInstances `locationName:"association" type:"structure"`
+	Association *Association `locationName:"association" type:"structure"`
 
-	Attachment *AttachmentOfDescribeInstances `locationName:"attachment" type:"structure"`
+	Attachment *Attachment `locationName:"attachment" type:"structure"`
 
 	Description *string `locationName:"description" type:"string"`
 
@@ -4466,7 +3685,7 @@ type NetworkInterfaceSetOfDescribeInstances struct {
 
 	MacAddress *string `locationName:"macAddress" type:"string"`
 
-	MultiIpAddressesSet []MultiIpAddressesSetOfDescribeInstances `locationName:"multiIpAddressesSet" locationNameList:"item" type:"list"`
+	MultiIpAddressesSet []MultiIpAddressesSet `locationName:"multiIpAddressesSet" locationNameList:"item" type:"list"`
 
 	NetworkInterfaceId *string `locationName:"networkInterfaceId" type:"string"`
 
@@ -4509,11 +3728,11 @@ type NetworkInterfaceSetOfDescribeNetworkInterfaces struct {
 
 	Description *string `locationName:"description" type:"string"`
 
-	GroupSet []GroupSetOfDescribeNetworkInterfaces `locationName:"groupSet" locationNameList:"item" type:"list"`
+	GroupSet []GroupSet `locationName:"groupSet" locationNameList:"item" type:"list"`
 
 	InterfaceType *string `locationName:"interfaceType" type:"string"`
 
-	Ipv6AddressesSet []Ipv6AddressesSetOfDescribeNetworkInterfaces `locationName:"ipv6AddressesSet" locationNameList:"item" type:"list"`
+	Ipv6AddressesSet []Ipv6AddressesSet `locationName:"ipv6AddressesSet" locationNameList:"item" type:"list"`
 
 	MacAddress *string `locationName:"macAddress" type:"string"`
 
@@ -4543,7 +3762,7 @@ type NetworkInterfaceSetOfDescribeNetworkInterfaces struct {
 
 	SubnetId *string `locationName:"subnetId" type:"string"`
 
-	TagSet []TagSetOfDescribeNetworkInterfaces `locationName:"tagSet" locationNameList:"item" type:"list"`
+	TagSet []TagSet `locationName:"tagSet" locationNameList:"item" type:"list"`
 
 	VpcId *string `locationName:"vpcId" type:"string"`
 }
@@ -4694,7 +3913,7 @@ type NetworkInterfaceSetOfRunInstances struct {
 
 	Description *string `locationName:"description" type:"string"`
 
-	GroupSet []GroupSetOfRunInstances `locationName:"groupSet" locationNameList:"item" type:"list"`
+	GroupSet []GroupSet `locationName:"groupSet" locationNameList:"item" type:"list"`
 
 	NetworkInterfaceId *string `locationName:"networkInterfaceId" type:"string"`
 
@@ -4754,83 +3973,6 @@ func (s NextMonthAccountingType) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type NiftyConfigureElasticLoadBalancerHealthCheckResult struct {
-	_ struct{} `type:"structure"`
-
-	HealthCheck *HealthCheckOfNiftyConfigureElasticLoadBalancerHealthCheck `locationName:"HealthCheck" type:"structure"`
-
-	NiftyConfigureElasticLoadBalancerHealthCheckResult *NiftyConfigureElasticLoadBalancerHealthCheckResult `locationName:"NiftyConfigureElasticLoadBalancerHealthCheckResult" type:"structure"`
-
-	ResponseMetadata *ResponseMetadataOfNiftyConfigureElasticLoadBalancerHealthCheck `locationName:"ResponseMetadata" type:"structure"`
-}
-
-// String returns the string representation
-func (s NiftyConfigureElasticLoadBalancerHealthCheckResult) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type NiftyCreateElasticLoadBalancerResult struct {
-	_ struct{} `type:"structure"`
-
-	DNSName *string `locationName:"DNSName" type:"string"`
-
-	NiftyCreateElasticLoadBalancerResult *NiftyCreateElasticLoadBalancerResult `locationName:"NiftyCreateElasticLoadBalancerResult" type:"structure"`
-
-	ResponseMetadata *ResponseMetadataOfNiftyCreateElasticLoadBalancer `locationName:"ResponseMetadata" type:"structure"`
-}
-
-// String returns the string representation
-func (s NiftyCreateElasticLoadBalancerResult) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type NiftyDescribeElasticLoadBalancersResult struct {
-	_ struct{} `type:"structure"`
-
-	ElasticLoadBalancerDescriptions []ElasticLoadBalancerDescriptions `locationName:"ElasticLoadBalancerDescriptions" locationNameList:"member" type:"list"`
-
-	NiftyDescribeElasticLoadBalancersResult *NiftyDescribeElasticLoadBalancersResult `locationName:"NiftyDescribeElasticLoadBalancersResult" type:"structure"`
-
-	ResponseMetadata *ResponseMetadataOfNiftyDescribeElasticLoadBalancers `locationName:"ResponseMetadata" type:"structure"`
-}
-
-// String returns the string representation
-func (s NiftyDescribeElasticLoadBalancersResult) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type NiftyDescribeInstanceElasticLoadBalancerHealthResult struct {
-	_ struct{} `type:"structure"`
-
-	InstanceStates []InstanceStatesOfNiftyDescribeInstanceElasticLoadBalancerHealth `locationName:"InstanceStates" locationNameList:"member" type:"list"`
-
-	NiftyDescribeInstanceElasticLoadBalancerHealthResult *NiftyDescribeInstanceElasticLoadBalancerHealthResult `locationName:"NiftyDescribeInstanceElasticLoadBalancerHealthResult" type:"structure"`
-
-	ResponseMetadata *ResponseMetadataOfNiftyDescribeInstanceElasticLoadBalancerHealth `locationName:"ResponseMetadata" type:"structure"`
-}
-
-// String returns the string representation
-func (s NiftyDescribeInstanceElasticLoadBalancerHealthResult) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type NiftyDescribeLoadBalancerSSLPoliciesResult struct {
-	_ struct{} `type:"structure"`
-
-	LoadBalancerName *string `locationName:"LoadBalancerName" type:"string"`
-
-	NiftyDescribeLoadBalancerSSLPoliciesResult *NiftyDescribeLoadBalancerSSLPoliciesResult `locationName:"NiftyDescribeLoadBalancerSSLPoliciesResult" type:"structure"`
-
-	ResponseMetadata *ResponseMetadataOfNiftyDescribeLoadBalancerSSLPolicies `locationName:"ResponseMetadata" type:"structure"`
-
-	SSLPoliciesDescriptions []SSLPoliciesDescriptions `locationName:"SSLPoliciesDescriptions" locationNameList:"member" type:"list"`
-}
-
-// String returns the string representation
-func (s NiftyDescribeLoadBalancerSSLPoliciesResult) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
 type NiftyDistributionIds struct {
 	_ struct{} `type:"structure"`
 
@@ -4861,25 +4003,6 @@ func (s NiftyElasticLoadBalancing) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type NiftyElasticLoadBalancingOfDescribeInstances struct {
-	_ struct{} `type:"structure"`
-
-	ElasticLoadBalancerId *string `locationName:"elasticLoadBalancerId" type:"string"`
-
-	ElasticLoadBalancerName *string `locationName:"elasticLoadBalancerName" type:"string"`
-
-	ElasticLoadBalancerPort *int64 `locationName:"elasticLoadBalancerPort" type:"integer"`
-
-	InstancePort *int64 `locationName:"instancePort" type:"integer"`
-
-	Protocol *string `locationName:"protocol" type:"string"`
-}
-
-// String returns the string representation
-func (s NiftyElasticLoadBalancingOfDescribeInstances) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
 type NiftyIpsecConfiguration struct {
 	_ struct{} `type:"structure"`
 
@@ -4905,31 +4028,6 @@ func (s NiftyIpsecConfiguration) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type NiftyIpsecConfigurationOfDescribeVpnConnections struct {
-	_ struct{} `type:"structure"`
-
-	DiffieHellmanGroup *int64 `locationName:"diffieHellmanGroup" type:"integer"`
-
-	EncapsulatingSecurityPayloadLifetime *int64 `locationName:"encapsulatingSecurityPayloadLifetime" type:"integer"`
-
-	EncryptionAlgorithm *string `locationName:"encryptionAlgorithm" type:"string"`
-
-	HashingAlgorithm *string `locationName:"hashingAlgorithm" type:"string"`
-
-	InternetKeyExchange *string `locationName:"internetKeyExchange" type:"string"`
-
-	InternetKeyExchangeLifetime *int64 `locationName:"internetKeyExchangeLifetime" type:"integer"`
-
-	Mtu *string `locationName:"mtu" type:"string"`
-
-	PreSharedKey *string `locationName:"preSharedKey" type:"string"`
-}
-
-// String returns the string representation
-func (s NiftyIpsecConfigurationOfDescribeVpnConnections) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
 type NiftyPrivateIpType struct {
 	_ struct{} `type:"structure"`
 
@@ -4938,21 +4036,6 @@ type NiftyPrivateIpType struct {
 
 // String returns the string representation
 func (s NiftyPrivateIpType) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type NiftyRegisterPortWithElasticLoadBalancerResult struct {
-	_ struct{} `type:"structure"`
-
-	Listeners []ListenersOfNiftyRegisterPortWithElasticLoadBalancer `locationName:"Listeners" locationNameList:"member" type:"list"`
-
-	NiftyRegisterPortWithElasticLoadBalancerResult *NiftyRegisterPortWithElasticLoadBalancerResult `locationName:"NiftyRegisterPortWithElasticLoadBalancerResult" type:"structure"`
-
-	ResponseMetadata *ResponseMetadataOfNiftyRegisterPortWithElasticLoadBalancer `locationName:"ResponseMetadata" type:"structure"`
-}
-
-// String returns the string representation
-func (s NiftyRegisterPortWithElasticLoadBalancerResult) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
@@ -4991,33 +4074,6 @@ type NiftyTunnel struct {
 
 // String returns the string representation
 func (s NiftyTunnel) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type NiftyTunnelOfDescribeVpnConnections struct {
-	_ struct{} `type:"structure"`
-
-	DestinationPort *string `locationName:"destinationPort" type:"string"`
-
-	Encapsulation *string `locationName:"encapsulation" type:"string"`
-
-	Mode *string `locationName:"mode" type:"string"`
-
-	PeerSessionId *string `locationName:"peerSessionId" type:"string"`
-
-	PeerTunnelId *string `locationName:"peerTunnelId" type:"string"`
-
-	SessionId *string `locationName:"sessionId" type:"string"`
-
-	SourcePort *string `locationName:"sourcePort" type:"string"`
-
-	TunnelId *string `locationName:"tunnelId" type:"string"`
-
-	Type *string `locationName:"type" type:"string"`
-}
-
-// String returns the string representation
-func (s NiftyTunnelOfDescribeVpnConnections) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
@@ -5174,32 +4230,6 @@ func (s OutboundInterface) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type OutboundInterfaceOfNiftyCreateNatRule struct {
-	_ struct{} `type:"structure"`
-
-	NetworkId *string `locationName:"networkId" type:"string"`
-
-	NetworkName *string `locationName:"networkName" type:"string"`
-}
-
-// String returns the string representation
-func (s OutboundInterfaceOfNiftyCreateNatRule) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type OutboundInterfaceOfNiftyReplaceNatRule struct {
-	_ struct{} `type:"structure"`
-
-	NetworkId *string `locationName:"networkId" type:"string"`
-
-	NetworkName *string `locationName:"networkName" type:"string"`
-}
-
-// String returns the string representation
-func (s OutboundInterfaceOfNiftyReplaceNatRule) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
 type PartitionsSet struct {
 	_ struct{} `type:"structure"`
 
@@ -5293,28 +4323,6 @@ func (s Placement) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type PlacementOfAllocateAddress struct {
-	_ struct{} `type:"structure"`
-
-	AvailabilityZone *string `locationName:"availabilityZone" type:"string"`
-}
-
-// String returns the string representation
-func (s PlacementOfAllocateAddress) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type PlacementOfCopyFromBackupInstance struct {
-	_ struct{} `type:"structure"`
-
-	AvailabilityZone *string `locationName:"availabilityZone" type:"string"`
-}
-
-// String returns the string representation
-func (s PlacementOfCopyFromBackupInstance) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
 type PlacementOfDescribeImages struct {
 	_ struct{} `type:"structure"`
 
@@ -5325,28 +4333,6 @@ type PlacementOfDescribeImages struct {
 
 // String returns the string representation
 func (s PlacementOfDescribeImages) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type PlacementOfNiftyDescribeAutoScalingGroups struct {
-	_ struct{} `type:"structure"`
-
-	AvailabilityZone *string `locationName:"availabilityZone" type:"string"`
-}
-
-// String returns the string representation
-func (s PlacementOfNiftyDescribeAutoScalingGroups) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type PlacementOfRunInstances struct {
-	_ struct{} `type:"structure"`
-
-	AvailabilityZone *string `locationName:"availabilityZone" type:"string"`
-}
-
-// String returns the string representation
-func (s PlacementOfRunInstances) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
@@ -5415,36 +4401,10 @@ func (s PreviousState) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type PreviousStateOfStopInstances struct {
-	_ struct{} `type:"structure"`
-
-	Code *int64 `locationName:"code" type:"integer"`
-
-	Name *string `locationName:"name" type:"string"`
-}
-
-// String returns the string representation
-func (s PreviousStateOfStopInstances) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type PreviousStateOfTerminateInstances struct {
-	_ struct{} `type:"structure"`
-
-	Code *int64 `locationName:"code" type:"integer"`
-
-	Name *string `locationName:"name" type:"string"`
-}
-
-// String returns the string representation
-func (s PreviousStateOfTerminateInstances) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
 type PrivateIpAddressesSet struct {
 	_ struct{} `type:"structure"`
 
-	Association *AssociationOfDescribeInstances `locationName:"association" type:"structure"`
+	Association *Association `locationName:"association" type:"structure"`
 
 	Primary *bool `locationName:"primary" type:"boolean"`
 
@@ -5587,7 +4547,7 @@ type PrivateLanOfNiftyCreatePrivateLan struct {
 
 	State *string `locationName:"state" type:"string"`
 
-	TagSet []TagSetOfNiftyCreatePrivateLan `locationName:"tagSet" locationNameList:"item" type:"list"`
+	TagSet []TagSet `locationName:"tagSet" locationNameList:"item" type:"list"`
 
 	VpnGatewaySet []VpnGatewaySetOfNiftyCreatePrivateLan `locationName:"vpnGatewaySet" locationNameList:"item" type:"list"`
 }
@@ -5610,7 +4570,7 @@ type PrivateLanSet struct {
 
 	Description *string `locationName:"description" type:"string"`
 
-	ElasticLoadBalancingSet []ElasticLoadBalancingSetOfNiftyDescribePrivateLans `locationName:"elasticLoadBalancingSet" locationNameList:"item" type:"list"`
+	ElasticLoadBalancingSet []ElasticLoadBalancingSet `locationName:"elasticLoadBalancingSet" locationNameList:"item" type:"list"`
 
 	InstancesSet []InstancesSetOfNiftyDescribePrivateLans `locationName:"instancesSet" locationNameList:"item" type:"list"`
 
@@ -5630,7 +4590,7 @@ type PrivateLanSet struct {
 
 	State *string `locationName:"state" type:"string"`
 
-	TagSet []TagSetOfNiftyDescribePrivateLans `locationName:"tagSet" locationNameList:"item" type:"list"`
+	TagSet []TagSet `locationName:"tagSet" locationNameList:"item" type:"list"`
 
 	VpnGatewaySet []VpnGatewaySetOfNiftyDescribePrivateLans `locationName:"vpnGatewaySet" locationNameList:"item" type:"list"`
 }
@@ -5692,28 +4652,6 @@ func (s ProductCodes) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type ProductCodesOfCopyFromBackupInstance struct {
-	_ struct{} `type:"structure"`
-
-	ProductCode *string `locationName:"productCode" type:"string"`
-}
-
-// String returns the string representation
-func (s ProductCodesOfCopyFromBackupInstance) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type ProductCodesOfDescribeImages struct {
-	_ struct{} `type:"structure"`
-
-	ProductCode *string `locationName:"productCode" type:"string"`
-}
-
-// String returns the string representation
-func (s ProductCodesOfDescribeImages) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
 type PropagatingVgwSet struct {
 	_ struct{} `type:"structure"`
 
@@ -5743,36 +4681,6 @@ type RegionInfo struct {
 
 // String returns the string representation
 func (s RegionInfo) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type RegisterInstancesWithLoadBalancerResult struct {
-	_ struct{} `type:"structure"`
-
-	Instances []InstancesOfRegisterInstancesWithLoadBalancer `locationName:"Instances" locationNameList:"member" type:"list"`
-
-	RegisterInstancesWithLoadBalancerResult *RegisterInstancesWithLoadBalancerResult `locationName:"RegisterInstancesWithLoadBalancerResult" type:"structure"`
-
-	ResponseMetadata *ResponseMetadataOfRegisterInstancesWithLoadBalancer `locationName:"ResponseMetadata" type:"structure"`
-}
-
-// String returns the string representation
-func (s RegisterInstancesWithLoadBalancerResult) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type RegisterPortWithLoadBalancerResult struct {
-	_ struct{} `type:"structure"`
-
-	Listeners []Listeners `locationName:"Listeners" locationNameList:"member" type:"list"`
-
-	RegisterPortWithLoadBalancerResult *RegisterPortWithLoadBalancerResult `locationName:"RegisterPortWithLoadBalancerResult" type:"structure"`
-
-	ResponseMetadata *ResponseMetadataOfRegisterPortWithLoadBalancer `locationName:"ResponseMetadata" type:"structure"`
-}
-
-// String returns the string representation
-func (s RegisterPortWithLoadBalancerResult) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
@@ -5950,7 +4858,8 @@ type RequestCopyInstance struct {
 
 	AccountingType AccountingTypeOfCopyInstanceForCopyInstances `locationName:"AccountingType" type:"string" enum:"true"`
 
-	InstanceName *string `locationName:"InstanceName" type:"string"`
+	// InstanceName is a required field
+	InstanceName *string `locationName:"InstanceName" type:"string" required:"true"`
 
 	InstanceType InstanceTypeOfCopyInstanceForCopyInstances `locationName:"InstanceType" type:"string" enum:"true"`
 
@@ -5968,6 +4877,20 @@ func (s RequestCopyInstance) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *RequestCopyInstance) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "RequestCopyInstance"}
+
+	if s.InstanceName == nil {
+		invalidParams.Add(aws.NewErrParamRequired("InstanceName"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
 type RequestDDay struct {
 	_ struct{} `type:"structure"`
 
@@ -5978,19 +4901,6 @@ type RequestDDay struct {
 
 // String returns the string representation
 func (s RequestDDay) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type RequestDDayOfNiftyUpdateAutoScalingGroup struct {
-	_ struct{} `type:"structure"`
-
-	EndingDDay *string `locationName:"EndingDDay" type:"string"`
-
-	StartingDDay *string `locationName:"StartingDDay" type:"string"`
-}
-
-// String returns the string representation
-func (s RequestDDayOfNiftyUpdateAutoScalingGroup) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
@@ -6062,28 +4972,36 @@ func (s RequestDestination) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type RequestDestinationOfNiftyReplaceNatRule struct {
-	_ struct{} `type:"structure"`
-
-	Port *int64 `locationName:"Port" type:"integer"`
-}
-
-// String returns the string representation
-func (s RequestDestinationOfNiftyReplaceNatRule) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
 type RequestDhcpConfiguration struct {
 	_ struct{} `type:"structure"`
 
-	Key KeyOfDhcpConfigurationForCreateDhcpOptions `locationName:"Key" type:"string" enum:"true"`
+	// Key is a required field
+	Key KeyOfDhcpConfigurationForCreateDhcpOptions `locationName:"Key" type:"string" required:"true" enum:"true"`
 
-	ListOfRequestValue []string `locationName:"Value" type:"list"`
+	// ListOfRequestValue is a required field
+	ListOfRequestValue []string `locationName:"Value" type:"list" required:"true"`
 }
 
 // String returns the string representation
 func (s RequestDhcpConfiguration) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *RequestDhcpConfiguration) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "RequestDhcpConfiguration"}
+	if len(s.Key) == 0 {
+		invalidParams.Add(aws.NewErrParamRequired("Key"))
+	}
+
+	if s.ListOfRequestValue == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ListOfRequestValue"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type RequestDiskImage struct {
@@ -6145,17 +5063,6 @@ type RequestExpectation struct {
 
 // String returns the string representation
 func (s RequestExpectation) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type RequestExpectationOfNiftyCreateElasticLoadBalancer struct {
-	_ struct{} `type:"structure"`
-
-	HttpCode *int64 `locationName:"HttpCode" type:"integer"`
-}
-
-// String returns the string representation
-func (s RequestExpectationOfNiftyCreateElasticLoadBalancer) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
@@ -6393,31 +5300,21 @@ func (s RequestGroups) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type RequestGroupsOfRevokeSecurityGroupIngress struct {
-	_ struct{} `type:"structure"`
-
-	GroupName *string `locationName:"GroupName" type:"string"`
-
-	UserId *string `locationName:"UserId" type:"string"`
-}
-
-// String returns the string representation
-func (s RequestGroupsOfRevokeSecurityGroupIngress) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
 type RequestHealthCheck struct {
 	_ struct{} `type:"structure"`
 
 	HealthyThreshold *int64 `locationName:"HealthyThreshold" type:"integer"`
 
-	Interval *int64 `locationName:"Interval" type:"integer"`
+	// Interval is a required field
+	Interval *int64 `locationName:"Interval" type:"integer" required:"true"`
 
-	Target *string `locationName:"Target" type:"string"`
+	// Target is a required field
+	Target *string `locationName:"Target" type:"string" required:"true"`
 
 	Timeout *int64 `locationName:"Timeout" type:"integer"`
 
-	UnhealthyThreshold *int64 `locationName:"UnhealthyThreshold" type:"integer"`
+	// UnhealthyThreshold is a required field
+	UnhealthyThreshold *int64 `locationName:"UnhealthyThreshold" type:"integer" required:"true"`
 }
 
 // String returns the string representation
@@ -6425,18 +5322,43 @@ func (s RequestHealthCheck) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *RequestHealthCheck) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "RequestHealthCheck"}
+
+	if s.Interval == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Interval"))
+	}
+
+	if s.Target == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Target"))
+	}
+
+	if s.UnhealthyThreshold == nil {
+		invalidParams.Add(aws.NewErrParamRequired("UnhealthyThreshold"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
 type RequestHealthCheckOfNiftyConfigureElasticLoadBalancerHealthCheck struct {
 	_ struct{} `type:"structure"`
 
-	Interval *int64 `locationName:"Interval" type:"integer"`
+	// Interval is a required field
+	Interval *int64 `locationName:"Interval" type:"integer" required:"true"`
 
 	ListOfRequestExpectation []RequestExpectation `locationName:"Expectation" locationNameList:"member" type:"list"`
 
 	Path *string `locationName:"Path" type:"string"`
 
-	Target *string `locationName:"Target" type:"string"`
+	// Target is a required field
+	Target *string `locationName:"Target" type:"string" required:"true"`
 
-	UnhealthyThreshold *int64 `locationName:"UnhealthyThreshold" type:"integer"`
+	// UnhealthyThreshold is a required field
+	UnhealthyThreshold *int64 `locationName:"UnhealthyThreshold" type:"integer" required:"true"`
 }
 
 // String returns the string representation
@@ -6444,12 +5366,34 @@ func (s RequestHealthCheckOfNiftyConfigureElasticLoadBalancerHealthCheck) String
 	return nifcloudutil.Prettify(s)
 }
 
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *RequestHealthCheckOfNiftyConfigureElasticLoadBalancerHealthCheck) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "RequestHealthCheckOfNiftyConfigureElasticLoadBalancerHealthCheck"}
+
+	if s.Interval == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Interval"))
+	}
+
+	if s.Target == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Target"))
+	}
+
+	if s.UnhealthyThreshold == nil {
+		invalidParams.Add(aws.NewErrParamRequired("UnhealthyThreshold"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
 type RequestHealthCheckOfNiftyCreateElasticLoadBalancer struct {
 	_ struct{} `type:"structure"`
 
 	Interval *int64 `locationName:"Interval" type:"integer"`
 
-	ListOfRequestExpectation []RequestExpectationOfNiftyCreateElasticLoadBalancer `locationName:"Expectation" locationNameList:"member" type:"list"`
+	ListOfRequestExpectation []RequestExpectation `locationName:"Expectation" locationNameList:"member" type:"list"`
 
 	Path *string `locationName:"Path" type:"string"`
 
@@ -6504,23 +5448,11 @@ func (s RequestInboundInterface) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type RequestInboundInterfaceOfNiftyReplaceNatRule struct {
-	_ struct{} `type:"structure"`
-
-	NetworkId *string `locationName:"NetworkId" type:"string"`
-
-	NetworkName *string `locationName:"NetworkName" type:"string"`
-}
-
-// String returns the string representation
-func (s RequestInboundInterfaceOfNiftyReplaceNatRule) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
 type RequestInstances struct {
 	_ struct{} `type:"structure"`
 
-	InstanceId *string `locationName:"InstanceId" type:"string"`
+	// InstanceId is a required field
+	InstanceId *string `locationName:"InstanceId" type:"string" required:"true"`
 }
 
 // String returns the string representation
@@ -6528,15 +5460,18 @@ func (s RequestInstances) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type RequestInstancesOfDescribeInstanceHealth struct {
-	_ struct{} `type:"structure"`
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *RequestInstances) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "RequestInstances"}
 
-	InstanceId *string `locationName:"InstanceId" type:"string"`
-}
+	if s.InstanceId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("InstanceId"))
+	}
 
-// String returns the string representation
-func (s RequestInstancesOfDescribeInstanceHealth) String() string {
-	return nifcloudutil.Prettify(s)
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type RequestInstancesOfNiftyCreateElasticLoadBalancer struct {
@@ -6591,17 +5526,6 @@ func (s RequestInstancesOfNiftyRegisterInstancesWithElasticLoadBalancer) String(
 	return nifcloudutil.Prettify(s)
 }
 
-type RequestInstancesOfRegisterInstancesWithLoadBalancer struct {
-	_ struct{} `type:"structure"`
-
-	InstanceId *string `locationName:"InstanceId" type:"string"`
-}
-
-// String returns the string representation
-func (s RequestInstancesOfRegisterInstancesWithLoadBalancer) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
 type RequestIpPermissions struct {
 	_ struct{} `type:"structure"`
 
@@ -6634,9 +5558,9 @@ type RequestIpPermissionsOfRevokeSecurityGroupIngress struct {
 
 	IpProtocol IpProtocolOfIpPermissionsForRevokeSecurityGroupIngress `locationName:"IpProtocol" type:"string" enum:"true"`
 
-	ListOfRequestGroups []RequestGroupsOfRevokeSecurityGroupIngress `locationName:"Groups" type:"list"`
+	ListOfRequestGroups []RequestGroups `locationName:"Groups" type:"list"`
 
-	ListOfRequestIpRanges []RequestIpRangesOfRevokeSecurityGroupIngress `locationName:"IpRanges" type:"list"`
+	ListOfRequestIpRanges []RequestIpRanges `locationName:"IpRanges" type:"list"`
 
 	ToPort *int64 `locationName:"ToPort" type:"integer"`
 }
@@ -6654,17 +5578,6 @@ type RequestIpRanges struct {
 
 // String returns the string representation
 func (s RequestIpRanges) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type RequestIpRangesOfRevokeSecurityGroupIngress struct {
-	_ struct{} `type:"structure"`
-
-	CidrIp *string `locationName:"CidrIp" type:"string"`
-}
-
-// String returns the string representation
-func (s RequestIpRangesOfRevokeSecurityGroupIngress) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
@@ -6763,13 +5676,15 @@ type RequestListenersOfNiftyCreateElasticLoadBalancer struct {
 
 	Description *string `locationName:"Description" type:"string"`
 
-	ElasticLoadBalancerPort *int64 `locationName:"ElasticLoadBalancerPort" type:"integer"`
+	// ElasticLoadBalancerPort is a required field
+	ElasticLoadBalancerPort *int64 `locationName:"ElasticLoadBalancerPort" type:"integer" required:"true"`
 
 	InstancePort *int64 `locationName:"InstancePort" type:"integer"`
 
 	ListOfRequestInstances []RequestInstancesOfNiftyCreateElasticLoadBalancer `locationName:"Instances" locationNameList:"member" type:"list"`
 
-	Protocol ProtocolOfListenersForNiftyCreateElasticLoadBalancer `locationName:"Protocol" type:"string" enum:"true"`
+	// Protocol is a required field
+	Protocol ProtocolOfListenersForNiftyCreateElasticLoadBalancer `locationName:"Protocol" type:"string" required:"true" enum:"true"`
 
 	RequestHealthCheck *RequestHealthCheckOfNiftyCreateElasticLoadBalancer `locationName:"HealthCheck" type:"structure"`
 
@@ -6785,6 +5700,23 @@ func (s RequestListenersOfNiftyCreateElasticLoadBalancer) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *RequestListenersOfNiftyCreateElasticLoadBalancer) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "RequestListenersOfNiftyCreateElasticLoadBalancer"}
+
+	if s.ElasticLoadBalancerPort == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ElasticLoadBalancerPort"))
+	}
+	if len(s.Protocol) == 0 {
+		invalidParams.Add(aws.NewErrParamRequired("Protocol"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
 type RequestListenersOfNiftyRegisterPortWithElasticLoadBalancer struct {
 	_ struct{} `type:"structure"`
 
@@ -6792,11 +5724,14 @@ type RequestListenersOfNiftyRegisterPortWithElasticLoadBalancer struct {
 
 	Description *string `locationName:"Description" type:"string"`
 
-	ElasticLoadBalancerPort *int64 `locationName:"ElasticLoadBalancerPort" type:"integer"`
+	// ElasticLoadBalancerPort is a required field
+	ElasticLoadBalancerPort *int64 `locationName:"ElasticLoadBalancerPort" type:"integer" required:"true"`
 
-	InstancePort *int64 `locationName:"InstancePort" type:"integer"`
+	// InstancePort is a required field
+	InstancePort *int64 `locationName:"InstancePort" type:"integer" required:"true"`
 
-	Protocol ProtocolOfListenersForNiftyRegisterPortWithElasticLoadBalancer `locationName:"Protocol" type:"string" enum:"true"`
+	// Protocol is a required field
+	Protocol ProtocolOfListenersForNiftyRegisterPortWithElasticLoadBalancer `locationName:"Protocol" type:"string" required:"true" enum:"true"`
 
 	SSLCertificateId *string `locationName:"SSLCertificateId" type:"string"`
 }
@@ -6804,6 +5739,27 @@ type RequestListenersOfNiftyRegisterPortWithElasticLoadBalancer struct {
 // String returns the string representation
 func (s RequestListenersOfNiftyRegisterPortWithElasticLoadBalancer) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *RequestListenersOfNiftyRegisterPortWithElasticLoadBalancer) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "RequestListenersOfNiftyRegisterPortWithElasticLoadBalancer"}
+
+	if s.ElasticLoadBalancerPort == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ElasticLoadBalancerPort"))
+	}
+
+	if s.InstancePort == nil {
+		invalidParams.Add(aws.NewErrParamRequired("InstancePort"))
+	}
+	if len(s.Protocol) == 0 {
+		invalidParams.Add(aws.NewErrParamRequired("Protocol"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type RequestListenersOfRegisterPortWithLoadBalancer struct {
@@ -6830,7 +5786,7 @@ type RequestLoadBalancerAttributes struct {
 
 	RequestSession *RequestSessionOfNiftyModifyElasticLoadBalancerAttributes `locationName:"Session" type:"structure"`
 
-	RequestSorryPage *RequestSorryPageOfNiftyModifyElasticLoadBalancerAttributes `locationName:"SorryPage" type:"structure"`
+	RequestSorryPage *RequestSorryPage `locationName:"SorryPage" type:"structure"`
 }
 
 // String returns the string representation
@@ -6933,19 +5889,6 @@ func (s RequestMonth) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type RequestMonthOfNiftyUpdateAutoScalingGroup struct {
-	_ struct{} `type:"structure"`
-
-	EndingMonth *string `locationName:"EndingMonth" type:"string"`
-
-	StartingMonth *string `locationName:"StartingMonth" type:"string"`
-}
-
-// String returns the string representation
-func (s RequestMonthOfNiftyUpdateAutoScalingGroup) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
 type RequestNetworkInterface struct {
 	_ struct{} `type:"structure"`
 
@@ -6977,44 +5920,6 @@ type RequestNetworkInterfaceOfCopyFromBackupInstance struct {
 
 // String returns the string representation
 func (s RequestNetworkInterfaceOfCopyFromBackupInstance) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type RequestNetworkInterfaceOfCopyInstances struct {
-	_ struct{} `type:"structure"`
-
-	DeviceIndex *int64 `locationName:"DeviceIndex" type:"integer"`
-
-	IpAddress *string `locationName:"IpAddress" type:"string"`
-
-	ListOfRequestSecurityGroupId []string `locationName:"SecurityGroupId" type:"list"`
-
-	NetworkId *string `locationName:"NetworkId" type:"string"`
-
-	NetworkName *string `locationName:"NetworkName" type:"string"`
-}
-
-// String returns the string representation
-func (s RequestNetworkInterfaceOfCopyInstances) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type RequestNetworkInterfaceOfImportInstance struct {
-	_ struct{} `type:"structure"`
-
-	DeviceIndex *int64 `locationName:"DeviceIndex" type:"integer"`
-
-	IpAddress *string `locationName:"IpAddress" type:"string"`
-
-	ListOfRequestSecurityGroupId []string `locationName:"SecurityGroupId" type:"list"`
-
-	NetworkId *string `locationName:"NetworkId" type:"string"`
-
-	NetworkName *string `locationName:"NetworkName" type:"string"`
-}
-
-// String returns the string representation
-func (s RequestNetworkInterfaceOfImportInstance) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
@@ -7057,25 +5962,6 @@ type RequestNetworkInterfaceOfNiftyCreateRouter struct {
 
 // String returns the string representation
 func (s RequestNetworkInterfaceOfNiftyCreateRouter) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type RequestNetworkInterfaceOfNiftyUpdateInstanceNetworkInterfaces struct {
-	_ struct{} `type:"structure"`
-
-	DeviceIndex *int64 `locationName:"DeviceIndex" type:"integer"`
-
-	IpAddress *string `locationName:"IpAddress" type:"string"`
-
-	ListOfRequestSecurityGroupId []string `locationName:"SecurityGroupId" type:"list"`
-
-	NetworkId *string `locationName:"NetworkId" type:"string"`
-
-	NetworkName *string `locationName:"NetworkName" type:"string"`
-}
-
-// String returns the string representation
-func (s RequestNetworkInterfaceOfNiftyUpdateInstanceNetworkInterfaces) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
@@ -7204,19 +6090,6 @@ func (s RequestOutboundInterface) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type RequestOutboundInterfaceOfNiftyReplaceNatRule struct {
-	_ struct{} `type:"structure"`
-
-	NetworkId *string `locationName:"NetworkId" type:"string"`
-
-	NetworkName *string `locationName:"NetworkName" type:"string"`
-}
-
-// String returns the string representation
-func (s RequestOutboundInterfaceOfNiftyReplaceNatRule) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
 type RequestPlacement struct {
 	_ struct{} `type:"structure"`
 
@@ -7270,12 +6143,27 @@ func (s RequestPlacementOfCreateImage) String() string {
 type RequestPlacementOfCreateMultiIpAddressGroup struct {
 	_ struct{} `type:"structure"`
 
-	AvailabilityZone *string `locationName:"AvailabilityZone" type:"string"`
+	// AvailabilityZone is a required field
+	AvailabilityZone *string `locationName:"AvailabilityZone" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s RequestPlacementOfCreateMultiIpAddressGroup) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *RequestPlacementOfCreateMultiIpAddressGroup) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "RequestPlacementOfCreateMultiIpAddressGroup"}
+
+	if s.AvailabilityZone == nil {
+		invalidParams.Add(aws.NewErrParamRequired("AvailabilityZone"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type RequestPlacementOfCreateNetworkInterface struct {
@@ -7325,12 +6213,27 @@ func (s RequestPlacementOfImportInstance) String() string {
 type RequestPlacementOfNiftyCreateSeparateInstanceRule struct {
 	_ struct{} `type:"structure"`
 
-	AvailabilityZone *string `locationName:"AvailabilityZone" type:"string"`
+	// AvailabilityZone is a required field
+	AvailabilityZone *string `locationName:"AvailabilityZone" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s RequestPlacementOfNiftyCreateSeparateInstanceRule) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *RequestPlacementOfNiftyCreateSeparateInstanceRule) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "RequestPlacementOfNiftyCreateSeparateInstanceRule"}
+
+	if s.AvailabilityZone == nil {
+		invalidParams.Add(aws.NewErrParamRequired("AvailabilityZone"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type RequestRange struct {
@@ -7358,21 +6261,6 @@ type RequestRangeOfDescribeUserActivities struct {
 
 // String returns the string representation
 func (s RequestRangeOfDescribeUserActivities) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type RequestRangeOfNiftyDescribeScalingActivities struct {
-	_ struct{} `type:"structure"`
-
-	All *bool `locationName:"All" type:"boolean"`
-
-	EndNumber *int64 `locationName:"EndNumber" type:"integer"`
-
-	StartNumber *int64 `locationName:"StartNumber" type:"integer"`
-}
-
-// String returns the string representation
-func (s RequestRangeOfNiftyDescribeScalingActivities) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
@@ -7417,25 +6305,14 @@ func (s RequestRouterSet) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type RequestRouterSetOfNiftyDeregisterRoutersFromSecurityGroup struct {
-	_ struct{} `type:"structure"`
-
-	RouterId *string `locationName:"RouterId" type:"string"`
-
-	RouterName *string `locationName:"RouterName" type:"string"`
-}
-
-// String returns the string representation
-func (s RequestRouterSetOfNiftyDeregisterRoutersFromSecurityGroup) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
 type RequestRule struct {
 	_ struct{} `type:"structure"`
 
-	BreachDuration *int64 `locationName:"BreachDuration" type:"integer"`
+	// BreachDuration is a required field
+	BreachDuration *int64 `locationName:"BreachDuration" type:"integer" required:"true"`
 
-	DataType DataTypeOfRuleForNiftyCreateAlarm `locationName:"DataType" type:"string" enum:"true"`
+	// DataType is a required field
+	DataType *string `locationName:"DataType" type:"string" required:"true"`
 
 	Threshold *float64 `locationName:"Threshold" type:"double"`
 
@@ -7445,6 +6322,24 @@ type RequestRule struct {
 // String returns the string representation
 func (s RequestRule) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *RequestRule) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "RequestRule"}
+
+	if s.BreachDuration == nil {
+		invalidParams.Add(aws.NewErrParamRequired("BreachDuration"))
+	}
+
+	if s.DataType == nil {
+		invalidParams.Add(aws.NewErrParamRequired("DataType"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type RequestRuleOfNiftyDescribeAlarmHistory struct {
@@ -7467,7 +6362,7 @@ func (s RequestRuleOfNiftyDescribeAlarmHistory) String() string {
 type RequestRuleOfNiftyDescribeAlarmRulesActivities struct {
 	_ struct{} `type:"structure"`
 
-	DataType DataTypeOfRuleForNiftyDescribeAlarmRulesActivities `locationName:"DataType" type:"string" enum:"true"`
+	DataType *string `locationName:"DataType" type:"string"`
 
 	FromDate *string `locationName:"FromDate" type:"string"`
 
@@ -7499,9 +6394,10 @@ func (s RequestRuleOfNiftyDescribeAlarms) String() string {
 type RequestRuleOfNiftyUpdateAlarm struct {
 	_ struct{} `type:"structure"`
 
-	BreachDuration *int64 `locationName:"BreachDuration" type:"integer"`
+	// BreachDuration is a required field
+	BreachDuration *int64 `locationName:"BreachDuration" type:"integer" required:"true"`
 
-	DataType DataTypeOfRuleForNiftyUpdateAlarm `locationName:"DataType" type:"string" enum:"true"`
+	DataType *string `locationName:"DataType" type:"string"`
 
 	Threshold *float64 `locationName:"Threshold" type:"double"`
 
@@ -7511,6 +6407,20 @@ type RequestRuleOfNiftyUpdateAlarm struct {
 // String returns the string representation
 func (s RequestRuleOfNiftyUpdateAlarm) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *RequestRuleOfNiftyUpdateAlarm) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "RequestRuleOfNiftyUpdateAlarm"}
+
+	if s.BreachDuration == nil {
+		invalidParams.Add(aws.NewErrParamRequired("BreachDuration"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type RequestScalingSchedule struct {
@@ -7533,13 +6443,13 @@ func (s RequestScalingSchedule) String() string {
 type RequestScalingScheduleOfNiftyUpdateAutoScalingGroup struct {
 	_ struct{} `type:"structure"`
 
-	RequestDDay *RequestDDayOfNiftyUpdateAutoScalingGroup `locationName:"DDay" type:"structure"`
+	RequestDDay *RequestDDay `locationName:"DDay" type:"structure"`
 
 	RequestDay *RequestDayOfNiftyUpdateAutoScalingGroup `locationName:"Day" type:"structure"`
 
-	RequestMonth *RequestMonthOfNiftyUpdateAutoScalingGroup `locationName:"Month" type:"structure"`
+	RequestMonth *RequestMonth `locationName:"Month" type:"structure"`
 
-	RequestTimeZone *RequestTimeZoneOfNiftyUpdateAutoScalingGroup `locationName:"TimeZone" type:"structure"`
+	RequestTimeZone *RequestTimeZone `locationName:"TimeZone" type:"structure"`
 }
 
 // String returns the string representation
@@ -7552,9 +6462,11 @@ type RequestScalingTrigger struct {
 
 	BreachDuration *int64 `locationName:"BreachDuration" type:"integer"`
 
-	Resource ResourceOfScalingTriggerForNiftyCreateAutoScalingGroup `locationName:"Resource" type:"string" enum:"true"`
+	// Resource is a required field
+	Resource ResourceOfScalingTriggerForNiftyCreateAutoScalingGroup `locationName:"Resource" type:"string" required:"true" enum:"true"`
 
-	UpperThreshold *float64 `locationName:"UpperThreshold" type:"double"`
+	// UpperThreshold is a required field
+	UpperThreshold *float64 `locationName:"UpperThreshold" type:"double" required:"true"`
 }
 
 // String returns the string representation
@@ -7562,19 +6474,55 @@ func (s RequestScalingTrigger) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *RequestScalingTrigger) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "RequestScalingTrigger"}
+	if len(s.Resource) == 0 {
+		invalidParams.Add(aws.NewErrParamRequired("Resource"))
+	}
+
+	if s.UpperThreshold == nil {
+		invalidParams.Add(aws.NewErrParamRequired("UpperThreshold"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
 type RequestScalingTriggerOfNiftyUpdateAutoScalingGroup struct {
 	_ struct{} `type:"structure"`
 
 	BreachDuration *int64 `locationName:"BreachDuration" type:"integer"`
 
-	Resource ResourceOfScalingTriggerForNiftyUpdateAutoScalingGroup `locationName:"Resource" type:"string" enum:"true"`
+	// Resource is a required field
+	Resource ResourceOfScalingTriggerForNiftyUpdateAutoScalingGroup `locationName:"Resource" type:"string" required:"true" enum:"true"`
 
-	UpperThreshold *float64 `locationName:"UpperThreshold" type:"double"`
+	// UpperThreshold is a required field
+	UpperThreshold *float64 `locationName:"UpperThreshold" type:"double" required:"true"`
 }
 
 // String returns the string representation
 func (s RequestScalingTriggerOfNiftyUpdateAutoScalingGroup) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *RequestScalingTriggerOfNiftyUpdateAutoScalingGroup) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "RequestScalingTriggerOfNiftyUpdateAutoScalingGroup"}
+	if len(s.Resource) == 0 {
+		invalidParams.Add(aws.NewErrParamRequired("Resource"))
+	}
+
+	if s.UpperThreshold == nil {
+		invalidParams.Add(aws.NewErrParamRequired("UpperThreshold"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type RequestSession struct {
@@ -7625,19 +6573,6 @@ func (s RequestSorryPage) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type RequestSorryPageOfNiftyModifyElasticLoadBalancerAttributes struct {
-	_ struct{} `type:"structure"`
-
-	Enable *bool `locationName:"Enable" type:"boolean"`
-
-	RedirectUrl *string `locationName:"RedirectUrl" type:"string"`
-}
-
-// String returns the string representation
-func (s RequestSorryPageOfNiftyModifyElasticLoadBalancerAttributes) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
 type RequestSorryPageUpdate struct {
 	_ struct{} `type:"structure"`
 
@@ -7661,19 +6596,6 @@ type RequestSource struct {
 
 // String returns the string representation
 func (s RequestSource) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type RequestSourceOfNiftyReplaceNatRule struct {
-	_ struct{} `type:"structure"`
-
-	Address *string `locationName:"Address" type:"string"`
-
-	Port *int64 `locationName:"Port" type:"integer"`
-}
-
-// String returns the string representation
-func (s RequestSourceOfNiftyReplaceNatRule) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
@@ -7720,19 +6642,6 @@ func (s RequestTimeZone) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type RequestTimeZoneOfNiftyUpdateAutoScalingGroup struct {
-	_ struct{} `type:"structure"`
-
-	EndingTimeZone *string `locationName:"EndingTimeZone" type:"string"`
-
-	StartingTimeZone *string `locationName:"StartingTimeZone" type:"string"`
-}
-
-// String returns the string representation
-func (s RequestTimeZoneOfNiftyUpdateAutoScalingGroup) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
 type RequestTranslation struct {
 	_ struct{} `type:"structure"`
 
@@ -7743,19 +6652,6 @@ type RequestTranslation struct {
 
 // String returns the string representation
 func (s RequestTranslation) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type RequestTranslationOfNiftyReplaceNatRule struct {
-	_ struct{} `type:"structure"`
-
-	Address *string `locationName:"Address" type:"string"`
-
-	Port *int64 `locationName:"Port" type:"integer"`
-}
-
-// String returns the string representation
-func (s RequestTranslationOfNiftyReplaceNatRule) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
@@ -7783,36 +6679,11 @@ func (s RequestUserDataOfImportInstance) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type RequestUserDataOfRunInstances struct {
-	_ struct{} `type:"structure"`
-
-	Content *string `locationName:"Content" type:"string"`
-
-	Encoding *string `locationName:"Encoding" type:"string"`
-}
-
-// String returns the string representation
-func (s RequestUserDataOfRunInstances) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type RequestUserDataOfStartInstances struct {
-	_ struct{} `type:"structure"`
-
-	Content *string `locationName:"Content" type:"string"`
-
-	Encoding *string `locationName:"Encoding" type:"string"`
-}
-
-// String returns the string representation
-func (s RequestUserDataOfStartInstances) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
 type RequestUsers struct {
 	_ struct{} `type:"structure"`
 
-	UserId *string `locationName:"UserId" type:"string"`
+	// UserId is a required field
+	UserId *string `locationName:"UserId" type:"string" required:"true"`
 }
 
 // String returns the string representation
@@ -7820,15 +6691,18 @@ func (s RequestUsers) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type RequestUsersOfDissociateUsers struct {
-	_ struct{} `type:"structure"`
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *RequestUsers) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "RequestUsers"}
 
-	UserId *string `locationName:"UserId" type:"string"`
-}
+	if s.UserId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("UserId"))
+	}
 
-// String returns the string representation
-func (s RequestUsersOfDissociateUsers) String() string {
-	return nifcloudutil.Prettify(s)
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type RequestVolume struct {
@@ -7867,19 +6741,6 @@ type RequestVpnGatewaySet struct {
 
 // String returns the string representation
 func (s RequestVpnGatewaySet) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type RequestVpnGatewaySetOfNiftyDeregisterVpnGatewaysFromSecurityGroup struct {
-	_ struct{} `type:"structure"`
-
-	NiftyVpnGatewayName *string `locationName:"NiftyVpnGatewayName" type:"string"`
-
-	VpnGatewayId *string `locationName:"VpnGatewayId" type:"string"`
-}
-
-// String returns the string representation
-func (s RequestVpnGatewaySetOfNiftyDeregisterVpnGatewaysFromSecurityGroup) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
@@ -7992,6 +6853,8 @@ type ResourceInfo struct {
 
 	NetworkInterfaceItemSet []NetworkInterfaceItemSet `locationName:"networkInterfaceItemSet" locationNameList:"item" type:"list"`
 
+	NiftyMultiAccountCount *int64 `locationName:"niftyMultiAccountCount" type:"integer"`
+
 	PremiumSupportSet []PremiumSupportSet `locationName:"premiumSupportSet" locationNameList:"item" type:"list"`
 
 	PrivateLanClassicCount *int64 `locationName:"privateLanClassicCount" type:"integer"`
@@ -8022,347 +6885,6 @@ type ResponseMetadata struct {
 
 // String returns the string representation
 func (s ResponseMetadata) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type ResponseMetadataOfAssociateUsers struct {
-	_ struct{} `type:"structure"`
-
-	RequestId *string `locationName:"RequestId" type:"string"`
-}
-
-// String returns the string representation
-func (s ResponseMetadataOfAssociateUsers) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type ResponseMetadataOfClearLoadBalancerSession struct {
-	_ struct{} `type:"structure"`
-
-	RequestId *string `locationName:"RequestId" type:"string"`
-}
-
-// String returns the string representation
-func (s ResponseMetadataOfClearLoadBalancerSession) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type ResponseMetadataOfCreateLoadBalancer struct {
-	_ struct{} `type:"structure"`
-
-	RequestId *string `locationName:"RequestId" type:"string"`
-}
-
-// String returns the string representation
-func (s ResponseMetadataOfCreateLoadBalancer) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type ResponseMetadataOfDeleteLoadBalancer struct {
-	_ struct{} `type:"structure"`
-
-	RequestId *string `locationName:"RequestId" type:"string"`
-}
-
-// String returns the string representation
-func (s ResponseMetadataOfDeleteLoadBalancer) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type ResponseMetadataOfDeregisterInstancesFromLoadBalancer struct {
-	_ struct{} `type:"structure"`
-
-	RequestId *string `locationName:"RequestId" type:"string"`
-}
-
-// String returns the string representation
-func (s ResponseMetadataOfDeregisterInstancesFromLoadBalancer) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type ResponseMetadataOfDescribeAssociatedUsers struct {
-	_ struct{} `type:"structure"`
-
-	RequestId *string `locationName:"RequestId" type:"string"`
-}
-
-// String returns the string representation
-func (s ResponseMetadataOfDescribeAssociatedUsers) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type ResponseMetadataOfDescribeInstanceHealth struct {
-	_ struct{} `type:"structure"`
-
-	RequestId *string `locationName:"RequestId" type:"string"`
-}
-
-// String returns the string representation
-func (s ResponseMetadataOfDescribeInstanceHealth) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type ResponseMetadataOfDescribeLoadBalancers struct {
-	_ struct{} `type:"structure"`
-
-	RequestId *string `locationName:"RequestId" type:"string"`
-}
-
-// String returns the string representation
-func (s ResponseMetadataOfDescribeLoadBalancers) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type ResponseMetadataOfDissociateUsers struct {
-	_ struct{} `type:"structure"`
-
-	RequestId *string `locationName:"RequestId" type:"string"`
-}
-
-// String returns the string representation
-func (s ResponseMetadataOfDissociateUsers) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type ResponseMetadataOfNiftyConfigureElasticLoadBalancerHealthCheck struct {
-	_ struct{} `type:"structure"`
-
-	RequestId *string `locationName:"RequestId" type:"string"`
-}
-
-// String returns the string representation
-func (s ResponseMetadataOfNiftyConfigureElasticLoadBalancerHealthCheck) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type ResponseMetadataOfNiftyCreateElasticLoadBalancer struct {
-	_ struct{} `type:"structure"`
-
-	RequestId *string `locationName:"RequestId" type:"string"`
-}
-
-// String returns the string representation
-func (s ResponseMetadataOfNiftyCreateElasticLoadBalancer) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type ResponseMetadataOfNiftyDeleteElasticLoadBalancer struct {
-	_ struct{} `type:"structure"`
-
-	RequestId *string `locationName:"RequestId" type:"string"`
-}
-
-// String returns the string representation
-func (s ResponseMetadataOfNiftyDeleteElasticLoadBalancer) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type ResponseMetadataOfNiftyDeregisterInstancesFromElasticLoadBalancer struct {
-	_ struct{} `type:"structure"`
-
-	RequestId *string `locationName:"RequestId" type:"string"`
-}
-
-// String returns the string representation
-func (s ResponseMetadataOfNiftyDeregisterInstancesFromElasticLoadBalancer) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type ResponseMetadataOfNiftyDescribeElasticLoadBalancers struct {
-	_ struct{} `type:"structure"`
-
-	RequestId *string `locationName:"RequestId" type:"string"`
-}
-
-// String returns the string representation
-func (s ResponseMetadataOfNiftyDescribeElasticLoadBalancers) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type ResponseMetadataOfNiftyDescribeInstanceElasticLoadBalancerHealth struct {
-	_ struct{} `type:"structure"`
-
-	RequestId *string `locationName:"RequestId" type:"string"`
-}
-
-// String returns the string representation
-func (s ResponseMetadataOfNiftyDescribeInstanceElasticLoadBalancerHealth) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type ResponseMetadataOfNiftyDescribeLoadBalancerSSLPolicies struct {
-	_ struct{} `type:"structure"`
-
-	RequestId *string `locationName:"RequestId" type:"string"`
-}
-
-// String returns the string representation
-func (s ResponseMetadataOfNiftyDescribeLoadBalancerSSLPolicies) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type ResponseMetadataOfNiftyModifyElasticLoadBalancerAttributes struct {
-	_ struct{} `type:"structure"`
-
-	RequestId *string `locationName:"RequestId" type:"string"`
-}
-
-// String returns the string representation
-func (s ResponseMetadataOfNiftyModifyElasticLoadBalancerAttributes) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type ResponseMetadataOfNiftyRegisterInstancesWithElasticLoadBalancer struct {
-	_ struct{} `type:"structure"`
-
-	RequestId *string `locationName:"RequestId" type:"string"`
-}
-
-// String returns the string representation
-func (s ResponseMetadataOfNiftyRegisterInstancesWithElasticLoadBalancer) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type ResponseMetadataOfNiftyRegisterPortWithElasticLoadBalancer struct {
-	_ struct{} `type:"structure"`
-
-	RequestId *string `locationName:"RequestId" type:"string"`
-}
-
-// String returns the string representation
-func (s ResponseMetadataOfNiftyRegisterPortWithElasticLoadBalancer) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type ResponseMetadataOfNiftyReplaceElasticLoadBalancerLatestVersion struct {
-	_ struct{} `type:"structure"`
-
-	RequestId *string `locationName:"RequestId" type:"string"`
-}
-
-// String returns the string representation
-func (s ResponseMetadataOfNiftyReplaceElasticLoadBalancerLatestVersion) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type ResponseMetadataOfNiftyReplaceElasticLoadBalancerListenerSSLCertificate struct {
-	_ struct{} `type:"structure"`
-
-	RequestId *string `locationName:"RequestId" type:"string"`
-}
-
-// String returns the string representation
-func (s ResponseMetadataOfNiftyReplaceElasticLoadBalancerListenerSSLCertificate) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type ResponseMetadataOfNiftySetLoadBalancerSSLPoliciesOfListener struct {
-	_ struct{} `type:"structure"`
-
-	RequestId *string `locationName:"RequestId" type:"string"`
-}
-
-// String returns the string representation
-func (s ResponseMetadataOfNiftySetLoadBalancerSSLPoliciesOfListener) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type ResponseMetadataOfNiftyUnsetLoadBalancerSSLPoliciesOfListener struct {
-	_ struct{} `type:"structure"`
-
-	RequestId *string `locationName:"RequestId" type:"string"`
-}
-
-// String returns the string representation
-func (s ResponseMetadataOfNiftyUnsetLoadBalancerSSLPoliciesOfListener) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type ResponseMetadataOfNiftyUpdateElasticLoadBalancer struct {
-	_ struct{} `type:"structure"`
-
-	RequestId *string `locationName:"RequestId" type:"string"`
-}
-
-// String returns the string representation
-func (s ResponseMetadataOfNiftyUpdateElasticLoadBalancer) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type ResponseMetadataOfRegisterInstancesWithLoadBalancer struct {
-	_ struct{} `type:"structure"`
-
-	RequestId *string `locationName:"RequestId" type:"string"`
-}
-
-// String returns the string representation
-func (s ResponseMetadataOfRegisterInstancesWithLoadBalancer) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type ResponseMetadataOfRegisterPortWithLoadBalancer struct {
-	_ struct{} `type:"structure"`
-
-	RequestId *string `locationName:"RequestId" type:"string"`
-}
-
-// String returns the string representation
-func (s ResponseMetadataOfRegisterPortWithLoadBalancer) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type ResponseMetadataOfSetFilterForLoadBalancer struct {
-	_ struct{} `type:"structure"`
-
-	RequestId *string `locationName:"RequestId" type:"string"`
-}
-
-// String returns the string representation
-func (s ResponseMetadataOfSetFilterForLoadBalancer) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type ResponseMetadataOfSetLoadBalancerListenerSSLCertificate struct {
-	_ struct{} `type:"structure"`
-
-	RequestId *string `locationName:"RequestId" type:"string"`
-}
-
-// String returns the string representation
-func (s ResponseMetadataOfSetLoadBalancerListenerSSLCertificate) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type ResponseMetadataOfUnsetLoadBalancerListenerSSLCertificate struct {
-	_ struct{} `type:"structure"`
-
-	RequestId *string `locationName:"RequestId" type:"string"`
-}
-
-// String returns the string representation
-func (s ResponseMetadataOfUnsetLoadBalancerListenerSSLCertificate) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type ResponseMetadataOfUpdateLoadBalancer struct {
-	_ struct{} `type:"structure"`
-
-	RequestId *string `locationName:"RequestId" type:"string"`
-}
-
-// String returns the string representation
-func (s ResponseMetadataOfUpdateLoadBalancer) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type ResponseMetadataOfUpdateLoadBalancerOption struct {
-	_ struct{} `type:"structure"`
-
-	RequestId *string `locationName:"RequestId" type:"string"`
-}
-
-// String returns the string representation
-func (s ResponseMetadataOfUpdateLoadBalancerOption) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
@@ -8400,7 +6922,7 @@ type RouteTable struct {
 
 	RouteTableId *string `locationName:"routeTableId" type:"string"`
 
-	TagSet []TagSetOfCreateRouteTable `locationName:"tagSet" locationNameList:"item" type:"list"`
+	TagSet []TagSet `locationName:"tagSet" locationNameList:"item" type:"list"`
 }
 
 // String returns the string representation
@@ -8421,7 +6943,7 @@ type RouteTableSet struct {
 
 	RouteTableId *string `locationName:"routeTableId" type:"string"`
 
-	TagSet []TagSetOfDescribeRouteTables `locationName:"tagSet" locationNameList:"item" type:"list"`
+	TagSet []TagSet `locationName:"tagSet" locationNameList:"item" type:"list"`
 }
 
 // String returns the string representation
@@ -8440,7 +6962,7 @@ type Router struct {
 
 	Description *string `locationName:"description" type:"string"`
 
-	GroupSet []GroupSetOfNiftyCreateRouter `locationName:"groupSet" locationNameList:"item" type:"list"`
+	GroupSet []GroupSet `locationName:"groupSet" locationNameList:"item" type:"list"`
 
 	NetworkInterfaceSet []NetworkInterfaceSetOfNiftyCreateRouter `locationName:"networkInterfaceSet" locationNameList:"item" type:"list"`
 
@@ -8552,19 +7074,6 @@ func (s RouterSetOfNiftyCreatePrivateLan) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type RouterSetOfNiftyDeregisterRoutersFromSecurityGroup struct {
-	_ struct{} `type:"structure"`
-
-	RouterId *string `locationName:"routerId" type:"string"`
-
-	RouterName *string `locationName:"routerName" type:"string"`
-}
-
-// String returns the string representation
-func (s RouterSetOfNiftyDeregisterRoutersFromSecurityGroup) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
 type RouterSetOfNiftyDescribePrivateLans struct {
 	_ struct{} `type:"structure"`
 
@@ -8595,7 +7104,7 @@ type RouterSetOfNiftyDescribeRouters struct {
 
 	Description *string `locationName:"description" type:"string"`
 
-	GroupSet []GroupSetOfNiftyDescribeRouters `locationName:"groupSet" locationNameList:"item" type:"list"`
+	GroupSet []GroupSet `locationName:"groupSet" locationNameList:"item" type:"list"`
 
 	NatTableAssociationId *string `locationName:"natTableAssociationId" type:"string"`
 
@@ -8615,7 +7124,7 @@ type RouterSetOfNiftyDescribeRouters struct {
 
 	State *string `locationName:"state" type:"string"`
 
-	TagSet []TagSetOfNiftyDescribeRouters `locationName:"tagSet" locationNameList:"item" type:"list"`
+	TagSet []TagSet `locationName:"tagSet" locationNameList:"item" type:"list"`
 
 	Type *string `locationName:"type" type:"string"`
 
@@ -8624,19 +7133,6 @@ type RouterSetOfNiftyDescribeRouters struct {
 
 // String returns the string representation
 func (s RouterSetOfNiftyDescribeRouters) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type RouterSetOfNiftyRegisterRoutersWithSecurityGroup struct {
-	_ struct{} `type:"structure"`
-
-	RouterId *string `locationName:"routerId" type:"string"`
-
-	RouterName *string `locationName:"routerName" type:"string"`
-}
-
-// String returns the string representation
-func (s RouterSetOfNiftyRegisterRoutersWithSecurityGroup) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
@@ -8901,21 +7397,6 @@ func (s SessionStickinessPolicyOfNiftyDescribeElasticLoadBalancers) String() str
 	return nifcloudutil.Prettify(s)
 }
 
-type SetFilterForLoadBalancerResult struct {
-	_ struct{} `type:"structure"`
-
-	Filter *FilterOfSetFilterForLoadBalancer `locationName:"Filter" type:"structure"`
-
-	ResponseMetadata *ResponseMetadataOfSetFilterForLoadBalancer `locationName:"ResponseMetadata" type:"structure"`
-
-	SetFilterForLoadBalancerResult *SetFilterForLoadBalancerResult `locationName:"SetFilterForLoadBalancerResult" type:"structure"`
-}
-
-// String returns the string representation
-func (s SetFilterForLoadBalancerResult) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
 type SnapShot struct {
 	_ struct{} `type:"structure"`
 
@@ -8971,35 +7452,6 @@ func (s SnapshotInfoSet) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type SnapshotInfoSetOfNiftyDeleteInstanceSnapshot struct {
-	_ struct{} `type:"structure"`
-
-	CreatedTime *string `locationName:"createdTime" type:"string"`
-
-	Difference *string `locationName:"difference" type:"string"`
-
-	ExpiredTime *string `locationName:"expiredTime" type:"string"`
-
-	InstanceId *string `locationName:"instanceId" type:"string"`
-
-	InstanceSnapshotId *string `locationName:"instanceSnapshotId" type:"string"`
-
-	Memo *string `locationName:"memo" type:"string"`
-
-	PowerStatus *string `locationName:"powerStatus" type:"string"`
-
-	SnapshotName *string `locationName:"snapshotName" type:"string"`
-
-	Status *string `locationName:"status" type:"string"`
-
-	UpdatedTime *string `locationName:"updatedTime" type:"string"`
-}
-
-// String returns the string representation
-func (s SnapshotInfoSetOfNiftyDeleteInstanceSnapshot) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
 type SorryPage struct {
 	_ struct{} `type:"structure"`
 
@@ -9039,32 +7491,6 @@ func (s Source) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type SourceOfNiftyCreateNatRule struct {
-	_ struct{} `type:"structure"`
-
-	Address *string `locationName:"address" type:"string"`
-
-	Port *int64 `locationName:"port" type:"integer"`
-}
-
-// String returns the string representation
-func (s SourceOfNiftyCreateNatRule) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type SourceOfNiftyReplaceNatRule struct {
-	_ struct{} `type:"structure"`
-
-	Address *string `locationName:"address" type:"string"`
-
-	Port *int64 `locationName:"port" type:"integer"`
-}
-
-// String returns the string representation
-func (s SourceOfNiftyReplaceNatRule) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
 type SslCertInfo struct {
 	_ struct{} `type:"structure"`
 
@@ -9086,32 +7512,6 @@ type StateReason struct {
 
 // String returns the string representation
 func (s StateReason) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type StateReasonOfCopyFromBackupInstance struct {
-	_ struct{} `type:"structure"`
-
-	Code *int64 `locationName:"code" type:"integer"`
-
-	Message *string `locationName:"message" type:"string"`
-}
-
-// String returns the string representation
-func (s StateReasonOfCopyFromBackupInstance) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type StateReasonOfDescribeImages struct {
-	_ struct{} `type:"structure"`
-
-	Code *int64 `locationName:"code" type:"integer"`
-
-	Message *string `locationName:"message" type:"string"`
-}
-
-// String returns the string representation
-func (s StateReasonOfDescribeImages) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
@@ -9194,175 +7594,6 @@ func (s TagSet) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type TagSetOfCreateCustomerGateway struct {
-	_ struct{} `type:"structure"`
-
-	Key *string `locationName:"key" type:"string"`
-
-	Value *string `locationName:"value" type:"string"`
-}
-
-// String returns the string representation
-func (s TagSetOfCreateCustomerGateway) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type TagSetOfCreateRouteTable struct {
-	_ struct{} `type:"structure"`
-
-	Key *string `locationName:"key" type:"string"`
-
-	Value *string `locationName:"value" type:"string"`
-}
-
-// String returns the string representation
-func (s TagSetOfCreateRouteTable) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type TagSetOfCreateVpnConnection struct {
-	_ struct{} `type:"structure"`
-
-	Key *string `locationName:"key" type:"string"`
-
-	Value *string `locationName:"value" type:"string"`
-}
-
-// String returns the string representation
-func (s TagSetOfCreateVpnConnection) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type TagSetOfDescribeCustomerGateways struct {
-	_ struct{} `type:"structure"`
-
-	Key *string `locationName:"key" type:"string"`
-
-	Value *string `locationName:"value" type:"string"`
-}
-
-// String returns the string representation
-func (s TagSetOfDescribeCustomerGateways) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type TagSetOfDescribeNetworkInterfaces struct {
-	_ struct{} `type:"structure"`
-
-	Key *string `locationName:"key" type:"string"`
-
-	Value *string `locationName:"value" type:"string"`
-}
-
-// String returns the string representation
-func (s TagSetOfDescribeNetworkInterfaces) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type TagSetOfDescribeRouteTables struct {
-	_ struct{} `type:"structure"`
-
-	Key *string `locationName:"key" type:"string"`
-
-	Value *string `locationName:"value" type:"string"`
-}
-
-// String returns the string representation
-func (s TagSetOfDescribeRouteTables) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type TagSetOfDescribeVpnConnections struct {
-	_ struct{} `type:"structure"`
-
-	Key *string `locationName:"key" type:"string"`
-
-	Value *string `locationName:"value" type:"string"`
-}
-
-// String returns the string representation
-func (s TagSetOfDescribeVpnConnections) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type TagSetOfDescribeVpnGateways struct {
-	_ struct{} `type:"structure"`
-
-	Key *string `locationName:"key" type:"string"`
-
-	Value *string `locationName:"value" type:"string"`
-}
-
-// String returns the string representation
-func (s TagSetOfDescribeVpnGateways) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type TagSetOfNiftyCreateNatTable struct {
-	_ struct{} `type:"structure"`
-
-	Key *string `locationName:"key" type:"string"`
-
-	Value *string `locationName:"value" type:"string"`
-}
-
-// String returns the string representation
-func (s TagSetOfNiftyCreateNatTable) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type TagSetOfNiftyCreatePrivateLan struct {
-	_ struct{} `type:"structure"`
-
-	Key *string `locationName:"key" type:"string"`
-
-	Value *string `locationName:"value" type:"string"`
-}
-
-// String returns the string representation
-func (s TagSetOfNiftyCreatePrivateLan) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type TagSetOfNiftyDescribeNatTables struct {
-	_ struct{} `type:"structure"`
-
-	Key *string `locationName:"key" type:"string"`
-
-	Value *string `locationName:"value" type:"string"`
-}
-
-// String returns the string representation
-func (s TagSetOfNiftyDescribeNatTables) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type TagSetOfNiftyDescribePrivateLans struct {
-	_ struct{} `type:"structure"`
-
-	Key *string `locationName:"key" type:"string"`
-
-	Value *string `locationName:"value" type:"string"`
-}
-
-// String returns the string representation
-func (s TagSetOfNiftyDescribePrivateLans) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type TagSetOfNiftyDescribeRouters struct {
-	_ struct{} `type:"structure"`
-
-	Key *string `locationName:"key" type:"string"`
-
-	Value *string `locationName:"value" type:"string"`
-}
-
-// String returns the string representation
-func (s TagSetOfNiftyDescribeRouters) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
 type TimeZone struct {
 	_ struct{} `type:"structure"`
 
@@ -9386,32 +7617,6 @@ type Translation struct {
 
 // String returns the string representation
 func (s Translation) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type TranslationOfNiftyCreateNatRule struct {
-	_ struct{} `type:"structure"`
-
-	Address *string `locationName:"address" type:"string"`
-
-	Port *int64 `locationName:"port" type:"integer"`
-}
-
-// String returns the string representation
-func (s TranslationOfNiftyCreateNatRule) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type TranslationOfNiftyReplaceNatRule struct {
-	_ struct{} `type:"structure"`
-
-	Address *string `locationName:"address" type:"string"`
-
-	Port *int64 `locationName:"port" type:"integer"`
-}
-
-// String returns the string representation
-func (s TranslationOfNiftyReplaceNatRule) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
@@ -9492,28 +7697,6 @@ func (s Users) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type UsersOfDescribeAssociatedUsers struct {
-	_ struct{} `type:"structure"`
-
-	UserId *string `locationName:"UserId" type:"string"`
-}
-
-// String returns the string representation
-func (s UsersOfDescribeAssociatedUsers) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type UsersOfDissociateUsers struct {
-	_ struct{} `type:"structure"`
-
-	UserId *string `locationName:"UserId" type:"string"`
-}
-
-// String returns the string representation
-func (s UsersOfDissociateUsers) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
 type ValueSet struct {
 	_ struct{} `type:"structure"`
 
@@ -9522,17 +7705,6 @@ type ValueSet struct {
 
 // String returns the string representation
 func (s ValueSet) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type ValueSetOfDescribeDhcpOptions struct {
-	_ struct{} `type:"structure"`
-
-	Value *string `locationName:"value" type:"string"`
-}
-
-// String returns the string representation
-func (s ValueSetOfDescribeDhcpOptions) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
@@ -9620,25 +7792,6 @@ func (s VgwTelemetry) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type VgwTelemetryOfDescribeVpnConnections struct {
-	_ struct{} `type:"structure"`
-
-	AcceptedRouteCount *int64 `locationName:"acceptedRouteCount" type:"integer"`
-
-	LastStatusChange *time.Time `locationName:"lastStatusChange" type:"timestamp"`
-
-	OutsideIpAddress *string `locationName:"outsideIpAddress" type:"string"`
-
-	Status *string `locationName:"status" type:"string"`
-
-	StatusMessage *string `locationName:"statusMessage" type:"string"`
-}
-
-// String returns the string representation
-func (s VgwTelemetryOfDescribeVpnConnections) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
 type Vip struct {
 	_ struct{} `type:"structure"`
 
@@ -9704,6 +7857,19 @@ type VipSet struct {
 
 // String returns the string representation
 func (s VipSet) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+type VmTools struct {
+	_ struct{} `type:"structure"`
+
+	State *string `locationName:"state" type:"string"`
+
+	Version *string `locationName:"version" type:"string"`
+}
+
+// String returns the string representation
+func (s VmTools) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
@@ -9825,7 +7991,7 @@ type VpnConnection struct {
 
 	State *string `locationName:"state" type:"string"`
 
-	TagSet []TagSetOfCreateVpnConnection `locationName:"tagSet" locationNameList:"item" type:"list"`
+	TagSet []TagSet `locationName:"tagSet" locationNameList:"item" type:"list"`
 
 	Type *string `locationName:"type" type:"string"`
 
@@ -9852,9 +8018,9 @@ type VpnConnectionSet struct {
 
 	NiftyCustomerGatewayName *string `locationName:"niftyCustomerGatewayName" type:"string"`
 
-	NiftyIpsecConfiguration *NiftyIpsecConfigurationOfDescribeVpnConnections `locationName:"niftyIpsecConfiguration" type:"structure"`
+	NiftyIpsecConfiguration *NiftyIpsecConfiguration `locationName:"niftyIpsecConfiguration" type:"structure"`
 
-	NiftyTunnel *NiftyTunnelOfDescribeVpnConnections `locationName:"niftyTunnel" type:"structure"`
+	NiftyTunnel *NiftyTunnel `locationName:"niftyTunnel" type:"structure"`
 
 	NiftyVpnConnectionDescription *string `locationName:"niftyVpnConnectionDescription" type:"string"`
 
@@ -9862,11 +8028,11 @@ type VpnConnectionSet struct {
 
 	State *string `locationName:"state" type:"string"`
 
-	TagSet []TagSetOfDescribeVpnConnections `locationName:"tagSet" locationNameList:"item" type:"list"`
+	TagSet []TagSet `locationName:"tagSet" locationNameList:"item" type:"list"`
 
 	Type *string `locationName:"type" type:"string"`
 
-	VgwTelemetry []VgwTelemetryOfDescribeVpnConnections `locationName:"vgwTelemetry" locationNameList:"item" type:"list"`
+	VgwTelemetry []VgwTelemetry `locationName:"vgwTelemetry" locationNameList:"item" type:"list"`
 
 	VpnConnectionId *string `locationName:"vpnConnectionId" type:"string"`
 
@@ -9885,9 +8051,9 @@ type VpnGateway struct {
 
 	AvailabilityZone *string `locationName:"availabilityZone" type:"string"`
 
-	BackupInformation *BackupInformationOfCreateVpnGateway `locationName:"backupInformation" type:"structure"`
+	BackupInformation *BackupInformation `locationName:"backupInformation" type:"structure"`
 
-	GroupSet []GroupSetOfCreateVpnGateway `locationName:"groupSet" locationNameList:"item" type:"list"`
+	GroupSet []GroupSet `locationName:"groupSet" locationNameList:"item" type:"list"`
 
 	NetworkInterfaceSet []NetworkInterfaceSetOfCreateVpnGateway `locationName:"networkInterfaceSet" locationNameList:"item" type:"list"`
 
@@ -9999,7 +8165,7 @@ type VpnGatewaySetOfDescribeVpnGateways struct {
 
 	CreatedTime *time.Time `locationName:"createdTime" type:"timestamp"`
 
-	GroupSet []GroupSetOfDescribeVpnGateways `locationName:"groupSet" locationNameList:"item" type:"list"`
+	GroupSet []GroupSet `locationName:"groupSet" locationNameList:"item" type:"list"`
 
 	NetworkInterfaceSet []NetworkInterfaceSetOfDescribeVpnGateways `locationName:"networkInterfaceSet" locationNameList:"item" type:"list"`
 
@@ -10019,7 +8185,7 @@ type VpnGatewaySetOfDescribeVpnGateways struct {
 
 	State *string `locationName:"state" type:"string"`
 
-	TagSet []TagSetOfDescribeVpnGateways `locationName:"tagSet" locationNameList:"item" type:"list"`
+	TagSet []TagSet `locationName:"tagSet" locationNameList:"item" type:"list"`
 
 	VersionInformation *VersionInformationOfDescribeVpnGateways `locationName:"versionInformation" type:"structure"`
 
@@ -10048,19 +8214,6 @@ func (s VpnGatewaySetOfNiftyCreatePrivateLan) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type VpnGatewaySetOfNiftyDeregisterVpnGatewaysFromSecurityGroup struct {
-	_ struct{} `type:"structure"`
-
-	NiftyVpnGatewayName *string `locationName:"niftyVpnGatewayName" type:"string"`
-
-	VpnGatewayId *string `locationName:"vpnGatewayId" type:"string"`
-}
-
-// String returns the string representation
-func (s VpnGatewaySetOfNiftyDeregisterVpnGatewaysFromSecurityGroup) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
 type VpnGatewaySetOfNiftyDescribePrivateLans struct {
 	_ struct{} `type:"structure"`
 
@@ -10075,19 +8228,6 @@ type VpnGatewaySetOfNiftyDescribePrivateLans struct {
 
 // String returns the string representation
 func (s VpnGatewaySetOfNiftyDescribePrivateLans) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type VpnGatewaySetOfNiftyRegisterVpnGatewaysWithSecurityGroup struct {
-	_ struct{} `type:"structure"`
-
-	NiftyVpnGatewayName *string `locationName:"niftyVpnGatewayName" type:"string"`
-
-	VpnGatewayId *string `locationName:"vpnGatewayId" type:"string"`
-}
-
-// String returns the string representation
-func (s VpnGatewaySetOfNiftyRegisterVpnGatewaysWithSecurityGroup) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
@@ -10117,11 +8257,11 @@ func (s WebProxy) String() string {
 type WebProxyOfNiftyDescribeWebProxies struct {
 	_ struct{} `type:"structure"`
 
-	BypassInterface *BypassInterfaceOfNiftyDescribeWebProxies `locationName:"bypassInterface" type:"structure"`
+	BypassInterface *BypassInterface `locationName:"bypassInterface" type:"structure"`
 
 	Description *string `locationName:"description" type:"string"`
 
-	ListenInterface *ListenInterfaceOfNiftyDescribeWebProxies `locationName:"listenInterface" type:"structure"`
+	ListenInterface *ListenInterface `locationName:"listenInterface" type:"structure"`
 
 	ListenPort *string `locationName:"listenPort" type:"string"`
 

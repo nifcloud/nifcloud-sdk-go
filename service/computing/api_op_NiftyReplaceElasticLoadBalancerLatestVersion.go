@@ -27,7 +27,7 @@ type NiftyReplaceElasticLoadBalancerLatestVersionOutput struct {
 
 	NiftyReplaceElasticLoadBalancerLatestVersionResult *string `locationName:"NiftyReplaceElasticLoadBalancerLatestVersionResult" type:"string"`
 
-	ResponseMetadata *ResponseMetadataOfNiftyReplaceElasticLoadBalancerLatestVersion `locationName:"ResponseMetadata" type:"structure"`
+	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }
 
 // String returns the string representation

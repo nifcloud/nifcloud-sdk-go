@@ -12,16 +12,41 @@ import (
 type CreateDBParameterGroupInput struct {
 	_ struct{} `type:"structure"`
 
-	DBParameterGroupFamily *string `locationName:"DBParameterGroupFamily" type:"string"`
+	// DBParameterGroupFamily is a required field
+	DBParameterGroupFamily *string `locationName:"DBParameterGroupFamily" type:"string" required:"true"`
 
-	DBParameterGroupName *string `locationName:"DBParameterGroupName" type:"string"`
+	// DBParameterGroupName is a required field
+	DBParameterGroupName *string `locationName:"DBParameterGroupName" type:"string" required:"true"`
 
-	Description *string `locationName:"Description" type:"string"`
+	// Description is a required field
+	Description *string `locationName:"Description" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s CreateDBParameterGroupInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *CreateDBParameterGroupInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "CreateDBParameterGroupInput"}
+
+	if s.DBParameterGroupFamily == nil {
+		invalidParams.Add(aws.NewErrParamRequired("DBParameterGroupFamily"))
+	}
+
+	if s.DBParameterGroupName == nil {
+		invalidParams.Add(aws.NewErrParamRequired("DBParameterGroupName"))
+	}
+
+	if s.Description == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Description"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type CreateDBParameterGroupOutput struct {

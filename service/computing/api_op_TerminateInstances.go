@@ -12,12 +12,27 @@ import (
 type TerminateInstancesInput struct {
 	_ struct{} `type:"structure"`
 
-	InstanceId []string `locationName:"InstanceId" type:"list"`
+	// InstanceId is a required field
+	InstanceId []string `locationName:"InstanceId" type:"list" required:"true"`
 }
 
 // String returns the string representation
 func (s TerminateInstancesInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *TerminateInstancesInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "TerminateInstancesInput"}
+
+	if s.InstanceId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("InstanceId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type TerminateInstancesOutput struct {

@@ -16,13 +16,16 @@ type RestoreDBInstanceFromDBSnapshotInput struct {
 
 	AvailabilityZone *string `locationName:"AvailabilityZone" type:"string"`
 
-	DBInstanceClass *string `locationName:"DBInstanceClass" type:"string"`
+	// DBInstanceClass is a required field
+	DBInstanceClass *string `locationName:"DBInstanceClass" type:"string" required:"true"`
 
-	DBInstanceIdentifier *string `locationName:"DBInstanceIdentifier" type:"string"`
+	// DBInstanceIdentifier is a required field
+	DBInstanceIdentifier *string `locationName:"DBInstanceIdentifier" type:"string" required:"true"`
 
 	DBName *string `locationName:"DBName" type:"string"`
 
-	DBSnapshotIdentifier *string `locationName:"DBSnapshotIdentifier" type:"string"`
+	// DBSnapshotIdentifier is a required field
+	DBSnapshotIdentifier *string `locationName:"DBSnapshotIdentifier" type:"string" required:"true"`
 
 	Engine *string `locationName:"Engine" type:"string"`
 
@@ -60,6 +63,28 @@ type RestoreDBInstanceFromDBSnapshotInput struct {
 // String returns the string representation
 func (s RestoreDBInstanceFromDBSnapshotInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *RestoreDBInstanceFromDBSnapshotInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "RestoreDBInstanceFromDBSnapshotInput"}
+
+	if s.DBInstanceClass == nil {
+		invalidParams.Add(aws.NewErrParamRequired("DBInstanceClass"))
+	}
+
+	if s.DBInstanceIdentifier == nil {
+		invalidParams.Add(aws.NewErrParamRequired("DBInstanceIdentifier"))
+	}
+
+	if s.DBSnapshotIdentifier == nil {
+		invalidParams.Add(aws.NewErrParamRequired("DBSnapshotIdentifier"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type RestoreDBInstanceFromDBSnapshotOutput struct {

@@ -12,12 +12,27 @@ import (
 type DeleteDBSnapshotInput struct {
 	_ struct{} `type:"structure"`
 
-	DBSnapshotIdentifier *string `locationName:"DBSnapshotIdentifier" type:"string"`
+	// DBSnapshotIdentifier is a required field
+	DBSnapshotIdentifier *string `locationName:"DBSnapshotIdentifier" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s DeleteDBSnapshotInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *DeleteDBSnapshotInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "DeleteDBSnapshotInput"}
+
+	if s.DBSnapshotIdentifier == nil {
+		invalidParams.Add(aws.NewErrParamRequired("DBSnapshotIdentifier"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type DeleteDBSnapshotOutput struct {

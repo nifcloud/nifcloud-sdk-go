@@ -12,7 +12,8 @@ import (
 type DescribeEngineDefaultParametersInput struct {
 	_ struct{} `type:"structure"`
 
-	DBParameterGroupFamily *string `locationName:"DBParameterGroupFamily" type:"string"`
+	// DBParameterGroupFamily is a required field
+	DBParameterGroupFamily *string `locationName:"DBParameterGroupFamily" type:"string" required:"true"`
 
 	Marker *string `locationName:"Marker" type:"string"`
 
@@ -22,6 +23,20 @@ type DescribeEngineDefaultParametersInput struct {
 // String returns the string representation
 func (s DescribeEngineDefaultParametersInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *DescribeEngineDefaultParametersInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "DescribeEngineDefaultParametersInput"}
+
+	if s.DBParameterGroupFamily == nil {
+		invalidParams.Add(aws.NewErrParamRequired("DBParameterGroupFamily"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type DescribeEngineDefaultParametersOutput struct {

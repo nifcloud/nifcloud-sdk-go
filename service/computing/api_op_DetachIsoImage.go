@@ -12,14 +12,34 @@ import (
 type DetachIsoImageInput struct {
 	_ struct{} `type:"structure"`
 
-	InstanceUniqueId *string `locationName:"InstanceUniqueId" type:"string"`
+	// InstanceUniqueId is a required field
+	InstanceUniqueId *string `locationName:"InstanceUniqueId" type:"string" required:"true"`
 
-	IsoImageId *string `locationName:"IsoImageId" type:"string"`
+	// IsoImageId is a required field
+	IsoImageId *string `locationName:"IsoImageId" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s DetachIsoImageInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *DetachIsoImageInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "DetachIsoImageInput"}
+
+	if s.InstanceUniqueId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("InstanceUniqueId"))
+	}
+
+	if s.IsoImageId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("IsoImageId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type DetachIsoImageOutput struct {

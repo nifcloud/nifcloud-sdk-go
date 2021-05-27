@@ -514,9 +514,11 @@ func (s ReadReplicaDBInstanceIdentifier) String() string {
 type RequestDimensions struct {
 	_ struct{} `type:"structure"`
 
-	Name *string `locationName:"Name" type:"string"`
+	// Name is a required field
+	Name *string `locationName:"Name" type:"string" required:"true"`
 
-	Value *string `locationName:"Value" type:"string"`
+	// Value is a required field
+	Value *string `locationName:"Value" type:"string" required:"true"`
 }
 
 // String returns the string representation
@@ -524,19 +526,62 @@ func (s RequestDimensions) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *RequestDimensions) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "RequestDimensions"}
+
+	if s.Name == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Name"))
+	}
+
+	if s.Value == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Value"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
 type RequestParameters struct {
 	_ struct{} `type:"structure"`
 
-	ApplyMethod *string `locationName:"ApplyMethod" type:"string"`
+	// ApplyMethod is a required field
+	ApplyMethod *string `locationName:"ApplyMethod" type:"string" required:"true"`
 
-	ParameterName *string `locationName:"ParameterName" type:"string"`
+	// ParameterName is a required field
+	ParameterName *string `locationName:"ParameterName" type:"string" required:"true"`
 
-	ParameterValue *string `locationName:"ParameterValue" type:"string"`
+	// ParameterValue is a required field
+	ParameterValue *string `locationName:"ParameterValue" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s RequestParameters) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *RequestParameters) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "RequestParameters"}
+
+	if s.ApplyMethod == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ApplyMethod"))
+	}
+
+	if s.ParameterName == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ParameterName"))
+	}
+
+	if s.ParameterValue == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ParameterValue"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type RequestParametersOfResetDBParameterGroup struct {

@@ -12,9 +12,11 @@ import (
 type DisassociateMultiIpAddressGroupInput struct {
 	_ struct{} `type:"structure"`
 
-	InstanceUniqueId *string `locationName:"InstanceUniqueId" type:"string"`
+	// InstanceUniqueId is a required field
+	InstanceUniqueId *string `locationName:"InstanceUniqueId" type:"string" required:"true"`
 
-	MultiIpAddressGroupId *string `locationName:"MultiIpAddressGroupId" type:"string"`
+	// MultiIpAddressGroupId is a required field
+	MultiIpAddressGroupId *string `locationName:"MultiIpAddressGroupId" type:"string" required:"true"`
 
 	NiftyReboot NiftyRebootOfDisassociateMultiIpAddressGroupRequest `locationName:"NiftyReboot" type:"string" enum:"true"`
 }
@@ -22,6 +24,24 @@ type DisassociateMultiIpAddressGroupInput struct {
 // String returns the string representation
 func (s DisassociateMultiIpAddressGroupInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *DisassociateMultiIpAddressGroupInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "DisassociateMultiIpAddressGroupInput"}
+
+	if s.InstanceUniqueId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("InstanceUniqueId"))
+	}
+
+	if s.MultiIpAddressGroupId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("MultiIpAddressGroupId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type DisassociateMultiIpAddressGroupOutput struct {

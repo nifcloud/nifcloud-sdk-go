@@ -4,6 +4,7 @@ package computing
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/nifcloud/nifcloud-sdk-go/internal/nifcloudutil"
@@ -16,7 +17,8 @@ type NiftyRegisterPortWithElasticLoadBalancerInput struct {
 
 	ElasticLoadBalancerName *string `locationName:"ElasticLoadBalancerName" type:"string"`
 
-	Listeners []RequestListenersOfNiftyRegisterPortWithElasticLoadBalancer `locationName:"Listeners" locationNameList:"member" type:"list"`
+	// Listeners is a required field
+	Listeners []RequestListenersOfNiftyRegisterPortWithElasticLoadBalancer `locationName:"Listeners" locationNameList:"member" type:"list" required:"true"`
 }
 
 // String returns the string representation
@@ -24,14 +26,33 @@ func (s NiftyRegisterPortWithElasticLoadBalancerInput) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *NiftyRegisterPortWithElasticLoadBalancerInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "NiftyRegisterPortWithElasticLoadBalancerInput"}
+
+	if s.Listeners == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Listeners"))
+	}
+	if s.Listeners != nil {
+		for i, v := range s.Listeners {
+			if err := v.Validate(); err != nil {
+				invalidParams.AddNested(fmt.Sprintf("%s[%v]", "Listeners", i), err.(aws.ErrInvalidParams))
+			}
+		}
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
 type NiftyRegisterPortWithElasticLoadBalancerOutput struct {
 	_ struct{} `type:"structure"`
 
 	Listeners []ListenersOfNiftyRegisterPortWithElasticLoadBalancer `locationName:"Listeners" locationNameList:"member" type:"list"`
 
-	NiftyRegisterPortWithElasticLoadBalancerResult *NiftyRegisterPortWithElasticLoadBalancerResult `locationName:"NiftyRegisterPortWithElasticLoadBalancerResult" type:"structure"`
-
-	ResponseMetadata *ResponseMetadataOfNiftyRegisterPortWithElasticLoadBalancer `locationName:"ResponseMetadata" type:"structure"`
+	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }
 
 // String returns the string representation

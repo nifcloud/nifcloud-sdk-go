@@ -12,16 +12,40 @@ import (
 type NiftyModifyKeyPairAttributeInput struct {
 	_ struct{} `type:"structure"`
 
-	Attribute AttributeOfNiftyModifyKeyPairAttributeRequest `locationName:"Attribute" type:"string" enum:"true"`
+	// Attribute is a required field
+	Attribute AttributeOfNiftyModifyKeyPairAttributeRequest `locationName:"Attribute" type:"string" required:"true" enum:"true"`
 
-	KeyName *string `locationName:"KeyName" type:"string"`
+	// KeyName is a required field
+	KeyName *string `locationName:"KeyName" type:"string" required:"true"`
 
-	Value *string `locationName:"Value" type:"string"`
+	// Value is a required field
+	Value *string `locationName:"Value" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s NiftyModifyKeyPairAttributeInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *NiftyModifyKeyPairAttributeInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "NiftyModifyKeyPairAttributeInput"}
+	if len(s.Attribute) == 0 {
+		invalidParams.Add(aws.NewErrParamRequired("Attribute"))
+	}
+
+	if s.KeyName == nil {
+		invalidParams.Add(aws.NewErrParamRequired("KeyName"))
+	}
+
+	if s.Value == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Value"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type NiftyModifyKeyPairAttributeOutput struct {

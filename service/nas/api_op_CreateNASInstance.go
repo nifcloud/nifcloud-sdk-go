@@ -12,7 +12,8 @@ import (
 type CreateNASInstanceInput struct {
 	_ struct{} `type:"structure"`
 
-	AllocatedStorage *int64 `locationName:"AllocatedStorage" type:"integer"`
+	// AllocatedStorage is a required field
+	AllocatedStorage *int64 `locationName:"AllocatedStorage" type:"integer" required:"true"`
 
 	AvailabilityZone *string `locationName:"AvailabilityZone" type:"string"`
 
@@ -24,7 +25,8 @@ type CreateNASInstanceInput struct {
 
 	NASInstanceDescription *string `locationName:"NASInstanceDescription" type:"string"`
 
-	NASInstanceIdentifier *string `locationName:"NASInstanceIdentifier" type:"string"`
+	// NASInstanceIdentifier is a required field
+	NASInstanceIdentifier *string `locationName:"NASInstanceIdentifier" type:"string" required:"true"`
 
 	NASInstanceType *int64 `locationName:"NASInstanceType" type:"integer"`
 
@@ -32,12 +34,35 @@ type CreateNASInstanceInput struct {
 
 	NetworkId *string `locationName:"NetworkId" type:"string"`
 
-	Protocol *string `locationName:"Protocol" type:"string"`
+	// Protocol is a required field
+	Protocol *string `locationName:"Protocol" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s CreateNASInstanceInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *CreateNASInstanceInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "CreateNASInstanceInput"}
+
+	if s.AllocatedStorage == nil {
+		invalidParams.Add(aws.NewErrParamRequired("AllocatedStorage"))
+	}
+
+	if s.NASInstanceIdentifier == nil {
+		invalidParams.Add(aws.NewErrParamRequired("NASInstanceIdentifier"))
+	}
+
+	if s.Protocol == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Protocol"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type CreateNASInstanceOutput struct {

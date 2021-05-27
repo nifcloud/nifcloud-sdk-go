@@ -12,16 +12,41 @@ import (
 type NiftyDeleteDhcpIpAddressPoolInput struct {
 	_ struct{} `type:"structure"`
 
-	DhcpConfigId *string `locationName:"DhcpConfigId" type:"string"`
+	// DhcpConfigId is a required field
+	DhcpConfigId *string `locationName:"DhcpConfigId" type:"string" required:"true"`
 
-	StartIpAddress *string `locationName:"StartIpAddress" type:"string"`
+	// StartIpAddress is a required field
+	StartIpAddress *string `locationName:"StartIpAddress" type:"string" required:"true"`
 
-	StopIpAddress *string `locationName:"StopIpAddress" type:"string"`
+	// StopIpAddress is a required field
+	StopIpAddress *string `locationName:"StopIpAddress" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s NiftyDeleteDhcpIpAddressPoolInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *NiftyDeleteDhcpIpAddressPoolInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "NiftyDeleteDhcpIpAddressPoolInput"}
+
+	if s.DhcpConfigId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("DhcpConfigId"))
+	}
+
+	if s.StartIpAddress == nil {
+		invalidParams.Add(aws.NewErrParamRequired("StartIpAddress"))
+	}
+
+	if s.StopIpAddress == nil {
+		invalidParams.Add(aws.NewErrParamRequired("StopIpAddress"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type NiftyDeleteDhcpIpAddressPoolOutput struct {

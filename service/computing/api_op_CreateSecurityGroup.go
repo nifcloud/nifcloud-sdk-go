@@ -14,7 +14,8 @@ type CreateSecurityGroupInput struct {
 
 	GroupDescription *string `locationName:"GroupDescription" type:"string"`
 
-	GroupName *string `locationName:"GroupName" type:"string"`
+	// GroupName is a required field
+	GroupName *string `locationName:"GroupName" type:"string" required:"true"`
 
 	Placement *RequestPlacementOfCreateSecurityGroup `locationName:"Placement" type:"structure"`
 }
@@ -22,6 +23,20 @@ type CreateSecurityGroupInput struct {
 // String returns the string representation
 func (s CreateSecurityGroupInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *CreateSecurityGroupInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "CreateSecurityGroupInput"}
+
+	if s.GroupName == nil {
+		invalidParams.Add(aws.NewErrParamRequired("GroupName"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type CreateSecurityGroupOutput struct {

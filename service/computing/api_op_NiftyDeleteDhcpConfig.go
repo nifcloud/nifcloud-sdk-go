@@ -12,12 +12,27 @@ import (
 type NiftyDeleteDhcpConfigInput struct {
 	_ struct{} `type:"structure"`
 
-	DhcpConfigId *string `locationName:"DhcpConfigId" type:"string"`
+	// DhcpConfigId is a required field
+	DhcpConfigId *string `locationName:"DhcpConfigId" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s NiftyDeleteDhcpConfigInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *NiftyDeleteDhcpConfigInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "NiftyDeleteDhcpConfigInput"}
+
+	if s.DhcpConfigId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("DhcpConfigId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type NiftyDeleteDhcpConfigOutput struct {

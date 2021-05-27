@@ -12,12 +12,27 @@ import (
 type UpgradeNASInstanceInput struct {
 	_ struct{} `type:"structure"`
 
-	NASInstanceIdentifier *string `locationName:"NASInstanceIdentifier" type:"string"`
+	// NASInstanceIdentifier is a required field
+	NASInstanceIdentifier *string `locationName:"NASInstanceIdentifier" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s UpgradeNASInstanceInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *UpgradeNASInstanceInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "UpgradeNASInstanceInput"}
+
+	if s.NASInstanceIdentifier == nil {
+		invalidParams.Add(aws.NewErrParamRequired("NASInstanceIdentifier"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type UpgradeNASInstanceOutput struct {

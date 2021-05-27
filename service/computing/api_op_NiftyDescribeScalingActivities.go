@@ -16,14 +16,29 @@ type NiftyDescribeScalingActivitiesInput struct {
 
 	ActivityDateTo *string `locationName:"ActivityDateTo" type:"string"`
 
-	AutoScalingGroupName *string `locationName:"AutoScalingGroupName" type:"string"`
+	// AutoScalingGroupName is a required field
+	AutoScalingGroupName *string `locationName:"AutoScalingGroupName" type:"string" required:"true"`
 
-	Range *RequestRangeOfNiftyDescribeScalingActivities `locationName:"Range" type:"structure"`
+	Range *RequestRange `locationName:"Range" type:"structure"`
 }
 
 // String returns the string representation
 func (s NiftyDescribeScalingActivitiesInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *NiftyDescribeScalingActivitiesInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "NiftyDescribeScalingActivitiesInput"}
+
+	if s.AutoScalingGroupName == nil {
+		invalidParams.Add(aws.NewErrParamRequired("AutoScalingGroupName"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type NiftyDescribeScalingActivitiesOutput struct {

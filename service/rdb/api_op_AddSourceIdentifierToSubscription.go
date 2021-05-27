@@ -12,14 +12,34 @@ import (
 type AddSourceIdentifierToSubscriptionInput struct {
 	_ struct{} `type:"structure"`
 
-	SourceIdentifier *string `locationName:"SourceIdentifier" type:"string"`
+	// SourceIdentifier is a required field
+	SourceIdentifier *string `locationName:"SourceIdentifier" type:"string" required:"true"`
 
-	SubscriptionName *string `locationName:"SubscriptionName" type:"string"`
+	// SubscriptionName is a required field
+	SubscriptionName *string `locationName:"SubscriptionName" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s AddSourceIdentifierToSubscriptionInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *AddSourceIdentifierToSubscriptionInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "AddSourceIdentifierToSubscriptionInput"}
+
+	if s.SourceIdentifier == nil {
+		invalidParams.Add(aws.NewErrParamRequired("SourceIdentifier"))
+	}
+
+	if s.SubscriptionName == nil {
+		invalidParams.Add(aws.NewErrParamRequired("SubscriptionName"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type AddSourceIdentifierToSubscriptionOutput struct {

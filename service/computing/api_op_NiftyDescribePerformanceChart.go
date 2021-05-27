@@ -16,9 +16,11 @@ type NiftyDescribePerformanceChartInput struct {
 
 	FromDate *string `locationName:"FromDate" type:"string"`
 
-	FunctionName FunctionNameOfNiftyDescribePerformanceChartRequest `locationName:"FunctionName" type:"string" enum:"true"`
+	// FunctionName is a required field
+	FunctionName FunctionNameOfNiftyDescribePerformanceChartRequest `locationName:"FunctionName" type:"string" required:"true" enum:"true"`
 
-	ResourceName []string `locationName:"ResourceName" type:"list"`
+	// ResourceName is a required field
+	ResourceName []string `locationName:"ResourceName" type:"list" required:"true"`
 
 	ToDate *string `locationName:"ToDate" type:"string"`
 
@@ -28,6 +30,23 @@ type NiftyDescribePerformanceChartInput struct {
 // String returns the string representation
 func (s NiftyDescribePerformanceChartInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *NiftyDescribePerformanceChartInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "NiftyDescribePerformanceChartInput"}
+	if len(s.FunctionName) == 0 {
+		invalidParams.Add(aws.NewErrParamRequired("FunctionName"))
+	}
+
+	if s.ResourceName == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ResourceName"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type NiftyDescribePerformanceChartOutput struct {

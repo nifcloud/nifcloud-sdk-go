@@ -12,14 +12,34 @@ import (
 type CopyDBSnapshotInput struct {
 	_ struct{} `type:"structure"`
 
-	SourceDBSnapshotIdentifier *string `locationName:"SourceDBSnapshotIdentifier" type:"string"`
+	// SourceDBSnapshotIdentifier is a required field
+	SourceDBSnapshotIdentifier *string `locationName:"SourceDBSnapshotIdentifier" type:"string" required:"true"`
 
-	TargetDBSnapshotIdentifier *string `locationName:"TargetDBSnapshotIdentifier" type:"string"`
+	// TargetDBSnapshotIdentifier is a required field
+	TargetDBSnapshotIdentifier *string `locationName:"TargetDBSnapshotIdentifier" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s CopyDBSnapshotInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *CopyDBSnapshotInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "CopyDBSnapshotInput"}
+
+	if s.SourceDBSnapshotIdentifier == nil {
+		invalidParams.Add(aws.NewErrParamRequired("SourceDBSnapshotIdentifier"))
+	}
+
+	if s.TargetDBSnapshotIdentifier == nil {
+		invalidParams.Add(aws.NewErrParamRequired("TargetDBSnapshotIdentifier"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type CopyDBSnapshotOutput struct {

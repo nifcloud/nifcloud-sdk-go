@@ -20,7 +20,8 @@ type NiftyCreateWebProxyInput struct {
 
 	ListenInterface *RequestListenInterface `locationName:"ListenInterface" type:"structure"`
 
-	ListenPort *string `locationName:"ListenPort" type:"string"`
+	// ListenPort is a required field
+	ListenPort *string `locationName:"ListenPort" type:"string" required:"true"`
 
 	Option *RequestOption `locationName:"Option" type:"structure"`
 
@@ -32,6 +33,20 @@ type NiftyCreateWebProxyInput struct {
 // String returns the string representation
 func (s NiftyCreateWebProxyInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *NiftyCreateWebProxyInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "NiftyCreateWebProxyInput"}
+
+	if s.ListenPort == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ListenPort"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type NiftyCreateWebProxyOutput struct {

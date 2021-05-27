@@ -16,16 +16,36 @@ type ExecuteScriptInput struct {
 
 	Header *string `locationName:"Header" type:"string"`
 
-	Method *string `locationName:"Method" type:"string"`
+	// Method is a required field
+	Method *string `locationName:"Method" type:"string" required:"true"`
 
 	Query *string `locationName:"Query" type:"string"`
 
-	ScriptIdentifier *string `locationName:"ScriptIdentifier" type:"string"`
+	// ScriptIdentifier is a required field
+	ScriptIdentifier *string `locationName:"ScriptIdentifier" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s ExecuteScriptInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *ExecuteScriptInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "ExecuteScriptInput"}
+
+	if s.Method == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Method"))
+	}
+
+	if s.ScriptIdentifier == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ScriptIdentifier"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type ExecuteScriptOutput struct {

@@ -12,22 +12,46 @@ import (
 type ModifyInstanceAttributeInput struct {
 	_ struct{} `type:"structure"`
 
-	Attribute AttributeOfModifyInstanceAttributeRequest `locationName:"Attribute" type:"string" enum:"true"`
+	// Attribute is a required field
+	Attribute AttributeOfModifyInstanceAttributeRequest `locationName:"Attribute" type:"string" required:"true" enum:"true"`
 
 	Force *bool `locationName:"Force" type:"boolean"`
 
-	InstanceId *string `locationName:"InstanceId" type:"string"`
+	// InstanceId is a required field
+	InstanceId *string `locationName:"InstanceId" type:"string" required:"true"`
 
 	NiftyReboot NiftyRebootOfModifyInstanceAttributeRequest `locationName:"NiftyReboot" type:"string" enum:"true"`
 
 	Tenancy TenancyOfModifyInstanceAttributeRequest `locationName:"Tenancy" type:"string" enum:"true"`
 
-	Value *string `locationName:"Value" type:"string"`
+	// Value is a required field
+	Value *string `locationName:"Value" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s ModifyInstanceAttributeInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *ModifyInstanceAttributeInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "ModifyInstanceAttributeInput"}
+	if len(s.Attribute) == 0 {
+		invalidParams.Add(aws.NewErrParamRequired("Attribute"))
+	}
+
+	if s.InstanceId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("InstanceId"))
+	}
+
+	if s.Value == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Value"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type ModifyInstanceAttributeOutput struct {

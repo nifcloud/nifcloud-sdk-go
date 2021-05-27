@@ -16,12 +16,27 @@ type ModifyNetworkInterfaceAttributeInput struct {
 
 	IpAddress *string `locationName:"IpAddress" type:"string"`
 
-	NetworkInterfaceId *string `locationName:"NetworkInterfaceId" type:"string"`
+	// NetworkInterfaceId is a required field
+	NetworkInterfaceId *string `locationName:"NetworkInterfaceId" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s ModifyNetworkInterfaceAttributeInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *ModifyNetworkInterfaceAttributeInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "ModifyNetworkInterfaceAttributeInput"}
+
+	if s.NetworkInterfaceId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("NetworkInterfaceId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type ModifyNetworkInterfaceAttributeOutput struct {

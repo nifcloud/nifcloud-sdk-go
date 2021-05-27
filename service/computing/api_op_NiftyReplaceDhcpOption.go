@@ -14,7 +14,8 @@ type NiftyReplaceDhcpOptionInput struct {
 
 	Agreement *bool `locationName:"Agreement" type:"boolean"`
 
-	DhcpOptionsId *string `locationName:"DhcpOptionsId" type:"string"`
+	// DhcpOptionsId is a required field
+	DhcpOptionsId *string `locationName:"DhcpOptionsId" type:"string" required:"true"`
 
 	NetworkId *string `locationName:"NetworkId" type:"string"`
 
@@ -28,6 +29,20 @@ type NiftyReplaceDhcpOptionInput struct {
 // String returns the string representation
 func (s NiftyReplaceDhcpOptionInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *NiftyReplaceDhcpOptionInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "NiftyReplaceDhcpOptionInput"}
+
+	if s.DhcpOptionsId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("DhcpOptionsId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type NiftyReplaceDhcpOptionOutput struct {

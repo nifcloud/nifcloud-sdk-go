@@ -14,7 +14,8 @@ type ModifyMultiIpAddressGroupAttributeInput struct {
 
 	Description *string `locationName:"Description" type:"string"`
 
-	MultiIpAddressGroupId *string `locationName:"MultiIpAddressGroupId" type:"string"`
+	// MultiIpAddressGroupId is a required field
+	MultiIpAddressGroupId *string `locationName:"MultiIpAddressGroupId" type:"string" required:"true"`
 
 	MultiIpAddressGroupName *string `locationName:"MultiIpAddressGroupName" type:"string"`
 }
@@ -22,6 +23,20 @@ type ModifyMultiIpAddressGroupAttributeInput struct {
 // String returns the string representation
 func (s ModifyMultiIpAddressGroupAttributeInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *ModifyMultiIpAddressGroupAttributeInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "ModifyMultiIpAddressGroupAttributeInput"}
+
+	if s.MultiIpAddressGroupId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("MultiIpAddressGroupId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type ModifyMultiIpAddressGroupAttributeOutput struct {

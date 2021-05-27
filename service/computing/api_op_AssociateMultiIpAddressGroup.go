@@ -12,9 +12,11 @@ import (
 type AssociateMultiIpAddressGroupInput struct {
 	_ struct{} `type:"structure"`
 
-	InstanceUniqueId *string `locationName:"InstanceUniqueId" type:"string"`
+	// InstanceUniqueId is a required field
+	InstanceUniqueId *string `locationName:"InstanceUniqueId" type:"string" required:"true"`
 
-	MultiIpAddressGroupId *string `locationName:"MultiIpAddressGroupId" type:"string"`
+	// MultiIpAddressGroupId is a required field
+	MultiIpAddressGroupId *string `locationName:"MultiIpAddressGroupId" type:"string" required:"true"`
 
 	NiftyReboot NiftyRebootOfAssociateMultiIpAddressGroupRequest `locationName:"NiftyReboot" type:"string" enum:"true"`
 }
@@ -22,6 +24,24 @@ type AssociateMultiIpAddressGroupInput struct {
 // String returns the string representation
 func (s AssociateMultiIpAddressGroupInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *AssociateMultiIpAddressGroupInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "AssociateMultiIpAddressGroupInput"}
+
+	if s.InstanceUniqueId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("InstanceUniqueId"))
+	}
+
+	if s.MultiIpAddressGroupId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("MultiIpAddressGroupId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type AssociateMultiIpAddressGroupOutput struct {

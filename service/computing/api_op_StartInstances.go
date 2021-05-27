@@ -14,7 +14,8 @@ type StartInstancesInput struct {
 
 	AccountingType []string `locationName:"AccountingType" type:"list"`
 
-	InstanceId []string `locationName:"InstanceId" type:"list"`
+	// InstanceId is a required field
+	InstanceId []string `locationName:"InstanceId" type:"list" required:"true"`
 
 	InstanceType []string `locationName:"InstanceType" type:"list"`
 
@@ -22,12 +23,26 @@ type StartInstancesInput struct {
 
 	Tenancy []string `locationName:"Tenancy" type:"list"`
 
-	UserData *RequestUserDataOfStartInstances `locationName:"UserData" type:"structure"`
+	UserData *RequestUserData `locationName:"UserData" type:"structure"`
 }
 
 // String returns the string representation
 func (s StartInstancesInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *StartInstancesInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "StartInstancesInput"}
+
+	if s.InstanceId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("InstanceId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type StartInstancesOutput struct {

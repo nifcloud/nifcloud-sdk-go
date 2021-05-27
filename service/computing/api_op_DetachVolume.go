@@ -21,12 +21,27 @@ type DetachVolumeInput struct {
 
 	InstanceId *string `locationName:"InstanceId" type:"string"`
 
-	VolumeId *string `locationName:"VolumeId" type:"string"`
+	// VolumeId is a required field
+	VolumeId *string `locationName:"VolumeId" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s DetachVolumeInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *DetachVolumeInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "DetachVolumeInput"}
+
+	if s.VolumeId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("VolumeId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type DetachVolumeOutput struct {

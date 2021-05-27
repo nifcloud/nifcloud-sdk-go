@@ -16,7 +16,8 @@ type NiftyCreateSeparateInstanceRuleInput struct {
 
 	InstanceUniqueId []string `locationName:"InstanceUniqueId" type:"list"`
 
-	Placement *RequestPlacementOfNiftyCreateSeparateInstanceRule `locationName:"Placement" type:"structure"`
+	// Placement is a required field
+	Placement *RequestPlacementOfNiftyCreateSeparateInstanceRule `locationName:"Placement" type:"structure" required:"true"`
 
 	SeparateInstanceRuleDescription *string `locationName:"SeparateInstanceRuleDescription" type:"string"`
 
@@ -26,6 +27,25 @@ type NiftyCreateSeparateInstanceRuleInput struct {
 // String returns the string representation
 func (s NiftyCreateSeparateInstanceRuleInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *NiftyCreateSeparateInstanceRuleInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "NiftyCreateSeparateInstanceRuleInput"}
+
+	if s.Placement == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Placement"))
+	}
+	if s.Placement != nil {
+		if err := s.Placement.Validate(); err != nil {
+			invalidParams.AddNested("Placement", err.(aws.ErrInvalidParams))
+		}
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type NiftyCreateSeparateInstanceRuleOutput struct {

@@ -55,9 +55,11 @@ type RestoreDBInstanceToPointInTimeInput struct {
 
 	RestoreTime *time.Time `locationName:"RestoreTime" type:"timestamp"`
 
-	SourceDBInstanceIdentifier *string `locationName:"SourceDBInstanceIdentifier" type:"string"`
+	// SourceDBInstanceIdentifier is a required field
+	SourceDBInstanceIdentifier *string `locationName:"SourceDBInstanceIdentifier" type:"string" required:"true"`
 
-	TargetDBInstanceIdentifier *string `locationName:"TargetDBInstanceIdentifier" type:"string"`
+	// TargetDBInstanceIdentifier is a required field
+	TargetDBInstanceIdentifier *string `locationName:"TargetDBInstanceIdentifier" type:"string" required:"true"`
 
 	UseLatestRestorableTime *bool `locationName:"UseLatestRestorableTime" type:"boolean"`
 }
@@ -65,6 +67,24 @@ type RestoreDBInstanceToPointInTimeInput struct {
 // String returns the string representation
 func (s RestoreDBInstanceToPointInTimeInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *RestoreDBInstanceToPointInTimeInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "RestoreDBInstanceToPointInTimeInput"}
+
+	if s.SourceDBInstanceIdentifier == nil {
+		invalidParams.Add(aws.NewErrParamRequired("SourceDBInstanceIdentifier"))
+	}
+
+	if s.TargetDBInstanceIdentifier == nil {
+		invalidParams.Add(aws.NewErrParamRequired("TargetDBInstanceIdentifier"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type RestoreDBInstanceToPointInTimeOutput struct {

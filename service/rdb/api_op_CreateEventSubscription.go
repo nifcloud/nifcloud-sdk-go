@@ -18,18 +18,38 @@ type CreateEventSubscriptionInput struct {
 
 	NiftyDescription *string `locationName:"NiftyDescription" type:"string"`
 
-	NiftyEmailAddresses []string `locationName:"NiftyEmailAddresses" locationNameList:"member" type:"list"`
+	// NiftyEmailAddresses is a required field
+	NiftyEmailAddresses []string `locationName:"NiftyEmailAddresses" locationNameList:"member" type:"list" required:"true"`
 
 	SourceIds []string `locationName:"SourceIds" locationNameList:"member" type:"list"`
 
 	SourceType *string `locationName:"SourceType" type:"string"`
 
-	SubscriptionName *string `locationName:"SubscriptionName" type:"string"`
+	// SubscriptionName is a required field
+	SubscriptionName *string `locationName:"SubscriptionName" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s CreateEventSubscriptionInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *CreateEventSubscriptionInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "CreateEventSubscriptionInput"}
+
+	if s.NiftyEmailAddresses == nil {
+		invalidParams.Add(aws.NewErrParamRequired("NiftyEmailAddresses"))
+	}
+
+	if s.SubscriptionName == nil {
+		invalidParams.Add(aws.NewErrParamRequired("SubscriptionName"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type CreateEventSubscriptionOutput struct {

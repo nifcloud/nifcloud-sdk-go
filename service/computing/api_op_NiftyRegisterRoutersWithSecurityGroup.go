@@ -12,7 +12,8 @@ import (
 type NiftyRegisterRoutersWithSecurityGroupInput struct {
 	_ struct{} `type:"structure"`
 
-	GroupName *string `locationName:"GroupName" type:"string"`
+	// GroupName is a required field
+	GroupName *string `locationName:"GroupName" type:"string" required:"true"`
 
 	RouterSet []RequestRouterSet `locationName:"RouterSet" type:"list"`
 }
@@ -22,12 +23,26 @@ func (s NiftyRegisterRoutersWithSecurityGroupInput) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *NiftyRegisterRoutersWithSecurityGroupInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "NiftyRegisterRoutersWithSecurityGroupInput"}
+
+	if s.GroupName == nil {
+		invalidParams.Add(aws.NewErrParamRequired("GroupName"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
 type NiftyRegisterRoutersWithSecurityGroupOutput struct {
 	_ struct{} `type:"structure"`
 
 	RequestId *string `locationName:"requestId" type:"string"`
 
-	RouterSet []RouterSetOfNiftyRegisterRoutersWithSecurityGroup `locationName:"routerSet" locationNameList:"item" type:"list"`
+	RouterSet []RouterSet `locationName:"routerSet" locationNameList:"item" type:"list"`
 }
 
 // String returns the string representation

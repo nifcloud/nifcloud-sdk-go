@@ -12,16 +12,40 @@ import (
 type NiftyDeleteNatRuleInput struct {
 	_ struct{} `type:"structure"`
 
-	NatTableId *string `locationName:"NatTableId" type:"string"`
+	// NatTableId is a required field
+	NatTableId *string `locationName:"NatTableId" type:"string" required:"true"`
 
-	NatType NatTypeOfNiftyDeleteNatRuleRequest `locationName:"NatType" type:"string" enum:"true"`
+	// NatType is a required field
+	NatType NatTypeOfNiftyDeleteNatRuleRequest `locationName:"NatType" type:"string" required:"true" enum:"true"`
 
-	RuleNumber *string `locationName:"RuleNumber" type:"string"`
+	// RuleNumber is a required field
+	RuleNumber *string `locationName:"RuleNumber" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s NiftyDeleteNatRuleInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *NiftyDeleteNatRuleInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "NiftyDeleteNatRuleInput"}
+
+	if s.NatTableId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("NatTableId"))
+	}
+	if len(s.NatType) == 0 {
+		invalidParams.Add(aws.NewErrParamRequired("NatType"))
+	}
+
+	if s.RuleNumber == nil {
+		invalidParams.Add(aws.NewErrParamRequired("RuleNumber"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type NiftyDeleteNatRuleOutput struct {

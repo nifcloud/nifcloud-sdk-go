@@ -14,7 +14,8 @@ type AuthorizeNASSecurityGroupIngressInput struct {
 
 	CIDRIP *string `locationName:"CIDRIP" type:"string"`
 
-	NASSecurityGroupName *string `locationName:"NASSecurityGroupName" type:"string"`
+	// NASSecurityGroupName is a required field
+	NASSecurityGroupName *string `locationName:"NASSecurityGroupName" type:"string" required:"true"`
 
 	SecurityGroupName *string `locationName:"SecurityGroupName" type:"string"`
 }
@@ -22,6 +23,20 @@ type AuthorizeNASSecurityGroupIngressInput struct {
 // String returns the string representation
 func (s AuthorizeNASSecurityGroupIngressInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *AuthorizeNASSecurityGroupIngressInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "AuthorizeNASSecurityGroupIngressInput"}
+
+	if s.NASSecurityGroupName == nil {
+		invalidParams.Add(aws.NewErrParamRequired("NASSecurityGroupName"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type AuthorizeNASSecurityGroupIngressOutput struct {

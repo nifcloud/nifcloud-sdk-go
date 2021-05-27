@@ -16,7 +16,8 @@ type NiftyCreatePrivateLanInput struct {
 
 	AvailabilityZone *string `locationName:"AvailabilityZone" type:"string"`
 
-	CidrBlock *string `locationName:"CidrBlock" type:"string"`
+	// CidrBlock is a required field
+	CidrBlock *string `locationName:"CidrBlock" type:"string" required:"true"`
 
 	Description *string `locationName:"Description" type:"string"`
 
@@ -26,6 +27,20 @@ type NiftyCreatePrivateLanInput struct {
 // String returns the string representation
 func (s NiftyCreatePrivateLanInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *NiftyCreatePrivateLanInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "NiftyCreatePrivateLanInput"}
+
+	if s.CidrBlock == nil {
+		invalidParams.Add(aws.NewErrParamRequired("CidrBlock"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type NiftyCreatePrivateLanOutput struct {

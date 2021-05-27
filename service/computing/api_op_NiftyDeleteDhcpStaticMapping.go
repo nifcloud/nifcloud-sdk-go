@@ -12,16 +12,41 @@ import (
 type NiftyDeleteDhcpStaticMappingInput struct {
 	_ struct{} `type:"structure"`
 
-	DhcpConfigId *string `locationName:"DhcpConfigId" type:"string"`
+	// DhcpConfigId is a required field
+	DhcpConfigId *string `locationName:"DhcpConfigId" type:"string" required:"true"`
 
-	IpAddress *string `locationName:"IpAddress" type:"string"`
+	// IpAddress is a required field
+	IpAddress *string `locationName:"IpAddress" type:"string" required:"true"`
 
-	MacAddress *string `locationName:"MacAddress" type:"string"`
+	// MacAddress is a required field
+	MacAddress *string `locationName:"MacAddress" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s NiftyDeleteDhcpStaticMappingInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *NiftyDeleteDhcpStaticMappingInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "NiftyDeleteDhcpStaticMappingInput"}
+
+	if s.DhcpConfigId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("DhcpConfigId"))
+	}
+
+	if s.IpAddress == nil {
+		invalidParams.Add(aws.NewErrParamRequired("IpAddress"))
+	}
+
+	if s.MacAddress == nil {
+		invalidParams.Add(aws.NewErrParamRequired("MacAddress"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type NiftyDeleteDhcpStaticMappingOutput struct {

@@ -18,12 +18,27 @@ type UploadIsoImageInput struct {
 
 	IsoImageName *string `locationName:"IsoImageName" type:"string"`
 
-	IsoUrl *string `locationName:"IsoUrl" type:"string"`
+	// IsoUrl is a required field
+	IsoUrl *string `locationName:"IsoUrl" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s UploadIsoImageInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *UploadIsoImageInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "UploadIsoImageInput"}
+
+	if s.IsoUrl == nil {
+		invalidParams.Add(aws.NewErrParamRequired("IsoUrl"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type UploadIsoImageOutput struct {

@@ -12,12 +12,27 @@ import (
 type DeleteVolumeInput struct {
 	_ struct{} `type:"structure"`
 
-	VolumeId *string `locationName:"VolumeId" type:"string"`
+	// VolumeId is a required field
+	VolumeId *string `locationName:"VolumeId" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s DeleteVolumeInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *DeleteVolumeInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "DeleteVolumeInput"}
+
+	if s.VolumeId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("VolumeId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type DeleteVolumeOutput struct {

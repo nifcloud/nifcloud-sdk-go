@@ -12,14 +12,34 @@ import (
 type ReleaseMultiIpAddressesInput struct {
 	_ struct{} `type:"structure"`
 
-	IpAddress []string `locationName:"IpAddress" type:"list"`
+	// IpAddress is a required field
+	IpAddress []string `locationName:"IpAddress" type:"list" required:"true"`
 
-	MultiIpAddressGroupId *string `locationName:"MultiIpAddressGroupId" type:"string"`
+	// MultiIpAddressGroupId is a required field
+	MultiIpAddressGroupId *string `locationName:"MultiIpAddressGroupId" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s ReleaseMultiIpAddressesInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *ReleaseMultiIpAddressesInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "ReleaseMultiIpAddressesInput"}
+
+	if s.IpAddress == nil {
+		invalidParams.Add(aws.NewErrParamRequired("IpAddress"))
+	}
+
+	if s.MultiIpAddressGroupId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("MultiIpAddressGroupId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type ReleaseMultiIpAddressesOutput struct {

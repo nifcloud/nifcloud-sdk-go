@@ -12,14 +12,33 @@ import (
 type NiftyDeleteAlarmInput struct {
 	_ struct{} `type:"structure"`
 
-	FunctionName FunctionNameOfNiftyDeleteAlarmRequest `locationName:"FunctionName" type:"string" enum:"true"`
+	// FunctionName is a required field
+	FunctionName FunctionNameOfNiftyDeleteAlarmRequest `locationName:"FunctionName" type:"string" required:"true" enum:"true"`
 
-	RuleName *string `locationName:"RuleName" type:"string"`
+	// RuleName is a required field
+	RuleName *string `locationName:"RuleName" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s NiftyDeleteAlarmInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *NiftyDeleteAlarmInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "NiftyDeleteAlarmInput"}
+	if len(s.FunctionName) == 0 {
+		invalidParams.Add(aws.NewErrParamRequired("FunctionName"))
+	}
+
+	if s.RuleName == nil {
+		invalidParams.Add(aws.NewErrParamRequired("RuleName"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type NiftyDeleteAlarmOutput struct {

@@ -12,7 +12,8 @@ import (
 type ResetDBParameterGroupInput struct {
 	_ struct{} `type:"structure"`
 
-	DBParameterGroupName *string `locationName:"DBParameterGroupName" type:"string"`
+	// DBParameterGroupName is a required field
+	DBParameterGroupName *string `locationName:"DBParameterGroupName" type:"string" required:"true"`
 
 	Parameters []RequestParametersOfResetDBParameterGroup `locationName:"Parameters" locationNameList:"member" type:"list"`
 
@@ -22,6 +23,20 @@ type ResetDBParameterGroupInput struct {
 // String returns the string representation
 func (s ResetDBParameterGroupInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *ResetDBParameterGroupInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "ResetDBParameterGroupInput"}
+
+	if s.DBParameterGroupName == nil {
+		invalidParams.Add(aws.NewErrParamRequired("DBParameterGroupName"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type ResetDBParameterGroupOutput struct {

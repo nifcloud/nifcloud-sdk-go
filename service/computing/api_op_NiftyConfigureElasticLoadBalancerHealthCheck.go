@@ -16,13 +16,17 @@ type NiftyConfigureElasticLoadBalancerHealthCheckInput struct {
 
 	ElasticLoadBalancerName *string `locationName:"ElasticLoadBalancerName" type:"string"`
 
-	ElasticLoadBalancerPort *int64 `locationName:"ElasticLoadBalancerPort" type:"integer"`
+	// ElasticLoadBalancerPort is a required field
+	ElasticLoadBalancerPort *int64 `locationName:"ElasticLoadBalancerPort" type:"integer" required:"true"`
 
-	HealthCheck *RequestHealthCheckOfNiftyConfigureElasticLoadBalancerHealthCheck `locationName:"HealthCheck" type:"structure"`
+	// HealthCheck is a required field
+	HealthCheck *RequestHealthCheckOfNiftyConfigureElasticLoadBalancerHealthCheck `locationName:"HealthCheck" type:"structure" required:"true"`
 
-	InstancePort *int64 `locationName:"InstancePort" type:"integer"`
+	// InstancePort is a required field
+	InstancePort *int64 `locationName:"InstancePort" type:"integer" required:"true"`
 
-	Protocol ProtocolOfNiftyConfigureElasticLoadBalancerHealthCheckRequest `locationName:"Protocol" type:"string" enum:"true"`
+	// Protocol is a required field
+	Protocol ProtocolOfNiftyConfigureElasticLoadBalancerHealthCheckRequest `locationName:"Protocol" type:"string" required:"true" enum:"true"`
 }
 
 // String returns the string representation
@@ -30,14 +34,42 @@ func (s NiftyConfigureElasticLoadBalancerHealthCheckInput) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *NiftyConfigureElasticLoadBalancerHealthCheckInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "NiftyConfigureElasticLoadBalancerHealthCheckInput"}
+
+	if s.ElasticLoadBalancerPort == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ElasticLoadBalancerPort"))
+	}
+
+	if s.HealthCheck == nil {
+		invalidParams.Add(aws.NewErrParamRequired("HealthCheck"))
+	}
+
+	if s.InstancePort == nil {
+		invalidParams.Add(aws.NewErrParamRequired("InstancePort"))
+	}
+	if len(s.Protocol) == 0 {
+		invalidParams.Add(aws.NewErrParamRequired("Protocol"))
+	}
+	if s.HealthCheck != nil {
+		if err := s.HealthCheck.Validate(); err != nil {
+			invalidParams.AddNested("HealthCheck", err.(aws.ErrInvalidParams))
+		}
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
 type NiftyConfigureElasticLoadBalancerHealthCheckOutput struct {
 	_ struct{} `type:"structure"`
 
 	HealthCheck *HealthCheckOfNiftyConfigureElasticLoadBalancerHealthCheck `locationName:"HealthCheck" type:"structure"`
 
-	NiftyConfigureElasticLoadBalancerHealthCheckResult *NiftyConfigureElasticLoadBalancerHealthCheckResult `locationName:"NiftyConfigureElasticLoadBalancerHealthCheckResult" type:"structure"`
-
-	ResponseMetadata *ResponseMetadataOfNiftyConfigureElasticLoadBalancerHealthCheck `locationName:"ResponseMetadata" type:"structure"`
+	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }
 
 // String returns the string representation

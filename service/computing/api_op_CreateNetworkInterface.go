@@ -16,7 +16,8 @@ type CreateNetworkInterfaceInput struct {
 
 	IpAddress *string `locationName:"IpAddress" type:"string"`
 
-	NiftyNetworkId *string `locationName:"NiftyNetworkId" type:"string"`
+	// NiftyNetworkId is a required field
+	NiftyNetworkId *string `locationName:"NiftyNetworkId" type:"string" required:"true"`
 
 	Placement *RequestPlacementOfCreateNetworkInterface `locationName:"Placement" type:"structure"`
 }
@@ -24,6 +25,20 @@ type CreateNetworkInterfaceInput struct {
 // String returns the string representation
 func (s CreateNetworkInterfaceInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *CreateNetworkInterfaceInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "CreateNetworkInterfaceInput"}
+
+	if s.NiftyNetworkId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("NiftyNetworkId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type CreateNetworkInterfaceOutput struct {

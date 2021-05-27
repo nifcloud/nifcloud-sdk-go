@@ -12,12 +12,27 @@ import (
 type NiftyDeleteNatTableInput struct {
 	_ struct{} `type:"structure"`
 
-	NatTableId *string `locationName:"NatTableId" type:"string"`
+	// NatTableId is a required field
+	NatTableId *string `locationName:"NatTableId" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s NiftyDeleteNatTableInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *NiftyDeleteNatTableInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "NiftyDeleteNatTableInput"}
+
+	if s.NatTableId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("NatTableId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type NiftyDeleteNatTableOutput struct {

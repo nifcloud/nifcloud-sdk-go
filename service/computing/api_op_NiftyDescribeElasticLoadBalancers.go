@@ -27,9 +27,7 @@ type NiftyDescribeElasticLoadBalancersOutput struct {
 
 	ElasticLoadBalancerDescriptions []ElasticLoadBalancerDescriptions `locationName:"ElasticLoadBalancerDescriptions" locationNameList:"member" type:"list"`
 
-	NiftyDescribeElasticLoadBalancersResult *NiftyDescribeElasticLoadBalancersResult `locationName:"NiftyDescribeElasticLoadBalancersResult" type:"structure"`
-
-	ResponseMetadata *ResponseMetadataOfNiftyDescribeElasticLoadBalancers `locationName:"ResponseMetadata" type:"structure"`
+	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }
 
 // String returns the string representation

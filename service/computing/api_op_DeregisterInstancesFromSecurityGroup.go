@@ -12,14 +12,34 @@ import (
 type DeregisterInstancesFromSecurityGroupInput struct {
 	_ struct{} `type:"structure"`
 
-	GroupName *string `locationName:"GroupName" type:"string"`
+	// GroupName is a required field
+	GroupName *string `locationName:"GroupName" type:"string" required:"true"`
 
-	InstanceId []string `locationName:"InstanceId" type:"list"`
+	// InstanceId is a required field
+	InstanceId []string `locationName:"InstanceId" type:"list" required:"true"`
 }
 
 // String returns the string representation
 func (s DeregisterInstancesFromSecurityGroupInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *DeregisterInstancesFromSecurityGroupInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "DeregisterInstancesFromSecurityGroupInput"}
+
+	if s.GroupName == nil {
+		invalidParams.Add(aws.NewErrParamRequired("GroupName"))
+	}
+
+	if s.InstanceId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("InstanceId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type DeregisterInstancesFromSecurityGroupOutput struct {

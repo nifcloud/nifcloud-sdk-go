@@ -16,12 +16,27 @@ type ModifyVolumeAttributeInput struct {
 
 	Value *string `locationName:"Value" type:"string"`
 
-	VolumeId *string `locationName:"VolumeId" type:"string"`
+	// VolumeId is a required field
+	VolumeId *string `locationName:"VolumeId" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s ModifyVolumeAttributeInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *ModifyVolumeAttributeInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "ModifyVolumeAttributeInput"}
+
+	if s.VolumeId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("VolumeId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type ModifyVolumeAttributeOutput struct {

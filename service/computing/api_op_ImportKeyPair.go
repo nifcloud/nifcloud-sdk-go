@@ -14,14 +14,34 @@ type ImportKeyPairInput struct {
 
 	Description *string `locationName:"Description" type:"string"`
 
-	KeyName *string `locationName:"KeyName" type:"string"`
+	// KeyName is a required field
+	KeyName *string `locationName:"KeyName" type:"string" required:"true"`
 
-	PublicKeyMaterial *string `locationName:"PublicKeyMaterial" type:"string"`
+	// PublicKeyMaterial is a required field
+	PublicKeyMaterial *string `locationName:"PublicKeyMaterial" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s ImportKeyPairInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *ImportKeyPairInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "ImportKeyPairInput"}
+
+	if s.KeyName == nil {
+		invalidParams.Add(aws.NewErrParamRequired("KeyName"))
+	}
+
+	if s.PublicKeyMaterial == nil {
+		invalidParams.Add(aws.NewErrParamRequired("PublicKeyMaterial"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type ImportKeyPairOutput struct {

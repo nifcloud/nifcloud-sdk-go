@@ -12,7 +12,8 @@ import (
 type DeleteDBInstanceInput struct {
 	_ struct{} `type:"structure"`
 
-	DBInstanceIdentifier *string `locationName:"DBInstanceIdentifier" type:"string"`
+	// DBInstanceIdentifier is a required field
+	DBInstanceIdentifier *string `locationName:"DBInstanceIdentifier" type:"string" required:"true"`
 
 	FinalDBSnapshotIdentifier *string `locationName:"FinalDBSnapshotIdentifier" type:"string"`
 
@@ -22,6 +23,20 @@ type DeleteDBInstanceInput struct {
 // String returns the string representation
 func (s DeleteDBInstanceInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *DeleteDBInstanceInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "DeleteDBInstanceInput"}
+
+	if s.DBInstanceIdentifier == nil {
+		invalidParams.Add(aws.NewErrParamRequired("DBInstanceIdentifier"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type DeleteDBInstanceOutput struct {

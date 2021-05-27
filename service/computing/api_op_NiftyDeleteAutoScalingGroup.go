@@ -12,12 +12,27 @@ import (
 type NiftyDeleteAutoScalingGroupInput struct {
 	_ struct{} `type:"structure"`
 
-	AutoScalingGroupName *string `locationName:"AutoScalingGroupName" type:"string"`
+	// AutoScalingGroupName is a required field
+	AutoScalingGroupName *string `locationName:"AutoScalingGroupName" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s NiftyDeleteAutoScalingGroupInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *NiftyDeleteAutoScalingGroupInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "NiftyDeleteAutoScalingGroupInput"}
+
+	if s.AutoScalingGroupName == nil {
+		invalidParams.Add(aws.NewErrParamRequired("AutoScalingGroupName"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type NiftyDeleteAutoScalingGroupOutput struct {

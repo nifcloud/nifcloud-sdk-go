@@ -16,13 +16,16 @@ type NiftyDescribeInstanceElasticLoadBalancerHealthInput struct {
 
 	ElasticLoadBalancerName *string `locationName:"ElasticLoadBalancerName" type:"string"`
 
-	ElasticLoadBalancerPort *int64 `locationName:"ElasticLoadBalancerPort" type:"integer"`
+	// ElasticLoadBalancerPort is a required field
+	ElasticLoadBalancerPort *int64 `locationName:"ElasticLoadBalancerPort" type:"integer" required:"true"`
 
-	InstancePort *int64 `locationName:"InstancePort" type:"integer"`
+	// InstancePort is a required field
+	InstancePort *int64 `locationName:"InstancePort" type:"integer" required:"true"`
 
 	Instances []RequestInstancesOfNiftyDescribeInstanceElasticLoadBalancerHealth `locationName:"Instances" locationNameList:"member" type:"list"`
 
-	Protocol ProtocolOfNiftyDescribeInstanceElasticLoadBalancerHealthRequest `locationName:"Protocol" type:"string" enum:"true"`
+	// Protocol is a required field
+	Protocol ProtocolOfNiftyDescribeInstanceElasticLoadBalancerHealthRequest `locationName:"Protocol" type:"string" required:"true" enum:"true"`
 }
 
 // String returns the string representation
@@ -30,14 +33,33 @@ func (s NiftyDescribeInstanceElasticLoadBalancerHealthInput) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *NiftyDescribeInstanceElasticLoadBalancerHealthInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "NiftyDescribeInstanceElasticLoadBalancerHealthInput"}
+
+	if s.ElasticLoadBalancerPort == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ElasticLoadBalancerPort"))
+	}
+
+	if s.InstancePort == nil {
+		invalidParams.Add(aws.NewErrParamRequired("InstancePort"))
+	}
+	if len(s.Protocol) == 0 {
+		invalidParams.Add(aws.NewErrParamRequired("Protocol"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
 type NiftyDescribeInstanceElasticLoadBalancerHealthOutput struct {
 	_ struct{} `type:"structure"`
 
-	InstanceStates []InstanceStatesOfNiftyDescribeInstanceElasticLoadBalancerHealth `locationName:"InstanceStates" locationNameList:"member" type:"list"`
+	InstanceStates []InstanceStates `locationName:"InstanceStates" locationNameList:"member" type:"list"`
 
-	NiftyDescribeInstanceElasticLoadBalancerHealthResult *NiftyDescribeInstanceElasticLoadBalancerHealthResult `locationName:"NiftyDescribeInstanceElasticLoadBalancerHealthResult" type:"structure"`
-
-	ResponseMetadata *ResponseMetadataOfNiftyDescribeInstanceElasticLoadBalancerHealth `locationName:"ResponseMetadata" type:"structure"`
+	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }
 
 // String returns the string representation

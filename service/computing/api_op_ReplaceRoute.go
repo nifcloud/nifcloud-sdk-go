@@ -12,7 +12,8 @@ import (
 type ReplaceRouteInput struct {
 	_ struct{} `type:"structure"`
 
-	DestinationCidrBlock *string `locationName:"DestinationCidrBlock" type:"string"`
+	// DestinationCidrBlock is a required field
+	DestinationCidrBlock *string `locationName:"DestinationCidrBlock" type:"string" required:"true"`
 
 	GatewayId *string `locationName:"GatewayId" type:"string"`
 
@@ -26,7 +27,8 @@ type ReplaceRouteInput struct {
 
 	NetworkName *string `locationName:"NetworkName" type:"string"`
 
-	RouteTableId *string `locationName:"RouteTableId" type:"string"`
+	// RouteTableId is a required field
+	RouteTableId *string `locationName:"RouteTableId" type:"string" required:"true"`
 
 	VpcPeeringConnectionId *string `locationName:"VpcPeeringConnectionId" type:"string"`
 }
@@ -34,6 +36,24 @@ type ReplaceRouteInput struct {
 // String returns the string representation
 func (s ReplaceRouteInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *ReplaceRouteInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "ReplaceRouteInput"}
+
+	if s.DestinationCidrBlock == nil {
+		invalidParams.Add(aws.NewErrParamRequired("DestinationCidrBlock"))
+	}
+
+	if s.RouteTableId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("RouteTableId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type ReplaceRouteOutput struct {

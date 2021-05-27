@@ -4,6 +4,7 @@ package computing
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/nifcloud/nifcloud-sdk-go/internal/nifcloudutil"
@@ -24,7 +25,8 @@ type NiftyUpdateAlarmInput struct {
 
 	EmailAddress []string `locationName:"EmailAddress" type:"list"`
 
-	FunctionName FunctionNameOfNiftyUpdateAlarmRequest `locationName:"FunctionName" type:"string" enum:"true"`
+	// FunctionName is a required field
+	FunctionName FunctionNameOfNiftyUpdateAlarmRequest `locationName:"FunctionName" type:"string" required:"true" enum:"true"`
 
 	InstanceId []string `locationName:"InstanceId" type:"list"`
 
@@ -34,9 +36,11 @@ type NiftyUpdateAlarmInput struct {
 
 	Partition []string `locationName:"Partition" type:"list"`
 
-	Rule []RequestRuleOfNiftyUpdateAlarm `locationName:"Rule" type:"list"`
+	// Rule is a required field
+	Rule []RequestRuleOfNiftyUpdateAlarm `locationName:"Rule" type:"list" required:"true"`
 
-	RuleName *string `locationName:"RuleName" type:"string"`
+	// RuleName is a required field
+	RuleName *string `locationName:"RuleName" type:"string" required:"true"`
 
 	RuleNameUpdate *string `locationName:"RuleNameUpdate" type:"string"`
 }
@@ -44,6 +48,34 @@ type NiftyUpdateAlarmInput struct {
 // String returns the string representation
 func (s NiftyUpdateAlarmInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *NiftyUpdateAlarmInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "NiftyUpdateAlarmInput"}
+	if len(s.FunctionName) == 0 {
+		invalidParams.Add(aws.NewErrParamRequired("FunctionName"))
+	}
+
+	if s.Rule == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Rule"))
+	}
+
+	if s.RuleName == nil {
+		invalidParams.Add(aws.NewErrParamRequired("RuleName"))
+	}
+	if s.Rule != nil {
+		for i, v := range s.Rule {
+			if err := v.Validate(); err != nil {
+				invalidParams.AddNested(fmt.Sprintf("%s[%v]", "Rule", i), err.(aws.ErrInvalidParams))
+			}
+		}
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type NiftyUpdateAlarmOutput struct {

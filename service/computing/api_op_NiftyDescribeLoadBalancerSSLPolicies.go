@@ -12,7 +12,8 @@ import (
 type NiftyDescribeLoadBalancerSSLPoliciesInput struct {
 	_ struct{} `type:"structure"`
 
-	LoadBalancerName *string `locationName:"LoadBalancerName" type:"string"`
+	// LoadBalancerName is a required field
+	LoadBalancerName *string `locationName:"LoadBalancerName" type:"string" required:"true"`
 }
 
 // String returns the string representation
@@ -20,14 +21,26 @@ func (s NiftyDescribeLoadBalancerSSLPoliciesInput) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *NiftyDescribeLoadBalancerSSLPoliciesInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "NiftyDescribeLoadBalancerSSLPoliciesInput"}
+
+	if s.LoadBalancerName == nil {
+		invalidParams.Add(aws.NewErrParamRequired("LoadBalancerName"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
 type NiftyDescribeLoadBalancerSSLPoliciesOutput struct {
 	_ struct{} `type:"structure"`
 
 	LoadBalancerName *string `locationName:"LoadBalancerName" type:"string"`
 
-	NiftyDescribeLoadBalancerSSLPoliciesResult *NiftyDescribeLoadBalancerSSLPoliciesResult `locationName:"NiftyDescribeLoadBalancerSSLPoliciesResult" type:"structure"`
-
-	ResponseMetadata *ResponseMetadataOfNiftyDescribeLoadBalancerSSLPolicies `locationName:"ResponseMetadata" type:"structure"`
+	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 
 	SSLPoliciesDescriptions []SSLPoliciesDescriptions `locationName:"SSLPoliciesDescriptions" locationNameList:"member" type:"list"`
 }

@@ -12,14 +12,34 @@ import (
 type DeleteRouteInput struct {
 	_ struct{} `type:"structure"`
 
-	DestinationCidrBlock *string `locationName:"DestinationCidrBlock" type:"string"`
+	// DestinationCidrBlock is a required field
+	DestinationCidrBlock *string `locationName:"DestinationCidrBlock" type:"string" required:"true"`
 
-	RouteTableId *string `locationName:"RouteTableId" type:"string"`
+	// RouteTableId is a required field
+	RouteTableId *string `locationName:"RouteTableId" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s DeleteRouteInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *DeleteRouteInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "DeleteRouteInput"}
+
+	if s.DestinationCidrBlock == nil {
+		invalidParams.Add(aws.NewErrParamRequired("DestinationCidrBlock"))
+	}
+
+	if s.RouteTableId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("RouteTableId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type DeleteRouteOutput struct {

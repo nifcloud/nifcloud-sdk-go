@@ -12,12 +12,27 @@ import (
 type RefreshInstanceBackupRuleInput struct {
 	_ struct{} `type:"structure"`
 
-	InstanceBackupRuleId *string `locationName:"InstanceBackupRuleId" type:"string"`
+	// InstanceBackupRuleId is a required field
+	InstanceBackupRuleId *string `locationName:"InstanceBackupRuleId" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s RefreshInstanceBackupRuleInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *RefreshInstanceBackupRuleInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "RefreshInstanceBackupRuleInput"}
+
+	if s.InstanceBackupRuleId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("InstanceBackupRuleId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type RefreshInstanceBackupRuleOutput struct {

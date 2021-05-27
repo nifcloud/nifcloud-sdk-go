@@ -14,7 +14,8 @@ type CopyFromBackupInstanceInput struct {
 
 	AccountingType AccountingTypeOfCopyFromBackupInstanceRequest `locationName:"AccountingType" type:"string" enum:"true"`
 
-	BackupInstanceUniqueId *string `locationName:"BackupInstanceUniqueId" type:"string"`
+	// BackupInstanceUniqueId is a required field
+	BackupInstanceUniqueId *string `locationName:"BackupInstanceUniqueId" type:"string" required:"true"`
 
 	Description *string `locationName:"Description" type:"string"`
 
@@ -34,10 +35,24 @@ func (s CopyFromBackupInstanceInput) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *CopyFromBackupInstanceInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "CopyFromBackupInstanceInput"}
+
+	if s.BackupInstanceUniqueId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("BackupInstanceUniqueId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
 type CopyFromBackupInstanceOutput struct {
 	_ struct{} `type:"structure"`
 
-	GroupSet []GroupSetOfCopyFromBackupInstance `locationName:"groupSet" locationNameList:"item" type:"list"`
+	GroupSet []GroupSet `locationName:"groupSet" locationNameList:"item" type:"list"`
 
 	Instance *Instance `locationName:"instance" type:"structure"`
 

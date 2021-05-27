@@ -4,6 +4,7 @@ package nas
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
@@ -13,11 +14,13 @@ import (
 type GetMetricStatisticsInput struct {
 	_ struct{} `type:"structure"`
 
-	Dimensions []RequestDimensions `locationName:"Dimensions" locationNameList:"member" type:"list"`
+	// Dimensions is a required field
+	Dimensions []RequestDimensions `locationName:"Dimensions" locationNameList:"member" type:"list" required:"true"`
 
 	EndTime *time.Time `locationName:"EndTime" type:"timestamp"`
 
-	MetricName *string `locationName:"MetricName" type:"string"`
+	// MetricName is a required field
+	MetricName *string `locationName:"MetricName" type:"string" required:"true"`
 
 	StartTime *time.Time `locationName:"StartTime" type:"timestamp"`
 }
@@ -25,6 +28,31 @@ type GetMetricStatisticsInput struct {
 // String returns the string representation
 func (s GetMetricStatisticsInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *GetMetricStatisticsInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "GetMetricStatisticsInput"}
+
+	if s.Dimensions == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Dimensions"))
+	}
+
+	if s.MetricName == nil {
+		invalidParams.Add(aws.NewErrParamRequired("MetricName"))
+	}
+	if s.Dimensions != nil {
+		for i, v := range s.Dimensions {
+			if err := v.Validate(); err != nil {
+				invalidParams.AddNested(fmt.Sprintf("%s[%v]", "Dimensions", i), err.(aws.ErrInvalidParams))
+			}
+		}
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type GetMetricStatisticsOutput struct {
