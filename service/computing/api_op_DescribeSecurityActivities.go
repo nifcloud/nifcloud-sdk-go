@@ -14,7 +14,8 @@ type DescribeSecurityActivitiesInput struct {
 
 	ActivityDate *string `locationName:"ActivityDate" type:"string"`
 
-	GroupName *string `locationName:"GroupName" type:"string"`
+	// GroupName is a required field
+	GroupName *string `locationName:"GroupName" type:"string" required:"true"`
 
 	Range *RequestRange `locationName:"Range" type:"structure"`
 }
@@ -22,6 +23,20 @@ type DescribeSecurityActivitiesInput struct {
 // String returns the string representation
 func (s DescribeSecurityActivitiesInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *DescribeSecurityActivitiesInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "DescribeSecurityActivitiesInput"}
+
+	if s.GroupName == nil {
+		invalidParams.Add(aws.NewErrParamRequired("GroupName"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type DescribeSecurityActivitiesOutput struct {

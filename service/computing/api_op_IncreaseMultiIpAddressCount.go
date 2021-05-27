@@ -12,14 +12,34 @@ import (
 type IncreaseMultiIpAddressCountInput struct {
 	_ struct{} `type:"structure"`
 
-	IpAddressCount *int64 `locationName:"IpAddressCount" type:"integer"`
+	// IpAddressCount is a required field
+	IpAddressCount *int64 `locationName:"IpAddressCount" type:"integer" required:"true"`
 
-	MultiIpAddressGroupId *string `locationName:"MultiIpAddressGroupId" type:"string"`
+	// MultiIpAddressGroupId is a required field
+	MultiIpAddressGroupId *string `locationName:"MultiIpAddressGroupId" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s IncreaseMultiIpAddressCountInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *IncreaseMultiIpAddressCountInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "IncreaseMultiIpAddressCountInput"}
+
+	if s.IpAddressCount == nil {
+		invalidParams.Add(aws.NewErrParamRequired("IpAddressCount"))
+	}
+
+	if s.MultiIpAddressGroupId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("MultiIpAddressGroupId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type IncreaseMultiIpAddressCountOutput struct {

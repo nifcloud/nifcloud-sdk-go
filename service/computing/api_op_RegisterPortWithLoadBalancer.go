@@ -14,7 +14,8 @@ type RegisterPortWithLoadBalancerInput struct {
 
 	Listeners []RequestListenersOfRegisterPortWithLoadBalancer `locationName:"Listeners" locationNameList:"member" type:"list"`
 
-	LoadBalancerName *string `locationName:"LoadBalancerName" type:"string"`
+	// LoadBalancerName is a required field
+	LoadBalancerName *string `locationName:"LoadBalancerName" type:"string" required:"true"`
 }
 
 // String returns the string representation
@@ -22,14 +23,26 @@ func (s RegisterPortWithLoadBalancerInput) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *RegisterPortWithLoadBalancerInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "RegisterPortWithLoadBalancerInput"}
+
+	if s.LoadBalancerName == nil {
+		invalidParams.Add(aws.NewErrParamRequired("LoadBalancerName"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
 type RegisterPortWithLoadBalancerOutput struct {
 	_ struct{} `type:"structure"`
 
 	Listeners []Listeners `locationName:"Listeners" locationNameList:"member" type:"list"`
 
-	RegisterPortWithLoadBalancerResult *RegisterPortWithLoadBalancerResult `locationName:"RegisterPortWithLoadBalancerResult" type:"structure"`
-
-	ResponseMetadata *ResponseMetadataOfRegisterPortWithLoadBalancer `locationName:"ResponseMetadata" type:"structure"`
+	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }
 
 // String returns the string representation

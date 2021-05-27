@@ -14,12 +14,27 @@ type DescribeInstanceAttributeInput struct {
 
 	Attribute AttributeOfDescribeInstanceAttributeRequest `locationName:"Attribute" type:"string" enum:"true"`
 
-	InstanceId *string `locationName:"InstanceId" type:"string"`
+	// InstanceId is a required field
+	InstanceId *string `locationName:"InstanceId" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s DescribeInstanceAttributeInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *DescribeInstanceAttributeInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "DescribeInstanceAttributeInput"}
+
+	if s.InstanceId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("InstanceId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type DescribeInstanceAttributeOutput struct {

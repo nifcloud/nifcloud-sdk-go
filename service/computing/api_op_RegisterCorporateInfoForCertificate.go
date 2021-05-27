@@ -12,50 +12,155 @@ import (
 type RegisterCorporateInfoForCertificateInput struct {
 	_ struct{} `type:"structure"`
 
-	Agreement *bool `locationName:"Agreement" type:"boolean"`
+	// Agreement is a required field
+	Agreement *bool `locationName:"Agreement" type:"boolean" required:"true"`
 
-	AlphabetName1 *string `locationName:"AlphabetName1" type:"string"`
+	// AlphabetName1 is a required field
+	AlphabetName1 *string `locationName:"AlphabetName1" type:"string" required:"true"`
 
-	AlphabetName2 *string `locationName:"AlphabetName2" type:"string"`
+	// AlphabetName2 is a required field
+	AlphabetName2 *string `locationName:"AlphabetName2" type:"string" required:"true"`
 
-	City *string `locationName:"City" type:"string"`
+	// City is a required field
+	City *string `locationName:"City" type:"string" required:"true"`
 
-	CorpGrade *string `locationName:"CorpGrade" type:"string"`
+	// CorpGrade is a required field
+	CorpGrade *string `locationName:"CorpGrade" type:"string" required:"true"`
 
-	CorpName *string `locationName:"CorpName" type:"string"`
+	// CorpName is a required field
+	CorpName *string `locationName:"CorpName" type:"string" required:"true"`
 
-	DivisionName *string `locationName:"DivisionName" type:"string"`
+	// DivisionName is a required field
+	DivisionName *string `locationName:"DivisionName" type:"string" required:"true"`
 
-	EmailAddress *string `locationName:"EmailAddress" type:"string"`
+	// EmailAddress is a required field
+	EmailAddress *string `locationName:"EmailAddress" type:"string" required:"true"`
 
-	KanaName1 *string `locationName:"KanaName1" type:"string"`
+	// KanaName1 is a required field
+	KanaName1 *string `locationName:"KanaName1" type:"string" required:"true"`
 
-	KanaName2 *string `locationName:"KanaName2" type:"string"`
+	// KanaName2 is a required field
+	KanaName2 *string `locationName:"KanaName2" type:"string" required:"true"`
 
-	Name1 *string `locationName:"Name1" type:"string"`
+	// Name1 is a required field
+	Name1 *string `locationName:"Name1" type:"string" required:"true"`
 
-	Name2 *string `locationName:"Name2" type:"string"`
+	// Name2 is a required field
+	Name2 *string `locationName:"Name2" type:"string" required:"true"`
 
-	PhoneNumber *string `locationName:"PhoneNumber" type:"string"`
+	// PhoneNumber is a required field
+	PhoneNumber *string `locationName:"PhoneNumber" type:"string" required:"true"`
 
-	PostName *string `locationName:"PostName" type:"string"`
+	// PostName is a required field
+	PostName *string `locationName:"PostName" type:"string" required:"true"`
 
-	Pref *string `locationName:"Pref" type:"string"`
+	// Pref is a required field
+	Pref *string `locationName:"Pref" type:"string" required:"true"`
 
-	PresidentName1 *string `locationName:"PresidentName1" type:"string"`
+	// PresidentName1 is a required field
+	PresidentName1 *string `locationName:"PresidentName1" type:"string" required:"true"`
 
-	PresidentName2 *string `locationName:"PresidentName2" type:"string"`
+	// PresidentName2 is a required field
+	PresidentName2 *string `locationName:"PresidentName2" type:"string" required:"true"`
 
 	TdbCode *string `locationName:"TdbCode" type:"string"`
 
-	Zip1 *string `locationName:"Zip1" type:"string"`
+	// Zip1 is a required field
+	Zip1 *string `locationName:"Zip1" type:"string" required:"true"`
 
-	Zip2 *string `locationName:"Zip2" type:"string"`
+	// Zip2 is a required field
+	Zip2 *string `locationName:"Zip2" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s RegisterCorporateInfoForCertificateInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *RegisterCorporateInfoForCertificateInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "RegisterCorporateInfoForCertificateInput"}
+
+	if s.Agreement == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Agreement"))
+	}
+
+	if s.AlphabetName1 == nil {
+		invalidParams.Add(aws.NewErrParamRequired("AlphabetName1"))
+	}
+
+	if s.AlphabetName2 == nil {
+		invalidParams.Add(aws.NewErrParamRequired("AlphabetName2"))
+	}
+
+	if s.City == nil {
+		invalidParams.Add(aws.NewErrParamRequired("City"))
+	}
+
+	if s.CorpGrade == nil {
+		invalidParams.Add(aws.NewErrParamRequired("CorpGrade"))
+	}
+
+	if s.CorpName == nil {
+		invalidParams.Add(aws.NewErrParamRequired("CorpName"))
+	}
+
+	if s.DivisionName == nil {
+		invalidParams.Add(aws.NewErrParamRequired("DivisionName"))
+	}
+
+	if s.EmailAddress == nil {
+		invalidParams.Add(aws.NewErrParamRequired("EmailAddress"))
+	}
+
+	if s.KanaName1 == nil {
+		invalidParams.Add(aws.NewErrParamRequired("KanaName1"))
+	}
+
+	if s.KanaName2 == nil {
+		invalidParams.Add(aws.NewErrParamRequired("KanaName2"))
+	}
+
+	if s.Name1 == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Name1"))
+	}
+
+	if s.Name2 == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Name2"))
+	}
+
+	if s.PhoneNumber == nil {
+		invalidParams.Add(aws.NewErrParamRequired("PhoneNumber"))
+	}
+
+	if s.PostName == nil {
+		invalidParams.Add(aws.NewErrParamRequired("PostName"))
+	}
+
+	if s.Pref == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Pref"))
+	}
+
+	if s.PresidentName1 == nil {
+		invalidParams.Add(aws.NewErrParamRequired("PresidentName1"))
+	}
+
+	if s.PresidentName2 == nil {
+		invalidParams.Add(aws.NewErrParamRequired("PresidentName2"))
+	}
+
+	if s.Zip1 == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Zip1"))
+	}
+
+	if s.Zip2 == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Zip2"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type RegisterCorporateInfoForCertificateOutput struct {

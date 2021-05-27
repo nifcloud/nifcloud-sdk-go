@@ -28,7 +28,8 @@ type CreateVpnConnectionInput struct {
 
 	NiftyVpnGatewayName *string `locationName:"NiftyVpnGatewayName" type:"string"`
 
-	Type TypeOfCreateVpnConnectionRequest `locationName:"Type" type:"string" enum:"true"`
+	// Type is a required field
+	Type TypeOfCreateVpnConnectionRequest `locationName:"Type" type:"string" required:"true" enum:"true"`
 
 	VpnGatewayId *string `locationName:"VpnGatewayId" type:"string"`
 }
@@ -36,6 +37,19 @@ type CreateVpnConnectionInput struct {
 // String returns the string representation
 func (s CreateVpnConnectionInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *CreateVpnConnectionInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "CreateVpnConnectionInput"}
+	if len(s.Type) == 0 {
+		invalidParams.Add(aws.NewErrParamRequired("Type"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type CreateVpnConnectionOutput struct {

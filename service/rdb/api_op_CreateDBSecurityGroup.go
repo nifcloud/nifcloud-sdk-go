@@ -12,16 +12,41 @@ import (
 type CreateDBSecurityGroupInput struct {
 	_ struct{} `type:"structure"`
 
-	DBSecurityGroupDescription *string `locationName:"DBSecurityGroupDescription" type:"string"`
+	// DBSecurityGroupDescription is a required field
+	DBSecurityGroupDescription *string `locationName:"DBSecurityGroupDescription" type:"string" required:"true"`
 
-	DBSecurityGroupName *string `locationName:"DBSecurityGroupName" type:"string"`
+	// DBSecurityGroupName is a required field
+	DBSecurityGroupName *string `locationName:"DBSecurityGroupName" type:"string" required:"true"`
 
-	NiftyAvailabilityZone *string `locationName:"NiftyAvailabilityZone" type:"string"`
+	// NiftyAvailabilityZone is a required field
+	NiftyAvailabilityZone *string `locationName:"NiftyAvailabilityZone" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s CreateDBSecurityGroupInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *CreateDBSecurityGroupInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "CreateDBSecurityGroupInput"}
+
+	if s.DBSecurityGroupDescription == nil {
+		invalidParams.Add(aws.NewErrParamRequired("DBSecurityGroupDescription"))
+	}
+
+	if s.DBSecurityGroupName == nil {
+		invalidParams.Add(aws.NewErrParamRequired("DBSecurityGroupName"))
+	}
+
+	if s.NiftyAvailabilityZone == nil {
+		invalidParams.Add(aws.NewErrParamRequired("NiftyAvailabilityZone"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type CreateDBSecurityGroupOutput struct {

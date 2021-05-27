@@ -14,7 +14,8 @@ type RevokeDBSecurityGroupIngressInput struct {
 
 	CIDRIP *string `locationName:"CIDRIP" type:"string"`
 
-	DBSecurityGroupName *string `locationName:"DBSecurityGroupName" type:"string"`
+	// DBSecurityGroupName is a required field
+	DBSecurityGroupName *string `locationName:"DBSecurityGroupName" type:"string" required:"true"`
 
 	EC2SecurityGroupName *string `locationName:"EC2SecurityGroupName" type:"string"`
 }
@@ -22,6 +23,20 @@ type RevokeDBSecurityGroupIngressInput struct {
 // String returns the string representation
 func (s RevokeDBSecurityGroupIngressInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *RevokeDBSecurityGroupIngressInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "RevokeDBSecurityGroupIngressInput"}
+
+	if s.DBSecurityGroupName == nil {
+		invalidParams.Add(aws.NewErrParamRequired("DBSecurityGroupName"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type RevokeDBSecurityGroupIngressOutput struct {

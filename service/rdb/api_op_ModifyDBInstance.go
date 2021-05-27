@@ -28,7 +28,8 @@ type ModifyDBInstanceInput struct {
 
 	DBInstanceClass *string `locationName:"DBInstanceClass" type:"string"`
 
-	DBInstanceIdentifier *string `locationName:"DBInstanceIdentifier" type:"string"`
+	// DBInstanceIdentifier is a required field
+	DBInstanceIdentifier *string `locationName:"DBInstanceIdentifier" type:"string" required:"true"`
 
 	DBParameterGroupName *string `locationName:"DBParameterGroupName" type:"string"`
 
@@ -58,6 +59,20 @@ type ModifyDBInstanceInput struct {
 // String returns the string representation
 func (s ModifyDBInstanceInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *ModifyDBInstanceInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "ModifyDBInstanceInput"}
+
+	if s.DBInstanceIdentifier == nil {
+		invalidParams.Add(aws.NewErrParamRequired("DBInstanceIdentifier"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type ModifyDBInstanceOutput struct {

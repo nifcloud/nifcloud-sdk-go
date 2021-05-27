@@ -14,7 +14,8 @@ type StopInstancesInput struct {
 
 	Force *bool `locationName:"Force" type:"boolean"`
 
-	InstanceId []string `locationName:"InstanceId" type:"list"`
+	// InstanceId is a required field
+	InstanceId []string `locationName:"InstanceId" type:"list" required:"true"`
 
 	Tenancy []string `locationName:"Tenancy" type:"list"`
 }
@@ -22,6 +23,20 @@ type StopInstancesInput struct {
 // String returns the string representation
 func (s StopInstancesInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *StopInstancesInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "StopInstancesInput"}
+
+	if s.InstanceId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("InstanceId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type StopInstancesOutput struct {

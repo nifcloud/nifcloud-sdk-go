@@ -14,15 +14,18 @@ type CreateDBInstanceInput struct {
 
 	AccountingType *string `locationName:"AccountingType" type:"string"`
 
-	AllocatedStorage *int64 `locationName:"AllocatedStorage" type:"integer"`
+	// AllocatedStorage is a required field
+	AllocatedStorage *int64 `locationName:"AllocatedStorage" type:"integer" required:"true"`
 
 	AvailabilityZone *string `locationName:"AvailabilityZone" type:"string"`
 
 	BackupRetentionPeriod *int64 `locationName:"BackupRetentionPeriod" type:"integer"`
 
-	DBInstanceClass *string `locationName:"DBInstanceClass" type:"string"`
+	// DBInstanceClass is a required field
+	DBInstanceClass *string `locationName:"DBInstanceClass" type:"string" required:"true"`
 
-	DBInstanceIdentifier *string `locationName:"DBInstanceIdentifier" type:"string"`
+	// DBInstanceIdentifier is a required field
+	DBInstanceIdentifier *string `locationName:"DBInstanceIdentifier" type:"string" required:"true"`
 
 	DBName *string `locationName:"DBName" type:"string"`
 
@@ -30,15 +33,18 @@ type CreateDBInstanceInput struct {
 
 	DBSecurityGroups []string `locationName:"DBSecurityGroups" locationNameList:"member" type:"list"`
 
-	Engine *string `locationName:"Engine" type:"string"`
+	// Engine is a required field
+	Engine *string `locationName:"Engine" type:"string" required:"true"`
 
 	EngineVersion *string `locationName:"EngineVersion" type:"string"`
 
 	LicenseModel *string `locationName:"LicenseModel" type:"string"`
 
-	MasterUserPassword *string `locationName:"MasterUserPassword" type:"string"`
+	// MasterUserPassword is a required field
+	MasterUserPassword *string `locationName:"MasterUserPassword" type:"string" required:"true"`
 
-	MasterUsername *string `locationName:"MasterUsername" type:"string"`
+	// MasterUsername is a required field
+	MasterUsername *string `locationName:"MasterUsername" type:"string" required:"true"`
 
 	MultiAZ *bool `locationName:"MultiAZ" type:"boolean"`
 
@@ -72,6 +78,40 @@ type CreateDBInstanceInput struct {
 // String returns the string representation
 func (s CreateDBInstanceInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *CreateDBInstanceInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "CreateDBInstanceInput"}
+
+	if s.AllocatedStorage == nil {
+		invalidParams.Add(aws.NewErrParamRequired("AllocatedStorage"))
+	}
+
+	if s.DBInstanceClass == nil {
+		invalidParams.Add(aws.NewErrParamRequired("DBInstanceClass"))
+	}
+
+	if s.DBInstanceIdentifier == nil {
+		invalidParams.Add(aws.NewErrParamRequired("DBInstanceIdentifier"))
+	}
+
+	if s.Engine == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Engine"))
+	}
+
+	if s.MasterUserPassword == nil {
+		invalidParams.Add(aws.NewErrParamRequired("MasterUserPassword"))
+	}
+
+	if s.MasterUsername == nil {
+		invalidParams.Add(aws.NewErrParamRequired("MasterUsername"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type CreateDBInstanceOutput struct {

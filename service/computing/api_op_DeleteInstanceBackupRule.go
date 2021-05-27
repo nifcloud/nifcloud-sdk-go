@@ -12,12 +12,27 @@ import (
 type DeleteInstanceBackupRuleInput struct {
 	_ struct{} `type:"structure"`
 
-	InstanceBackupRuleId *string `locationName:"InstanceBackupRuleId" type:"string"`
+	// InstanceBackupRuleId is a required field
+	InstanceBackupRuleId *string `locationName:"InstanceBackupRuleId" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s DeleteInstanceBackupRuleInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *DeleteInstanceBackupRuleInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "DeleteInstanceBackupRuleInput"}
+
+	if s.InstanceBackupRuleId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("InstanceBackupRuleId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type DeleteInstanceBackupRuleOutput struct {

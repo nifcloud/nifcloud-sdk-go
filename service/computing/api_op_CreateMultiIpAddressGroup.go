@@ -14,16 +14,46 @@ type CreateMultiIpAddressGroupInput struct {
 
 	Description *string `locationName:"Description" type:"string"`
 
-	IpAddressCount *int64 `locationName:"IpAddressCount" type:"integer"`
+	// IpAddressCount is a required field
+	IpAddressCount *int64 `locationName:"IpAddressCount" type:"integer" required:"true"`
 
-	MultiIpAddressGroupName *string `locationName:"MultiIpAddressGroupName" type:"string"`
+	// MultiIpAddressGroupName is a required field
+	MultiIpAddressGroupName *string `locationName:"MultiIpAddressGroupName" type:"string" required:"true"`
 
-	Placement *RequestPlacementOfCreateMultiIpAddressGroup `locationName:"Placement" type:"structure"`
+	// Placement is a required field
+	Placement *RequestPlacementOfCreateMultiIpAddressGroup `locationName:"Placement" type:"structure" required:"true"`
 }
 
 // String returns the string representation
 func (s CreateMultiIpAddressGroupInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *CreateMultiIpAddressGroupInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "CreateMultiIpAddressGroupInput"}
+
+	if s.IpAddressCount == nil {
+		invalidParams.Add(aws.NewErrParamRequired("IpAddressCount"))
+	}
+
+	if s.MultiIpAddressGroupName == nil {
+		invalidParams.Add(aws.NewErrParamRequired("MultiIpAddressGroupName"))
+	}
+
+	if s.Placement == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Placement"))
+	}
+	if s.Placement != nil {
+		if err := s.Placement.Validate(); err != nil {
+			invalidParams.AddNested("Placement", err.(aws.ErrInvalidParams))
+		}
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type CreateMultiIpAddressGroupOutput struct {

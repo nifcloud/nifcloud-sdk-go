@@ -20,7 +20,8 @@ type CreateLoadBalancerInput struct {
 
 	Listeners []RequestListeners `locationName:"Listeners" locationNameList:"member" type:"list"`
 
-	LoadBalancerName *string `locationName:"LoadBalancerName" type:"string"`
+	// LoadBalancerName is a required field
+	LoadBalancerName *string `locationName:"LoadBalancerName" type:"string" required:"true"`
 
 	NetworkVolume *int64 `locationName:"NetworkVolume" type:"integer"`
 
@@ -32,14 +33,26 @@ func (s CreateLoadBalancerInput) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *CreateLoadBalancerInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "CreateLoadBalancerInput"}
+
+	if s.LoadBalancerName == nil {
+		invalidParams.Add(aws.NewErrParamRequired("LoadBalancerName"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
 type CreateLoadBalancerOutput struct {
 	_ struct{} `type:"structure"`
 
-	CreateLoadBalancerResult *CreateLoadBalancerResult `locationName:"CreateLoadBalancerResult" type:"structure"`
-
 	DNSName *string `locationName:"DNSName" type:"string"`
 
-	ResponseMetadata *ResponseMetadataOfCreateLoadBalancer `locationName:"ResponseMetadata" type:"structure"`
+	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }
 
 // String returns the string representation

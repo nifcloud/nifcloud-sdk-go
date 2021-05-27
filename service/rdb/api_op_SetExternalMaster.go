@@ -12,24 +12,64 @@ import (
 type SetExternalMasterInput struct {
 	_ struct{} `type:"structure"`
 
-	BinlogFileName *string `locationName:"BinlogFileName" type:"string"`
+	// BinlogFileName is a required field
+	BinlogFileName *string `locationName:"BinlogFileName" type:"string" required:"true"`
 
-	BinlogPosition *int64 `locationName:"BinlogPosition" type:"integer"`
+	// BinlogPosition is a required field
+	BinlogPosition *int64 `locationName:"BinlogPosition" type:"integer" required:"true"`
 
-	DBInstanceIdentifier *string `locationName:"DBInstanceIdentifier" type:"string"`
+	// DBInstanceIdentifier is a required field
+	DBInstanceIdentifier *string `locationName:"DBInstanceIdentifier" type:"string" required:"true"`
 
-	MasterHost *string `locationName:"MasterHost" type:"string"`
+	// MasterHost is a required field
+	MasterHost *string `locationName:"MasterHost" type:"string" required:"true"`
 
 	MasterPort *int64 `locationName:"MasterPort" type:"integer"`
 
-	ReplicationUserName *string `locationName:"ReplicationUserName" type:"string"`
+	// ReplicationUserName is a required field
+	ReplicationUserName *string `locationName:"ReplicationUserName" type:"string" required:"true"`
 
-	ReplicationUserPassword *string `locationName:"ReplicationUserPassword" type:"string"`
+	// ReplicationUserPassword is a required field
+	ReplicationUserPassword *string `locationName:"ReplicationUserPassword" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s SetExternalMasterInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *SetExternalMasterInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "SetExternalMasterInput"}
+
+	if s.BinlogFileName == nil {
+		invalidParams.Add(aws.NewErrParamRequired("BinlogFileName"))
+	}
+
+	if s.BinlogPosition == nil {
+		invalidParams.Add(aws.NewErrParamRequired("BinlogPosition"))
+	}
+
+	if s.DBInstanceIdentifier == nil {
+		invalidParams.Add(aws.NewErrParamRequired("DBInstanceIdentifier"))
+	}
+
+	if s.MasterHost == nil {
+		invalidParams.Add(aws.NewErrParamRequired("MasterHost"))
+	}
+
+	if s.ReplicationUserName == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ReplicationUserName"))
+	}
+
+	if s.ReplicationUserPassword == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ReplicationUserPassword"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type SetExternalMasterOutput struct {

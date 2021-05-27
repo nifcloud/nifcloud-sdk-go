@@ -12,7 +12,8 @@ import (
 type DescribeAssociatedUsersInput struct {
 	_ struct{} `type:"structure"`
 
-	FunctionName FunctionNameOfDescribeAssociatedUsersRequest `locationName:"FunctionName" type:"string" enum:"true"`
+	// FunctionName is a required field
+	FunctionName FunctionNameOfDescribeAssociatedUsersRequest `locationName:"FunctionName" type:"string" required:"true" enum:"true"`
 }
 
 // String returns the string representation
@@ -20,14 +21,25 @@ func (s DescribeAssociatedUsersInput) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *DescribeAssociatedUsersInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "DescribeAssociatedUsersInput"}
+	if len(s.FunctionName) == 0 {
+		invalidParams.Add(aws.NewErrParamRequired("FunctionName"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
 type DescribeAssociatedUsersOutput struct {
 	_ struct{} `type:"structure"`
 
-	DescribeAssociatedUsersResult *DescribeAssociatedUsersResult `locationName:"DescribeAssociatedUsersResult" type:"structure"`
+	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 
-	ResponseMetadata *ResponseMetadataOfDescribeAssociatedUsers `locationName:"ResponseMetadata" type:"structure"`
-
-	Users []UsersOfDescribeAssociatedUsers `locationName:"Users" locationNameList:"member" type:"list"`
+	Users []Users `locationName:"Users" locationNameList:"member" type:"list"`
 }
 
 // String returns the string representation

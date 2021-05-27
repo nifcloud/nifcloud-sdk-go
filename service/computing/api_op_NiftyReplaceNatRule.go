@@ -14,23 +14,27 @@ type NiftyReplaceNatRuleInput struct {
 
 	Description *string `locationName:"Description" type:"string"`
 
-	Destination *RequestDestinationOfNiftyReplaceNatRule `locationName:"Destination" type:"structure"`
+	Destination *RequestDestination `locationName:"Destination" type:"structure"`
 
-	InboundInterface *RequestInboundInterfaceOfNiftyReplaceNatRule `locationName:"InboundInterface" type:"structure"`
+	InboundInterface *RequestInboundInterface `locationName:"InboundInterface" type:"structure"`
 
-	NatTableId *string `locationName:"NatTableId" type:"string"`
+	// NatTableId is a required field
+	NatTableId *string `locationName:"NatTableId" type:"string" required:"true"`
 
-	NatType NatTypeOfNiftyReplaceNatRuleRequest `locationName:"NatType" type:"string" enum:"true"`
+	// NatType is a required field
+	NatType NatTypeOfNiftyReplaceNatRuleRequest `locationName:"NatType" type:"string" required:"true" enum:"true"`
 
-	OutboundInterface *RequestOutboundInterfaceOfNiftyReplaceNatRule `locationName:"OutboundInterface" type:"structure"`
+	OutboundInterface *RequestOutboundInterface `locationName:"OutboundInterface" type:"structure"`
 
-	Protocol ProtocolOfNiftyReplaceNatRuleRequest `locationName:"Protocol" type:"string" enum:"true"`
+	// Protocol is a required field
+	Protocol ProtocolOfNiftyReplaceNatRuleRequest `locationName:"Protocol" type:"string" required:"true" enum:"true"`
 
-	RuleNumber *string `locationName:"RuleNumber" type:"string"`
+	// RuleNumber is a required field
+	RuleNumber *string `locationName:"RuleNumber" type:"string" required:"true"`
 
-	Source *RequestSourceOfNiftyReplaceNatRule `locationName:"Source" type:"structure"`
+	Source *RequestSource `locationName:"Source" type:"structure"`
 
-	Translation *RequestTranslationOfNiftyReplaceNatRule `locationName:"Translation" type:"structure"`
+	Translation *RequestTranslation `locationName:"Translation" type:"structure"`
 }
 
 // String returns the string representation
@@ -38,10 +42,34 @@ func (s NiftyReplaceNatRuleInput) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *NiftyReplaceNatRuleInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "NiftyReplaceNatRuleInput"}
+
+	if s.NatTableId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("NatTableId"))
+	}
+	if len(s.NatType) == 0 {
+		invalidParams.Add(aws.NewErrParamRequired("NatType"))
+	}
+	if len(s.Protocol) == 0 {
+		invalidParams.Add(aws.NewErrParamRequired("Protocol"))
+	}
+
+	if s.RuleNumber == nil {
+		invalidParams.Add(aws.NewErrParamRequired("RuleNumber"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
 type NiftyReplaceNatRuleOutput struct {
 	_ struct{} `type:"structure"`
 
-	NatRule *NatRuleOfNiftyReplaceNatRule `locationName:"natRule" type:"structure"`
+	NatRule *NatRule `locationName:"natRule" type:"structure"`
 
 	NatTableId *string `locationName:"natTableId" type:"string"`
 

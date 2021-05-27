@@ -16,7 +16,8 @@ type NiftyAssociateRouteTableWithVpnGatewayInput struct {
 
 	NiftyVpnGatewayName *string `locationName:"NiftyVpnGatewayName" type:"string"`
 
-	RouteTableId *string `locationName:"RouteTableId" type:"string"`
+	// RouteTableId is a required field
+	RouteTableId *string `locationName:"RouteTableId" type:"string" required:"true"`
 
 	VpnGatewayId *string `locationName:"VpnGatewayId" type:"string"`
 }
@@ -24,6 +25,20 @@ type NiftyAssociateRouteTableWithVpnGatewayInput struct {
 // String returns the string representation
 func (s NiftyAssociateRouteTableWithVpnGatewayInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *NiftyAssociateRouteTableWithVpnGatewayInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "NiftyAssociateRouteTableWithVpnGatewayInput"}
+
+	if s.RouteTableId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("RouteTableId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type NiftyAssociateRouteTableWithVpnGatewayOutput struct {

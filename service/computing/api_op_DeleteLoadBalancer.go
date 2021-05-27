@@ -12,11 +12,14 @@ import (
 type DeleteLoadBalancerInput struct {
 	_ struct{} `type:"structure"`
 
-	InstancePort *int64 `locationName:"InstancePort" type:"integer"`
+	// InstancePort is a required field
+	InstancePort *int64 `locationName:"InstancePort" type:"integer" required:"true"`
 
-	LoadBalancerName *string `locationName:"LoadBalancerName" type:"string"`
+	// LoadBalancerName is a required field
+	LoadBalancerName *string `locationName:"LoadBalancerName" type:"string" required:"true"`
 
-	LoadBalancerPort *int64 `locationName:"LoadBalancerPort" type:"integer"`
+	// LoadBalancerPort is a required field
+	LoadBalancerPort *int64 `locationName:"LoadBalancerPort" type:"integer" required:"true"`
 }
 
 // String returns the string representation
@@ -24,12 +27,34 @@ func (s DeleteLoadBalancerInput) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *DeleteLoadBalancerInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "DeleteLoadBalancerInput"}
+
+	if s.InstancePort == nil {
+		invalidParams.Add(aws.NewErrParamRequired("InstancePort"))
+	}
+
+	if s.LoadBalancerName == nil {
+		invalidParams.Add(aws.NewErrParamRequired("LoadBalancerName"))
+	}
+
+	if s.LoadBalancerPort == nil {
+		invalidParams.Add(aws.NewErrParamRequired("LoadBalancerPort"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
 type DeleteLoadBalancerOutput struct {
 	_ struct{} `type:"structure"`
 
 	DeleteLoadBalancerResult *string `locationName:"DeleteLoadBalancerResult" type:"string"`
 
-	ResponseMetadata *ResponseMetadataOfDeleteLoadBalancer `locationName:"ResponseMetadata" type:"structure"`
+	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }
 
 // String returns the string representation

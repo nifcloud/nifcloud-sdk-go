@@ -16,7 +16,8 @@ type DescribeInstanceBackupRuleActivitiesInput struct {
 
 	EndDateTime *string `locationName:"EndDateTime" type:"string"`
 
-	InstanceBackupRuleId *string `locationName:"InstanceBackupRuleId" type:"string"`
+	// InstanceBackupRuleId is a required field
+	InstanceBackupRuleId *string `locationName:"InstanceBackupRuleId" type:"string" required:"true"`
 
 	MaxRecords *int64 `locationName:"MaxRecords" type:"integer"`
 }
@@ -24,6 +25,20 @@ type DescribeInstanceBackupRuleActivitiesInput struct {
 // String returns the string representation
 func (s DescribeInstanceBackupRuleActivitiesInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *DescribeInstanceBackupRuleActivitiesInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "DescribeInstanceBackupRuleActivitiesInput"}
+
+	if s.InstanceBackupRuleId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("InstanceBackupRuleId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type DescribeInstanceBackupRuleActivitiesOutput struct {

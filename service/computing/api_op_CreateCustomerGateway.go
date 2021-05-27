@@ -14,7 +14,8 @@ type CreateCustomerGatewayInput struct {
 
 	BgpAsn *int64 `locationName:"BgpAsn" type:"integer"`
 
-	IpAddress *string `locationName:"IpAddress" type:"string"`
+	// IpAddress is a required field
+	IpAddress *string `locationName:"IpAddress" type:"string" required:"true"`
 
 	NiftyCustomerGatewayDescription *string `locationName:"NiftyCustomerGatewayDescription" type:"string"`
 
@@ -30,6 +31,20 @@ type CreateCustomerGatewayInput struct {
 // String returns the string representation
 func (s CreateCustomerGatewayInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *CreateCustomerGatewayInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "CreateCustomerGatewayInput"}
+
+	if s.IpAddress == nil {
+		invalidParams.Add(aws.NewErrParamRequired("IpAddress"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type CreateCustomerGatewayOutput struct {

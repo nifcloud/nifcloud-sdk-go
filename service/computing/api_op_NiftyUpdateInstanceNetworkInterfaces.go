@@ -12,9 +12,10 @@ import (
 type NiftyUpdateInstanceNetworkInterfacesInput struct {
 	_ struct{} `type:"structure"`
 
-	InstanceId *string `locationName:"InstanceId" type:"string"`
+	// InstanceId is a required field
+	InstanceId *string `locationName:"InstanceId" type:"string" required:"true"`
 
-	NetworkInterface []RequestNetworkInterfaceOfNiftyUpdateInstanceNetworkInterfaces `locationName:"NetworkInterface" type:"list"`
+	NetworkInterface []RequestNetworkInterface `locationName:"NetworkInterface" type:"list"`
 
 	NiftyReboot NiftyRebootOfNiftyUpdateInstanceNetworkInterfacesRequest `locationName:"NiftyReboot" type:"string" enum:"true"`
 }
@@ -22,6 +23,20 @@ type NiftyUpdateInstanceNetworkInterfacesInput struct {
 // String returns the string representation
 func (s NiftyUpdateInstanceNetworkInterfacesInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *NiftyUpdateInstanceNetworkInterfacesInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "NiftyUpdateInstanceNetworkInterfacesInput"}
+
+	if s.InstanceId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("InstanceId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type NiftyUpdateInstanceNetworkInterfacesOutput struct {

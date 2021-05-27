@@ -12,9 +12,10 @@ import (
 type NiftyDeregisterVpnGatewaysFromSecurityGroupInput struct {
 	_ struct{} `type:"structure"`
 
-	GroupName *string `locationName:"GroupName" type:"string"`
+	// GroupName is a required field
+	GroupName *string `locationName:"GroupName" type:"string" required:"true"`
 
-	VpnGatewaySet []RequestVpnGatewaySetOfNiftyDeregisterVpnGatewaysFromSecurityGroup `locationName:"VpnGatewaySet" type:"list"`
+	VpnGatewaySet []RequestVpnGatewaySet `locationName:"VpnGatewaySet" type:"list"`
 }
 
 // String returns the string representation
@@ -22,12 +23,26 @@ func (s NiftyDeregisterVpnGatewaysFromSecurityGroupInput) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *NiftyDeregisterVpnGatewaysFromSecurityGroupInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "NiftyDeregisterVpnGatewaysFromSecurityGroupInput"}
+
+	if s.GroupName == nil {
+		invalidParams.Add(aws.NewErrParamRequired("GroupName"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
 type NiftyDeregisterVpnGatewaysFromSecurityGroupOutput struct {
 	_ struct{} `type:"structure"`
 
 	RequestId *string `locationName:"requestId" type:"string"`
 
-	VpnGatewaySet []VpnGatewaySetOfNiftyDeregisterVpnGatewaysFromSecurityGroup `locationName:"vpnGatewaySet" locationNameList:"item" type:"list"`
+	VpnGatewaySet []VpnGatewaySet `locationName:"vpnGatewaySet" locationNameList:"item" type:"list"`
 }
 
 // String returns the string representation

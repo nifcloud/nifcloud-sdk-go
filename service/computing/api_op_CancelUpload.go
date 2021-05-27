@@ -12,12 +12,27 @@ import (
 type CancelUploadInput struct {
 	_ struct{} `type:"structure"`
 
-	ConversionTaskId *string `locationName:"ConversionTaskId" type:"string"`
+	// ConversionTaskId is a required field
+	ConversionTaskId *string `locationName:"ConversionTaskId" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s CancelUploadInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *CancelUploadInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "CancelUploadInput"}
+
+	if s.ConversionTaskId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ConversionTaskId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type CancelUploadOutput struct {

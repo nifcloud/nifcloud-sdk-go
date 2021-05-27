@@ -12,18 +12,37 @@ import (
 type NiftyModifyPrivateLanAttributeInput struct {
 	_ struct{} `type:"structure"`
 
-	Attribute AttributeOfNiftyModifyPrivateLanAttributeRequest `locationName:"Attribute" type:"string" enum:"true"`
+	// Attribute is a required field
+	Attribute AttributeOfNiftyModifyPrivateLanAttributeRequest `locationName:"Attribute" type:"string" required:"true" enum:"true"`
 
 	NetworkId *string `locationName:"NetworkId" type:"string"`
 
 	PrivateLanName *string `locationName:"PrivateLanName" type:"string"`
 
-	Value *string `locationName:"Value" type:"string"`
+	// Value is a required field
+	Value *string `locationName:"Value" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s NiftyModifyPrivateLanAttributeInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *NiftyModifyPrivateLanAttributeInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "NiftyModifyPrivateLanAttributeInput"}
+	if len(s.Attribute) == 0 {
+		invalidParams.Add(aws.NewErrParamRequired("Attribute"))
+	}
+
+	if s.Value == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Value"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type NiftyModifyPrivateLanAttributeOutput struct {

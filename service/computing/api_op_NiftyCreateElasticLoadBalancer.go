@@ -4,6 +4,7 @@ package computing
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/nifcloud/nifcloud-sdk-go/internal/nifcloudutil"
@@ -14,11 +15,13 @@ type NiftyCreateElasticLoadBalancerInput struct {
 
 	AccountingType AccountingTypeOfNiftyCreateElasticLoadBalancerRequest `locationName:"AccountingType" type:"string" enum:"true"`
 
-	AvailabilityZones []string `locationName:"AvailabilityZones" locationNameList:"member" type:"list"`
+	// AvailabilityZones is a required field
+	AvailabilityZones []string `locationName:"AvailabilityZones" locationNameList:"member" type:"list" required:"true"`
 
 	ElasticLoadBalancerName *string `locationName:"ElasticLoadBalancerName" type:"string"`
 
-	Listeners []RequestListenersOfNiftyCreateElasticLoadBalancer `locationName:"Listeners" locationNameList:"member" type:"list"`
+	// Listeners is a required field
+	Listeners []RequestListenersOfNiftyCreateElasticLoadBalancer `locationName:"Listeners" locationNameList:"member" type:"list" required:"true"`
 
 	NetworkInterface []RequestNetworkInterfaceOfNiftyCreateElasticLoadBalancer `locationName:"NetworkInterface" type:"list"`
 
@@ -30,14 +33,37 @@ func (s NiftyCreateElasticLoadBalancerInput) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *NiftyCreateElasticLoadBalancerInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "NiftyCreateElasticLoadBalancerInput"}
+
+	if s.AvailabilityZones == nil {
+		invalidParams.Add(aws.NewErrParamRequired("AvailabilityZones"))
+	}
+
+	if s.Listeners == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Listeners"))
+	}
+	if s.Listeners != nil {
+		for i, v := range s.Listeners {
+			if err := v.Validate(); err != nil {
+				invalidParams.AddNested(fmt.Sprintf("%s[%v]", "Listeners", i), err.(aws.ErrInvalidParams))
+			}
+		}
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
 type NiftyCreateElasticLoadBalancerOutput struct {
 	_ struct{} `type:"structure"`
 
 	DNSName *string `locationName:"DNSName" type:"string"`
 
-	NiftyCreateElasticLoadBalancerResult *NiftyCreateElasticLoadBalancerResult `locationName:"NiftyCreateElasticLoadBalancerResult" type:"structure"`
-
-	ResponseMetadata *ResponseMetadataOfNiftyCreateElasticLoadBalancer `locationName:"ResponseMetadata" type:"structure"`
+	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }
 
 // String returns the string representation

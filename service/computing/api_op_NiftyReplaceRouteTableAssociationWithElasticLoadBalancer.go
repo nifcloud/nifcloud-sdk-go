@@ -12,14 +12,34 @@ import (
 type NiftyReplaceRouteTableAssociationWithElasticLoadBalancerInput struct {
 	_ struct{} `type:"structure"`
 
-	AssociationId *string `locationName:"AssociationId" type:"string"`
+	// AssociationId is a required field
+	AssociationId *string `locationName:"AssociationId" type:"string" required:"true"`
 
-	RouteTableId *string `locationName:"RouteTableId" type:"string"`
+	// RouteTableId is a required field
+	RouteTableId *string `locationName:"RouteTableId" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s NiftyReplaceRouteTableAssociationWithElasticLoadBalancerInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *NiftyReplaceRouteTableAssociationWithElasticLoadBalancerInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "NiftyReplaceRouteTableAssociationWithElasticLoadBalancerInput"}
+
+	if s.AssociationId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("AssociationId"))
+	}
+
+	if s.RouteTableId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("RouteTableId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type NiftyReplaceRouteTableAssociationWithElasticLoadBalancerOutput struct {

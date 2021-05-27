@@ -27,7 +27,7 @@ type NiftyDeleteInstanceSnapshotOutput struct {
 
 	RequestId *string `locationName:"requestId" type:"string"`
 
-	SnapshotInfoSet []SnapshotInfoSetOfNiftyDeleteInstanceSnapshot `locationName:"snapshotInfoSet" locationNameList:"item" type:"list"`
+	SnapshotInfoSet []SnapshotInfoSet `locationName:"snapshotInfoSet" locationNameList:"item" type:"list"`
 }
 
 // String returns the string representation

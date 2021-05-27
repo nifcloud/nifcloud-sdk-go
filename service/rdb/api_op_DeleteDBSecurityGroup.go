@@ -14,12 +14,27 @@ import (
 type DeleteDBSecurityGroupInput struct {
 	_ struct{} `type:"structure"`
 
-	DBSecurityGroupName *string `locationName:"DBSecurityGroupName" type:"string"`
+	// DBSecurityGroupName is a required field
+	DBSecurityGroupName *string `locationName:"DBSecurityGroupName" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s DeleteDBSecurityGroupInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *DeleteDBSecurityGroupInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "DeleteDBSecurityGroupInput"}
+
+	if s.DBSecurityGroupName == nil {
+		invalidParams.Add(aws.NewErrParamRequired("DBSecurityGroupName"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type DeleteDBSecurityGroupOutput struct {

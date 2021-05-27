@@ -16,7 +16,8 @@ type UpdateLoadBalancerInput struct {
 
 	ListenerUpdate *RequestListenerUpdate `locationName:"ListenerUpdate" type:"structure"`
 
-	LoadBalancerName *string `locationName:"LoadBalancerName" type:"string"`
+	// LoadBalancerName is a required field
+	LoadBalancerName *string `locationName:"LoadBalancerName" type:"string" required:"true"`
 
 	LoadBalancerNameUpdate *string `locationName:"LoadBalancerNameUpdate" type:"string"`
 
@@ -28,10 +29,24 @@ func (s UpdateLoadBalancerInput) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *UpdateLoadBalancerInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "UpdateLoadBalancerInput"}
+
+	if s.LoadBalancerName == nil {
+		invalidParams.Add(aws.NewErrParamRequired("LoadBalancerName"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
 type UpdateLoadBalancerOutput struct {
 	_ struct{} `type:"structure"`
 
-	ResponseMetadata *ResponseMetadataOfUpdateLoadBalancer `locationName:"ResponseMetadata" type:"structure"`
+	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }
 
 // String returns the string representation

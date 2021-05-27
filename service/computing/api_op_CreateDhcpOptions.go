@@ -4,6 +4,7 @@ package computing
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/nifcloud/nifcloud-sdk-go/internal/nifcloudutil"
@@ -12,12 +13,34 @@ import (
 type CreateDhcpOptionsInput struct {
 	_ struct{} `type:"structure"`
 
-	DhcpConfiguration []RequestDhcpConfiguration `locationName:"DhcpConfiguration" type:"list"`
+	// DhcpConfiguration is a required field
+	DhcpConfiguration []RequestDhcpConfiguration `locationName:"DhcpConfiguration" type:"list" required:"true"`
 }
 
 // String returns the string representation
 func (s CreateDhcpOptionsInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *CreateDhcpOptionsInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "CreateDhcpOptionsInput"}
+
+	if s.DhcpConfiguration == nil {
+		invalidParams.Add(aws.NewErrParamRequired("DhcpConfiguration"))
+	}
+	if s.DhcpConfiguration != nil {
+		for i, v := range s.DhcpConfiguration {
+			if err := v.Validate(); err != nil {
+				invalidParams.AddNested(fmt.Sprintf("%s[%v]", "DhcpConfiguration", i), err.(aws.ErrInvalidParams))
+			}
+		}
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type CreateDhcpOptionsOutput struct {

@@ -12,14 +12,33 @@ import (
 type DownloadSslCertificateInput struct {
 	_ struct{} `type:"structure"`
 
-	FileType FileTypeOfDownloadSslCertificateRequest `locationName:"FileType" type:"string" enum:"true"`
+	// FileType is a required field
+	FileType FileTypeOfDownloadSslCertificateRequest `locationName:"FileType" type:"string" required:"true" enum:"true"`
 
-	FqdnId *string `locationName:"FqdnId" type:"string"`
+	// FqdnId is a required field
+	FqdnId *string `locationName:"FqdnId" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s DownloadSslCertificateInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *DownloadSslCertificateInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "DownloadSslCertificateInput"}
+	if len(s.FileType) == 0 {
+		invalidParams.Add(aws.NewErrParamRequired("FileType"))
+	}
+
+	if s.FqdnId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("FqdnId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type DownloadSslCertificateOutput struct {

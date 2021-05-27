@@ -14,18 +14,37 @@ type NiftyModifyRouterAttributeInput struct {
 
 	Agreement *bool `locationName:"Agreement" type:"boolean"`
 
-	Attribute AttributeOfNiftyModifyRouterAttributeRequest `locationName:"Attribute" type:"string" enum:"true"`
+	// Attribute is a required field
+	Attribute AttributeOfNiftyModifyRouterAttributeRequest `locationName:"Attribute" type:"string" required:"true" enum:"true"`
 
 	RouterId *string `locationName:"RouterId" type:"string"`
 
 	RouterName *string `locationName:"RouterName" type:"string"`
 
-	Value *string `locationName:"Value" type:"string"`
+	// Value is a required field
+	Value *string `locationName:"Value" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s NiftyModifyRouterAttributeInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *NiftyModifyRouterAttributeInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "NiftyModifyRouterAttributeInput"}
+	if len(s.Attribute) == 0 {
+		invalidParams.Add(aws.NewErrParamRequired("Attribute"))
+	}
+
+	if s.Value == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Value"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type NiftyModifyRouterAttributeOutput struct {

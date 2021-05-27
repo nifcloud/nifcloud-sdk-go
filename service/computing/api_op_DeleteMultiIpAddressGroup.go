@@ -12,12 +12,27 @@ import (
 type DeleteMultiIpAddressGroupInput struct {
 	_ struct{} `type:"structure"`
 
-	MultiIpAddressGroupId *string `locationName:"MultiIpAddressGroupId" type:"string"`
+	// MultiIpAddressGroupId is a required field
+	MultiIpAddressGroupId *string `locationName:"MultiIpAddressGroupId" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s DeleteMultiIpAddressGroupInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *DeleteMultiIpAddressGroupInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "DeleteMultiIpAddressGroupInput"}
+
+	if s.MultiIpAddressGroupId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("MultiIpAddressGroupId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type DeleteMultiIpAddressGroupOutput struct {

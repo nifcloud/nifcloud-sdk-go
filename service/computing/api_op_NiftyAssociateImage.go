@@ -14,9 +14,11 @@ type NiftyAssociateImageInput struct {
 
 	DistributionId []string `locationName:"DistributionId" type:"list"`
 
-	ImageId *string `locationName:"ImageId" type:"string"`
+	// ImageId is a required field
+	ImageId *string `locationName:"ImageId" type:"string" required:"true"`
 
-	IsPublic *bool `locationName:"IsPublic" type:"boolean"`
+	// IsPublic is a required field
+	IsPublic *bool `locationName:"IsPublic" type:"boolean" required:"true"`
 
 	IsRedistribute *bool `locationName:"IsRedistribute" type:"boolean"`
 }
@@ -24,6 +26,24 @@ type NiftyAssociateImageInput struct {
 // String returns the string representation
 func (s NiftyAssociateImageInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *NiftyAssociateImageInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "NiftyAssociateImageInput"}
+
+	if s.ImageId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ImageId"))
+	}
+
+	if s.IsPublic == nil {
+		invalidParams.Add(aws.NewErrParamRequired("IsPublic"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type NiftyAssociateImageOutput struct {

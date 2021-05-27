@@ -14,12 +14,27 @@ type ExtendVolumeSizeInput struct {
 
 	NiftyReboot NiftyRebootOfExtendVolumeSizeRequest `locationName:"NiftyReboot" type:"string" enum:"true"`
 
-	VolumeId *string `locationName:"VolumeId" type:"string"`
+	// VolumeId is a required field
+	VolumeId *string `locationName:"VolumeId" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s ExtendVolumeSizeInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *ExtendVolumeSizeInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "ExtendVolumeSizeInput"}
+
+	if s.VolumeId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("VolumeId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type ExtendVolumeSizeOutput struct {

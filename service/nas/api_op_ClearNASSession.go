@@ -12,7 +12,8 @@ import (
 type ClearNASSessionInput struct {
 	_ struct{} `type:"structure"`
 
-	NASInstanceIdentifier *string `locationName:"NASInstanceIdentifier" type:"string"`
+	// NASInstanceIdentifier is a required field
+	NASInstanceIdentifier *string `locationName:"NASInstanceIdentifier" type:"string" required:"true"`
 
 	SessionClearType *string `locationName:"SessionClearType" type:"string"`
 }
@@ -20,6 +21,20 @@ type ClearNASSessionInput struct {
 // String returns the string representation
 func (s ClearNASSessionInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *ClearNASSessionInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "ClearNASSessionInput"}
+
+	if s.NASInstanceIdentifier == nil {
+		invalidParams.Add(aws.NewErrParamRequired("NASInstanceIdentifier"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type ClearNASSessionOutput struct {

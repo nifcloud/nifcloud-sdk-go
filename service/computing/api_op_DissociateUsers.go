@@ -4,6 +4,7 @@ package computing
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/nifcloud/nifcloud-sdk-go/internal/nifcloudutil"
@@ -12,9 +13,11 @@ import (
 type DissociateUsersInput struct {
 	_ struct{} `type:"structure"`
 
-	FunctionName FunctionNameOfDissociateUsersRequest `locationName:"FunctionName" type:"string" enum:"true"`
+	// FunctionName is a required field
+	FunctionName FunctionNameOfDissociateUsersRequest `locationName:"FunctionName" type:"string" required:"true" enum:"true"`
 
-	Users []RequestUsersOfDissociateUsers `locationName:"Users" locationNameList:"member" type:"list"`
+	// Users is a required field
+	Users []RequestUsers `locationName:"Users" locationNameList:"member" type:"list" required:"true"`
 }
 
 // String returns the string representation
@@ -22,14 +25,36 @@ func (s DissociateUsersInput) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *DissociateUsersInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "DissociateUsersInput"}
+	if len(s.FunctionName) == 0 {
+		invalidParams.Add(aws.NewErrParamRequired("FunctionName"))
+	}
+
+	if s.Users == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Users"))
+	}
+	if s.Users != nil {
+		for i, v := range s.Users {
+			if err := v.Validate(); err != nil {
+				invalidParams.AddNested(fmt.Sprintf("%s[%v]", "Users", i), err.(aws.ErrInvalidParams))
+			}
+		}
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
 type DissociateUsersOutput struct {
 	_ struct{} `type:"structure"`
 
-	DissociateUsersResult *DissociateUsersResult `locationName:"DissociateUsersResult" type:"structure"`
+	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 
-	ResponseMetadata *ResponseMetadataOfDissociateUsers `locationName:"ResponseMetadata" type:"structure"`
-
-	Users []UsersOfDissociateUsers `locationName:"Users" locationNameList:"member" type:"list"`
+	Users []Users `locationName:"Users" locationNameList:"member" type:"list"`
 }
 
 // String returns the string representation

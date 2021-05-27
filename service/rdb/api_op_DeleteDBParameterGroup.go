@@ -14,12 +14,27 @@ import (
 type DeleteDBParameterGroupInput struct {
 	_ struct{} `type:"structure"`
 
-	DBParameterGroupName *string `locationName:"DBParameterGroupName" type:"string"`
+	// DBParameterGroupName is a required field
+	DBParameterGroupName *string `locationName:"DBParameterGroupName" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s DeleteDBParameterGroupInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *DeleteDBParameterGroupInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "DeleteDBParameterGroupInput"}
+
+	if s.DBParameterGroupName == nil {
+		invalidParams.Add(aws.NewErrParamRequired("DBParameterGroupName"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type DeleteDBParameterGroupOutput struct {

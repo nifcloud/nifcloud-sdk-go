@@ -4,6 +4,7 @@ package computing
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/nifcloud/nifcloud-sdk-go/internal/nifcloudutil"
@@ -12,13 +13,16 @@ import (
 type DescribeInstanceHealthInput struct {
 	_ struct{} `type:"structure"`
 
-	InstancePort *int64 `locationName:"InstancePort" type:"integer"`
+	// InstancePort is a required field
+	InstancePort *int64 `locationName:"InstancePort" type:"integer" required:"true"`
 
-	Instances []RequestInstancesOfDescribeInstanceHealth `locationName:"Instances" locationNameList:"member" type:"list"`
+	Instances []RequestInstances `locationName:"Instances" locationNameList:"member" type:"list"`
 
-	LoadBalancerName *string `locationName:"LoadBalancerName" type:"string"`
+	// LoadBalancerName is a required field
+	LoadBalancerName *string `locationName:"LoadBalancerName" type:"string" required:"true"`
 
-	LoadBalancerPort *int64 `locationName:"LoadBalancerPort" type:"integer"`
+	// LoadBalancerPort is a required field
+	LoadBalancerPort *int64 `locationName:"LoadBalancerPort" type:"integer" required:"true"`
 }
 
 // String returns the string representation
@@ -26,14 +30,41 @@ func (s DescribeInstanceHealthInput) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *DescribeInstanceHealthInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "DescribeInstanceHealthInput"}
+
+	if s.InstancePort == nil {
+		invalidParams.Add(aws.NewErrParamRequired("InstancePort"))
+	}
+
+	if s.LoadBalancerName == nil {
+		invalidParams.Add(aws.NewErrParamRequired("LoadBalancerName"))
+	}
+
+	if s.LoadBalancerPort == nil {
+		invalidParams.Add(aws.NewErrParamRequired("LoadBalancerPort"))
+	}
+	if s.Instances != nil {
+		for i, v := range s.Instances {
+			if err := v.Validate(); err != nil {
+				invalidParams.AddNested(fmt.Sprintf("%s[%v]", "Instances", i), err.(aws.ErrInvalidParams))
+			}
+		}
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
 type DescribeInstanceHealthOutput struct {
 	_ struct{} `type:"structure"`
 
-	DescribeInstanceHealthResult *DescribeInstanceHealthResult `locationName:"DescribeInstanceHealthResult" type:"structure"`
-
 	InstanceStates []InstanceStates `locationName:"InstanceStates" locationNameList:"member" type:"list"`
 
-	ResponseMetadata *ResponseMetadataOfDescribeInstanceHealth `locationName:"ResponseMetadata" type:"structure"`
+	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }
 
 // String returns the string representation

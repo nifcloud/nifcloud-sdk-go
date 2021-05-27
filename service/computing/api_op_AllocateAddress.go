@@ -29,7 +29,7 @@ func (s AllocateAddressInput) String() string {
 type AllocateAddressOutput struct {
 	_ struct{} `type:"structure"`
 
-	Placement *PlacementOfAllocateAddress `locationName:"placement" type:"structure"`
+	Placement *Placement `locationName:"placement" type:"structure"`
 
 	PrivateIpAddress *string `locationName:"privateIpAddress" type:"string"`
 

@@ -12,12 +12,27 @@ import (
 type DeleteImageInput struct {
 	_ struct{} `type:"structure"`
 
-	ImageId *string `locationName:"ImageId" type:"string"`
+	// ImageId is a required field
+	ImageId *string `locationName:"ImageId" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s DeleteImageInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *DeleteImageInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "DeleteImageInput"}
+
+	if s.ImageId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ImageId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type DeleteImageOutput struct {

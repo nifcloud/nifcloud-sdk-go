@@ -14,7 +14,8 @@ type ModifyImageAttributeInput struct {
 
 	Attribute AttributeOfModifyImageAttributeRequest `locationName:"Attribute" type:"string" enum:"true"`
 
-	ImageId *string `locationName:"ImageId" type:"string"`
+	// ImageId is a required field
+	ImageId *string `locationName:"ImageId" type:"string" required:"true"`
 
 	LaunchPermission *RequestLaunchPermission `locationName:"LaunchPermission" type:"structure"`
 
@@ -26,6 +27,20 @@ type ModifyImageAttributeInput struct {
 // String returns the string representation
 func (s ModifyImageAttributeInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *ModifyImageAttributeInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "ModifyImageAttributeInput"}
+
+	if s.ImageId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ImageId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type ModifyImageAttributeOutput struct {

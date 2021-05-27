@@ -26,7 +26,8 @@ type RunInstancesInput struct {
 
 	DisableApiTermination *bool `locationName:"DisableApiTermination" type:"boolean"`
 
-	ImageId *string `locationName:"ImageId" type:"string"`
+	// ImageId is a required field
+	ImageId *string `locationName:"ImageId" type:"string" required:"true"`
 
 	InstanceId *string `locationName:"InstanceId" type:"string"`
 
@@ -62,7 +63,7 @@ type RunInstancesInput struct {
 
 	SubnetId *string `locationName:"SubnetId" type:"string"`
 
-	UserData *RequestUserDataOfRunInstances `locationName:"UserData" type:"structure"`
+	UserData *RequestUserData `locationName:"UserData" type:"structure"`
 }
 
 // String returns the string representation
@@ -70,10 +71,24 @@ func (s RunInstancesInput) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *RunInstancesInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "RunInstancesInput"}
+
+	if s.ImageId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ImageId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
 type RunInstancesOutput struct {
 	_ struct{} `type:"structure"`
 
-	GroupSet []GroupSetOfRunInstances `locationName:"groupSet" locationNameList:"item" type:"list"`
+	GroupSet []GroupSet `locationName:"groupSet" locationNameList:"item" type:"list"`
 
 	InstancesSet []InstancesSetOfRunInstances `locationName:"instancesSet" locationNameList:"item" type:"list"`
 

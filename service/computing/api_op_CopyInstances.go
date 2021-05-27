@@ -14,16 +14,41 @@ type CopyInstancesInput struct {
 
 	CopyCount *int64 `locationName:"CopyCount" type:"integer"`
 
-	CopyInstance *RequestCopyInstance `locationName:"CopyInstance" type:"structure"`
+	// CopyInstance is a required field
+	CopyInstance *RequestCopyInstance `locationName:"CopyInstance" type:"structure" required:"true"`
 
-	InstanceId *string `locationName:"InstanceId" type:"string"`
+	// InstanceId is a required field
+	InstanceId *string `locationName:"InstanceId" type:"string" required:"true"`
 
-	NetworkInterface []RequestNetworkInterfaceOfCopyInstances `locationName:"NetworkInterface" type:"list"`
+	NetworkInterface []RequestNetworkInterface `locationName:"NetworkInterface" type:"list"`
 }
 
 // String returns the string representation
 func (s CopyInstancesInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *CopyInstancesInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "CopyInstancesInput"}
+
+	if s.CopyInstance == nil {
+		invalidParams.Add(aws.NewErrParamRequired("CopyInstance"))
+	}
+
+	if s.InstanceId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("InstanceId"))
+	}
+	if s.CopyInstance != nil {
+		if err := s.CopyInstance.Validate(); err != nil {
+			invalidParams.AddNested("CopyInstance", err.(aws.ErrInvalidParams))
+		}
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type CopyInstancesOutput struct {

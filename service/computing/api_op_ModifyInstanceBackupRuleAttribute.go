@@ -16,7 +16,8 @@ type ModifyInstanceBackupRuleAttributeInput struct {
 
 	Description *string `locationName:"Description" type:"string"`
 
-	InstanceBackupRuleId *string `locationName:"InstanceBackupRuleId" type:"string"`
+	// InstanceBackupRuleId is a required field
+	InstanceBackupRuleId *string `locationName:"InstanceBackupRuleId" type:"string" required:"true"`
 
 	InstanceBackupRuleName *string `locationName:"InstanceBackupRuleName" type:"string"`
 
@@ -26,6 +27,20 @@ type ModifyInstanceBackupRuleAttributeInput struct {
 // String returns the string representation
 func (s ModifyInstanceBackupRuleAttributeInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *ModifyInstanceBackupRuleAttributeInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "ModifyInstanceBackupRuleAttributeInput"}
+
+	if s.InstanceBackupRuleId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("InstanceBackupRuleId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type ModifyInstanceBackupRuleAttributeOutput struct {

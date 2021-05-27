@@ -12,7 +12,8 @@ import (
 type AuthorizeSecurityGroupIngressInput struct {
 	_ struct{} `type:"structure"`
 
-	GroupName *string `locationName:"GroupName" type:"string"`
+	// GroupName is a required field
+	GroupName *string `locationName:"GroupName" type:"string" required:"true"`
 
 	IpPermissions []RequestIpPermissions `locationName:"IpPermissions" type:"list"`
 
@@ -22,6 +23,20 @@ type AuthorizeSecurityGroupIngressInput struct {
 // String returns the string representation
 func (s AuthorizeSecurityGroupIngressInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *AuthorizeSecurityGroupIngressInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "AuthorizeSecurityGroupIngressInput"}
+
+	if s.GroupName == nil {
+		invalidParams.Add(aws.NewErrParamRequired("GroupName"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type AuthorizeSecurityGroupIngressOutput struct {

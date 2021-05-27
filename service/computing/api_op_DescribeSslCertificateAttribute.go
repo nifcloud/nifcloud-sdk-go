@@ -14,12 +14,27 @@ type DescribeSslCertificateAttributeInput struct {
 
 	Attribute AttributeOfDescribeSslCertificateAttributeRequest `locationName:"Attribute" type:"string" enum:"true"`
 
-	FqdnId *string `locationName:"FqdnId" type:"string"`
+	// FqdnId is a required field
+	FqdnId *string `locationName:"FqdnId" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s DescribeSslCertificateAttributeInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *DescribeSslCertificateAttributeInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "DescribeSslCertificateAttributeInput"}
+
+	if s.FqdnId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("FqdnId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type DescribeSslCertificateAttributeOutput struct {
@@ -29,13 +44,13 @@ type DescribeSslCertificateAttributeOutput struct {
 
 	CertAuthority *CertAuthority `locationName:"certAuthority" type:"structure"`
 
-	CertInfo *CertInfoOfDescribeSslCertificateAttribute `locationName:"certInfo" type:"structure"`
+	CertInfo *CertInfo `locationName:"certInfo" type:"structure"`
 
 	CertState *CertState `locationName:"certState" type:"structure"`
 
 	Count *Count `locationName:"count" type:"structure"`
 
-	Description *DescriptionOfDescribeSslCertificateAttribute `locationName:"description" type:"structure"`
+	Description *Description `locationName:"description" type:"structure"`
 
 	Fqdn *string `locationName:"fqdn" type:"string"`
 

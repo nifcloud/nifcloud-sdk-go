@@ -12,12 +12,27 @@ import (
 type DeleteSecurityGroupInput struct {
 	_ struct{} `type:"structure"`
 
-	GroupName *string `locationName:"GroupName" type:"string"`
+	// GroupName is a required field
+	GroupName *string `locationName:"GroupName" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s DeleteSecurityGroupInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *DeleteSecurityGroupInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "DeleteSecurityGroupInput"}
+
+	if s.GroupName == nil {
+		invalidParams.Add(aws.NewErrParamRequired("GroupName"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type DeleteSecurityGroupOutput struct {

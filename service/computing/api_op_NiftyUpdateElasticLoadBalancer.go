@@ -31,7 +31,7 @@ func (s NiftyUpdateElasticLoadBalancerInput) String() string {
 type NiftyUpdateElasticLoadBalancerOutput struct {
 	_ struct{} `type:"structure"`
 
-	ResponseMetadata *ResponseMetadataOfNiftyUpdateElasticLoadBalancer `locationName:"ResponseMetadata" type:"structure"`
+	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }
 
 // String returns the string representation

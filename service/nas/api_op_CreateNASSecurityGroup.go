@@ -12,16 +12,36 @@ import (
 type CreateNASSecurityGroupInput struct {
 	_ struct{} `type:"structure"`
 
-	AvailabilityZone *string `locationName:"AvailabilityZone" type:"string"`
+	// AvailabilityZone is a required field
+	AvailabilityZone *string `locationName:"AvailabilityZone" type:"string" required:"true"`
 
 	NASSecurityGroupDescription *string `locationName:"NASSecurityGroupDescription" type:"string"`
 
-	NASSecurityGroupName *string `locationName:"NASSecurityGroupName" type:"string"`
+	// NASSecurityGroupName is a required field
+	NASSecurityGroupName *string `locationName:"NASSecurityGroupName" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s CreateNASSecurityGroupInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *CreateNASSecurityGroupInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "CreateNASSecurityGroupInput"}
+
+	if s.AvailabilityZone == nil {
+		invalidParams.Add(aws.NewErrParamRequired("AvailabilityZone"))
+	}
+
+	if s.NASSecurityGroupName == nil {
+		invalidParams.Add(aws.NewErrParamRequired("NASSecurityGroupName"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type CreateNASSecurityGroupOutput struct {

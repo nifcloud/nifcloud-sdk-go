@@ -14,7 +14,8 @@ type RebootInstancesInput struct {
 
 	Force *bool `locationName:"Force" type:"boolean"`
 
-	InstanceId []string `locationName:"InstanceId" type:"list"`
+	// InstanceId is a required field
+	InstanceId []string `locationName:"InstanceId" type:"list" required:"true"`
 
 	NiftyIsBios *bool `locationName:"NiftyIsBios" type:"boolean"`
 
@@ -26,6 +27,20 @@ type RebootInstancesInput struct {
 // String returns the string representation
 func (s RebootInstancesInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *RebootInstancesInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "RebootInstancesInput"}
+
+	if s.InstanceId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("InstanceId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type RebootInstancesOutput struct {

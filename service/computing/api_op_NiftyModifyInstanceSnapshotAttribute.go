@@ -12,18 +12,37 @@ import (
 type NiftyModifyInstanceSnapshotAttributeInput struct {
 	_ struct{} `type:"structure"`
 
-	Attribute AttributeOfNiftyModifyInstanceSnapshotAttributeRequest `locationName:"Attribute" type:"string" enum:"true"`
+	// Attribute is a required field
+	Attribute AttributeOfNiftyModifyInstanceSnapshotAttributeRequest `locationName:"Attribute" type:"string" required:"true" enum:"true"`
 
 	InstanceSnapshotId *string `locationName:"InstanceSnapshotId" type:"string"`
 
 	SnapshotName *string `locationName:"SnapshotName" type:"string"`
 
-	Value *string `locationName:"Value" type:"string"`
+	// Value is a required field
+	Value *string `locationName:"Value" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s NiftyModifyInstanceSnapshotAttributeInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *NiftyModifyInstanceSnapshotAttributeInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "NiftyModifyInstanceSnapshotAttributeInput"}
+	if len(s.Attribute) == 0 {
+		invalidParams.Add(aws.NewErrParamRequired("Attribute"))
+	}
+
+	if s.Value == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Value"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type NiftyModifyInstanceSnapshotAttributeOutput struct {

@@ -12,12 +12,27 @@ import (
 type DeleteRouteTableInput struct {
 	_ struct{} `type:"structure"`
 
-	RouteTableId *string `locationName:"RouteTableId" type:"string"`
+	// RouteTableId is a required field
+	RouteTableId *string `locationName:"RouteTableId" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s DeleteRouteTableInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *DeleteRouteTableInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "DeleteRouteTableInput"}
+
+	if s.RouteTableId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("RouteTableId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type DeleteRouteTableOutput struct {

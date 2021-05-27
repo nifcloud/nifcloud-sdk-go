@@ -16,13 +16,17 @@ type NiftyReplaceElasticLoadBalancerListenerSSLCertificateInput struct {
 
 	ElasticLoadBalancerName *string `locationName:"ElasticLoadBalancerName" type:"string"`
 
-	ElasticLoadBalancerPort *int64 `locationName:"ElasticLoadBalancerPort" type:"integer"`
+	// ElasticLoadBalancerPort is a required field
+	ElasticLoadBalancerPort *int64 `locationName:"ElasticLoadBalancerPort" type:"integer" required:"true"`
 
-	InstancePort *int64 `locationName:"InstancePort" type:"integer"`
+	// InstancePort is a required field
+	InstancePort *int64 `locationName:"InstancePort" type:"integer" required:"true"`
 
-	Protocol ProtocolOfNiftyReplaceElasticLoadBalancerListenerSSLCertificateRequest `locationName:"Protocol" type:"string" enum:"true"`
+	// Protocol is a required field
+	Protocol ProtocolOfNiftyReplaceElasticLoadBalancerListenerSSLCertificateRequest `locationName:"Protocol" type:"string" required:"true" enum:"true"`
 
-	SSLCertificateId *string `locationName:"SSLCertificateId" type:"string"`
+	// SSLCertificateId is a required field
+	SSLCertificateId *string `locationName:"SSLCertificateId" type:"string" required:"true"`
 }
 
 // String returns the string representation
@@ -30,12 +34,37 @@ func (s NiftyReplaceElasticLoadBalancerListenerSSLCertificateInput) String() str
 	return nifcloudutil.Prettify(s)
 }
 
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *NiftyReplaceElasticLoadBalancerListenerSSLCertificateInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "NiftyReplaceElasticLoadBalancerListenerSSLCertificateInput"}
+
+	if s.ElasticLoadBalancerPort == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ElasticLoadBalancerPort"))
+	}
+
+	if s.InstancePort == nil {
+		invalidParams.Add(aws.NewErrParamRequired("InstancePort"))
+	}
+	if len(s.Protocol) == 0 {
+		invalidParams.Add(aws.NewErrParamRequired("Protocol"))
+	}
+
+	if s.SSLCertificateId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("SSLCertificateId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
 type NiftyReplaceElasticLoadBalancerListenerSSLCertificateOutput struct {
 	_ struct{} `type:"structure"`
 
 	NiftyReplaceElasticLoadBalancerListenerSSLCertificateResult *string `locationName:"NiftyReplaceElasticLoadBalancerListenerSSLCertificateResult" type:"string"`
 
-	ResponseMetadata *ResponseMetadataOfNiftyReplaceElasticLoadBalancerListenerSSLCertificate `locationName:"ResponseMetadata" type:"structure"`
+	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }
 
 // String returns the string representation

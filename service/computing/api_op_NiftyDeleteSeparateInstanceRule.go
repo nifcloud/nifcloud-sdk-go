@@ -12,12 +12,27 @@ import (
 type NiftyDeleteSeparateInstanceRuleInput struct {
 	_ struct{} `type:"structure"`
 
-	SeparateInstanceRuleName *string `locationName:"SeparateInstanceRuleName" type:"string"`
+	// SeparateInstanceRuleName is a required field
+	SeparateInstanceRuleName *string `locationName:"SeparateInstanceRuleName" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s NiftyDeleteSeparateInstanceRuleInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *NiftyDeleteSeparateInstanceRuleInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "NiftyDeleteSeparateInstanceRuleInput"}
+
+	if s.SeparateInstanceRuleName == nil {
+		invalidParams.Add(aws.NewErrParamRequired("SeparateInstanceRuleName"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type NiftyDeleteSeparateInstanceRuleOutput struct {

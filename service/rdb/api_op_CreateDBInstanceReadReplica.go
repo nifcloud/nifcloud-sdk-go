@@ -16,18 +16,38 @@ type CreateDBInstanceReadReplicaInput struct {
 
 	DBInstanceClass *string `locationName:"DBInstanceClass" type:"string"`
 
-	DBInstanceIdentifier *string `locationName:"DBInstanceIdentifier" type:"string"`
+	// DBInstanceIdentifier is a required field
+	DBInstanceIdentifier *string `locationName:"DBInstanceIdentifier" type:"string" required:"true"`
 
 	NiftyReadReplicaPrivateAddress *string `locationName:"NiftyReadReplicaPrivateAddress" type:"string"`
 
 	NiftyStorageType *int64 `locationName:"NiftyStorageType" type:"integer"`
 
-	SourceDBInstanceIdentifier *string `locationName:"SourceDBInstanceIdentifier" type:"string"`
+	// SourceDBInstanceIdentifier is a required field
+	SourceDBInstanceIdentifier *string `locationName:"SourceDBInstanceIdentifier" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s CreateDBInstanceReadReplicaInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *CreateDBInstanceReadReplicaInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "CreateDBInstanceReadReplicaInput"}
+
+	if s.DBInstanceIdentifier == nil {
+		invalidParams.Add(aws.NewErrParamRequired("DBInstanceIdentifier"))
+	}
+
+	if s.SourceDBInstanceIdentifier == nil {
+		invalidParams.Add(aws.NewErrParamRequired("SourceDBInstanceIdentifier"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type CreateDBInstanceReadReplicaOutput struct {

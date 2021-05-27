@@ -12,16 +12,36 @@ import (
 type UploadSslCertificateInput struct {
 	_ struct{} `type:"structure"`
 
-	Certificate *string `locationName:"Certificate" type:"string"`
+	// Certificate is a required field
+	Certificate *string `locationName:"Certificate" type:"string" required:"true"`
 
 	CertificateAuthority *string `locationName:"Ca" type:"string"`
 
-	Key *string `locationName:"Key" type:"string"`
+	// Key is a required field
+	Key *string `locationName:"Key" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s UploadSslCertificateInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *UploadSslCertificateInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "UploadSslCertificateInput"}
+
+	if s.Certificate == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Certificate"))
+	}
+
+	if s.Key == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Key"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type UploadSslCertificateOutput struct {

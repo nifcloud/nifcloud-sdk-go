@@ -12,14 +12,34 @@ import (
 type CreateDBSnapshotInput struct {
 	_ struct{} `type:"structure"`
 
-	DBInstanceIdentifier *string `locationName:"DBInstanceIdentifier" type:"string"`
+	// DBInstanceIdentifier is a required field
+	DBInstanceIdentifier *string `locationName:"DBInstanceIdentifier" type:"string" required:"true"`
 
-	DBSnapshotIdentifier *string `locationName:"DBSnapshotIdentifier" type:"string"`
+	// DBSnapshotIdentifier is a required field
+	DBSnapshotIdentifier *string `locationName:"DBSnapshotIdentifier" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s CreateDBSnapshotInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *CreateDBSnapshotInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "CreateDBSnapshotInput"}
+
+	if s.DBInstanceIdentifier == nil {
+		invalidParams.Add(aws.NewErrParamRequired("DBInstanceIdentifier"))
+	}
+
+	if s.DBSnapshotIdentifier == nil {
+		invalidParams.Add(aws.NewErrParamRequired("DBSnapshotIdentifier"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type CreateDBSnapshotOutput struct {

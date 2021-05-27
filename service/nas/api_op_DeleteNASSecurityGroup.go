@@ -14,12 +14,27 @@ import (
 type DeleteNASSecurityGroupInput struct {
 	_ struct{} `type:"structure"`
 
-	NASSecurityGroupName *string `locationName:"NASSecurityGroupName" type:"string"`
+	// NASSecurityGroupName is a required field
+	NASSecurityGroupName *string `locationName:"NASSecurityGroupName" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s DeleteNASSecurityGroupInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *DeleteNASSecurityGroupInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "DeleteNASSecurityGroupInput"}
+
+	if s.NASSecurityGroupName == nil {
+		invalidParams.Add(aws.NewErrParamRequired("NASSecurityGroupName"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type DeleteNASSecurityGroupOutput struct {

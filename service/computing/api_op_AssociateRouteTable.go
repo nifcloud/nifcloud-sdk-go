@@ -14,7 +14,8 @@ type AssociateRouteTableInput struct {
 
 	Agreement *bool `locationName:"Agreement" type:"boolean"`
 
-	RouteTableId *string `locationName:"RouteTableId" type:"string"`
+	// RouteTableId is a required field
+	RouteTableId *string `locationName:"RouteTableId" type:"string" required:"true"`
 
 	RouterId *string `locationName:"RouterId" type:"string"`
 
@@ -26,6 +27,20 @@ type AssociateRouteTableInput struct {
 // String returns the string representation
 func (s AssociateRouteTableInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *AssociateRouteTableInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "AssociateRouteTableInput"}
+
+	if s.RouteTableId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("RouteTableId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type AssociateRouteTableOutput struct {

@@ -12,18 +12,37 @@ import (
 type NiftyModifyCustomerGatewayAttributeInput struct {
 	_ struct{} `type:"structure"`
 
-	Attribute AttributeOfNiftyModifyCustomerGatewayAttributeRequest `locationName:"Attribute" type:"string" enum:"true"`
+	// Attribute is a required field
+	Attribute AttributeOfNiftyModifyCustomerGatewayAttributeRequest `locationName:"Attribute" type:"string" required:"true" enum:"true"`
 
 	CustomerGatewayId *string `locationName:"CustomerGatewayId" type:"string"`
 
 	NiftyCustomerGatewayName *string `locationName:"NiftyCustomerGatewayName" type:"string"`
 
-	Value *string `locationName:"Value" type:"string"`
+	// Value is a required field
+	Value *string `locationName:"Value" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s NiftyModifyCustomerGatewayAttributeInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *NiftyModifyCustomerGatewayAttributeInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "NiftyModifyCustomerGatewayAttributeInput"}
+	if len(s.Attribute) == 0 {
+		invalidParams.Add(aws.NewErrParamRequired("Attribute"))
+	}
+
+	if s.Value == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Value"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type NiftyModifyCustomerGatewayAttributeOutput struct {

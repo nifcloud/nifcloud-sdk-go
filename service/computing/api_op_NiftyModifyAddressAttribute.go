@@ -12,18 +12,37 @@ import (
 type NiftyModifyAddressAttributeInput struct {
 	_ struct{} `type:"structure"`
 
-	Attribute AttributeOfNiftyModifyAddressAttributeRequest `locationName:"Attribute" type:"string" enum:"true"`
+	// Attribute is a required field
+	Attribute AttributeOfNiftyModifyAddressAttributeRequest `locationName:"Attribute" type:"string" required:"true" enum:"true"`
 
 	PrivateIpAddress *string `locationName:"PrivateIpAddress" type:"string"`
 
 	PublicIp *string `locationName:"PublicIp" type:"string"`
 
-	Value *string `locationName:"Value" type:"string"`
+	// Value is a required field
+	Value *string `locationName:"Value" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s NiftyModifyAddressAttributeInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *NiftyModifyAddressAttributeInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "NiftyModifyAddressAttributeInput"}
+	if len(s.Attribute) == 0 {
+		invalidParams.Add(aws.NewErrParamRequired("Attribute"))
+	}
+
+	if s.Value == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Value"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type NiftyModifyAddressAttributeOutput struct {

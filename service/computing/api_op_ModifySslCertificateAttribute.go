@@ -14,12 +14,27 @@ type ModifySslCertificateAttributeInput struct {
 
 	Description *RequestDescription `locationName:"Description" type:"structure"`
 
-	FqdnId *string `locationName:"FqdnId" type:"string"`
+	// FqdnId is a required field
+	FqdnId *string `locationName:"FqdnId" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s ModifySslCertificateAttributeInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *ModifySslCertificateAttributeInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "ModifySslCertificateAttributeInput"}
+
+	if s.FqdnId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("FqdnId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type ModifySslCertificateAttributeOutput struct {

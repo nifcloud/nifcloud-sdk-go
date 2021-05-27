@@ -14,7 +14,8 @@ type NiftyAssociateNatTableInput struct {
 
 	Agreement *bool `locationName:"Agreement" type:"boolean"`
 
-	NatTableId *string `locationName:"NatTableId" type:"string"`
+	// NatTableId is a required field
+	NatTableId *string `locationName:"NatTableId" type:"string" required:"true"`
 
 	RouterId *string `locationName:"RouterId" type:"string"`
 
@@ -24,6 +25,20 @@ type NiftyAssociateNatTableInput struct {
 // String returns the string representation
 func (s NiftyAssociateNatTableInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *NiftyAssociateNatTableInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "NiftyAssociateNatTableInput"}
+
+	if s.NatTableId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("NatTableId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type NiftyAssociateNatTableOutput struct {

@@ -12,7 +12,8 @@ import (
 type DetachNetworkInterfaceInput struct {
 	_ struct{} `type:"structure"`
 
-	AttachmentId *string `locationName:"AttachmentId" type:"string"`
+	// AttachmentId is a required field
+	AttachmentId *string `locationName:"AttachmentId" type:"string" required:"true"`
 
 	NiftyReboot NiftyRebootOfDetachNetworkInterfaceRequest `locationName:"NiftyReboot" type:"string" enum:"true"`
 }
@@ -20,6 +21,20 @@ type DetachNetworkInterfaceInput struct {
 // String returns the string representation
 func (s DetachNetworkInterfaceInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *DetachNetworkInterfaceInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "DetachNetworkInterfaceInput"}
+
+	if s.AttachmentId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("AttachmentId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type DetachNetworkInterfaceOutput struct {

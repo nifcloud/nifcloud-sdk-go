@@ -4,6 +4,7 @@ package computing
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/nifcloud/nifcloud-sdk-go/internal/nifcloudutil"
@@ -12,11 +13,13 @@ import (
 type NiftyUpdateAutoScalingGroupInput struct {
 	_ struct{} `type:"structure"`
 
-	AutoScalingGroupName *string `locationName:"AutoScalingGroupName" type:"string"`
+	// AutoScalingGroupName is a required field
+	AutoScalingGroupName *string `locationName:"AutoScalingGroupName" type:"string" required:"true"`
 
 	AutoScalingGroupNameUpdate *string `locationName:"AutoScalingGroupNameUpdate" type:"string"`
 
-	ChangeInCapacity *int64 `locationName:"ChangeInCapacity" type:"integer"`
+	// ChangeInCapacity is a required field
+	ChangeInCapacity *int64 `locationName:"ChangeInCapacity" type:"integer" required:"true"`
 
 	DefaultCooldown *int64 `locationName:"DefaultCooldown" type:"integer"`
 
@@ -30,17 +33,21 @@ type NiftyUpdateAutoScalingGroupInput struct {
 
 	LoadBalancers []RequestLoadBalancersOfNiftyUpdateAutoScalingGroup `locationName:"LoadBalancers" type:"list"`
 
-	MaxSize *int64 `locationName:"MaxSize" type:"integer"`
+	// MaxSize is a required field
+	MaxSize *int64 `locationName:"MaxSize" type:"integer" required:"true"`
 
-	MinSize *int64 `locationName:"MinSize" type:"integer"`
+	// MinSize is a required field
+	MinSize *int64 `locationName:"MinSize" type:"integer" required:"true"`
 
 	Scaleout *int64 `locationName:"Scaleout" type:"integer"`
 
-	ScaleoutCondition ScaleoutConditionOfNiftyUpdateAutoScalingGroupRequest `locationName:"ScaleoutCondition" type:"string" enum:"true"`
+	// ScaleoutCondition is a required field
+	ScaleoutCondition ScaleoutConditionOfNiftyUpdateAutoScalingGroupRequest `locationName:"ScaleoutCondition" type:"string" required:"true" enum:"true"`
 
 	ScalingSchedule []RequestScalingScheduleOfNiftyUpdateAutoScalingGroup `locationName:"ScalingSchedule" type:"list"`
 
-	ScalingTrigger []RequestScalingTriggerOfNiftyUpdateAutoScalingGroup `locationName:"ScalingTrigger" type:"list"`
+	// ScalingTrigger is a required field
+	ScalingTrigger []RequestScalingTriggerOfNiftyUpdateAutoScalingGroup `locationName:"ScalingTrigger" type:"list" required:"true"`
 
 	SecurityGroup []string `locationName:"SecurityGroup" type:"list"`
 }
@@ -48,6 +55,46 @@ type NiftyUpdateAutoScalingGroupInput struct {
 // String returns the string representation
 func (s NiftyUpdateAutoScalingGroupInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *NiftyUpdateAutoScalingGroupInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "NiftyUpdateAutoScalingGroupInput"}
+
+	if s.AutoScalingGroupName == nil {
+		invalidParams.Add(aws.NewErrParamRequired("AutoScalingGroupName"))
+	}
+
+	if s.ChangeInCapacity == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ChangeInCapacity"))
+	}
+
+	if s.MaxSize == nil {
+		invalidParams.Add(aws.NewErrParamRequired("MaxSize"))
+	}
+
+	if s.MinSize == nil {
+		invalidParams.Add(aws.NewErrParamRequired("MinSize"))
+	}
+	if len(s.ScaleoutCondition) == 0 {
+		invalidParams.Add(aws.NewErrParamRequired("ScaleoutCondition"))
+	}
+
+	if s.ScalingTrigger == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ScalingTrigger"))
+	}
+	if s.ScalingTrigger != nil {
+		for i, v := range s.ScalingTrigger {
+			if err := v.Validate(); err != nil {
+				invalidParams.AddNested(fmt.Sprintf("%s[%v]", "ScalingTrigger", i), err.(aws.ErrInvalidParams))
+			}
+		}
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type NiftyUpdateAutoScalingGroupOutput struct {

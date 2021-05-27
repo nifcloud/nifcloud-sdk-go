@@ -16,7 +16,8 @@ type AssociateAddressInput struct {
 
 	AllowReassociation *bool `locationName:"AllowReassociation" type:"boolean"`
 
-	InstanceId *string `locationName:"InstanceId" type:"string"`
+	// InstanceId is a required field
+	InstanceId *string `locationName:"InstanceId" type:"string" required:"true"`
 
 	NetworkInterfaceId *string `locationName:"NetworkInterfaceId" type:"string"`
 
@@ -30,6 +31,20 @@ type AssociateAddressInput struct {
 // String returns the string representation
 func (s AssociateAddressInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *AssociateAddressInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "AssociateAddressInput"}
+
+	if s.InstanceId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("InstanceId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type AssociateAddressOutput struct {

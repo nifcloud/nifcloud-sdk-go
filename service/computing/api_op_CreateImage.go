@@ -14,11 +14,13 @@ type CreateImageInput struct {
 
 	Description *string `locationName:"Description" type:"string"`
 
-	InstanceId *string `locationName:"InstanceId" type:"string"`
+	// InstanceId is a required field
+	InstanceId *string `locationName:"InstanceId" type:"string" required:"true"`
 
 	LeftInstance *bool `locationName:"LeftInstance" type:"boolean"`
 
-	Name *string `locationName:"Name" type:"string"`
+	// Name is a required field
+	Name *string `locationName:"Name" type:"string" required:"true"`
 
 	NoReboot *bool `locationName:"NoReboot" type:"boolean"`
 
@@ -28,6 +30,24 @@ type CreateImageInput struct {
 // String returns the string representation
 func (s CreateImageInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *CreateImageInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "CreateImageInput"}
+
+	if s.InstanceId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("InstanceId"))
+	}
+
+	if s.Name == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Name"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type CreateImageOutput struct {

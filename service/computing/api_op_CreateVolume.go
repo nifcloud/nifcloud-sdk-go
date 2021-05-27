@@ -23,7 +23,8 @@ type CreateVolumeInput struct {
 
 	InstanceUniqueId *string `locationName:"InstanceUniqueId" type:"string"`
 
-	Size *int64 `locationName:"Size" type:"integer"`
+	// Size is a required field
+	Size *int64 `locationName:"Size" type:"integer" required:"true"`
 
 	VolumeId *string `locationName:"VolumeId" type:"string"`
 }
@@ -31,6 +32,20 @@ type CreateVolumeInput struct {
 // String returns the string representation
 func (s CreateVolumeInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *CreateVolumeInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "CreateVolumeInput"}
+
+	if s.Size == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Size"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type CreateVolumeOutput struct {

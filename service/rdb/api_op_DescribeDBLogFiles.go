@@ -12,7 +12,8 @@ import (
 type DescribeDBLogFilesInput struct {
 	_ struct{} `type:"structure"`
 
-	DBInstanceIdentifier *string `locationName:"DBInstanceIdentifier" type:"string"`
+	// DBInstanceIdentifier is a required field
+	DBInstanceIdentifier *string `locationName:"DBInstanceIdentifier" type:"string" required:"true"`
 
 	FileLastWritten *int64 `locationName:"FileLastWritten" type:"integer"`
 
@@ -28,6 +29,20 @@ type DescribeDBLogFilesInput struct {
 // String returns the string representation
 func (s DescribeDBLogFilesInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *DescribeDBLogFilesInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "DescribeDBLogFilesInput"}
+
+	if s.DBInstanceIdentifier == nil {
+		invalidParams.Add(aws.NewErrParamRequired("DBInstanceIdentifier"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type DescribeDBLogFilesOutput struct {

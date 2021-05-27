@@ -16,7 +16,8 @@ type AttachNetworkInterfaceInput struct {
 
 	InstanceUniqueId *string `locationName:"InstanceUniqueId" type:"string"`
 
-	NetworkInterfaceId *string `locationName:"NetworkInterfaceId" type:"string"`
+	// NetworkInterfaceId is a required field
+	NetworkInterfaceId *string `locationName:"NetworkInterfaceId" type:"string" required:"true"`
 
 	NiftyReboot NiftyRebootOfAttachNetworkInterfaceRequest `locationName:"NiftyReboot" type:"string" enum:"true"`
 }
@@ -24,6 +25,20 @@ type AttachNetworkInterfaceInput struct {
 // String returns the string representation
 func (s AttachNetworkInterfaceInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *AttachNetworkInterfaceInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "AttachNetworkInterfaceInput"}
+
+	if s.NetworkInterfaceId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("NetworkInterfaceId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type AttachNetworkInterfaceOutput struct {

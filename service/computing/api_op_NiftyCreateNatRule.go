@@ -18,15 +18,19 @@ type NiftyCreateNatRuleInput struct {
 
 	InboundInterface *RequestInboundInterface `locationName:"InboundInterface" type:"structure"`
 
-	NatTableId *string `locationName:"NatTableId" type:"string"`
+	// NatTableId is a required field
+	NatTableId *string `locationName:"NatTableId" type:"string" required:"true"`
 
-	NatType NatTypeOfNiftyCreateNatRuleRequest `locationName:"NatType" type:"string" enum:"true"`
+	// NatType is a required field
+	NatType NatTypeOfNiftyCreateNatRuleRequest `locationName:"NatType" type:"string" required:"true" enum:"true"`
 
 	OutboundInterface *RequestOutboundInterface `locationName:"OutboundInterface" type:"structure"`
 
-	Protocol ProtocolOfNiftyCreateNatRuleRequest `locationName:"Protocol" type:"string" enum:"true"`
+	// Protocol is a required field
+	Protocol ProtocolOfNiftyCreateNatRuleRequest `locationName:"Protocol" type:"string" required:"true" enum:"true"`
 
-	RuleNumber *string `locationName:"RuleNumber" type:"string"`
+	// RuleNumber is a required field
+	RuleNumber *string `locationName:"RuleNumber" type:"string" required:"true"`
 
 	Source *RequestSource `locationName:"Source" type:"structure"`
 
@@ -36,6 +40,30 @@ type NiftyCreateNatRuleInput struct {
 // String returns the string representation
 func (s NiftyCreateNatRuleInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *NiftyCreateNatRuleInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "NiftyCreateNatRuleInput"}
+
+	if s.NatTableId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("NatTableId"))
+	}
+	if len(s.NatType) == 0 {
+		invalidParams.Add(aws.NewErrParamRequired("NatType"))
+	}
+	if len(s.Protocol) == 0 {
+		invalidParams.Add(aws.NewErrParamRequired("Protocol"))
+	}
+
+	if s.RuleNumber == nil {
+		invalidParams.Add(aws.NewErrParamRequired("RuleNumber"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type NiftyCreateNatRuleOutput struct {

@@ -20,7 +20,8 @@ type UpdateSecurityGroupInput struct {
 
 	GroupLogLimitUpdate *int64 `locationName:"GroupLogLimitUpdate" type:"integer"`
 
-	GroupName *string `locationName:"GroupName" type:"string"`
+	// GroupName is a required field
+	GroupName *string `locationName:"GroupName" type:"string" required:"true"`
 
 	GroupNameUpdate *string `locationName:"GroupNameUpdate" type:"string"`
 
@@ -30,6 +31,20 @@ type UpdateSecurityGroupInput struct {
 // String returns the string representation
 func (s UpdateSecurityGroupInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *UpdateSecurityGroupInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "UpdateSecurityGroupInput"}
+
+	if s.GroupName == nil {
+		invalidParams.Add(aws.NewErrParamRequired("GroupName"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type UpdateSecurityGroupOutput struct {

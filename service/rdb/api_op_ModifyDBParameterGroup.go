@@ -4,6 +4,7 @@ package rdb
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/nifcloud/nifcloud-sdk-go/internal/nifcloudutil"
@@ -12,14 +13,41 @@ import (
 type ModifyDBParameterGroupInput struct {
 	_ struct{} `type:"structure"`
 
-	DBParameterGroupName *string `locationName:"DBParameterGroupName" type:"string"`
+	// DBParameterGroupName is a required field
+	DBParameterGroupName *string `locationName:"DBParameterGroupName" type:"string" required:"true"`
 
-	Parameters []RequestParameters `locationName:"Parameters" locationNameList:"member" type:"list"`
+	// Parameters is a required field
+	Parameters []RequestParameters `locationName:"Parameters" locationNameList:"member" type:"list" required:"true"`
 }
 
 // String returns the string representation
 func (s ModifyDBParameterGroupInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *ModifyDBParameterGroupInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "ModifyDBParameterGroupInput"}
+
+	if s.DBParameterGroupName == nil {
+		invalidParams.Add(aws.NewErrParamRequired("DBParameterGroupName"))
+	}
+
+	if s.Parameters == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Parameters"))
+	}
+	if s.Parameters != nil {
+		for i, v := range s.Parameters {
+			if err := v.Validate(); err != nil {
+				invalidParams.AddNested(fmt.Sprintf("%s[%v]", "Parameters", i), err.(aws.ErrInvalidParams))
+			}
+		}
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type ModifyDBParameterGroupOutput struct {

@@ -12,13 +12,17 @@ import (
 type ConfigureHealthCheckInput struct {
 	_ struct{} `type:"structure"`
 
-	HealthCheck *RequestHealthCheck `locationName:"HealthCheck" type:"structure"`
+	// HealthCheck is a required field
+	HealthCheck *RequestHealthCheck `locationName:"HealthCheck" type:"structure" required:"true"`
 
-	InstancePort *int64 `locationName:"InstancePort" type:"integer"`
+	// InstancePort is a required field
+	InstancePort *int64 `locationName:"InstancePort" type:"integer" required:"true"`
 
-	LoadBalancerName *string `locationName:"LoadBalancerName" type:"string"`
+	// LoadBalancerName is a required field
+	LoadBalancerName *string `locationName:"LoadBalancerName" type:"string" required:"true"`
 
-	LoadBalancerPort *int64 `locationName:"LoadBalancerPort" type:"integer"`
+	// LoadBalancerPort is a required field
+	LoadBalancerPort *int64 `locationName:"LoadBalancerPort" type:"integer" required:"true"`
 }
 
 // String returns the string representation
@@ -26,10 +30,39 @@ func (s ConfigureHealthCheckInput) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *ConfigureHealthCheckInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "ConfigureHealthCheckInput"}
+
+	if s.HealthCheck == nil {
+		invalidParams.Add(aws.NewErrParamRequired("HealthCheck"))
+	}
+
+	if s.InstancePort == nil {
+		invalidParams.Add(aws.NewErrParamRequired("InstancePort"))
+	}
+
+	if s.LoadBalancerName == nil {
+		invalidParams.Add(aws.NewErrParamRequired("LoadBalancerName"))
+	}
+
+	if s.LoadBalancerPort == nil {
+		invalidParams.Add(aws.NewErrParamRequired("LoadBalancerPort"))
+	}
+	if s.HealthCheck != nil {
+		if err := s.HealthCheck.Validate(); err != nil {
+			invalidParams.AddNested("HealthCheck", err.(aws.ErrInvalidParams))
+		}
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
 type ConfigureHealthCheckOutput struct {
 	_ struct{} `type:"structure"`
-
-	ConfigureHealthCheckResult *ConfigureHealthCheckResult `locationName:"ConfigureHealthCheckResult" type:"structure"`
 
 	HealthCheck *HealthCheck `locationName:"HealthCheck" type:"structure"`
 

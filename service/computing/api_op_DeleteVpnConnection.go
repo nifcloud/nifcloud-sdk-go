@@ -14,12 +14,27 @@ type DeleteVpnConnectionInput struct {
 
 	Agreement *bool `locationName:"Agreement" type:"boolean"`
 
-	VpnConnectionId *string `locationName:"VpnConnectionId" type:"string"`
+	// VpnConnectionId is a required field
+	VpnConnectionId *string `locationName:"VpnConnectionId" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s DeleteVpnConnectionInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *DeleteVpnConnectionInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "DeleteVpnConnectionInput"}
+
+	if s.VpnConnectionId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("VpnConnectionId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 type DeleteVpnConnectionOutput struct {
