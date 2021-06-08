@@ -37,7 +37,6 @@ import (
         "context"
 
         "github.com/nifcloud/nifcloud-sdk-go/nifcloud"
-        "github.com/nifcloud/nifcloud-sdk-go/nifcloud/endpoints"
         "github.com/nifcloud/nifcloud-sdk-go/service/computing"
 )
 
