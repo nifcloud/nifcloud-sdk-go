@@ -29,6 +29,11 @@ func (c *Client) WaitUntilDBInstanceAvailable(ctx context.Context, input *Descri
 				Matcher: aws.PathAllWaiterMatch, Argument: "DBInstances[].DBInstanceStatus",
 				Expected: "available",
 			},
+			{
+				State:   aws.FailureWaiterState,
+				Matcher: aws.PathAllWaiterMatch, Argument: "DBInstances[].DBInstanceStatus",
+				Expected: "failed",
+			},
 		},
 		Logger: c.Config.Logger,
 		NewRequest: func(opts []aws.Option) (*aws.Request, error) {

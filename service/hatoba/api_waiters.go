@@ -160,3 +160,47 @@ func (c *Client) WaitUntilFirewallRuleAuthorized(ctx context.Context, input *Get
 
 	return w.Wait(ctx)
 }
+
+// WaitUntilSnapshotAvailable uses the hatoba API operation
+// GetSnapshot to wait for a condition to be met before returning.
+// If the condition is not met within the max attempt window, an error will
+// be returned.
+//
+// The context must be non-nil and will be used for request cancellation. If
+// the context is nil a panic will occur. In the future the SDK may create
+// sub-contexts for http.Requests. See https://golang.org/pkg/context/
+// for more information on using Contexts.
+func (c *Client) WaitUntilSnapshotAvailable(ctx context.Context, input *GetSnapshotInput, opts ...aws.WaiterOption) error {
+	w := aws.Waiter{
+		Name:        "WaitUntilSnapshotAvailable",
+		MaxAttempts: 40,
+		Delay:       aws.ConstantWaiterDelay(20 * time.Second),
+		Acceptors: []aws.WaiterAcceptor{
+			{
+				State:   aws.SuccessWaiterState,
+				Matcher: aws.PathWaiterMatch, Argument: "Snapshot.Status",
+				Expected: "AVAILABLE",
+			},
+			{
+				State:   aws.FailureWaiterState,
+				Matcher: aws.PathWaiterMatch, Argument: "Snapshot.Status",
+				Expected: "FAILED",
+			},
+		},
+		Logger: c.Config.Logger,
+		NewRequest: func(opts []aws.Option) (*aws.Request, error) {
+			var inCpy *GetSnapshotInput
+			if input != nil {
+				tmp := *input
+				inCpy = &tmp
+			}
+			req := c.GetSnapshotRequest(inCpy)
+			req.SetContext(ctx)
+			req.ApplyOptions(opts...)
+			return req.Request, nil
+		},
+	}
+	w.ApplyOptions(opts...)
+
+	return w.Wait(ctx)
+}
