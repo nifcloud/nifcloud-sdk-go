@@ -127,6 +127,8 @@ type ClientAPI interface {
 	WaitUntilClusterRunning(context.Context, *hatoba.GetClusterInput, ...aws.WaiterOption) error
 
 	WaitUntilFirewallRuleAuthorized(context.Context, *hatoba.GetFirewallGroupInput, ...aws.WaiterOption) error
+
+	WaitUntilSnapshotAvailable(context.Context, *hatoba.GetSnapshotInput, ...aws.WaiterOption) error
 }
 
 var _ ClientAPI = (*hatoba.Client)(nil)
