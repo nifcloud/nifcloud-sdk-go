@@ -1,6 +1,12 @@
 
 # CHANGELOG
 
+## v1.6.0
+
+* feature: Update rdb hatoba waiter (#13 by fuku2014)
+* fix:     Fix README.md package to import (#12 by matsuoka-k-git)
+* feature: Update models (#11 by fuku2014)
+
 ## v1.5.0
 
 * feature: Update computing service JSON (#10 by aokumasan)
