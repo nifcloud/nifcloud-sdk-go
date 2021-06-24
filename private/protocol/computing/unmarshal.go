@@ -1,8 +1,10 @@
 package computing
 
 import (
+	"bytes"
 	"encoding/xml"
 	"io"
+	"io/ioutil"
 
 	request "github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/aws/awserr"
@@ -28,16 +30,46 @@ func Unmarshal(r *request.Request) {
 	}()
 
 	decoder := xml.NewDecoder(r.HTTPResponse.Body)
-	err := xmlutil.UnmarshalXML(r.Data, decoder, "")
+	err := xmlutil.UnmarshalXML(r.Data, decoder, r.Operation.Name+"Result")
 	if err != nil {
 		r.Error = awserr.New("SerializationError", "failed decoding computing response", err)
 		return
 	}
 }
 
+type responseMetadata struct {
+	RequestID        string `xml:"requestId"`
+	ResponseMetadata struct {
+		RequestID string `xml:"RequestId"`
+	} `xml:"ResponseMetadata"`
+}
+
 // UnmarshalMeta unmarshals response headers for the EC2 protocol.
 func UnmarshalMeta(r *request.Request) {
-	// TODO implement unmarshaling of request IDs
+	bodyBytes, err := ioutil.ReadAll(r.HTTPResponse.Body)
+	if err != nil && err != io.EOF {
+		r.Error = awserr.New("ReadError", "failed decoding computing response meta data", err)
+		return
+	}
+
+	buf := bytes.NewBuffer(bodyBytes)
+
+	resp := &responseMetadata{}
+	err = xml.NewDecoder(buf).Decode(resp)
+	if err != nil && err != io.EOF {
+		r.Error = awserr.New("SerializationError", "failed decoding computing response meta data", err)
+		return
+	}
+
+	if resp.RequestID != "" {
+		r.RequestID = resp.RequestID
+	}
+
+	// for Loadbalancer API
+	if resp.ResponseMetadata.RequestID != "" {
+		r.RequestID = resp.ResponseMetadata.RequestID
+	}
+	r.HTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(bodyBytes))
 }
 
 type xmlErrorResponse struct {
