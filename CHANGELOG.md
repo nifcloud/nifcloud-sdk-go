@@ -1,6 +1,10 @@
 
 # CHANGELOG
 
+## v1.6.1
+
+* fix: Fix bug load balancer api can not unmarshal (#14 by fuku2014)
+
 ## v1.6.0
 
 * feature: Update rdb hatoba waiter (#13 by fuku2014)
