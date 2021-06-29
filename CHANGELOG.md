@@ -1,6 +1,10 @@
 
 # CHANGELOG
 
+## v1.7.0
+
+* fix: Fix computing model for use result wrapper at load balancer api (#15 by fuku2014)
+
 ## v1.6.1
 
 * fix: Fix bug load balancer api can not unmarshal (#14 by fuku2014)
