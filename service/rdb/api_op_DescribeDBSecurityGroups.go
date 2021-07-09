@@ -14,6 +14,14 @@ type DescribeDBSecurityGroupsInput struct {
 
 	DBSecurityGroupName *string `locationName:"DBSecurityGroupName" type:"string"`
 
+	Filter *string `locationName:"Filter" type:"string"`
+
+	FilterName *string `locationName:"FilterName" type:"string"`
+
+	FilterValue *string `locationName:"FilterValue" type:"string"`
+
+	Filters []string `locationName:"Filters" locationNameList:"member" type:"list"`
+
 	Marker *string `locationName:"Marker" type:"string"`
 
 	MaxRecords *int64 `locationName:"MaxRecords" type:"integer"`
@@ -27,9 +35,11 @@ func (s DescribeDBSecurityGroupsInput) String() string {
 type DescribeDBSecurityGroupsOutput struct {
 	_ struct{} `type:"structure"`
 
-	DBSecurityGroups []DBSecurityGroup `locationNameList:"DBSecurityGroup" type:"list"`
+	DBSecurityGroups []DBSecurityGroupsOfDescribeDBSecurityGroups `locationName:"DBSecurityGroups" locationNameList:"DBSecurityGroup" type:"list"`
 
-	Marker *string `type:"string"`
+	Marker *string `locationName:"Marker" type:"string"`
+
+	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }
 
 // String returns the string representation

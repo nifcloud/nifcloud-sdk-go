@@ -14,6 +14,14 @@ type DescribeDBParameterGroupsInput struct {
 
 	DBParameterGroupName *string `locationName:"DBParameterGroupName" type:"string"`
 
+	Filter *string `locationName:"Filter" type:"string"`
+
+	FilterName *string `locationName:"FilterName" type:"string"`
+
+	FilterValue *string `locationName:"FilterValue" type:"string"`
+
+	Filters []string `locationName:"Filters" locationNameList:"member" type:"list"`
+
 	Marker *string `locationName:"Marker" type:"string"`
 
 	MaxRecords *int64 `locationName:"MaxRecords" type:"integer"`
@@ -27,9 +35,11 @@ func (s DescribeDBParameterGroupsInput) String() string {
 type DescribeDBParameterGroupsOutput struct {
 	_ struct{} `type:"structure"`
 
-	DBParameterGroups []DBParameterGroup `locationNameList:"DBParameterGroup" type:"list"`
+	DBParameterGroups []DBParameterGroupsOfDescribeDBParameterGroups `locationName:"DBParameterGroups" locationNameList:"DBParameterGroup" type:"list"`
 
-	Marker *string `type:"string"`
+	Marker *string `locationName:"Marker" type:"string"`
+
+	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }
 
 // String returns the string representation

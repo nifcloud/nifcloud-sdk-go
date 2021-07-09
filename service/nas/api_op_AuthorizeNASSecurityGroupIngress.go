@@ -42,7 +42,9 @@ func (s *AuthorizeNASSecurityGroupIngressInput) Validate() error {
 type AuthorizeNASSecurityGroupIngressOutput struct {
 	_ struct{} `type:"structure"`
 
-	NASSecurityGroup *NASSecurityGroup `type:"structure"`
+	NASSecurityGroup *NASSecurityGroup `locationName:"NASSecurityGroup" type:"structure"`
+
+	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }
 
 // String returns the string representation

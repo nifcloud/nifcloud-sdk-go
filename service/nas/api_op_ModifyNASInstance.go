@@ -39,7 +39,7 @@ type ModifyNASInstanceInput struct {
 
 	NewNASInstanceIdentifier *string `locationName:"NewNASInstanceIdentifier" type:"string"`
 
-	NoRootSquash *string `locationName:"NoRootSquash" type:"string"`
+	NoRootSquash *bool `locationName:"NoRootSquash" type:"boolean"`
 }
 
 // String returns the string representation
@@ -64,7 +64,9 @@ func (s *ModifyNASInstanceInput) Validate() error {
 type ModifyNASInstanceOutput struct {
 	_ struct{} `type:"structure"`
 
-	NASInstance *NASInstance `type:"structure"`
+	NASInstance *NASInstance `locationName:"NASInstance" type:"structure"`
+
+	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }
 
 // String returns the string representation

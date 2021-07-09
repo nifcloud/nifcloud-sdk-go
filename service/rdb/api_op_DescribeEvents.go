@@ -38,9 +38,11 @@ func (s DescribeEventsInput) String() string {
 type DescribeEventsOutput struct {
 	_ struct{} `type:"structure"`
 
-	Events []Event `locationNameList:"Event" type:"list"`
+	Events []Events `locationName:"Events" locationNameList:"Event" type:"list"`
 
-	Marker *string `type:"string"`
+	Marker *string `locationName:"Marker" type:"string"`
+
+	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }
 
 // String returns the string representation

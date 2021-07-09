@@ -23,6 +23,8 @@ type DescribeOrderableDBInstanceOptionsInput struct {
 	Marker *string `locationName:"Marker" type:"string"`
 
 	MaxRecords *int64 `locationName:"MaxRecords" type:"integer"`
+
+	Vpc *bool `locationName:"Vpc" type:"boolean"`
 }
 
 // String returns the string representation
@@ -33,9 +35,11 @@ func (s DescribeOrderableDBInstanceOptionsInput) String() string {
 type DescribeOrderableDBInstanceOptionsOutput struct {
 	_ struct{} `type:"structure"`
 
-	Marker *string `type:"string"`
+	Marker *string `locationName:"Marker" type:"string"`
 
-	OrderableDBInstanceOptions []OrderableDBInstanceOption `locationNameList:"OrderableDBInstanceOption" type:"list"`
+	OrderableDBInstanceOptions []OrderableDBInstanceOptions `locationName:"OrderableDBInstanceOptions" locationNameList:"OrderableDBInstanceOption" type:"list"`
+
+	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }
 
 // String returns the string representation

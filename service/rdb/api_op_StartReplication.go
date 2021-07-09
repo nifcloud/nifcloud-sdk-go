@@ -38,7 +38,9 @@ func (s *StartReplicationInput) Validate() error {
 type StartReplicationOutput struct {
 	_ struct{} `type:"structure"`
 
-	DBInstance *DBInstance `type:"structure"`
+	DBInstance *DBInstance `locationName:"DBInstance" type:"structure"`
+
+	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }
 
 // String returns the string representation

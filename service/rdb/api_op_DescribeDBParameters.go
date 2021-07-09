@@ -44,9 +44,11 @@ func (s *DescribeDBParametersInput) Validate() error {
 type DescribeDBParametersOutput struct {
 	_ struct{} `type:"structure"`
 
-	Marker *string `type:"string"`
+	Marker *string `locationName:"Marker" type:"string"`
 
-	Parameters []Parameter `locationNameList:"Parameter" type:"list"`
+	Parameters []Parameters `locationName:"Parameters" locationNameList:"Parameter" type:"list"`
+
+	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }
 
 // String returns the string representation

@@ -44,11 +44,13 @@ func (s *DownloadDBLogFilePortionInput) Validate() error {
 type DownloadDBLogFilePortionOutput struct {
 	_ struct{} `type:"structure"`
 
-	AdditionalDataPending *bool `type:"boolean"`
+	AdditionalDataPending *bool `locationName:"AdditionalDataPending" type:"boolean"`
 
-	LogFileData *string `type:"string"`
+	LogFileData *string `locationName:"LogFileData" type:"string"`
 
-	Marker *string `type:"string"`
+	Marker *string `locationName:"Marker" type:"string"`
+
+	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }
 
 // String returns the string representation

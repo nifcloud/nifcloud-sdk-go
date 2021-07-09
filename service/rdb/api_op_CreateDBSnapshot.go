@@ -45,7 +45,9 @@ func (s *CreateDBSnapshotInput) Validate() error {
 type CreateDBSnapshotOutput struct {
 	_ struct{} `type:"structure"`
 
-	DBSnapshot *DBSnapshot `type:"structure"`
+	DBSnapshot *DBSnapshot `locationName:"DBSnapshot" type:"structure"`
+
+	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }
 
 // String returns the string representation

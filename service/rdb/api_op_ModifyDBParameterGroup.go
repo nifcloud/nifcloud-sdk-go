@@ -53,7 +53,9 @@ func (s *ModifyDBParameterGroupInput) Validate() error {
 type ModifyDBParameterGroupOutput struct {
 	_ struct{} `type:"structure"`
 
-	DBParameterGroupName *string `type:"string"`
+	DBParameterGroupName *string `locationName:"DBParameterGroupName" type:"string"`
+
+	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }
 
 // String returns the string representation
