@@ -17,7 +17,11 @@ type RevokeDBSecurityGroupIngressInput struct {
 	// DBSecurityGroupName is a required field
 	DBSecurityGroupName *string `locationName:"DBSecurityGroupName" type:"string" required:"true"`
 
+	EC2SecurityGroupId *string `locationName:"EC2SecurityGroupId" type:"string"`
+
 	EC2SecurityGroupName *string `locationName:"EC2SecurityGroupName" type:"string"`
+
+	EC2SecurityGroupOwnerId *string `locationName:"EC2SecurityGroupOwnerId" type:"string"`
 }
 
 // String returns the string representation
@@ -42,7 +46,9 @@ func (s *RevokeDBSecurityGroupIngressInput) Validate() error {
 type RevokeDBSecurityGroupIngressOutput struct {
 	_ struct{} `type:"structure"`
 
-	DBSecurityGroup *DBSecurityGroup `type:"structure"`
+	DBSecurityGroup *DBSecurityGroup `locationName:"DBSecurityGroup" type:"structure"`
+
+	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }
 
 // String returns the string representation

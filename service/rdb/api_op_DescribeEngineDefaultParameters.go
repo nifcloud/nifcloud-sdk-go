@@ -42,7 +42,9 @@ func (s *DescribeEngineDefaultParametersInput) Validate() error {
 type DescribeEngineDefaultParametersOutput struct {
 	_ struct{} `type:"structure"`
 
-	EngineDefaults *EngineDefaults `type:"structure"`
+	EngineDefaults *EngineDefaults `locationName:"EngineDefaults" type:"structure"`
+
+	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }
 
 // String returns the string representation

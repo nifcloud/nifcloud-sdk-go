@@ -58,9 +58,11 @@ func (s *GetMetricStatisticsInput) Validate() error {
 type GetMetricStatisticsOutput struct {
 	_ struct{} `type:"structure"`
 
-	Datapoints []Member `locationNameList:"member" type:"list"`
+	Datapoints []Datapoints `locationName:"Datapoints" locationNameList:"member" type:"list"`
 
-	Label *string `type:"string"`
+	Label *string `locationName:"Label" type:"string"`
+
+	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }
 
 // String returns the string representation

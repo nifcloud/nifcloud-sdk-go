@@ -21,7 +21,8 @@ type NiftyCreateSeparateInstanceRuleInput struct {
 
 	SeparateInstanceRuleDescription *string `locationName:"SeparateInstanceRuleDescription" type:"string"`
 
-	SeparateInstanceRuleName *string `locationName:"SeparateInstanceRuleName" type:"string"`
+	// SeparateInstanceRuleName is a required field
+	SeparateInstanceRuleName *string `locationName:"SeparateInstanceRuleName" type:"string" required:"true"`
 }
 
 // String returns the string representation
@@ -35,6 +36,10 @@ func (s *NiftyCreateSeparateInstanceRuleInput) Validate() error {
 
 	if s.Placement == nil {
 		invalidParams.Add(aws.NewErrParamRequired("Placement"))
+	}
+
+	if s.SeparateInstanceRuleName == nil {
+		invalidParams.Add(aws.NewErrParamRequired("SeparateInstanceRuleName"))
 	}
 	if s.Placement != nil {
 		if err := s.Placement.Validate(); err != nil {

@@ -45,7 +45,9 @@ func (s *RemoveSourceIdentifierFromSubscriptionInput) Validate() error {
 type RemoveSourceIdentifierFromSubscriptionOutput struct {
 	_ struct{} `type:"structure"`
 
-	EventSubscription *EventSubscription `type:"structure"`
+	EventSubscription *EventSubscription `locationName:"EventSubscription" type:"structure"`
+
+	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }
 
 // String returns the string representation

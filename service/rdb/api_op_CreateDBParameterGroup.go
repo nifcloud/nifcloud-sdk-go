@@ -52,7 +52,9 @@ func (s *CreateDBParameterGroupInput) Validate() error {
 type CreateDBParameterGroupOutput struct {
 	_ struct{} `type:"structure"`
 
-	DBParameterGroup *DBParameterGroup `type:"structure"`
+	DBParameterGroup *DBParameterGroup `locationName:"DBParameterGroup" type:"structure"`
+
+	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }
 
 // String returns the string representation

@@ -12,7 +12,8 @@ import (
 type ModifyDBInstanceNetworkInput struct {
 	_ struct{} `type:"structure"`
 
-	DBInstanceIdentifier *string `locationName:"DBInstanceIdentifier" type:"string"`
+	// DBInstanceIdentifier is a required field
+	DBInstanceIdentifier *string `locationName:"DBInstanceIdentifier" type:"string" required:"true"`
 
 	NiftyMasterPrivateAddress *string `locationName:"NiftyMasterPrivateAddress" type:"string"`
 
@@ -28,10 +29,26 @@ func (s ModifyDBInstanceNetworkInput) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *ModifyDBInstanceNetworkInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "ModifyDBInstanceNetworkInput"}
+
+	if s.DBInstanceIdentifier == nil {
+		invalidParams.Add(aws.NewErrParamRequired("DBInstanceIdentifier"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
 type ModifyDBInstanceNetworkOutput struct {
 	_ struct{} `type:"structure"`
 
-	DBInstance *DBInstance `type:"structure"`
+	DBInstance *DBInstance `locationName:"DBInstance" type:"structure"`
+
+	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }
 
 // String returns the string representation

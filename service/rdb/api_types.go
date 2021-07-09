@@ -3,6 +3,8 @@
 package rdb
 
 import (
+	"time"
+
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/nifcloud/nifcloud-sdk-go/internal/nifcloudutil"
 )
@@ -10,137 +12,133 @@ import (
 var _ aws.Config
 var _ = nifcloudutil.Prettify
 
-type AvailabilityZone struct {
+type AvailabilityZones struct {
 	_ struct{} `type:"structure"`
 
-	Name *string `type:"string"`
+	Name *string `locationName:"Name" type:"string"`
 
-	NiftyStorageTypes []int64 `type:"list"`
+	NiftyStorageTypes []int64 `locationName:"NiftyStorageTypes" locationNameList:"NiftyStorageType" type:"list"`
 
-	ProvisionedIopsCapable *bool `type:"boolean"`
+	ProvisionedIopsCapable *bool `locationName:"ProvisionedIopsCapable" type:"boolean"`
 }
 
 // String returns the string representation
-func (s AvailabilityZone) String() string {
+func (s AvailabilityZones) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type Certificate struct {
+type Certificates struct {
 	_ struct{} `type:"structure"`
 
-	CertificateIdentifier *string `type:"string"`
+	CertificateIdentifier *string `locationName:"CertificateIdentifier" type:"string"`
 
-	CertificateType *string `type:"string"`
+	CertificateType *string `locationName:"CertificateType" type:"string"`
 
-	Thumbprint *string `type:"string"`
+	Thumbprint *string `locationName:"Thumbprint" type:"string"`
 
-	ValidFrom *string `type:"string"`
+	ValidFrom *time.Time `locationName:"ValidFrom" type:"timestamp"`
 
-	ValidTill *string `type:"string"`
+	ValidTill *time.Time `locationName:"ValidTill" type:"timestamp"`
 }
 
 // String returns the string representation
-func (s Certificate) String() string {
+func (s Certificates) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type DBEngineVersion struct {
+type DBEngineVersions struct {
 	_ struct{} `type:"structure"`
 
-	DBEngineDescription *string `type:"string"`
+	DBEngineDescription *string `locationName:"DBEngineDescription" type:"string"`
 
-	DBEngineVersionDescription *string `type:"string"`
+	DBEngineVersionDescription *string `locationName:"DBEngineVersionDescription" type:"string"`
 
-	DBParameterGroupFamily *string `type:"string"`
+	DBParameterGroupFamily *string `locationName:"DBParameterGroupFamily" type:"string"`
 
-	Engine *string `type:"string"`
+	Engine *string `locationName:"Engine" type:"string"`
 
-	EngineVersion *string `type:"string"`
+	EngineVersion *string `locationName:"EngineVersion" type:"string"`
 }
 
 // String returns the string representation
-func (s DBEngineVersion) String() string {
+func (s DBEngineVersions) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
 type DBInstance struct {
 	_ struct{} `type:"structure"`
 
-	AccountingType *int64 `type:"integer"`
+	AccountingType *string `locationName:"AccountingType" type:"string"`
 
-	AllocatedStorage *string `type:"string"`
+	AllocatedStorage *int64 `locationName:"AllocatedStorage" type:"integer"`
 
-	AutoMinorVersionUpgrade *bool `type:"boolean"`
+	AutoMinorVersionUpgrade *bool `locationName:"AutoMinorVersionUpgrade" type:"boolean"`
 
-	AvailabilityZone *string `type:"string"`
+	AvailabilityZone *string `locationName:"AvailabilityZone" type:"string"`
 
-	BackupRetentionPeriod *string `type:"string"`
+	BackupRetentionPeriod *int64 `locationName:"BackupRetentionPeriod" type:"integer"`
 
-	BinlogRetentionPeriod *string `type:"string"`
+	BinlogRetentionPeriod *int64 `locationName:"BinlogRetentionPeriod" type:"integer"`
 
-	CACertificateIdentifier *string `type:"string"`
+	CACertificateIdentifier *string `locationName:"CACertificateIdentifier" type:"string"`
 
-	DBInstanceClass *string `type:"string"`
+	DBInstanceClass *string `locationName:"DBInstanceClass" type:"string"`
 
-	DBInstanceIdentifier *string `type:"string"`
+	DBInstanceIdentifier *string `locationName:"DBInstanceIdentifier" type:"string"`
 
-	DBInstanceStatus *string `type:"string"`
+	DBInstanceStatus *string `locationName:"DBInstanceStatus" type:"string"`
 
-	DBName *string `type:"string"`
+	DBName *string `locationName:"DBName" type:"string"`
 
-	DBParameterGroups []DBParameterGroup `locationNameList:"DBParameterGroup" type:"list"`
+	DBParameterGroups []DBParameterGroups `locationName:"DBParameterGroups" locationNameList:"DBParameterGroup" type:"list"`
 
-	DBSecurityGroups []DBSecurityGroup `locationNameList:"DBSecurityGroup" type:"list"`
+	DBSecurityGroups []DBSecurityGroups `locationName:"DBSecurityGroups" locationNameList:"DBSecurityGroup" type:"list"`
 
-	Endpoint *Endpoint `type:"structure"`
+	Endpoint *Endpoint `locationName:"Endpoint" type:"structure"`
 
-	Engine *string `type:"string"`
+	Engine *string `locationName:"Engine" type:"string"`
 
-	EngineVersion *string `type:"string"`
+	EngineVersion *string `locationName:"EngineVersion" type:"string"`
 
-	ExternalReplicationInfo *ExternalReplicationInfo `type:"structure"`
+	ExternalReplicationInfo *ExternalReplicationInfo `locationName:"ExternalReplicationInfo" type:"structure"`
 
-	InstanceCreateTime *string `type:"string"`
+	InstanceCreateTime *time.Time `locationName:"InstanceCreateTime" type:"timestamp"`
 
-	LatestRestorableTime *string `type:"string"`
+	LatestRestorableTime *time.Time `locationName:"LatestRestorableTime" type:"timestamp"`
 
-	LicenseModel *string `type:"string"`
+	LicenseModel *string `locationName:"LicenseModel" type:"string"`
 
-	MasterUsername *string `type:"string"`
+	MasterUsername *string `locationName:"MasterUsername" type:"string"`
 
-	MultiAZ *string `type:"string"`
+	MultiAZ *bool `locationName:"MultiAZ" type:"boolean"`
 
-	NextMonthAccountingType *int64 `type:"integer"`
+	NextMonthAccountingType *string `locationName:"NextMonthAccountingType" type:"string"`
 
-	NiftyMasterPrivateAddress *string `type:"string"`
+	NiftyMultiAZType *string `locationName:"NiftyMultiAZType" type:"string"`
 
-	NiftyMultiAZType *string `type:"string"`
+	NiftyNetworkId *string `locationName:"NiftyNetworkId" type:"string"`
 
-	NiftyNetworkId *string `type:"string"`
+	NiftyStorageType *int64 `locationName:"NiftyStorageType" type:"integer"`
 
-	NiftySlavePrivateAddress *string `type:"string"`
+	OptionGroupMemberships []OptionGroupMemberships `locationName:"OptionGroupMemberships" locationNameList:"OptionGroupMembership" type:"list"`
 
-	NiftyStorageType *int64 `type:"integer"`
+	PendingModifiedValues *PendingModifiedValues `locationName:"PendingModifiedValues" type:"structure"`
 
-	OptionGroupMemberships []OptionGroupMembership `locationNameList:"OptionGroupMembership" type:"list"`
+	PreferredBackupWindow *string `locationName:"PreferredBackupWindow" type:"string"`
 
-	PendingModifiedValues *PendingModifiedValues `type:"structure"`
+	PreferredMaintenanceWindow *string `locationName:"PreferredMaintenanceWindow" type:"string"`
 
-	PreferredBackupWindow *string `type:"string"`
+	PubliclyAccessible *bool `locationName:"PubliclyAccessible" type:"boolean"`
 
-	PreferredMaintenanceWindow *string `type:"string"`
+	ReadReplicaDBInstanceIdentifiers *string `locationName:"ReadReplicaDBInstanceIdentifiers" type:"string"`
 
-	PubliclyAccessible *bool `type:"boolean"`
+	ReadReplicaSourceDBInstanceIdentifier *string `locationName:"ReadReplicaSourceDBInstanceIdentifier" type:"string"`
 
-	ReadReplicaDBInstanceIdentifiers []ReadReplicaDBInstanceIdentifier `locationNameList:"ReadReplicaDBInstanceIdentifier" type:"list"`
+	SecondaryAvailabilityZone *string `locationName:"SecondaryAvailabilityZone" type:"string"`
 
-	ReadReplicaSourceDBInstanceIdentifier *string `type:"string"`
+	StatusInfos []StatusInfos `locationName:"StatusInfos" locationNameList:"DBInstanceStatusInfo" type:"list"`
 
-	SecondaryAvailabilityZone *string `type:"string"`
-
-	StatusInfos []DBInstanceStatusInfo `locationNameList:"DBInstanceStatusInfo" type:"list"`
-
-	VpcSecurityGroups []VpcSecurityGroup `locationNameList:"VpcSecurityGroup" type:"list"`
+	VpcSecurityGroups *string `locationName:"VpcSecurityGroups" type:"string"`
 }
 
 // String returns the string representation
@@ -148,31 +146,95 @@ func (s DBInstance) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type DBInstanceStatusInfo struct {
+type DBInstances struct {
 	_ struct{} `type:"structure"`
 
-	Message *string `type:"string"`
+	AccountingType *string `locationName:"AccountingType" type:"string"`
 
-	Normal *bool `type:"boolean"`
+	AllocatedStorage *int64 `locationName:"AllocatedStorage" type:"integer"`
 
-	Status *string `type:"string"`
+	AutoMinorVersionUpgrade *bool `locationName:"AutoMinorVersionUpgrade" type:"boolean"`
 
-	StatusType *string `type:"string"`
+	AvailabilityZone *string `locationName:"AvailabilityZone" type:"string"`
+
+	BackupRetentionPeriod *int64 `locationName:"BackupRetentionPeriod" type:"integer"`
+
+	BinlogRetentionPeriod *int64 `locationName:"BinlogRetentionPeriod" type:"integer"`
+
+	CACertificateIdentifier *string `locationName:"CACertificateIdentifier" type:"string"`
+
+	DBInstanceClass *string `locationName:"DBInstanceClass" type:"string"`
+
+	DBInstanceIdentifier *string `locationName:"DBInstanceIdentifier" type:"string"`
+
+	DBInstanceStatus *string `locationName:"DBInstanceStatus" type:"string"`
+
+	DBName *string `locationName:"DBName" type:"string"`
+
+	DBParameterGroups []DBParameterGroups `locationName:"DBParameterGroups" locationNameList:"DBParameterGroup" type:"list"`
+
+	DBSecurityGroups []DBSecurityGroups `locationName:"DBSecurityGroups" locationNameList:"DBSecurityGroup" type:"list"`
+
+	Endpoint *Endpoint `locationName:"Endpoint" type:"structure"`
+
+	Engine *string `locationName:"Engine" type:"string"`
+
+	EngineVersion *string `locationName:"EngineVersion" type:"string"`
+
+	ExternalReplicationInfo *ExternalReplicationInfo `locationName:"ExternalReplicationInfo" type:"structure"`
+
+	InstanceCreateTime *time.Time `locationName:"InstanceCreateTime" type:"timestamp"`
+
+	LatestRestorableTime *time.Time `locationName:"LatestRestorableTime" type:"timestamp"`
+
+	LicenseModel *string `locationName:"LicenseModel" type:"string"`
+
+	MasterUsername *string `locationName:"MasterUsername" type:"string"`
+
+	MultiAZ *bool `locationName:"MultiAZ" type:"boolean"`
+
+	NextMonthAccountingType *string `locationName:"NextMonthAccountingType" type:"string"`
+
+	NiftyMultiAZType *string `locationName:"NiftyMultiAZType" type:"string"`
+
+	NiftyNetworkId *string `locationName:"NiftyNetworkId" type:"string"`
+
+	NiftyStorageType *int64 `locationName:"NiftyStorageType" type:"integer"`
+
+	OptionGroupMemberships []OptionGroupMemberships `locationName:"OptionGroupMemberships" locationNameList:"OptionGroupMembership" type:"list"`
+
+	PendingModifiedValues *PendingModifiedValues `locationName:"PendingModifiedValues" type:"structure"`
+
+	PreferredBackupWindow *string `locationName:"PreferredBackupWindow" type:"string"`
+
+	PreferredMaintenanceWindow *string `locationName:"PreferredMaintenanceWindow" type:"string"`
+
+	PubliclyAccessible *bool `locationName:"PubliclyAccessible" type:"boolean"`
+
+	ReadReplicaDBInstanceIdentifiers *string `locationName:"ReadReplicaDBInstanceIdentifiers" type:"string"`
+
+	ReadReplicaSourceDBInstanceIdentifier *string `locationName:"ReadReplicaSourceDBInstanceIdentifier" type:"string"`
+
+	SecondaryAvailabilityZone *string `locationName:"SecondaryAvailabilityZone" type:"string"`
+
+	StatusInfos []StatusInfos `locationName:"StatusInfos" locationNameList:"DBInstanceStatusInfo" type:"list"`
+
+	VpcSecurityGroups *string `locationName:"VpcSecurityGroups" type:"string"`
 }
 
 // String returns the string representation
-func (s DBInstanceStatusInfo) String() string {
+func (s DBInstances) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
 type DBParameterGroup struct {
 	_ struct{} `type:"structure"`
 
-	DBParameterGroupFamily *string `type:"string"`
+	DBParameterGroupFamily *string `locationName:"DBParameterGroupFamily" type:"string"`
 
-	DBParameterGroupName *string `type:"string"`
+	DBParameterGroupName *string `locationName:"DBParameterGroupName" type:"string"`
 
-	Description *string `type:"string"`
+	Description *string `locationName:"Description" type:"string"`
 }
 
 // String returns the string representation
@@ -180,20 +242,48 @@ func (s DBParameterGroup) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
+type DBParameterGroups struct {
+	_ struct{} `type:"structure"`
+
+	DBParameterGroupName *string `locationName:"DBParameterGroupName" type:"string"`
+
+	ParameterApplyStatus *string `locationName:"ParameterApplyStatus" type:"string"`
+}
+
+// String returns the string representation
+func (s DBParameterGroups) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+type DBParameterGroupsOfDescribeDBParameterGroups struct {
+	_ struct{} `type:"structure"`
+
+	DBParameterGroupFamily *string `locationName:"DBParameterGroupFamily" type:"string"`
+
+	DBParameterGroupName *string `locationName:"DBParameterGroupName" type:"string"`
+
+	Description *string `locationName:"Description" type:"string"`
+}
+
+// String returns the string representation
+func (s DBParameterGroupsOfDescribeDBParameterGroups) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
 type DBSecurityGroup struct {
 	_ struct{} `type:"structure"`
 
-	DBSecurityGroupDescription *string `type:"string"`
+	DBSecurityGroupDescription *string `locationName:"DBSecurityGroupDescription" type:"string"`
 
-	DBSecurityGroupName *string `type:"string"`
+	DBSecurityGroupName *string `locationName:"DBSecurityGroupName" type:"string"`
 
-	EC2SecurityGroups []EC2SecurityGroup `locationNameList:"EC2SecurityGroup" type:"list"`
+	EC2SecurityGroups []EC2SecurityGroups `locationName:"EC2SecurityGroups" locationNameList:"EC2SecurityGroup" type:"list"`
 
-	IPRanges []IPRange `locationNameList:"IPRange" type:"list"`
+	IPRanges []IPRanges `locationName:"IPRanges" locationNameList:"IPRange" type:"list"`
 
-	NiftyAvailabilityZone *string `type:"string"`
+	NiftyAvailabilityZone *string `locationName:"NiftyAvailabilityZone" type:"string"`
 
-	OwnerId *string `type:"string"`
+	OwnerId *string `locationName:"OwnerId" type:"string"`
 }
 
 // String returns the string representation
@@ -201,36 +291,70 @@ func (s DBSecurityGroup) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
+type DBSecurityGroups struct {
+	_ struct{} `type:"structure"`
+
+	DBSecurityGroupName *string `locationName:"DBSecurityGroupName" type:"string"`
+
+	Status *string `locationName:"Status" type:"string"`
+}
+
+// String returns the string representation
+func (s DBSecurityGroups) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+type DBSecurityGroupsOfDescribeDBSecurityGroups struct {
+	_ struct{} `type:"structure"`
+
+	DBSecurityGroupDescription *string `locationName:"DBSecurityGroupDescription" type:"string"`
+
+	DBSecurityGroupName *string `locationName:"DBSecurityGroupName" type:"string"`
+
+	EC2SecurityGroups []EC2SecurityGroups `locationName:"EC2SecurityGroups" locationNameList:"EC2SecurityGroup" type:"list"`
+
+	IPRanges []IPRanges `locationName:"IPRanges" locationNameList:"IPRange" type:"list"`
+
+	NiftyAvailabilityZone *string `locationName:"NiftyAvailabilityZone" type:"string"`
+
+	OwnerId *string `locationName:"OwnerId" type:"string"`
+}
+
+// String returns the string representation
+func (s DBSecurityGroupsOfDescribeDBSecurityGroups) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
 type DBSnapshot struct {
 	_ struct{} `type:"structure"`
 
-	AllocatedStorage *string `type:"string"`
+	AllocatedStorage *int64 `locationName:"AllocatedStorage" type:"integer"`
 
-	AvailabilityZone *string `type:"string"`
+	AvailabilityZone *string `locationName:"AvailabilityZone" type:"string"`
 
-	DBInstanceIdentifier *string `type:"string"`
+	DBInstanceIdentifier *string `locationName:"DBInstanceIdentifier" type:"string"`
 
-	DBSnapshotIdentifier *string `type:"string"`
+	DBSnapshotIdentifier *string `locationName:"DBSnapshotIdentifier" type:"string"`
 
-	Engine *string `type:"string"`
+	Engine *string `locationName:"Engine" type:"string"`
 
-	EngineVersion *string `type:"string"`
+	EngineVersion *string `locationName:"EngineVersion" type:"string"`
 
-	InstanceCreateTime *string `type:"string"`
+	InstanceCreateTime *time.Time `locationName:"InstanceCreateTime" type:"timestamp"`
 
-	LicenseModel *string `type:"string"`
+	LicenseModel *string `locationName:"LicenseModel" type:"string"`
 
-	MasterUsername *string `type:"string"`
+	MasterUsername *string `locationName:"MasterUsername" type:"string"`
 
-	OptionGroupName *string `type:"string"`
+	OptionGroupName *string `locationName:"OptionGroupName" type:"string"`
 
-	Port *string `type:"string"`
+	Port *int64 `locationName:"Port" type:"integer"`
 
-	SnapshotCreateTime *string `type:"string"`
+	SnapshotCreateTime *time.Time `locationName:"SnapshotCreateTime" type:"timestamp"`
 
-	SnapshotType *string `type:"string"`
+	SnapshotType *string `locationName:"SnapshotType" type:"string"`
 
-	Status *string `type:"string"`
+	Status *string `locationName:"Status" type:"string"`
 }
 
 // String returns the string representation
@@ -238,44 +362,98 @@ func (s DBSnapshot) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type DescribeDBLogFilesDetails struct {
+type DBSnapshots struct {
 	_ struct{} `type:"structure"`
 
-	LastWritten *string `type:"string"`
+	AllocatedStorage *int64 `locationName:"AllocatedStorage" type:"integer"`
 
-	LogFileName *string `type:"string"`
+	AvailabilityZone *string `locationName:"AvailabilityZone" type:"string"`
 
-	Size *string `type:"string"`
+	DBInstanceIdentifier *string `locationName:"DBInstanceIdentifier" type:"string"`
+
+	DBSnapshotIdentifier *string `locationName:"DBSnapshotIdentifier" type:"string"`
+
+	Engine *string `locationName:"Engine" type:"string"`
+
+	EngineVersion *string `locationName:"EngineVersion" type:"string"`
+
+	InstanceCreateTime *time.Time `locationName:"InstanceCreateTime" type:"timestamp"`
+
+	LicenseModel *string `locationName:"LicenseModel" type:"string"`
+
+	MasterUsername *string `locationName:"MasterUsername" type:"string"`
+
+	OptionGroupName *string `locationName:"OptionGroupName" type:"string"`
+
+	Port *int64 `locationName:"Port" type:"integer"`
+
+	SnapshotCreateTime *time.Time `locationName:"SnapshotCreateTime" type:"timestamp"`
+
+	SnapshotType *string `locationName:"SnapshotType" type:"string"`
+
+	Status *string `locationName:"Status" type:"string"`
 }
 
 // String returns the string representation
-func (s DescribeDBLogFilesDetails) String() string {
+func (s DBSnapshots) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type EC2SecurityGroup struct {
+type Datapoints struct {
 	_ struct{} `type:"structure"`
 
-	EC2SecurityGroupName *string `type:"string"`
+	NiftyTargetName *string `locationName:"NiftyTargetName" type:"string"`
 
-	EC2SecurityGroupOwnerId *string `type:"string"`
+	SampleCount *int64 `locationName:"SampleCount" type:"integer"`
 
-	Status *string `type:"string"`
+	Sum *int64 `locationName:"Sum" type:"integer"`
+
+	Timestamp *time.Time `locationName:"Timestamp" type:"timestamp"`
 }
 
 // String returns the string representation
-func (s EC2SecurityGroup) String() string {
+func (s Datapoints) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+type DescribeDBLogFiles struct {
+	_ struct{} `type:"structure"`
+
+	LastWritten *int64 `locationName:"LastWritten" type:"long"`
+
+	LogFileName *string `locationName:"LogFileName" type:"string"`
+
+	Size *int64 `locationName:"Size" type:"long"`
+}
+
+// String returns the string representation
+func (s DescribeDBLogFiles) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+type EC2SecurityGroups struct {
+	_ struct{} `type:"structure"`
+
+	EC2SecurityGroupName *string `locationName:"EC2SecurityGroupName" type:"string"`
+
+	EC2SecurityGroupOwnerId *string `locationName:"EC2SecurityGroupOwnerId" type:"string"`
+
+	Status *string `locationName:"Status" type:"string"`
+}
+
+// String returns the string representation
+func (s EC2SecurityGroups) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
 type Endpoint struct {
 	_ struct{} `type:"structure"`
 
-	Address *string `type:"string"`
+	Address *string `locationName:"Address" type:"string"`
 
-	NiftyPrivateAddress *string `type:"string"`
+	NiftyPrivateAddress *string `locationName:"NiftyPrivateAddress" type:"string"`
 
-	Port *string `type:"string"`
+	Port *int64 `locationName:"Port" type:"integer"`
 }
 
 // String returns the string representation
@@ -286,11 +464,11 @@ func (s Endpoint) String() string {
 type EngineDefaults struct {
 	_ struct{} `type:"structure"`
 
-	DBParameterGroupFamily *string `type:"string"`
+	DBParameterGroupFamily *string `locationName:"DBParameterGroupFamily" type:"string"`
 
-	Marker *string `type:"string"`
+	Marker *string `locationName:"Marker" type:"string"`
 
-	Parameters []Parameter `locationNameList:"Parameter" type:"list"`
+	Parameters []Parameters `locationName:"Parameters" locationNameList:"Parameter" type:"list"`
 }
 
 // String returns the string representation
@@ -298,58 +476,39 @@ func (s EngineDefaults) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type Event struct {
+type EventCategoriesMapList struct {
 	_ struct{} `type:"structure"`
 
-	Date *string `type:"string"`
+	EventCategories []string `locationName:"EventCategories" locationNameList:"EventCategory" type:"list"`
 
-	EventCategories []string `type:"list"`
-
-	Message *string `type:"string"`
-
-	SourceIdentifier *string `type:"string"`
-
-	SourceType *string `type:"string"`
+	SourceType *string `locationName:"SourceType" type:"string"`
 }
 
 // String returns the string representation
-func (s Event) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type EventCategoriesMap struct {
-	_ struct{} `type:"structure"`
-
-	EventCategories []string `type:"list"`
-
-	SourceType *string `type:"string"`
-}
-
-// String returns the string representation
-func (s EventCategoriesMap) String() string {
+func (s EventCategoriesMapList) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
 type EventSubscription struct {
 	_ struct{} `type:"structure"`
 
-	CustSubscriptionId *string `type:"string"`
+	CustSubscriptionId *string `locationName:"CustSubscriptionId" type:"string"`
 
-	Enabled *string `type:"string"`
+	Enabled *bool `locationName:"Enabled" type:"boolean"`
 
-	EventCategoriesList []string `type:"list"`
+	EventCategoriesList []string `locationName:"EventCategoriesList" locationNameList:"EventCategory" type:"list"`
 
-	NiftyDescription *string `type:"string"`
+	NiftyDescription *string `locationName:"NiftyDescription" type:"string"`
 
-	NiftyEmailAddressesList []string `type:"list"`
+	NiftyEmailAddressesList []string `locationName:"NiftyEmailAddressesList" locationNameList:"NiftyEmailAddress" type:"list"`
 
-	SourceIdsList []string `type:"list"`
+	SourceIdsList []string `locationName:"SourceIdsList" locationNameList:"SourceId" type:"list"`
 
-	SourceType *string `type:"string"`
+	SourceType *string `locationName:"SourceType" type:"string"`
 
-	Status *string `type:"string"`
+	Status *string `locationName:"Status" type:"string"`
 
-	SubscriptionCreationTime *string `type:"string"`
+	SubscriptionCreationTime *string `locationName:"SubscriptionCreationTime" type:"string"`
 }
 
 // String returns the string representation
@@ -357,18 +516,64 @@ func (s EventSubscription) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
+type EventSubscriptionsList struct {
+	_ struct{} `type:"structure"`
+
+	CustSubscriptionId *string `locationName:"CustSubscriptionId" type:"string"`
+
+	Enabled *bool `locationName:"Enabled" type:"boolean"`
+
+	EventCategoriesList []string `locationName:"EventCategoriesList" locationNameList:"EventCategory" type:"list"`
+
+	NiftyDescription *string `locationName:"NiftyDescription" type:"string"`
+
+	NiftyEmailAddressesList []string `locationName:"NiftyEmailAddressesList" locationNameList:"NiftyEmailAddress" type:"list"`
+
+	SourceIdsList []string `locationName:"SourceIdsList" locationNameList:"SourceId" type:"list"`
+
+	SourceType *string `locationName:"SourceType" type:"string"`
+
+	Status *string `locationName:"Status" type:"string"`
+
+	SubscriptionCreationTime *string `locationName:"SubscriptionCreationTime" type:"string"`
+}
+
+// String returns the string representation
+func (s EventSubscriptionsList) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+type Events struct {
+	_ struct{} `type:"structure"`
+
+	Date *time.Time `locationName:"Date" type:"timestamp"`
+
+	EventCategories []string `locationName:"EventCategories" locationNameList:"EventCategory" type:"list"`
+
+	Message *string `locationName:"Message" type:"string"`
+
+	SourceIdentifier *string `locationName:"SourceIdentifier" type:"string"`
+
+	SourceType *string `locationName:"SourceType" type:"string"`
+}
+
+// String returns the string representation
+func (s Events) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
 type ExternalReplicationInfo struct {
 	_ struct{} `type:"structure"`
 
-	ExternalMasterAddress *string `type:"string"`
+	ExternalMasterAddress *string `locationName:"ExternalMasterAddress" type:"string"`
 
-	ExternalReplicationMessage *string `type:"string"`
+	ExternalReplicationMessage *string `locationName:"ExternalReplicationMessage" type:"string"`
 
-	ExternalReplicationStatus *string `type:"string"`
+	ExternalReplicationStatus *string `locationName:"ExternalReplicationStatus" type:"string"`
 
-	ReplicationAddresses []string `type:"list"`
+	ReplicationAddresses []string `locationName:"ReplicationAddresses" locationNameList:"ReplicationAddress" type:"list"`
 
-	ReplicationPrivateAddresses []string `type:"list"`
+	ReplicationPrivateAddresses []string `locationName:"ReplicationPrivateAddresses" locationNameList:"ReplicationPrivateAddress" type:"list"`
 }
 
 // String returns the string representation
@@ -376,138 +581,108 @@ func (s ExternalReplicationInfo) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type IPRange struct {
+type IPRanges struct {
 	_ struct{} `type:"structure"`
 
-	CIDRIP *string `type:"string"`
+	CIDRIP *string `locationName:"CIDRIP" type:"string"`
 
-	Status *string `type:"string"`
+	Status *string `locationName:"Status" type:"string"`
 }
 
 // String returns the string representation
-func (s IPRange) String() string {
+func (s IPRanges) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type Member struct {
+type OptionGroupMemberships struct {
 	_ struct{} `type:"structure"`
 
-	NiftyTargetName *string `type:"string"`
+	OptionGroupName *string `locationName:"OptionGroupName" type:"string"`
 
-	SampleCount *string `type:"string"`
-
-	Sum *string `type:"string"`
-
-	Timestamp *string `type:"string"`
+	Status *string `locationName:"Status" type:"string"`
 }
 
 // String returns the string representation
-func (s Member) String() string {
+func (s OptionGroupMemberships) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type OptionGroupMembership struct {
+type OrderableDBInstanceOptions struct {
 	_ struct{} `type:"structure"`
 
-	OptionGroupName *string `type:"string"`
+	AvailabilityZones []AvailabilityZones `locationName:"AvailabilityZones" locationNameList:"AvailabilityZone" type:"list"`
 
-	Status *string `type:"string"`
+	DBInstanceClass *string `locationName:"DBInstanceClass" type:"string"`
+
+	Engine *string `locationName:"Engine" type:"string"`
+
+	EngineVersion *string `locationName:"EngineVersion" type:"string"`
+
+	LicenseModel *string `locationName:"LicenseModel" type:"string"`
+
+	MultiAZCapable *bool `locationName:"MultiAZCapable" type:"boolean"`
+
+	ReadReplicaCapable *bool `locationName:"ReadReplicaCapable" type:"boolean"`
+
+	Vpc *bool `locationName:"Vpc" type:"boolean"`
 }
 
 // String returns the string representation
-func (s OptionGroupMembership) String() string {
+func (s OrderableDBInstanceOptions) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type OrderableDBInstanceOption struct {
+type Parameters struct {
 	_ struct{} `type:"structure"`
 
-	AvailabilityZones []AvailabilityZone `locationNameList:"AvailabilityZone" type:"list"`
+	AllowedValues *string `locationName:"AllowedValues" type:"string"`
 
-	DBInstanceClass *string `type:"string"`
+	ApplyMethod *string `locationName:"ApplyMethod" type:"string"`
 
-	Engine *string `type:"string"`
+	ApplyType *string `locationName:"ApplyType" type:"string"`
 
-	EngineVersion *string `type:"string"`
+	DataType *string `locationName:"DataType" type:"string"`
 
-	LicenseModel *string `type:"string"`
+	Description *string `locationName:"Description" type:"string"`
 
-	MultiAZCapable *bool `type:"boolean"`
+	IsModifiable *bool `locationName:"IsModifiable" type:"boolean"`
 
-	ReadReplicaCapable *bool `type:"boolean"`
+	MinimumEngineVersion *string `locationName:"MinimumEngineVersion" type:"string"`
 
-	Vpc *bool `type:"boolean"`
+	ParameterName *string `locationName:"ParameterName" type:"string"`
+
+	ParameterValue *string `locationName:"ParameterValue" type:"string"`
+
+	Source *string `locationName:"Source" type:"string"`
 }
 
 // String returns the string representation
-func (s OrderableDBInstanceOption) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type Parameter struct {
-	_ struct{} `type:"structure"`
-
-	AllowedValues *string `type:"string"`
-
-	ApplyMethod *string `type:"string"`
-
-	ApplyType *string `type:"string"`
-
-	DataType *string `type:"string"`
-
-	Description *string `type:"string"`
-
-	IsModifiable *string `type:"string"`
-
-	MinimumEngineVersion *string `type:"string"`
-
-	ParameterName *string `type:"string"`
-
-	ParameterValue *string `type:"string"`
-
-	Source *string `type:"string"`
-}
-
-// String returns the string representation
-func (s Parameter) String() string {
+func (s Parameters) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
 type PendingModifiedValues struct {
 	_ struct{} `type:"structure"`
 
-	AllocatedStorage *string `type:"string"`
+	AllocatedStorage *int64 `locationName:"AllocatedStorage" type:"integer"`
 
-	BackupRetentionPeriod *string `type:"string"`
+	BackupRetentionPeriod *int64 `locationName:"BackupRetentionPeriod" type:"integer"`
 
-	DBInstanceClass *string `type:"string"`
+	DBInstanceClass *string `locationName:"DBInstanceClass" type:"string"`
 
-	DBInstanceIdentifier *string `type:"string"`
+	DBInstanceIdentifier *string `locationName:"DBInstanceIdentifier" type:"string"`
 
-	EngineVersion *string `type:"string"`
+	EngineVersion *string `locationName:"EngineVersion" type:"string"`
 
-	MasterUserPassword *string `type:"string"`
+	MasterUserPassword *string `locationName:"MasterUserPassword" type:"string"`
 
-	MultiAZ *string `type:"string"`
+	MultiAZ *bool `locationName:"MultiAZ" type:"boolean"`
 
-	NiftyMultiAZType *string `type:"string"`
-
-	Port *string `type:"string"`
+	Port *int64 `locationName:"Port" type:"integer"`
 }
 
 // String returns the string representation
 func (s PendingModifiedValues) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-type ReadReplicaDBInstanceIdentifier struct {
-	_ struct{} `type:"structure"`
-
-	ReadReplicaDBInstanceIdentifier *string `type:"string"`
-}
-
-// String returns the string representation
-func (s ReadReplicaDBInstanceIdentifier) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
@@ -597,11 +772,30 @@ func (s RequestParametersOfResetDBParameterGroup) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type VpcSecurityGroup struct {
+type ResponseMetadata struct {
 	_ struct{} `type:"structure"`
+
+	RequestId *string `locationName:"RequestId" type:"string"`
 }
 
 // String returns the string representation
-func (s VpcSecurityGroup) String() string {
+func (s ResponseMetadata) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+type StatusInfos struct {
+	_ struct{} `type:"structure"`
+
+	Message *string `locationName:"Message" type:"string"`
+
+	Normal *bool `locationName:"Normal" type:"boolean"`
+
+	Status *string `locationName:"Status" type:"string"`
+
+	StatusType *string `locationName:"StatusType" type:"string"`
+}
+
+// String returns the string representation
+func (s StatusInfos) String() string {
 	return nifcloudutil.Prettify(s)
 }

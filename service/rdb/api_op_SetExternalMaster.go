@@ -75,7 +75,9 @@ func (s *SetExternalMasterInput) Validate() error {
 type SetExternalMasterOutput struct {
 	_ struct{} `type:"structure"`
 
-	DBInstance *DBInstance `type:"structure"`
+	DBInstance *DBInstance `locationName:"DBInstance" type:"structure"`
+
+	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }
 
 // String returns the string representation

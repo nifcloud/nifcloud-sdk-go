@@ -1,8 +1,10 @@
 package rdb
 
 import (
+	"bytes"
 	"encoding/xml"
 	"io"
+	"io/ioutil"
 
 	request "github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/aws/awserr"
@@ -35,9 +37,33 @@ func Unmarshal(r *request.Request) {
 	}
 }
 
+type responseMetadata struct {
+	ResponseMetadata struct {
+		RequestID string `xml:"RequestId"`
+	} `xml:"ResponseMetadata"`
+}
+
 // UnmarshalMeta unmarshals response headers for the RDB protocol.
 func UnmarshalMeta(r *request.Request) {
-	// TODO implement unmarshaling of request IDs
+	bodyBytes, err := ioutil.ReadAll(r.HTTPResponse.Body)
+	if err != nil && err != io.EOF {
+		r.Error = awserr.New("ReadError", "failed decoding rdb response meta data", err)
+		return
+	}
+
+	buf := bytes.NewBuffer(bodyBytes)
+
+	resp := &responseMetadata{}
+	err = xml.NewDecoder(buf).Decode(resp)
+	if err != nil && err != io.EOF {
+		r.Error = awserr.New("SerializationError", "failed decoding rdb response meta data", err)
+		return
+	}
+
+	if resp.ResponseMetadata.RequestID != "" {
+		r.RequestID = resp.ResponseMetadata.RequestID
+	}
+	r.HTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(bodyBytes))
 }
 
 type xmlErrorResponse struct {

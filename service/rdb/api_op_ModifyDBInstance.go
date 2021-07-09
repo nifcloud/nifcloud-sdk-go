@@ -16,7 +16,11 @@ type ModifyDBInstanceInput struct {
 
 	AllocatedStorage *int64 `locationName:"AllocatedStorage" type:"integer"`
 
+	AllowMajorVersionUpgrade *bool `locationName:"AllowMajorVersionUpgrade" type:"boolean"`
+
 	ApplyImmediately *bool `locationName:"ApplyImmediately" type:"boolean"`
+
+	AutoMinorVersionUpgrade *bool `locationName:"AutoMinorVersionUpgrade" type:"boolean"`
 
 	BackupRetentionPeriod *int64 `locationName:"BackupRetentionPeriod" type:"integer"`
 
@@ -35,6 +39,10 @@ type ModifyDBInstanceInput struct {
 
 	DBSecurityGroups []string `locationName:"DBSecurityGroups" locationNameList:"member" type:"list"`
 
+	EngineVersion *string `locationName:"EngineVersion" type:"string"`
+
+	Iops *int64 `locationName:"Iops" type:"integer"`
+
 	MasterUserPassword *string `locationName:"MasterUserPassword" type:"string"`
 
 	MultiAZ *bool `locationName:"MultiAZ" type:"boolean"`
@@ -49,11 +57,15 @@ type ModifyDBInstanceInput struct {
 
 	NiftySlavePrivateAddress *string `locationName:"NiftySlavePrivateAddress" type:"string"`
 
+	OptionGroupName *string `locationName:"OptionGroupName" type:"string"`
+
 	PreferredBackupWindow *string `locationName:"PreferredBackupWindow" type:"string"`
 
 	PreferredMaintenanceWindow *string `locationName:"PreferredMaintenanceWindow" type:"string"`
 
 	ReadReplicaAccountingType *string `locationName:"ReadReplicaAccountingType" type:"string"`
+
+	VpcSecurityGroupIds []string `locationName:"VpcSecurityGroupIds" locationNameList:"member" type:"list"`
 }
 
 // String returns the string representation
@@ -78,7 +90,9 @@ func (s *ModifyDBInstanceInput) Validate() error {
 type ModifyDBInstanceOutput struct {
 	_ struct{} `type:"structure"`
 
-	DBInstance *DBInstance `type:"structure"`
+	DBInstance *DBInstance `locationName:"DBInstance" type:"structure"`
+
+	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }
 
 // String returns the string representation

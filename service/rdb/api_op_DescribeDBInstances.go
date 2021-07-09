@@ -14,6 +14,14 @@ type DescribeDBInstancesInput struct {
 
 	DBInstanceIdentifier *string `locationName:"DBInstanceIdentifier" type:"string"`
 
+	Filter *string `locationName:"Filter" type:"string"`
+
+	FilterName *string `locationName:"FilterName" type:"string"`
+
+	FilterValue *string `locationName:"FilterValue" type:"string"`
+
+	Filters []string `locationName:"Filters" locationNameList:"member" type:"list"`
+
 	Marker *string `locationName:"Marker" type:"string"`
 
 	MaxRecords *int64 `locationName:"MaxRecords" type:"integer"`
@@ -27,9 +35,11 @@ func (s DescribeDBInstancesInput) String() string {
 type DescribeDBInstancesOutput struct {
 	_ struct{} `type:"structure"`
 
-	DBInstances []DBInstance `locationNameList:"DBInstance" type:"list"`
+	DBInstances []DBInstances `locationName:"DBInstances" locationNameList:"DBInstance" type:"list"`
 
-	Marker *string `type:"string"`
+	Marker *string `locationName:"Marker" type:"string"`
+
+	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }
 
 // String returns the string representation

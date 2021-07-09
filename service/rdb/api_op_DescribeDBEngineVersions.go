@@ -20,6 +20,8 @@ type DescribeDBEngineVersionsInput struct {
 
 	EngineVersion *string `locationName:"EngineVersion" type:"string"`
 
+	ListSupportedCharacterSets *bool `locationName:"ListSupportedCharacterSets" type:"boolean"`
+
 	Marker *string `locationName:"Marker" type:"string"`
 
 	MaxRecords *int64 `locationName:"MaxRecords" type:"integer"`
@@ -33,9 +35,11 @@ func (s DescribeDBEngineVersionsInput) String() string {
 type DescribeDBEngineVersionsOutput struct {
 	_ struct{} `type:"structure"`
 
-	DBEngineVersions []DBEngineVersion `locationNameList:"DBEngineVersion" type:"list"`
+	DBEngineVersions []DBEngineVersions `locationName:"DBEngineVersions" locationNameList:"DBEngineVersion" type:"list"`
 
-	Marker *string `type:"string"`
+	Marker *string `locationName:"Marker" type:"string"`
+
+	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }
 
 // String returns the string representation

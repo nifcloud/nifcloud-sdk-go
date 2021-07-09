@@ -12,8 +12,7 @@ import (
 type DescribeNASSecurityGroupsInput struct {
 	_ struct{} `type:"structure"`
 
-	// NASSecurityGroupName is a required field
-	NASSecurityGroupName *string `locationName:"NASSecurityGroupName" type:"string" required:"true"`
+	NASSecurityGroupName *string `locationName:"NASSecurityGroupName" type:"string"`
 }
 
 // String returns the string representation
@@ -21,24 +20,12 @@ func (s DescribeNASSecurityGroupsInput) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-// Validate inspects the fields of the type to determine if they are valid.
-func (s *DescribeNASSecurityGroupsInput) Validate() error {
-	invalidParams := aws.ErrInvalidParams{Context: "DescribeNASSecurityGroupsInput"}
-
-	if s.NASSecurityGroupName == nil {
-		invalidParams.Add(aws.NewErrParamRequired("NASSecurityGroupName"))
-	}
-
-	if invalidParams.Len() > 0 {
-		return invalidParams
-	}
-	return nil
-}
-
 type DescribeNASSecurityGroupsOutput struct {
 	_ struct{} `type:"structure"`
 
-	NASSecurityGroups []NASSecurityGroup `locationNameList:"NASSecurityGroup" type:"list"`
+	NASSecurityGroups []NASSecurityGroupsOfDescribeNASSecurityGroups `locationName:"NASSecurityGroups" locationNameList:"NASSecurityGroup" type:"list"`
+
+	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }
 
 // String returns the string representation

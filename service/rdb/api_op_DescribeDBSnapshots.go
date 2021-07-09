@@ -16,6 +16,14 @@ type DescribeDBSnapshotsInput struct {
 
 	DBSnapshotIdentifier *string `locationName:"DBSnapshotIdentifier" type:"string"`
 
+	Filter *string `locationName:"Filter" type:"string"`
+
+	FilterName *string `locationName:"FilterName" type:"string"`
+
+	FilterValue *string `locationName:"FilterValue" type:"string"`
+
+	Filters []string `locationName:"Filters" locationNameList:"member" type:"list"`
+
 	Marker *string `locationName:"Marker" type:"string"`
 
 	MaxRecords *int64 `locationName:"MaxRecords" type:"integer"`
@@ -31,9 +39,11 @@ func (s DescribeDBSnapshotsInput) String() string {
 type DescribeDBSnapshotsOutput struct {
 	_ struct{} `type:"structure"`
 
-	DBSnapshots []DBSnapshot `locationNameList:"DBSnapshot" type:"list"`
+	DBSnapshots []DBSnapshots `locationName:"DBSnapshots" locationNameList:"DBSnapshot" type:"list"`
 
-	Marker *string `type:"string"`
+	Marker *string `locationName:"Marker" type:"string"`
+
+	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }
 
 // String returns the string representation

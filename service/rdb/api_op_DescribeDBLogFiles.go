@@ -15,9 +15,9 @@ type DescribeDBLogFilesInput struct {
 	// DBInstanceIdentifier is a required field
 	DBInstanceIdentifier *string `locationName:"DBInstanceIdentifier" type:"string" required:"true"`
 
-	FileLastWritten *int64 `locationName:"FileLastWritten" type:"integer"`
+	FileLastWritten *int64 `locationName:"FileLastWritten" type:"long"`
 
-	FileSize *int64 `locationName:"FileSize" type:"integer"`
+	FileSize *int64 `locationName:"FileSize" type:"long"`
 
 	FilenameContains *string `locationName:"FilenameContains" type:"string"`
 
@@ -48,9 +48,11 @@ func (s *DescribeDBLogFilesInput) Validate() error {
 type DescribeDBLogFilesOutput struct {
 	_ struct{} `type:"structure"`
 
-	DescribeDBLogFiles []DescribeDBLogFilesDetails `locationNameList:"DescribeDBLogFilesDetails" type:"list"`
+	DescribeDBLogFiles []DescribeDBLogFiles `locationName:"DescribeDBLogFiles" locationNameList:"DescribeDBLogFilesDetails" type:"list"`
 
-	Marker *string `type:"string"`
+	Marker *string `locationName:"Marker" type:"string"`
+
+	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }
 
 // String returns the string representation

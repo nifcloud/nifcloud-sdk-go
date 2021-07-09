@@ -42,7 +42,9 @@ func (s *DeleteNASInstanceInput) Validate() error {
 type DeleteNASInstanceOutput struct {
 	_ struct{} `type:"structure"`
 
-	NASInstance *NASInstance `type:"structure"`
+	NASInstance *NASInstance `locationName:"NASInstance" type:"structure"`
+
+	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }
 
 // String returns the string representation
