@@ -14,14 +14,26 @@ type CreateDBInstanceReadReplicaInput struct {
 
 	AccountingType *string `locationName:"AccountingType" type:"string"`
 
+	AutoMinorVersionUpgrade *bool `locationName:"AutoMinorVersionUpgrade" type:"boolean"`
+
+	AvailabilityZone *string `locationName:"AvailabilityZone" type:"string"`
+
 	DBInstanceClass *string `locationName:"DBInstanceClass" type:"string"`
 
 	// DBInstanceIdentifier is a required field
 	DBInstanceIdentifier *string `locationName:"DBInstanceIdentifier" type:"string" required:"true"`
 
+	Iops *int64 `locationName:"Iops" type:"integer"`
+
 	NiftyReadReplicaPrivateAddress *string `locationName:"NiftyReadReplicaPrivateAddress" type:"string"`
 
 	NiftyStorageType *int64 `locationName:"NiftyStorageType" type:"integer"`
+
+	OptionGroupName *string `locationName:"OptionGroupName" type:"string"`
+
+	Port *int64 `locationName:"Port" type:"integer"`
+
+	PubliclyAccessible *bool `locationName:"PubliclyAccessible" type:"boolean"`
 
 	// SourceDBInstanceIdentifier is a required field
 	SourceDBInstanceIdentifier *string `locationName:"SourceDBInstanceIdentifier" type:"string" required:"true"`
@@ -53,7 +65,9 @@ func (s *CreateDBInstanceReadReplicaInput) Validate() error {
 type CreateDBInstanceReadReplicaOutput struct {
 	_ struct{} `type:"structure"`
 
-	DBInstance *DBInstance `type:"structure"`
+	DBInstance *DBInstance `locationName:"DBInstance" type:"structure"`
+
+	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }
 
 // String returns the string representation

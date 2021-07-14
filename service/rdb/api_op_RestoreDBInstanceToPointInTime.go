@@ -15,13 +15,19 @@ type RestoreDBInstanceToPointInTimeInput struct {
 
 	AccountingType *string `locationName:"AccountingType" type:"string"`
 
+	AutoMinorVersionUpgrade *bool `locationName:"AutoMinorVersionUpgrade" type:"boolean"`
+
 	AvailabilityZone *string `locationName:"AvailabilityZone" type:"string"`
 
 	DBInstanceClass *string `locationName:"DBInstanceClass" type:"string"`
 
 	DBName *string `locationName:"DBName" type:"string"`
 
+	DBSubnetGroupName *string `locationName:"DBSubnetGroupName" type:"string"`
+
 	Engine *string `locationName:"Engine" type:"string"`
+
+	Iops *int64 `locationName:"Iops" type:"integer"`
 
 	LicenseModel *string `locationName:"LicenseModel" type:"string"`
 
@@ -46,6 +52,8 @@ type RestoreDBInstanceToPointInTimeInput struct {
 	NiftyStorageType *int64 `locationName:"NiftyStorageType" type:"integer"`
 
 	NiftyVirtualPrivateAddress *string `locationName:"NiftyVirtualPrivateAddress" type:"string"`
+
+	OptionGroupName *string `locationName:"OptionGroupName" type:"string"`
 
 	Port *int64 `locationName:"Port" type:"integer"`
 
@@ -90,7 +98,9 @@ func (s *RestoreDBInstanceToPointInTimeInput) Validate() error {
 type RestoreDBInstanceToPointInTimeOutput struct {
 	_ struct{} `type:"structure"`
 
-	DBInstance *DBInstance `type:"structure"`
+	DBInstance *DBInstance `locationName:"DBInstance" type:"structure"`
+
+	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }
 
 // String returns the string representation

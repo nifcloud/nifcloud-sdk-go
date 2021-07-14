@@ -6,9 +6,7 @@ import (
 	"context"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
-	"github.com/aws/aws-sdk-go-v2/private/protocol"
 	"github.com/nifcloud/nifcloud-sdk-go/internal/nifcloudutil"
-	"github.com/nifcloud/nifcloud-sdk-go/private/protocol/rdb"
 )
 
 type DeleteDBParameterGroupInput struct {
@@ -39,6 +37,8 @@ func (s *DeleteDBParameterGroupInput) Validate() error {
 
 type DeleteDBParameterGroupOutput struct {
 	_ struct{} `type:"structure"`
+
+	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }
 
 // String returns the string representation
@@ -71,8 +71,6 @@ func (c *Client) DeleteDBParameterGroupRequest(input *DeleteDBParameterGroupInpu
 	}
 
 	req := c.newRequest(op, input, &DeleteDBParameterGroupOutput{})
-	req.Handlers.Unmarshal.Remove(rdb.UnmarshalHandler)
-	req.Handlers.Unmarshal.PushBackNamed(protocol.UnmarshalDiscardBodyHandler)
 
 	return DeleteDBParameterGroupRequest{Request: req, Input: input, Copy: c.DeleteDBParameterGroupRequest}
 }

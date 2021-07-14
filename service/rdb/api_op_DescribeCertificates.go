@@ -14,6 +14,14 @@ type DescribeCertificatesInput struct {
 
 	CertificateIdentifier *string `locationName:"CertificateIdentifier" type:"string"`
 
+	Filter *string `locationName:"Filter" type:"string"`
+
+	FilterName *string `locationName:"FilterName" type:"string"`
+
+	FilterValue *string `locationName:"FilterValue" type:"string"`
+
+	Filters []string `locationName:"Filters" locationNameList:"member" type:"list"`
+
 	Marker *string `locationName:"Marker" type:"string"`
 
 	MaxRecords *int64 `locationName:"MaxRecords" type:"integer"`
@@ -27,9 +35,11 @@ func (s DescribeCertificatesInput) String() string {
 type DescribeCertificatesOutput struct {
 	_ struct{} `type:"structure"`
 
-	Certificates []Certificate `locationNameList:"Certificate" type:"list"`
+	Certificates []Certificates `locationName:"Certificates" locationNameList:"Certificate" type:"list"`
 
-	Marker *string `type:"string"`
+	Marker *string `locationName:"Marker" type:"string"`
+
+	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }
 
 // String returns the string representation

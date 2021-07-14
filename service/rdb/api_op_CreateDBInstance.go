@@ -17,9 +17,13 @@ type CreateDBInstanceInput struct {
 	// AllocatedStorage is a required field
 	AllocatedStorage *int64 `locationName:"AllocatedStorage" type:"integer" required:"true"`
 
+	AutoMinorVersionUpgrade *bool `locationName:"AutoMinorVersionUpgrade" type:"boolean"`
+
 	AvailabilityZone *string `locationName:"AvailabilityZone" type:"string"`
 
 	BackupRetentionPeriod *int64 `locationName:"BackupRetentionPeriod" type:"integer"`
+
+	CharacterSetName *string `locationName:"CharacterSetName" type:"string"`
 
 	// DBInstanceClass is a required field
 	DBInstanceClass *string `locationName:"DBInstanceClass" type:"string" required:"true"`
@@ -33,10 +37,14 @@ type CreateDBInstanceInput struct {
 
 	DBSecurityGroups []string `locationName:"DBSecurityGroups" locationNameList:"member" type:"list"`
 
+	DBSubnetGroupName *string `locationName:"DBSubnetGroupName" type:"string"`
+
 	// Engine is a required field
 	Engine *string `locationName:"Engine" type:"string" required:"true"`
 
 	EngineVersion *string `locationName:"EngineVersion" type:"string"`
+
+	Iops *int64 `locationName:"Iops" type:"integer"`
 
 	LicenseModel *string `locationName:"LicenseModel" type:"string"`
 
@@ -64,6 +72,8 @@ type CreateDBInstanceInput struct {
 
 	NiftyVirtualPrivateAddress *string `locationName:"NiftyVirtualPrivateAddress" type:"string"`
 
+	OptionGroupName *string `locationName:"OptionGroupName" type:"string"`
+
 	Port *int64 `locationName:"Port" type:"integer"`
 
 	PreferredBackupWindow *string `locationName:"PreferredBackupWindow" type:"string"`
@@ -73,6 +83,8 @@ type CreateDBInstanceInput struct {
 	PubliclyAccessible *bool `locationName:"PubliclyAccessible" type:"boolean"`
 
 	ReadReplicaAccountingType *string `locationName:"ReadReplicaAccountingType" type:"string"`
+
+	VpcSecurityGroupIds []string `locationName:"VpcSecurityGroupIds" locationNameList:"member" type:"list"`
 }
 
 // String returns the string representation
@@ -117,7 +129,9 @@ func (s *CreateDBInstanceInput) Validate() error {
 type CreateDBInstanceOutput struct {
 	_ struct{} `type:"structure"`
 
-	DBInstance *DBInstance `type:"structure"`
+	DBInstance *DBInstance `locationName:"DBInstance" type:"structure"`
+
+	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }
 
 // String returns the string representation

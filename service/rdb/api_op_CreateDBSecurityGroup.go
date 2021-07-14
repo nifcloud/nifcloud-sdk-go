@@ -52,7 +52,9 @@ func (s *CreateDBSecurityGroupInput) Validate() error {
 type CreateDBSecurityGroupOutput struct {
 	_ struct{} `type:"structure"`
 
-	DBSecurityGroup *DBSecurityGroup `type:"structure"`
+	DBSecurityGroup *DBSecurityGroup `locationName:"DBSecurityGroup" type:"structure"`
+
+	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }
 
 // String returns the string representation

@@ -23,7 +23,9 @@ func (s DescribeNASInstancesInput) String() string {
 type DescribeNASInstancesOutput struct {
 	_ struct{} `type:"structure"`
 
-	NASInstances []NASInstance `locationNameList:"NASInstance" type:"list"`
+	NASInstances *NASInstances `locationName:"NASInstances" type:"structure"`
+
+	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }
 
 // String returns the string representation
