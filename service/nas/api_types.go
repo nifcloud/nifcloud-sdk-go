@@ -129,7 +129,41 @@ func (s NASInstanceErrorInfo) String() string {
 type NASInstances struct {
 	_ struct{} `type:"structure"`
 
-	NASInstance *NASInstance `locationName:"NASInstance" type:"structure"`
+	AllocatedStorage *int64 `locationName:"AllocatedStorage" type:"integer"`
+
+	AuthenticationType *int64 `locationName:"AuthenticationType" type:"integer"`
+
+	AvailabilityZone *string `locationName:"AvailabilityZone" type:"string"`
+
+	DirectoryServiceDomainName *string `locationName:"DirectoryServiceDomainName" type:"string"`
+
+	DomainControllers []DomainControllers `locationName:"DomainControllers" locationNameList:"DomainController" type:"list"`
+
+	Endpoint *Endpoint `locationName:"Endpoint" type:"structure"`
+
+	MasterUsername *string `locationName:"MasterUsername" type:"string"`
+
+	NASInstanceDescription *string `locationName:"NASInstanceDescription" type:"string"`
+
+	NASInstanceErrorInfo *NASInstanceErrorInfo `locationName:"NASInstanceErrorInfo" type:"structure"`
+
+	NASInstanceIdentifier *string `locationName:"NASInstanceIdentifier" type:"string"`
+
+	NASInstanceStatus *string `locationName:"NASInstanceStatus" type:"string"`
+
+	NASInstanceType *int64 `locationName:"NASInstanceType" type:"integer"`
+
+	NASSecurityGroups []NASSecurityGroups `locationName:"NASSecurityGroups" locationNameList:"NASSecurityGroup" type:"list"`
+
+	NetworkId *string `locationName:"NetworkId" type:"string"`
+
+	NoRootSquash *bool `locationName:"NoRootSquash" type:"boolean"`
+
+	Protocol *string `locationName:"Protocol" type:"string"`
+
+	StorageType *int64 `locationName:"StorageType" type:"integer"`
+
+	UpgradeRequired *bool `locationName:"UpgradeRequired" type:"boolean"`
 }
 
 // String returns the string representation
