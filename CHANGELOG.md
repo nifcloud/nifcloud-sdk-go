@@ -1,6 +1,11 @@
 
 # CHANGELOG
 
+## v1.8.0
+
+* fix: Fix bug of nas model (#17 by fuku2014)
+* feature: Update model (#16 by fuku2014)
+
 ## v1.7.0
 
 * fix: Fix computing model for use result wrapper at load balancer api (#15 by fuku2014)
