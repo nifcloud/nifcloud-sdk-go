@@ -130,7 +130,7 @@ type DBInstance struct {
 
 	PubliclyAccessible *bool `locationName:"PubliclyAccessible" type:"boolean"`
 
-	ReadReplicaDBInstanceIdentifiers *string `locationName:"ReadReplicaDBInstanceIdentifiers" type:"string"`
+	ReadReplicaDBInstanceIdentifiers []string `locationName:"ReadReplicaDBInstanceIdentifiers" locationNameList:"ReadReplicaDBInstanceIdentifier" type:"list"`
 
 	ReadReplicaSourceDBInstanceIdentifier *string `locationName:"ReadReplicaSourceDBInstanceIdentifier" type:"string"`
 
@@ -211,7 +211,7 @@ type DBInstances struct {
 
 	PubliclyAccessible *bool `locationName:"PubliclyAccessible" type:"boolean"`
 
-	ReadReplicaDBInstanceIdentifiers *string `locationName:"ReadReplicaDBInstanceIdentifiers" type:"string"`
+	ReadReplicaDBInstanceIdentifiers []string `locationName:"ReadReplicaDBInstanceIdentifiers" locationNameList:"ReadReplicaDBInstanceIdentifier" type:"list"`
 
 	ReadReplicaSourceDBInstanceIdentifier *string `locationName:"ReadReplicaSourceDBInstanceIdentifier" type:"string"`
 
