@@ -13,12 +13,27 @@ import (
 type DeleteClustersInput struct {
 	_ struct{} `type:"structure"`
 
-	Names *string `location:"querystring" locationName:"names" type:"string"`
+	// Names is a required field
+	Names *string `location:"querystring" locationName:"names" type:"string" required:"true"`
 }
 
 // String returns the string representation
 func (s DeleteClustersInput) String() string {
 	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *DeleteClustersInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "DeleteClustersInput"}
+
+	if s.Names == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Names"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 // MarshalFields encodes the AWS API shape using the passed in protocol encoder.
@@ -37,9 +52,7 @@ func (s DeleteClustersInput) MarshalFields(e protocol.FieldEncoder) error {
 type DeleteClustersOutput struct {
 	_ struct{} `type:"structure"`
 
-	Clusters []Cluster `locationName:"clusters" type:"list"`
-
-	RequestId *string `locationName:"requestId" type:"string"`
+	Clusters []Clusters `locationName:"clusters" type:"list"`
 }
 
 // String returns the string representation
@@ -61,19 +74,13 @@ func (s DeleteClustersOutput) MarshalFields(e protocol.FieldEncoder) error {
 		ls0.End()
 
 	}
-	if s.RequestId != nil {
-		v := *s.RequestId
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "requestId", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
-	}
 	return nil
 }
 
 const opDeleteClusters = "DeleteClusters"
 
 // DeleteClustersRequest returns a request value for making API operation for
-// NIFCLOUD Hatoba beta.
+// NIFCLOUD Kubernetes Service Hatoba.
 //
 //    // Example sending a request using DeleteClustersRequest.
 //    req := client.DeleteClustersRequest(params)

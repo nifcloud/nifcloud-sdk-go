@@ -14,7 +14,7 @@ type CreateClusterInput struct {
 	_ struct{} `type:"structure"`
 
 	// Cluster is a required field
-	Cluster *CreateClusterRequestCluster `locationName:"cluster" type:"structure" required:"true"`
+	Cluster *RequestCluster `locationName:"cluster" type:"structure" required:"true"`
 }
 
 // String returns the string representation
@@ -58,8 +58,6 @@ type CreateClusterOutput struct {
 	_ struct{} `type:"structure"`
 
 	Cluster *Cluster `locationName:"cluster" type:"structure"`
-
-	RequestId *string `locationName:"requestId" type:"string"`
 }
 
 // String returns the string representation
@@ -75,19 +73,13 @@ func (s CreateClusterOutput) MarshalFields(e protocol.FieldEncoder) error {
 		metadata := protocol.Metadata{}
 		e.SetFields(protocol.BodyTarget, "cluster", v, metadata)
 	}
-	if s.RequestId != nil {
-		v := *s.RequestId
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "requestId", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
-	}
 	return nil
 }
 
 const opCreateCluster = "CreateCluster"
 
 // CreateClusterRequest returns a request value for making API operation for
-// NIFCLOUD Hatoba beta.
+// NIFCLOUD Kubernetes Service Hatoba.
 //
 //    // Example sending a request using CreateClusterRequest.
 //    req := client.CreateClusterRequest(params)

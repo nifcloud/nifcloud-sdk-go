@@ -14,7 +14,7 @@ type DeleteSnapshotInput struct {
 	_ struct{} `type:"structure"`
 
 	// SnapshotName is a required field
-	SnapshotName *string `location:"uri" locationName:"SnapshotName" type:"string" required:"true"`
+	SnapshotName *string `location:"uri" locationName:"snapshot_name" type:"string" required:"true"`
 }
 
 // String returns the string representation
@@ -44,7 +44,7 @@ func (s DeleteSnapshotInput) MarshalFields(e protocol.FieldEncoder) error {
 		v := *s.SnapshotName
 
 		metadata := protocol.Metadata{}
-		e.SetValue(protocol.PathTarget, "SnapshotName", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+		e.SetValue(protocol.PathTarget, "snapshot_name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
 	return nil
 }
@@ -52,9 +52,7 @@ func (s DeleteSnapshotInput) MarshalFields(e protocol.FieldEncoder) error {
 type DeleteSnapshotOutput struct {
 	_ struct{} `type:"structure"`
 
-	RequestId *string `locationName:"requestId" type:"string"`
-
-	Snapshot *Snapshot `locationName:"snapshot" type:"structure"`
+	Snapshot *SnapshotOfDeleteSnapshot `locationName:"snapshot" type:"structure"`
 }
 
 // String returns the string representation
@@ -64,12 +62,6 @@ func (s DeleteSnapshotOutput) String() string {
 
 // MarshalFields encodes the AWS API shape using the passed in protocol encoder.
 func (s DeleteSnapshotOutput) MarshalFields(e protocol.FieldEncoder) error {
-	if s.RequestId != nil {
-		v := *s.RequestId
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "requestId", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
-	}
 	if s.Snapshot != nil {
 		v := s.Snapshot
 
@@ -82,7 +74,7 @@ func (s DeleteSnapshotOutput) MarshalFields(e protocol.FieldEncoder) error {
 const opDeleteSnapshot = "DeleteSnapshot"
 
 // DeleteSnapshotRequest returns a request value for making API operation for
-// NIFCLOUD Hatoba beta.
+// NIFCLOUD Kubernetes Service Hatoba.
 //
 //    // Example sending a request using DeleteSnapshotRequest.
 //    req := client.DeleteSnapshotRequest(params)
@@ -96,7 +88,7 @@ func (c *Client) DeleteSnapshotRequest(input *DeleteSnapshotInput) DeleteSnapsho
 	op := &aws.Operation{
 		Name:       opDeleteSnapshot,
 		HTTPMethod: "DELETE",
-		HTTPPath:   "/v1/snapshots/{SnapshotName}",
+		HTTPPath:   "/v1/snapshots/{snapshot_name}",
 	}
 
 	if input == nil {

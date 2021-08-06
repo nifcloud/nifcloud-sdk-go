@@ -14,7 +14,7 @@ type GetFirewallGroupInput struct {
 	_ struct{} `type:"structure"`
 
 	// FirewallGroupName is a required field
-	FirewallGroupName *string `location:"uri" locationName:"FirewallGroupName" type:"string" required:"true"`
+	FirewallGroupName *string `location:"uri" locationName:"firewall_group_name" type:"string" required:"true"`
 }
 
 // String returns the string representation
@@ -44,7 +44,7 @@ func (s GetFirewallGroupInput) MarshalFields(e protocol.FieldEncoder) error {
 		v := *s.FirewallGroupName
 
 		metadata := protocol.Metadata{}
-		e.SetValue(protocol.PathTarget, "FirewallGroupName", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+		e.SetValue(protocol.PathTarget, "firewall_group_name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
 	return nil
 }
@@ -52,9 +52,7 @@ func (s GetFirewallGroupInput) MarshalFields(e protocol.FieldEncoder) error {
 type GetFirewallGroupOutput struct {
 	_ struct{} `type:"structure"`
 
-	FirewallGroup *FirewallGroupResponse `locationName:"firewallGroup" type:"structure"`
-
-	RequestId *string `locationName:"requestId" type:"string"`
+	FirewallGroup *FirewallGroup `locationName:"firewallGroup" type:"structure"`
 }
 
 // String returns the string representation
@@ -70,19 +68,13 @@ func (s GetFirewallGroupOutput) MarshalFields(e protocol.FieldEncoder) error {
 		metadata := protocol.Metadata{}
 		e.SetFields(protocol.BodyTarget, "firewallGroup", v, metadata)
 	}
-	if s.RequestId != nil {
-		v := *s.RequestId
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "requestId", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
-	}
 	return nil
 }
 
 const opGetFirewallGroup = "GetFirewallGroup"
 
 // GetFirewallGroupRequest returns a request value for making API operation for
-// NIFCLOUD Hatoba beta.
+// NIFCLOUD Kubernetes Service Hatoba.
 //
 //    // Example sending a request using GetFirewallGroupRequest.
 //    req := client.GetFirewallGroupRequest(params)
@@ -96,7 +88,7 @@ func (c *Client) GetFirewallGroupRequest(input *GetFirewallGroupInput) GetFirewa
 	op := &aws.Operation{
 		Name:       opGetFirewallGroup,
 		HTTPMethod: "GET",
-		HTTPPath:   "/v1/firewallGroups/{FirewallGroupName}",
+		HTTPPath:   "/v1/firewallGroups/{firewall_group_name}",
 	}
 
 	if input == nil {

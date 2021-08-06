@@ -14,7 +14,7 @@ type DeleteClusterInput struct {
 	_ struct{} `type:"structure"`
 
 	// ClusterName is a required field
-	ClusterName *string `location:"uri" locationName:"ClusterName" type:"string" required:"true"`
+	ClusterName *string `location:"uri" locationName:"cluster_name" type:"string" required:"true"`
 }
 
 // String returns the string representation
@@ -44,7 +44,7 @@ func (s DeleteClusterInput) MarshalFields(e protocol.FieldEncoder) error {
 		v := *s.ClusterName
 
 		metadata := protocol.Metadata{}
-		e.SetValue(protocol.PathTarget, "ClusterName", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+		e.SetValue(protocol.PathTarget, "cluster_name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
 	return nil
 }
@@ -53,8 +53,6 @@ type DeleteClusterOutput struct {
 	_ struct{} `type:"structure"`
 
 	Cluster *Cluster `locationName:"cluster" type:"structure"`
-
-	RequestId *string `locationName:"requestId" type:"string"`
 }
 
 // String returns the string representation
@@ -70,19 +68,13 @@ func (s DeleteClusterOutput) MarshalFields(e protocol.FieldEncoder) error {
 		metadata := protocol.Metadata{}
 		e.SetFields(protocol.BodyTarget, "cluster", v, metadata)
 	}
-	if s.RequestId != nil {
-		v := *s.RequestId
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "requestId", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
-	}
 	return nil
 }
 
 const opDeleteCluster = "DeleteCluster"
 
 // DeleteClusterRequest returns a request value for making API operation for
-// NIFCLOUD Hatoba beta.
+// NIFCLOUD Kubernetes Service Hatoba.
 //
 //    // Example sending a request using DeleteClusterRequest.
 //    req := client.DeleteClusterRequest(params)
@@ -96,7 +88,7 @@ func (c *Client) DeleteClusterRequest(input *DeleteClusterInput) DeleteClusterRe
 	op := &aws.Operation{
 		Name:       opDeleteCluster,
 		HTTPMethod: "DELETE",
-		HTTPPath:   "/v1/clusters/{ClusterName}",
+		HTTPPath:   "/v1/clusters/{cluster_name}",
 	}
 
 	if input == nil {

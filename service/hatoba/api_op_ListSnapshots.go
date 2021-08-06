@@ -29,9 +29,7 @@ func (s ListSnapshotsInput) MarshalFields(e protocol.FieldEncoder) error {
 type ListSnapshotsOutput struct {
 	_ struct{} `type:"structure"`
 
-	RequestId *string `locationName:"requestId" type:"string"`
-
-	Snapshots []Snapshot `locationName:"snapshots" type:"list"`
+	Snapshots []Snapshots `locationName:"snapshots" type:"list"`
 }
 
 // String returns the string representation
@@ -41,12 +39,6 @@ func (s ListSnapshotsOutput) String() string {
 
 // MarshalFields encodes the AWS API shape using the passed in protocol encoder.
 func (s ListSnapshotsOutput) MarshalFields(e protocol.FieldEncoder) error {
-	if s.RequestId != nil {
-		v := *s.RequestId
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "requestId", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
-	}
 	if s.Snapshots != nil {
 		v := s.Snapshots
 
@@ -65,7 +57,7 @@ func (s ListSnapshotsOutput) MarshalFields(e protocol.FieldEncoder) error {
 const opListSnapshots = "ListSnapshots"
 
 // ListSnapshotsRequest returns a request value for making API operation for
-// NIFCLOUD Hatoba beta.
+// NIFCLOUD Kubernetes Service Hatoba.
 //
 //    // Example sending a request using ListSnapshotsRequest.
 //    req := client.ListSnapshotsRequest(params)

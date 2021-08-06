@@ -29,9 +29,7 @@ func (s ListClustersInput) MarshalFields(e protocol.FieldEncoder) error {
 type ListClustersOutput struct {
 	_ struct{} `type:"structure"`
 
-	Clusters []Cluster `locationName:"clusters" type:"list"`
-
-	RequestId *string `locationName:"requestId" type:"string"`
+	Clusters []Clusters `locationName:"clusters" type:"list"`
 }
 
 // String returns the string representation
@@ -53,19 +51,13 @@ func (s ListClustersOutput) MarshalFields(e protocol.FieldEncoder) error {
 		ls0.End()
 
 	}
-	if s.RequestId != nil {
-		v := *s.RequestId
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "requestId", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
-	}
 	return nil
 }
 
 const opListClusters = "ListClusters"
 
 // ListClustersRequest returns a request value for making API operation for
-// NIFCLOUD Hatoba beta.
+// NIFCLOUD Kubernetes Service Hatoba.
 //
 //    // Example sending a request using ListClustersRequest.
 //    req := client.ListClustersRequest(params)

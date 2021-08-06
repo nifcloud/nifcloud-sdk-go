@@ -14,7 +14,7 @@ type CreateFirewallGroupInput struct {
 	_ struct{} `type:"structure"`
 
 	// FirewallGroup is a required field
-	FirewallGroup *CreateFirewallGroupRequestFirewallGroup `locationName:"firewallGroup" type:"structure" required:"true"`
+	FirewallGroup *RequestFirewallGroup `locationName:"firewallGroup" type:"structure" required:"true"`
 }
 
 // String returns the string representation
@@ -57,9 +57,7 @@ func (s CreateFirewallGroupInput) MarshalFields(e protocol.FieldEncoder) error {
 type CreateFirewallGroupOutput struct {
 	_ struct{} `type:"structure"`
 
-	FirewallGroup *FirewallGroupResponse `locationName:"firewallGroup" type:"structure"`
-
-	RequestId *string `locationName:"requestId" type:"string"`
+	FirewallGroup *FirewallGroup `locationName:"firewallGroup" type:"structure"`
 }
 
 // String returns the string representation
@@ -75,19 +73,13 @@ func (s CreateFirewallGroupOutput) MarshalFields(e protocol.FieldEncoder) error 
 		metadata := protocol.Metadata{}
 		e.SetFields(protocol.BodyTarget, "firewallGroup", v, metadata)
 	}
-	if s.RequestId != nil {
-		v := *s.RequestId
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "requestId", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
-	}
 	return nil
 }
 
 const opCreateFirewallGroup = "CreateFirewallGroup"
 
 // CreateFirewallGroupRequest returns a request value for making API operation for
-// NIFCLOUD Hatoba beta.
+// NIFCLOUD Kubernetes Service Hatoba.
 //
 //    // Example sending a request using CreateFirewallGroupRequest.
 //    req := client.CreateFirewallGroupRequest(params)

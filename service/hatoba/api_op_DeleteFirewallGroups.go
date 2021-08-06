@@ -37,9 +37,7 @@ func (s DeleteFirewallGroupsInput) MarshalFields(e protocol.FieldEncoder) error 
 type DeleteFirewallGroupsOutput struct {
 	_ struct{} `type:"structure"`
 
-	FirewallGroups []FirewallGroupResponse `locationName:"firewallGroups" type:"list"`
-
-	RequestId *string `locationName:"requestId" type:"string"`
+	FirewallGroups []FirewallGroups `locationName:"firewallGroups" type:"list"`
 }
 
 // String returns the string representation
@@ -61,19 +59,13 @@ func (s DeleteFirewallGroupsOutput) MarshalFields(e protocol.FieldEncoder) error
 		ls0.End()
 
 	}
-	if s.RequestId != nil {
-		v := *s.RequestId
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "requestId", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
-	}
 	return nil
 }
 
 const opDeleteFirewallGroups = "DeleteFirewallGroups"
 
 // DeleteFirewallGroupsRequest returns a request value for making API operation for
-// NIFCLOUD Hatoba beta.
+// NIFCLOUD Kubernetes Service Hatoba.
 //
 //    // Example sending a request using DeleteFirewallGroupsRequest.
 //    req := client.DeleteFirewallGroupsRequest(params)

@@ -14,7 +14,7 @@ type CreateSnapshotInput struct {
 	_ struct{} `type:"structure"`
 
 	// Snapshot is a required field
-	Snapshot *CreateSnapshotRequestSnapshot `locationName:"snapshot" type:"structure" required:"true"`
+	Snapshot *RequestSnapshot `locationName:"snapshot" type:"structure" required:"true"`
 }
 
 // String returns the string representation
@@ -57,9 +57,7 @@ func (s CreateSnapshotInput) MarshalFields(e protocol.FieldEncoder) error {
 type CreateSnapshotOutput struct {
 	_ struct{} `type:"structure"`
 
-	RequestId *string `locationName:"requestId" type:"string"`
-
-	Snapshot *Snapshot `locationName:"snapshot" type:"structure"`
+	Snapshot *SnapshotOfCreateSnapshot `locationName:"snapshot" type:"structure"`
 }
 
 // String returns the string representation
@@ -69,12 +67,6 @@ func (s CreateSnapshotOutput) String() string {
 
 // MarshalFields encodes the AWS API shape using the passed in protocol encoder.
 func (s CreateSnapshotOutput) MarshalFields(e protocol.FieldEncoder) error {
-	if s.RequestId != nil {
-		v := *s.RequestId
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "requestId", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
-	}
 	if s.Snapshot != nil {
 		v := s.Snapshot
 
@@ -87,7 +79,7 @@ func (s CreateSnapshotOutput) MarshalFields(e protocol.FieldEncoder) error {
 const opCreateSnapshot = "CreateSnapshot"
 
 // CreateSnapshotRequest returns a request value for making API operation for
-// NIFCLOUD Hatoba beta.
+// NIFCLOUD Kubernetes Service Hatoba.
 //
 //    // Example sending a request using CreateSnapshotRequest.
 //    req := client.CreateSnapshotRequest(params)

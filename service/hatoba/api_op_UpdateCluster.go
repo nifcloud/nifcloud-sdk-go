@@ -13,11 +13,10 @@ import (
 type UpdateClusterInput struct {
 	_ struct{} `type:"structure"`
 
-	// Cluster is a required field
-	Cluster *UpdateClusterRequestCluster `locationName:"cluster" type:"structure" required:"true"`
+	Cluster *RequestClusterOfUpdateCluster `locationName:"cluster" type:"structure"`
 
 	// ClusterName is a required field
-	ClusterName *string `location:"uri" locationName:"ClusterName" type:"string" required:"true"`
+	ClusterName *string `location:"uri" locationName:"cluster_name" type:"string" required:"true"`
 }
 
 // String returns the string representation
@@ -29,17 +28,8 @@ func (s UpdateClusterInput) String() string {
 func (s *UpdateClusterInput) Validate() error {
 	invalidParams := aws.ErrInvalidParams{Context: "UpdateClusterInput"}
 
-	if s.Cluster == nil {
-		invalidParams.Add(aws.NewErrParamRequired("Cluster"))
-	}
-
 	if s.ClusterName == nil {
 		invalidParams.Add(aws.NewErrParamRequired("ClusterName"))
-	}
-	if s.Cluster != nil {
-		if err := s.Cluster.Validate(); err != nil {
-			invalidParams.AddNested("Cluster", err.(aws.ErrInvalidParams))
-		}
 	}
 
 	if invalidParams.Len() > 0 {
@@ -62,7 +52,7 @@ func (s UpdateClusterInput) MarshalFields(e protocol.FieldEncoder) error {
 		v := *s.ClusterName
 
 		metadata := protocol.Metadata{}
-		e.SetValue(protocol.PathTarget, "ClusterName", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+		e.SetValue(protocol.PathTarget, "cluster_name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
 	return nil
 }
@@ -71,8 +61,6 @@ type UpdateClusterOutput struct {
 	_ struct{} `type:"structure"`
 
 	Cluster *Cluster `locationName:"cluster" type:"structure"`
-
-	RequestId *string `locationName:"requestId" type:"string"`
 }
 
 // String returns the string representation
@@ -88,19 +76,13 @@ func (s UpdateClusterOutput) MarshalFields(e protocol.FieldEncoder) error {
 		metadata := protocol.Metadata{}
 		e.SetFields(protocol.BodyTarget, "cluster", v, metadata)
 	}
-	if s.RequestId != nil {
-		v := *s.RequestId
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "requestId", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
-	}
 	return nil
 }
 
 const opUpdateCluster = "UpdateCluster"
 
 // UpdateClusterRequest returns a request value for making API operation for
-// NIFCLOUD Hatoba beta.
+// NIFCLOUD Kubernetes Service Hatoba.
 //
 //    // Example sending a request using UpdateClusterRequest.
 //    req := client.UpdateClusterRequest(params)
@@ -114,7 +96,7 @@ func (c *Client) UpdateClusterRequest(input *UpdateClusterInput) UpdateClusterRe
 	op := &aws.Operation{
 		Name:       opUpdateCluster,
 		HTTPMethod: "PUT",
-		HTTPPath:   "/v1/clusters/{ClusterName}",
+		HTTPPath:   "/v1/clusters/{cluster_name}",
 	}
 
 	if input == nil {

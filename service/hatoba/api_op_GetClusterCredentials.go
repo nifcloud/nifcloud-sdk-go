@@ -14,7 +14,7 @@ type GetClusterCredentialsInput struct {
 	_ struct{} `type:"structure"`
 
 	// ClusterName is a required field
-	ClusterName *string `location:"uri" locationName:"ClusterName" type:"string" required:"true"`
+	ClusterName *string `location:"uri" locationName:"cluster_name" type:"string" required:"true"`
 }
 
 // String returns the string representation
@@ -44,7 +44,7 @@ func (s GetClusterCredentialsInput) MarshalFields(e protocol.FieldEncoder) error
 		v := *s.ClusterName
 
 		metadata := protocol.Metadata{}
-		e.SetValue(protocol.PathTarget, "ClusterName", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+		e.SetValue(protocol.PathTarget, "cluster_name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
 	return nil
 }
@@ -53,8 +53,6 @@ type GetClusterCredentialsOutput struct {
 	_ struct{} `type:"structure"`
 
 	Credentials *string `locationName:"credentials" type:"string"`
-
-	RequestId *string `locationName:"requestId" type:"string"`
 }
 
 // String returns the string representation
@@ -70,19 +68,13 @@ func (s GetClusterCredentialsOutput) MarshalFields(e protocol.FieldEncoder) erro
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "credentials", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
-	if s.RequestId != nil {
-		v := *s.RequestId
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "requestId", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
-	}
 	return nil
 }
 
 const opGetClusterCredentials = "GetClusterCredentials"
 
 // GetClusterCredentialsRequest returns a request value for making API operation for
-// NIFCLOUD Hatoba beta.
+// NIFCLOUD Kubernetes Service Hatoba.
 //
 //    // Example sending a request using GetClusterCredentialsRequest.
 //    req := client.GetClusterCredentialsRequest(params)
@@ -96,7 +88,7 @@ func (c *Client) GetClusterCredentialsRequest(input *GetClusterCredentialsInput)
 	op := &aws.Operation{
 		Name:       opGetClusterCredentials,
 		HTTPMethod: "GET",
-		HTTPPath:   "/v1/clusters/{ClusterName}/credentials",
+		HTTPPath:   "/v1/clusters/{cluster_name}/credentials",
 	}
 
 	if input == nil {
