@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        go: [ '1.15', '1.14', '1.13' ]
+        go: [ '1.17', '1.16', '1.15' ]
     name: Go ${{ matrix.go }} generate
     steps:
       - name: Checkout
@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        go: [ '1.15', '1.14', '1.13' ]
+        go: [ '1.17', '1.16', '1.15' ]
     name: Go ${{ matrix.go }} lint
     steps:
       - name: Checkout
@@ -45,7 +45,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        go: [ '1.14', '1.13' ]
+        go: [ '1.17', '1.16', '1.15' ]
     name: Go ${{ matrix.go }} unit-test
     steps:
       - name: Checkout
