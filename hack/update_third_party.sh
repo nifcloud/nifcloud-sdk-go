@@ -59,7 +59,9 @@ update_third_party::aws_sdk_go_v2::aws::signer::v2() {
         replace "tm4dX8Ks7pzFSVHz7qHdoJVXKRLuC4gWz9eti60d8ks=" "YrCPeKXsjy0M8FLhSXGG9Bgd9SwNCLHG3MsB5\/8kd+A=" ${BASE_OUTPUT}${TARGET}
         replace "Ch6qv3rzXB1SLqY2vFhsgA1WQ9rnQIE2WJCigOvAJwI=" "q4T0AwffHVlwAAHvxxbHDMCS+XH7lQoqNEeN5QoFv3k=" ${BASE_OUTPUT}${TARGET}
         replace "WNdE62UJKLKoA6XncVY\/9RDbrKmcVMdQPQOTAs8SgwQ=" "6QIdpE4CQxfzi42oCJGtz1N\/PeMlWGCRbM9zbXE33XM=" ${BASE_OUTPUT}${TARGET}
+        replace "string(len(body))" "fmt.Sprintf(\"%d\", len(body))" ${BASE_OUTPUT}${TARGET}
     done
+    replace "\"context\"" "\"context\"\n	\"fmt\"" "${BASE_OUTPUT}v2_test.go"
 }
 
 update_third_party::aws_sdk_go_v2::aws() {

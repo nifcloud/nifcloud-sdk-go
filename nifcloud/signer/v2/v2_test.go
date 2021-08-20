@@ -6,6 +6,7 @@ package v2
 import (
 	"bytes"
 	"context"
+	"fmt"
 	"net/http"
 	"net/url"
 	"os"
@@ -34,7 +35,7 @@ func (sb signerBuilder) BuildSigner() signer {
 		reader := bytes.NewReader(body)
 		req, _ = http.NewRequest(sb.Method, endpoint, reader)
 		req.Header.Add("Content-Type", "application/x-www-form-urlencoded")
-		req.Header.Add("Content-Length", string(len(body)))
+		req.Header.Add("Content-Length", fmt.Sprintf("%d", len(body)))
 	} else {
 		req, _ = http.NewRequest(sb.Method, endpoint, nil)
 		req.URL.RawQuery = sb.Query.Encode()
