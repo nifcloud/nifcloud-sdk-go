@@ -114,9 +114,13 @@ type DBInstance struct {
 
 	NextMonthAccountingType *string `locationName:"NextMonthAccountingType" type:"string"`
 
+	NiftyMasterPrivateAddress *string `locationName:"NiftyMasterPrivateAddress" type:"string"`
+
 	NiftyMultiAZType *string `locationName:"NiftyMultiAZType" type:"string"`
 
 	NiftyNetworkId *string `locationName:"NiftyNetworkId" type:"string"`
+
+	NiftySlavePrivateAddress *string `locationName:"NiftySlavePrivateAddress" type:"string"`
 
 	NiftyStorageType *int64 `locationName:"NiftyStorageType" type:"integer"`
 
@@ -195,9 +199,13 @@ type DBInstances struct {
 
 	NextMonthAccountingType *string `locationName:"NextMonthAccountingType" type:"string"`
 
+	NiftyMasterPrivateAddress *string `locationName:"NiftyMasterPrivateAddress" type:"string"`
+
 	NiftyMultiAZType *string `locationName:"NiftyMultiAZType" type:"string"`
 
 	NiftyNetworkId *string `locationName:"NiftyNetworkId" type:"string"`
+
+	NiftySlavePrivateAddress *string `locationName:"NiftySlavePrivateAddress" type:"string"`
 
 	NiftyStorageType *int64 `locationName:"NiftyStorageType" type:"integer"`
 
