@@ -17,7 +17,7 @@ type Datapoints struct {
 
 	SampleCount *int64 `locationName:"SampleCount" type:"integer"`
 
-	Sum *int64 `locationName:"Sum" type:"integer"`
+	Sum *float64 `locationName:"Sum" type:"double"`
 
 	TargetName *string `locationName:"TargetName" type:"string"`
 
@@ -85,6 +85,8 @@ type NASInstance struct {
 
 	MasterUsername *string `locationName:"MasterUsername" type:"string"`
 
+	NASInstanceClass *string `locationName:"NASInstanceClass" type:"string"`
+
 	NASInstanceDescription *string `locationName:"NASInstanceDescription" type:"string"`
 
 	NASInstanceErrorInfo *NASInstanceErrorInfo `locationName:"NASInstanceErrorInfo" type:"structure"`
@@ -142,6 +144,8 @@ type NASInstances struct {
 	Endpoint *Endpoint `locationName:"Endpoint" type:"structure"`
 
 	MasterUsername *string `locationName:"MasterUsername" type:"string"`
+
+	NASInstanceClass *string `locationName:"NASInstanceClass" type:"string"`
 
 	NASInstanceDescription *string `locationName:"NASInstanceDescription" type:"string"`
 
