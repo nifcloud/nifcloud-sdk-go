@@ -1,6 +1,14 @@
 
 # CHANGELOG
 
+## v1.9.0
+
+* fix: Fix sum type to double (#22 by fuku2014)
+* feature: Update rdb model (#21 by fuku2014)
+* feature: Update to go 1.17 version (#20 by fuku2014)
+* feature: Update Hatoba for add LoadBalancer API and change interface (#19 by fuku2014)
+* fix: Fix bug of rdb model (#18 by fuku2014)
+
 ## v1.8.0
 
 * fix: Fix bug of nas model (#17 by fuku2014)
