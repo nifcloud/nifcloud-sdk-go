@@ -14,7 +14,7 @@ type RevokeFirewallGroupInput struct {
 	_ struct{} `type:"structure"`
 
 	// FirewallGroupName is a required field
-	FirewallGroupName *string `location:"uri" locationName:"FirewallGroupName" type:"string" required:"true"`
+	FirewallGroupName *string `location:"uri" locationName:"firewall_group_name" type:"string" required:"true"`
 
 	Ids *string `location:"querystring" locationName:"ids" type:"string"`
 }
@@ -46,7 +46,7 @@ func (s RevokeFirewallGroupInput) MarshalFields(e protocol.FieldEncoder) error {
 		v := *s.FirewallGroupName
 
 		metadata := protocol.Metadata{}
-		e.SetValue(protocol.PathTarget, "FirewallGroupName", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+		e.SetValue(protocol.PathTarget, "firewall_group_name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
 	if s.Ids != nil {
 		v := *s.Ids
@@ -60,9 +60,7 @@ func (s RevokeFirewallGroupInput) MarshalFields(e protocol.FieldEncoder) error {
 type RevokeFirewallGroupOutput struct {
 	_ struct{} `type:"structure"`
 
-	FirewallGroup *FirewallGroupResponse `locationName:"firewallGroup" type:"structure"`
-
-	RequestId *string `locationName:"requestId" type:"string"`
+	FirewallGroup *FirewallGroup `locationName:"firewallGroup" type:"structure"`
 }
 
 // String returns the string representation
@@ -78,19 +76,13 @@ func (s RevokeFirewallGroupOutput) MarshalFields(e protocol.FieldEncoder) error 
 		metadata := protocol.Metadata{}
 		e.SetFields(protocol.BodyTarget, "firewallGroup", v, metadata)
 	}
-	if s.RequestId != nil {
-		v := *s.RequestId
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "requestId", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
-	}
 	return nil
 }
 
 const opRevokeFirewallGroup = "RevokeFirewallGroup"
 
 // RevokeFirewallGroupRequest returns a request value for making API operation for
-// NIFCLOUD Hatoba beta.
+// NIFCLOUD Kubernetes Service Hatoba.
 //
 //    // Example sending a request using RevokeFirewallGroupRequest.
 //    req := client.RevokeFirewallGroupRequest(params)
@@ -104,7 +96,7 @@ func (c *Client) RevokeFirewallGroupRequest(input *RevokeFirewallGroupInput) Rev
 	op := &aws.Operation{
 		Name:       opRevokeFirewallGroup,
 		HTTPMethod: "DELETE",
-		HTTPPath:   "/v1/firewallGroups/{FirewallGroupName}/rules",
+		HTTPPath:   "/v1/firewallGroups/{firewall_group_name}/rules",
 	}
 
 	if input == nil {

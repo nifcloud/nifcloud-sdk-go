@@ -13,11 +13,10 @@ import (
 type UpdateSnapshotInput struct {
 	_ struct{} `type:"structure"`
 
-	// Snapshot is a required field
-	Snapshot *UpdateSnapshotRequestSnapshot `locationName:"snapshot" type:"structure" required:"true"`
+	Snapshot *RequestSnapshotOfUpdateSnapshot `locationName:"snapshot" type:"structure"`
 
 	// SnapshotName is a required field
-	SnapshotName *string `location:"uri" locationName:"SnapshotName" type:"string" required:"true"`
+	SnapshotName *string `location:"uri" locationName:"snapshot_name" type:"string" required:"true"`
 }
 
 // String returns the string representation
@@ -28,10 +27,6 @@ func (s UpdateSnapshotInput) String() string {
 // Validate inspects the fields of the type to determine if they are valid.
 func (s *UpdateSnapshotInput) Validate() error {
 	invalidParams := aws.ErrInvalidParams{Context: "UpdateSnapshotInput"}
-
-	if s.Snapshot == nil {
-		invalidParams.Add(aws.NewErrParamRequired("Snapshot"))
-	}
 
 	if s.SnapshotName == nil {
 		invalidParams.Add(aws.NewErrParamRequired("SnapshotName"))
@@ -57,7 +52,7 @@ func (s UpdateSnapshotInput) MarshalFields(e protocol.FieldEncoder) error {
 		v := *s.SnapshotName
 
 		metadata := protocol.Metadata{}
-		e.SetValue(protocol.PathTarget, "SnapshotName", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+		e.SetValue(protocol.PathTarget, "snapshot_name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
 	return nil
 }
@@ -65,9 +60,7 @@ func (s UpdateSnapshotInput) MarshalFields(e protocol.FieldEncoder) error {
 type UpdateSnapshotOutput struct {
 	_ struct{} `type:"structure"`
 
-	RequestId *string `locationName:"requestId" type:"string"`
-
-	Snapshot *Snapshot `locationName:"snapshot" type:"structure"`
+	Snapshot *SnapshotOfUpdateSnapshot `locationName:"snapshot" type:"structure"`
 }
 
 // String returns the string representation
@@ -77,12 +70,6 @@ func (s UpdateSnapshotOutput) String() string {
 
 // MarshalFields encodes the AWS API shape using the passed in protocol encoder.
 func (s UpdateSnapshotOutput) MarshalFields(e protocol.FieldEncoder) error {
-	if s.RequestId != nil {
-		v := *s.RequestId
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "requestId", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
-	}
 	if s.Snapshot != nil {
 		v := s.Snapshot
 
@@ -95,7 +82,7 @@ func (s UpdateSnapshotOutput) MarshalFields(e protocol.FieldEncoder) error {
 const opUpdateSnapshot = "UpdateSnapshot"
 
 // UpdateSnapshotRequest returns a request value for making API operation for
-// NIFCLOUD Hatoba beta.
+// NIFCLOUD Kubernetes Service Hatoba.
 //
 //    // Example sending a request using UpdateSnapshotRequest.
 //    req := client.UpdateSnapshotRequest(params)
@@ -109,7 +96,7 @@ func (c *Client) UpdateSnapshotRequest(input *UpdateSnapshotInput) UpdateSnapsho
 	op := &aws.Operation{
 		Name:       opUpdateSnapshot,
 		HTTPMethod: "PUT",
-		HTTPPath:   "/v1/snapshots/{SnapshotName}",
+		HTTPPath:   "/v1/snapshots/{snapshot_name}",
 	}
 
 	if input == nil {

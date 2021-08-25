@@ -14,13 +14,13 @@ type SetNodePoolSizeInput struct {
 	_ struct{} `type:"structure"`
 
 	// ClusterName is a required field
-	ClusterName *string `location:"uri" locationName:"ClusterName" type:"string" required:"true"`
+	ClusterName *string `location:"uri" locationName:"cluster_name" type:"string" required:"true"`
 
 	// NodeCount is a required field
 	NodeCount *int64 `locationName:"nodeCount" type:"integer" required:"true"`
 
 	// NodePoolName is a required field
-	NodePoolName *string `location:"uri" locationName:"NodePoolName" type:"string" required:"true"`
+	NodePoolName *string `location:"uri" locationName:"node_pool_name" type:"string" required:"true"`
 }
 
 // String returns the string representation
@@ -64,13 +64,13 @@ func (s SetNodePoolSizeInput) MarshalFields(e protocol.FieldEncoder) error {
 		v := *s.ClusterName
 
 		metadata := protocol.Metadata{}
-		e.SetValue(protocol.PathTarget, "ClusterName", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+		e.SetValue(protocol.PathTarget, "cluster_name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
 	if s.NodePoolName != nil {
 		v := *s.NodePoolName
 
 		metadata := protocol.Metadata{}
-		e.SetValue(protocol.PathTarget, "NodePoolName", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+		e.SetValue(protocol.PathTarget, "node_pool_name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
 	return nil
 }
@@ -78,9 +78,7 @@ func (s SetNodePoolSizeInput) MarshalFields(e protocol.FieldEncoder) error {
 type SetNodePoolSizeOutput struct {
 	_ struct{} `type:"structure"`
 
-	NodePool *NodePool `locationName:"nodePool" type:"structure"`
-
-	RequestId *string `locationName:"requestId" type:"string"`
+	NodePools []NodePools `locationName:"nodePools" type:"list"`
 }
 
 // String returns the string representation
@@ -90,17 +88,17 @@ func (s SetNodePoolSizeOutput) String() string {
 
 // MarshalFields encodes the AWS API shape using the passed in protocol encoder.
 func (s SetNodePoolSizeOutput) MarshalFields(e protocol.FieldEncoder) error {
-	if s.NodePool != nil {
-		v := s.NodePool
+	if s.NodePools != nil {
+		v := s.NodePools
 
 		metadata := protocol.Metadata{}
-		e.SetFields(protocol.BodyTarget, "nodePool", v, metadata)
-	}
-	if s.RequestId != nil {
-		v := *s.RequestId
+		ls0 := e.List(protocol.BodyTarget, "nodePools", metadata)
+		ls0.Start()
+		for _, v1 := range v {
+			ls0.ListAddFields(v1)
+		}
+		ls0.End()
 
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "requestId", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
 	return nil
 }
@@ -108,7 +106,7 @@ func (s SetNodePoolSizeOutput) MarshalFields(e protocol.FieldEncoder) error {
 const opSetNodePoolSize = "SetNodePoolSize"
 
 // SetNodePoolSizeRequest returns a request value for making API operation for
-// NIFCLOUD Hatoba beta.
+// NIFCLOUD Kubernetes Service Hatoba.
 //
 //    // Example sending a request using SetNodePoolSizeRequest.
 //    req := client.SetNodePoolSizeRequest(params)
@@ -122,7 +120,7 @@ func (c *Client) SetNodePoolSizeRequest(input *SetNodePoolSizeInput) SetNodePool
 	op := &aws.Operation{
 		Name:       opSetNodePoolSize,
 		HTTPMethod: "POST",
-		HTTPPath:   "/v1/clusters/{ClusterName}/nodePools/{NodePoolName}:setSize",
+		HTTPPath:   "/v1/clusters/{cluster_name}/nodePools/{node_pool_name}:setSize",
 	}
 
 	if input == nil {

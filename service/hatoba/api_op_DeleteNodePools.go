@@ -14,9 +14,10 @@ type DeleteNodePoolsInput struct {
 	_ struct{} `type:"structure"`
 
 	// ClusterName is a required field
-	ClusterName *string `location:"uri" locationName:"ClusterName" type:"string" required:"true"`
+	ClusterName *string `location:"uri" locationName:"cluster_name" type:"string" required:"true"`
 
-	Names *string `location:"querystring" locationName:"names" type:"string"`
+	// Names is a required field
+	Names *string `location:"querystring" locationName:"names" type:"string" required:"true"`
 }
 
 // String returns the string representation
@@ -30,6 +31,10 @@ func (s *DeleteNodePoolsInput) Validate() error {
 
 	if s.ClusterName == nil {
 		invalidParams.Add(aws.NewErrParamRequired("ClusterName"))
+	}
+
+	if s.Names == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Names"))
 	}
 
 	if invalidParams.Len() > 0 {
@@ -46,7 +51,7 @@ func (s DeleteNodePoolsInput) MarshalFields(e protocol.FieldEncoder) error {
 		v := *s.ClusterName
 
 		metadata := protocol.Metadata{}
-		e.SetValue(protocol.PathTarget, "ClusterName", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+		e.SetValue(protocol.PathTarget, "cluster_name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
 	if s.Names != nil {
 		v := *s.Names
@@ -60,9 +65,7 @@ func (s DeleteNodePoolsInput) MarshalFields(e protocol.FieldEncoder) error {
 type DeleteNodePoolsOutput struct {
 	_ struct{} `type:"structure"`
 
-	NodePools []NodePool `locationName:"nodePools" type:"list"`
-
-	RequestId *string `locationName:"requestId" type:"string"`
+	NodePools []NodePools `locationName:"nodePools" type:"list"`
 }
 
 // String returns the string representation
@@ -84,19 +87,13 @@ func (s DeleteNodePoolsOutput) MarshalFields(e protocol.FieldEncoder) error {
 		ls0.End()
 
 	}
-	if s.RequestId != nil {
-		v := *s.RequestId
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "requestId", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
-	}
 	return nil
 }
 
 const opDeleteNodePools = "DeleteNodePools"
 
 // DeleteNodePoolsRequest returns a request value for making API operation for
-// NIFCLOUD Hatoba beta.
+// NIFCLOUD Kubernetes Service Hatoba.
 //
 //    // Example sending a request using DeleteNodePoolsRequest.
 //    req := client.DeleteNodePoolsRequest(params)
@@ -110,7 +107,7 @@ func (c *Client) DeleteNodePoolsRequest(input *DeleteNodePoolsInput) DeleteNodeP
 	op := &aws.Operation{
 		Name:       opDeleteNodePools,
 		HTTPMethod: "DELETE",
-		HTTPPath:   "/v1/clusters/{ClusterName}/nodePools",
+		HTTPPath:   "/v1/clusters/{cluster_name}/nodePools",
 	}
 
 	if input == nil {

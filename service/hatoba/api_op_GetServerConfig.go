@@ -29,8 +29,6 @@ func (s GetServerConfigInput) MarshalFields(e protocol.FieldEncoder) error {
 type GetServerConfigOutput struct {
 	_ struct{} `type:"structure"`
 
-	RequestId *string `locationName:"requestId" type:"string"`
-
 	ServerConfig *ServerConfig `locationName:"serverConfig" type:"structure"`
 }
 
@@ -41,12 +39,6 @@ func (s GetServerConfigOutput) String() string {
 
 // MarshalFields encodes the AWS API shape using the passed in protocol encoder.
 func (s GetServerConfigOutput) MarshalFields(e protocol.FieldEncoder) error {
-	if s.RequestId != nil {
-		v := *s.RequestId
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "requestId", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
-	}
 	if s.ServerConfig != nil {
 		v := s.ServerConfig
 
@@ -59,7 +51,7 @@ func (s GetServerConfigOutput) MarshalFields(e protocol.FieldEncoder) error {
 const opGetServerConfig = "GetServerConfig"
 
 // GetServerConfigRequest returns a request value for making API operation for
-// NIFCLOUD Hatoba beta.
+// NIFCLOUD Kubernetes Service Hatoba.
 //
 //    // Example sending a request using GetServerConfigRequest.
 //    req := client.GetServerConfigRequest(params)

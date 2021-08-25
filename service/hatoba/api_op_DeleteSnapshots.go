@@ -37,9 +37,7 @@ func (s DeleteSnapshotsInput) MarshalFields(e protocol.FieldEncoder) error {
 type DeleteSnapshotsOutput struct {
 	_ struct{} `type:"structure"`
 
-	RequestId *string `locationName:"requestId" type:"string"`
-
-	Snapshots []Snapshot `locationName:"snapshots" type:"list"`
+	Snapshots []SnapshotsOfDeleteSnapshots `locationName:"snapshots" type:"list"`
 }
 
 // String returns the string representation
@@ -49,12 +47,6 @@ func (s DeleteSnapshotsOutput) String() string {
 
 // MarshalFields encodes the AWS API shape using the passed in protocol encoder.
 func (s DeleteSnapshotsOutput) MarshalFields(e protocol.FieldEncoder) error {
-	if s.RequestId != nil {
-		v := *s.RequestId
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "requestId", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
-	}
 	if s.Snapshots != nil {
 		v := s.Snapshots
 
@@ -73,7 +65,7 @@ func (s DeleteSnapshotsOutput) MarshalFields(e protocol.FieldEncoder) error {
 const opDeleteSnapshots = "DeleteSnapshots"
 
 // DeleteSnapshotsRequest returns a request value for making API operation for
-// NIFCLOUD Hatoba beta.
+// NIFCLOUD Kubernetes Service Hatoba.
 //
 //    // Example sending a request using DeleteSnapshotsRequest.
 //    req := client.DeleteSnapshotsRequest(params)

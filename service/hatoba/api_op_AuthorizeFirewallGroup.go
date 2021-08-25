@@ -4,6 +4,7 @@ package hatoba
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/private/protocol"
@@ -14,9 +15,10 @@ type AuthorizeFirewallGroupInput struct {
 	_ struct{} `type:"structure"`
 
 	// FirewallGroupName is a required field
-	FirewallGroupName *string `location:"uri" locationName:"FirewallGroupName" type:"string" required:"true"`
+	FirewallGroupName *string `location:"uri" locationName:"firewall_group_name" type:"string" required:"true"`
 
-	Rules []AuthorizeFirewallGroupRequestFirewallRule `locationName:"rules" type:"list"`
+	// Rules is a required field
+	Rules []RequestRules `locationName:"rules" type:"list" required:"true"`
 }
 
 // String returns the string representation
@@ -30,6 +32,17 @@ func (s *AuthorizeFirewallGroupInput) Validate() error {
 
 	if s.FirewallGroupName == nil {
 		invalidParams.Add(aws.NewErrParamRequired("FirewallGroupName"))
+	}
+
+	if s.Rules == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Rules"))
+	}
+	if s.Rules != nil {
+		for i, v := range s.Rules {
+			if err := v.Validate(); err != nil {
+				invalidParams.AddNested(fmt.Sprintf("%s[%v]", "Rules", i), err.(aws.ErrInvalidParams))
+			}
+		}
 	}
 
 	if invalidParams.Len() > 0 {
@@ -58,7 +71,7 @@ func (s AuthorizeFirewallGroupInput) MarshalFields(e protocol.FieldEncoder) erro
 		v := *s.FirewallGroupName
 
 		metadata := protocol.Metadata{}
-		e.SetValue(protocol.PathTarget, "FirewallGroupName", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+		e.SetValue(protocol.PathTarget, "firewall_group_name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
 	return nil
 }
@@ -66,9 +79,7 @@ func (s AuthorizeFirewallGroupInput) MarshalFields(e protocol.FieldEncoder) erro
 type AuthorizeFirewallGroupOutput struct {
 	_ struct{} `type:"structure"`
 
-	FirewallGroup *FirewallGroupResponse `locationName:"firewallGroup" type:"structure"`
-
-	RequestId *string `locationName:"requestId" type:"string"`
+	FirewallGroup *FirewallGroup `locationName:"firewallGroup" type:"structure"`
 }
 
 // String returns the string representation
@@ -84,19 +95,13 @@ func (s AuthorizeFirewallGroupOutput) MarshalFields(e protocol.FieldEncoder) err
 		metadata := protocol.Metadata{}
 		e.SetFields(protocol.BodyTarget, "firewallGroup", v, metadata)
 	}
-	if s.RequestId != nil {
-		v := *s.RequestId
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "requestId", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
-	}
 	return nil
 }
 
 const opAuthorizeFirewallGroup = "AuthorizeFirewallGroup"
 
 // AuthorizeFirewallGroupRequest returns a request value for making API operation for
-// NIFCLOUD Hatoba beta.
+// NIFCLOUD Kubernetes Service Hatoba.
 //
 //    // Example sending a request using AuthorizeFirewallGroupRequest.
 //    req := client.AuthorizeFirewallGroupRequest(params)
@@ -110,7 +115,7 @@ func (c *Client) AuthorizeFirewallGroupRequest(input *AuthorizeFirewallGroupInpu
 	op := &aws.Operation{
 		Name:       opAuthorizeFirewallGroup,
 		HTTPMethod: "POST",
-		HTTPPath:   "/v1/firewallGroups/{FirewallGroupName}/rules",
+		HTTPPath:   "/v1/firewallGroups/{firewall_group_name}/rules",
 	}
 
 	if input == nil {

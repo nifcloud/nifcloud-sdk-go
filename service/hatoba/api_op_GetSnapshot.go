@@ -14,7 +14,7 @@ type GetSnapshotInput struct {
 	_ struct{} `type:"structure"`
 
 	// SnapshotName is a required field
-	SnapshotName *string `location:"uri" locationName:"SnapshotName" type:"string" required:"true"`
+	SnapshotName *string `location:"uri" locationName:"snapshot_name" type:"string" required:"true"`
 }
 
 // String returns the string representation
@@ -44,15 +44,13 @@ func (s GetSnapshotInput) MarshalFields(e protocol.FieldEncoder) error {
 		v := *s.SnapshotName
 
 		metadata := protocol.Metadata{}
-		e.SetValue(protocol.PathTarget, "SnapshotName", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+		e.SetValue(protocol.PathTarget, "snapshot_name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
 	return nil
 }
 
 type GetSnapshotOutput struct {
 	_ struct{} `type:"structure"`
-
-	RequestId *string `locationName:"requestId" type:"string"`
 
 	Snapshot *Snapshot `locationName:"snapshot" type:"structure"`
 }
@@ -64,12 +62,6 @@ func (s GetSnapshotOutput) String() string {
 
 // MarshalFields encodes the AWS API shape using the passed in protocol encoder.
 func (s GetSnapshotOutput) MarshalFields(e protocol.FieldEncoder) error {
-	if s.RequestId != nil {
-		v := *s.RequestId
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "requestId", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
-	}
 	if s.Snapshot != nil {
 		v := s.Snapshot
 
@@ -82,7 +74,7 @@ func (s GetSnapshotOutput) MarshalFields(e protocol.FieldEncoder) error {
 const opGetSnapshot = "GetSnapshot"
 
 // GetSnapshotRequest returns a request value for making API operation for
-// NIFCLOUD Hatoba beta.
+// NIFCLOUD Kubernetes Service Hatoba.
 //
 //    // Example sending a request using GetSnapshotRequest.
 //    req := client.GetSnapshotRequest(params)
@@ -96,7 +88,7 @@ func (c *Client) GetSnapshotRequest(input *GetSnapshotInput) GetSnapshotRequest 
 	op := &aws.Operation{
 		Name:       opGetSnapshot,
 		HTTPMethod: "GET",
-		HTTPPath:   "/v1/snapshots/{SnapshotName}",
+		HTTPPath:   "/v1/snapshots/{snapshot_name}",
 	}
 
 	if input == nil {

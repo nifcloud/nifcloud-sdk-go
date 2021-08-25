@@ -24,21 +24,6 @@ func (s AddonsConfig) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-// Validate inspects the fields of the type to determine if they are valid.
-func (s *AddonsConfig) Validate() error {
-	invalidParams := aws.ErrInvalidParams{Context: "AddonsConfig"}
-	if s.HttpLoadBalancing != nil {
-		if err := s.HttpLoadBalancing.Validate(); err != nil {
-			invalidParams.AddNested("HttpLoadBalancing", err.(aws.ErrInvalidParams))
-		}
-	}
-
-	if invalidParams.Len() > 0 {
-		return invalidParams
-	}
-	return nil
-}
-
 // MarshalFields encodes the AWS API shape using the passed in protocol encoder.
 func (s AddonsConfig) MarshalFields(e protocol.FieldEncoder) error {
 	if s.HttpLoadBalancing != nil {
@@ -46,68 +31,6 @@ func (s AddonsConfig) MarshalFields(e protocol.FieldEncoder) error {
 
 		metadata := protocol.Metadata{}
 		e.SetFields(protocol.BodyTarget, "httpLoadBalancing", v, metadata)
-	}
-	return nil
-}
-
-type AuthorizeFirewallGroupRequestFirewallRule struct {
-	_ struct{} `type:"structure"`
-
-	CidrIp *string `locationName:"cidrIp" type:"string"`
-
-	Description *string `locationName:"description" type:"string"`
-
-	Direction *string `locationName:"direction" type:"string"`
-
-	FromPort *int64 `locationName:"fromPort" type:"integer"`
-
-	Protocol *string `locationName:"protocol" type:"string"`
-
-	ToPort *int64 `locationName:"toPort" type:"integer"`
-}
-
-// String returns the string representation
-func (s AuthorizeFirewallGroupRequestFirewallRule) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
-func (s AuthorizeFirewallGroupRequestFirewallRule) MarshalFields(e protocol.FieldEncoder) error {
-	if s.CidrIp != nil {
-		v := *s.CidrIp
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "cidrIp", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
-	}
-	if s.Description != nil {
-		v := *s.Description
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "description", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
-	}
-	if s.Direction != nil {
-		v := *s.Direction
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "direction", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
-	}
-	if s.FromPort != nil {
-		v := *s.FromPort
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "fromPort", protocol.Int64Value(v), metadata)
-	}
-	if s.Protocol != nil {
-		v := *s.Protocol
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "protocol", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
-	}
-	if s.ToPort != nil {
-		v := *s.ToPort
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "toPort", protocol.Int64Value(v), metadata)
 	}
 	return nil
 }
@@ -129,7 +52,7 @@ type Cluster struct {
 
 	KubernetesVersion *string `locationName:"kubernetesVersion" type:"string"`
 
-	Locations []string `locationName:"locations" type:"list"`
+	Locations *string `locationName:"locations" type:"string"`
 
 	Name *string `locationName:"name" type:"string"`
 
@@ -137,7 +60,7 @@ type Cluster struct {
 
 	NodeCount *int64 `locationName:"nodeCount" type:"integer"`
 
-	NodePools []NodePool `locationName:"nodePools" type:"list"`
+	NodePools []NodePools `locationName:"nodePools" type:"list"`
 
 	Status *string `locationName:"status" type:"string"`
 }
@@ -192,16 +115,10 @@ func (s Cluster) MarshalFields(e protocol.FieldEncoder) error {
 		e.SetValue(protocol.BodyTarget, "kubernetesVersion", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
 	if s.Locations != nil {
-		v := s.Locations
+		v := *s.Locations
 
 		metadata := protocol.Metadata{}
-		ls0 := e.List(protocol.BodyTarget, "locations", metadata)
-		ls0.Start()
-		for _, v1 := range v {
-			ls0.ListAddValue(protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
-		}
-		ls0.End()
-
+		e.SetValue(protocol.BodyTarget, "locations", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
 	if s.Name != nil {
 		v := *s.Name
@@ -242,127 +159,34 @@ func (s Cluster) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
-type CreateClusterRequestCluster struct {
+type ClusterOfCreateSnapshot struct {
 	_ struct{} `type:"structure"`
-
-	AddonsConfig *AddonsConfig `locationName:"addonsConfig" type:"structure"`
-
-	Description *string `locationName:"description" type:"string"`
-
-	// FirewallGroup is a required field
-	FirewallGroup *string `locationName:"firewallGroup" type:"string" required:"true"`
 
 	KubernetesVersion *string `locationName:"kubernetesVersion" type:"string"`
 
-	// Locations is a required field
-	Locations []string `locationName:"locations" type:"list" required:"true"`
+	Name *string `locationName:"name" type:"string"`
 
-	// Name is a required field
-	Name *string `locationName:"name" type:"string" required:"true"`
-
-	NetworkConfig *NetworkConfig `locationName:"networkConfig" type:"structure"`
-
-	// NodePools is a required field
-	NodePools []CreateClusterRequestNodePool `locationName:"nodePools" type:"list" required:"true"`
+	NodePools []NodePoolsOfCreateSnapshot `locationName:"nodePools" type:"list"`
 }
 
 // String returns the string representation
-func (s CreateClusterRequestCluster) String() string {
+func (s ClusterOfCreateSnapshot) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-// Validate inspects the fields of the type to determine if they are valid.
-func (s *CreateClusterRequestCluster) Validate() error {
-	invalidParams := aws.ErrInvalidParams{Context: "CreateClusterRequestCluster"}
-
-	if s.FirewallGroup == nil {
-		invalidParams.Add(aws.NewErrParamRequired("FirewallGroup"))
-	}
-
-	if s.Locations == nil {
-		invalidParams.Add(aws.NewErrParamRequired("Locations"))
-	}
-
-	if s.Name == nil {
-		invalidParams.Add(aws.NewErrParamRequired("Name"))
-	}
-
-	if s.NodePools == nil {
-		invalidParams.Add(aws.NewErrParamRequired("NodePools"))
-	}
-	if s.AddonsConfig != nil {
-		if err := s.AddonsConfig.Validate(); err != nil {
-			invalidParams.AddNested("AddonsConfig", err.(aws.ErrInvalidParams))
-		}
-	}
-	if s.NetworkConfig != nil {
-		if err := s.NetworkConfig.Validate(); err != nil {
-			invalidParams.AddNested("NetworkConfig", err.(aws.ErrInvalidParams))
-		}
-	}
-	if s.NodePools != nil {
-		for i, v := range s.NodePools {
-			if err := v.Validate(); err != nil {
-				invalidParams.AddNested(fmt.Sprintf("%s[%v]", "NodePools", i), err.(aws.ErrInvalidParams))
-			}
-		}
-	}
-
-	if invalidParams.Len() > 0 {
-		return invalidParams
-	}
-	return nil
-}
-
 // MarshalFields encodes the AWS API shape using the passed in protocol encoder.
-func (s CreateClusterRequestCluster) MarshalFields(e protocol.FieldEncoder) error {
-	if s.AddonsConfig != nil {
-		v := s.AddonsConfig
-
-		metadata := protocol.Metadata{}
-		e.SetFields(protocol.BodyTarget, "addonsConfig", v, metadata)
-	}
-	if s.Description != nil {
-		v := *s.Description
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "description", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
-	}
-	if s.FirewallGroup != nil {
-		v := *s.FirewallGroup
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "firewallGroup", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
-	}
+func (s ClusterOfCreateSnapshot) MarshalFields(e protocol.FieldEncoder) error {
 	if s.KubernetesVersion != nil {
 		v := *s.KubernetesVersion
 
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "kubernetesVersion", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
-	if s.Locations != nil {
-		v := s.Locations
-
-		metadata := protocol.Metadata{}
-		ls0 := e.List(protocol.BodyTarget, "locations", metadata)
-		ls0.Start()
-		for _, v1 := range v {
-			ls0.ListAddValue(protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
-		}
-		ls0.End()
-
-	}
 	if s.Name != nil {
 		v := *s.Name
 
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
-	}
-	if s.NetworkConfig != nil {
-		v := s.NetworkConfig
-
-		metadata := protocol.Metadata{}
-		e.SetFields(protocol.BodyTarget, "networkConfig", v, metadata)
 	}
 	if s.NodePools != nil {
 		v := s.NodePools
@@ -379,54 +203,322 @@ func (s CreateClusterRequestCluster) MarshalFields(e protocol.FieldEncoder) erro
 	return nil
 }
 
-type CreateClusterRequestNodePool struct {
+type ClusterOfDeleteSnapshot struct {
 	_ struct{} `type:"structure"`
 
-	// InstanceType is a required field
-	InstanceType *string `locationName:"instanceType" type:"string" required:"true"`
+	KubernetesVersion *string `locationName:"kubernetesVersion" type:"string"`
 
-	// Name is a required field
-	Name *string `locationName:"name" type:"string" required:"true"`
+	Name *string `locationName:"name" type:"string"`
 
-	NodeCount *int64 `locationName:"nodeCount" type:"integer"`
+	NodePools []NodePoolsOfDeleteSnapshot `locationName:"nodePools" type:"list"`
 }
 
 // String returns the string representation
-func (s CreateClusterRequestNodePool) String() string {
+func (s ClusterOfDeleteSnapshot) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-// Validate inspects the fields of the type to determine if they are valid.
-func (s *CreateClusterRequestNodePool) Validate() error {
-	invalidParams := aws.ErrInvalidParams{Context: "CreateClusterRequestNodePool"}
-
-	if s.InstanceType == nil {
-		invalidParams.Add(aws.NewErrParamRequired("InstanceType"))
-	}
-
-	if s.Name == nil {
-		invalidParams.Add(aws.NewErrParamRequired("Name"))
-	}
-
-	if invalidParams.Len() > 0 {
-		return invalidParams
-	}
-	return nil
-}
-
 // MarshalFields encodes the AWS API shape using the passed in protocol encoder.
-func (s CreateClusterRequestNodePool) MarshalFields(e protocol.FieldEncoder) error {
-	if s.InstanceType != nil {
-		v := *s.InstanceType
+func (s ClusterOfDeleteSnapshot) MarshalFields(e protocol.FieldEncoder) error {
+	if s.KubernetesVersion != nil {
+		v := *s.KubernetesVersion
 
 		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "instanceType", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+		e.SetValue(protocol.BodyTarget, "kubernetesVersion", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
 	if s.Name != nil {
 		v := *s.Name
 
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.NodePools != nil {
+		v := s.NodePools
+
+		metadata := protocol.Metadata{}
+		ls0 := e.List(protocol.BodyTarget, "nodePools", metadata)
+		ls0.Start()
+		for _, v1 := range v {
+			ls0.ListAddFields(v1)
+		}
+		ls0.End()
+
+	}
+	return nil
+}
+
+type ClusterOfDeleteSnapshots struct {
+	_ struct{} `type:"structure"`
+
+	KubernetesVersion *string `locationName:"kubernetesVersion" type:"string"`
+
+	Name *string `locationName:"name" type:"string"`
+
+	NodePools []NodePoolsOfDeleteSnapshots `locationName:"nodePools" type:"list"`
+}
+
+// String returns the string representation
+func (s ClusterOfDeleteSnapshots) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s ClusterOfDeleteSnapshots) MarshalFields(e protocol.FieldEncoder) error {
+	if s.KubernetesVersion != nil {
+		v := *s.KubernetesVersion
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "kubernetesVersion", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.Name != nil {
+		v := *s.Name
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.NodePools != nil {
+		v := s.NodePools
+
+		metadata := protocol.Metadata{}
+		ls0 := e.List(protocol.BodyTarget, "nodePools", metadata)
+		ls0.Start()
+		for _, v1 := range v {
+			ls0.ListAddFields(v1)
+		}
+		ls0.End()
+
+	}
+	return nil
+}
+
+type ClusterOfGetSnapshot struct {
+	_ struct{} `type:"structure"`
+
+	KubernetesVersion *string `locationName:"kubernetesVersion" type:"string"`
+
+	Name *string `locationName:"name" type:"string"`
+
+	NodePools []NodePoolsOfGetSnapshot `locationName:"nodePools" type:"list"`
+}
+
+// String returns the string representation
+func (s ClusterOfGetSnapshot) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s ClusterOfGetSnapshot) MarshalFields(e protocol.FieldEncoder) error {
+	if s.KubernetesVersion != nil {
+		v := *s.KubernetesVersion
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "kubernetesVersion", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.Name != nil {
+		v := *s.Name
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.NodePools != nil {
+		v := s.NodePools
+
+		metadata := protocol.Metadata{}
+		ls0 := e.List(protocol.BodyTarget, "nodePools", metadata)
+		ls0.Start()
+		for _, v1 := range v {
+			ls0.ListAddFields(v1)
+		}
+		ls0.End()
+
+	}
+	return nil
+}
+
+type ClusterOfListSnapshots struct {
+	_ struct{} `type:"structure"`
+
+	KubernetesVersion *string `locationName:"kubernetesVersion" type:"string"`
+
+	Name *string `locationName:"name" type:"string"`
+
+	NodePools []NodePoolsOfListSnapshots `locationName:"nodePools" type:"list"`
+}
+
+// String returns the string representation
+func (s ClusterOfListSnapshots) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s ClusterOfListSnapshots) MarshalFields(e protocol.FieldEncoder) error {
+	if s.KubernetesVersion != nil {
+		v := *s.KubernetesVersion
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "kubernetesVersion", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.Name != nil {
+		v := *s.Name
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.NodePools != nil {
+		v := s.NodePools
+
+		metadata := protocol.Metadata{}
+		ls0 := e.List(protocol.BodyTarget, "nodePools", metadata)
+		ls0.Start()
+		for _, v1 := range v {
+			ls0.ListAddFields(v1)
+		}
+		ls0.End()
+
+	}
+	return nil
+}
+
+type ClusterOfUpdateSnapshot struct {
+	_ struct{} `type:"structure"`
+
+	KubernetesVersion *string `locationName:"kubernetesVersion" type:"string"`
+
+	Name *string `locationName:"name" type:"string"`
+
+	NodePools []NodePoolsOfUpdateSnapshot `locationName:"nodePools" type:"list"`
+}
+
+// String returns the string representation
+func (s ClusterOfUpdateSnapshot) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s ClusterOfUpdateSnapshot) MarshalFields(e protocol.FieldEncoder) error {
+	if s.KubernetesVersion != nil {
+		v := *s.KubernetesVersion
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "kubernetesVersion", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.Name != nil {
+		v := *s.Name
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.NodePools != nil {
+		v := s.NodePools
+
+		metadata := protocol.Metadata{}
+		ls0 := e.List(protocol.BodyTarget, "nodePools", metadata)
+		ls0.Start()
+		for _, v1 := range v {
+			ls0.ListAddFields(v1)
+		}
+		ls0.End()
+
+	}
+	return nil
+}
+
+type Clusters struct {
+	_ struct{} `type:"structure"`
+
+	AddonsConfig *AddonsConfig `locationName:"addonsConfig" type:"structure"`
+
+	CreateTime *string `locationName:"createTime" type:"string"`
+
+	Description *string `locationName:"description" type:"string"`
+
+	FirewallGroup *string `locationName:"firewallGroup" type:"string"`
+
+	InitialKubernetesVersion *string `locationName:"initialKubernetesVersion" type:"string"`
+
+	InitialNodeCount *int64 `locationName:"initialNodeCount" type:"integer"`
+
+	KubernetesVersion *string `locationName:"kubernetesVersion" type:"string"`
+
+	Locations *string `locationName:"locations" type:"string"`
+
+	Name *string `locationName:"name" type:"string"`
+
+	NetworkConfig *NetworkConfig `locationName:"networkConfig" type:"structure"`
+
+	NodeCount *int64 `locationName:"nodeCount" type:"integer"`
+
+	NodePools []NodePools `locationName:"nodePools" type:"list"`
+
+	Status *string `locationName:"status" type:"string"`
+}
+
+// String returns the string representation
+func (s Clusters) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s Clusters) MarshalFields(e protocol.FieldEncoder) error {
+	if s.AddonsConfig != nil {
+		v := s.AddonsConfig
+
+		metadata := protocol.Metadata{}
+		e.SetFields(protocol.BodyTarget, "addonsConfig", v, metadata)
+	}
+	if s.CreateTime != nil {
+		v := *s.CreateTime
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "createTime", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.Description != nil {
+		v := *s.Description
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "description", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.FirewallGroup != nil {
+		v := *s.FirewallGroup
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "firewallGroup", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.InitialKubernetesVersion != nil {
+		v := *s.InitialKubernetesVersion
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "initialKubernetesVersion", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.InitialNodeCount != nil {
+		v := *s.InitialNodeCount
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "initialNodeCount", protocol.Int64Value(v), metadata)
+	}
+	if s.KubernetesVersion != nil {
+		v := *s.KubernetesVersion
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "kubernetesVersion", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.Locations != nil {
+		v := *s.Locations
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "locations", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.Name != nil {
+		v := *s.Name
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.NetworkConfig != nil {
+		v := s.NetworkConfig
+
+		metadata := protocol.Metadata{}
+		e.SetFields(protocol.BodyTarget, "networkConfig", v, metadata)
 	}
 	if s.NodeCount != nil {
 		v := *s.NodeCount
@@ -434,159 +526,146 @@ func (s CreateClusterRequestNodePool) MarshalFields(e protocol.FieldEncoder) err
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "nodeCount", protocol.Int64Value(v), metadata)
 	}
-	return nil
-}
+	if s.NodePools != nil {
+		v := s.NodePools
 
-type CreateFirewallGroupRequestFirewallGroup struct {
-	_ struct{} `type:"structure"`
+		metadata := protocol.Metadata{}
+		ls0 := e.List(protocol.BodyTarget, "nodePools", metadata)
+		ls0.Start()
+		for _, v1 := range v {
+			ls0.ListAddFields(v1)
+		}
+		ls0.End()
 
-	Description *string `locationName:"description" type:"string"`
-
-	// Name is a required field
-	Name *string `locationName:"name" type:"string" required:"true"`
-}
-
-// String returns the string representation
-func (s CreateFirewallGroupRequestFirewallGroup) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-// Validate inspects the fields of the type to determine if they are valid.
-func (s *CreateFirewallGroupRequestFirewallGroup) Validate() error {
-	invalidParams := aws.ErrInvalidParams{Context: "CreateFirewallGroupRequestFirewallGroup"}
-
-	if s.Name == nil {
-		invalidParams.Add(aws.NewErrParamRequired("Name"))
 	}
+	if s.Status != nil {
+		v := *s.Status
 
-	if invalidParams.Len() > 0 {
-		return invalidParams
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "status", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
 	return nil
 }
 
-// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
-func (s CreateFirewallGroupRequestFirewallGroup) MarshalFields(e protocol.FieldEncoder) error {
-	if s.Description != nil {
-		v := *s.Description
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "description", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
-	}
-	if s.Name != nil {
-		v := *s.Name
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
-	}
-	return nil
-}
-
-type CreateSnapshotRequestSnapshot struct {
-	_ struct{} `type:"structure"`
-
-	// Cluster is a required field
-	Cluster *CreateSnapshotRequestSnapshotCluster `locationName:"cluster" type:"structure" required:"true"`
-
-	Description *string `locationName:"description" type:"string"`
-
-	ExpirationTime *string `locationName:"expirationTime" type:"string"`
-
-	// Name is a required field
-	Name *string `locationName:"name" type:"string" required:"true"`
-}
-
-// String returns the string representation
-func (s CreateSnapshotRequestSnapshot) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-// Validate inspects the fields of the type to determine if they are valid.
-func (s *CreateSnapshotRequestSnapshot) Validate() error {
-	invalidParams := aws.ErrInvalidParams{Context: "CreateSnapshotRequestSnapshot"}
-
-	if s.Cluster == nil {
-		invalidParams.Add(aws.NewErrParamRequired("Cluster"))
-	}
-
-	if s.Name == nil {
-		invalidParams.Add(aws.NewErrParamRequired("Name"))
-	}
-
-	if invalidParams.Len() > 0 {
-		return invalidParams
-	}
-	return nil
-}
-
-// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
-func (s CreateSnapshotRequestSnapshot) MarshalFields(e protocol.FieldEncoder) error {
-	if s.Cluster != nil {
-		v := s.Cluster
-
-		metadata := protocol.Metadata{}
-		e.SetFields(protocol.BodyTarget, "cluster", v, metadata)
-	}
-	if s.Description != nil {
-		v := *s.Description
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "description", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
-	}
-	if s.ExpirationTime != nil {
-		v := *s.ExpirationTime
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "expirationTime", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
-	}
-	if s.Name != nil {
-		v := *s.Name
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
-	}
-	return nil
-}
-
-type CreateSnapshotRequestSnapshotCluster struct {
+type ClustersOfGetLoadBalancer struct {
 	_ struct{} `type:"structure"`
 
 	Name *string `locationName:"name" type:"string"`
+
+	NodePools []NodePoolsOfGetLoadBalancer `locationName:"nodePools" type:"list"`
 }
 
 // String returns the string representation
-func (s CreateSnapshotRequestSnapshotCluster) String() string {
+func (s ClustersOfGetLoadBalancer) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
 // MarshalFields encodes the AWS API shape using the passed in protocol encoder.
-func (s CreateSnapshotRequestSnapshotCluster) MarshalFields(e protocol.FieldEncoder) error {
+func (s ClustersOfGetLoadBalancer) MarshalFields(e protocol.FieldEncoder) error {
 	if s.Name != nil {
 		v := *s.Name
 
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
+	if s.NodePools != nil {
+		v := s.NodePools
+
+		metadata := protocol.Metadata{}
+		ls0 := e.List(protocol.BodyTarget, "nodePools", metadata)
+		ls0.Start()
+		for _, v1 := range v {
+			ls0.ListAddFields(v1)
+		}
+		ls0.End()
+
+	}
 	return nil
 }
 
-type FirewallGroupResponse struct {
+type ClustersOfListLoadBalancers struct {
+	_ struct{} `type:"structure"`
+
+	Name *string `locationName:"name" type:"string"`
+
+	NodePools []NodePoolsOfListLoadBalancers `locationName:"nodePools" type:"list"`
+}
+
+// String returns the string representation
+func (s ClustersOfListLoadBalancers) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s ClustersOfListLoadBalancers) MarshalFields(e protocol.FieldEncoder) error {
+	if s.Name != nil {
+		v := *s.Name
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.NodePools != nil {
+		v := s.NodePools
+
+		metadata := protocol.Metadata{}
+		ls0 := e.List(protocol.BodyTarget, "nodePools", metadata)
+		ls0.Start()
+		for _, v1 := range v {
+			ls0.ListAddFields(v1)
+		}
+		ls0.End()
+
+	}
+	return nil
+}
+
+type Filter struct {
+	_ struct{} `type:"structure"`
+
+	FilterType *string `locationName:"filterType" type:"string"`
+
+	IpAddresses *string `locationName:"ipAddresses" type:"string"`
+}
+
+// String returns the string representation
+func (s Filter) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s Filter) MarshalFields(e protocol.FieldEncoder) error {
+	if s.FilterType != nil {
+		v := *s.FilterType
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "filterType", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.IpAddresses != nil {
+		v := *s.IpAddresses
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "ipAddresses", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	return nil
+}
+
+type FirewallGroup struct {
 	_ struct{} `type:"structure"`
 
 	Description *string `locationName:"description" type:"string"`
 
 	Name *string `locationName:"name" type:"string"`
 
-	Rules []FirewallRule `locationName:"rules" type:"list"`
+	Rules []Rules `locationName:"rules" type:"list"`
 }
 
 // String returns the string representation
-func (s FirewallGroupResponse) String() string {
+func (s FirewallGroup) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
 // MarshalFields encodes the AWS API shape using the passed in protocol encoder.
-func (s FirewallGroupResponse) MarshalFields(e protocol.FieldEncoder) error {
+func (s FirewallGroup) MarshalFields(e protocol.FieldEncoder) error {
 	if s.Description != nil {
 		v := *s.Description
 
@@ -614,80 +693,100 @@ func (s FirewallGroupResponse) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
-type FirewallRule struct {
+type FirewallGroups struct {
 	_ struct{} `type:"structure"`
-
-	CidrIp *string `locationName:"cidrIp" type:"string"`
 
 	Description *string `locationName:"description" type:"string"`
 
-	Direction *string `locationName:"direction" type:"string"`
+	Name *string `locationName:"name" type:"string"`
 
-	FromPort *int64 `locationName:"fromPort" type:"integer"`
-
-	Id *string `locationName:"id" type:"string"`
-
-	Protocol *string `locationName:"protocol" type:"string"`
-
-	Status *string `locationName:"status" type:"string"`
-
-	ToPort *int64 `locationName:"toPort" type:"integer"`
+	Rules []Rules `locationName:"rules" type:"list"`
 }
 
 // String returns the string representation
-func (s FirewallRule) String() string {
+func (s FirewallGroups) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
 // MarshalFields encodes the AWS API shape using the passed in protocol encoder.
-func (s FirewallRule) MarshalFields(e protocol.FieldEncoder) error {
-	if s.CidrIp != nil {
-		v := *s.CidrIp
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "cidrIp", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
-	}
+func (s FirewallGroups) MarshalFields(e protocol.FieldEncoder) error {
 	if s.Description != nil {
 		v := *s.Description
 
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "description", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
-	if s.Direction != nil {
-		v := *s.Direction
+	if s.Name != nil {
+		v := *s.Name
 
 		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "direction", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+		e.SetValue(protocol.BodyTarget, "name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
-	if s.FromPort != nil {
-		v := *s.FromPort
+	if s.Rules != nil {
+		v := s.Rules
 
 		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "fromPort", protocol.Int64Value(v), metadata)
+		ls0 := e.List(protocol.BodyTarget, "rules", metadata)
+		ls0.Start()
+		for _, v1 := range v {
+			ls0.ListAddFields(v1)
+		}
+		ls0.End()
+
 	}
-	if s.Id != nil {
-		v := *s.Id
+	return nil
+}
+
+type HealthCheck struct {
+	_ struct{} `type:"structure"`
+
+	HealthyThreshold *int64 `locationName:"healthyThreshold" type:"integer"`
+
+	Interval *int64 `locationName:"interval" type:"integer"`
+
+	Target *string `locationName:"target" type:"string"`
+
+	Timeout *int64 `locationName:"timeout" type:"integer"`
+
+	UnhealthyThreshold *int64 `locationName:"unhealthyThreshold" type:"integer"`
+}
+
+// String returns the string representation
+func (s HealthCheck) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s HealthCheck) MarshalFields(e protocol.FieldEncoder) error {
+	if s.HealthyThreshold != nil {
+		v := *s.HealthyThreshold
 
 		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "id", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+		e.SetValue(protocol.BodyTarget, "healthyThreshold", protocol.Int64Value(v), metadata)
 	}
-	if s.Protocol != nil {
-		v := *s.Protocol
+	if s.Interval != nil {
+		v := *s.Interval
 
 		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "protocol", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+		e.SetValue(protocol.BodyTarget, "interval", protocol.Int64Value(v), metadata)
 	}
-	if s.Status != nil {
-		v := *s.Status
+	if s.Target != nil {
+		v := *s.Target
 
 		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "status", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+		e.SetValue(protocol.BodyTarget, "target", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
-	if s.ToPort != nil {
-		v := *s.ToPort
+	if s.Timeout != nil {
+		v := *s.Timeout
 
 		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "toPort", protocol.Int64Value(v), metadata)
+		e.SetValue(protocol.BodyTarget, "timeout", protocol.Int64Value(v), metadata)
+	}
+	if s.UnhealthyThreshold != nil {
+		v := *s.UnhealthyThreshold
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "unhealthyThreshold", protocol.Int64Value(v), metadata)
 	}
 	return nil
 }
@@ -695,27 +794,12 @@ func (s FirewallRule) MarshalFields(e protocol.FieldEncoder) error {
 type HttpLoadBalancing struct {
 	_ struct{} `type:"structure"`
 
-	// Disabled is a required field
-	Disabled *bool `locationName:"disabled" type:"boolean" required:"true"`
+	Disabled *bool `locationName:"disabled" type:"boolean"`
 }
 
 // String returns the string representation
 func (s HttpLoadBalancing) String() string {
 	return nifcloudutil.Prettify(s)
-}
-
-// Validate inspects the fields of the type to determine if they are valid.
-func (s *HttpLoadBalancing) Validate() error {
-	invalidParams := aws.ErrInvalidParams{Context: "HttpLoadBalancing"}
-
-	if s.Disabled == nil {
-		invalidParams.Add(aws.NewErrParamRequired("Disabled"))
-	}
-
-	if invalidParams.Len() > 0 {
-		return invalidParams
-	}
-	return nil
 }
 
 // MarshalFields encodes the AWS API shape using the passed in protocol encoder.
@@ -729,30 +813,367 @@ func (s HttpLoadBalancing) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+type Listener struct {
+	_ struct{} `type:"structure"`
+
+	BalancingType *string `locationName:"balancingType" type:"string"`
+
+	InstancePort *string `locationName:"instancePort" type:"string"`
+
+	LoadBalancerPort *string `locationName:"loadBalancerPort" type:"string"`
+
+	Protocol *string `locationName:"protocol" type:"string"`
+
+	SslCertificateId *string `locationName:"sslCertificateId" type:"string"`
+}
+
+// String returns the string representation
+func (s Listener) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s Listener) MarshalFields(e protocol.FieldEncoder) error {
+	if s.BalancingType != nil {
+		v := *s.BalancingType
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "balancingType", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.InstancePort != nil {
+		v := *s.InstancePort
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "instancePort", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.LoadBalancerPort != nil {
+		v := *s.LoadBalancerPort
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "loadBalancerPort", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.Protocol != nil {
+		v := *s.Protocol
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "protocol", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.SslCertificateId != nil {
+		v := *s.SslCertificateId
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "sslCertificateId", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	return nil
+}
+
+type ListenerDescriptions struct {
+	_ struct{} `type:"structure"`
+
+	Listener *Listener `locationName:"listener" type:"structure"`
+}
+
+// String returns the string representation
+func (s ListenerDescriptions) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s ListenerDescriptions) MarshalFields(e protocol.FieldEncoder) error {
+	if s.Listener != nil {
+		v := s.Listener
+
+		metadata := protocol.Metadata{}
+		e.SetFields(protocol.BodyTarget, "listener", v, metadata)
+	}
+	return nil
+}
+
+type LoadBalancers struct {
+	_ struct{} `type:"structure"`
+
+	AccountingType *int64 `locationName:"accountingType" type:"integer"`
+
+	AvailabilityZones *string `locationName:"availabilityZones" type:"string"`
+
+	Clusters []ClustersOfGetLoadBalancer `locationName:"clusters" type:"list"`
+
+	CreatedTime *string `locationName:"createdTime" type:"string"`
+
+	Description *string `locationName:"description" type:"string"`
+
+	DnsName *string `locationName:"dnsName" type:"string"`
+
+	Filter *Filter `locationName:"filter" type:"structure"`
+
+	HealthCheck *HealthCheck `locationName:"healthCheck" type:"structure"`
+
+	ListenerDescriptions []ListenerDescriptions `locationName:"listenerDescriptions" type:"list"`
+
+	LoadBalancerName *string `locationName:"loadBalancerName" type:"string"`
+
+	NetworkVolume *string `locationName:"networkVolume" type:"string"`
+
+	NextMonthAccountingType *int64 `locationName:"nextMonthAccountingType" type:"integer"`
+
+	Option *Option `locationName:"option" type:"structure"`
+
+	PolicyType *string `locationName:"policyType" type:"string"`
+}
+
+// String returns the string representation
+func (s LoadBalancers) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s LoadBalancers) MarshalFields(e protocol.FieldEncoder) error {
+	if s.AccountingType != nil {
+		v := *s.AccountingType
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "accountingType", protocol.Int64Value(v), metadata)
+	}
+	if s.AvailabilityZones != nil {
+		v := *s.AvailabilityZones
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "availabilityZones", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.Clusters != nil {
+		v := s.Clusters
+
+		metadata := protocol.Metadata{}
+		ls0 := e.List(protocol.BodyTarget, "clusters", metadata)
+		ls0.Start()
+		for _, v1 := range v {
+			ls0.ListAddFields(v1)
+		}
+		ls0.End()
+
+	}
+	if s.CreatedTime != nil {
+		v := *s.CreatedTime
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "createdTime", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.Description != nil {
+		v := *s.Description
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "description", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.DnsName != nil {
+		v := *s.DnsName
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "dnsName", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.Filter != nil {
+		v := s.Filter
+
+		metadata := protocol.Metadata{}
+		e.SetFields(protocol.BodyTarget, "filter", v, metadata)
+	}
+	if s.HealthCheck != nil {
+		v := s.HealthCheck
+
+		metadata := protocol.Metadata{}
+		e.SetFields(protocol.BodyTarget, "healthCheck", v, metadata)
+	}
+	if s.ListenerDescriptions != nil {
+		v := s.ListenerDescriptions
+
+		metadata := protocol.Metadata{}
+		ls0 := e.List(protocol.BodyTarget, "listenerDescriptions", metadata)
+		ls0.Start()
+		for _, v1 := range v {
+			ls0.ListAddFields(v1)
+		}
+		ls0.End()
+
+	}
+	if s.LoadBalancerName != nil {
+		v := *s.LoadBalancerName
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "loadBalancerName", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.NetworkVolume != nil {
+		v := *s.NetworkVolume
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "networkVolume", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.NextMonthAccountingType != nil {
+		v := *s.NextMonthAccountingType
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "nextMonthAccountingType", protocol.Int64Value(v), metadata)
+	}
+	if s.Option != nil {
+		v := s.Option
+
+		metadata := protocol.Metadata{}
+		e.SetFields(protocol.BodyTarget, "option", v, metadata)
+	}
+	if s.PolicyType != nil {
+		v := *s.PolicyType
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "policyType", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	return nil
+}
+
+type LoadBalancersOfListLoadBalancers struct {
+	_ struct{} `type:"structure"`
+
+	AccountingType *int64 `locationName:"accountingType" type:"integer"`
+
+	AvailabilityZones *string `locationName:"availabilityZones" type:"string"`
+
+	Clusters []ClustersOfListLoadBalancers `locationName:"clusters" type:"list"`
+
+	CreatedTime *string `locationName:"createdTime" type:"string"`
+
+	Description *string `locationName:"description" type:"string"`
+
+	DnsName *string `locationName:"dnsName" type:"string"`
+
+	Filter *Filter `locationName:"filter" type:"structure"`
+
+	HealthCheck *HealthCheck `locationName:"healthCheck" type:"structure"`
+
+	ListenerDescriptions []ListenerDescriptions `locationName:"listenerDescriptions" type:"list"`
+
+	LoadBalancerName *string `locationName:"loadBalancerName" type:"string"`
+
+	NetworkVolume *string `locationName:"networkVolume" type:"string"`
+
+	NextMonthAccountingType *int64 `locationName:"nextMonthAccountingType" type:"integer"`
+
+	Option *Option `locationName:"option" type:"structure"`
+
+	PolicyType *string `locationName:"policyType" type:"string"`
+}
+
+// String returns the string representation
+func (s LoadBalancersOfListLoadBalancers) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s LoadBalancersOfListLoadBalancers) MarshalFields(e protocol.FieldEncoder) error {
+	if s.AccountingType != nil {
+		v := *s.AccountingType
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "accountingType", protocol.Int64Value(v), metadata)
+	}
+	if s.AvailabilityZones != nil {
+		v := *s.AvailabilityZones
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "availabilityZones", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.Clusters != nil {
+		v := s.Clusters
+
+		metadata := protocol.Metadata{}
+		ls0 := e.List(protocol.BodyTarget, "clusters", metadata)
+		ls0.Start()
+		for _, v1 := range v {
+			ls0.ListAddFields(v1)
+		}
+		ls0.End()
+
+	}
+	if s.CreatedTime != nil {
+		v := *s.CreatedTime
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "createdTime", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.Description != nil {
+		v := *s.Description
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "description", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.DnsName != nil {
+		v := *s.DnsName
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "dnsName", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.Filter != nil {
+		v := s.Filter
+
+		metadata := protocol.Metadata{}
+		e.SetFields(protocol.BodyTarget, "filter", v, metadata)
+	}
+	if s.HealthCheck != nil {
+		v := s.HealthCheck
+
+		metadata := protocol.Metadata{}
+		e.SetFields(protocol.BodyTarget, "healthCheck", v, metadata)
+	}
+	if s.ListenerDescriptions != nil {
+		v := s.ListenerDescriptions
+
+		metadata := protocol.Metadata{}
+		ls0 := e.List(protocol.BodyTarget, "listenerDescriptions", metadata)
+		ls0.Start()
+		for _, v1 := range v {
+			ls0.ListAddFields(v1)
+		}
+		ls0.End()
+
+	}
+	if s.LoadBalancerName != nil {
+		v := *s.LoadBalancerName
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "loadBalancerName", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.NetworkVolume != nil {
+		v := *s.NetworkVolume
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "networkVolume", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.NextMonthAccountingType != nil {
+		v := *s.NextMonthAccountingType
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "nextMonthAccountingType", protocol.Int64Value(v), metadata)
+	}
+	if s.Option != nil {
+		v := s.Option
+
+		metadata := protocol.Metadata{}
+		e.SetFields(protocol.BodyTarget, "option", v, metadata)
+	}
+	if s.PolicyType != nil {
+		v := *s.PolicyType
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "policyType", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	return nil
+}
+
 type NetworkConfig struct {
 	_ struct{} `type:"structure"`
 
-	// NetworkId is a required field
-	NetworkId *string `locationName:"networkId" type:"string" required:"true"`
+	NetworkId *string `locationName:"networkId" type:"string"`
 }
 
 // String returns the string representation
 func (s NetworkConfig) String() string {
 	return nifcloudutil.Prettify(s)
-}
-
-// Validate inspects the fields of the type to determine if they are valid.
-func (s *NetworkConfig) Validate() error {
-	invalidParams := aws.ErrInvalidParams{Context: "NetworkConfig"}
-
-	if s.NetworkId == nil {
-		invalidParams.Add(aws.NewErrParamRequired("NetworkId"))
-	}
-
-	if invalidParams.Len() > 0 {
-		return invalidParams
-	}
-	return nil
 }
 
 // MarshalFields encodes the AWS API shape using the passed in protocol encoder.
@@ -762,60 +1183,6 @@ func (s NetworkConfig) MarshalFields(e protocol.FieldEncoder) error {
 
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "networkId", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
-	}
-	return nil
-}
-
-type Node struct {
-	_ struct{} `type:"structure"`
-
-	AvailabilityZone *string `locationName:"availabilityZone" type:"string"`
-
-	Name *string `locationName:"name" type:"string"`
-
-	PrivateIpAddress *string `locationName:"privateIpAddress" type:"string"`
-
-	PublicIpAddress *string `locationName:"publicIpAddress" type:"string"`
-
-	Status *string `locationName:"status" type:"string"`
-}
-
-// String returns the string representation
-func (s Node) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
-func (s Node) MarshalFields(e protocol.FieldEncoder) error {
-	if s.AvailabilityZone != nil {
-		v := *s.AvailabilityZone
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "availabilityZone", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
-	}
-	if s.Name != nil {
-		v := *s.Name
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
-	}
-	if s.PrivateIpAddress != nil {
-		v := *s.PrivateIpAddress
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "privateIpAddress", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
-	}
-	if s.PublicIpAddress != nil {
-		v := *s.PublicIpAddress
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "publicIpAddress", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
-	}
-	if s.Status != nil {
-		v := *s.Status
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "status", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
 	return nil
 }
@@ -831,7 +1198,7 @@ type NodePool struct {
 
 	NodeCount *int64 `locationName:"nodeCount" type:"integer"`
 
-	Nodes []Node `locationName:"nodes" type:"list"`
+	Nodes []Nodes `locationName:"nodes" type:"list"`
 
 	Status *string `locationName:"status" type:"string"`
 }
@@ -888,10 +1255,748 @@ func (s NodePool) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
-type RestoreClusterFromSnapshotRequestCluster struct {
+type NodePools struct {
 	_ struct{} `type:"structure"`
 
-	AddonsConfig *AddonsConfig `locationName:"addonsConfig" type:"structure"`
+	InitialNodeCount *int64 `locationName:"initialNodeCount" type:"integer"`
+
+	InstanceType *string `locationName:"instanceType" type:"string"`
+
+	Name *string `locationName:"name" type:"string"`
+
+	NodeCount *int64 `locationName:"nodeCount" type:"integer"`
+
+	Nodes []Nodes `locationName:"nodes" type:"list"`
+
+	Status *string `locationName:"status" type:"string"`
+}
+
+// String returns the string representation
+func (s NodePools) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s NodePools) MarshalFields(e protocol.FieldEncoder) error {
+	if s.InitialNodeCount != nil {
+		v := *s.InitialNodeCount
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "initialNodeCount", protocol.Int64Value(v), metadata)
+	}
+	if s.InstanceType != nil {
+		v := *s.InstanceType
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "instanceType", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.Name != nil {
+		v := *s.Name
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.NodeCount != nil {
+		v := *s.NodeCount
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "nodeCount", protocol.Int64Value(v), metadata)
+	}
+	if s.Nodes != nil {
+		v := s.Nodes
+
+		metadata := protocol.Metadata{}
+		ls0 := e.List(protocol.BodyTarget, "nodes", metadata)
+		ls0.Start()
+		for _, v1 := range v {
+			ls0.ListAddFields(v1)
+		}
+		ls0.End()
+
+	}
+	if s.Status != nil {
+		v := *s.Status
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "status", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	return nil
+}
+
+type NodePoolsOfCreateSnapshot struct {
+	_ struct{} `type:"structure"`
+
+	InstanceType *string `locationName:"instanceType" type:"string"`
+
+	Name *string `locationName:"name" type:"string"`
+
+	NodeCount *int64 `locationName:"nodeCount" type:"integer"`
+}
+
+// String returns the string representation
+func (s NodePoolsOfCreateSnapshot) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s NodePoolsOfCreateSnapshot) MarshalFields(e protocol.FieldEncoder) error {
+	if s.InstanceType != nil {
+		v := *s.InstanceType
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "instanceType", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.Name != nil {
+		v := *s.Name
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.NodeCount != nil {
+		v := *s.NodeCount
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "nodeCount", protocol.Int64Value(v), metadata)
+	}
+	return nil
+}
+
+type NodePoolsOfDeleteSnapshot struct {
+	_ struct{} `type:"structure"`
+
+	InstanceType *string `locationName:"instanceType" type:"string"`
+
+	Name *string `locationName:"name" type:"string"`
+
+	NodeCount *int64 `locationName:"nodeCount" type:"integer"`
+}
+
+// String returns the string representation
+func (s NodePoolsOfDeleteSnapshot) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s NodePoolsOfDeleteSnapshot) MarshalFields(e protocol.FieldEncoder) error {
+	if s.InstanceType != nil {
+		v := *s.InstanceType
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "instanceType", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.Name != nil {
+		v := *s.Name
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.NodeCount != nil {
+		v := *s.NodeCount
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "nodeCount", protocol.Int64Value(v), metadata)
+	}
+	return nil
+}
+
+type NodePoolsOfDeleteSnapshots struct {
+	_ struct{} `type:"structure"`
+
+	InstanceType *string `locationName:"instanceType" type:"string"`
+
+	Name *string `locationName:"name" type:"string"`
+
+	NodeCount *int64 `locationName:"nodeCount" type:"integer"`
+}
+
+// String returns the string representation
+func (s NodePoolsOfDeleteSnapshots) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s NodePoolsOfDeleteSnapshots) MarshalFields(e protocol.FieldEncoder) error {
+	if s.InstanceType != nil {
+		v := *s.InstanceType
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "instanceType", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.Name != nil {
+		v := *s.Name
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.NodeCount != nil {
+		v := *s.NodeCount
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "nodeCount", protocol.Int64Value(v), metadata)
+	}
+	return nil
+}
+
+type NodePoolsOfGetLoadBalancer struct {
+	_ struct{} `type:"structure"`
+
+	Name *string `locationName:"name" type:"string"`
+
+	NodeCount *int64 `locationName:"nodeCount" type:"integer"`
+
+	Nodes []NodesOfGetLoadBalancer `locationName:"nodes" type:"list"`
+}
+
+// String returns the string representation
+func (s NodePoolsOfGetLoadBalancer) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s NodePoolsOfGetLoadBalancer) MarshalFields(e protocol.FieldEncoder) error {
+	if s.Name != nil {
+		v := *s.Name
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.NodeCount != nil {
+		v := *s.NodeCount
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "nodeCount", protocol.Int64Value(v), metadata)
+	}
+	if s.Nodes != nil {
+		v := s.Nodes
+
+		metadata := protocol.Metadata{}
+		ls0 := e.List(protocol.BodyTarget, "nodes", metadata)
+		ls0.Start()
+		for _, v1 := range v {
+			ls0.ListAddFields(v1)
+		}
+		ls0.End()
+
+	}
+	return nil
+}
+
+type NodePoolsOfGetSnapshot struct {
+	_ struct{} `type:"structure"`
+
+	InstanceType *string `locationName:"instanceType" type:"string"`
+
+	Name *string `locationName:"name" type:"string"`
+
+	NodeCount *int64 `locationName:"nodeCount" type:"integer"`
+}
+
+// String returns the string representation
+func (s NodePoolsOfGetSnapshot) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s NodePoolsOfGetSnapshot) MarshalFields(e protocol.FieldEncoder) error {
+	if s.InstanceType != nil {
+		v := *s.InstanceType
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "instanceType", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.Name != nil {
+		v := *s.Name
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.NodeCount != nil {
+		v := *s.NodeCount
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "nodeCount", protocol.Int64Value(v), metadata)
+	}
+	return nil
+}
+
+type NodePoolsOfListLoadBalancers struct {
+	_ struct{} `type:"structure"`
+
+	Name *string `locationName:"name" type:"string"`
+
+	NodeCount *int64 `locationName:"nodeCount" type:"integer"`
+
+	Nodes []NodesOfListLoadBalancers `locationName:"nodes" type:"list"`
+}
+
+// String returns the string representation
+func (s NodePoolsOfListLoadBalancers) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s NodePoolsOfListLoadBalancers) MarshalFields(e protocol.FieldEncoder) error {
+	if s.Name != nil {
+		v := *s.Name
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.NodeCount != nil {
+		v := *s.NodeCount
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "nodeCount", protocol.Int64Value(v), metadata)
+	}
+	if s.Nodes != nil {
+		v := s.Nodes
+
+		metadata := protocol.Metadata{}
+		ls0 := e.List(protocol.BodyTarget, "nodes", metadata)
+		ls0.Start()
+		for _, v1 := range v {
+			ls0.ListAddFields(v1)
+		}
+		ls0.End()
+
+	}
+	return nil
+}
+
+type NodePoolsOfListSnapshots struct {
+	_ struct{} `type:"structure"`
+
+	InstanceType *string `locationName:"instanceType" type:"string"`
+
+	Name *string `locationName:"name" type:"string"`
+
+	NodeCount *int64 `locationName:"nodeCount" type:"integer"`
+}
+
+// String returns the string representation
+func (s NodePoolsOfListSnapshots) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s NodePoolsOfListSnapshots) MarshalFields(e protocol.FieldEncoder) error {
+	if s.InstanceType != nil {
+		v := *s.InstanceType
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "instanceType", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.Name != nil {
+		v := *s.Name
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.NodeCount != nil {
+		v := *s.NodeCount
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "nodeCount", protocol.Int64Value(v), metadata)
+	}
+	return nil
+}
+
+type NodePoolsOfUpdateSnapshot struct {
+	_ struct{} `type:"structure"`
+
+	InstanceType *string `locationName:"instanceType" type:"string"`
+
+	Name *string `locationName:"name" type:"string"`
+
+	NodeCount *int64 `locationName:"nodeCount" type:"integer"`
+}
+
+// String returns the string representation
+func (s NodePoolsOfUpdateSnapshot) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s NodePoolsOfUpdateSnapshot) MarshalFields(e protocol.FieldEncoder) error {
+	if s.InstanceType != nil {
+		v := *s.InstanceType
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "instanceType", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.Name != nil {
+		v := *s.Name
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.NodeCount != nil {
+		v := *s.NodeCount
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "nodeCount", protocol.Int64Value(v), metadata)
+	}
+	return nil
+}
+
+type Nodes struct {
+	_ struct{} `type:"structure"`
+
+	AvailabilityZone *string `locationName:"availabilityZone" type:"string"`
+
+	Name *string `locationName:"name" type:"string"`
+
+	PrivateIpAddress *string `locationName:"privateIpAddress" type:"string"`
+
+	PublicIpAddress *string `locationName:"publicIpAddress" type:"string"`
+
+	Status *string `locationName:"status" type:"string"`
+}
+
+// String returns the string representation
+func (s Nodes) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s Nodes) MarshalFields(e protocol.FieldEncoder) error {
+	if s.AvailabilityZone != nil {
+		v := *s.AvailabilityZone
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "availabilityZone", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.Name != nil {
+		v := *s.Name
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.PrivateIpAddress != nil {
+		v := *s.PrivateIpAddress
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "privateIpAddress", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.PublicIpAddress != nil {
+		v := *s.PublicIpAddress
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "publicIpAddress", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.Status != nil {
+		v := *s.Status
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "status", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	return nil
+}
+
+type NodesOfGetLoadBalancer struct {
+	_ struct{} `type:"structure"`
+
+	AvailabilityZone *string `locationName:"availabilityZone" type:"string"`
+
+	HealthCheckState *string `locationName:"healthCheckState" type:"string"`
+
+	Name *string `locationName:"name" type:"string"`
+
+	PublicIpAddress *string `locationName:"publicIpAddress" type:"string"`
+}
+
+// String returns the string representation
+func (s NodesOfGetLoadBalancer) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s NodesOfGetLoadBalancer) MarshalFields(e protocol.FieldEncoder) error {
+	if s.AvailabilityZone != nil {
+		v := *s.AvailabilityZone
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "availabilityZone", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.HealthCheckState != nil {
+		v := *s.HealthCheckState
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "healthCheckState", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.Name != nil {
+		v := *s.Name
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.PublicIpAddress != nil {
+		v := *s.PublicIpAddress
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "publicIpAddress", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	return nil
+}
+
+type NodesOfListLoadBalancers struct {
+	_ struct{} `type:"structure"`
+
+	AvailabilityZone *string `locationName:"availabilityZone" type:"string"`
+
+	HealthCheckState *string `locationName:"healthCheckState" type:"string"`
+
+	Name *string `locationName:"name" type:"string"`
+
+	PublicIpAddress *string `locationName:"publicIpAddress" type:"string"`
+}
+
+// String returns the string representation
+func (s NodesOfListLoadBalancers) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s NodesOfListLoadBalancers) MarshalFields(e protocol.FieldEncoder) error {
+	if s.AvailabilityZone != nil {
+		v := *s.AvailabilityZone
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "availabilityZone", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.HealthCheckState != nil {
+		v := *s.HealthCheckState
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "healthCheckState", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.Name != nil {
+		v := *s.Name
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.PublicIpAddress != nil {
+		v := *s.PublicIpAddress
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "publicIpAddress", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	return nil
+}
+
+type Option struct {
+	_ struct{} `type:"structure"`
+
+	SessionStickinessPolicy *SessionStickinessPolicy `locationName:"sessionStickinessPolicy" type:"structure"`
+
+	SorryPage *SorryPage `locationName:"sorryPage" type:"structure"`
+}
+
+// String returns the string representation
+func (s Option) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s Option) MarshalFields(e protocol.FieldEncoder) error {
+	if s.SessionStickinessPolicy != nil {
+		v := s.SessionStickinessPolicy
+
+		metadata := protocol.Metadata{}
+		e.SetFields(protocol.BodyTarget, "sessionStickinessPolicy", v, metadata)
+	}
+	if s.SorryPage != nil {
+		v := s.SorryPage
+
+		metadata := protocol.Metadata{}
+		e.SetFields(protocol.BodyTarget, "sorryPage", v, metadata)
+	}
+	return nil
+}
+
+type RequestAddonsConfig struct {
+	_ struct{} `type:"structure"`
+
+	RequestHttpLoadBalancing *RequestHttpLoadBalancing `locationName:"httpLoadBalancing" type:"structure"`
+}
+
+// String returns the string representation
+func (s RequestAddonsConfig) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s RequestAddonsConfig) MarshalFields(e protocol.FieldEncoder) error {
+	if s.RequestHttpLoadBalancing != nil {
+		v := s.RequestHttpLoadBalancing
+
+		metadata := protocol.Metadata{}
+		e.SetFields(protocol.BodyTarget, "httpLoadBalancing", v, metadata)
+	}
+	return nil
+}
+
+type RequestCluster struct {
+	_ struct{} `type:"structure"`
+
+	Description *string `locationName:"description" type:"string"`
+
+	// FirewallGroup is a required field
+	FirewallGroup *string `locationName:"firewallGroup" type:"string" required:"true"`
+
+	KubernetesVersion *string `locationName:"kubernetesVersion" type:"string"`
+
+	// ListOfRequestNodePools is a required field
+	ListOfRequestNodePools []RequestNodePools `locationName:"nodePools" type:"list" required:"true"`
+
+	// Locations is a required field
+	Locations *string `locationName:"locations" type:"string" required:"true"`
+
+	// Name is a required field
+	Name *string `locationName:"name" type:"string" required:"true"`
+
+	RequestAddonsConfig *RequestAddonsConfig `locationName:"addonsConfig" type:"structure"`
+
+	RequestNetworkConfig *RequestNetworkConfig `locationName:"networkConfig" type:"structure"`
+}
+
+// String returns the string representation
+func (s RequestCluster) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *RequestCluster) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "RequestCluster"}
+
+	if s.FirewallGroup == nil {
+		invalidParams.Add(aws.NewErrParamRequired("FirewallGroup"))
+	}
+
+	if s.ListOfRequestNodePools == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ListOfRequestNodePools"))
+	}
+
+	if s.Locations == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Locations"))
+	}
+
+	if s.Name == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Name"))
+	}
+	if s.ListOfRequestNodePools != nil {
+		for i, v := range s.ListOfRequestNodePools {
+			if err := v.Validate(); err != nil {
+				invalidParams.AddNested(fmt.Sprintf("%s[%v]", "ListOfRequestNodePools", i), err.(aws.ErrInvalidParams))
+			}
+		}
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s RequestCluster) MarshalFields(e protocol.FieldEncoder) error {
+	if s.Description != nil {
+		v := *s.Description
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "description", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.FirewallGroup != nil {
+		v := *s.FirewallGroup
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "firewallGroup", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.KubernetesVersion != nil {
+		v := *s.KubernetesVersion
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "kubernetesVersion", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.ListOfRequestNodePools != nil {
+		v := s.ListOfRequestNodePools
+
+		metadata := protocol.Metadata{}
+		ls0 := e.List(protocol.BodyTarget, "nodePools", metadata)
+		ls0.Start()
+		for _, v1 := range v {
+			ls0.ListAddFields(v1)
+		}
+		ls0.End()
+
+	}
+	if s.Locations != nil {
+		v := *s.Locations
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "locations", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.Name != nil {
+		v := *s.Name
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.RequestAddonsConfig != nil {
+		v := s.RequestAddonsConfig
+
+		metadata := protocol.Metadata{}
+		e.SetFields(protocol.BodyTarget, "addonsConfig", v, metadata)
+	}
+	if s.RequestNetworkConfig != nil {
+		v := s.RequestNetworkConfig
+
+		metadata := protocol.Metadata{}
+		e.SetFields(protocol.BodyTarget, "networkConfig", v, metadata)
+	}
+	return nil
+}
+
+type RequestClusterOfCreateSnapshot struct {
+	_ struct{} `type:"structure"`
+
+	// Name is a required field
+	Name *string `locationName:"name" type:"string" required:"true"`
+}
+
+// String returns the string representation
+func (s RequestClusterOfCreateSnapshot) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *RequestClusterOfCreateSnapshot) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "RequestClusterOfCreateSnapshot"}
+
+	if s.Name == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Name"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s RequestClusterOfCreateSnapshot) MarshalFields(e protocol.FieldEncoder) error {
+	if s.Name != nil {
+		v := *s.Name
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	return nil
+}
+
+type RequestClusterOfRestoreClusterFromSnapshot struct {
+	_ struct{} `type:"structure"`
 
 	Description *string `locationName:"description" type:"string"`
 
@@ -899,22 +2004,24 @@ type RestoreClusterFromSnapshotRequestCluster struct {
 	FirewallGroup *string `locationName:"firewallGroup" type:"string" required:"true"`
 
 	// Locations is a required field
-	Locations []string `locationName:"locations" type:"list" required:"true"`
+	Locations *string `locationName:"locations" type:"string" required:"true"`
 
 	// Name is a required field
 	Name *string `locationName:"name" type:"string" required:"true"`
 
-	NetworkConfig *NetworkConfig `locationName:"networkConfig" type:"structure"`
+	RequestAddonsConfig *RequestAddonsConfig `locationName:"addonsConfig" type:"structure"`
+
+	RequestNetworkConfig *RequestNetworkConfig `locationName:"networkConfig" type:"structure"`
 }
 
 // String returns the string representation
-func (s RestoreClusterFromSnapshotRequestCluster) String() string {
+func (s RequestClusterOfRestoreClusterFromSnapshot) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
 // Validate inspects the fields of the type to determine if they are valid.
-func (s *RestoreClusterFromSnapshotRequestCluster) Validate() error {
-	invalidParams := aws.ErrInvalidParams{Context: "RestoreClusterFromSnapshotRequestCluster"}
+func (s *RequestClusterOfRestoreClusterFromSnapshot) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "RequestClusterOfRestoreClusterFromSnapshot"}
 
 	if s.FirewallGroup == nil {
 		invalidParams.Add(aws.NewErrParamRequired("FirewallGroup"))
@@ -927,16 +2034,6 @@ func (s *RestoreClusterFromSnapshotRequestCluster) Validate() error {
 	if s.Name == nil {
 		invalidParams.Add(aws.NewErrParamRequired("Name"))
 	}
-	if s.AddonsConfig != nil {
-		if err := s.AddonsConfig.Validate(); err != nil {
-			invalidParams.AddNested("AddonsConfig", err.(aws.ErrInvalidParams))
-		}
-	}
-	if s.NetworkConfig != nil {
-		if err := s.NetworkConfig.Validate(); err != nil {
-			invalidParams.AddNested("NetworkConfig", err.(aws.ErrInvalidParams))
-		}
-	}
 
 	if invalidParams.Len() > 0 {
 		return invalidParams
@@ -945,13 +2042,7 @@ func (s *RestoreClusterFromSnapshotRequestCluster) Validate() error {
 }
 
 // MarshalFields encodes the AWS API shape using the passed in protocol encoder.
-func (s RestoreClusterFromSnapshotRequestCluster) MarshalFields(e protocol.FieldEncoder) error {
-	if s.AddonsConfig != nil {
-		v := s.AddonsConfig
-
-		metadata := protocol.Metadata{}
-		e.SetFields(protocol.BodyTarget, "addonsConfig", v, metadata)
-	}
+func (s RequestClusterOfRestoreClusterFromSnapshot) MarshalFields(e protocol.FieldEncoder) error {
 	if s.Description != nil {
 		v := *s.Description
 
@@ -965,16 +2056,10 @@ func (s RestoreClusterFromSnapshotRequestCluster) MarshalFields(e protocol.Field
 		e.SetValue(protocol.BodyTarget, "firewallGroup", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
 	if s.Locations != nil {
-		v := s.Locations
+		v := *s.Locations
 
 		metadata := protocol.Metadata{}
-		ls0 := e.List(protocol.BodyTarget, "locations", metadata)
-		ls0.Start()
-		for _, v1 := range v {
-			ls0.ListAddValue(protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
-		}
-		ls0.End()
-
+		e.SetValue(protocol.BodyTarget, "locations", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
 	if s.Name != nil {
 		v := *s.Name
@@ -982,11 +2067,532 @@ func (s RestoreClusterFromSnapshotRequestCluster) MarshalFields(e protocol.Field
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
-	if s.NetworkConfig != nil {
-		v := s.NetworkConfig
+	if s.RequestAddonsConfig != nil {
+		v := s.RequestAddonsConfig
+
+		metadata := protocol.Metadata{}
+		e.SetFields(protocol.BodyTarget, "addonsConfig", v, metadata)
+	}
+	if s.RequestNetworkConfig != nil {
+		v := s.RequestNetworkConfig
 
 		metadata := protocol.Metadata{}
 		e.SetFields(protocol.BodyTarget, "networkConfig", v, metadata)
+	}
+	return nil
+}
+
+type RequestClusterOfUpdateCluster struct {
+	_ struct{} `type:"structure"`
+
+	Description *string `locationName:"description" type:"string"`
+
+	KubernetesVersion *string `locationName:"kubernetesVersion" type:"string"`
+
+	Name *string `locationName:"name" type:"string"`
+
+	RequestAddonsConfig *RequestAddonsConfig `locationName:"addonsConfig" type:"structure"`
+}
+
+// String returns the string representation
+func (s RequestClusterOfUpdateCluster) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s RequestClusterOfUpdateCluster) MarshalFields(e protocol.FieldEncoder) error {
+	if s.Description != nil {
+		v := *s.Description
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "description", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.KubernetesVersion != nil {
+		v := *s.KubernetesVersion
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "kubernetesVersion", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.Name != nil {
+		v := *s.Name
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.RequestAddonsConfig != nil {
+		v := s.RequestAddonsConfig
+
+		metadata := protocol.Metadata{}
+		e.SetFields(protocol.BodyTarget, "addonsConfig", v, metadata)
+	}
+	return nil
+}
+
+type RequestFirewallGroup struct {
+	_ struct{} `type:"structure"`
+
+	Description *string `locationName:"description" type:"string"`
+
+	// Name is a required field
+	Name *string `locationName:"name" type:"string" required:"true"`
+}
+
+// String returns the string representation
+func (s RequestFirewallGroup) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *RequestFirewallGroup) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "RequestFirewallGroup"}
+
+	if s.Name == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Name"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s RequestFirewallGroup) MarshalFields(e protocol.FieldEncoder) error {
+	if s.Description != nil {
+		v := *s.Description
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "description", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.Name != nil {
+		v := *s.Name
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	return nil
+}
+
+type RequestHttpLoadBalancing struct {
+	_ struct{} `type:"structure"`
+
+	Disabled *bool `locationName:"disabled" type:"boolean"`
+}
+
+// String returns the string representation
+func (s RequestHttpLoadBalancing) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s RequestHttpLoadBalancing) MarshalFields(e protocol.FieldEncoder) error {
+	if s.Disabled != nil {
+		v := *s.Disabled
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "disabled", protocol.BoolValue(v), metadata)
+	}
+	return nil
+}
+
+type RequestNetworkConfig struct {
+	_ struct{} `type:"structure"`
+
+	NetworkId *string `locationName:"networkId" type:"string"`
+}
+
+// String returns the string representation
+func (s RequestNetworkConfig) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s RequestNetworkConfig) MarshalFields(e protocol.FieldEncoder) error {
+	if s.NetworkId != nil {
+		v := *s.NetworkId
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "networkId", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	return nil
+}
+
+type RequestNodePool struct {
+	_ struct{} `type:"structure"`
+
+	// InstanceType is a required field
+	InstanceType *string `locationName:"instanceType" type:"string" required:"true"`
+
+	// Name is a required field
+	Name *string `locationName:"name" type:"string" required:"true"`
+
+	NodeCount *int64 `locationName:"nodeCount" type:"integer"`
+}
+
+// String returns the string representation
+func (s RequestNodePool) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *RequestNodePool) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "RequestNodePool"}
+
+	if s.InstanceType == nil {
+		invalidParams.Add(aws.NewErrParamRequired("InstanceType"))
+	}
+
+	if s.Name == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Name"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s RequestNodePool) MarshalFields(e protocol.FieldEncoder) error {
+	if s.InstanceType != nil {
+		v := *s.InstanceType
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "instanceType", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.Name != nil {
+		v := *s.Name
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.NodeCount != nil {
+		v := *s.NodeCount
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "nodeCount", protocol.Int64Value(v), metadata)
+	}
+	return nil
+}
+
+type RequestNodePools struct {
+	_ struct{} `type:"structure"`
+
+	// InstanceType is a required field
+	InstanceType *string `locationName:"instanceType" type:"string" required:"true"`
+
+	// Name is a required field
+	Name *string `locationName:"name" type:"string" required:"true"`
+
+	NodeCount *int64 `locationName:"nodeCount" type:"integer"`
+}
+
+// String returns the string representation
+func (s RequestNodePools) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *RequestNodePools) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "RequestNodePools"}
+
+	if s.InstanceType == nil {
+		invalidParams.Add(aws.NewErrParamRequired("InstanceType"))
+	}
+
+	if s.Name == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Name"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s RequestNodePools) MarshalFields(e protocol.FieldEncoder) error {
+	if s.InstanceType != nil {
+		v := *s.InstanceType
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "instanceType", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.Name != nil {
+		v := *s.Name
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.NodeCount != nil {
+		v := *s.NodeCount
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "nodeCount", protocol.Int64Value(v), metadata)
+	}
+	return nil
+}
+
+type RequestRules struct {
+	_ struct{} `type:"structure"`
+
+	// CidrIp is a required field
+	CidrIp *string `locationName:"cidrIp" type:"string" required:"true"`
+
+	Description *string `locationName:"description" type:"string"`
+
+	Direction *string `locationName:"direction" type:"string"`
+
+	FromPort *int64 `locationName:"fromPort" type:"integer"`
+
+	Protocol *string `locationName:"protocol" type:"string"`
+
+	ToPort *int64 `locationName:"toPort" type:"integer"`
+}
+
+// String returns the string representation
+func (s RequestRules) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *RequestRules) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "RequestRules"}
+
+	if s.CidrIp == nil {
+		invalidParams.Add(aws.NewErrParamRequired("CidrIp"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s RequestRules) MarshalFields(e protocol.FieldEncoder) error {
+	if s.CidrIp != nil {
+		v := *s.CidrIp
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "cidrIp", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.Description != nil {
+		v := *s.Description
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "description", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.Direction != nil {
+		v := *s.Direction
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "direction", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.FromPort != nil {
+		v := *s.FromPort
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "fromPort", protocol.Int64Value(v), metadata)
+	}
+	if s.Protocol != nil {
+		v := *s.Protocol
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "protocol", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.ToPort != nil {
+		v := *s.ToPort
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "toPort", protocol.Int64Value(v), metadata)
+	}
+	return nil
+}
+
+type RequestSnapshot struct {
+	_ struct{} `type:"structure"`
+
+	Description *string `locationName:"description" type:"string"`
+
+	ExpirationTime *string `locationName:"expirationTime" type:"string"`
+
+	// Name is a required field
+	Name *string `locationName:"name" type:"string" required:"true"`
+
+	// RequestCluster is a required field
+	RequestCluster *RequestClusterOfCreateSnapshot `locationName:"cluster" type:"structure" required:"true"`
+}
+
+// String returns the string representation
+func (s RequestSnapshot) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *RequestSnapshot) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "RequestSnapshot"}
+
+	if s.Name == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Name"))
+	}
+
+	if s.RequestCluster == nil {
+		invalidParams.Add(aws.NewErrParamRequired("RequestCluster"))
+	}
+	if s.RequestCluster != nil {
+		if err := s.RequestCluster.Validate(); err != nil {
+			invalidParams.AddNested("RequestCluster", err.(aws.ErrInvalidParams))
+		}
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s RequestSnapshot) MarshalFields(e protocol.FieldEncoder) error {
+	if s.Description != nil {
+		v := *s.Description
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "description", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.ExpirationTime != nil {
+		v := *s.ExpirationTime
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "expirationTime", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.Name != nil {
+		v := *s.Name
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.RequestCluster != nil {
+		v := s.RequestCluster
+
+		metadata := protocol.Metadata{}
+		e.SetFields(protocol.BodyTarget, "cluster", v, metadata)
+	}
+	return nil
+}
+
+type RequestSnapshotOfUpdateSnapshot struct {
+	_ struct{} `type:"structure"`
+
+	Description *string `locationName:"description" type:"string"`
+
+	ExpirationTime *string `locationName:"expirationTime" type:"string"`
+
+	Name *string `locationName:"name" type:"string"`
+}
+
+// String returns the string representation
+func (s RequestSnapshotOfUpdateSnapshot) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s RequestSnapshotOfUpdateSnapshot) MarshalFields(e protocol.FieldEncoder) error {
+	if s.Description != nil {
+		v := *s.Description
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "description", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.ExpirationTime != nil {
+		v := *s.ExpirationTime
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "expirationTime", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.Name != nil {
+		v := *s.Name
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	return nil
+}
+
+type Rules struct {
+	_ struct{} `type:"structure"`
+
+	CidrIp *string `locationName:"cidrIp" type:"string"`
+
+	Description *string `locationName:"description" type:"string"`
+
+	Direction *string `locationName:"direction" type:"string"`
+
+	FromPort *int64 `locationName:"fromPort" type:"integer"`
+
+	Id *string `locationName:"id" type:"string"`
+
+	Protocol *string `locationName:"protocol" type:"string"`
+
+	Status *string `locationName:"status" type:"string"`
+
+	ToPort *int64 `locationName:"toPort" type:"integer"`
+}
+
+// String returns the string representation
+func (s Rules) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s Rules) MarshalFields(e protocol.FieldEncoder) error {
+	if s.CidrIp != nil {
+		v := *s.CidrIp
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "cidrIp", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.Description != nil {
+		v := *s.Description
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "description", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.Direction != nil {
+		v := *s.Direction
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "direction", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.FromPort != nil {
+		v := *s.FromPort
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "fromPort", protocol.Int64Value(v), metadata)
+	}
+	if s.Id != nil {
+		v := *s.Id
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "id", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.Protocol != nil {
+		v := *s.Protocol
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "protocol", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.Status != nil {
+		v := *s.Status
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "status", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.ToPort != nil {
+		v := *s.ToPort
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "toPort", protocol.Int64Value(v), metadata)
 	}
 	return nil
 }
@@ -996,7 +2602,7 @@ type ServerConfig struct {
 
 	DefaultKubernetesVersion *string `locationName:"defaultKubernetesVersion" type:"string"`
 
-	ValidKubernetesVersions []string `locationName:"validKubernetesVersions" type:"list"`
+	ValidKubernetesVersions *string `locationName:"validKubernetesVersions" type:"string"`
 }
 
 // String returns the string representation
@@ -1013,16 +2619,40 @@ func (s ServerConfig) MarshalFields(e protocol.FieldEncoder) error {
 		e.SetValue(protocol.BodyTarget, "defaultKubernetesVersion", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
 	if s.ValidKubernetesVersions != nil {
-		v := s.ValidKubernetesVersions
+		v := *s.ValidKubernetesVersions
 
 		metadata := protocol.Metadata{}
-		ls0 := e.List(protocol.BodyTarget, "validKubernetesVersions", metadata)
-		ls0.Start()
-		for _, v1 := range v {
-			ls0.ListAddValue(protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
-		}
-		ls0.End()
+		e.SetValue(protocol.BodyTarget, "validKubernetesVersions", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	return nil
+}
 
+type SessionStickinessPolicy struct {
+	_ struct{} `type:"structure"`
+
+	Enabled *bool `locationName:"enabled" type:"boolean"`
+
+	ExpirationPeriod *int64 `locationName:"expirationPeriod" type:"integer"`
+}
+
+// String returns the string representation
+func (s SessionStickinessPolicy) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s SessionStickinessPolicy) MarshalFields(e protocol.FieldEncoder) error {
+	if s.Enabled != nil {
+		v := *s.Enabled
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "enabled", protocol.BoolValue(v), metadata)
+	}
+	if s.ExpirationPeriod != nil {
+		v := *s.ExpirationPeriod
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "expirationPeriod", protocol.Int64Value(v), metadata)
 	}
 	return nil
 }
@@ -1030,7 +2660,7 @@ func (s ServerConfig) MarshalFields(e protocol.FieldEncoder) error {
 type Snapshot struct {
 	_ struct{} `type:"structure"`
 
-	Cluster *SnapshotCluster `locationName:"cluster" type:"structure"`
+	Cluster *ClusterOfGetSnapshot `locationName:"cluster" type:"structure"`
 
 	CreateTime *string `locationName:"createTime" type:"string"`
 
@@ -1097,196 +2727,43 @@ func (s Snapshot) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
-type SnapshotCluster struct {
+type SnapshotOfCreateSnapshot struct {
 	_ struct{} `type:"structure"`
 
-	KubernetesVersion *string `locationName:"kubernetesVersion" type:"string"`
+	Cluster *ClusterOfCreateSnapshot `locationName:"cluster" type:"structure"`
 
-	Name *string `locationName:"name" type:"string"`
-
-	NodePools []SnapshotNodePool `locationName:"nodePools" type:"list"`
-}
-
-// String returns the string representation
-func (s SnapshotCluster) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
-func (s SnapshotCluster) MarshalFields(e protocol.FieldEncoder) error {
-	if s.KubernetesVersion != nil {
-		v := *s.KubernetesVersion
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "kubernetesVersion", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
-	}
-	if s.Name != nil {
-		v := *s.Name
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
-	}
-	if s.NodePools != nil {
-		v := s.NodePools
-
-		metadata := protocol.Metadata{}
-		ls0 := e.List(protocol.BodyTarget, "nodePools", metadata)
-		ls0.Start()
-		for _, v1 := range v {
-			ls0.ListAddFields(v1)
-		}
-		ls0.End()
-
-	}
-	return nil
-}
-
-type SnapshotNodePool struct {
-	_ struct{} `type:"structure"`
-
-	InstanceType *string `locationName:"instanceType" type:"string"`
-
-	Name *string `locationName:"name" type:"string"`
-
-	NodeCount *int64 `locationName:"nodeCount" type:"integer"`
-}
-
-// String returns the string representation
-func (s SnapshotNodePool) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
-func (s SnapshotNodePool) MarshalFields(e protocol.FieldEncoder) error {
-	if s.InstanceType != nil {
-		v := *s.InstanceType
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "instanceType", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
-	}
-	if s.Name != nil {
-		v := *s.Name
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
-	}
-	if s.NodeCount != nil {
-		v := *s.NodeCount
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "nodeCount", protocol.Int64Value(v), metadata)
-	}
-	return nil
-}
-
-type UpdateClusterRequestCluster struct {
-	_ struct{} `type:"structure"`
-
-	AddonsConfig *AddonsConfig `locationName:"addonsConfig" type:"structure"`
-
-	Description *string `locationName:"description" type:"string"`
-
-	KubernetesVersion *string `locationName:"kubernetesVersion" type:"string"`
-
-	Name *string `locationName:"name" type:"string"`
-}
-
-// String returns the string representation
-func (s UpdateClusterRequestCluster) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-// Validate inspects the fields of the type to determine if they are valid.
-func (s *UpdateClusterRequestCluster) Validate() error {
-	invalidParams := aws.ErrInvalidParams{Context: "UpdateClusterRequestCluster"}
-	if s.AddonsConfig != nil {
-		if err := s.AddonsConfig.Validate(); err != nil {
-			invalidParams.AddNested("AddonsConfig", err.(aws.ErrInvalidParams))
-		}
-	}
-
-	if invalidParams.Len() > 0 {
-		return invalidParams
-	}
-	return nil
-}
-
-// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
-func (s UpdateClusterRequestCluster) MarshalFields(e protocol.FieldEncoder) error {
-	if s.AddonsConfig != nil {
-		v := s.AddonsConfig
-
-		metadata := protocol.Metadata{}
-		e.SetFields(protocol.BodyTarget, "addonsConfig", v, metadata)
-	}
-	if s.Description != nil {
-		v := *s.Description
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "description", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
-	}
-	if s.KubernetesVersion != nil {
-		v := *s.KubernetesVersion
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "kubernetesVersion", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
-	}
-	if s.Name != nil {
-		v := *s.Name
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
-	}
-	return nil
-}
-
-type UpdateFirewallGroupRequestFirewallGroup struct {
-	_ struct{} `type:"structure"`
-
-	Description *string `locationName:"description" type:"string"`
-
-	Name *string `locationName:"name" type:"string"`
-}
-
-// String returns the string representation
-func (s UpdateFirewallGroupRequestFirewallGroup) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
-func (s UpdateFirewallGroupRequestFirewallGroup) MarshalFields(e protocol.FieldEncoder) error {
-	if s.Description != nil {
-		v := *s.Description
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "description", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
-	}
-	if s.Name != nil {
-		v := *s.Name
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
-	}
-	return nil
-}
-
-type UpdateSnapshotRequestSnapshot struct {
-	_ struct{} `type:"structure"`
+	CreateTime *string `locationName:"createTime" type:"string"`
 
 	Description *string `locationName:"description" type:"string"`
 
 	ExpirationTime *string `locationName:"expirationTime" type:"string"`
 
 	Name *string `locationName:"name" type:"string"`
+
+	ResourceVersion *string `locationName:"resourceVersion" type:"string"`
+
+	Status *string `locationName:"status" type:"string"`
 }
 
 // String returns the string representation
-func (s UpdateSnapshotRequestSnapshot) String() string {
+func (s SnapshotOfCreateSnapshot) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
 // MarshalFields encodes the AWS API shape using the passed in protocol encoder.
-func (s UpdateSnapshotRequestSnapshot) MarshalFields(e protocol.FieldEncoder) error {
+func (s SnapshotOfCreateSnapshot) MarshalFields(e protocol.FieldEncoder) error {
+	if s.Cluster != nil {
+		v := s.Cluster
+
+		metadata := protocol.Metadata{}
+		e.SetFields(protocol.BodyTarget, "cluster", v, metadata)
+	}
+	if s.CreateTime != nil {
+		v := *s.CreateTime
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "createTime", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
 	if s.Description != nil {
 		v := *s.Description
 
@@ -1304,6 +2781,328 @@ func (s UpdateSnapshotRequestSnapshot) MarshalFields(e protocol.FieldEncoder) er
 
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.ResourceVersion != nil {
+		v := *s.ResourceVersion
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "resourceVersion", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.Status != nil {
+		v := *s.Status
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "status", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	return nil
+}
+
+type SnapshotOfDeleteSnapshot struct {
+	_ struct{} `type:"structure"`
+
+	Cluster *ClusterOfDeleteSnapshot `locationName:"cluster" type:"structure"`
+
+	CreateTime *string `locationName:"createTime" type:"string"`
+
+	Description *string `locationName:"description" type:"string"`
+
+	ExpirationTime *string `locationName:"expirationTime" type:"string"`
+
+	Name *string `locationName:"name" type:"string"`
+
+	ResourceVersion *string `locationName:"resourceVersion" type:"string"`
+
+	Status *string `locationName:"status" type:"string"`
+}
+
+// String returns the string representation
+func (s SnapshotOfDeleteSnapshot) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s SnapshotOfDeleteSnapshot) MarshalFields(e protocol.FieldEncoder) error {
+	if s.Cluster != nil {
+		v := s.Cluster
+
+		metadata := protocol.Metadata{}
+		e.SetFields(protocol.BodyTarget, "cluster", v, metadata)
+	}
+	if s.CreateTime != nil {
+		v := *s.CreateTime
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "createTime", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.Description != nil {
+		v := *s.Description
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "description", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.ExpirationTime != nil {
+		v := *s.ExpirationTime
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "expirationTime", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.Name != nil {
+		v := *s.Name
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.ResourceVersion != nil {
+		v := *s.ResourceVersion
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "resourceVersion", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.Status != nil {
+		v := *s.Status
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "status", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	return nil
+}
+
+type SnapshotOfUpdateSnapshot struct {
+	_ struct{} `type:"structure"`
+
+	Cluster *ClusterOfUpdateSnapshot `locationName:"cluster" type:"structure"`
+
+	CreateTime *string `locationName:"createTime" type:"string"`
+
+	Description *string `locationName:"description" type:"string"`
+
+	ExpirationTime *string `locationName:"expirationTime" type:"string"`
+
+	Name *string `locationName:"name" type:"string"`
+
+	ResourceVersion *string `locationName:"resourceVersion" type:"string"`
+
+	Status *string `locationName:"status" type:"string"`
+}
+
+// String returns the string representation
+func (s SnapshotOfUpdateSnapshot) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s SnapshotOfUpdateSnapshot) MarshalFields(e protocol.FieldEncoder) error {
+	if s.Cluster != nil {
+		v := s.Cluster
+
+		metadata := protocol.Metadata{}
+		e.SetFields(protocol.BodyTarget, "cluster", v, metadata)
+	}
+	if s.CreateTime != nil {
+		v := *s.CreateTime
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "createTime", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.Description != nil {
+		v := *s.Description
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "description", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.ExpirationTime != nil {
+		v := *s.ExpirationTime
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "expirationTime", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.Name != nil {
+		v := *s.Name
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.ResourceVersion != nil {
+		v := *s.ResourceVersion
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "resourceVersion", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.Status != nil {
+		v := *s.Status
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "status", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	return nil
+}
+
+type Snapshots struct {
+	_ struct{} `type:"structure"`
+
+	Cluster *ClusterOfListSnapshots `locationName:"cluster" type:"structure"`
+
+	CreateTime *string `locationName:"createTime" type:"string"`
+
+	Description *string `locationName:"description" type:"string"`
+
+	ExpirationTime *string `locationName:"expirationTime" type:"string"`
+
+	Name *string `locationName:"name" type:"string"`
+
+	ResourceVersion *string `locationName:"resourceVersion" type:"string"`
+
+	Status *string `locationName:"status" type:"string"`
+}
+
+// String returns the string representation
+func (s Snapshots) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s Snapshots) MarshalFields(e protocol.FieldEncoder) error {
+	if s.Cluster != nil {
+		v := s.Cluster
+
+		metadata := protocol.Metadata{}
+		e.SetFields(protocol.BodyTarget, "cluster", v, metadata)
+	}
+	if s.CreateTime != nil {
+		v := *s.CreateTime
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "createTime", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.Description != nil {
+		v := *s.Description
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "description", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.ExpirationTime != nil {
+		v := *s.ExpirationTime
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "expirationTime", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.Name != nil {
+		v := *s.Name
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.ResourceVersion != nil {
+		v := *s.ResourceVersion
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "resourceVersion", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.Status != nil {
+		v := *s.Status
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "status", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	return nil
+}
+
+type SnapshotsOfDeleteSnapshots struct {
+	_ struct{} `type:"structure"`
+
+	Cluster *ClusterOfDeleteSnapshots `locationName:"cluster" type:"structure"`
+
+	CreateTime *string `locationName:"createTime" type:"string"`
+
+	Description *string `locationName:"description" type:"string"`
+
+	ExpirationTime *string `locationName:"expirationTime" type:"string"`
+
+	Name *string `locationName:"name" type:"string"`
+
+	ResourceVersion *string `locationName:"resourceVersion" type:"string"`
+
+	Status *string `locationName:"status" type:"string"`
+}
+
+// String returns the string representation
+func (s SnapshotsOfDeleteSnapshots) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s SnapshotsOfDeleteSnapshots) MarshalFields(e protocol.FieldEncoder) error {
+	if s.Cluster != nil {
+		v := s.Cluster
+
+		metadata := protocol.Metadata{}
+		e.SetFields(protocol.BodyTarget, "cluster", v, metadata)
+	}
+	if s.CreateTime != nil {
+		v := *s.CreateTime
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "createTime", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.Description != nil {
+		v := *s.Description
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "description", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.ExpirationTime != nil {
+		v := *s.ExpirationTime
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "expirationTime", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.Name != nil {
+		v := *s.Name
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.ResourceVersion != nil {
+		v := *s.ResourceVersion
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "resourceVersion", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.Status != nil {
+		v := *s.Status
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "status", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	return nil
+}
+
+type SorryPage struct {
+	_ struct{} `type:"structure"`
+
+	Enabled *bool `locationName:"enabled" type:"boolean"`
+
+	StatusCode *int64 `locationName:"statusCode" type:"integer"`
+}
+
+// String returns the string representation
+func (s SorryPage) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s SorryPage) MarshalFields(e protocol.FieldEncoder) error {
+	if s.Enabled != nil {
+		v := *s.Enabled
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "enabled", protocol.BoolValue(v), metadata)
+	}
+	if s.StatusCode != nil {
+		v := *s.StatusCode
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "statusCode", protocol.Int64Value(v), metadata)
 	}
 	return nil
 }

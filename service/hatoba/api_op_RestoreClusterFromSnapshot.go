@@ -14,10 +14,10 @@ type RestoreClusterFromSnapshotInput struct {
 	_ struct{} `type:"structure"`
 
 	// Cluster is a required field
-	Cluster *RestoreClusterFromSnapshotRequestCluster `locationName:"cluster" type:"structure" required:"true"`
+	Cluster *RequestClusterOfRestoreClusterFromSnapshot `locationName:"cluster" type:"structure" required:"true"`
 
 	// SnapshotName is a required field
-	SnapshotName *string `location:"uri" locationName:"SnapshotName" type:"string" required:"true"`
+	SnapshotName *string `location:"uri" locationName:"snapshot_name" type:"string" required:"true"`
 }
 
 // String returns the string representation
@@ -62,7 +62,7 @@ func (s RestoreClusterFromSnapshotInput) MarshalFields(e protocol.FieldEncoder) 
 		v := *s.SnapshotName
 
 		metadata := protocol.Metadata{}
-		e.SetValue(protocol.PathTarget, "SnapshotName", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+		e.SetValue(protocol.PathTarget, "snapshot_name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
 	return nil
 }
@@ -71,8 +71,6 @@ type RestoreClusterFromSnapshotOutput struct {
 	_ struct{} `type:"structure"`
 
 	Cluster *Cluster `locationName:"cluster" type:"structure"`
-
-	RequestId *string `locationName:"requestId" type:"string"`
 }
 
 // String returns the string representation
@@ -88,19 +86,13 @@ func (s RestoreClusterFromSnapshotOutput) MarshalFields(e protocol.FieldEncoder)
 		metadata := protocol.Metadata{}
 		e.SetFields(protocol.BodyTarget, "cluster", v, metadata)
 	}
-	if s.RequestId != nil {
-		v := *s.RequestId
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "requestId", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
-	}
 	return nil
 }
 
 const opRestoreClusterFromSnapshot = "RestoreClusterFromSnapshot"
 
 // RestoreClusterFromSnapshotRequest returns a request value for making API operation for
-// NIFCLOUD Hatoba beta.
+// NIFCLOUD Kubernetes Service Hatoba.
 //
 //    // Example sending a request using RestoreClusterFromSnapshotRequest.
 //    req := client.RestoreClusterFromSnapshotRequest(params)
@@ -114,7 +106,7 @@ func (c *Client) RestoreClusterFromSnapshotRequest(input *RestoreClusterFromSnap
 	op := &aws.Operation{
 		Name:       opRestoreClusterFromSnapshot,
 		HTTPMethod: "POST",
-		HTTPPath:   "/v1/snapshots/{SnapshotName}:restore",
+		HTTPPath:   "/v1/snapshots/{snapshot_name}:restore",
 	}
 
 	if input == nil {

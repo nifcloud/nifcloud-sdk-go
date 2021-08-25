@@ -14,10 +14,10 @@ type CreateNodePoolInput struct {
 	_ struct{} `type:"structure"`
 
 	// ClusterName is a required field
-	ClusterName *string `location:"uri" locationName:"ClusterName" type:"string" required:"true"`
+	ClusterName *string `location:"uri" locationName:"cluster_name" type:"string" required:"true"`
 
 	// NodePool is a required field
-	NodePool *CreateClusterRequestNodePool `locationName:"nodePool" type:"structure" required:"true"`
+	NodePool *RequestNodePool `locationName:"nodePool" type:"structure" required:"true"`
 }
 
 // String returns the string representation
@@ -62,7 +62,7 @@ func (s CreateNodePoolInput) MarshalFields(e protocol.FieldEncoder) error {
 		v := *s.ClusterName
 
 		metadata := protocol.Metadata{}
-		e.SetValue(protocol.PathTarget, "ClusterName", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+		e.SetValue(protocol.PathTarget, "cluster_name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
 	return nil
 }
@@ -71,8 +71,6 @@ type CreateNodePoolOutput struct {
 	_ struct{} `type:"structure"`
 
 	NodePool *NodePool `locationName:"nodePool" type:"structure"`
-
-	RequestId *string `locationName:"requestId" type:"string"`
 }
 
 // String returns the string representation
@@ -88,19 +86,13 @@ func (s CreateNodePoolOutput) MarshalFields(e protocol.FieldEncoder) error {
 		metadata := protocol.Metadata{}
 		e.SetFields(protocol.BodyTarget, "nodePool", v, metadata)
 	}
-	if s.RequestId != nil {
-		v := *s.RequestId
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "requestId", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
-	}
 	return nil
 }
 
 const opCreateNodePool = "CreateNodePool"
 
 // CreateNodePoolRequest returns a request value for making API operation for
-// NIFCLOUD Hatoba beta.
+// NIFCLOUD Kubernetes Service Hatoba.
 //
 //    // Example sending a request using CreateNodePoolRequest.
 //    req := client.CreateNodePoolRequest(params)
@@ -114,7 +106,7 @@ func (c *Client) CreateNodePoolRequest(input *CreateNodePoolInput) CreateNodePoo
 	op := &aws.Operation{
 		Name:       opCreateNodePool,
 		HTTPMethod: "POST",
-		HTTPPath:   "/v1/clusters/{ClusterName}/nodePools",
+		HTTPPath:   "/v1/clusters/{cluster_name}/nodePools",
 	}
 
 	if input == nil {
