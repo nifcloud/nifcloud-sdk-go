@@ -414,7 +414,7 @@ type Datapoints struct {
 
 	SampleCount *int64 `locationName:"SampleCount" type:"integer"`
 
-	Sum *int64 `locationName:"Sum" type:"integer"`
+	Sum *float64 `locationName:"Sum" type:"double"`
 
 	Timestamp *time.Time `locationName:"Timestamp" type:"timestamp"`
 }
