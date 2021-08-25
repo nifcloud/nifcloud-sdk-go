@@ -10,7 +10,7 @@ It works by feeding AWS-SDK-compatible model JSONs to [github.com/aws/aws-sdk-go
 
 ## Features
 
-* :heavy_check_mark: Support for NIFCLOUD Computing / RDB / NAS / Script / Hatoba APIs
+* :heavy_check_mark: Support for NIFCLOUD Computing / RDB / NAS / Script / Hatoba / ESS APIs
 * :heavy_check_mark: AWS-SDK-compatible data-driven architecture
 
 # Getting started

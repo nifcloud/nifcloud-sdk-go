@@ -86,6 +86,18 @@
           },
           "isRegionalized" : false,
           "partitionEndpoint" : "aws-global"
+        },
+        "ess" : {
+          "endpoints" : {
+            "aws-global" : {
+              "credentialScope" : {
+                "region" : "east-1"
+              },
+              "hostname" : "ess.api.nifcloud.com"
+            }
+          },
+          "isRegionalized" : false,
+          "partitionEndpoint" : "aws-global"
         }
       }
     }

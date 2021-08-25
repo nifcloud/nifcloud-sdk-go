@@ -88,6 +88,19 @@ var nifcloudPartition = partition{
 				},
 			},
 		},
+		"ess": service{
+			PartitionEndpoint: "aws-global",
+			IsRegionalized:    boxedFalse,
+
+			Endpoints: endpoints{
+				"aws-global": endpoint{
+					Hostname: "ess.api.nifcloud.com",
+					CredentialScope: credentialScope{
+						Region: "east-1",
+					},
+				},
+			},
+		},
 		"hatoba": service{
 
 			Endpoints: endpoints{
