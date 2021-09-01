@@ -52,7 +52,7 @@ type Cluster struct {
 
 	KubernetesVersion *string `locationName:"kubernetesVersion" type:"string"`
 
-	Locations *string `locationName:"locations" type:"string"`
+	Locations []string `locationName:"locations" locationNameList:"member" type:"list"`
 
 	Name *string `locationName:"name" type:"string"`
 
@@ -115,10 +115,16 @@ func (s Cluster) MarshalFields(e protocol.FieldEncoder) error {
 		e.SetValue(protocol.BodyTarget, "kubernetesVersion", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
 	if s.Locations != nil {
-		v := *s.Locations
+		v := s.Locations
 
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "locations", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+		metadata := protocol.Metadata{ListLocationName: "member"}
+		ls0 := e.List(protocol.BodyTarget, "locations", metadata)
+		ls0.Start()
+		for _, v1 := range v {
+			ls0.ListAddValue(protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ls0.End()
+
 	}
 	if s.Name != nil {
 		v := *s.Name
@@ -440,7 +446,7 @@ type Clusters struct {
 
 	KubernetesVersion *string `locationName:"kubernetesVersion" type:"string"`
 
-	Locations *string `locationName:"locations" type:"string"`
+	Locations []string `locationName:"locations" locationNameList:"member" type:"list"`
 
 	Name *string `locationName:"name" type:"string"`
 
@@ -503,10 +509,16 @@ func (s Clusters) MarshalFields(e protocol.FieldEncoder) error {
 		e.SetValue(protocol.BodyTarget, "kubernetesVersion", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
 	if s.Locations != nil {
-		v := *s.Locations
+		v := s.Locations
 
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "locations", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+		metadata := protocol.Metadata{ListLocationName: "member"}
+		ls0 := e.List(protocol.BodyTarget, "locations", metadata)
+		ls0.Start()
+		for _, v1 := range v {
+			ls0.ListAddValue(protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ls0.End()
+
 	}
 	if s.Name != nil {
 		v := *s.Name
@@ -894,7 +906,7 @@ type LoadBalancers struct {
 
 	AccountingType *int64 `locationName:"accountingType" type:"integer"`
 
-	AvailabilityZones *string `locationName:"availabilityZones" type:"string"`
+	AvailabilityZones []string `locationName:"availabilityZones" locationNameList:"member" type:"list"`
 
 	Clusters []ClustersOfGetLoadBalancer `locationName:"clusters" type:"list"`
 
@@ -935,10 +947,16 @@ func (s LoadBalancers) MarshalFields(e protocol.FieldEncoder) error {
 		e.SetValue(protocol.BodyTarget, "accountingType", protocol.Int64Value(v), metadata)
 	}
 	if s.AvailabilityZones != nil {
-		v := *s.AvailabilityZones
+		v := s.AvailabilityZones
 
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "availabilityZones", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+		metadata := protocol.Metadata{ListLocationName: "member"}
+		ls0 := e.List(protocol.BodyTarget, "availabilityZones", metadata)
+		ls0.Start()
+		for _, v1 := range v {
+			ls0.ListAddValue(protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ls0.End()
+
 	}
 	if s.Clusters != nil {
 		v := s.Clusters
@@ -1032,7 +1050,7 @@ type LoadBalancersOfListLoadBalancers struct {
 
 	AccountingType *int64 `locationName:"accountingType" type:"integer"`
 
-	AvailabilityZones *string `locationName:"availabilityZones" type:"string"`
+	AvailabilityZones []string `locationName:"availabilityZones" locationNameList:"member" type:"list"`
 
 	Clusters []ClustersOfListLoadBalancers `locationName:"clusters" type:"list"`
 
@@ -1073,10 +1091,16 @@ func (s LoadBalancersOfListLoadBalancers) MarshalFields(e protocol.FieldEncoder)
 		e.SetValue(protocol.BodyTarget, "accountingType", protocol.Int64Value(v), metadata)
 	}
 	if s.AvailabilityZones != nil {
-		v := *s.AvailabilityZones
+		v := s.AvailabilityZones
 
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "availabilityZones", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+		metadata := protocol.Metadata{ListLocationName: "member"}
+		ls0 := e.List(protocol.BodyTarget, "availabilityZones", metadata)
+		ls0.Start()
+		for _, v1 := range v {
+			ls0.ListAddValue(protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ls0.End()
+
 	}
 	if s.Clusters != nil {
 		v := s.Clusters
@@ -1847,11 +1871,11 @@ type RequestCluster struct {
 
 	KubernetesVersion *string `locationName:"kubernetesVersion" type:"string"`
 
+	// ListOfRequestLocations is a required field
+	ListOfRequestLocations []string `locationName:"locations" type:"list" required:"true"`
+
 	// ListOfRequestNodePools is a required field
 	ListOfRequestNodePools []RequestNodePools `locationName:"nodePools" type:"list" required:"true"`
-
-	// Locations is a required field
-	Locations *string `locationName:"locations" type:"string" required:"true"`
 
 	// Name is a required field
 	Name *string `locationName:"name" type:"string" required:"true"`
@@ -1874,12 +1898,12 @@ func (s *RequestCluster) Validate() error {
 		invalidParams.Add(aws.NewErrParamRequired("FirewallGroup"))
 	}
 
-	if s.ListOfRequestNodePools == nil {
-		invalidParams.Add(aws.NewErrParamRequired("ListOfRequestNodePools"))
+	if s.ListOfRequestLocations == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ListOfRequestLocations"))
 	}
 
-	if s.Locations == nil {
-		invalidParams.Add(aws.NewErrParamRequired("Locations"))
+	if s.ListOfRequestNodePools == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ListOfRequestNodePools"))
 	}
 
 	if s.Name == nil {
@@ -1919,6 +1943,18 @@ func (s RequestCluster) MarshalFields(e protocol.FieldEncoder) error {
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "kubernetesVersion", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
+	if s.ListOfRequestLocations != nil {
+		v := s.ListOfRequestLocations
+
+		metadata := protocol.Metadata{}
+		ls0 := e.List(protocol.BodyTarget, "locations", metadata)
+		ls0.Start()
+		for _, v1 := range v {
+			ls0.ListAddValue(protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ls0.End()
+
+	}
 	if s.ListOfRequestNodePools != nil {
 		v := s.ListOfRequestNodePools
 
@@ -1930,12 +1966,6 @@ func (s RequestCluster) MarshalFields(e protocol.FieldEncoder) error {
 		}
 		ls0.End()
 
-	}
-	if s.Locations != nil {
-		v := *s.Locations
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "locations", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
 	if s.Name != nil {
 		v := *s.Name
@@ -2003,8 +2033,8 @@ type RequestClusterOfRestoreClusterFromSnapshot struct {
 	// FirewallGroup is a required field
 	FirewallGroup *string `locationName:"firewallGroup" type:"string" required:"true"`
 
-	// Locations is a required field
-	Locations *string `locationName:"locations" type:"string" required:"true"`
+	// ListOfRequestLocations is a required field
+	ListOfRequestLocations []string `locationName:"locations" type:"list" required:"true"`
 
 	// Name is a required field
 	Name *string `locationName:"name" type:"string" required:"true"`
@@ -2027,8 +2057,8 @@ func (s *RequestClusterOfRestoreClusterFromSnapshot) Validate() error {
 		invalidParams.Add(aws.NewErrParamRequired("FirewallGroup"))
 	}
 
-	if s.Locations == nil {
-		invalidParams.Add(aws.NewErrParamRequired("Locations"))
+	if s.ListOfRequestLocations == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ListOfRequestLocations"))
 	}
 
 	if s.Name == nil {
@@ -2055,11 +2085,17 @@ func (s RequestClusterOfRestoreClusterFromSnapshot) MarshalFields(e protocol.Fie
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "firewallGroup", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
-	if s.Locations != nil {
-		v := *s.Locations
+	if s.ListOfRequestLocations != nil {
+		v := s.ListOfRequestLocations
 
 		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "locations", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+		ls0 := e.List(protocol.BodyTarget, "locations", metadata)
+		ls0.Start()
+		for _, v1 := range v {
+			ls0.ListAddValue(protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ls0.End()
+
 	}
 	if s.Name != nil {
 		v := *s.Name
@@ -2602,7 +2638,7 @@ type ServerConfig struct {
 
 	DefaultKubernetesVersion *string `locationName:"defaultKubernetesVersion" type:"string"`
 
-	ValidKubernetesVersions *string `locationName:"validKubernetesVersions" type:"string"`
+	ValidKubernetesVersions []string `locationName:"validKubernetesVersions" locationNameList:"member" type:"list"`
 }
 
 // String returns the string representation
@@ -2619,10 +2655,16 @@ func (s ServerConfig) MarshalFields(e protocol.FieldEncoder) error {
 		e.SetValue(protocol.BodyTarget, "defaultKubernetesVersion", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
 	if s.ValidKubernetesVersions != nil {
-		v := *s.ValidKubernetesVersions
+		v := s.ValidKubernetesVersions
 
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "validKubernetesVersions", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+		metadata := protocol.Metadata{ListLocationName: "member"}
+		ls0 := e.List(protocol.BodyTarget, "validKubernetesVersions", metadata)
+		ls0.Start()
+		for _, v1 := range v {
+			ls0.ListAddValue(protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ls0.End()
+
 	}
 	return nil
 }
