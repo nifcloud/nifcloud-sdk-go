@@ -5474,6 +5474,17 @@ func (s *RequestInstances) Validate() error {
 	return nil
 }
 
+type RequestInstancesOfDescribeInstanceHealth struct {
+	_ struct{} `type:"structure"`
+
+	InstanceId *string `locationName:"InstanceId" type:"string"`
+}
+
+// String returns the string representation
+func (s RequestInstancesOfDescribeInstanceHealth) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
 type RequestInstancesOfNiftyCreateElasticLoadBalancer struct {
 	_ struct{} `type:"structure"`
 

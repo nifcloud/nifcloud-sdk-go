@@ -4,7 +4,6 @@ package computing
 
 import (
 	"context"
-	"fmt"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/nifcloud/nifcloud-sdk-go/internal/nifcloudutil"
@@ -16,7 +15,7 @@ type DescribeInstanceHealthInput struct {
 	// InstancePort is a required field
 	InstancePort *int64 `locationName:"InstancePort" type:"integer" required:"true"`
 
-	Instances []RequestInstances `locationName:"Instances" locationNameList:"member" type:"list"`
+	Instances []RequestInstancesOfDescribeInstanceHealth `locationName:"Instances" locationNameList:"member" type:"list"`
 
 	// LoadBalancerName is a required field
 	LoadBalancerName *string `locationName:"LoadBalancerName" type:"string" required:"true"`
@@ -44,13 +43,6 @@ func (s *DescribeInstanceHealthInput) Validate() error {
 
 	if s.LoadBalancerPort == nil {
 		invalidParams.Add(aws.NewErrParamRequired("LoadBalancerPort"))
-	}
-	if s.Instances != nil {
-		for i, v := range s.Instances {
-			if err := v.Validate(); err != nil {
-				invalidParams.AddNested(fmt.Sprintf("%s[%v]", "Instances", i), err.(aws.ErrInvalidParams))
-			}
-		}
 	}
 
 	if invalidParams.Len() > 0 {
