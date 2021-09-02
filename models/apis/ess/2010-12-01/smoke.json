@@ -1,0 +1,23 @@
+{
+    "version": 1,
+    "defaultRegion": "jp-east-1",
+    "testCases": [
+        {
+            "operationName": "ListIdentities",
+            "input": {
+                "IdentityType": "fake-type"
+            },
+            "errorExpectedFromService": true
+        },
+        {
+            "operationName": "GetSendQuota",
+            "input": {},
+            "errorExpectedFromService": false
+        },
+        {
+            "operationName": "GetSendStatistics",
+            "input": {},
+            "errorExpectedFromService": false
+        }
+    ]
+}

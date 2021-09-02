@@ -162,6 +162,7 @@ func rewriteServiceFile(path string) error {
 		{"github.com/aws/aws-sdk-go-v2/private/protocol/script": "github.com/nifcloud/nifcloud-sdk-go/private/protocol/script"},
 		{"github.com/aws/aws-sdk-go-v2/private/protocol/rdb": "github.com/nifcloud/nifcloud-sdk-go/private/protocol/rdb"},
 		{"github.com/aws/aws-sdk-go-v2/private/protocol/nas": "github.com/nifcloud/nifcloud-sdk-go/private/protocol/nas"},
+		{"github.com/aws/aws-sdk-go-v2/private/protocol/ess": "github.com/nifcloud/nifcloud-sdk-go/private/protocol/ess"},
 		{"github.com/aws/aws-sdk-go-v2/aws/signer/v2": "github.com/nifcloud/nifcloud-sdk-go/nifcloud/signer/v2"},
 	}
 	replaces := []map[string]string{
