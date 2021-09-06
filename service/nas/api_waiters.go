@@ -29,6 +29,11 @@ func (c *Client) WaitUntilNASInstanceAvailable(ctx context.Context, input *Descr
 				Matcher: aws.PathAllWaiterMatch, Argument: "NASInstances[].NASInstanceStatus",
 				Expected: "available",
 			},
+			{
+				State:   aws.FailureWaiterState,
+				Matcher: aws.PathAllWaiterMatch, Argument: "NASInstances[].NASInstanceStatus",
+				Expected: "failed",
+			},
 		},
 		Logger: c.Config.Logger,
 		NewRequest: func(opts []aws.Option) (*aws.Request, error) {
