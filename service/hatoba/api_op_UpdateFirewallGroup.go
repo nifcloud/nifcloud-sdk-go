@@ -13,7 +13,7 @@ import (
 type UpdateFirewallGroupInput struct {
 	_ struct{} `type:"structure"`
 
-	FirewallGroup *RequestFirewallGroup `locationName:"firewallGroup" type:"structure"`
+	FirewallGroup *RequestFirewallGroupOfUpdateFirewallGroup `locationName:"firewallGroup" type:"structure"`
 
 	// FirewallGroupName is a required field
 	FirewallGroupName *string `location:"uri" locationName:"firewall_group_name" type:"string" required:"true"`
@@ -30,11 +30,6 @@ func (s *UpdateFirewallGroupInput) Validate() error {
 
 	if s.FirewallGroupName == nil {
 		invalidParams.Add(aws.NewErrParamRequired("FirewallGroupName"))
-	}
-	if s.FirewallGroup != nil {
-		if err := s.FirewallGroup.Validate(); err != nil {
-			invalidParams.AddNested("FirewallGroup", err.(aws.ErrInvalidParams))
-		}
 	}
 
 	if invalidParams.Len() > 0 {

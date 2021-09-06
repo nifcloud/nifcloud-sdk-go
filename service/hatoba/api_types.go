@@ -2209,6 +2209,36 @@ func (s RequestFirewallGroup) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+type RequestFirewallGroupOfUpdateFirewallGroup struct {
+	_ struct{} `type:"structure"`
+
+	Description *string `locationName:"description" type:"string"`
+
+	Name *string `locationName:"name" type:"string"`
+}
+
+// String returns the string representation
+func (s RequestFirewallGroupOfUpdateFirewallGroup) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s RequestFirewallGroupOfUpdateFirewallGroup) MarshalFields(e protocol.FieldEncoder) error {
+	if s.Description != nil {
+		v := *s.Description
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "description", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.Name != nil {
+		v := *s.Name
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	return nil
+}
+
 type RequestHttpLoadBalancing struct {
 	_ struct{} `type:"structure"`
 
