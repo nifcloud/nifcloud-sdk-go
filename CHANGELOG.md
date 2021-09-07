@@ -1,6 +1,12 @@
 
 # CHANGELOG
 
+## v1.11.0
+
+* fix: Fix to stop the NASInstanceAvailable waiter when target NAS instance state is failed (#26 by aokumasan)
+* fix: Fix bug of model (#25 by fuku2014)
+* feature: Add ess model (#24 by tunakyonn)
+
 ## v1.10.0
 
 * fix: Fix bug of hatoba model has not array of string (#23 by fuku2014)
