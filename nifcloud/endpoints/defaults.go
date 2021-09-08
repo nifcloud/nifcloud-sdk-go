@@ -77,6 +77,18 @@ var nifcloudPartition = partition{
 				Unresolveable: boxedTrue,
 			},
 		},
+		"dns": service{
+			PartitionEndpoint: "aws-global",
+			IsRegionalized:    boxedFalse,
+			Defaults: endpoint{
+				SignatureVersions: []string{"v3"},
+			},
+			Endpoints: endpoints{
+				"aws-global": endpoint{
+					Hostname: "dns.api.nifcloud.com",
+				},
+			},
+		},
 		"ec2metadata": service{
 			PartitionEndpoint: "aws-global",
 			IsRegionalized:    boxedFalse,
