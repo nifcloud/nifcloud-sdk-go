@@ -47,7 +47,7 @@ func New(config nifcloud.Config) *Client {
 				EndpointsID:   EndpointsID,
 				SigningName:   "email",
 				SigningRegion: config.Region,
-				APIVersion:    "2010-12-01",
+				APIVersion:    "2010-12-01N2014-05-28",
 			},
 		),
 	}
