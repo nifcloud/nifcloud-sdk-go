@@ -170,6 +170,12 @@ func rewriteServiceFile(path string) error {
 		{"config,": "config.AWSConfig(),"},
 	}
 
+	serviceName := filepath.Base(filepath.Dir(path))
+	if serviceName == "dns" {
+		imports = append(imports, map[string]string{"github.com/aws/aws-sdk-go-v2/aws/signer/v4": "github.com/nifcloud/nifcloud-sdk-go/nifcloud/signer/v3"})
+		replaces = append(replaces, map[string]string{"v4.SignRequestHandler": "v3.SignRequestHandler"})
+	}
+
 	return rewrite(path, imports, replaces)
 }
 
