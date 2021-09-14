@@ -16,6 +16,12 @@ type DescribeEventSubscriptionsInput struct {
 
 	MaxRecords *int64 `locationName:"MaxRecords" type:"integer"`
 
+	NIftySortKey *string `locationName:"NIftySortKey" type:"string"`
+
+	NiftyFilters *RequestNiftyFilters `locationName:"NiftyFilters" type:"structure"`
+
+	NiftySortDesc *int64 `locationName:"NiftySortDesc" type:"integer"`
+
 	SubscriptionName *string `locationName:"SubscriptionName" type:"string"`
 }
 

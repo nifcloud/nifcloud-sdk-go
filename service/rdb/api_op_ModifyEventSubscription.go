@@ -18,8 +18,9 @@ type ModifyEventSubscriptionInput struct {
 
 	NiftyDescription *string `locationName:"NiftyDescription" type:"string"`
 
-	// NiftyEmailAddresses is a required field
-	NiftyEmailAddresses []string `locationName:"NiftyEmailAddresses" locationNameList:"member" type:"list" required:"true"`
+	NiftyEmailAddresses []string `locationName:"NiftyEmailAddresses" locationNameList:"member" type:"list"`
+
+	NiftySourceIds []string `locationName:"NiftySourceIds" locationNameList:"member" type:"list"`
 
 	SourceType *string `locationName:"SourceType" type:"string"`
 
@@ -35,10 +36,6 @@ func (s ModifyEventSubscriptionInput) String() string {
 // Validate inspects the fields of the type to determine if they are valid.
 func (s *ModifyEventSubscriptionInput) Validate() error {
 	invalidParams := aws.ErrInvalidParams{Context: "ModifyEventSubscriptionInput"}
-
-	if s.NiftyEmailAddresses == nil {
-		invalidParams.Add(aws.NewErrParamRequired("NiftyEmailAddresses"))
-	}
 
 	if s.SubscriptionName == nil {
 		invalidParams.Add(aws.NewErrParamRequired("SubscriptionName"))
