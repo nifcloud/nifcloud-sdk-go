@@ -727,6 +727,30 @@ func (s *RequestDimensions) Validate() error {
 	return nil
 }
 
+type RequestFilter struct {
+	_ struct{} `type:"structure"`
+
+	FilterName *string `locationName:"FilterName" type:"string"`
+
+	FilterValue *string `locationName:"FilterValue" type:"string"`
+}
+
+// String returns the string representation
+func (s RequestFilter) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+type RequestNiftyFilters struct {
+	_ struct{} `type:"structure"`
+
+	ListOfRequestFilter []RequestFilter `locationName:"Filter" type:"list"`
+}
+
+// String returns the string representation
+func (s RequestNiftyFilters) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
 type RequestParameters struct {
 	_ struct{} `type:"structure"`
 

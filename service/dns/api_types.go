@@ -3,6 +3,8 @@
 package dns
 
 import (
+	"fmt"
+
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/private/protocol"
 	"github.com/nifcloud/nifcloud-sdk-go/internal/nifcloudutil"
@@ -255,8 +257,8 @@ func (s RequestChange) MarshalFields(e protocol.FieldEncoder) error {
 type RequestChangeBatch struct {
 	_ struct{} `type:"structure"`
 
-	// RequestChanges is a required field
-	RequestChanges *RequestChanges `locationName:"Changes" type:"structure" required:"true"`
+	// ListOfRequestChanges is a required field
+	ListOfRequestChanges []RequestChanges `locationName:"Changes" type:"list" flattened:"true" required:"true"`
 }
 
 // String returns the string representation
@@ -268,12 +270,14 @@ func (s RequestChangeBatch) String() string {
 func (s *RequestChangeBatch) Validate() error {
 	invalidParams := aws.ErrInvalidParams{Context: "RequestChangeBatch"}
 
-	if s.RequestChanges == nil {
-		invalidParams.Add(aws.NewErrParamRequired("RequestChanges"))
+	if s.ListOfRequestChanges == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ListOfRequestChanges"))
 	}
-	if s.RequestChanges != nil {
-		if err := s.RequestChanges.Validate(); err != nil {
-			invalidParams.AddNested("RequestChanges", err.(aws.ErrInvalidParams))
+	if s.ListOfRequestChanges != nil {
+		for i, v := range s.ListOfRequestChanges {
+			if err := v.Validate(); err != nil {
+				invalidParams.AddNested(fmt.Sprintf("%s[%v]", "ListOfRequestChanges", i), err.(aws.ErrInvalidParams))
+			}
 		}
 	}
 
@@ -285,11 +289,17 @@ func (s *RequestChangeBatch) Validate() error {
 
 // MarshalFields encodes the AWS API shape using the passed in protocol encoder.
 func (s RequestChangeBatch) MarshalFields(e protocol.FieldEncoder) error {
-	if s.RequestChanges != nil {
-		v := s.RequestChanges
+	if s.ListOfRequestChanges != nil {
+		v := s.ListOfRequestChanges
 
-		metadata := protocol.Metadata{}
-		e.SetFields(protocol.BodyTarget, "Changes", v, metadata)
+		metadata := protocol.Metadata{Flatten: true}
+		ls0 := e.List(protocol.BodyTarget, "Changes", metadata)
+		ls0.Start()
+		for _, v1 := range v {
+			ls0.ListAddFields(v1)
+		}
+		ls0.End()
+
 	}
 	return nil
 }
@@ -385,11 +395,11 @@ type RequestResourceRecordSet struct {
 
 	Failover *string `locationName:"Failover" type:"string"`
 
+	ListOfRequestResourceRecords []RequestResourceRecords `locationName:"ResourceRecords" type:"list" flattened:"true"`
+
 	Name *string `locationName:"Name" type:"string"`
 
 	Region *string `locationName:"Region" type:"string"`
-
-	RequestResourceRecords *RequestResourceRecords `locationName:"ResourceRecords" type:"structure"`
 
 	RequestXniftyHealthCheckConfig *RequestXniftyHealthCheckConfig `locationName:"XniftyHealthCheckConfig" type:"structure"`
 
@@ -419,6 +429,18 @@ func (s RequestResourceRecordSet) MarshalFields(e protocol.FieldEncoder) error {
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "Failover", protocol.StringValue(v), metadata)
 	}
+	if s.ListOfRequestResourceRecords != nil {
+		v := s.ListOfRequestResourceRecords
+
+		metadata := protocol.Metadata{Flatten: true}
+		ls0 := e.List(protocol.BodyTarget, "ResourceRecords", metadata)
+		ls0.Start()
+		for _, v1 := range v {
+			ls0.ListAddFields(v1)
+		}
+		ls0.End()
+
+	}
 	if s.Name != nil {
 		v := *s.Name
 
@@ -430,12 +452,6 @@ func (s RequestResourceRecordSet) MarshalFields(e protocol.FieldEncoder) error {
 
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "Region", protocol.StringValue(v), metadata)
-	}
-	if s.RequestResourceRecords != nil {
-		v := s.RequestResourceRecords
-
-		metadata := protocol.Metadata{}
-		e.SetFields(protocol.BodyTarget, "ResourceRecords", v, metadata)
 	}
 	if s.RequestXniftyHealthCheckConfig != nil {
 		v := s.RequestXniftyHealthCheckConfig
