@@ -258,7 +258,7 @@ type RequestChangeBatch struct {
 	_ struct{} `type:"structure"`
 
 	// ListOfRequestChanges is a required field
-	ListOfRequestChanges []RequestChanges `locationName:"Changes" type:"list" required:"true"`
+	ListOfRequestChanges []RequestChanges `locationName:"Changes" type:"list" flattened:"true" required:"true"`
 }
 
 // String returns the string representation
@@ -292,7 +292,7 @@ func (s RequestChangeBatch) MarshalFields(e protocol.FieldEncoder) error {
 	if s.ListOfRequestChanges != nil {
 		v := s.ListOfRequestChanges
 
-		metadata := protocol.Metadata{}
+		metadata := protocol.Metadata{Flatten: true}
 		ls0 := e.List(protocol.BodyTarget, "Changes", metadata)
 		ls0.Start()
 		for _, v1 := range v {
@@ -395,7 +395,7 @@ type RequestResourceRecordSet struct {
 
 	Failover *string `locationName:"Failover" type:"string"`
 
-	ListOfRequestResourceRecords []RequestResourceRecords `locationName:"ResourceRecords" type:"list"`
+	ListOfRequestResourceRecords []RequestResourceRecords `locationName:"ResourceRecords" type:"list" flattened:"true"`
 
 	Name *string `locationName:"Name" type:"string"`
 
@@ -432,7 +432,7 @@ func (s RequestResourceRecordSet) MarshalFields(e protocol.FieldEncoder) error {
 	if s.ListOfRequestResourceRecords != nil {
 		v := s.ListOfRequestResourceRecords
 
-		metadata := protocol.Metadata{}
+		metadata := protocol.Metadata{Flatten: true}
 		ls0 := e.List(protocol.BodyTarget, "ResourceRecords", metadata)
 		ls0.Start()
 		for _, v1 := range v {
