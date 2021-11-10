@@ -730,7 +730,7 @@ func (s *RequestDimensions) Validate() error {
 type RequestFilter struct {
 	_ struct{} `type:"structure"`
 
-	FilterName *string `locationName:"FilterName" type:"string"`
+	FilterName FilterNameOfNiftyFiltersForDescribeEventSubscriptions `locationName:"FilterName" type:"string" enum:"true"`
 
 	FilterValue *string `locationName:"FilterValue" type:"string"`
 }
@@ -755,7 +755,7 @@ type RequestParameters struct {
 	_ struct{} `type:"structure"`
 
 	// ApplyMethod is a required field
-	ApplyMethod *string `locationName:"ApplyMethod" type:"string" required:"true"`
+	ApplyMethod ApplyMethodOfParametersForModifyDBParameterGroup `locationName:"ApplyMethod" type:"string" required:"true" enum:"true"`
 
 	// ParameterName is a required field
 	ParameterName *string `locationName:"ParameterName" type:"string" required:"true"`
@@ -772,8 +772,7 @@ func (s RequestParameters) String() string {
 // Validate inspects the fields of the type to determine if they are valid.
 func (s *RequestParameters) Validate() error {
 	invalidParams := aws.ErrInvalidParams{Context: "RequestParameters"}
-
-	if s.ApplyMethod == nil {
+	if len(s.ApplyMethod) == 0 {
 		invalidParams.Add(aws.NewErrParamRequired("ApplyMethod"))
 	}
 
@@ -794,7 +793,7 @@ func (s *RequestParameters) Validate() error {
 type RequestParametersOfResetDBParameterGroup struct {
 	_ struct{} `type:"structure"`
 
-	ApplyMethod *string `locationName:"ApplyMethod" type:"string"`
+	ApplyMethod ApplyMethodOfParametersForResetDBParameterGroup `locationName:"ApplyMethod" type:"string" enum:"true"`
 
 	ParameterName *string `locationName:"ParameterName" type:"string"`
 }

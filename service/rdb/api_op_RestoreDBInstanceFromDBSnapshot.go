@@ -12,14 +12,14 @@ import (
 type RestoreDBInstanceFromDBSnapshotInput struct {
 	_ struct{} `type:"structure"`
 
-	AccountingType *string `locationName:"AccountingType" type:"string"`
+	AccountingType AccountingTypeOfRestoreDBInstanceFromDBSnapshotRequest `locationName:"AccountingType" type:"string" enum:"true"`
 
 	AutoMinorVersionUpgrade *bool `locationName:"AutoMinorVersionUpgrade" type:"boolean"`
 
 	AvailabilityZone *string `locationName:"AvailabilityZone" type:"string"`
 
 	// DBInstanceClass is a required field
-	DBInstanceClass *string `locationName:"DBInstanceClass" type:"string" required:"true"`
+	DBInstanceClass DBInstanceClassOfRestoreDBInstanceFromDBSnapshotRequest `locationName:"DBInstanceClass" type:"string" required:"true" enum:"true"`
 
 	// DBInstanceIdentifier is a required field
 	DBInstanceIdentifier *string `locationName:"DBInstanceIdentifier" type:"string" required:"true"`
@@ -65,7 +65,7 @@ type RestoreDBInstanceFromDBSnapshotInput struct {
 
 	PubliclyAccessible *bool `locationName:"PubliclyAccessible" type:"boolean"`
 
-	ReadReplicaAccountingType *string `locationName:"ReadReplicaAccountingType" type:"string"`
+	ReadReplicaAccountingType ReadReplicaAccountingTypeOfRestoreDBInstanceFromDBSnapshotRequest `locationName:"ReadReplicaAccountingType" type:"string" enum:"true"`
 }
 
 // String returns the string representation
@@ -76,8 +76,7 @@ func (s RestoreDBInstanceFromDBSnapshotInput) String() string {
 // Validate inspects the fields of the type to determine if they are valid.
 func (s *RestoreDBInstanceFromDBSnapshotInput) Validate() error {
 	invalidParams := aws.ErrInvalidParams{Context: "RestoreDBInstanceFromDBSnapshotInput"}
-
-	if s.DBInstanceClass == nil {
+	if len(s.DBInstanceClass) == 0 {
 		invalidParams.Add(aws.NewErrParamRequired("DBInstanceClass"))
 	}
 

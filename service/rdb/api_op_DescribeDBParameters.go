@@ -19,7 +19,7 @@ type DescribeDBParametersInput struct {
 
 	MaxRecords *int64 `locationName:"MaxRecords" type:"integer"`
 
-	Source *string `locationName:"Source" type:"string"`
+	Source SourceOfDescribeDBParametersRequest `locationName:"Source" type:"string" enum:"true"`
 }
 
 // String returns the string representation

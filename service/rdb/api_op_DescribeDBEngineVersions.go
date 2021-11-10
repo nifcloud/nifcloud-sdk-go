@@ -12,11 +12,11 @@ import (
 type DescribeDBEngineVersionsInput struct {
 	_ struct{} `type:"structure"`
 
-	DBParameterGroupFamily *string `locationName:"DBParameterGroupFamily" type:"string"`
+	DBParameterGroupFamily DBParameterGroupFamilyOfDescribeDBEngineVersionsRequest `locationName:"DBParameterGroupFamily" type:"string" enum:"true"`
 
 	DefaultOnly *bool `locationName:"DefaultOnly" type:"boolean"`
 
-	Engine *string `locationName:"Engine" type:"string"`
+	Engine EngineOfDescribeDBEngineVersionsRequest `locationName:"Engine" type:"string" enum:"true"`
 
 	EngineVersion *string `locationName:"EngineVersion" type:"string"`
 

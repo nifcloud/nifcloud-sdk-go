@@ -17,7 +17,7 @@ type RebootDBInstanceInput struct {
 
 	ForceFailover *bool `locationName:"ForceFailover" type:"boolean"`
 
-	NiftyRebootType *string `locationName:"NiftyRebootType" type:"string"`
+	NiftyRebootType NiftyRebootTypeOfRebootDBInstanceRequest `locationName:"NiftyRebootType" type:"string" enum:"true"`
 }
 
 // String returns the string representation

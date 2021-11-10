@@ -213,7 +213,7 @@ type RequestChange struct {
 	_ struct{} `type:"structure"`
 
 	// Action is a required field
-	Action *string `locationName:"Action" type:"string" required:"true"`
+	Action ActionOfChangeResourceRecordSetsRequestForChangeResourceRecordSets `locationName:"Action" type:"string" required:"true" enum:"true"`
 
 	RequestResourceRecordSet *RequestResourceRecordSet `locationName:"ResourceRecordSet" type:"structure"`
 }
@@ -226,8 +226,7 @@ func (s RequestChange) String() string {
 // Validate inspects the fields of the type to determine if they are valid.
 func (s *RequestChange) Validate() error {
 	invalidParams := aws.ErrInvalidParams{Context: "RequestChange"}
-
-	if s.Action == nil {
+	if len(s.Action) == 0 {
 		invalidParams.Add(aws.NewErrParamRequired("Action"))
 	}
 
@@ -239,11 +238,11 @@ func (s *RequestChange) Validate() error {
 
 // MarshalFields encodes the AWS API shape using the passed in protocol encoder.
 func (s RequestChange) MarshalFields(e protocol.FieldEncoder) error {
-	if s.Action != nil {
-		v := *s.Action
+	if len(s.Action) > 0 {
+		v := s.Action
 
 		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "Action", protocol.StringValue(v), metadata)
+		e.SetValue(protocol.BodyTarget, "Action", v, metadata)
 	}
 	if s.RequestResourceRecordSet != nil {
 		v := s.RequestResourceRecordSet
@@ -393,7 +392,7 @@ func (s RequestResourceRecord) MarshalFields(e protocol.FieldEncoder) error {
 type RequestResourceRecordSet struct {
 	_ struct{} `type:"structure"`
 
-	Failover *string `locationName:"Failover" type:"string"`
+	Failover FailoverOfChangeResourceRecordSetsRequestForChangeResourceRecordSets `locationName:"Failover" type:"string" enum:"true"`
 
 	ListOfRequestResourceRecords []RequestResourceRecords `locationName:"ResourceRecords" type:"list" flattened:"true"`
 
@@ -407,7 +406,7 @@ type RequestResourceRecordSet struct {
 
 	TTL *int64 `locationName:"TTL" type:"integer"`
 
-	Type *string `locationName:"Type" type:"string"`
+	Type TypeOfChangeResourceRecordSetsRequestForChangeResourceRecordSets `locationName:"Type" type:"string" enum:"true"`
 
 	Weight *int64 `locationName:"Weight" type:"integer"`
 
@@ -423,11 +422,11 @@ func (s RequestResourceRecordSet) String() string {
 
 // MarshalFields encodes the AWS API shape using the passed in protocol encoder.
 func (s RequestResourceRecordSet) MarshalFields(e protocol.FieldEncoder) error {
-	if s.Failover != nil {
-		v := *s.Failover
+	if len(s.Failover) > 0 {
+		v := s.Failover
 
 		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "Failover", protocol.StringValue(v), metadata)
+		e.SetValue(protocol.BodyTarget, "Failover", v, metadata)
 	}
 	if s.ListOfRequestResourceRecords != nil {
 		v := s.ListOfRequestResourceRecords
@@ -471,11 +470,11 @@ func (s RequestResourceRecordSet) MarshalFields(e protocol.FieldEncoder) error {
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "TTL", protocol.Int64Value(v), metadata)
 	}
-	if s.Type != nil {
-		v := *s.Type
+	if len(s.Type) > 0 {
+		v := s.Type
 
 		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "Type", protocol.StringValue(v), metadata)
+		e.SetValue(protocol.BodyTarget, "Type", v, metadata)
 	}
 	if s.Weight != nil {
 		v := *s.Weight
@@ -529,7 +528,7 @@ type RequestXniftyHealthCheckConfig struct {
 
 	Port *int64 `locationName:"Port" type:"integer"`
 
-	Protocol *string `locationName:"Protocol" type:"string"`
+	Protocol ProtocolOfChangeResourceRecordSetsRequestForChangeResourceRecordSets `locationName:"Protocol" type:"string" enum:"true"`
 
 	ResourcePath *string `locationName:"ResourcePath" type:"string"`
 }
@@ -559,11 +558,11 @@ func (s RequestXniftyHealthCheckConfig) MarshalFields(e protocol.FieldEncoder) e
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "Port", protocol.Int64Value(v), metadata)
 	}
-	if s.Protocol != nil {
-		v := *s.Protocol
+	if len(s.Protocol) > 0 {
+		v := s.Protocol
 
 		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "Protocol", protocol.StringValue(v), metadata)
+		e.SetValue(protocol.BodyTarget, "Protocol", v, metadata)
 	}
 	if s.ResourcePath != nil {
 		v := *s.ResourcePath

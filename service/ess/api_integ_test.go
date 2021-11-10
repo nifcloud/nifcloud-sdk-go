@@ -28,7 +28,7 @@ func TestInteg_00_ListIdentities(t *testing.T) {
 	cfg := integration.ConfigWithDefaultRegion("jp-east-1")
 	svc := ess.New(cfg)
 	params := &ess.ListIdentitiesInput{
-		IdentityType: aws.String("fake-type"),
+		IdentityType: ess.IdentityTypeOfListIdentitiesRequest("fake-type"),
 	}
 
 	req := svc.ListIdentitiesRequest(params)

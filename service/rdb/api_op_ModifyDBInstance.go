@@ -12,7 +12,7 @@ import (
 type ModifyDBInstanceInput struct {
 	_ struct{} `type:"structure"`
 
-	AccountingType *string `locationName:"AccountingType" type:"string"`
+	AccountingType AccountingTypeOfModifyDBInstanceRequest `locationName:"AccountingType" type:"string" enum:"true"`
 
 	AllocatedStorage *int64 `locationName:"AllocatedStorage" type:"integer"`
 
@@ -30,7 +30,7 @@ type ModifyDBInstanceInput struct {
 
 	CustomBinlogRetentionPeriod *bool `locationName:"CustomBinlogRetentionPeriod" type:"boolean"`
 
-	DBInstanceClass *string `locationName:"DBInstanceClass" type:"string"`
+	DBInstanceClass DBInstanceClassOfModifyDBInstanceRequest `locationName:"DBInstanceClass" type:"string" enum:"true"`
 
 	// DBInstanceIdentifier is a required field
 	DBInstanceIdentifier *string `locationName:"DBInstanceIdentifier" type:"string" required:"true"`

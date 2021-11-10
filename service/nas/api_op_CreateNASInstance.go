@@ -35,7 +35,7 @@ type CreateNASInstanceInput struct {
 	NetworkId *string `locationName:"NetworkId" type:"string"`
 
 	// Protocol is a required field
-	Protocol *string `locationName:"Protocol" type:"string" required:"true"`
+	Protocol ProtocolOfCreateNASInstanceRequest `locationName:"Protocol" type:"string" required:"true" enum:"true"`
 }
 
 // String returns the string representation
@@ -54,8 +54,7 @@ func (s *CreateNASInstanceInput) Validate() error {
 	if s.NASInstanceIdentifier == nil {
 		invalidParams.Add(aws.NewErrParamRequired("NASInstanceIdentifier"))
 	}
-
-	if s.Protocol == nil {
+	if len(s.Protocol) == 0 {
 		invalidParams.Add(aws.NewErrParamRequired("Protocol"))
 	}
 
