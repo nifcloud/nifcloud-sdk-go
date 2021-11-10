@@ -23,7 +23,7 @@ type CreateEventSubscriptionInput struct {
 
 	SourceIds []string `locationName:"SourceIds" locationNameList:"member" type:"list"`
 
-	SourceType *string `locationName:"SourceType" type:"string"`
+	SourceType SourceTypeOfCreateEventSubscriptionRequest `locationName:"SourceType" type:"string" enum:"true"`
 
 	// SubscriptionName is a required field
 	SubscriptionName *string `locationName:"SubscriptionName" type:"string" required:"true"`

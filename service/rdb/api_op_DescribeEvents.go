@@ -25,7 +25,7 @@ type DescribeEventsInput struct {
 
 	SourceIdentifier *string `locationName:"SourceIdentifier" type:"string"`
 
-	SourceType *string `locationName:"SourceType" type:"string"`
+	SourceType SourceTypeOfDescribeEventsRequest `locationName:"SourceType" type:"string" enum:"true"`
 
 	StartTime *time.Time `locationName:"StartTime" type:"timestamp"`
 }

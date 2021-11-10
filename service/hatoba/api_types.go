@@ -1869,7 +1869,7 @@ type RequestCluster struct {
 	// FirewallGroup is a required field
 	FirewallGroup *string `locationName:"firewallGroup" type:"string" required:"true"`
 
-	KubernetesVersion *string `locationName:"kubernetesVersion" type:"string"`
+	KubernetesVersion KubernetesVersionOfclusterForCreateCluster `locationName:"kubernetesVersion" type:"string" enum:"true"`
 
 	// ListOfRequestLocations is a required field
 	ListOfRequestLocations []string `locationName:"locations" type:"list" required:"true"`
@@ -1937,11 +1937,11 @@ func (s RequestCluster) MarshalFields(e protocol.FieldEncoder) error {
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "firewallGroup", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
-	if s.KubernetesVersion != nil {
-		v := *s.KubernetesVersion
+	if len(s.KubernetesVersion) > 0 {
+		v := s.KubernetesVersion
 
 		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "kubernetesVersion", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+		e.SetValue(protocol.BodyTarget, "kubernetesVersion", protocol.QuotedValue{ValueMarshaler: v}, metadata)
 	}
 	if s.ListOfRequestLocations != nil {
 		v := s.ListOfRequestLocations
@@ -2041,7 +2041,7 @@ type RequestClusterOfRestoreClusterFromSnapshot struct {
 
 	RequestAddonsConfig *RequestAddonsConfig `locationName:"addonsConfig" type:"structure"`
 
-	RequestNetworkConfig *RequestNetworkConfig `locationName:"networkConfig" type:"structure"`
+	RequestNetworkConfig *RequestNetworkConfigOfRestoreClusterFromSnapshot `locationName:"networkConfig" type:"structure"`
 }
 
 // String returns the string representation
@@ -2123,7 +2123,7 @@ type RequestClusterOfUpdateCluster struct {
 
 	Description *string `locationName:"description" type:"string"`
 
-	KubernetesVersion *string `locationName:"kubernetesVersion" type:"string"`
+	KubernetesVersion KubernetesVersionOfclusterForUpdateCluster `locationName:"kubernetesVersion" type:"string" enum:"true"`
 
 	Name *string `locationName:"name" type:"string"`
 
@@ -2143,11 +2143,11 @@ func (s RequestClusterOfUpdateCluster) MarshalFields(e protocol.FieldEncoder) er
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "description", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
-	if s.KubernetesVersion != nil {
-		v := *s.KubernetesVersion
+	if len(s.KubernetesVersion) > 0 {
+		v := s.KubernetesVersion
 
 		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "kubernetesVersion", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+		e.SetValue(protocol.BodyTarget, "kubernetesVersion", protocol.QuotedValue{ValueMarshaler: v}, metadata)
 	}
 	if s.Name != nil {
 		v := *s.Name
@@ -2264,7 +2264,7 @@ func (s RequestHttpLoadBalancing) MarshalFields(e protocol.FieldEncoder) error {
 type RequestNetworkConfig struct {
 	_ struct{} `type:"structure"`
 
-	NetworkId *string `locationName:"networkId" type:"string"`
+	NetworkId NetworkIdOfclusterForCreateCluster `locationName:"networkId" type:"string" enum:"true"`
 }
 
 // String returns the string representation
@@ -2274,11 +2274,33 @@ func (s RequestNetworkConfig) String() string {
 
 // MarshalFields encodes the AWS API shape using the passed in protocol encoder.
 func (s RequestNetworkConfig) MarshalFields(e protocol.FieldEncoder) error {
-	if s.NetworkId != nil {
-		v := *s.NetworkId
+	if len(s.NetworkId) > 0 {
+		v := s.NetworkId
 
 		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "networkId", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+		e.SetValue(protocol.BodyTarget, "networkId", protocol.QuotedValue{ValueMarshaler: v}, metadata)
+	}
+	return nil
+}
+
+type RequestNetworkConfigOfRestoreClusterFromSnapshot struct {
+	_ struct{} `type:"structure"`
+
+	NetworkId NetworkIdOfclusterForRestoreClusterFromSnapshot `locationName:"networkId" type:"string" enum:"true"`
+}
+
+// String returns the string representation
+func (s RequestNetworkConfigOfRestoreClusterFromSnapshot) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s RequestNetworkConfigOfRestoreClusterFromSnapshot) MarshalFields(e protocol.FieldEncoder) error {
+	if len(s.NetworkId) > 0 {
+		v := s.NetworkId
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "networkId", protocol.QuotedValue{ValueMarshaler: v}, metadata)
 	}
 	return nil
 }
@@ -2287,7 +2309,7 @@ type RequestNodePool struct {
 	_ struct{} `type:"structure"`
 
 	// InstanceType is a required field
-	InstanceType *string `locationName:"instanceType" type:"string" required:"true"`
+	InstanceType InstanceTypeOfnodePoolForCreateNodePool `locationName:"instanceType" type:"string" required:"true" enum:"true"`
 
 	// Name is a required field
 	Name *string `locationName:"name" type:"string" required:"true"`
@@ -2303,8 +2325,7 @@ func (s RequestNodePool) String() string {
 // Validate inspects the fields of the type to determine if they are valid.
 func (s *RequestNodePool) Validate() error {
 	invalidParams := aws.ErrInvalidParams{Context: "RequestNodePool"}
-
-	if s.InstanceType == nil {
+	if len(s.InstanceType) == 0 {
 		invalidParams.Add(aws.NewErrParamRequired("InstanceType"))
 	}
 
@@ -2320,11 +2341,11 @@ func (s *RequestNodePool) Validate() error {
 
 // MarshalFields encodes the AWS API shape using the passed in protocol encoder.
 func (s RequestNodePool) MarshalFields(e protocol.FieldEncoder) error {
-	if s.InstanceType != nil {
-		v := *s.InstanceType
+	if len(s.InstanceType) > 0 {
+		v := s.InstanceType
 
 		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "instanceType", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+		e.SetValue(protocol.BodyTarget, "instanceType", protocol.QuotedValue{ValueMarshaler: v}, metadata)
 	}
 	if s.Name != nil {
 		v := *s.Name
@@ -2345,7 +2366,7 @@ type RequestNodePools struct {
 	_ struct{} `type:"structure"`
 
 	// InstanceType is a required field
-	InstanceType *string `locationName:"instanceType" type:"string" required:"true"`
+	InstanceType InstanceTypeOfclusterForCreateCluster `locationName:"instanceType" type:"string" required:"true" enum:"true"`
 
 	// Name is a required field
 	Name *string `locationName:"name" type:"string" required:"true"`
@@ -2361,8 +2382,7 @@ func (s RequestNodePools) String() string {
 // Validate inspects the fields of the type to determine if they are valid.
 func (s *RequestNodePools) Validate() error {
 	invalidParams := aws.ErrInvalidParams{Context: "RequestNodePools"}
-
-	if s.InstanceType == nil {
+	if len(s.InstanceType) == 0 {
 		invalidParams.Add(aws.NewErrParamRequired("InstanceType"))
 	}
 
@@ -2378,11 +2398,11 @@ func (s *RequestNodePools) Validate() error {
 
 // MarshalFields encodes the AWS API shape using the passed in protocol encoder.
 func (s RequestNodePools) MarshalFields(e protocol.FieldEncoder) error {
-	if s.InstanceType != nil {
-		v := *s.InstanceType
+	if len(s.InstanceType) > 0 {
+		v := s.InstanceType
 
 		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "instanceType", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+		e.SetValue(protocol.BodyTarget, "instanceType", protocol.QuotedValue{ValueMarshaler: v}, metadata)
 	}
 	if s.Name != nil {
 		v := *s.Name
@@ -2407,11 +2427,11 @@ type RequestRules struct {
 
 	Description *string `locationName:"description" type:"string"`
 
-	Direction *string `locationName:"direction" type:"string"`
+	Direction DirectionOfrulesForAuthorizeFirewallGroup `locationName:"direction" type:"string" enum:"true"`
 
 	FromPort *int64 `locationName:"fromPort" type:"integer"`
 
-	Protocol *string `locationName:"protocol" type:"string"`
+	Protocol ProtocolOfrulesForAuthorizeFirewallGroup `locationName:"protocol" type:"string" enum:"true"`
 
 	ToPort *int64 `locationName:"toPort" type:"integer"`
 }
@@ -2449,11 +2469,11 @@ func (s RequestRules) MarshalFields(e protocol.FieldEncoder) error {
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "description", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
-	if s.Direction != nil {
-		v := *s.Direction
+	if len(s.Direction) > 0 {
+		v := s.Direction
 
 		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "direction", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+		e.SetValue(protocol.BodyTarget, "direction", protocol.QuotedValue{ValueMarshaler: v}, metadata)
 	}
 	if s.FromPort != nil {
 		v := *s.FromPort
@@ -2461,11 +2481,11 @@ func (s RequestRules) MarshalFields(e protocol.FieldEncoder) error {
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "fromPort", protocol.Int64Value(v), metadata)
 	}
-	if s.Protocol != nil {
-		v := *s.Protocol
+	if len(s.Protocol) > 0 {
+		v := s.Protocol
 
 		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "protocol", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+		e.SetValue(protocol.BodyTarget, "protocol", protocol.QuotedValue{ValueMarshaler: v}, metadata)
 	}
 	if s.ToPort != nil {
 		v := *s.ToPort
@@ -2481,7 +2501,7 @@ type RequestSnapshot struct {
 
 	Description *string `locationName:"description" type:"string"`
 
-	ExpirationTime *string `locationName:"expirationTime" type:"string"`
+	ExpirationTime ExpirationTimeOfsnapshotForCreateSnapshot `locationName:"expirationTime" type:"string" enum:"true"`
 
 	// Name is a required field
 	Name *string `locationName:"name" type:"string" required:"true"`
@@ -2526,11 +2546,11 @@ func (s RequestSnapshot) MarshalFields(e protocol.FieldEncoder) error {
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "description", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
-	if s.ExpirationTime != nil {
-		v := *s.ExpirationTime
+	if len(s.ExpirationTime) > 0 {
+		v := s.ExpirationTime
 
 		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "expirationTime", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+		e.SetValue(protocol.BodyTarget, "expirationTime", protocol.QuotedValue{ValueMarshaler: v}, metadata)
 	}
 	if s.Name != nil {
 		v := *s.Name

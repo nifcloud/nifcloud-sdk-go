@@ -12,9 +12,9 @@ import (
 type DescribeOrderableDBInstanceOptionsInput struct {
 	_ struct{} `type:"structure"`
 
-	DBInstanceClass *string `locationName:"DBInstanceClass" type:"string"`
+	DBInstanceClass DBInstanceClassOfDescribeOrderableDBInstanceOptionsRequest `locationName:"DBInstanceClass" type:"string" enum:"true"`
 
-	Engine *string `locationName:"Engine" type:"string"`
+	Engine EngineOfDescribeOrderableDBInstanceOptionsRequest `locationName:"Engine" type:"string" enum:"true"`
 
 	EngineVersion *string `locationName:"EngineVersion" type:"string"`
 

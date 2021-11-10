@@ -12,13 +12,13 @@ import (
 type CreateDBInstanceReadReplicaInput struct {
 	_ struct{} `type:"structure"`
 
-	AccountingType *string `locationName:"AccountingType" type:"string"`
+	AccountingType AccountingTypeOfCreateDBInstanceReadReplicaRequest `locationName:"AccountingType" type:"string" enum:"true"`
 
 	AutoMinorVersionUpgrade *bool `locationName:"AutoMinorVersionUpgrade" type:"boolean"`
 
 	AvailabilityZone *string `locationName:"AvailabilityZone" type:"string"`
 
-	DBInstanceClass *string `locationName:"DBInstanceClass" type:"string"`
+	DBInstanceClass DBInstanceClassOfCreateDBInstanceReadReplicaRequest `locationName:"DBInstanceClass" type:"string" enum:"true"`
 
 	// DBInstanceIdentifier is a required field
 	DBInstanceIdentifier *string `locationName:"DBInstanceIdentifier" type:"string" required:"true"`

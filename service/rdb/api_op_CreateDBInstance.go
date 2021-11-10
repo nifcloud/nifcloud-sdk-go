@@ -12,7 +12,7 @@ import (
 type CreateDBInstanceInput struct {
 	_ struct{} `type:"structure"`
 
-	AccountingType *string `locationName:"AccountingType" type:"string"`
+	AccountingType AccountingTypeOfCreateDBInstanceRequest `locationName:"AccountingType" type:"string" enum:"true"`
 
 	// AllocatedStorage is a required field
 	AllocatedStorage *int64 `locationName:"AllocatedStorage" type:"integer" required:"true"`
@@ -26,7 +26,7 @@ type CreateDBInstanceInput struct {
 	CharacterSetName *string `locationName:"CharacterSetName" type:"string"`
 
 	// DBInstanceClass is a required field
-	DBInstanceClass *string `locationName:"DBInstanceClass" type:"string" required:"true"`
+	DBInstanceClass DBInstanceClassOfCreateDBInstanceRequest `locationName:"DBInstanceClass" type:"string" required:"true" enum:"true"`
 
 	// DBInstanceIdentifier is a required field
 	DBInstanceIdentifier *string `locationName:"DBInstanceIdentifier" type:"string" required:"true"`
@@ -40,7 +40,7 @@ type CreateDBInstanceInput struct {
 	DBSubnetGroupName *string `locationName:"DBSubnetGroupName" type:"string"`
 
 	// Engine is a required field
-	Engine *string `locationName:"Engine" type:"string" required:"true"`
+	Engine EngineOfCreateDBInstanceRequest `locationName:"Engine" type:"string" required:"true" enum:"true"`
 
 	EngineVersion *string `locationName:"EngineVersion" type:"string"`
 
@@ -82,7 +82,7 @@ type CreateDBInstanceInput struct {
 
 	PubliclyAccessible *bool `locationName:"PubliclyAccessible" type:"boolean"`
 
-	ReadReplicaAccountingType *string `locationName:"ReadReplicaAccountingType" type:"string"`
+	ReadReplicaAccountingType ReadReplicaAccountingTypeOfCreateDBInstanceRequest `locationName:"ReadReplicaAccountingType" type:"string" enum:"true"`
 
 	VpcSecurityGroupIds []string `locationName:"VpcSecurityGroupIds" locationNameList:"member" type:"list"`
 }
@@ -99,16 +99,14 @@ func (s *CreateDBInstanceInput) Validate() error {
 	if s.AllocatedStorage == nil {
 		invalidParams.Add(aws.NewErrParamRequired("AllocatedStorage"))
 	}
-
-	if s.DBInstanceClass == nil {
+	if len(s.DBInstanceClass) == 0 {
 		invalidParams.Add(aws.NewErrParamRequired("DBInstanceClass"))
 	}
 
 	if s.DBInstanceIdentifier == nil {
 		invalidParams.Add(aws.NewErrParamRequired("DBInstanceIdentifier"))
 	}
-
-	if s.Engine == nil {
+	if len(s.Engine) == 0 {
 		invalidParams.Add(aws.NewErrParamRequired("Engine"))
 	}
 

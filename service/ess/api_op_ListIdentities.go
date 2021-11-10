@@ -12,7 +12,7 @@ import (
 type ListIdentitiesInput struct {
 	_ struct{} `type:"structure"`
 
-	IdentityType *string `locationName:"IdentityType" type:"string"`
+	IdentityType IdentityTypeOfListIdentitiesRequest `locationName:"IdentityType" type:"string" enum:"true"`
 
 	MaxItems *int64 `locationName:"MaxItems" type:"integer"`
 

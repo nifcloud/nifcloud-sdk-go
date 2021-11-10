@@ -58,7 +58,7 @@ type DescribeSslCertificateAttributeOutput struct {
 
 	KeyLength *KeyLength `locationName:"keyLength" type:"structure"`
 
-	Period *PeriodOfDescribeSslCertificateAttribute `locationName:"period" type:"structure"`
+	Period *Period `locationName:"period" type:"structure"`
 
 	RequestId *string `locationName:"requestId" type:"string"`
 

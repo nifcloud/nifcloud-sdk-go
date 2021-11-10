@@ -19,7 +19,7 @@ type ListResourceRecordSetsInput struct {
 
 	Name *string `location:"querystring" locationName:"name" type:"string"`
 
-	Type *string `location:"querystring" locationName:"type" type:"string"`
+	Type TypeOfListResourceRecordSetsRequest `location:"querystring" locationName:"type" type:"string" enum:"true"`
 
 	// ZoneID is a required field
 	ZoneID *string `location:"uri" locationName:"ZoneID" type:"string" required:"true"`
@@ -71,11 +71,11 @@ func (s ListResourceRecordSetsInput) MarshalFields(e protocol.FieldEncoder) erro
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.QueryTarget, "name", protocol.StringValue(v), metadata)
 	}
-	if s.Type != nil {
-		v := *s.Type
+	if len(s.Type) > 0 {
+		v := s.Type
 
 		metadata := protocol.Metadata{}
-		e.SetValue(protocol.QueryTarget, "type", protocol.StringValue(v), metadata)
+		e.SetValue(protocol.QueryTarget, "type", v, metadata)
 	}
 	return nil
 }

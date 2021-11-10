@@ -12,7 +12,7 @@ import (
 type DescribeEventCategoriesInput struct {
 	_ struct{} `type:"structure"`
 
-	SourceType *string `locationName:"SourceType" type:"string"`
+	SourceType SourceTypeOfDescribeEventCategoriesRequest `locationName:"SourceType" type:"string" enum:"true"`
 }
 
 // String returns the string representation

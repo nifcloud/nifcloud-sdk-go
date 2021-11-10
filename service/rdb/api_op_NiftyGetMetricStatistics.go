@@ -20,7 +20,7 @@ type NiftyGetMetricStatisticsInput struct {
 	EndTime *time.Time `locationName:"EndTime" type:"timestamp"`
 
 	// MetricName is a required field
-	MetricName *string `locationName:"MetricName" type:"string" required:"true"`
+	MetricName MetricNameOfNiftyGetMetricStatisticsRequest `locationName:"MetricName" type:"string" required:"true" enum:"true"`
 
 	StartTime *time.Time `locationName:"StartTime" type:"timestamp"`
 }
@@ -37,8 +37,7 @@ func (s *NiftyGetMetricStatisticsInput) Validate() error {
 	if s.Dimensions == nil {
 		invalidParams.Add(aws.NewErrParamRequired("Dimensions"))
 	}
-
-	if s.MetricName == nil {
+	if len(s.MetricName) == 0 {
 		invalidParams.Add(aws.NewErrParamRequired("MetricName"))
 	}
 	if s.Dimensions != nil {

@@ -4299,19 +4299,6 @@ func (s Period) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
-type PeriodOfDescribeSslCertificateAttribute struct {
-	_ struct{} `type:"structure"`
-
-	EndDate *time.Time `locationName:"endDate" type:"timestamp"`
-
-	StartDate *time.Time `locationName:"startDate" type:"timestamp"`
-}
-
-// String returns the string representation
-func (s PeriodOfDescribeSslCertificateAttribute) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
 type Placement struct {
 	_ struct{} `type:"structure"`
 

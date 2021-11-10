@@ -13,13 +13,13 @@ import (
 type RestoreDBInstanceToPointInTimeInput struct {
 	_ struct{} `type:"structure"`
 
-	AccountingType *string `locationName:"AccountingType" type:"string"`
+	AccountingType AccountingTypeOfRestoreDBInstanceToPointInTimeRequest `locationName:"AccountingType" type:"string" enum:"true"`
 
 	AutoMinorVersionUpgrade *bool `locationName:"AutoMinorVersionUpgrade" type:"boolean"`
 
 	AvailabilityZone *string `locationName:"AvailabilityZone" type:"string"`
 
-	DBInstanceClass *string `locationName:"DBInstanceClass" type:"string"`
+	DBInstanceClass DBInstanceClassOfRestoreDBInstanceToPointInTimeRequest `locationName:"DBInstanceClass" type:"string" enum:"true"`
 
 	DBName *string `locationName:"DBName" type:"string"`
 
@@ -59,7 +59,7 @@ type RestoreDBInstanceToPointInTimeInput struct {
 
 	PubliclyAccessible *bool `locationName:"PubliclyAccessible" type:"boolean"`
 
-	ReadReplicaAccountingType *string `locationName:"ReadReplicaAccountingType" type:"string"`
+	ReadReplicaAccountingType ReadReplicaAccountingTypeOfRestoreDBInstanceToPointInTimeRequest `locationName:"ReadReplicaAccountingType" type:"string" enum:"true"`
 
 	RestoreTime *time.Time `locationName:"RestoreTime" type:"timestamp"`
 

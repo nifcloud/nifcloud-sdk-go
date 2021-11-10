@@ -28,7 +28,7 @@ type DescribeDBSnapshotsInput struct {
 
 	MaxRecords *int64 `locationName:"MaxRecords" type:"integer"`
 
-	SnapshotType *string `locationName:"SnapshotType" type:"string"`
+	SnapshotType SnapshotTypeOfDescribeDBSnapshotsRequest `locationName:"SnapshotType" type:"string" enum:"true"`
 }
 
 // String returns the string representation
