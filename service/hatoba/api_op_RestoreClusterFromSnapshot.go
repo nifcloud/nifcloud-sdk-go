@@ -17,7 +17,7 @@ type RestoreClusterFromSnapshotInput struct {
 	Cluster *RequestClusterOfRestoreClusterFromSnapshot `locationName:"cluster" type:"structure" required:"true"`
 
 	// SnapshotName is a required field
-	SnapshotName *string `location:"uri" locationName:"snapshot_name" type:"string" required:"true"`
+	SnapshotName *string `location:"uri" locationName:"SnapshotName" type:"string" required:"true"`
 }
 
 // String returns the string representation
@@ -62,7 +62,7 @@ func (s RestoreClusterFromSnapshotInput) MarshalFields(e protocol.FieldEncoder) 
 		v := *s.SnapshotName
 
 		metadata := protocol.Metadata{}
-		e.SetValue(protocol.PathTarget, "snapshot_name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+		e.SetValue(protocol.PathTarget, "SnapshotName", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
 	return nil
 }
@@ -106,7 +106,7 @@ func (c *Client) RestoreClusterFromSnapshotRequest(input *RestoreClusterFromSnap
 	op := &aws.Operation{
 		Name:       opRestoreClusterFromSnapshot,
 		HTTPMethod: "POST",
-		HTTPPath:   "/v1/snapshots/{snapshot_name}:restore",
+		HTTPPath:   "/v1/snapshots/{SnapshotName}:restore",
 	}
 
 	if input == nil {

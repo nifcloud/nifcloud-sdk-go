@@ -14,7 +14,7 @@ type DeleteSnapshotInput struct {
 	_ struct{} `type:"structure"`
 
 	// SnapshotName is a required field
-	SnapshotName *string `location:"uri" locationName:"snapshot_name" type:"string" required:"true"`
+	SnapshotName *string `location:"uri" locationName:"SnapshotName" type:"string" required:"true"`
 }
 
 // String returns the string representation
@@ -44,7 +44,7 @@ func (s DeleteSnapshotInput) MarshalFields(e protocol.FieldEncoder) error {
 		v := *s.SnapshotName
 
 		metadata := protocol.Metadata{}
-		e.SetValue(protocol.PathTarget, "snapshot_name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+		e.SetValue(protocol.PathTarget, "SnapshotName", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
 	return nil
 }
@@ -88,7 +88,7 @@ func (c *Client) DeleteSnapshotRequest(input *DeleteSnapshotInput) DeleteSnapsho
 	op := &aws.Operation{
 		Name:       opDeleteSnapshot,
 		HTTPMethod: "DELETE",
-		HTTPPath:   "/v1/snapshots/{snapshot_name}",
+		HTTPPath:   "/v1/snapshots/{SnapshotName}",
 	}
 
 	if input == nil {

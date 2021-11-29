@@ -14,7 +14,7 @@ type DeleteNodePoolsInput struct {
 	_ struct{} `type:"structure"`
 
 	// ClusterName is a required field
-	ClusterName *string `location:"uri" locationName:"cluster_name" type:"string" required:"true"`
+	ClusterName *string `location:"uri" locationName:"ClusterName" type:"string" required:"true"`
 
 	// Names is a required field
 	Names *string `location:"querystring" locationName:"names" type:"string" required:"true"`
@@ -51,7 +51,7 @@ func (s DeleteNodePoolsInput) MarshalFields(e protocol.FieldEncoder) error {
 		v := *s.ClusterName
 
 		metadata := protocol.Metadata{}
-		e.SetValue(protocol.PathTarget, "cluster_name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+		e.SetValue(protocol.PathTarget, "ClusterName", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
 	if s.Names != nil {
 		v := *s.Names
@@ -107,7 +107,7 @@ func (c *Client) DeleteNodePoolsRequest(input *DeleteNodePoolsInput) DeleteNodeP
 	op := &aws.Operation{
 		Name:       opDeleteNodePools,
 		HTTPMethod: "DELETE",
-		HTTPPath:   "/v1/clusters/{cluster_name}/nodePools",
+		HTTPPath:   "/v1/clusters/{ClusterName}/nodePools",
 	}
 
 	if input == nil {

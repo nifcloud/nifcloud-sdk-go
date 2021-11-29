@@ -14,10 +14,10 @@ type GetNodePoolInput struct {
 	_ struct{} `type:"structure"`
 
 	// ClusterName is a required field
-	ClusterName *string `location:"uri" locationName:"cluster_name" type:"string" required:"true"`
+	ClusterName *string `location:"uri" locationName:"ClusterName" type:"string" required:"true"`
 
 	// NodePoolName is a required field
-	NodePoolName *string `location:"uri" locationName:"node_pool_name" type:"string" required:"true"`
+	NodePoolName *string `location:"uri" locationName:"NodePoolName" type:"string" required:"true"`
 }
 
 // String returns the string representation
@@ -51,13 +51,13 @@ func (s GetNodePoolInput) MarshalFields(e protocol.FieldEncoder) error {
 		v := *s.ClusterName
 
 		metadata := protocol.Metadata{}
-		e.SetValue(protocol.PathTarget, "cluster_name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+		e.SetValue(protocol.PathTarget, "ClusterName", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
 	if s.NodePoolName != nil {
 		v := *s.NodePoolName
 
 		metadata := protocol.Metadata{}
-		e.SetValue(protocol.PathTarget, "node_pool_name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+		e.SetValue(protocol.PathTarget, "NodePoolName", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
 	return nil
 }
@@ -101,7 +101,7 @@ func (c *Client) GetNodePoolRequest(input *GetNodePoolInput) GetNodePoolRequest 
 	op := &aws.Operation{
 		Name:       opGetNodePool,
 		HTTPMethod: "GET",
-		HTTPPath:   "/v1/clusters/{cluster_name}/nodePools/{node_pool_name}",
+		HTTPPath:   "/v1/clusters/{ClusterName}/nodePools/{NodePoolName}",
 	}
 
 	if input == nil {

@@ -16,7 +16,7 @@ type UpdateFirewallGroupInput struct {
 	FirewallGroup *RequestFirewallGroupOfUpdateFirewallGroup `locationName:"firewallGroup" type:"structure"`
 
 	// FirewallGroupName is a required field
-	FirewallGroupName *string `location:"uri" locationName:"firewall_group_name" type:"string" required:"true"`
+	FirewallGroupName *string `location:"uri" locationName:"FirewallGroupName" type:"string" required:"true"`
 }
 
 // String returns the string representation
@@ -52,7 +52,7 @@ func (s UpdateFirewallGroupInput) MarshalFields(e protocol.FieldEncoder) error {
 		v := *s.FirewallGroupName
 
 		metadata := protocol.Metadata{}
-		e.SetValue(protocol.PathTarget, "firewall_group_name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+		e.SetValue(protocol.PathTarget, "FirewallGroupName", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
 	return nil
 }
@@ -96,7 +96,7 @@ func (c *Client) UpdateFirewallGroupRequest(input *UpdateFirewallGroupInput) Upd
 	op := &aws.Operation{
 		Name:       opUpdateFirewallGroup,
 		HTTPMethod: "PUT",
-		HTTPPath:   "/v1/firewallGroups/{firewall_group_name}",
+		HTTPPath:   "/v1/firewallGroups/{FirewallGroupName}",
 	}
 
 	if input == nil {

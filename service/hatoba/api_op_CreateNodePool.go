@@ -14,7 +14,7 @@ type CreateNodePoolInput struct {
 	_ struct{} `type:"structure"`
 
 	// ClusterName is a required field
-	ClusterName *string `location:"uri" locationName:"cluster_name" type:"string" required:"true"`
+	ClusterName *string `location:"uri" locationName:"ClusterName" type:"string" required:"true"`
 
 	// NodePool is a required field
 	NodePool *RequestNodePool `locationName:"nodePool" type:"structure" required:"true"`
@@ -62,7 +62,7 @@ func (s CreateNodePoolInput) MarshalFields(e protocol.FieldEncoder) error {
 		v := *s.ClusterName
 
 		metadata := protocol.Metadata{}
-		e.SetValue(protocol.PathTarget, "cluster_name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+		e.SetValue(protocol.PathTarget, "ClusterName", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
 	return nil
 }
@@ -106,7 +106,7 @@ func (c *Client) CreateNodePoolRequest(input *CreateNodePoolInput) CreateNodePoo
 	op := &aws.Operation{
 		Name:       opCreateNodePool,
 		HTTPMethod: "POST",
-		HTTPPath:   "/v1/clusters/{cluster_name}/nodePools",
+		HTTPPath:   "/v1/clusters/{ClusterName}/nodePools",
 	}
 
 	if input == nil {
