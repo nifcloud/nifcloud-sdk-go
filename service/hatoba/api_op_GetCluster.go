@@ -14,7 +14,7 @@ type GetClusterInput struct {
 	_ struct{} `type:"structure"`
 
 	// ClusterName is a required field
-	ClusterName *string `location:"uri" locationName:"cluster_name" type:"string" required:"true"`
+	ClusterName *string `location:"uri" locationName:"ClusterName" type:"string" required:"true"`
 }
 
 // String returns the string representation
@@ -44,7 +44,7 @@ func (s GetClusterInput) MarshalFields(e protocol.FieldEncoder) error {
 		v := *s.ClusterName
 
 		metadata := protocol.Metadata{}
-		e.SetValue(protocol.PathTarget, "cluster_name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+		e.SetValue(protocol.PathTarget, "ClusterName", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
 	return nil
 }
@@ -88,7 +88,7 @@ func (c *Client) GetClusterRequest(input *GetClusterInput) GetClusterRequest {
 	op := &aws.Operation{
 		Name:       opGetCluster,
 		HTTPMethod: "GET",
-		HTTPPath:   "/v1/clusters/{cluster_name}",
+		HTTPPath:   "/v1/clusters/{ClusterName}",
 	}
 
 	if input == nil {

@@ -15,7 +15,7 @@ type AuthorizeFirewallGroupInput struct {
 	_ struct{} `type:"structure"`
 
 	// FirewallGroupName is a required field
-	FirewallGroupName *string `location:"uri" locationName:"firewall_group_name" type:"string" required:"true"`
+	FirewallGroupName *string `location:"uri" locationName:"FirewallGroupName" type:"string" required:"true"`
 
 	// Rules is a required field
 	Rules []RequestRules `locationName:"rules" type:"list" required:"true"`
@@ -71,7 +71,7 @@ func (s AuthorizeFirewallGroupInput) MarshalFields(e protocol.FieldEncoder) erro
 		v := *s.FirewallGroupName
 
 		metadata := protocol.Metadata{}
-		e.SetValue(protocol.PathTarget, "firewall_group_name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+		e.SetValue(protocol.PathTarget, "FirewallGroupName", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
 	return nil
 }
@@ -115,7 +115,7 @@ func (c *Client) AuthorizeFirewallGroupRequest(input *AuthorizeFirewallGroupInpu
 	op := &aws.Operation{
 		Name:       opAuthorizeFirewallGroup,
 		HTTPMethod: "POST",
-		HTTPPath:   "/v1/firewallGroups/{firewall_group_name}/rules",
+		HTTPPath:   "/v1/firewallGroups/{FirewallGroupName}/rules",
 	}
 
 	if input == nil {

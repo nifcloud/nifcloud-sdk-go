@@ -16,7 +16,7 @@ type UpdateClusterInput struct {
 	Cluster *RequestClusterOfUpdateCluster `locationName:"cluster" type:"structure"`
 
 	// ClusterName is a required field
-	ClusterName *string `location:"uri" locationName:"cluster_name" type:"string" required:"true"`
+	ClusterName *string `location:"uri" locationName:"ClusterName" type:"string" required:"true"`
 }
 
 // String returns the string representation
@@ -52,7 +52,7 @@ func (s UpdateClusterInput) MarshalFields(e protocol.FieldEncoder) error {
 		v := *s.ClusterName
 
 		metadata := protocol.Metadata{}
-		e.SetValue(protocol.PathTarget, "cluster_name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+		e.SetValue(protocol.PathTarget, "ClusterName", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
 	return nil
 }
@@ -96,7 +96,7 @@ func (c *Client) UpdateClusterRequest(input *UpdateClusterInput) UpdateClusterRe
 	op := &aws.Operation{
 		Name:       opUpdateCluster,
 		HTTPMethod: "PUT",
-		HTTPPath:   "/v1/clusters/{cluster_name}",
+		HTTPPath:   "/v1/clusters/{ClusterName}",
 	}
 
 	if input == nil {

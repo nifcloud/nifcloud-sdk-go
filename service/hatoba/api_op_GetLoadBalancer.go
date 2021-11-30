@@ -17,7 +17,7 @@ type GetLoadBalancerInput struct {
 	InstancePort *int64 `location:"querystring" locationName:"instancePort" type:"integer" required:"true"`
 
 	// LoadBalancerName is a required field
-	LoadBalancerName *string `location:"uri" locationName:"load_balancer_name" type:"string" required:"true"`
+	LoadBalancerName *string `location:"uri" locationName:"LoadBalancerName" type:"string" required:"true"`
 
 	// LoadBalancerPort is a required field
 	LoadBalancerPort *int64 `location:"querystring" locationName:"loadBalancerPort" type:"integer" required:"true"`
@@ -58,7 +58,7 @@ func (s GetLoadBalancerInput) MarshalFields(e protocol.FieldEncoder) error {
 		v := *s.LoadBalancerName
 
 		metadata := protocol.Metadata{}
-		e.SetValue(protocol.PathTarget, "load_balancer_name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+		e.SetValue(protocol.PathTarget, "LoadBalancerName", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
 	if s.InstancePort != nil {
 		v := *s.InstancePort
@@ -114,7 +114,7 @@ func (c *Client) GetLoadBalancerRequest(input *GetLoadBalancerInput) GetLoadBala
 	op := &aws.Operation{
 		Name:       opGetLoadBalancer,
 		HTTPMethod: "GET",
-		HTTPPath:   "/v1/loadBalancers/{load_balancer_name}",
+		HTTPPath:   "/v1/loadBalancers/{LoadBalancerName}",
 	}
 
 	if input == nil {
