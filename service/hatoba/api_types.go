@@ -2041,7 +2041,7 @@ type RequestClusterOfRestoreClusterFromSnapshot struct {
 
 	RequestAddonsConfig *RequestAddonsConfig `locationName:"addonsConfig" type:"structure"`
 
-	RequestNetworkConfig *RequestNetworkConfigOfRestoreClusterFromSnapshot `locationName:"networkConfig" type:"structure"`
+	RequestNetworkConfig *RequestNetworkConfig `locationName:"networkConfig" type:"structure"`
 }
 
 // String returns the string representation
@@ -2264,7 +2264,7 @@ func (s RequestHttpLoadBalancing) MarshalFields(e protocol.FieldEncoder) error {
 type RequestNetworkConfig struct {
 	_ struct{} `type:"structure"`
 
-	NetworkId NetworkIdOfclusterForCreateCluster `locationName:"networkId" type:"string" enum:"true"`
+	NetworkId *string `locationName:"networkId" type:"string"`
 }
 
 // String returns the string representation
@@ -2274,33 +2274,11 @@ func (s RequestNetworkConfig) String() string {
 
 // MarshalFields encodes the AWS API shape using the passed in protocol encoder.
 func (s RequestNetworkConfig) MarshalFields(e protocol.FieldEncoder) error {
-	if len(s.NetworkId) > 0 {
-		v := s.NetworkId
+	if s.NetworkId != nil {
+		v := *s.NetworkId
 
 		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "networkId", protocol.QuotedValue{ValueMarshaler: v}, metadata)
-	}
-	return nil
-}
-
-type RequestNetworkConfigOfRestoreClusterFromSnapshot struct {
-	_ struct{} `type:"structure"`
-
-	NetworkId NetworkIdOfclusterForRestoreClusterFromSnapshot `locationName:"networkId" type:"string" enum:"true"`
-}
-
-// String returns the string representation
-func (s RequestNetworkConfigOfRestoreClusterFromSnapshot) String() string {
-	return nifcloudutil.Prettify(s)
-}
-
-// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
-func (s RequestNetworkConfigOfRestoreClusterFromSnapshot) MarshalFields(e protocol.FieldEncoder) error {
-	if len(s.NetworkId) > 0 {
-		v := s.NetworkId
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "networkId", protocol.QuotedValue{ValueMarshaler: v}, metadata)
+		e.SetValue(protocol.BodyTarget, "networkId", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
 	return nil
 }
@@ -2501,7 +2479,7 @@ type RequestSnapshot struct {
 
 	Description *string `locationName:"description" type:"string"`
 
-	ExpirationTime ExpirationTimeOfsnapshotForCreateSnapshot `locationName:"expirationTime" type:"string" enum:"true"`
+	ExpirationTime *string `locationName:"expirationTime" type:"string"`
 
 	// Name is a required field
 	Name *string `locationName:"name" type:"string" required:"true"`
@@ -2546,11 +2524,11 @@ func (s RequestSnapshot) MarshalFields(e protocol.FieldEncoder) error {
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "description", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
-	if len(s.ExpirationTime) > 0 {
-		v := s.ExpirationTime
+	if s.ExpirationTime != nil {
+		v := *s.ExpirationTime
 
 		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "expirationTime", protocol.QuotedValue{ValueMarshaler: v}, metadata)
+		e.SetValue(protocol.BodyTarget, "expirationTime", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
 	if s.Name != nil {
 		v := *s.Name

@@ -13,7 +13,7 @@ type SetIdentityDkimEnabledInput struct {
 	_ struct{} `type:"structure"`
 
 	// DkimEnabled is a required field
-	DkimEnabled *string `locationName:"DkimEnabled" type:"string" required:"true"`
+	DkimEnabled DkimEnabledOfSetIdentityDkimEnabledRequest `locationName:"DkimEnabled" type:"string" required:"true" enum:"true"`
 
 	// Identity is a required field
 	Identity *string `locationName:"Identity" type:"string" required:"true"`
@@ -27,8 +27,7 @@ func (s SetIdentityDkimEnabledInput) String() string {
 // Validate inspects the fields of the type to determine if they are valid.
 func (s *SetIdentityDkimEnabledInput) Validate() error {
 	invalidParams := aws.ErrInvalidParams{Context: "SetIdentityDkimEnabledInput"}
-
-	if s.DkimEnabled == nil {
+	if len(s.DkimEnabled) == 0 {
 		invalidParams.Add(aws.NewErrParamRequired("DkimEnabled"))
 	}
 

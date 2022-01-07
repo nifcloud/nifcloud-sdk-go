@@ -63,7 +63,7 @@ type ModifyDBInstanceInput struct {
 
 	PreferredMaintenanceWindow *string `locationName:"PreferredMaintenanceWindow" type:"string"`
 
-	ReadReplicaAccountingType *string `locationName:"ReadReplicaAccountingType" type:"string"`
+	ReadReplicaAccountingType ReadReplicaAccountingTypeOfModifyDBInstanceRequest `locationName:"ReadReplicaAccountingType" type:"string" enum:"true"`
 
 	VpcSecurityGroupIds []string `locationName:"VpcSecurityGroupIds" locationNameList:"member" type:"list"`
 }

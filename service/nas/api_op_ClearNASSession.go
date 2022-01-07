@@ -15,7 +15,7 @@ type ClearNASSessionInput struct {
 	// NASInstanceIdentifier is a required field
 	NASInstanceIdentifier *string `locationName:"NASInstanceIdentifier" type:"string" required:"true"`
 
-	SessionClearType *string `locationName:"SessionClearType" type:"string"`
+	SessionClearType SessionClearTypeOfClearNASSessionRequest `locationName:"SessionClearType" type:"string" enum:"true"`
 }
 
 // String returns the string representation

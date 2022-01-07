@@ -23,7 +23,7 @@ type CreateInstanceBackupRuleInput struct {
 	InstanceUniqueId []string `locationName:"InstanceUniqueId" type:"list" required:"true"`
 
 	// TimeSlotId is a required field
-	TimeSlotId *string `locationName:"TimeSlotId" type:"string" required:"true"`
+	TimeSlotId TimeSlotIdOfCreateInstanceBackupRuleRequest `locationName:"TimeSlotId" type:"string" required:"true" enum:"true"`
 }
 
 // String returns the string representation
@@ -42,8 +42,7 @@ func (s *CreateInstanceBackupRuleInput) Validate() error {
 	if s.InstanceUniqueId == nil {
 		invalidParams.Add(aws.NewErrParamRequired("InstanceUniqueId"))
 	}
-
-	if s.TimeSlotId == nil {
+	if len(s.TimeSlotId) == 0 {
 		invalidParams.Add(aws.NewErrParamRequired("TimeSlotId"))
 	}
 

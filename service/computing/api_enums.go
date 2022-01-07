@@ -3052,6 +3052,60 @@ func (enum TenancyOfModifyInstanceAttributeRequest) MarshalValueBuf(b []byte) ([
 	return append(b, enum...), nil
 }
 
+type TimeSlotIdOfCreateInstanceBackupRuleRequest string
+
+// Enum values for TimeSlotIdOfCreateInstanceBackupRuleRequest
+const (
+	TimeSlotIdOfCreateInstanceBackupRuleRequest1  TimeSlotIdOfCreateInstanceBackupRuleRequest = "1"
+	TimeSlotIdOfCreateInstanceBackupRuleRequest2  TimeSlotIdOfCreateInstanceBackupRuleRequest = "2"
+	TimeSlotIdOfCreateInstanceBackupRuleRequest3  TimeSlotIdOfCreateInstanceBackupRuleRequest = "3"
+	TimeSlotIdOfCreateInstanceBackupRuleRequest4  TimeSlotIdOfCreateInstanceBackupRuleRequest = "4"
+	TimeSlotIdOfCreateInstanceBackupRuleRequest5  TimeSlotIdOfCreateInstanceBackupRuleRequest = "5"
+	TimeSlotIdOfCreateInstanceBackupRuleRequest6  TimeSlotIdOfCreateInstanceBackupRuleRequest = "6"
+	TimeSlotIdOfCreateInstanceBackupRuleRequest7  TimeSlotIdOfCreateInstanceBackupRuleRequest = "7"
+	TimeSlotIdOfCreateInstanceBackupRuleRequest8  TimeSlotIdOfCreateInstanceBackupRuleRequest = "8"
+	TimeSlotIdOfCreateInstanceBackupRuleRequest9  TimeSlotIdOfCreateInstanceBackupRuleRequest = "9"
+	TimeSlotIdOfCreateInstanceBackupRuleRequest10 TimeSlotIdOfCreateInstanceBackupRuleRequest = "10"
+	TimeSlotIdOfCreateInstanceBackupRuleRequest11 TimeSlotIdOfCreateInstanceBackupRuleRequest = "11"
+	TimeSlotIdOfCreateInstanceBackupRuleRequest12 TimeSlotIdOfCreateInstanceBackupRuleRequest = "12"
+)
+
+func (enum TimeSlotIdOfCreateInstanceBackupRuleRequest) MarshalValue() (string, error) {
+	return string(enum), nil
+}
+
+func (enum TimeSlotIdOfCreateInstanceBackupRuleRequest) MarshalValueBuf(b []byte) ([]byte, error) {
+	b = b[0:0]
+	return append(b, enum...), nil
+}
+
+type TimeSlotIdOfModifyInstanceBackupRuleAttributeRequest string
+
+// Enum values for TimeSlotIdOfModifyInstanceBackupRuleAttributeRequest
+const (
+	TimeSlotIdOfModifyInstanceBackupRuleAttributeRequest1  TimeSlotIdOfModifyInstanceBackupRuleAttributeRequest = "1"
+	TimeSlotIdOfModifyInstanceBackupRuleAttributeRequest2  TimeSlotIdOfModifyInstanceBackupRuleAttributeRequest = "2"
+	TimeSlotIdOfModifyInstanceBackupRuleAttributeRequest3  TimeSlotIdOfModifyInstanceBackupRuleAttributeRequest = "3"
+	TimeSlotIdOfModifyInstanceBackupRuleAttributeRequest4  TimeSlotIdOfModifyInstanceBackupRuleAttributeRequest = "4"
+	TimeSlotIdOfModifyInstanceBackupRuleAttributeRequest5  TimeSlotIdOfModifyInstanceBackupRuleAttributeRequest = "5"
+	TimeSlotIdOfModifyInstanceBackupRuleAttributeRequest6  TimeSlotIdOfModifyInstanceBackupRuleAttributeRequest = "6"
+	TimeSlotIdOfModifyInstanceBackupRuleAttributeRequest7  TimeSlotIdOfModifyInstanceBackupRuleAttributeRequest = "7"
+	TimeSlotIdOfModifyInstanceBackupRuleAttributeRequest8  TimeSlotIdOfModifyInstanceBackupRuleAttributeRequest = "8"
+	TimeSlotIdOfModifyInstanceBackupRuleAttributeRequest9  TimeSlotIdOfModifyInstanceBackupRuleAttributeRequest = "9"
+	TimeSlotIdOfModifyInstanceBackupRuleAttributeRequest10 TimeSlotIdOfModifyInstanceBackupRuleAttributeRequest = "10"
+	TimeSlotIdOfModifyInstanceBackupRuleAttributeRequest11 TimeSlotIdOfModifyInstanceBackupRuleAttributeRequest = "11"
+	TimeSlotIdOfModifyInstanceBackupRuleAttributeRequest12 TimeSlotIdOfModifyInstanceBackupRuleAttributeRequest = "12"
+)
+
+func (enum TimeSlotIdOfModifyInstanceBackupRuleAttributeRequest) MarshalValue() (string, error) {
+	return string(enum), nil
+}
+
+func (enum TimeSlotIdOfModifyInstanceBackupRuleAttributeRequest) MarshalValueBuf(b []byte) ([]byte, error) {
+	b = b[0:0]
+	return append(b, enum...), nil
+}
+
 type TypeOfCreateCustomerGatewayRequest string
 
 // Enum values for TypeOfCreateCustomerGatewayRequest

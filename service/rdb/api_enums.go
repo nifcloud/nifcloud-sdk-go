@@ -759,6 +759,23 @@ func (enum ReadReplicaAccountingTypeOfCreateDBInstanceRequest) MarshalValueBuf(b
 	return append(b, enum...), nil
 }
 
+type ReadReplicaAccountingTypeOfModifyDBInstanceRequest string
+
+// Enum values for ReadReplicaAccountingTypeOfModifyDBInstanceRequest
+const (
+	ReadReplicaAccountingTypeOfModifyDBInstanceRequest1 ReadReplicaAccountingTypeOfModifyDBInstanceRequest = "1"
+	ReadReplicaAccountingTypeOfModifyDBInstanceRequest2 ReadReplicaAccountingTypeOfModifyDBInstanceRequest = "2"
+)
+
+func (enum ReadReplicaAccountingTypeOfModifyDBInstanceRequest) MarshalValue() (string, error) {
+	return string(enum), nil
+}
+
+func (enum ReadReplicaAccountingTypeOfModifyDBInstanceRequest) MarshalValueBuf(b []byte) ([]byte, error) {
+	b = b[0:0]
+	return append(b, enum...), nil
+}
+
 type ReadReplicaAccountingTypeOfRestoreDBInstanceFromDBSnapshotRequest string
 
 // Enum values for ReadReplicaAccountingTypeOfRestoreDBInstanceFromDBSnapshotRequest

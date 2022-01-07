@@ -44,3 +44,20 @@ func (enum ProtocolOfCreateNASInstanceRequest) MarshalValueBuf(b []byte) ([]byte
 	b = b[0:0]
 	return append(b, enum...), nil
 }
+
+type SessionClearTypeOfClearNASSessionRequest string
+
+// Enum values for SessionClearTypeOfClearNASSessionRequest
+const (
+	SessionClearTypeOfClearNASSessionRequest0 SessionClearTypeOfClearNASSessionRequest = "0"
+	SessionClearTypeOfClearNASSessionRequest1 SessionClearTypeOfClearNASSessionRequest = "1"
+)
+
+func (enum SessionClearTypeOfClearNASSessionRequest) MarshalValue() (string, error) {
+	return string(enum), nil
+}
+
+func (enum SessionClearTypeOfClearNASSessionRequest) MarshalValueBuf(b []byte) ([]byte, error) {
+	b = b[0:0]
+	return append(b, enum...), nil
+}
