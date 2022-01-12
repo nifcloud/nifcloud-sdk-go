@@ -197,7 +197,7 @@ func (c *Client) WaitUntilNASInstanceStorageFull(ctx context.Context, input *Des
 		Acceptors: []aws.WaiterAcceptor{
 			{
 				State:   aws.SuccessWaiterState,
-				Matcher: aws.PathAllWaiterMatch, Argument: "NASInstances[].DNASInstanceStatus",
+				Matcher: aws.PathAllWaiterMatch, Argument: "NASInstances[].NASInstanceStatus",
 				Expected: "storage-full",
 			},
 		},
