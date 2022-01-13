@@ -754,7 +754,7 @@ func (c *Client) WaitUntilLoadBalancerInService(ctx context.Context, input *Desc
 		Acceptors: []aws.WaiterAcceptor{
 			{
 				State:   aws.SuccessWaiterState,
-				Matcher: aws.PathAllWaiterMatch, Argument: "LoadBalancerDescriptions[].State",
+				Matcher: aws.PathAllWaiterMatch, Argument: "LoadBalancerDescriptions[].HealthCheck.InstanceStates[].State",
 				Expected: "InService",
 			},
 		},

@@ -2,6 +2,23 @@
 
 package ess
 
+type DkimEnabledOfSetIdentityDkimEnabledRequest string
+
+// Enum values for DkimEnabledOfSetIdentityDkimEnabledRequest
+const (
+	DkimEnabledOfSetIdentityDkimEnabledRequestTrue  DkimEnabledOfSetIdentityDkimEnabledRequest = "true"
+	DkimEnabledOfSetIdentityDkimEnabledRequestFalse DkimEnabledOfSetIdentityDkimEnabledRequest = "false"
+)
+
+func (enum DkimEnabledOfSetIdentityDkimEnabledRequest) MarshalValue() (string, error) {
+	return string(enum), nil
+}
+
+func (enum DkimEnabledOfSetIdentityDkimEnabledRequest) MarshalValueBuf(b []byte) ([]byte, error) {
+	b = b[0:0]
+	return append(b, enum...), nil
+}
+
 type IdentityTypeOfListIdentitiesRequest string
 
 // Enum values for IdentityTypeOfListIdentitiesRequest

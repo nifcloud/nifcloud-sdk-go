@@ -21,7 +21,7 @@ type ModifyInstanceBackupRuleAttributeInput struct {
 
 	InstanceBackupRuleName *string `locationName:"InstanceBackupRuleName" type:"string"`
 
-	TimeSlotId *string `locationName:"TimeSlotId" type:"string"`
+	TimeSlotId TimeSlotIdOfModifyInstanceBackupRuleAttributeRequest `locationName:"TimeSlotId" type:"string" enum:"true"`
 }
 
 // String returns the string representation
