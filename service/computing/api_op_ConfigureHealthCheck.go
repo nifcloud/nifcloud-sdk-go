@@ -64,7 +64,7 @@ func (s *ConfigureHealthCheckInput) Validate() error {
 type ConfigureHealthCheckOutput struct {
 	_ struct{} `type:"structure"`
 
-	HealthCheck *HealthCheck `locationName:"HealthCheck" type:"structure"`
+	ConfigureHealthCheckResult *ConfigureHealthCheckResult `locationName:"ConfigureHealthCheckResult" type:"structure"`
 
 	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }

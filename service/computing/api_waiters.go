@@ -241,7 +241,7 @@ func (c *Client) WaitUntilElasticLoadBalancerAvailable(ctx context.Context, inpu
 		Acceptors: []aws.WaiterAcceptor{
 			{
 				State:   aws.SuccessWaiterState,
-				Matcher: aws.PathAllWaiterMatch, Argument: "ElasticLoadBalancerDescriptions[].State",
+				Matcher: aws.PathAllWaiterMatch, Argument: "NiftyDescribeElasticLoadBalancersResult.ElasticLoadBalancerDescriptions[].State",
 				Expected: "available",
 			},
 		},
@@ -295,7 +295,7 @@ func (c *Client) WaitUntilElasticLoadBalancerDeleted(ctx context.Context, input 
 			},
 			{
 				State:   aws.RetryWaiterState,
-				Matcher: aws.PathWaiterMatch, Argument: "length(ElasticLoadBalancerDescriptions[]) > `0`",
+				Matcher: aws.PathWaiterMatch, Argument: "length(NiftyDescribeElasticLoadBalancersResult.ElasticLoadBalancerDescriptions[]) > `0`",
 				Expected: true,
 			},
 		},
@@ -334,7 +334,7 @@ func (c *Client) WaitUntilElasticLoadBalancerExists(ctx context.Context, input *
 		Acceptors: []aws.WaiterAcceptor{
 			{
 				State:   aws.SuccessWaiterState,
-				Matcher: aws.PathWaiterMatch, Argument: "length(ElasticLoadBalancerDescriptions[]) > `0`",
+				Matcher: aws.PathWaiterMatch, Argument: "length(NiftyDescribeElasticLoadBalancersResult.ElasticLoadBalancerDescriptions[]) > `0`",
 				Expected: true,
 			},
 			{
@@ -671,7 +671,7 @@ func (c *Client) WaitUntilLoadBalancerDeleted(ctx context.Context, input *Descri
 			},
 			{
 				State:   aws.RetryWaiterState,
-				Matcher: aws.PathWaiterMatch, Argument: "length(LoadBalancerDescriptions[]) > `0`",
+				Matcher: aws.PathWaiterMatch, Argument: "length(DescribeLoadBalancersResult.LoadBalancerDescriptions[]) > `0`",
 				Expected: true,
 			},
 		},
@@ -710,7 +710,7 @@ func (c *Client) WaitUntilLoadBalancerExists(ctx context.Context, input *Describ
 		Acceptors: []aws.WaiterAcceptor{
 			{
 				State:   aws.SuccessWaiterState,
-				Matcher: aws.PathWaiterMatch, Argument: "length(LoadBalancerDescriptions[]) > `0`",
+				Matcher: aws.PathWaiterMatch, Argument: "length(DescribeLoadBalancersResult.LoadBalancerDescriptions[]) > `0`",
 				Expected: true,
 			},
 			{
@@ -754,7 +754,7 @@ func (c *Client) WaitUntilLoadBalancerInService(ctx context.Context, input *Desc
 		Acceptors: []aws.WaiterAcceptor{
 			{
 				State:   aws.SuccessWaiterState,
-				Matcher: aws.PathAllWaiterMatch, Argument: "LoadBalancerDescriptions[].HealthCheck.InstanceStates[].State",
+				Matcher: aws.PathAllWaiterMatch, Argument: "DescribeLoadBalancersResult.LoadBalancerDescriptions[].HealthCheck.InstanceStates[].State",
 				Expected: "InService",
 			},
 		},

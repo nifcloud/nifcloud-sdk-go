@@ -186,6 +186,17 @@ func (s AppCookieStickinessPolicies) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
+type AssociateUsersResult struct {
+	_ struct{} `type:"structure"`
+
+	Users []Users `locationName:"Users" locationNameList:"member" type:"list"`
+}
+
+// String returns the string representation
+func (s AssociateUsersResult) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
 type Association struct {
 	_ struct{} `type:"structure"`
 
@@ -809,6 +820,17 @@ func (s ChargeDetailInfo) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
+type ConfigureHealthCheckResult struct {
+	_ struct{} `type:"structure"`
+
+	HealthCheck *HealthCheck `locationName:"HealthCheck" type:"structure"`
+}
+
+// String returns the string representation
+func (s ConfigureHealthCheckResult) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
 type ConversionTask struct {
 	_ struct{} `type:"structure"`
 
@@ -890,6 +912,17 @@ type CreateImage struct {
 
 // String returns the string representation
 func (s CreateImage) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+type CreateLoadBalancerResult struct {
+	_ struct{} `type:"structure"`
+
+	DNSName *string `locationName:"DNSName" type:"string"`
+}
+
+// String returns the string representation
+func (s CreateLoadBalancerResult) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
@@ -1023,6 +1056,50 @@ type Day struct {
 
 // String returns the string representation
 func (s Day) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+type DeregisterInstancesFromLoadBalancerResult struct {
+	_ struct{} `type:"structure"`
+
+	Instances []Instances `locationName:"Instances" locationNameList:"member" type:"list"`
+}
+
+// String returns the string representation
+func (s DeregisterInstancesFromLoadBalancerResult) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+type DescribeAssociatedUsersResult struct {
+	_ struct{} `type:"structure"`
+
+	Users []Users `locationName:"Users" locationNameList:"member" type:"list"`
+}
+
+// String returns the string representation
+func (s DescribeAssociatedUsersResult) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+type DescribeInstanceHealthResult struct {
+	_ struct{} `type:"structure"`
+
+	InstanceStates []InstanceStates `locationName:"InstanceStates" locationNameList:"member" type:"list"`
+}
+
+// String returns the string representation
+func (s DescribeInstanceHealthResult) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+type DescribeLoadBalancersResult struct {
+	_ struct{} `type:"structure"`
+
+	LoadBalancerDescriptions []LoadBalancerDescriptions `locationName:"LoadBalancerDescriptions" locationNameList:"member" type:"list"`
+}
+
+// String returns the string representation
+func (s DescribeLoadBalancersResult) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
@@ -1189,6 +1266,17 @@ type DisableApiTermination struct {
 
 // String returns the string representation
 func (s DisableApiTermination) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+type DissociateUsersResult struct {
+	_ struct{} `type:"structure"`
+
+	Users []Users `locationName:"Users" locationNameList:"member" type:"list"`
+}
+
+// String returns the string representation
+func (s DissociateUsersResult) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
@@ -3973,6 +4061,63 @@ func (s NextMonthAccountingType) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
+type NiftyConfigureElasticLoadBalancerHealthCheckResult struct {
+	_ struct{} `type:"structure"`
+
+	HealthCheck *HealthCheckOfNiftyConfigureElasticLoadBalancerHealthCheck `locationName:"HealthCheck" type:"structure"`
+}
+
+// String returns the string representation
+func (s NiftyConfigureElasticLoadBalancerHealthCheckResult) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+type NiftyCreateElasticLoadBalancerResult struct {
+	_ struct{} `type:"structure"`
+
+	DNSName *string `locationName:"DNSName" type:"string"`
+}
+
+// String returns the string representation
+func (s NiftyCreateElasticLoadBalancerResult) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+type NiftyDescribeElasticLoadBalancersResult struct {
+	_ struct{} `type:"structure"`
+
+	ElasticLoadBalancerDescriptions []ElasticLoadBalancerDescriptions `locationName:"ElasticLoadBalancerDescriptions" locationNameList:"member" type:"list"`
+}
+
+// String returns the string representation
+func (s NiftyDescribeElasticLoadBalancersResult) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+type NiftyDescribeInstanceElasticLoadBalancerHealthResult struct {
+	_ struct{} `type:"structure"`
+
+	InstanceStates []InstanceStates `locationName:"InstanceStates" locationNameList:"member" type:"list"`
+}
+
+// String returns the string representation
+func (s NiftyDescribeInstanceElasticLoadBalancerHealthResult) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+type NiftyDescribeLoadBalancerSSLPoliciesResult struct {
+	_ struct{} `type:"structure"`
+
+	LoadBalancerName *string `locationName:"LoadBalancerName" type:"string"`
+
+	SSLPoliciesDescriptions []SSLPoliciesDescriptions `locationName:"SSLPoliciesDescriptions" locationNameList:"member" type:"list"`
+}
+
+// String returns the string representation
+func (s NiftyDescribeLoadBalancerSSLPoliciesResult) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
 type NiftyDistributionIds struct {
 	_ struct{} `type:"structure"`
 
@@ -4036,6 +4181,17 @@ type NiftyPrivateIpType struct {
 
 // String returns the string representation
 func (s NiftyPrivateIpType) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+type NiftyRegisterPortWithElasticLoadBalancerResult struct {
+	_ struct{} `type:"structure"`
+
+	Listeners []ListenersOfNiftyRegisterPortWithElasticLoadBalancer `locationName:"Listeners" locationNameList:"member" type:"list"`
+}
+
+// String returns the string representation
+func (s NiftyRegisterPortWithElasticLoadBalancerResult) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
@@ -4668,6 +4824,28 @@ type RegionInfo struct {
 
 // String returns the string representation
 func (s RegionInfo) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+type RegisterInstancesWithLoadBalancerResult struct {
+	_ struct{} `type:"structure"`
+
+	Instances []Instances `locationName:"Instances" locationNameList:"member" type:"list"`
+}
+
+// String returns the string representation
+func (s RegisterInstancesWithLoadBalancerResult) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+type RegisterPortWithLoadBalancerResult struct {
+	_ struct{} `type:"structure"`
+
+	Listeners []Listeners `locationName:"Listeners" locationNameList:"member" type:"list"`
+}
+
+// String returns the string representation
+func (s RegisterPortWithLoadBalancerResult) String() string {
 	return nifcloudutil.Prettify(s)
 }
 
@@ -7392,6 +7570,17 @@ type SessionStickinessPolicyOfNiftyDescribeElasticLoadBalancers struct {
 
 // String returns the string representation
 func (s SessionStickinessPolicyOfNiftyDescribeElasticLoadBalancers) String() string {
+	return nifcloudutil.Prettify(s)
+}
+
+type SetFilterForLoadBalancerResult struct {
+	_ struct{} `type:"structure"`
+
+	Filter *Filter `locationName:"Filter" type:"structure"`
+}
+
+// String returns the string representation
+func (s SetFilterForLoadBalancerResult) String() string {
 	return nifcloudutil.Prettify(s)
 }
 

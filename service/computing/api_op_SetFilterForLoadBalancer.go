@@ -56,9 +56,9 @@ func (s *SetFilterForLoadBalancerInput) Validate() error {
 type SetFilterForLoadBalancerOutput struct {
 	_ struct{} `type:"structure"`
 
-	Filter *Filter `locationName:"Filter" type:"structure"`
-
 	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
+
+	SetFilterForLoadBalancerResult *SetFilterForLoadBalancerResult `locationName:"SetFilterForLoadBalancerResult" type:"structure"`
 }
 
 // String returns the string representation

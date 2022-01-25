@@ -67,7 +67,7 @@ func (s *NiftyConfigureElasticLoadBalancerHealthCheckInput) Validate() error {
 type NiftyConfigureElasticLoadBalancerHealthCheckOutput struct {
 	_ struct{} `type:"structure"`
 
-	HealthCheck *HealthCheckOfNiftyConfigureElasticLoadBalancerHealthCheck `locationName:"HealthCheck" type:"structure"`
+	NiftyConfigureElasticLoadBalancerHealthCheckResult *NiftyConfigureElasticLoadBalancerHealthCheckResult `locationName:"NiftyConfigureElasticLoadBalancerHealthCheckResult" type:"structure"`
 
 	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }

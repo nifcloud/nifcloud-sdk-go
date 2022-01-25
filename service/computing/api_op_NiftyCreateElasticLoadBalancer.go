@@ -61,7 +61,7 @@ func (s *NiftyCreateElasticLoadBalancerInput) Validate() error {
 type NiftyCreateElasticLoadBalancerOutput struct {
 	_ struct{} `type:"structure"`
 
-	DNSName *string `locationName:"DNSName" type:"string"`
+	NiftyCreateElasticLoadBalancerResult *NiftyCreateElasticLoadBalancerResult `locationName:"NiftyCreateElasticLoadBalancerResult" type:"structure"`
 
 	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }

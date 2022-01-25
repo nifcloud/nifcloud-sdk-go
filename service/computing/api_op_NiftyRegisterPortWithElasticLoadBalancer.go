@@ -50,7 +50,7 @@ func (s *NiftyRegisterPortWithElasticLoadBalancerInput) Validate() error {
 type NiftyRegisterPortWithElasticLoadBalancerOutput struct {
 	_ struct{} `type:"structure"`
 
-	Listeners []ListenersOfNiftyRegisterPortWithElasticLoadBalancer `locationName:"Listeners" locationNameList:"member" type:"list"`
+	NiftyRegisterPortWithElasticLoadBalancerResult *NiftyRegisterPortWithElasticLoadBalancerResult `locationName:"NiftyRegisterPortWithElasticLoadBalancerResult" type:"structure"`
 
 	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }
