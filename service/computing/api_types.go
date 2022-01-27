@@ -352,7 +352,7 @@ func (s Attachment) String() string {
 type AttachmentOfCopyFromBackupInstance struct {
 	_ struct{} `type:"structure"`
 
-	AttachTime *time.Time `locationName:"attachTime" type:"timestamp"`
+	AttachTime *string `locationName:"attachTime" type:"string"`
 
 	AttachmentId *string `locationName:"attachmentId" type:"string"`
 
@@ -703,7 +703,7 @@ func (s BypassInterface) String() string {
 type CaState struct {
 	_ struct{} `type:"structure"`
 
-	Value *string `locationName:"value" type:"string"`
+	Value *bool `locationName:"value" type:"boolean"`
 }
 
 // String returns the string representation
@@ -868,7 +868,7 @@ func (s CopyInstanceSet) String() string {
 type Count struct {
 	_ struct{} `type:"structure"`
 
-	Value *string `locationName:"value" type:"string"`
+	Value *int64 `locationName:"value" type:"integer"`
 }
 
 // String returns the string representation
@@ -1184,7 +1184,7 @@ func (s DhcpStatusInformationSet) String() string {
 type DisableApiTermination struct {
 	_ struct{} `type:"structure"`
 
-	Value *string `locationName:"value" type:"string"`
+	Value *bool `locationName:"value" type:"boolean"`
 }
 
 // String returns the string representation
@@ -2812,7 +2812,7 @@ func (s KeepImageSet) String() string {
 type KeyLength struct {
 	_ struct{} `type:"structure"`
 
-	Value *string `locationName:"value" type:"string"`
+	Value *int64 `locationName:"value" type:"integer"`
 }
 
 // String returns the string representation
@@ -3578,7 +3578,7 @@ type NetworkInterfaceSet struct {
 
 	Attachment *Attachment `locationName:"attachment" type:"structure"`
 
-	Description *Description `locationName:"description" type:"structure"`
+	Description *string `locationName:"description" type:"string"`
 
 	GroupSet *string `locationName:"groupSet" type:"string"`
 
@@ -7636,7 +7636,7 @@ func (s TriggerSet) String() string {
 type UploadState struct {
 	_ struct{} `type:"structure"`
 
-	Value *string `locationName:"value" type:"string"`
+	Value *bool `locationName:"value" type:"boolean"`
 }
 
 // String returns the string representation
