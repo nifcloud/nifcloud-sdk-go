@@ -38,11 +38,9 @@ func (s *NiftyDescribeLoadBalancerSSLPoliciesInput) Validate() error {
 type NiftyDescribeLoadBalancerSSLPoliciesOutput struct {
 	_ struct{} `type:"structure"`
 
-	LoadBalancerName *string `locationName:"LoadBalancerName" type:"string"`
+	NiftyDescribeLoadBalancerSSLPoliciesResult *NiftyDescribeLoadBalancerSSLPoliciesResult `locationName:"NiftyDescribeLoadBalancerSSLPoliciesResult" type:"structure"`
 
 	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
-
-	SSLPoliciesDescriptions []SSLPoliciesDescriptions `locationName:"SSLPoliciesDescriptions" locationNameList:"member" type:"list"`
 }
 
 // String returns the string representation

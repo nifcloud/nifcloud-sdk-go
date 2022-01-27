@@ -25,7 +25,7 @@ func (s NiftyDescribeElasticLoadBalancersInput) String() string {
 type NiftyDescribeElasticLoadBalancersOutput struct {
 	_ struct{} `type:"structure"`
 
-	ElasticLoadBalancerDescriptions []ElasticLoadBalancerDescriptions `locationName:"ElasticLoadBalancerDescriptions" locationNameList:"member" type:"list"`
+	NiftyDescribeElasticLoadBalancersResult *NiftyDescribeElasticLoadBalancersResult `locationName:"NiftyDescribeElasticLoadBalancersResult" type:"structure"`
 
 	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }

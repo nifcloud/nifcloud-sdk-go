@@ -37,9 +37,9 @@ func (s *DescribeAssociatedUsersInput) Validate() error {
 type DescribeAssociatedUsersOutput struct {
 	_ struct{} `type:"structure"`
 
-	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
+	DescribeAssociatedUsersResult *DescribeAssociatedUsersResult `locationName:"DescribeAssociatedUsersResult" type:"structure"`
 
-	Users []Users `locationName:"Users" locationNameList:"member" type:"list"`
+	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }
 
 // String returns the string representation

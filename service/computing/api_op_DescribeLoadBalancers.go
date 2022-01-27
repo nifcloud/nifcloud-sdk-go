@@ -25,7 +25,7 @@ func (s DescribeLoadBalancersInput) String() string {
 type DescribeLoadBalancersOutput struct {
 	_ struct{} `type:"structure"`
 
-	LoadBalancerDescriptions []LoadBalancerDescriptions `locationName:"LoadBalancerDescriptions" locationNameList:"member" type:"list"`
+	DescribeLoadBalancersResult *DescribeLoadBalancersResult `locationName:"DescribeLoadBalancersResult" type:"structure"`
 
 	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }

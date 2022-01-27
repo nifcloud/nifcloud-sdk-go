@@ -40,7 +40,7 @@ func (s *RegisterPortWithLoadBalancerInput) Validate() error {
 type RegisterPortWithLoadBalancerOutput struct {
 	_ struct{} `type:"structure"`
 
-	Listeners []Listeners `locationName:"Listeners" locationNameList:"member" type:"list"`
+	RegisterPortWithLoadBalancerResult *RegisterPortWithLoadBalancerResult `locationName:"RegisterPortWithLoadBalancerResult" type:"structure"`
 
 	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }

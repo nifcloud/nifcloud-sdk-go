@@ -67,7 +67,7 @@ func (s *DeregisterInstancesFromLoadBalancerInput) Validate() error {
 type DeregisterInstancesFromLoadBalancerOutput struct {
 	_ struct{} `type:"structure"`
 
-	Instances []Instances `locationName:"Instances" locationNameList:"member" type:"list"`
+	DeregisterInstancesFromLoadBalancerResult *DeregisterInstancesFromLoadBalancerResult `locationName:"DeregisterInstancesFromLoadBalancerResult" type:"structure"`
 
 	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }

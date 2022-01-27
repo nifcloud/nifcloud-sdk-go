@@ -67,7 +67,7 @@ func (s *RegisterInstancesWithLoadBalancerInput) Validate() error {
 type RegisterInstancesWithLoadBalancerOutput struct {
 	_ struct{} `type:"structure"`
 
-	Instances []Instances `locationName:"Instances" locationNameList:"member" type:"list"`
+	RegisterInstancesWithLoadBalancerResult *RegisterInstancesWithLoadBalancerResult `locationName:"RegisterInstancesWithLoadBalancerResult" type:"structure"`
 
 	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }

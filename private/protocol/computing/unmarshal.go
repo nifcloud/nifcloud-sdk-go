@@ -30,7 +30,7 @@ func Unmarshal(r *request.Request) {
 	}()
 
 	decoder := xml.NewDecoder(r.HTTPResponse.Body)
-	err := xmlutil.UnmarshalXML(r.Data, decoder, r.Operation.Name+"Result")
+	err := xmlutil.UnmarshalXML(r.Data, decoder, r.Operation.Name)
 	if err != nil {
 		r.Error = awserr.New("SerializationError", "failed decoding computing response", err)
 		return

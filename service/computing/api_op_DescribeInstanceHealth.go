@@ -54,7 +54,7 @@ func (s *DescribeInstanceHealthInput) Validate() error {
 type DescribeInstanceHealthOutput struct {
 	_ struct{} `type:"structure"`
 
-	InstanceStates []InstanceStates `locationName:"InstanceStates" locationNameList:"member" type:"list"`
+	DescribeInstanceHealthResult *DescribeInstanceHealthResult `locationName:"DescribeInstanceHealthResult" type:"structure"`
 
 	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }

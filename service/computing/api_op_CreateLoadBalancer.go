@@ -50,7 +50,7 @@ func (s *CreateLoadBalancerInput) Validate() error {
 type CreateLoadBalancerOutput struct {
 	_ struct{} `type:"structure"`
 
-	DNSName *string `locationName:"DNSName" type:"string"`
+	CreateLoadBalancerResult *CreateLoadBalancerResult `locationName:"CreateLoadBalancerResult" type:"structure"`
 
 	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }

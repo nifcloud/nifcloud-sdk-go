@@ -52,9 +52,9 @@ func (s *DissociateUsersInput) Validate() error {
 type DissociateUsersOutput struct {
 	_ struct{} `type:"structure"`
 
-	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
+	DissociateUsersResult *DissociateUsersResult `locationName:"DissociateUsersResult" type:"structure"`
 
-	Users []Users `locationName:"Users" locationNameList:"member" type:"list"`
+	ResponseMetadata *ResponseMetadata `locationName:"ResponseMetadata" type:"structure"`
 }
 
 // String returns the string representation
