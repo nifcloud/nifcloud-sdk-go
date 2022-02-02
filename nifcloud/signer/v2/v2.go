@@ -1,6 +1,3 @@
-// This code was forked from github.com/aws/aws-sdk-go-v2. DO NOT EDIT.
-// URL: https://github.com/aws/aws-sdk-go-v2/tree/v0.24.0/aws/signer/v2/v2.go
-
 package v2
 
 import (
@@ -8,19 +5,16 @@ import (
 	"crypto/hmac"
 	"crypto/sha256"
 	"encoding/base64"
-	"errors"
 	"fmt"
-	"net/http"
 	"net/url"
 	"sort"
 	"strings"
 	"time"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
-)
-
-var (
-	errInvalidMethod = errors.New("v2 signer only handles HTTP POST")
+	"github.com/aws/smithy-go/encoding/httpbinding"
+	"github.com/aws/smithy-go/logging"
+	smithyhttp "github.com/aws/smithy-go/transport/http"
 )
 
 const (
@@ -29,111 +23,102 @@ const (
 	timeFormat       = "2006-01-02T15:04:05Z"
 )
 
-type signer struct {
-	// Values that must be populated from the request
-	Request     *http.Request
-	Time        time.Time
-	Credentials aws.CredentialsProvider
-	Debug       aws.LogLevel
-	Logger      aws.Logger
-
-	Query        url.Values
-	stringToSign string
-	signature    string
+// HTTPSigner is an interface to a SigV2 signer that can sign HTTP requests
+type HTTPSigner interface {
+	SignHTTP(ctx context.Context, credentials aws.Credentials, r *smithyhttp.Request, optFns ...func(*SignerOptions)) error
 }
 
-// SignRequestHandler is a named request handler the SDK will use to sign
-// service client request with using the V4 signature.
-var SignRequestHandler = aws.NamedHandler{
-	Name: "v2.SignRequestHandler", Fn: SignSDKRequest,
+// SignerOptions is the SigV2 Signer options
+type SignerOptions struct {
+	Logger     logging.Logger
+	LogSigning bool
 }
 
-// SignSDKRequest requests with signature version 2.
-//
-// Will sign the requests with the service config's Credentials object
-// Signing is skipped if the credentials is the aws.AnonymousCredentials
-// object.
-func SignSDKRequest(req *aws.Request) {
-	// If the request does not need to be signed ignore the signing of the
-	// request if the AnonymousCredentials object is used.
-	if req.Config.Credentials == aws.AnonymousCredentials {
-		return
-	}
-
-	if req.HTTPRequest.Method != http.MethodPost && req.HTTPRequest.Method != http.MethodGet {
-		// The V2 signer only supports GET and POST
-		req.Error = errInvalidMethod
-		return
-	}
-
-	v2 := signer{
-		Request:     req.HTTPRequest,
-		Time:        req.Time,
-		Credentials: req.Config.Credentials,
-		Debug:       req.Config.LogLevel,
-		Logger:      req.Config.Logger,
-	}
-
-	req.Error = v2.Sign(req.Context())
-
-	if req.Error != nil {
-		return
-	}
-
-	if req.HTTPRequest.Method == "POST" {
-		// Set the body of the request based on the modified query parameters
-		req.SetStringBody(v2.Query.Encode())
-
-		// Now that the body has changed, remove any Content-Length header,
-		// because it will be incorrect
-		req.HTTPRequest.ContentLength = 0
-		req.HTTPRequest.Header.Del("Content-Length")
-	} else {
-		req.HTTPRequest.URL.RawQuery = v2.Query.Encode()
-	}
+// Signer applies NIFCLOUD v2 signing to given request.
+type Signer struct {
+	options SignerOptions
+	Request *smithyhttp.Request
 }
 
-func (v2 *signer) Sign(ctx context.Context) error {
-	credValue, err := v2.Credentials.Retrieve(ctx)
+// NewSigner returns a new SigV2 Signer
+func NewSigner(optFns ...func(signer *SignerOptions)) *Signer {
+	options := SignerOptions{}
+
+	for _, fn := range optFns {
+		fn(&options)
+	}
+	return &Signer{options: options}
+}
+
+type httpSigner struct {
+	Request     *smithyhttp.Request
+	Credentials aws.Credentials
+}
+
+// SignHTTP signs NIFCLOUD v2 requests
+func (s *Signer) SignHTTP(
+	ctx context.Context,
+	credentials aws.Credentials,
+	r *smithyhttp.Request,
+	optFns ...func(options *SignerOptions)) error {
+	options := s.options
+
+	for _, fn := range optFns {
+		fn(&options)
+	}
+
+	signer := httpSigner{
+		Request:     r,
+		Credentials: credentials,
+	}
+
+	signedRequest, err := signer.Build()
 	if err != nil {
 		return err
 	}
 
-	if v2.Request.Method == "POST" {
-		// Parse the HTTP request to obtain the query parameters that will
-		// be used to build the string to sign. Note that because the HTTP
-		// request will need to be modified, the PostForm and Form properties
-		// are reset to nil after parsing.
-		v2.Request.ParseForm()
-		v2.Query = v2.Request.PostForm
-		v2.Request.PostForm = nil
-		v2.Request.Form = nil
-	} else {
-		v2.Query = v2.Request.URL.Query()
+	s.Request = signedRequest.Request
+
+	logSigningInfo(ctx, options, &signedRequest)
+
+	return nil
+}
+
+func (s *httpSigner) Build() (signedRequest, error) {
+	req := s.Request
+	r := req.Build(context.Background())
+
+	err := r.ParseForm()
+	if err != nil {
+		return signedRequest{}, err
+	}
+
+	query := r.PostForm
+
+	err = req.RewindStream()
+	if err != nil {
+		return signedRequest{}, err
 	}
 
 	// Set new query parameters
-	v2.Query.Set("AccessKeyId", credValue.AccessKeyID)
-	v2.Query.Set("SignatureVersion", signatureVersion)
-	v2.Query.Set("SignatureMethod", signatureMethod)
-	v2.Query.Set("Timestamp", v2.Time.UTC().Format(timeFormat))
-	if credValue.SessionToken != "" {
-		v2.Query.Set("SecurityToken", credValue.SessionToken)
-	}
+	query.Set("AccessKeyId", s.Credentials.AccessKeyID)
+	query.Set("SignatureVersion", signatureVersion)
+	query.Set("SignatureMethod", signatureMethod)
+	query.Set("Timestamp", time.Now().UTC().Format(timeFormat))
 
 	// in case this is a retry, ensure no signature present
-	v2.Query.Del("Signature")
+	query.Del("Signature")
 
-	method := v2.Request.Method
-	host := v2.Request.URL.Host
-	path := v2.Request.URL.Path
+	method := req.Method
+	host := req.URL.Host
+	path := req.URL.Path
 	if path == "" {
 		path = "/"
 	}
 
 	// obtain all of the query keys and sort them
-	queryKeys := make([]string, 0, len(v2.Query))
-	for key := range v2.Query {
+	queryKeys := make([]string, 0, len(query))
+	for key := range query {
 		queryKeys = append(queryKeys, key)
 	}
 	sort.Strings(queryKeys)
@@ -142,41 +127,81 @@ func (v2 *signer) Sign(ctx context.Context) error {
 	queryKeysAndValues := make([]string, len(queryKeys))
 	for i, key := range queryKeys {
 		k := strings.Replace(url.QueryEscape(key), "+", "%20", -1)
-		v := strings.Replace(url.QueryEscape(v2.Query.Get(key)), "+", "%20", -1)
+		v := strings.Replace(url.QueryEscape(query.Get(key)), "+", "%20", -1)
 		queryKeysAndValues[i] = k + "=" + v
 	}
 
 	// join into one query string
-	query := strings.Join(queryKeysAndValues, "&")
+	queryString := strings.Join(queryKeysAndValues, "&")
 
 	// build the canonical string for the V2 signature
-	v2.stringToSign = strings.Join([]string{
+	stringToSign := strings.Join([]string{
 		method,
 		host,
 		path,
-		query,
+		queryString,
 	}, "\n")
 
-	hash := hmac.New(sha256.New, []byte(credValue.SecretAccessKey))
-	hash.Write([]byte(v2.stringToSign))
-	v2.signature = base64.StdEncoding.EncodeToString(hash.Sum(nil))
-	v2.Query.Set("Signature", v2.signature)
+	hash := hmac.New(sha256.New, []byte(s.Credentials.SecretAccessKey))
+	_, err = hash.Write([]byte(stringToSign))
+	if err != nil {
+		return signedRequest{}, err
+	}
+	signature := base64.StdEncoding.EncodeToString(hash.Sum(nil))
+	query.Set("Signature", signature)
 
-	if v2.Debug.Matches(aws.LogDebugWithSigning) {
-		v2.logSigningInfo()
+	request, err := req.SetStream(strings.NewReader(query.Encode()))
+	if err != nil {
+		return signedRequest{}, err
 	}
 
-	return nil
+	httpBindingEncoder, err := httpbinding.NewEncoder(path, request.URL.RawQuery, request.Header)
+	if err != nil {
+		return signedRequest{}, err
+	}
+
+	if request.Request, err = httpBindingEncoder.Encode(request.Request); err != nil {
+		return signedRequest{}, err
+	}
+
+	size, ok, err := request.StreamLength()
+	if err != nil {
+		return signedRequest{}, err
+	}
+	if !ok {
+		return signedRequest{}, fmt.Errorf("request stream is not seekable")
+	}
+	request.Request.ContentLength = size
+
+	return signedRequest{Request: request}, nil
+}
+
+func logSigningInfo(ctx context.Context, options SignerOptions, request *signedRequest) {
+	if !options.LogSigning {
+		return
+	}
+	req := request.Request.Build(context.Background())
+	err := req.ParseForm()
+	if err != nil {
+		return
+	}
+	query := req.PostForm
+
+	err = request.Request.RewindStream()
+	if err != nil {
+		return
+	}
+
+	logger := logging.WithContext(ctx, options.Logger)
+	logger.Logf(logging.Debug, logSignInfoMsg, query.Get("Signature"))
+}
+
+type signedRequest struct {
+	Request *smithyhttp.Request
 }
 
 const logSignInfoMsg = `DEBUG: Request Signature:
----[ STRING TO SIGN ]--------------------------------
-%s
+	}
 ---[ SIGNATURE ]-------------------------------------
 %s
 -----------------------------------------------------`
-
-func (v2 *signer) logSigningInfo() {
-	msg := fmt.Sprintf(logSignInfoMsg, v2.stringToSign, v2.Query.Get("Signature"))
-	v2.Logger.Log(msg)
-}
