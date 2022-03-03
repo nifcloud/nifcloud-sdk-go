@@ -17,7 +17,7 @@ It works by feeding AWS-SDK-compatible model JSONs to [github.com/aws/aws-sdk-go
 
 ## Requirements
 
-* Go 1.13 or later.
+* Go 1.17 or later.
 
 ## Installing
 
@@ -41,23 +41,28 @@ import (
 )
 
 func main() {
-        // Create config with credentials and region.
-        cfg := nifcloud.NewConfig(
-                "YOUR_ACCESS_KEY_ID",
-                "YOUR_SECRET_ACCESS_KEY",
-                "jp-east-1",
-        )
+    // Create config with credentials and region.
+    cfg := nifcloud.NewConfig(
+            "YOUR_ACCESS_KEY_ID",
+            "YOUR_SECRET_ACCESS_KEY",
+            "jp-east-1",
+    )
 
-        // Create the Computing client with Config value.
-        svc := computing.New(cfg)
-        req := svc.DescribeInstancesRequest(nil)
+    // Create the Computing client with Config value.
+    svc := computing.NewFromConfig(cfg)
 
-        // Send the request
-        resp, err := req.Send(context.TODO())
-        if err != nil {
-                panic(err)
+    // Send the request
+    resp, err := svc.DescribeInstances(context.TODO(), nil)
+    if err != nil {
+            panic(err)
+    }
+    
+    fmt.Println("Instances:")
+    for _, reservationSet := range resp.ReservationSet {
+        for _, instancesSet := range reservationSet.InstancesSet {
+            fmt.Println(nifcloud.ToString(instancesSet.InstanceId))
         }
-        fmt.Println(resp)
+    }
 }
 ```
 

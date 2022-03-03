@@ -3,28 +3,11 @@ on: [push, pull_request]
 env:
   GOPROXY: https://proxy.golang.org
 jobs:
-  generate:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        go: [ '1.17', '1.16', '1.15' ]
-    name: Go ${{ matrix.go }} generate
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Set up Go
-        uses: actions/setup-go@v2
-        with:
-          go-version: ${{ matrix.go }}
-
-      - name: Generate
-        run: make all
   lint:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        go: [ '1.17', '1.16', '1.15' ]
+        go: [ '1.17' ]
     name: Go ${{ matrix.go }} lint
     steps:
       - name: Checkout
@@ -45,7 +28,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        go: [ '1.17', '1.16', '1.15' ]
+        go: [ '1.17' ]
     name: Go ${{ matrix.go }} unit-test
     steps:
       - name: Checkout
@@ -57,4 +40,4 @@ jobs:
           go-version: ${{ matrix.go }}
 
       - name: Unit tests
-        run: make core-unit
+        run: make unit

@@ -1,0 +1,4 @@
+[modules]
+
+  [modules."."]
+    metadata_package = "nifcloud"

@@ -1,0 +1,132 @@
+{
+  "partitions": [
+    {
+      "defaults": {
+        "hostname": "{region}.{service}.{dnsSuffix}",
+        "protocols": [
+          "https"
+        ],
+        "signatureVersions": [
+          "v4",
+          "v3",
+          "v2"
+        ]
+      },
+      "dnsSuffix": "api.nifcloud.com",
+      "partition": "nifcloud",
+      "partitionName": "NIFCLOUD Standard",
+      "regionRegex": "^(us|jp)\\-\\w+\\-\\d+$",
+      "regions": {
+        "jp-east-1": {
+          "description": "jp-east-1"
+        },
+        "jp-east-2": {
+          "description": "jp-east-2"
+        },
+        "jp-east-3": {
+          "description": "jp-east-3"
+        },
+        "jp-east-4": {
+          "description": "jp-east-4"
+        },
+        "jp-west-1": {
+          "description": "jp-west-1"
+        },
+        "jp-west-2": {
+          "description": "jp-west-2"
+        },
+        "us-east-1": {
+          "description": "us-east-1"
+        }
+      },
+      "services": {
+        "computing": {
+          "defaults": {
+            "signatureVersions": [
+              "v2"
+            ]
+          },
+          "endpoints": {
+            "jp-east-1": {},
+            "jp-east-2": {},
+            "jp-east-3": {},
+            "jp-east-4": {},
+            "jp-west-1": {},
+            "jp-west-2": {},
+            "us-east-1": {}
+          }
+        },
+        "nas": {
+          "endpoints": {
+            "jp-east-1": {},
+            "jp-east-2": {},
+            "jp-east-3": {},
+            "jp-east-4": {},
+            "jp-west-1": {},
+            "jp-west-2": {}
+          }
+        },
+        "rdb": {
+          "endpoints": {
+            "jp-east-1": {},
+            "jp-east-2": {},
+            "jp-east-3": {},
+            "jp-east-4": {},
+            "jp-west-1": {},
+            "jp-west-2": {}
+          }
+        },
+        "hatoba": {
+          "endpoints": {
+            "jp-east-1": {},
+            "jp-east-2": {},
+            "jp-east-3": {},
+            "jp-east-4": {},
+            "jp-west-1": {},
+            "jp-west-2": {},
+            "us-east-1": {}
+          }
+        },
+        "script" : {
+          "endpoints" : {
+            "aws-global" : {
+              "credentialScope" : {
+                "region" : "jp-east-1"
+              },
+              "hostname" : "script.api.nifcloud.com"
+            }
+          },
+          "isRegionalized" : false,
+          "partitionEndpoint" : "aws-global"
+        },
+        "ess" : {
+          "endpoints" : {
+            "aws-global" : {
+              "credentialScope" : {
+                "region" : "east-1"
+              },
+              "hostname" : "ess.api.nifcloud.com"
+            }
+          },
+          "isRegionalized" : false,
+          "partitionEndpoint" : "aws-global"
+        },
+        "dns" : {
+          "defaults": {
+            "signatureVersions": [
+              "v3"
+            ]
+          },
+          "endpoints" : {
+            "aws-global" : {
+              "hostname" : "dns.api.nifcloud.com"
+            }
+          },
+          "isRegionalized" : false,
+          "partitionEndpoint" : "aws-global"
+        }
+      }
+    }
+  ],
+  "version": 3
+}

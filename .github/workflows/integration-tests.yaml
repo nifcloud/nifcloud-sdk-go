@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        go: [ '1.17', '1.16', '1.15' ]
+        go: [ '1.17' ]
     name: Go ${{ matrix.go }} integration-test
     steps:
       - name: Checkout
@@ -25,4 +25,4 @@ jobs:
           go-version: ${{ matrix.go }}
 
       - name: Integration tests
-        run: make client-integ
+        run: make integration

@@ -1,0 +1,39 @@
+{
+    "dependencies": {
+        "github.com/aws/aws-sdk-go-v2": "v1.4.0",
+        "github.com/aws/aws-sdk-go-v2/internal/configsources": "v0.0.0-00010101000000-000000000000",
+        "github.com/aws/aws-sdk-go-v2/internal/endpoints/v2": "v2.0.0-00010101000000-000000000000",
+        "github.com/aws/smithy-go": "v1.4.0"
+    },
+    "files": [
+        "api_client.go",
+        "api_client_test.go",
+        "api_op_DeleteIdentity.go",
+        "api_op_GetDeliveryLog.go",
+        "api_op_GetIdentityDkimAttributes.go",
+        "api_op_GetIdentityVerificationAttributes.go",
+        "api_op_GetSendQuota.go",
+        "api_op_GetSendStatistics.go",
+        "api_op_ListIdentities.go",
+        "api_op_SendEmail.go",
+        "api_op_SendRawEmail.go",
+        "api_op_SetIdentityDkimEnabled.go",
+        "api_op_VerifyDomainDkim.go",
+        "api_op_VerifyDomainIdentity.go",
+        "api_op_VerifyEmailIdentity.go",
+        "deserializers.go",
+        "doc.go",
+        "endpoints.go",
+        "generated.json",
+        "internal/endpoints/endpoints.go",
+        "internal/endpoints/endpoints_test.go",
+        "protocol_test.go",
+        "serializers.go",
+        "types/enums.go",
+        "types/types.go",
+        "validators.go"
+    ],
+    "go": "1.15",
+    "module": "github.com/nifcloud/nifcloud-sdk-go/service/ess",
+    "unstable": false
+}
