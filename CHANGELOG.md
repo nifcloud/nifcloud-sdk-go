@@ -1,6 +1,17 @@
 # Changelog
 
-## [v1.13.1](https://github.com/nifcloud/nifcloud-sdk-go/tree/v1.13.1) (2021-12-01)
+## [v1.14.0](https://github.com/nifcloud/nifcloud-sdk-go/tree/v1.14.0) (2022-03-03)
+
+[Full Changelog](https://github.com/nifcloud/nifcloud-sdk-go/compare/v1.13.1...v1.14.0)
+
+**Merged pull requests:**
+
+- Update SDK for code generation tool changes [\#38](https://github.com/nifcloud/nifcloud-sdk-go/pull/38) ([fuku2014](https://github.com/fuku2014))
+- Fix type of result [\#37](https://github.com/nifcloud/nifcloud-sdk-go/pull/37) ([fuku2014](https://github.com/fuku2014))
+- Fix LoadBalancer Result structure [\#36](https://github.com/nifcloud/nifcloud-sdk-go/pull/36) ([fuku2014](https://github.com/fuku2014))
+- Fix/enum [\#35](https://github.com/nifcloud/nifcloud-sdk-go/pull/35) ([fuku2014](https://github.com/fuku2014))
+
+## [v1.13.1](https://github.com/nifcloud/nifcloud-sdk-go/tree/v1.13.1) (2021-11-30)
 
 [Full Changelog](https://github.com/nifcloud/nifcloud-sdk-go/compare/v1.13.0...v1.13.1)
 
