@@ -4261,7 +4261,7 @@ func awsRestjson1_deserializeDocumentAddonsConfig(v **types.AddonsConfig, value 
 	for key, value := range shape {
 		switch key {
 			case "httpLoadBalancing":
-				if err := awsRestjson1_deserializeDocumentHttpLoadBalancingOfNiftyDescribeAutoScalingGroups(&sv.HttpLoadBalancing, value); err != nil {
+				if err := awsRestjson1_deserializeDocumentHttpLoadBalancing(&sv.HttpLoadBalancing, value); err != nil {
 					return err
 				}
 			
@@ -5201,7 +5201,7 @@ func awsRestjson1_deserializeDocumentHealthCheck(v **types.HealthCheck, value in
 	return nil
 }
 
-func awsRestjson1_deserializeDocumentHttpLoadBalancingOfNiftyDescribeAutoScalingGroups(v **types.HttpLoadBalancingOfNiftyDescribeAutoScalingGroups, value interface{}) error {
+func awsRestjson1_deserializeDocumentHttpLoadBalancing(v **types.HttpLoadBalancing, value interface{}) error {
 	if v == nil {
 		return fmt.Errorf("unexpected nil of type %T", v)
 	}
@@ -5214,9 +5214,9 @@ func awsRestjson1_deserializeDocumentHttpLoadBalancingOfNiftyDescribeAutoScaling
 		return fmt.Errorf("unexpected JSON type %v", value)
 	}
 	
-	var sv *types.HttpLoadBalancingOfNiftyDescribeAutoScalingGroups
+	var sv *types.HttpLoadBalancing
 	if *v == nil {
-		sv = &types.HttpLoadBalancingOfNiftyDescribeAutoScalingGroups{}
+		sv = &types.HttpLoadBalancing{}
 		} else {
 			sv = *v
 		}

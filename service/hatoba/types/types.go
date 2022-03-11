@@ -9,7 +9,7 @@ import (
 
 type AddonsConfig struct {
 	
-	HttpLoadBalancing *HttpLoadBalancingOfNiftyDescribeAutoScalingGroups
+	HttpLoadBalancing *HttpLoadBalancing
 	
 	noSmithyDocumentSerde
 }
@@ -206,7 +206,7 @@ type HealthCheck struct {
 	noSmithyDocumentSerde
 }
 
-type HttpLoadBalancingOfNiftyDescribeAutoScalingGroups struct {
+type HttpLoadBalancing struct {
 	
 	Disabled *bool
 	
@@ -482,7 +482,7 @@ type Option struct {
 
 type RequestAddonsConfig struct {
 	
-	RequestHttpLoadBalancing *RequestHttpLoadBalancingOfNiftyDescribeAutoScalingGroups
+	RequestHttpLoadBalancing *RequestHttpLoadBalancing
 	
 	noSmithyDocumentSerde
 }
@@ -572,7 +572,7 @@ type RequestFirewallGroupOfUpdateFirewallGroup struct {
 	noSmithyDocumentSerde
 }
 
-type RequestHttpLoadBalancingOfNiftyDescribeAutoScalingGroups struct {
+type RequestHttpLoadBalancing struct {
 	
 	Disabled *bool
 	

@@ -2027,7 +2027,7 @@ func awsRestjson1_serializeDocumentRequestAddonsConfig(v *types.RequestAddonsCon
 
 	if v.RequestHttpLoadBalancing != nil {
 		ok := object.Key("httpLoadBalancing")
-		if err := awsRestjson1_serializeDocumentRequestHttpLoadBalancingOfNiftyDescribeAutoScalingGroups(v.RequestHttpLoadBalancing, ok); err != nil {
+		if err := awsRestjson1_serializeDocumentRequestHttpLoadBalancing(v.RequestHttpLoadBalancing, ok); err != nil {
 			return err
 		}
 	}
@@ -2208,7 +2208,7 @@ func awsRestjson1_serializeDocumentRequestFirewallGroupOfUpdateFirewallGroup(v *
 	return nil
 }
 
-func awsRestjson1_serializeDocumentRequestHttpLoadBalancingOfNiftyDescribeAutoScalingGroups(v *types.RequestHttpLoadBalancingOfNiftyDescribeAutoScalingGroups, value smithyjson.Value) error {
+func awsRestjson1_serializeDocumentRequestHttpLoadBalancing(v *types.RequestHttpLoadBalancing, value smithyjson.Value) error {
 	object := value.Object()
 	defer object.Close()
 
