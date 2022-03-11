@@ -48,10 +48,10 @@ structure Cluster {
 
 structure AddonsConfig {
     @jsonName("httpLoadBalancing")
-    HttpLoadBalancing: HttpLoadBalancingOfNiftyDescribeAutoScalingGroups,
+    HttpLoadBalancing: HttpLoadBalancing,
 }
 
-structure HttpLoadBalancingOfNiftyDescribeAutoScalingGroups {
+structure HttpLoadBalancing {
     @jsonName("disabled")
     Disabled: Boolean,
 }
@@ -213,14 +213,14 @@ list ListOfRequestLocations {
     member: String,
 }
 
-structure RequestHttpLoadBalancingOfNiftyDescribeAutoScalingGroups {
+structure RequestHttpLoadBalancing {
     @jsonName("disabled")
     Disabled: Boolean,
 }
 
 structure RequestAddonsConfig {
     @jsonName("httpLoadBalancing")
-    RequestHttpLoadBalancing: RequestHttpLoadBalancingOfNiftyDescribeAutoScalingGroups,
+    RequestHttpLoadBalancing: RequestHttpLoadBalancing,
 }
 
 structure RequestNodePools {
