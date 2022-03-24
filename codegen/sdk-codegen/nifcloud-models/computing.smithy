@@ -163,10 +163,10 @@ structure BlockDeviceMapping {
 structure Ebs {
     @xmlName("attachTime")
     @ec2QueryName("attachTime")
-    AttachTime: Timestamp,
+    AttachTime: String,
     @xmlName("deleteOnTermination")
     @ec2QueryName("deleteOnTermination")
-    DeleteOnTermination: Boolean,
+    DeleteOnTermination: String,
     @xmlName("status")
     @ec2QueryName("status")
     Status: String,
@@ -314,13 +314,13 @@ structure Attachment {
     AttachmentId: String,
     @xmlName("attachTime")
     @ec2QueryName("attachTime")
-    AttachTime: Timestamp,
+    AttachTime: String,
     @xmlName("deleteOnTermination")
     @ec2QueryName("deleteOnTermination")
-    DeleteOnTermination: Boolean,
+    DeleteOnTermination: String,
     @xmlName("deviceIndex")
     @ec2QueryName("deviceIndex")
-    DeviceIndex: Integer,
+    DeviceIndex: String,
     @xmlName("status")
     @ec2QueryName("status")
     Status: String,
@@ -1663,7 +1663,7 @@ structure BlockDeviceMappingOfRunInstances {
 structure EbsOfRunInstances {
     @xmlName("deleteOnTermination")
     @ec2QueryName("deleteOnTermination")
-    DeleteOnTermination: Boolean,
+    DeleteOnTermination: String,
     @xmlName("status")
     @ec2QueryName("status")
     Status: String,
@@ -1731,10 +1731,10 @@ structure AttachmentOfRunInstances {
     AttachTime: String,
     @xmlName("deleteOnTermination")
     @ec2QueryName("deleteOnTermination")
-    DeleteOnTermination: Boolean,
+    DeleteOnTermination: String,
     @xmlName("deviceIndex")
     @ec2QueryName("deviceIndex")
-    DeviceIndex: Integer,
+    DeviceIndex: String,
     @xmlName("status")
     @ec2QueryName("status")
     Status: String,
@@ -3206,10 +3206,10 @@ structure AttachmentOfImportInstance {
     AttachTime: String,
     @xmlName("deleteOnTermination")
     @ec2QueryName("deleteOnTermination")
-    DeleteOnTermination: Boolean,
+    DeleteOnTermination: String,
     @xmlName("deviceIndex")
     @ec2QueryName("deviceIndex")
-    DeviceIndex: Integer,
+    DeviceIndex: String,
     @xmlName("status")
     @ec2QueryName("status")
     Status: String,
@@ -3480,7 +3480,7 @@ structure AttachVolumeRequest {
 structure AttachVolumeResult {
     @xmlName("attachTime")
     @ec2QueryName("attachTime")
-    AttachTime: Timestamp,
+    AttachTime: String,
     @xmlName("device")
     @ec2QueryName("device")
     Device: String,
@@ -3691,10 +3691,10 @@ list ListOfAttachmentSet {
 structure AttachmentSet {
     @xmlName("attachTime")
     @ec2QueryName("attachTime")
-    AttachTime: Timestamp,
+    AttachTime: String,
     @xmlName("deleteOnTermination")
     @ec2QueryName("deleteOnTermination")
-    DeleteOnTermination: Boolean,
+    DeleteOnTermination: String,
     @xmlName("device")
     @ec2QueryName("device")
     Device: String,
@@ -3734,7 +3734,7 @@ structure DetachVolumeRequest {
 structure DetachVolumeResult {
     @xmlName("attachTime")
     @ec2QueryName("attachTime")
-    AttachTime: Timestamp,
+    AttachTime: String,
     @xmlName("device")
     @ec2QueryName("device")
     Device: String,
@@ -4089,7 +4089,7 @@ structure ImagesSet {
     NiftyDistributionIds: ListOfNiftyDistributionIds,
     @xmlName("niftyImageSize")
     @ec2QueryName("niftyImageSize")
-    NiftyImageSize: Integer,
+    NiftyImageSize: String,
     @xmlName("niftyIsAllowedDistribution")
     @ec2QueryName("niftyIsAllowedDistribution")
     NiftyIsAllowedDistribution: Boolean,
@@ -4145,7 +4145,7 @@ structure BlockDeviceMappingOfDescribeImages {
 structure EbsOfDescribeImages {
     @xmlName("deleteOnTermination")
     @ec2QueryName("deleteOnTermination")
-    DeleteOnTermination: Boolean,
+    DeleteOnTermination: String,
     @xmlName("diskType")
     @ec2QueryName("diskType")
     DiskType: String,
@@ -6384,7 +6384,7 @@ structure NetworkInterfaces {
     Description: String,
     @xmlName("DeviceIndex")
     @ec2QueryName("DeviceIndex")
-    DeviceIndex: Integer,
+    DeviceIndex: String,
     @xmlName("IpAddress")
     @ec2QueryName("IpAddress")
     IpAddress: String,
@@ -10921,13 +10921,13 @@ structure AttachmentOfDescribeNetworkInterfaces {
     AttachmentId: String,
     @xmlName("attachTime")
     @ec2QueryName("attachTime")
-    AttachTime: Timestamp,
+    AttachTime: String,
     @xmlName("deleteOnTermination")
     @ec2QueryName("deleteOnTermination")
-    DeleteOnTermination: Boolean,
+    DeleteOnTermination: String,
     @xmlName("deviceIndex")
     @ec2QueryName("deviceIndex")
-    DeviceIndex: Integer,
+    DeviceIndex: String,
     @xmlName("instanceId")
     @ec2QueryName("instanceId")
     InstanceId: String,
@@ -13691,7 +13691,7 @@ list ListOfInstancesSetOfNiftyCreatePrivateLan {
 structure InstancesSetOfNiftyCreatePrivateLan {
     @xmlName("deviceIndex")
     @ec2QueryName("deviceIndex")
-    DeviceIndex: Integer,
+    DeviceIndex: String,
     @xmlName("instanceId")
     @ec2QueryName("instanceId")
     InstanceId: String,
@@ -13711,7 +13711,7 @@ list ListOfRouterSetOfNiftyCreatePrivateLan {
 structure RouterSetOfNiftyCreatePrivateLan {
     @xmlName("deviceIndex")
     @ec2QueryName("deviceIndex")
-    DeviceIndex: Integer,
+    DeviceIndex: String,
     @xmlName("ipAddress")
     @ec2QueryName("ipAddress")
     IpAddress: String,
@@ -13731,7 +13731,7 @@ list ListOfVpnGatewaySetOfNiftyCreatePrivateLan {
 structure VpnGatewaySetOfNiftyCreatePrivateLan {
     @xmlName("deviceIndex")
     @ec2QueryName("deviceIndex")
-    DeviceIndex: Integer,
+    DeviceIndex: String,
     @xmlName("ipAddress")
     @ec2QueryName("ipAddress")
     IpAddress: String,
@@ -13785,7 +13785,7 @@ list ListOfRemoteAccessVpnGatewaySetOfNiftyCreatePrivateLan {
 structure RemoteAccessVpnGatewaySetOfNiftyCreatePrivateLan {
     @xmlName("deviceIndex")
     @ec2QueryName("deviceIndex")
-    DeviceIndex: Integer,
+    DeviceIndex: String,
     @xmlName("ipAddress")
     @ec2QueryName("ipAddress")
     IpAddress: String,
@@ -13956,7 +13956,7 @@ list ListOfInstancesSetOfNiftyDescribePrivateLans {
 structure InstancesSetOfNiftyDescribePrivateLans {
     @xmlName("deviceIndex")
     @ec2QueryName("deviceIndex")
-    DeviceIndex: Integer,
+    DeviceIndex: String,
     @xmlName("instanceId")
     @ec2QueryName("instanceId")
     InstanceId: String,
@@ -13976,7 +13976,7 @@ list ListOfRouterSetOfNiftyDescribePrivateLans {
 structure RouterSetOfNiftyDescribePrivateLans {
     @xmlName("deviceIndex")
     @ec2QueryName("deviceIndex")
-    DeviceIndex: Integer,
+    DeviceIndex: String,
     @xmlName("ipAddress")
     @ec2QueryName("ipAddress")
     IpAddress: String,
@@ -13996,7 +13996,7 @@ list ListOfVpnGatewaySetOfNiftyDescribePrivateLans {
 structure VpnGatewaySetOfNiftyDescribePrivateLans {
     @xmlName("deviceIndex")
     @ec2QueryName("deviceIndex")
-    DeviceIndex: Integer,
+    DeviceIndex: String,
     @xmlName("ipAddress")
     @ec2QueryName("ipAddress")
     IpAddress: String,
@@ -14030,7 +14030,7 @@ list ListOfRemoteAccessVpnGatewaySetOfNiftyDescribePrivateLans {
 structure RemoteAccessVpnGatewaySetOfNiftyDescribePrivateLans {
     @xmlName("deviceIndex")
     @ec2QueryName("deviceIndex")
-    DeviceIndex: Integer,
+    DeviceIndex: String,
     @xmlName("ipAddress")
     @ec2QueryName("ipAddress")
     IpAddress: String,
@@ -14449,7 +14449,7 @@ structure NetworkInterfaceSetOfNiftyDescribeRouters {
     Description: String,
     @xmlName("deviceIndex")
     @ec2QueryName("deviceIndex")
-    DeviceIndex: Integer,
+    DeviceIndex: String,
     @xmlName("dhcp")
     @ec2QueryName("dhcp")
     Dhcp: Boolean,
@@ -17036,7 +17036,7 @@ structure NetworkInterfaceSetOfDescribeVpnGateways {
     Descriprion: String,
     @xmlName("deviceIndex")
     @ec2QueryName("deviceIndex")
-    DeviceIndex: Integer,
+    DeviceIndex: String,
     @xmlName("ipAddress")
     @ec2QueryName("ipAddress")
     IpAddress: String,
@@ -18837,7 +18837,7 @@ structure Instance {
     Architecture: String,
     @xmlName("blockDeviceMapping")
     @ec2QueryName("blockDeviceMapping")
-    BlockDeviceMapping: ListOfBlockDeviceMappingOfCopyFromBackupInstance,
+    BlockDeviceMapping: ListOfBlockDeviceMapping,
     @xmlName("description")
     @ec2QueryName("description")
     Description: String,
@@ -18933,35 +18933,6 @@ structure Instance {
     VpcId: String,
 }
 
-list ListOfBlockDeviceMappingOfCopyFromBackupInstance {
-    @xmlName("item")
-    member: BlockDeviceMappingOfCopyFromBackupInstance,
-}
-
-structure BlockDeviceMappingOfCopyFromBackupInstance {
-    @xmlName("deviceName")
-    @ec2QueryName("deviceName")
-    DeviceName: String,
-    @xmlName("ebs")
-    @ec2QueryName("ebs")
-    Ebs: EbsOfCopyFromBackupInstance,
-}
-
-structure EbsOfCopyFromBackupInstance {
-    @xmlName("attachTime")
-    @ec2QueryName("attachTime")
-    AttachTime: String,
-    @xmlName("deleteOnTermination")
-    @ec2QueryName("deleteOnTermination")
-    DeleteOnTermination: Boolean,
-    @xmlName("status")
-    @ec2QueryName("status")
-    Status: String,
-    @xmlName("volumeId")
-    @ec2QueryName("volumeId")
-    VolumeId: String,
-}
-
 list ListOfNetworkInterfaceSetOfCopyFromBackupInstance {
     @xmlName("item")
     member: NetworkInterfaceSetOfCopyFromBackupInstance,
@@ -19027,10 +18998,10 @@ structure AttachmentOfCopyFromBackupInstance {
     AttachTime: String,
     @xmlName("deleteOnTermination")
     @ec2QueryName("deleteOnTermination")
-    DeleteOnTermination: Boolean,
+    DeleteOnTermination: String,
     @xmlName("deviceIndex")
     @ec2QueryName("deviceIndex")
-    DeviceIndex: Integer,
+    DeviceIndex: String,
     @xmlName("instanceId")
     @ec2QueryName("instanceId")
     InstanceId: String,
