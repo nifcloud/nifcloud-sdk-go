@@ -7,7 +7,6 @@ import (
 	awsmiddleware "github.com/aws/aws-sdk-go-v2/aws/middleware"
 	"github.com/aws/smithy-go/middleware"
 	smithyhttp "github.com/aws/smithy-go/transport/http"
-	"time"
 )
 
 func (c *Client) DetachVolume(ctx context.Context, params *DetachVolumeInput, optFns ...func(*Options)) (*DetachVolumeOutput, error) {
@@ -42,7 +41,7 @@ type DetachVolumeInput struct {
 }
 
 type DetachVolumeOutput struct {
-	AttachTime *time.Time
+	AttachTime *string
 
 	Device *string
 

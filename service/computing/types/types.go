@@ -255,13 +255,13 @@ type AssociationSetOfNiftyDescribeNatTables struct {
 
 type Attachment struct {
 	
-	AttachTime *time.Time
+	AttachTime *string
 	
 	AttachmentId *string
 	
-	DeleteOnTermination *bool
+	DeleteOnTermination *string
 	
-	DeviceIndex *int32
+	DeviceIndex *string
 	
 	Status *string
 	
@@ -274,9 +274,9 @@ type AttachmentOfCopyFromBackupInstance struct {
 	
 	AttachmentId *string
 	
-	DeleteOnTermination *bool
+	DeleteOnTermination *string
 	
-	DeviceIndex *int32
+	DeviceIndex *string
 	
 	InstanceId *string
 	
@@ -308,13 +308,13 @@ type AttachmentOfCreateNetworkInterface struct {
 
 type AttachmentOfDescribeNetworkInterfaces struct {
 	
-	AttachTime *time.Time
+	AttachTime *string
 	
 	AttachmentId *string
 	
-	DeleteOnTermination *bool
+	DeleteOnTermination *string
 	
-	DeviceIndex *int32
+	DeviceIndex *string
 	
 	InstanceId *string
 	
@@ -331,9 +331,9 @@ type AttachmentOfImportInstance struct {
 	
 	AttachmentID *string
 	
-	DeleteOnTermination *bool
+	DeleteOnTermination *string
 	
-	DeviceIndex *int32
+	DeviceIndex *string
 	
 	Status *string
 	
@@ -346,9 +346,9 @@ type AttachmentOfRunInstances struct {
 	
 	AttachmentID *string
 	
-	DeleteOnTermination *bool
+	DeleteOnTermination *string
 	
-	DeviceIndex *int32
+	DeviceIndex *string
 	
 	Status *string
 	
@@ -357,9 +357,9 @@ type AttachmentOfRunInstances struct {
 
 type AttachmentSet struct {
 	
-	AttachTime *time.Time
+	AttachTime *string
 	
-	DeleteOnTermination *bool
+	DeleteOnTermination *string
 	
 	Device *string
 	
@@ -512,15 +512,6 @@ type BlockDeviceMapping struct {
 	DeviceName *string
 	
 	Ebs *Ebs
-	
-	noSmithyDocumentSerde
-}
-
-type BlockDeviceMappingOfCopyFromBackupInstance struct {
-	
-	DeviceName *string
-	
-	Ebs *EbsOfCopyFromBackupInstance
 	
 	noSmithyDocumentSerde
 }
@@ -993,22 +984,9 @@ type DynamicIpMonthlyRate struct {
 
 type Ebs struct {
 	
-	AttachTime *time.Time
-	
-	DeleteOnTermination *bool
-	
-	Status *string
-	
-	VolumeId *string
-	
-	noSmithyDocumentSerde
-}
-
-type EbsOfCopyFromBackupInstance struct {
-	
 	AttachTime *string
 	
-	DeleteOnTermination *bool
+	DeleteOnTermination *string
 	
 	Status *string
 	
@@ -1019,7 +997,7 @@ type EbsOfCopyFromBackupInstance struct {
 
 type EbsOfDescribeImages struct {
 	
-	DeleteOnTermination *bool
+	DeleteOnTermination *string
 	
 	DiskType *string
 	
@@ -1032,7 +1010,7 @@ type EbsOfDescribeImages struct {
 
 type EbsOfRunInstances struct {
 	
-	DeleteOnTermination *bool
+	DeleteOnTermination *string
 	
 	Status *string
 	
@@ -1327,7 +1305,7 @@ type ImagesSet struct {
 	
 	NiftyDistributionIds []NiftyDistributionIds
 	
-	NiftyImageSize *int32
+	NiftyImageSize *string
 	
 	NiftyIsAllowedDistribution *bool
 	
@@ -1421,7 +1399,7 @@ type Instance struct {
 	
 	Architecture *string
 	
-	BlockDeviceMapping []BlockDeviceMappingOfCopyFromBackupInstance
+	BlockDeviceMapping []BlockDeviceMapping
 	
 	Description *string
 	
@@ -1867,7 +1845,7 @@ type InstancesSetOfDescribeSecurityGroups struct {
 
 type InstancesSetOfNiftyCreatePrivateLan struct {
 	
-	DeviceIndex *int32
+	DeviceIndex *string
 	
 	InstanceId *string
 	
@@ -1906,7 +1884,7 @@ type InstancesSetOfNiftyDescribeAutoScalingGroups struct {
 
 type InstancesSetOfNiftyDescribePrivateLans struct {
 	
-	DeviceIndex *int32
+	DeviceIndex *string
 	
 	InstanceId *string
 	
@@ -2949,7 +2927,7 @@ type NetworkInterfaces struct {
 	
 	Description *string
 	
-	DeviceIndex *int32
+	DeviceIndex *string
 	
 	IpAddress *string
 	
@@ -3149,7 +3127,7 @@ type NetworkInterfaceSetOfDescribeVpnGateways struct {
 	
 	Descriprion *string
 	
-	DeviceIndex *int32
+	DeviceIndex *string
 	
 	IpAddress *string
 	
@@ -3234,7 +3212,7 @@ type NetworkInterfaceSetOfNiftyDescribeRouters struct {
 	
 	Description *string
 	
-	DeviceIndex *int32
+	DeviceIndex *string
 	
 	Dhcp *bool
 	
@@ -3917,7 +3895,7 @@ type RemoteAccessVpnGatewaySet struct {
 
 type RemoteAccessVpnGatewaySetOfNiftyCreatePrivateLan struct {
 	
-	DeviceIndex *int32
+	DeviceIndex *string
 	
 	IpAddress *string
 	
@@ -3930,7 +3908,7 @@ type RemoteAccessVpnGatewaySetOfNiftyCreatePrivateLan struct {
 
 type RemoteAccessVpnGatewaySetOfNiftyDescribePrivateLans struct {
 	
-	DeviceIndex *int32
+	DeviceIndex *string
 	
 	IpAddress *string
 	
@@ -5419,7 +5397,7 @@ type RouterSet struct {
 
 type RouterSetOfNiftyCreatePrivateLan struct {
 	
-	DeviceIndex *int32
+	DeviceIndex *string
 	
 	IpAddress *string
 	
@@ -5432,7 +5410,7 @@ type RouterSetOfNiftyCreatePrivateLan struct {
 
 type RouterSetOfNiftyDescribePrivateLans struct {
 	
-	DeviceIndex *int32
+	DeviceIndex *string
 	
 	IpAddress *string
 	
@@ -6361,7 +6339,7 @@ type VpnGatewaySetOfDescribeVpnGateways struct {
 
 type VpnGatewaySetOfNiftyCreatePrivateLan struct {
 	
-	DeviceIndex *int32
+	DeviceIndex *string
 	
 	IpAddress *string
 	
@@ -6374,7 +6352,7 @@ type VpnGatewaySetOfNiftyCreatePrivateLan struct {
 
 type VpnGatewaySetOfNiftyDescribePrivateLans struct {
 	
-	DeviceIndex *int32
+	DeviceIndex *string
 	
 	IpAddress *string
 	

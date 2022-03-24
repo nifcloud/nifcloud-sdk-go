@@ -7,7 +7,6 @@ import (
 	awsmiddleware "github.com/aws/aws-sdk-go-v2/aws/middleware"
 	"github.com/aws/smithy-go/middleware"
 	smithyhttp "github.com/aws/smithy-go/transport/http"
-	"time"
 )
 
 func (c *Client) AttachVolume(ctx context.Context, params *AttachVolumeInput, optFns ...func(*Options)) (*AttachVolumeOutput, error) {
@@ -39,7 +38,7 @@ type AttachVolumeInput struct {
 }
 
 type AttachVolumeOutput struct {
-	AttachTime *time.Time
+	AttachTime *string
 
 	Device *string
 

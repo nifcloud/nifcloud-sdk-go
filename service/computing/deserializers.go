@@ -19290,9 +19290,7 @@ func awsEc2query_deserializeDocumentAttachment(v **types.Attachment, decoder smi
 				if val == nil { break }
 				{
 					xtv := string(val)
-					t, err := smithytime.ParseDateTime(xtv)
-					if err != nil { return err }
-					sv.AttachTime = ptr.Time(t)
+					sv.AttachTime = ptr.String(xtv)
 				}
 			
 			case strings.EqualFold("deleteOnTermination", t.Name.Local):
@@ -19300,11 +19298,8 @@ func awsEc2query_deserializeDocumentAttachment(v **types.Attachment, decoder smi
 				if err != nil { return err }
 				if val == nil { break }
 				{
-					xtv, err := strconv.ParseBool(string(val))
-					if err != nil {
-						return fmt.Errorf("expected Boolean to be of type *bool, got %T instead", val)
-					}
-					sv.DeleteOnTermination = ptr.Bool(xtv)
+					xtv := string(val)
+					sv.DeleteOnTermination = ptr.String(xtv)
 				}
 			
 			case strings.EqualFold("deviceIndex", t.Name.Local):
@@ -19313,9 +19308,7 @@ func awsEc2query_deserializeDocumentAttachment(v **types.Attachment, decoder smi
 				if val == nil { break }
 				{
 					xtv := string(val)
-					i64, err := strconv.ParseInt(xtv, 10, 64)
-					if err != nil { return err }
-					sv.DeviceIndex = ptr.Int32(int32(i64))
+					sv.DeviceIndex = ptr.String(xtv)
 				}
 			
 			case strings.EqualFold("status", t.Name.Local):
@@ -19380,11 +19373,8 @@ func awsEc2query_deserializeDocumentAttachmentOfCopyFromBackupInstance(v **types
 				if err != nil { return err }
 				if val == nil { break }
 				{
-					xtv, err := strconv.ParseBool(string(val))
-					if err != nil {
-						return fmt.Errorf("expected Boolean to be of type *bool, got %T instead", val)
-					}
-					sv.DeleteOnTermination = ptr.Bool(xtv)
+					xtv := string(val)
+					sv.DeleteOnTermination = ptr.String(xtv)
 				}
 			
 			case strings.EqualFold("deviceIndex", t.Name.Local):
@@ -19393,9 +19383,7 @@ func awsEc2query_deserializeDocumentAttachmentOfCopyFromBackupInstance(v **types
 				if val == nil { break }
 				{
 					xtv := string(val)
-					i64, err := strconv.ParseInt(xtv, 10, 64)
-					if err != nil { return err }
-					sv.DeviceIndex = ptr.Int32(int32(i64))
+					sv.DeviceIndex = ptr.String(xtv)
 				}
 			
 			case strings.EqualFold("instanceId", t.Name.Local):
@@ -19563,9 +19551,7 @@ func awsEc2query_deserializeDocumentAttachmentOfDescribeNetworkInterfaces(v **ty
 				if val == nil { break }
 				{
 					xtv := string(val)
-					t, err := smithytime.ParseDateTime(xtv)
-					if err != nil { return err }
-					sv.AttachTime = ptr.Time(t)
+					sv.AttachTime = ptr.String(xtv)
 				}
 			
 			case strings.EqualFold("deleteOnTermination", t.Name.Local):
@@ -19573,11 +19559,8 @@ func awsEc2query_deserializeDocumentAttachmentOfDescribeNetworkInterfaces(v **ty
 				if err != nil { return err }
 				if val == nil { break }
 				{
-					xtv, err := strconv.ParseBool(string(val))
-					if err != nil {
-						return fmt.Errorf("expected Boolean to be of type *bool, got %T instead", val)
-					}
-					sv.DeleteOnTermination = ptr.Bool(xtv)
+					xtv := string(val)
+					sv.DeleteOnTermination = ptr.String(xtv)
 				}
 			
 			case strings.EqualFold("deviceIndex", t.Name.Local):
@@ -19586,9 +19569,7 @@ func awsEc2query_deserializeDocumentAttachmentOfDescribeNetworkInterfaces(v **ty
 				if val == nil { break }
 				{
 					xtv := string(val)
-					i64, err := strconv.ParseInt(xtv, 10, 64)
-					if err != nil { return err }
-					sv.DeviceIndex = ptr.Int32(int32(i64))
+					sv.DeviceIndex = ptr.String(xtv)
 				}
 			
 			case strings.EqualFold("instanceId", t.Name.Local):
@@ -19671,11 +19652,8 @@ func awsEc2query_deserializeDocumentAttachmentOfImportInstance(v **types.Attachm
 				if err != nil { return err }
 				if val == nil { break }
 				{
-					xtv, err := strconv.ParseBool(string(val))
-					if err != nil {
-						return fmt.Errorf("expected Boolean to be of type *bool, got %T instead", val)
-					}
-					sv.DeleteOnTermination = ptr.Bool(xtv)
+					xtv := string(val)
+					sv.DeleteOnTermination = ptr.String(xtv)
 				}
 			
 			case strings.EqualFold("deviceIndex", t.Name.Local):
@@ -19684,9 +19662,7 @@ func awsEc2query_deserializeDocumentAttachmentOfImportInstance(v **types.Attachm
 				if val == nil { break }
 				{
 					xtv := string(val)
-					i64, err := strconv.ParseInt(xtv, 10, 64)
-					if err != nil { return err }
-					sv.DeviceIndex = ptr.Int32(int32(i64))
+					sv.DeviceIndex = ptr.String(xtv)
 				}
 			
 			case strings.EqualFold("status", t.Name.Local):
@@ -19751,11 +19727,8 @@ func awsEc2query_deserializeDocumentAttachmentOfRunInstances(v **types.Attachmen
 				if err != nil { return err }
 				if val == nil { break }
 				{
-					xtv, err := strconv.ParseBool(string(val))
-					if err != nil {
-						return fmt.Errorf("expected Boolean to be of type *bool, got %T instead", val)
-					}
-					sv.DeleteOnTermination = ptr.Bool(xtv)
+					xtv := string(val)
+					sv.DeleteOnTermination = ptr.String(xtv)
 				}
 			
 			case strings.EqualFold("deviceIndex", t.Name.Local):
@@ -19764,9 +19737,7 @@ func awsEc2query_deserializeDocumentAttachmentOfRunInstances(v **types.Attachmen
 				if val == nil { break }
 				{
 					xtv := string(val)
-					i64, err := strconv.ParseInt(xtv, 10, 64)
-					if err != nil { return err }
-					sv.DeviceIndex = ptr.Int32(int32(i64))
+					sv.DeviceIndex = ptr.String(xtv)
 				}
 			
 			case strings.EqualFold("status", t.Name.Local):
@@ -19814,9 +19785,7 @@ func awsEc2query_deserializeDocumentAttachmentSet(v **types.AttachmentSet, decod
 				if val == nil { break }
 				{
 					xtv := string(val)
-					t, err := smithytime.ParseDateTime(xtv)
-					if err != nil { return err }
-					sv.AttachTime = ptr.Time(t)
+					sv.AttachTime = ptr.String(xtv)
 				}
 			
 			case strings.EqualFold("deleteOnTermination", t.Name.Local):
@@ -19824,11 +19793,8 @@ func awsEc2query_deserializeDocumentAttachmentSet(v **types.AttachmentSet, decod
 				if err != nil { return err }
 				if val == nil { break }
 				{
-					xtv, err := strconv.ParseBool(string(val))
-					if err != nil {
-						return fmt.Errorf("expected Boolean to be of type *bool, got %T instead", val)
-					}
-					sv.DeleteOnTermination = ptr.Bool(xtv)
+					xtv := string(val)
+					sv.DeleteOnTermination = ptr.String(xtv)
 				}
 			
 			case strings.EqualFold("device", t.Name.Local):
@@ -20590,51 +20556,6 @@ func awsEc2query_deserializeDocumentBlockDeviceMapping(v **types.BlockDeviceMapp
 			case strings.EqualFold("ebs", t.Name.Local):
 				nodeDecoder := smithyxml.WrapNodeDecoder(decoder.Decoder, t)
 				if err := awsEc2query_deserializeDocumentEbs(&sv.Ebs, nodeDecoder); err != nil {
-					return err
-				}
-			
-			default:
-				// Do nothing and ignore the unexpected tag element
-				err = decoder.Decoder.Skip()
-				if err != nil { return err }
-			
-		}
-		decoder = originalDecoder
-	}
-	*v = sv
-	return nil
-}
-
-func awsEc2query_deserializeDocumentBlockDeviceMappingOfCopyFromBackupInstance(v **types.BlockDeviceMappingOfCopyFromBackupInstance, decoder smithyxml.NodeDecoder) error {
-	if v == nil {
-		return fmt.Errorf("unexpected nil of type %T", v)
-	}
-	var sv *types.BlockDeviceMappingOfCopyFromBackupInstance
-	if *v == nil {
-		sv = &types.BlockDeviceMappingOfCopyFromBackupInstance{}
-		} else {
-			sv = *v
-		}
-	
-	for {
-		t, done, err := decoder.Token()
-		if err != nil { return err }
-		if done { break }
-		originalDecoder := decoder
-		decoder = smithyxml.WrapNodeDecoder(originalDecoder.Decoder, t)
-		switch {
-			case strings.EqualFold("deviceName", t.Name.Local):
-				val, err := decoder.Value()
-				if err != nil { return err }
-				if val == nil { break }
-				{
-					xtv := string(val)
-					sv.DeviceName = ptr.String(xtv)
-				}
-			
-			case strings.EqualFold("ebs", t.Name.Local):
-				nodeDecoder := smithyxml.WrapNodeDecoder(decoder.Decoder, t)
-				if err := awsEc2query_deserializeDocumentEbsOfCopyFromBackupInstance(&sv.Ebs, nodeDecoder); err != nil {
 					return err
 				}
 			
@@ -23085,77 +23006,6 @@ func awsEc2query_deserializeDocumentEbs(v **types.Ebs, decoder smithyxml.NodeDec
 				if val == nil { break }
 				{
 					xtv := string(val)
-					t, err := smithytime.ParseDateTime(xtv)
-					if err != nil { return err }
-					sv.AttachTime = ptr.Time(t)
-				}
-			
-			case strings.EqualFold("deleteOnTermination", t.Name.Local):
-				val, err := decoder.Value()
-				if err != nil { return err }
-				if val == nil { break }
-				{
-					xtv, err := strconv.ParseBool(string(val))
-					if err != nil {
-						return fmt.Errorf("expected Boolean to be of type *bool, got %T instead", val)
-					}
-					sv.DeleteOnTermination = ptr.Bool(xtv)
-				}
-			
-			case strings.EqualFold("status", t.Name.Local):
-				val, err := decoder.Value()
-				if err != nil { return err }
-				if val == nil { break }
-				{
-					xtv := string(val)
-					sv.Status = ptr.String(xtv)
-				}
-			
-			case strings.EqualFold("volumeId", t.Name.Local):
-				val, err := decoder.Value()
-				if err != nil { return err }
-				if val == nil { break }
-				{
-					xtv := string(val)
-					sv.VolumeId = ptr.String(xtv)
-				}
-			
-			default:
-				// Do nothing and ignore the unexpected tag element
-				err = decoder.Decoder.Skip()
-				if err != nil { return err }
-			
-		}
-		decoder = originalDecoder
-	}
-	*v = sv
-	return nil
-}
-
-func awsEc2query_deserializeDocumentEbsOfCopyFromBackupInstance(v **types.EbsOfCopyFromBackupInstance, decoder smithyxml.NodeDecoder) error {
-	if v == nil {
-		return fmt.Errorf("unexpected nil of type %T", v)
-	}
-	var sv *types.EbsOfCopyFromBackupInstance
-	if *v == nil {
-		sv = &types.EbsOfCopyFromBackupInstance{}
-		} else {
-			sv = *v
-		}
-	
-	for {
-		t, done, err := decoder.Token()
-		if err != nil { return err }
-		if done { break }
-		originalDecoder := decoder
-		decoder = smithyxml.WrapNodeDecoder(originalDecoder.Decoder, t)
-		switch {
-			case strings.EqualFold("attachTime", t.Name.Local):
-				val, err := decoder.Value()
-				if err != nil { return err }
-				if val == nil { break }
-				{
-					xtv := string(val)
 					sv.AttachTime = ptr.String(xtv)
 				}
 			
@@ -23164,11 +23014,8 @@ func awsEc2query_deserializeDocumentEbsOfCopyFromBackupInstance(v **types.EbsOfC
 				if err != nil { return err }
 				if val == nil { break }
 				{
-					xtv, err := strconv.ParseBool(string(val))
-					if err != nil {
-						return fmt.Errorf("expected Boolean to be of type *bool, got %T instead", val)
-					}
-					sv.DeleteOnTermination = ptr.Bool(xtv)
+					xtv := string(val)
+					sv.DeleteOnTermination = ptr.String(xtv)
 				}
 			
 			case strings.EqualFold("status", t.Name.Local):
@@ -23224,11 +23071,8 @@ func awsEc2query_deserializeDocumentEbsOfDescribeImages(v **types.EbsOfDescribeI
 				if err != nil { return err }
 				if val == nil { break }
 				{
-					xtv, err := strconv.ParseBool(string(val))
-					if err != nil {
-						return fmt.Errorf("expected Boolean to be of type *bool, got %T instead", val)
-					}
-					sv.DeleteOnTermination = ptr.Bool(xtv)
+					xtv := string(val)
+					sv.DeleteOnTermination = ptr.String(xtv)
 				}
 			
 			case strings.EqualFold("diskType", t.Name.Local):
@@ -23295,11 +23139,8 @@ func awsEc2query_deserializeDocumentEbsOfRunInstances(v **types.EbsOfRunInstance
 				if err != nil { return err }
 				if val == nil { break }
 				{
-					xtv, err := strconv.ParseBool(string(val))
-					if err != nil {
-						return fmt.Errorf("expected Boolean to be of type *bool, got %T instead", val)
-					}
-					sv.DeleteOnTermination = ptr.Bool(xtv)
+					xtv := string(val)
+					sv.DeleteOnTermination = ptr.String(xtv)
 				}
 			
 			case strings.EqualFold("status", t.Name.Local):
@@ -24795,9 +24636,7 @@ func awsEc2query_deserializeDocumentImagesSet(v **types.ImagesSet, decoder smith
 				if val == nil { break }
 				{
 					xtv := string(val)
-					i64, err := strconv.ParseInt(xtv, 10, 64)
-					if err != nil { return err }
-					sv.NiftyImageSize = ptr.Int32(int32(i64))
+					sv.NiftyImageSize = ptr.String(xtv)
 				}
 			
 			case strings.EqualFold("niftyIsAllowedDistribution", t.Name.Local):
@@ -25260,7 +25099,7 @@ func awsEc2query_deserializeDocumentInstance(v **types.Instance, decoder smithyx
 			
 			case strings.EqualFold("blockDeviceMapping", t.Name.Local):
 				nodeDecoder := smithyxml.WrapNodeDecoder(decoder.Decoder, t)
-				if err := awsEc2query_deserializeDocumentListOfBlockDeviceMappingOfCopyFromBackupInstance(&sv.BlockDeviceMapping, nodeDecoder); err != nil {
+				if err := awsEc2query_deserializeDocumentListOfBlockDeviceMapping(&sv.BlockDeviceMapping, nodeDecoder); err != nil {
 					return err
 				}
 			
@@ -27367,9 +27206,7 @@ func awsEc2query_deserializeDocumentInstancesSetOfNiftyCreatePrivateLan(v **type
 				if val == nil { break }
 				{
 					xtv := string(val)
-					i64, err := strconv.ParseInt(xtv, 10, 64)
-					if err != nil { return err }
-					sv.DeviceIndex = ptr.Int32(int32(i64))
+					sv.DeviceIndex = ptr.String(xtv)
 				}
 			
 			case strings.EqualFold("instanceId", t.Name.Local):
@@ -27566,9 +27403,7 @@ func awsEc2query_deserializeDocumentInstancesSetOfNiftyDescribePrivateLans(v **t
 				if val == nil { break }
 				{
 					xtv := string(val)
-					i64, err := strconv.ParseInt(xtv, 10, 64)
-					if err != nil { return err }
-					sv.DeviceIndex = ptr.Int32(int32(i64))
+					sv.DeviceIndex = ptr.String(xtv)
 				}
 			
 			case strings.EqualFold("instanceId", t.Name.Local):
@@ -31121,67 +30956,6 @@ func awsEc2query_deserializeDocumentListOfBlockDeviceMappingUnwrapped(v *[]types
 		nodeDecoder := smithyxml.WrapNodeDecoder(decoder.Decoder, t)
 		destAddr := &mv
 		if err := awsEc2query_deserializeDocumentBlockDeviceMapping(&destAddr, nodeDecoder); err != nil {
-			return err
-		}
-		mv = *destAddr
-		sv = append(sv, mv)
-	}
-	*v = sv
-	return nil
-}
-func awsEc2query_deserializeDocumentListOfBlockDeviceMappingOfCopyFromBackupInstance(v *[]types.BlockDeviceMappingOfCopyFromBackupInstance, decoder smithyxml.NodeDecoder) error {
-	if v == nil {
-		return fmt.Errorf("unexpected nil of type %T", v)
-	}
-	var sv []types.BlockDeviceMappingOfCopyFromBackupInstance
-	if *v == nil {
-		sv = make([]types.BlockDeviceMappingOfCopyFromBackupInstance, 0)
-		} else {
-			sv = *v
-		}
-	
-	originalDecoder := decoder
-	for {
-		t, done, err := decoder.Token()
-		if err != nil { return err }
-		if done { break }
-		switch {
-			case strings.EqualFold("item", t.Name.Local):
-				var col types.BlockDeviceMappingOfCopyFromBackupInstance
-				nodeDecoder := smithyxml.WrapNodeDecoder(decoder.Decoder, t)
-				destAddr := &col
-				if err := awsEc2query_deserializeDocumentBlockDeviceMappingOfCopyFromBackupInstance(&destAddr, nodeDecoder); err != nil {
-					return err
-				}
-				col = *destAddr
-				sv = append(sv, col)
-			
-			default:
-				err = decoder.Decoder.Skip()
-				if err != nil { return err }
-			
-		}
-		decoder = originalDecoder
-	}
-	*v = sv
-	return nil
-}
-
-func awsEc2query_deserializeDocumentListOfBlockDeviceMappingOfCopyFromBackupInstanceUnwrapped(v *[]types.BlockDeviceMappingOfCopyFromBackupInstance, decoder smithyxml.NodeDecoder) error {
-	var sv []types.BlockDeviceMappingOfCopyFromBackupInstance
-	if *v == nil {
-		sv = make([]types.BlockDeviceMappingOfCopyFromBackupInstance, 0)
-		} else {
-			sv = *v
-		}
-	
-	 switch { default:
-		var mv types.BlockDeviceMappingOfCopyFromBackupInstance
-		t := decoder.StartEl
-		_ = t
-		nodeDecoder := smithyxml.WrapNodeDecoder(decoder.Decoder, t)
-		destAddr := &mv
-		if err := awsEc2query_deserializeDocumentBlockDeviceMappingOfCopyFromBackupInstance(&destAddr, nodeDecoder); err != nil {
 			return err
 		}
 		mv = *destAddr
@@ -44400,9 +44174,7 @@ func awsEc2query_deserializeDocumentNetworkInterfaces(v **types.NetworkInterface
 				if val == nil { break }
 				{
 					xtv := string(val)
-					i64, err := strconv.ParseInt(xtv, 10, 64)
-					if err != nil { return err }
-					sv.DeviceIndex = ptr.Int32(int32(i64))
+					sv.DeviceIndex = ptr.String(xtv)
 				}
 			
 			case strings.EqualFold("IpAddress", t.Name.Local):
@@ -45296,9 +45068,7 @@ func awsEc2query_deserializeDocumentNetworkInterfaceSetOfDescribeVpnGateways(v *
 				if val == nil { break }
 				{
 					xtv := string(val)
-					i64, err := strconv.ParseInt(xtv, 10, 64)
-					if err != nil { return err }
-					sv.DeviceIndex = ptr.Int32(int32(i64))
+					sv.DeviceIndex = ptr.String(xtv)
 				}
 			
 			case strings.EqualFold("ipAddress", t.Name.Local):
@@ -45715,9 +45485,7 @@ func awsEc2query_deserializeDocumentNetworkInterfaceSetOfNiftyDescribeRouters(v 
 				if val == nil { break }
 				{
 					xtv := string(val)
-					i64, err := strconv.ParseInt(xtv, 10, 64)
-					if err != nil { return err }
-					sv.DeviceIndex = ptr.Int32(int32(i64))
+					sv.DeviceIndex = ptr.String(xtv)
 				}
 			
 			case strings.EqualFold("dhcp", t.Name.Local):
@@ -49175,9 +48943,7 @@ func awsEc2query_deserializeDocumentRemoteAccessVpnGatewaySetOfNiftyCreatePrivat
 				if val == nil { break }
 				{
 					xtv := string(val)
-					i64, err := strconv.ParseInt(xtv, 10, 64)
-					if err != nil { return err }
-					sv.DeviceIndex = ptr.Int32(int32(i64))
+					sv.DeviceIndex = ptr.String(xtv)
 				}
 			
 			case strings.EqualFold("ipAddress", t.Name.Local):
@@ -49243,9 +49009,7 @@ func awsEc2query_deserializeDocumentRemoteAccessVpnGatewaySetOfNiftyDescribePriv
 				if val == nil { break }
 				{
 					xtv := string(val)
-					i64, err := strconv.ParseInt(xtv, 10, 64)
-					if err != nil { return err }
-					sv.DeviceIndex = ptr.Int32(int32(i64))
+					sv.DeviceIndex = ptr.String(xtv)
 				}
 			
 			case strings.EqualFold("ipAddress", t.Name.Local):
@@ -50286,9 +50050,7 @@ func awsEc2query_deserializeDocumentRouterSetOfNiftyCreatePrivateLan(v **types.R
 				if val == nil { break }
 				{
 					xtv := string(val)
-					i64, err := strconv.ParseInt(xtv, 10, 64)
-					if err != nil { return err }
-					sv.DeviceIndex = ptr.Int32(int32(i64))
+					sv.DeviceIndex = ptr.String(xtv)
 				}
 			
 			case strings.EqualFold("ipAddress", t.Name.Local):
@@ -50354,9 +50116,7 @@ func awsEc2query_deserializeDocumentRouterSetOfNiftyDescribePrivateLans(v **type
 				if val == nil { break }
 				{
 					xtv := string(val)
-					i64, err := strconv.ParseInt(xtv, 10, 64)
-					if err != nil { return err }
-					sv.DeviceIndex = ptr.Int32(int32(i64))
+					sv.DeviceIndex = ptr.String(xtv)
 				}
 			
 			case strings.EqualFold("ipAddress", t.Name.Local):
@@ -55039,9 +54799,7 @@ func awsEc2query_deserializeDocumentVpnGatewaySetOfNiftyCreatePrivateLan(v **typ
 				if val == nil { break }
 				{
 					xtv := string(val)
-					i64, err := strconv.ParseInt(xtv, 10, 64)
-					if err != nil { return err }
-					sv.DeviceIndex = ptr.Int32(int32(i64))
+					sv.DeviceIndex = ptr.String(xtv)
 				}
 			
 			case strings.EqualFold("ipAddress", t.Name.Local):
@@ -55107,9 +54865,7 @@ func awsEc2query_deserializeDocumentVpnGatewaySetOfNiftyDescribePrivateLans(v **
 				if val == nil { break }
 				{
 					xtv := string(val)
-					i64, err := strconv.ParseInt(xtv, 10, 64)
-					if err != nil { return err }
-					sv.DeviceIndex = ptr.Int32(int32(i64))
+					sv.DeviceIndex = ptr.String(xtv)
 				}
 			
 			case strings.EqualFold("ipAddress", t.Name.Local):
@@ -55709,9 +55465,7 @@ func awsEc2query_deserializeOpDocumentAttachVolumeOutput(v **AttachVolumeOutput,
 				if val == nil { break }
 				{
 					xtv := string(val)
-					t, err := smithytime.ParseDateTime(xtv)
-					if err != nil { return err }
-					sv.AttachTime = ptr.Time(t)
+					sv.AttachTime = ptr.String(xtv)
 				}
 			
 			case strings.EqualFold("device", t.Name.Local):
@@ -59806,9 +59560,7 @@ func awsEc2query_deserializeOpDocumentDetachVolumeOutput(v **DetachVolumeOutput,
 				if val == nil { break }
 				{
 					xtv := string(val)
-					t, err := smithytime.ParseDateTime(xtv)
-					if err != nil { return err }
-					sv.AttachTime = ptr.Time(t)
+					sv.AttachTime = ptr.String(xtv)
 				}
 			
 			case strings.EqualFold("device", t.Name.Local):
