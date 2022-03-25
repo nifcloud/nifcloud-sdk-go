@@ -1,5 +1,14 @@
 # Changelog
 
+## [v1.15.0](https://github.com/nifcloud/nifcloud-sdk-go/tree/v1.15.0) (2022-03-24)
+
+[Full Changelog](https://github.com/nifcloud/nifcloud-sdk-go/compare/v1.14.0...v1.15.0)
+
+**Merged pull requests:**
+
+- Update model [\#40](https://github.com/nifcloud/nifcloud-sdk-go/pull/40) ([fuku2014](https://github.com/fuku2014))
+- Fix hatoba LoadBalancing [\#39](https://github.com/nifcloud/nifcloud-sdk-go/pull/39) ([fuku2014](https://github.com/fuku2014))
+
 ## [v1.14.0](https://github.com/nifcloud/nifcloud-sdk-go/tree/v1.14.0) (2022-03-03)
 
 [Full Changelog](https://github.com/nifcloud/nifcloud-sdk-go/compare/v1.13.1...v1.14.0)
