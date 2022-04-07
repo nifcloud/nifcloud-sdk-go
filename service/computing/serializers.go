@@ -1209,7 +1209,7 @@ func (m *awsEc2query_serializeOpCreateImageOperation) HandleSerialize(ctx contex
 	bodyWriter := bytes.NewBuffer(nil)
 	bodyEncoder := query.NewEncoder(bodyWriter)
 	body := bodyEncoder.Object()
-	body.Key("Action").String("CreateImageOperation")
+	body.Key("Action").String("CreateImage")
 	body.Key("Version").String("3.0")
 
 	if err := awsEc2query_serializeOpDocumentCreateImageOperationInput(input, bodyEncoder.Value); err != nil {
@@ -5685,7 +5685,7 @@ func (m *awsEc2query_serializeOpImportInstanceOperation) HandleSerialize(ctx con
 	bodyWriter := bytes.NewBuffer(nil)
 	bodyEncoder := query.NewEncoder(bodyWriter)
 	body := bodyEncoder.Object()
-	body.Key("Action").String("ImportInstanceOperation")
+	body.Key("Action").String("ImportInstance")
 	body.Key("Version").String("3.0")
 
 	if err := awsEc2query_serializeOpDocumentImportInstanceOperationInput(input, bodyEncoder.Value); err != nil {
