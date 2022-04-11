@@ -168,6 +168,11 @@ func rewriteSerializersFile(path string) error {
 		"}/:": "}:",
 	})
 
+	// remove Operation suffix
+	replaces = append(replaces, map[string]string{
+		`Operation"`: `"`,
+	})
+
 	serviceName := filepath.Base(filepath.Dir(path))
 	if serviceName == "computing" {
 		// computing api path is `/api/`

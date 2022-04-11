@@ -1145,7 +1145,7 @@ func (m *awsAwsquery_serializeOpDescribeDBLogFilesOperation) HandleSerialize(ctx
 	bodyWriter := bytes.NewBuffer(nil)
 	bodyEncoder := query.NewEncoder(bodyWriter)
 	body := bodyEncoder.Object()
-	body.Key("Action").String("DescribeDBLogFilesOperation")
+	body.Key("Action").String("DescribeDBLogFiles")
 	body.Key("Version").String("2013-05-15N2013-12-16")
 
 	if err := awsAwsquery_serializeOpDocumentDescribeDBLogFilesOperationInput(input, bodyEncoder.Value); err != nil {
