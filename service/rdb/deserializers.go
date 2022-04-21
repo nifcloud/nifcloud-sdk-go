@@ -1782,7 +1782,7 @@ func (m *awsAwsquery_deserializeOpDescribeDBLogFilesOperation) HandleDeserialize
 	}
 
 	decoder := smithyxml.WrapNodeDecoder(rootDecoder, t)
-	t, err = decoder.GetElement("DescribeDBLogFilesOperationResult")
+	t, err = decoder.GetElement("DescribeDBLogFilesResult")
 	if err != nil {
 		var snapshot bytes.Buffer
 		io.Copy(&snapshot, ringBuffer)

@@ -55,8 +55,11 @@ func main() {
 			if err := rewriteSerializersFile(path); err != nil {
 				panic(err)
 			}
+		} else if isDeserializersFile(filename) {
+			if err := rewriteDeserializersFile(path); err != nil {
+				panic(err)
+			}
 		}
-
 		return nil
 	})
 }
@@ -79,6 +82,10 @@ func isEndpointFile(filename string) bool {
 
 func isSerializersFile(filename string) bool {
 	return filename == "serializers.go"
+}
+
+func isDeserializersFile(filename string) bool {
+	return filename == "deserializers.go"
 }
 
 func rewrite(path string, imports []map[string]string, replaces []map[string]string, appends ...string) error {
@@ -243,6 +250,18 @@ func rewriteSerializersFile(path string) error {
 				"smithytime.FormatDateTime\\(": "serializers.FormatGetMetricStatisticsDateTime(reflect.ValueOf(*v).Type().Name(),",
 			})
 	}
+
+	return rewrite(path, imports, replaces)
+}
+
+func rewriteDeserializersFile(path string) error {
+	imports := []map[string]string{}
+	replaces := []map[string]string{}
+
+	// remove Operation suffix
+	replaces = append(replaces, map[string]string{
+		"OperationResult": "Result",
+	})
 
 	return rewrite(path, imports, replaces)
 }
