@@ -58,8 +58,15 @@ func main() {
 		} else if isDeserializersFile(filename) {
 			if err := rewriteDeserializersFile(path); err != nil {
 				panic(err)
+
+			}
+		} else if isS3File(filename) {
+			if err := rewriteS3File(path); err != nil {
+				panic(err)
+
 			}
 		}
+
 		return nil
 	})
 }
@@ -86,6 +93,20 @@ func isSerializersFile(filename string) bool {
 
 func isDeserializersFile(filename string) bool {
 	return filename == "deserializers.go"
+}
+
+func isS3File(filename string) bool {
+	return filename == "update_endpoint.go" ||
+		filename == "signer_wrapper.go" ||
+		filename == "credentials.go" ||
+		filename == "time.go" ||
+		filename == "v4a.go" ||
+		filename == "process_arn_resource.go" ||
+		filename == "presign_middleware.go" ||
+		filename == "endpoint_error.go" ||
+		filename == "resource_request.go" ||
+		filename == "arn_parser.go" ||
+		filename == "header_rules.go"
 }
 
 func rewrite(path string, imports []map[string]string, replaces []map[string]string, appends ...string) error {
@@ -140,7 +161,9 @@ func rewrite(path string, imports []map[string]string, replaces []map[string]str
 
 func rewriteAPIFile(path string) error {
 	imports := []map[string]string{}
-	replaces := []map[string]string{}
+	replaces := []map[string]string{
+		{"github.com/aws/aws-sdk-go-v2/service/s3/internal/customizations": "github.com/nifcloud/nifcloud-sdk-go/service/storage/internal/customizations"},
+	}
 
 	var signVersion int
 	serviceName := filepath.Base(filepath.Dir(path))
@@ -255,7 +278,9 @@ func rewriteSerializersFile(path string) error {
 }
 
 func rewriteDeserializersFile(path string) error {
-	imports := []map[string]string{}
+	imports := []map[string]string{
+		{"github.com/aws/aws-sdk-go-v2/service/internal/s3shared": "github.com/nifcloud/nifcloud-sdk-go/service/internal/s3shared"},
+	}
 	replaces := []map[string]string{}
 
 	// remove Operation suffix
@@ -266,10 +291,42 @@ func rewriteDeserializersFile(path string) error {
 	return rewrite(path, imports, replaces)
 }
 
+func rewriteS3File(path string) error {
+	imports := []map[string]string{
+		{"github.com/aws/aws-sdk-go-v2/service/internal/s3shared": "github.com/nifcloud/nifcloud-sdk-go/service/internal/s3shared"},
+		{"github.com/aws/aws-sdk-go-v2/service/internal/s3shared/arn": "github.com/nifcloud/nifcloud-sdk-go/service/internal/s3shared/arn"},
+		{"github.com/aws/aws-sdk-go-v2/service/s3/internal/endpoints": "github.com/nifcloud/nifcloud-sdk-go/service/storage/internal/endpoints"},
+		{"github.com/aws/aws-sdk-go-v2/internal/v4a": "github.com/nifcloud/nifcloud-sdk-go/internal/v4a"},
+		{"github.com/aws/aws-sdk-go-v2/service/s3/internal/arn": "github.com/nifcloud/nifcloud-sdk-go/service/storage/internal/arn"},
+		{"github.com/aws/aws-sdk-go-v2/internal/v4a/internal/v4": "github.com/nifcloud/nifcloud-sdk-go/internal/v4a/internal/v4"},
+		{"github.com/aws/aws-sdk-go-v2/internal/v4a/internal/crypto": "github.com/nifcloud/nifcloud-sdk-go/internal/v4a/internal/crypto"},
+		{"github.com/aws/aws-sdk-go-v2/internal/sdk": "github.com/nifcloud/nifcloud-sdk-go/internal/sdk"},
+		{"github.com/aws/aws-sdk-go-v2/internal/strings": "github.com/nifcloud/nifcloud-sdk-go/internal/strings"},
+	}
+	replaces := []map[string]string{}
+
+	return rewrite(path, imports, replaces)
+}
+
+func rewriteUpdateEndpointFile(path string) error {
+	imports := []map[string]string{
+		{"github.com/aws/aws-sdk-go-v2/service/internal/s3shared": "github.com/nifcloud/nifcloud-sdk-go/service/internal/s3shared"},
+		{"github.com/aws/aws-sdk-go-v2/service/s3/internal/endpoints": "github.com/nifcloud/nifcloud-sdk-go/service/storage/internal/endpoints"},
+	}
+	replaces := []map[string]string{}
+
+	return rewrite(path, imports, replaces)
+}
+
 func rewriteServiceFile(path string) error {
 	imports := []map[string]string{
 		{"": "github.com/nifcloud/nifcloud-sdk-go/nifcloud"},
 		{"github.com/aws/aws-sdk-go-v2/internal/configsources": "github.com/nifcloud/nifcloud-sdk-go/internal/configsources"},
+		{"github.com/aws/aws-sdk-go-v2/service/internal/accept-encoding": "github.com/nifcloud/nifcloud-sdk-go/service/internal/accept-encoding"},
+		{"github.com/aws/aws-sdk-go-v2/service/internal/s3shared": "github.com/nifcloud/nifcloud-sdk-go/service/internal/s3shared"},
+		{"github.com/aws/aws-sdk-go-v2/service/internal/s3shared/config": "github.com/nifcloud/nifcloud-sdk-go/service/internal/s3shared/config"},
+		{"github.com/aws/aws-sdk-go-v2/internal/v4a": "github.com/nifcloud/nifcloud-sdk-go/internal/v4a"},
+		{"github.com/aws/aws-sdk-go-v2/service/s3/internal/customizations": "github.com/nifcloud/nifcloud-sdk-go/service/storage/internal/customizations"},
 	}
 	replaces := []map[string]string{
 		{"aws.Config": "nifcloud.Config"},

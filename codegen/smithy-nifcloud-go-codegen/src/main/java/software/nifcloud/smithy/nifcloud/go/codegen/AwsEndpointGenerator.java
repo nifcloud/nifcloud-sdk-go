@@ -50,7 +50,7 @@ public final class AwsEndpointGenerator implements GoIntegration {
             TriConsumer<String, String, Consumer<GoWriter>> writerFactory
     ) {
         String serviceId = settings.getService(model).expectTrait(ServiceTrait.class).getSdkId();
-        boolean generateQueryHelpers = serviceId.equalsIgnoreCase("S3")
+        boolean generateQueryHelpers = serviceId.equalsIgnoreCase("storage")
                                        || serviceId.equalsIgnoreCase("EventBridge");
 
         EndpointGenerator.builder()

@@ -34,7 +34,7 @@ public class S3ControlEndpointResolver implements GoIntegration {
                 .settings(settings)
                 .model(model)
                 .writerFactory(writerFactory)
-                .sdkID("S3")
+                .sdkID("storage")
                 .endpointPrefix("s3")
                 .arnNamespace("s3")
                 .internalOnly(true)

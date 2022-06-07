@@ -670,7 +670,7 @@ public class AwsHttpPresignURLClientGenerator implements GoIntegration {
 
     private final boolean isS3ServiceShape(Model model, ServiceShape service) {
         String serviceId = service.expectTrait(ServiceTrait.class).getSdkId();
-        return serviceId.equalsIgnoreCase("S3");
+        return serviceId.equalsIgnoreCase("storage");
     }
 }
 

@@ -75,6 +75,6 @@ public class AWSResponseErrorWrapper implements GoIntegration {
     // returns true if service is either s3 or s3 control and needs s3 customization
     private static boolean requiresS3Customization(Model model, ServiceShape service) {
         String serviceId= service.expectTrait(ServiceTrait.class).getSdkId();
-        return serviceId.equalsIgnoreCase("S3") || serviceId.equalsIgnoreCase("S3 Control");
+        return serviceId.equalsIgnoreCase("storage") || serviceId.equalsIgnoreCase("S3 Control");
     }
 }

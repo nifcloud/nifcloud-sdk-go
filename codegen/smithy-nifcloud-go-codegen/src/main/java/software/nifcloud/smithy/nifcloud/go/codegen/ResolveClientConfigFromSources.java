@@ -199,7 +199,7 @@ public class ResolveClientConfigFromSources implements GoIntegration {
     }
 
     private static boolean isS3Service(Model model, ServiceShape service) {
-        return service.expectTrait(ServiceTrait.class).getSdkId().equalsIgnoreCase("S3");
+        return service.expectTrait(ServiceTrait.class).getSdkId().equalsIgnoreCase("storage");
     }
 
     private static boolean isS3ControlService(Model model, ServiceShape service) {

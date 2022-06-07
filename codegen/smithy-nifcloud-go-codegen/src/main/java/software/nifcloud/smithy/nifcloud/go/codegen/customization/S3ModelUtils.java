@@ -36,7 +36,7 @@ public final class S3ModelUtils {
      * @return true if service is S3
      */
     public static boolean isServiceS3(Model model, ServiceShape service) {
-        return service.expectTrait(ServiceTrait.class).getSdkId().equalsIgnoreCase("S3");
+        return service.expectTrait(ServiceTrait.class).getSdkId().equalsIgnoreCase("storage");
     }
 
     /**

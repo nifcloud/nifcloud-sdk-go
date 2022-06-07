@@ -37,7 +37,7 @@ public class S3SignatureVersion4a implements GoIntegration {
      */
     private static boolean isS3Service(Model model, ServiceShape service) {
         String serviceId = service.expectTrait(ServiceTrait.class).getSdkId();
-        return serviceId.equalsIgnoreCase("S3");
+        return serviceId.equalsIgnoreCase("storage");
     }
 
     private static final List<String> DISABLE_URI_PATH_ESCAPE = ListUtils.of("com.amazonaws.s3#AmazonS3");
