@@ -691,6 +691,26 @@ func (m *validateOpStopReplication) HandleInitialize(ctx context.Context, in mid
 	return next.HandleInitialize(ctx, in)
 }
 
+type validateOpUpgradeDBEngineVersion struct {
+}
+
+func (*validateOpUpgradeDBEngineVersion) ID() string {
+	return "OperationInputValidation"
+}
+
+func (m *validateOpUpgradeDBEngineVersion) HandleInitialize(ctx context.Context, in middleware.InitializeInput, next middleware.InitializeHandler) (
+	out middleware.InitializeOutput, metadata middleware.Metadata, err error,
+) {
+	input, ok := in.Parameters.(*UpgradeDBEngineVersionInput)
+	if !ok {
+		return out, metadata, fmt.Errorf("unknown input parameters type %T", in.Parameters)
+	}
+	if err := validateOpUpgradeDBEngineVersionInput(input); err != nil {
+		return out, metadata, err
+	}
+	return next.HandleInitialize(ctx, in)
+}
+
 func addOpAddSourceIdentifierToSubscriptionValidationMiddleware(stack *middleware.Stack) error {
 	return stack.Initialize.Add(&validateOpAddSourceIdentifierToSubscription{}, middleware.After)
 }
@@ -825,6 +845,10 @@ func addOpStartReplicationValidationMiddleware(stack *middleware.Stack) error {
 
 func addOpStopReplicationValidationMiddleware(stack *middleware.Stack) error {
 	return stack.Initialize.Add(&validateOpStopReplication{}, middleware.After)
+}
+
+func addOpUpgradeDBEngineVersionValidationMiddleware(stack *middleware.Stack) error {
+	return stack.Initialize.Add(&validateOpUpgradeDBEngineVersion{}, middleware.After)
 }
 
 func validateListOfRequestDimensions(v []types.RequestDimensions) error {
@@ -1485,6 +1509,24 @@ func validateOpStopReplicationInput(v *StopReplicationInput) error {
 	invalidParams := smithy.InvalidParamsError{Context: "StopReplicationInput"}
 	if v.DBInstanceIdentifier == nil {
 	invalidParams.Add(smithy.NewErrParamRequired("DBInstanceIdentifier"))
+	}
+	if invalidParams.Len() > 0 {
+	return invalidParams
+	} else {
+	return nil
+	}
+}
+
+func validateOpUpgradeDBEngineVersionInput(v *UpgradeDBEngineVersionInput) error {
+	if v == nil {
+		return nil
+	}
+	invalidParams := smithy.InvalidParamsError{Context: "UpgradeDBEngineVersionInput"}
+	if v.DBInstanceIdentifier == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("DBInstanceIdentifier"))
+	}
+	if v.EngineVersion == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("EngineVersion"))
 	}
 	if invalidParams.Len() > 0 {
 	return invalidParams

@@ -42186,13 +42186,13 @@ func awsEc2query_deserializeDocumentListOfLogSetUnwrapped(v *[]types.LogSet, dec
 	*v = sv
 	return nil
 }
-func awsEc2query_deserializeDocumentListOfMessageSet(v *[]string, decoder smithyxml.NodeDecoder) error {
+func awsEc2query_deserializeDocumentListOfMessageSet(v *[]types.MessageSet, decoder smithyxml.NodeDecoder) error {
 	if v == nil {
 		return fmt.Errorf("unexpected nil of type %T", v)
 	}
-	var sv []string
+	var sv []types.MessageSet
 	if *v == nil {
-		sv = make([]string, 0)
+		sv = make([]types.MessageSet, 0)
 	} else {
 		sv = *v
 	}
@@ -42206,22 +42206,15 @@ func awsEc2query_deserializeDocumentListOfMessageSet(v *[]string, decoder smithy
 		if done {
 			break
 		}
-		memberDecoder := smithyxml.WrapNodeDecoder(decoder.Decoder, t)
-		decoder = memberDecoder
 		switch {
 		case strings.EqualFold("item", t.Name.Local):
-			var col string
-			val, err := decoder.Value()
-			if err != nil {
+			var col types.MessageSet
+			nodeDecoder := smithyxml.WrapNodeDecoder(decoder.Decoder, t)
+			destAddr := &col
+			if err := awsEc2query_deserializeDocumentMessageSet(&destAddr, nodeDecoder); err != nil {
 				return err
 			}
-			if val == nil {
-				break
-			}
-			{
-				xtv := string(val)
-				col = xtv
-			}
+			col = *destAddr
 			sv = append(sv, col)
 
 		default:
@@ -42237,30 +42230,25 @@ func awsEc2query_deserializeDocumentListOfMessageSet(v *[]string, decoder smithy
 	return nil
 }
 
-func awsEc2query_deserializeDocumentListOfMessageSetUnwrapped(v *[]string, decoder smithyxml.NodeDecoder) error {
-	var sv []string
+func awsEc2query_deserializeDocumentListOfMessageSetUnwrapped(v *[]types.MessageSet, decoder smithyxml.NodeDecoder) error {
+	var sv []types.MessageSet
 	if *v == nil {
-		sv = make([]string, 0)
+		sv = make([]types.MessageSet, 0)
 	} else {
 		sv = *v
 	}
 
 	switch {
 	default:
-		var mv string
+		var mv types.MessageSet
 		t := decoder.StartEl
 		_ = t
-		val, err := decoder.Value()
-		if err != nil {
+		nodeDecoder := smithyxml.WrapNodeDecoder(decoder.Decoder, t)
+		destAddr := &mv
+		if err := awsEc2query_deserializeDocumentMessageSet(&destAddr, nodeDecoder); err != nil {
 			return err
 		}
-		if val == nil {
-			break
-		}
-		{
-			xtv := string(val)
-			mv = xtv
-		}
+		mv = *destAddr
 		sv = append(sv, mv)
 	}
 	*v = sv
@@ -49989,6 +49977,55 @@ func awsEc2query_deserializeDocumentLogSet(v **types.LogSet, decoder smithyxml.N
 					return err
 				}
 				sv.Time = ptr.Time(t)
+			}
+
+		default:
+			// Do nothing and ignore the unexpected tag element
+			err = decoder.Decoder.Skip()
+			if err != nil {
+				return err
+			}
+
+		}
+		decoder = originalDecoder
+	}
+	*v = sv
+	return nil
+}
+
+func awsEc2query_deserializeDocumentMessageSet(v **types.MessageSet, decoder smithyxml.NodeDecoder) error {
+	if v == nil {
+		return fmt.Errorf("unexpected nil of type %T", v)
+	}
+	var sv *types.MessageSet
+	if *v == nil {
+		sv = &types.MessageSet{}
+	} else {
+		sv = *v
+	}
+
+	for {
+		t, done, err := decoder.Token()
+		if err != nil {
+			return err
+		}
+		if done {
+			break
+		}
+		originalDecoder := decoder
+		decoder = smithyxml.WrapNodeDecoder(originalDecoder.Decoder, t)
+		switch {
+		case strings.EqualFold("message", t.Name.Local):
+			val, err := decoder.Value()
+			if err != nil {
+				return err
+			}
+			if val == nil {
+				break
+			}
+			{
+				xtv := string(val)
+				sv.Message = ptr.String(xtv)
 			}
 
 		default:

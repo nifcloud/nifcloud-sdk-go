@@ -2590,6 +2590,13 @@ type LogSet struct {
 	noSmithyDocumentSerde
 }
 
+type MessageSet struct {
+	
+	Message *string
+	
+	noSmithyDocumentSerde
+}
+
 type MigrationHubItemSet struct {
 	
 	Count *int32
@@ -3826,7 +3833,7 @@ type RegionInfo struct {
 	
 	IsDefault *bool
 	
-	MessageSet []string
+	MessageSet []MessageSet
 	
 	RegionEndpoint *string
 	

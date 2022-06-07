@@ -11,43 +11,42 @@ import (
 	"github.com/nifcloud/nifcloud-sdk-go/service/rdb/types"
 )
 
-func (c *Client) DescribeDBEngineVersions(ctx context.Context, params *DescribeDBEngineVersionsInput, optFns ...func(*Options)) (*DescribeDBEngineVersionsOutput, error) {
+func (c *Client) UpgradeDBEngineVersion(ctx context.Context, params *UpgradeDBEngineVersionInput, optFns ...func(*Options)) (*UpgradeDBEngineVersionOutput, error) {
 	if params == nil {
-		params = &DescribeDBEngineVersionsInput{}
+		params = &UpgradeDBEngineVersionInput{}
 	}
 
-	result, metadata, err := c.invokeOperation(ctx, "DescribeDBEngineVersions", params, optFns, c.addOperationDescribeDBEngineVersionsMiddlewares)
+	result, metadata, err := c.invokeOperation(ctx, "UpgradeDBEngineVersion", params, optFns, c.addOperationUpgradeDBEngineVersionMiddlewares)
 	if err != nil {
 		return nil, err
 	}
 
-	out := result.(*DescribeDBEngineVersionsOutput)
+	out := result.(*UpgradeDBEngineVersionOutput)
 	out.ResultMetadata = metadata
 	return out, nil
 }
 
-type DescribeDBEngineVersionsInput struct {
-	DBParameterGroupFamily types.DBParameterGroupFamilyOfDescribeDBEngineVersionsRequest
+type UpgradeDBEngineVersionInput struct {
 
-	DefaultOnly *bool
+	// This member is required.
+	DBInstanceIdentifier *string
 
-	Engine types.EngineOfDescribeDBEngineVersionsRequest
-
+	// This member is required.
 	EngineVersion *string
 
-	IncludeAll *bool
+	AllowMajorVersionUpgrade *bool
 
-	ListSupportedCharacterSets *bool
+	DBParameterGroupName *string
 
-	Marker *string
+	PreUpgradeDBSnapshotIdentifier *string
 
-	MaxRecords *int32
+	SkipPreUpgradeSnapshot *bool
 
 	noSmithyDocumentSerde
 }
 
-type DescribeDBEngineVersionsOutput struct {
-	DBEngineVersions []types.DBEngineVersions
+type UpgradeDBEngineVersionOutput struct {
+	DBInstance *types.DBInstance
 
 	Marker *string
 
@@ -59,12 +58,12 @@ type DescribeDBEngineVersionsOutput struct {
 	noSmithyDocumentSerde
 }
 
-func (c *Client) addOperationDescribeDBEngineVersionsMiddlewares(stack *middleware.Stack, options Options) (err error) {
-	err = stack.Serialize.Add(&awsAwsquery_serializeOpDescribeDBEngineVersions{}, middleware.After)
+func (c *Client) addOperationUpgradeDBEngineVersionMiddlewares(stack *middleware.Stack, options Options) (err error) {
+	err = stack.Serialize.Add(&awsAwsquery_serializeOpUpgradeDBEngineVersion{}, middleware.After)
 	if err != nil {
 		return err
 	}
-	err = stack.Deserialize.Add(&awsAwsquery_deserializeOpDescribeDBEngineVersions{}, middleware.After)
+	err = stack.Deserialize.Add(&awsAwsquery_deserializeOpUpgradeDBEngineVersion{}, middleware.After)
 	if err != nil {
 		return err
 	}
@@ -104,7 +103,10 @@ func (c *Client) addOperationDescribeDBEngineVersionsMiddlewares(stack *middlewa
 	if err = smithyhttp.AddCloseResponseBodyMiddleware(stack); err != nil {
 		return err
 	}
-	if err = stack.Initialize.Add(newServiceMetadataMiddleware_opDescribeDBEngineVersions(options.Region), middleware.Before); err != nil {
+	if err = addOpUpgradeDBEngineVersionValidationMiddleware(stack); err != nil {
+		return err
+	}
+	if err = stack.Initialize.Add(newServiceMetadataMiddleware_opUpgradeDBEngineVersion(options.Region), middleware.Before); err != nil {
 		return err
 	}
 	if err = addRequestIDRetrieverMiddleware(stack); err != nil {
@@ -119,11 +121,11 @@ func (c *Client) addOperationDescribeDBEngineVersionsMiddlewares(stack *middlewa
 	return nil
 }
 
-func newServiceMetadataMiddleware_opDescribeDBEngineVersions(region string) *awsmiddleware.RegisterServiceMetadata {
+func newServiceMetadataMiddleware_opUpgradeDBEngineVersion(region string) *awsmiddleware.RegisterServiceMetadata {
 	return &awsmiddleware.RegisterServiceMetadata{
 		Region:        region,
 		ServiceID:     ServiceID,
 		SigningName:   "rdb",
-		OperationName: "DescribeDBEngineVersions",
+		OperationName: "UpgradeDBEngineVersion",
 	}
 }

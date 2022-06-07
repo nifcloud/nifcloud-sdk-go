@@ -171,30 +171,6 @@ structure RequestCluster {
 
 @enum([
   {
-      name: "V1_19_6",
-      value: "v1.19.6",
-  },
-  {
-      name: "V1_19_11",
-      value: "v1.19.11",
-  },
-  {
-      name: "V1_19_15",
-      value: "v1.19.15",
-  },
-  {
-      name: "V1_20_1",
-      value: "v1.20.1",
-  },
-  {
-      name: "V1_20_7",
-      value: "v1.20.7",
-  },
-  {
-      name: "V1_20_11",
-      value: "v1.20.11",
-  },
-  {
       name: "V1_21_1",
       value: "v1.21.1",
   },
@@ -203,8 +179,20 @@ structure RequestCluster {
       value: "v1.21.5",
   },
   {
+      name: "V1_21_9",
+      value: "v1.21.9",
+  },
+  {
       name: "V1_22_2",
       value: "v1.22.2",
+  },
+  {
+      name: "V1_22_6",
+      value: "v1.22.6",
+  },
+  {
+      name: "V1_23_3",
+      value: "v1.23.3",
   },
 ])
 string KubernetesVersionOfclusterForCreateCluster
@@ -459,30 +447,6 @@ structure RequestClusterOfUpdateCluster {
 
 @enum([
   {
-      name: "V1_19_6",
-      value: "v1.19.6",
-  },
-  {
-      name: "V1_19_11",
-      value: "v1.19.11",
-  },
-  {
-      name: "V1_19_15",
-      value: "v1.19.15",
-  },
-  {
-      name: "V1_20_1",
-      value: "v1.20.1",
-  },
-  {
-      name: "V1_20_7",
-      value: "v1.20.7",
-  },
-  {
-      name: "V1_20_11",
-      value: "v1.20.11",
-  },
-  {
       name: "V1_21_1",
       value: "v1.21.1",
   },
@@ -491,8 +455,20 @@ structure RequestClusterOfUpdateCluster {
       value: "v1.21.5",
   },
   {
+      name: "V1_21_9",
+      value: "v1.21.9",
+  },
+  {
       name: "V1_22_2",
       value: "v1.22.2",
+  },
+  {
+      name: "V1_22_6",
+      value: "v1.22.6",
+  },
+  {
+      name: "V1_23_3",
+      value: "v1.23.3",
   },
 ])
 string KubernetesVersionOfclusterForUpdateCluster
