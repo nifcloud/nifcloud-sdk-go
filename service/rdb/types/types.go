@@ -59,6 +59,10 @@ type DBEngineVersions struct {
 	
 	EngineVersion *string
 	
+	Status *string
+	
+	ValidUpgradeTarget []ValidUpgradeTarget
+	
 	noSmithyDocumentSerde
 }
 
@@ -644,6 +648,23 @@ type StatusInfos struct {
 	Status *string
 	
 	StatusType *string
+	
+	noSmithyDocumentSerde
+}
+
+type ValidUpgradeTarget struct {
+	
+	AutoUpgrade *bool
+	
+	DBParameterGroupFamily *string
+	
+	Description *string
+	
+	Engine *string
+	
+	EngineVersion *string
+	
+	IsMajorVersionUpgrade *bool
 	
 	noSmithyDocumentSerde
 }

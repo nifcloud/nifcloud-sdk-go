@@ -19614,7 +19614,13 @@ structure RegionInfo {
 
 list ListOfMessageSet {
     @xmlName("item")
-    member: String,
+    member: MessageSet,
+}
+
+structure MessageSet {
+    @xmlName("message")
+    @ec2QueryName("message")
+    Message: String,
 }
 
 @enum([

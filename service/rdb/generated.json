@@ -53,6 +53,7 @@
         "api_op_SetExternalMaster.go",
         "api_op_StartReplication.go",
         "api_op_StopReplication.go",
+        "api_op_UpgradeDBEngineVersion.go",
         "deserializers.go",
         "doc.go",
         "endpoints.go",

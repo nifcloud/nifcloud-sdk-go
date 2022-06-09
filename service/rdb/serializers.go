@@ -2832,6 +2832,70 @@ func (m *awsAwsquery_serializeOpStopReplication) HandleSerialize(ctx context.Con
 
 	return next.HandleSerialize(ctx, in)
 }
+
+type awsAwsquery_serializeOpUpgradeDBEngineVersion struct {
+}
+
+func (*awsAwsquery_serializeOpUpgradeDBEngineVersion) ID() string {
+	return "OperationSerializer"
+}
+
+func (m *awsAwsquery_serializeOpUpgradeDBEngineVersion) HandleSerialize(ctx context.Context, in middleware.SerializeInput, next middleware.SerializeHandler) (
+	out middleware.SerializeOutput, metadata middleware.Metadata, err error,
+) {
+	request, ok := in.Request.(*smithyhttp.Request)
+	if !ok {
+		return out, metadata, &smithy.SerializationError{Err: fmt.Errorf("unknown transport type %T", in.Request)}
+	}
+
+	input, ok := in.Parameters.(*UpgradeDBEngineVersionInput)
+	_ = input
+	if !ok {
+		return out, metadata, &smithy.SerializationError{Err: fmt.Errorf("unknown input parameters type %T", in.Parameters)}
+	}
+
+	operationPath := "/"
+	if len(request.Request.URL.Path) == 0 {
+		request.Request.URL.Path = operationPath
+	} else {
+		request.Request.URL.Path = path.Join(request.Request.URL.Path, operationPath)
+		if request.Request.URL.Path != "/" && operationPath[len(operationPath)-1] == '/' {
+			request.Request.URL.Path += "/"
+		}
+	}
+	request.Request.Method = "POST"
+	httpBindingEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	if err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+	httpBindingEncoder.SetHeader("Content-Type").String("application/x-www-form-urlencoded")
+
+	bodyWriter := bytes.NewBuffer(nil)
+	bodyEncoder := query.NewEncoder(bodyWriter)
+	body := bodyEncoder.Object()
+	body.Key("Action").String("UpgradeDBEngineVersion")
+	body.Key("Version").String("2013-05-15N2013-12-16")
+
+	if err := awsAwsquery_serializeOpDocumentUpgradeDBEngineVersionInput(input, bodyEncoder.Value); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	err = bodyEncoder.Encode()
+	if err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	if request, err = request.SetStream(bytes.NewReader(bodyWriter.Bytes())); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	if request.Request, err = httpBindingEncoder.Encode(request.Request); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+	in.Request = request
+
+	return next.HandleSerialize(ctx, in)
+}
 func awsAwsquery_serializeDocumentListOfRequestDBSecurityGroups(v []string, value query.Value) error {
 	if len(v) == 0 {
 		return nil
@@ -3642,6 +3706,11 @@ func awsAwsquery_serializeOpDocumentDescribeDBEngineVersionsInput(v *DescribeDBE
 	if v.EngineVersion != nil {
 		objectKey := object.Key("EngineVersion")
 		objectKey.String(*v.EngineVersion)
+	}
+
+	if v.IncludeAll != nil {
+		objectKey := object.Key("IncludeAll")
+		objectKey.Boolean(*v.IncludeAll)
 	}
 
 	if v.ListSupportedCharacterSets != nil {
@@ -4845,6 +4914,43 @@ func awsAwsquery_serializeOpDocumentStopReplicationInput(v *StopReplicationInput
 	if v.DBInstanceIdentifier != nil {
 		objectKey := object.Key("DBInstanceIdentifier")
 		objectKey.String(*v.DBInstanceIdentifier)
+	}
+
+	return nil
+}
+
+func awsAwsquery_serializeOpDocumentUpgradeDBEngineVersionInput(v *UpgradeDBEngineVersionInput, value query.Value) error {
+	object := value.Object()
+	_ = object
+
+	if v.AllowMajorVersionUpgrade != nil {
+		objectKey := object.Key("AllowMajorVersionUpgrade")
+		objectKey.Boolean(*v.AllowMajorVersionUpgrade)
+	}
+
+	if v.DBInstanceIdentifier != nil {
+		objectKey := object.Key("DBInstanceIdentifier")
+		objectKey.String(*v.DBInstanceIdentifier)
+	}
+
+	if v.DBParameterGroupName != nil {
+		objectKey := object.Key("DBParameterGroupName")
+		objectKey.String(*v.DBParameterGroupName)
+	}
+
+	if v.EngineVersion != nil {
+		objectKey := object.Key("EngineVersion")
+		objectKey.String(*v.EngineVersion)
+	}
+
+	if v.PreUpgradeDBSnapshotIdentifier != nil {
+		objectKey := object.Key("PreUpgradeDBSnapshotIdentifier")
+		objectKey.String(*v.PreUpgradeDBSnapshotIdentifier)
+	}
+
+	if v.SkipPreUpgradeSnapshot != nil {
+		objectKey := object.Key("SkipPreUpgradeSnapshot")
+		objectKey.Boolean(*v.SkipPreUpgradeSnapshot)
 	}
 
 	return nil

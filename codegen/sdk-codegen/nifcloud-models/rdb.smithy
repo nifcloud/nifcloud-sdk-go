@@ -1432,6 +1432,32 @@ structure NiftyFailoverDBInstanceResult {
     ResponseMetadata: ResponseMetadata,
 }
 
+structure UpgradeDBEngineVersionRequest {
+    @xmlName("AllowMajorVersionUpgrade")
+    AllowMajorVersionUpgrade: Boolean,
+    @required
+    @xmlName("DBInstanceIdentifier")
+    DBInstanceIdentifier: String,
+    @xmlName("DBParameterGroupName")
+    DBParameterGroupName: String,
+    @required
+    @xmlName("EngineVersion")
+    EngineVersion: String,
+    @xmlName("PreUpgradeDBSnapshotIdentifier")
+    PreUpgradeDBSnapshotIdentifier: String,
+    @xmlName("SkipPreUpgradeSnapshot")
+    SkipPreUpgradeSnapshot: Boolean,
+}
+
+structure UpgradeDBEngineVersionResult {
+    @xmlName("DBInstance")
+    DBInstance: DBInstance,
+    @xmlName("Marker")
+    Marker: String,
+    @xmlName("ResponseMetadata")
+    ResponseMetadata: ResponseMetadata,
+}
+
 @enum([
   {
       name: "MYSQL5_6",
@@ -1485,6 +1511,8 @@ structure DescribeDBEngineVersionsRequest {
     Engine: EngineOfDescribeDBEngineVersionsRequest,
     @xmlName("EngineVersion")
     EngineVersion: String,
+    @xmlName("IncludeAll")
+    IncludeAll: Boolean,
     @xmlName("ListSupportedCharacterSets")
     ListSupportedCharacterSets: Boolean,
     @xmlName("Marker")
@@ -1518,6 +1546,30 @@ structure DBEngineVersions {
     Engine: String,
     @xmlName("EngineVersion")
     EngineVersion: String,
+    @xmlName("Status")
+    Status: String,
+    @xmlName("ValidUpgradeTarget")
+    ValidUpgradeTarget: ListOfValidUpgradeTarget,
+}
+
+list ListOfValidUpgradeTarget {
+    @xmlName("UpgradeTarget")
+    member: ValidUpgradeTarget,
+}
+
+structure ValidUpgradeTarget {
+    @xmlName("AutoUpgrade")
+    AutoUpgrade: Boolean,
+    @xmlName("DBParameterGroupFamily")
+    DBParameterGroupFamily: String,
+    @xmlName("Description")
+    Description: String,
+    @xmlName("Engine")
+    Engine: String,
+    @xmlName("EngineVersion")
+    EngineVersion: String,
+    @xmlName("IsMajorVersionUpgrade")
+    IsMajorVersionUpgrade: Boolean,
 }
 
 @enum([
@@ -3807,6 +3859,7 @@ service RDB {
         ModifyDBInstance,
         ModifyDBInstanceNetwork,
         NiftyFailoverDBInstance,
+        UpgradeDBEngineVersion,
         DescribeDBEngineVersions,
         DescribeOrderableDBInstanceOptions,
         CopyDBSnapshot,
@@ -3984,6 +4037,11 @@ operation ModifyDBInstanceNetwork {
 operation NiftyFailoverDBInstance {
     input: NiftyFailoverDBInstanceRequest,
     output: NiftyFailoverDBInstanceResult,
+}
+
+operation UpgradeDBEngineVersion {
+    input: UpgradeDBEngineVersionRequest,
+    output: UpgradeDBEngineVersionResult,
 }
 
 operation DescribeDBEngineVersions {
