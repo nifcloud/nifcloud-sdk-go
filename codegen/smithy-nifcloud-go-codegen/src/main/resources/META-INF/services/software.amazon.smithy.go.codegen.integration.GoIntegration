@@ -18,6 +18,7 @@ software.nifcloud.smithy.nifcloud.go.codegen.customization.ShapeBackwardsCompata
 software.nifcloud.smithy.nifcloud.go.codegen.customization.BackfillBoxTrait
 software.nifcloud.smithy.nifcloud.go.codegen.customization.LocationModelFixes
 software.nifcloud.smithy.nifcloud.go.codegen.customization.DynamoDBValidateResponseChecksum
+software.nifcloud.smithy.nifcloud.go.codegen.customization.EventBridgeMultiRegionEndpoint
 software.nifcloud.smithy.nifcloud.go.codegen.customization.S3UpdateEndpoint
 software.nifcloud.smithy.nifcloud.go.codegen.customization.APIGatewayAcceptHeader
 software.nifcloud.smithy.nifcloud.go.codegen.customization.BackfillOptionalAuthTrait

@@ -1,5 +1,5 @@
 // This code was forked from github.com/aws/aws-sdk-go-v2. DO NOT EDIT.
-// URL: https://github.com/aws/aws-sdk-go-v2/tree/v1.14.0/codegen/smithy-aws-go-codegen/src/main/java/software.nifcloud.smithy.nifcloud.go.codegen/RestJsonProtocolGenerator.java
+// URL: https://github.com/aws/aws-sdk-go-v2/tree/v1.16.5/codegen/smithy-aws-go-codegen/src/main/java/software.nifcloud.smithy.nifcloud.go.codegen/RestJsonProtocolGenerator.java
 
 /*
  * Copyright 2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
@@ -522,7 +522,7 @@ abstract class RestJsonProtocolGenerator extends HttpBindingProtocolGenerator {
 
     @Override
     protected void writeOperationSerializerMiddlewareEventStreamSetup(GenerationContext context, EventStreamInfo info) {
-        AwsEventStreamUtils.writeOperationSerializerMiddlewareEventStreamSetup(context, info);
+        AwsEventStreamUtils.writeOperationSerializerMiddlewareEventStreamSetup(context, info, "restEncoder");
     }
 
     @Override

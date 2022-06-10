@@ -1,5 +1,5 @@
 // This code was forked from github.com/aws/aws-sdk-go-v2. DO NOT EDIT.
-// URL: https://github.com/aws/aws-sdk-go-v2/tree/v1.14.0/codegen/smithy-aws-go-codegen/src/main/java/software.nifcloud.smithy.nifcloud.go.codegen/RestXmlProtocolGenerator.java
+// URL: https://github.com/aws/aws-sdk-go-v2/tree/v1.16.5/codegen/smithy-aws-go-codegen/src/main/java/software.nifcloud.smithy.nifcloud.go.codegen/RestXmlProtocolGenerator.java
 
 package software.nifcloud.smithy.nifcloud.go.codegen;
 
@@ -478,7 +478,7 @@ abstract class RestXmlProtocolGenerator extends HttpBindingProtocolGenerator {
 
     @Override
     protected void writeOperationSerializerMiddlewareEventStreamSetup(GenerationContext context, EventStreamInfo info) {
-        AwsEventStreamUtils.writeOperationSerializerMiddlewareEventStreamSetup(context, info);
+        AwsEventStreamUtils.writeOperationSerializerMiddlewareEventStreamSetup(context, info, "restEncoder");
     }
 
     @Override

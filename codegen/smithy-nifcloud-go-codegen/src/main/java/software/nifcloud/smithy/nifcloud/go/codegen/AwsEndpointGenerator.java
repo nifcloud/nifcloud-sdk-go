@@ -1,5 +1,5 @@
 // This code was forked from github.com/aws/aws-sdk-go-v2. DO NOT EDIT.
-// URL: https://github.com/aws/aws-sdk-go-v2/tree/v1.14.0/codegen/smithy-aws-go-codegen/src/main/java/software.nifcloud.smithy.nifcloud.go.codegen/AwsEndpointGenerator.java
+// URL: https://github.com/aws/aws-sdk-go-v2/tree/v1.16.5/codegen/smithy-aws-go-codegen/src/main/java/software.nifcloud.smithy.nifcloud.go.codegen/AwsEndpointGenerator.java
 
 /*
  * Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
@@ -40,6 +40,7 @@ import software.amazon.smithy.utils.SetUtils;
  */
 public final class AwsEndpointGenerator implements GoIntegration {
     public static final String ENDPOINT_RESOLVER_CONFIG_NAME = "EndpointResolver";
+    public static final String ENDPOINT_OPTIONS_CONFIG_NAME = "EndpointOptions";
 
     @Override
     public void writeAdditionalFiles(
@@ -49,7 +50,8 @@ public final class AwsEndpointGenerator implements GoIntegration {
             TriConsumer<String, String, Consumer<GoWriter>> writerFactory
     ) {
         String serviceId = settings.getService(model).expectTrait(ServiceTrait.class).getSdkId();
-        boolean generateQueryHelpers = serviceId.equalsIgnoreCase("S3");
+        boolean generateQueryHelpers = serviceId.equalsIgnoreCase("S3")
+                                       || serviceId.equalsIgnoreCase("EventBridge");
 
         EndpointGenerator.builder()
                 .settings(settings)
@@ -73,7 +75,7 @@ public final class AwsEndpointGenerator implements GoIntegration {
                                         .withHelper(true)
                                         .build(),
                                 ConfigField.builder()
-                                        .name("EndpointOptions")
+                                        .name(ENDPOINT_OPTIONS_CONFIG_NAME)
                                         .type(SymbolUtils.createValueSymbolBuilder(EndpointGenerator.RESOLVER_OPTIONS)
                                                 .build())
                                         .documentation("The endpoint options to be used when attempting "

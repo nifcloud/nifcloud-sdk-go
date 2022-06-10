@@ -1,5 +1,5 @@
 // This code was forked from github.com/aws/aws-sdk-go-v2. DO NOT EDIT.
-// URL: https://github.com/aws/aws-sdk-go-v2/tree/v1.14.0/codegen/smithy-aws-go-codegen/src/main/java/software.nifcloud.smithy.nifcloud.go.codegen/customization/S3UpdateEndpoint.java
+// URL: https://github.com/aws/aws-sdk-go-v2/tree/v1.16.5/codegen/smithy-aws-go-codegen/src/main/java/software.nifcloud.smithy.nifcloud.go.codegen/customization/S3UpdateEndpoint.java
 
 /*
  * Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
@@ -25,6 +25,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
+import software.nifcloud.smithy.nifcloud.go.codegen.AwsSignatureVersion4aUtils;
 import software.amazon.smithy.codegen.core.CodegenException;
 import software.amazon.smithy.codegen.core.Symbol;
 import software.amazon.smithy.codegen.core.SymbolProvider;
@@ -196,7 +197,6 @@ public class S3UpdateEndpoint implements GoIntegration {
         private static final String USE_PATH_STYLE_OPTION = "UsePathStyle";
         private static final String USE_ACCELERATE_OPTION = "UseAccelerate";
         private static final String DISABLE_MRAP_OPTION = "DisableMultiRegionAccessPoints";
-        private static final String V4A_SIGNER_INTERFACE_NAME = "httpSignerV4a";
 
         // private function getter constant
         private static final String NOP_BUCKET_ACCESSOR = "nopGetBucketAccessor";
@@ -254,8 +254,9 @@ public class S3UpdateEndpoint implements GoIntegration {
                                             .documentation("Allows you to disable S3 Multi-Region access points feature.")
                                             .build(),
                                     ConfigField.builder()
-                                            .name(V4A_SIGNER_INTERFACE_NAME)
-                                            .type(SymbolUtils.createValueSymbolBuilder(V4A_SIGNER_INTERFACE_NAME)
+                                            .name(AwsSignatureVersion4aUtils.V4A_SIGNER_INTERFACE_NAME)
+                                            .type(SymbolUtils.createValueSymbolBuilder(
+                                                            AwsSignatureVersion4aUtils.V4A_SIGNER_INTERFACE_NAME)
                                                     .build())
                                             .documentation("Signature Version 4a (SigV4a) Signer")
                                             .build()
@@ -542,11 +543,11 @@ public class S3UpdateEndpoint implements GoIntegration {
                     addMiddlewareFuncName(symbolProvider.toSymbol(operationShape).getName(),
                             UPDATE_ENDPOINT_INTERNAL_ADDER), () -> {
                         writer.write("return $T(stack, $T{ \n"
-                                        + "Accessor : $T{GetARNInput: $L,\n BackfillAccountID: $L,\n"
-                                        + "GetOutpostIDInput: $L, \n UpdateARNField: $L,\n CopyInput: $L,\n }, \n"
-                                        + "EndpointResolver: options.EndpointResolver,\n "
-                                        + "EndpointResolverOptions: options.EndpointOptions,\n"
-                                        + "UseARNRegion: options.$L, \n })",
+                                     + "Accessor : $T{GetARNInput: $L,\n BackfillAccountID: $L,\n"
+                                     + "GetOutpostIDInput: $L, \n UpdateARNField: $L,\n CopyInput: $L,\n }, \n"
+                                     + "EndpointResolver: options.EndpointResolver,\n "
+                                     + "EndpointResolverOptions: options.EndpointOptions,\n"
+                                     + "UseARNRegion: options.$L, \n })",
                                 SymbolUtils.createValueSymbolBuilder(UPDATE_ENDPOINT_INTERNAL_ADDER,
                                         AwsCustomGoDependency.S3CONTROL_CUSTOMIZATION).build(),
                                 SymbolUtils.createValueSymbolBuilder(UPDATE_ENDPOINT_INTERNAL_OPTIONS,

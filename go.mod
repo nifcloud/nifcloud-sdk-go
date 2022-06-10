@@ -3,8 +3,8 @@ module github.com/nifcloud/nifcloud-sdk-go
 go 1.17
 
 require (
-	github.com/aws/aws-sdk-go-v2 v1.14.0
-	github.com/aws/smithy-go v1.11.0
+	github.com/aws/aws-sdk-go-v2 v1.16.5
+	github.com/aws/smithy-go v1.11.3
 	github.com/golangci/golangci-lint v1.30.0
 	github.com/jmespath/go-jmespath v0.4.0
 	golang.org/x/tools v0.0.0-20200811032001-fd80f4dbb3ea
@@ -47,7 +47,7 @@ require (
 	github.com/golangci/prealloc v0.0.0-20180630174525-215b22d4de21 // indirect
 	github.com/golangci/revgrep v0.0.0-20180526074752-d9c87f5ffaf0 // indirect
 	github.com/golangci/unconvert v0.0.0-20180507085042-28b1c447d1f4 // indirect
-	github.com/google/go-cmp v0.5.7 // indirect
+	github.com/google/go-cmp v0.5.8 // indirect
 	github.com/gostaticanalysis/analysisutil v0.0.3 // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect
 	github.com/inconshreveable/mousetrap v1.0.0 // indirect
