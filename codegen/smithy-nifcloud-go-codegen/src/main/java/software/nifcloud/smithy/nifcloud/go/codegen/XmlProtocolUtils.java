@@ -1,5 +1,5 @@
 // This code was forked from github.com/aws/aws-sdk-go-v2. DO NOT EDIT.
-// URL: https://github.com/aws/aws-sdk-go-v2/tree/v1.14.0/codegen/smithy-aws-go-codegen/src/main/java/software.nifcloud.smithy.nifcloud.go.codegen/XmlProtocolUtils.java
+// URL: https://github.com/aws/aws-sdk-go-v2/tree/v1.16.5/codegen/smithy-aws-go-codegen/src/main/java/software.nifcloud.smithy.nifcloud.go.codegen/XmlProtocolUtils.java
 
 package software.nifcloud.smithy.nifcloud.go.codegen;
 
@@ -418,11 +418,11 @@ public final class XmlProtocolUtils {
     // returns true if service is either s3 or s3 control and needs s3 customization
     private static boolean requiresS3Customization(ServiceShape service) {
         String serviceId = service.expectTrait(ServiceTrait.class).getSdkId();
-        return serviceId.equalsIgnoreCase("S3") || serviceId.equalsIgnoreCase("S3 Control");
+        return serviceId.equalsIgnoreCase("storage") || serviceId.equalsIgnoreCase("S3 Control");
     }
 
     private static boolean isS3Service(ServiceShape service) {
         String serviceId = service.expectTrait(ServiceTrait.class).getSdkId();
-        return serviceId.equalsIgnoreCase("S3");
+        return serviceId.equalsIgnoreCase("storage");
     }
 }

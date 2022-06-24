@@ -1,5 +1,5 @@
 // This code was forked from github.com/aws/aws-sdk-go-v2. DO NOT EDIT.
-// URL: https://github.com/aws/aws-sdk-go-v2/tree/v1.14.0/codegen/smithy-aws-go-codegen/src/main/java/software.nifcloud.smithy.nifcloud.go.codegen/ResolveClientConfigFromSources.java
+// URL: https://github.com/aws/aws-sdk-go-v2/tree/v1.16.5/codegen/smithy-aws-go-codegen/src/main/java/software.nifcloud.smithy.nifcloud.go.codegen/ResolveClientConfigFromSources.java
 
 package software.nifcloud.smithy.nifcloud.go.codegen;
 
@@ -199,7 +199,7 @@ public class ResolveClientConfigFromSources implements GoIntegration {
     }
 
     private static boolean isS3Service(Model model, ServiceShape service) {
-        return service.expectTrait(ServiceTrait.class).getSdkId().equalsIgnoreCase("S3");
+        return service.expectTrait(ServiceTrait.class).getSdkId().equalsIgnoreCase("storage");
     }
 
     private static boolean isS3ControlService(Model model, ServiceShape service) {

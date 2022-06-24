@@ -4,5 +4,6 @@
   "ESS": "ess",
   "KubernetesServiceHatoba": "hatoba",
   "NAS": "nas",
+  "ObjectStorageService": "storage",
   "RDB": "rdb"
 }

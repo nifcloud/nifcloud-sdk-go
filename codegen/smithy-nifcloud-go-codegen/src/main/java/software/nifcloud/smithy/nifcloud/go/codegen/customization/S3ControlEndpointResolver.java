@@ -1,5 +1,5 @@
 // This code was forked from github.com/aws/aws-sdk-go-v2. DO NOT EDIT.
-// URL: https://github.com/aws/aws-sdk-go-v2/tree/v1.14.0/codegen/smithy-aws-go-codegen/src/main/java/software.nifcloud.smithy.nifcloud.go.codegen/customization/S3ControlEndpointResolver.java
+// URL: https://github.com/aws/aws-sdk-go-v2/tree/v1.16.5/codegen/smithy-aws-go-codegen/src/main/java/software.nifcloud.smithy.nifcloud.go.codegen/customization/S3ControlEndpointResolver.java
 
 package software.nifcloud.smithy.nifcloud.go.codegen.customization;
 
@@ -34,7 +34,7 @@ public class S3ControlEndpointResolver implements GoIntegration {
                 .settings(settings)
                 .model(model)
                 .writerFactory(writerFactory)
-                .sdkID("S3")
+                .sdkID("storage")
                 .endpointPrefix("s3")
                 .arnNamespace("s3")
                 .internalOnly(true)

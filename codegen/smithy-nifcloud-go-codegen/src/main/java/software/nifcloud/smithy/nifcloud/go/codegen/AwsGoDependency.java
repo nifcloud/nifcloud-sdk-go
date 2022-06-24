@@ -1,5 +1,5 @@
 // This code was forked from github.com/aws/aws-sdk-go-v2. DO NOT EDIT.
-// URL: https://github.com/aws/aws-sdk-go-v2/tree/v1.14.0/codegen/smithy-aws-go-codegen/src/main/java/software.nifcloud.smithy.nifcloud.go.codegen/AwsGoDependency.java
+// URL: https://github.com/aws/aws-sdk-go-v2/tree/v1.16.5/codegen/smithy-aws-go-codegen/src/main/java/software.nifcloud.smithy.nifcloud.go.codegen/AwsGoDependency.java
 
 /*
  * Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
@@ -52,6 +52,8 @@ public class AwsGoDependency {
     public static final GoDependency AWS_DEFAULTS = aws("aws/defaults");
     public static final GoDependency SERVICE_INTERNAL_CHECKSUM = awsModuleDep("service/internal/checksum",
             null, Versions.SERVICE_INTERNAL_CHECKSUM, "internalChecksum");
+    public static final GoDependency INTERNAL_SIGV4A = awsModuleDep("internal/v4a",
+            null, Versions.INTERNAL_SIGV4A, "v4a");
 
     public static final GoDependency REGEXP = SmithyGoDependency.stdlib("regexp");
 
@@ -105,5 +107,6 @@ public class AwsGoDependency {
         private static final String INTERNAL_ENDPOINTS_V2 = "v2.0.0-00010101000000-000000000000";
         private static final String AWS_PROTOCOL_EVENTSTREAM = "v0.0.0-00010101000000-000000000000";
         private static final String SERVICE_INTERNAL_CHECKSUM = "v0.0.0-00010101000000-000000000000";
+        private static final String INTERNAL_SIGV4A = "v0.0.0-00010101000000-000000000000";
     }
 }

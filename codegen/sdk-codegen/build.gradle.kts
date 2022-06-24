@@ -101,8 +101,15 @@ tasks.create<Exec>("copyGoCodegen") {
 }
 tasks["buildSdk"].finalizedBy(tasks["copyGoCodegen"])
 
-tasks.create<Exec>("modapi") {
+tasks.create("modapi") {
     dependsOn ("copyGoCodegen")
-    commandLine ("go", "run", "-tags", "codegen", "$rootDir/../private/model/cli/mod-api/main.go", "-path", "$rootDir/../service")
+    doLast {
+        exec {
+            commandLine ("go", "run", "-tags", "codegen", "$rootDir/../private/model/cli/mod-api/main.go", "-path", "$rootDir/../internal")
+        }
+        exec {
+            commandLine ("go", "run", "-tags", "codegen", "$rootDir/../private/model/cli/mod-api/main.go", "-path", "$rootDir/../service")
+        }
+    }
 }
 tasks["copyGoCodegen"].finalizedBy(tasks["modapi"])

@@ -1,11 +1,12 @@
 // This code was forked from github.com/aws/aws-sdk-go-v2. DO NOT EDIT.
-// URL: https://github.com/aws/aws-sdk-go-v2/tree/v1.14.0/codegen/smithy-aws-go-codegen/src/main/java/software.nifcloud.smithy.nifcloud.go.codegen/AwsEventStreamUtils.java
+// URL: https://github.com/aws/aws-sdk-go-v2/tree/v1.16.5/codegen/smithy-aws-go-codegen/src/main/java/software.nifcloud.smithy.nifcloud.go.codegen/AwsEventStreamUtils.java
 
 package software.nifcloud.smithy.nifcloud.go.codegen;
 
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
+
 import software.amazon.smithy.codegen.core.CodegenException;
 import software.amazon.smithy.codegen.core.Symbol;
 import software.amazon.smithy.codegen.core.SymbolProvider;
@@ -47,8 +48,11 @@ import software.amazon.smithy.model.traits.HttpTrait;
 import software.amazon.smithy.utils.StringUtils;
 
 public final class AwsEventStreamUtils {
+    private static final String EVENT_STREAM_SERIALIZER_HELPER = "eventStreamSerializerHelper";
 
     private static final String EVENT_STREAM_SIGNER_INTERFACE = "eventStreamSigner";
+    private static final String CONTEXT_GET_EVENT_STREAM_INPUT = "getEventStreamInput";
+    private static final String CONTEXT_WITH_EVENT_STREAM_INPUT = "withEventStreamInput";
 
     private AwsEventStreamUtils() {
     }
@@ -74,6 +78,9 @@ public final class AwsEventStreamUtils {
 
         if (inputEventStreams.isPresent()) {
             generateEventSignerInterface(settings, writer);
+            if (!isHttpBindingProto) {
+                generateInputMiddlewareHelper(settings, writer);
+            }
             inputEventStreams.get().forEach((shapeId, eventStreamInfos) -> {
                 generateEventStreamWriter(context, model.expectShape(shapeId, UnionShape.class), eventStreamInfos,
                         !isHttpBindingProto);
@@ -101,6 +108,48 @@ public final class AwsEventStreamUtils {
 
         generateEventStreamClientLogModeFinalizer(context, operationShapes);
         generateToggleClientLogModeFinalizer(context);
+    }
+
+    private static void generateInputMiddlewareHelper(GoSettings settings, GoWriter writer) {
+        writer.pushState();
+
+        writer.putContext("context", SymbolUtils.createValueSymbolBuilder("Context",
+                SmithyGoDependency.CONTEXT).build());
+        writer.putContext("errorf", SymbolUtils.createValueSymbolBuilder("Errorf",
+                SmithyGoDependency.FMT).build());
+
+        var middleware = GoStackStepMiddlewareGenerator.createSerializeStepMiddleware(
+                EVENT_STREAM_SERIALIZER_HELPER,
+                MiddlewareIdentifier.builder()
+                        .name("OperationEventStreamSerializer")
+                        .build());
+
+        writer.putContext("keyType", SymbolUtils.createValueSymbolBuilder("eventStreamInputKey").build());
+        writer.putContext("withValue", SymbolUtils.createValueSymbolBuilder("WithValue",
+                SmithyGoDependency.CONTEXT).build());
+
+        writer.putContext("contextGetter", CONTEXT_GET_EVENT_STREAM_INPUT);
+        writer.putContext("contextSetter", CONTEXT_WITH_EVENT_STREAM_INPUT);
+        writer.putContext("smithyRequest", getSymbol("Request", SmithyGoDependency.SMITHY_HTTP_TRANSPORT));
+
+        writer.write("""
+                     type $keyType:T struct{}
+                                          
+                     func $contextGetter:L(ctx $context:P) interface{} {
+                         return ctx.Value($keyType:T{})
+                     }
+                                          
+                     func $contextSetter:L(ctx $context:P, value interface{}) $context:T {
+                         return $withValue:T(ctx, $keyType:T{}, value)
+                     }
+                     """);
+
+        middleware.writeMiddleware(writer, (mg, wr) -> {
+            wr.putContext("nextMethod", mg.getHandleMethodName());
+            wr.write("return next.$nextMethod:L($contextSetter:L(ctx, in.Parameters), in)");
+        });
+
+        writer.popState();
     }
 
     private static void generateUnknownEventMessageError(GenerationContext context) {
@@ -313,14 +362,22 @@ public final class AwsEventStreamUtils {
                                        """);
 
                         if (withInitialMessages) {
+                            var inputShape = model.expectShape(operationShape.getInput().get());
                             w.write("""
+                                    params, ok := $L(ctx).($P)
+                                    if !ok || params == nil {
+                                        return out, metadata, $T("unexpected nil type: %T", params)
+                                    }
+                                                                        
                                     reqSend := make(chan error, 1)
                                     go func() {
                                         defer close(reqSend)
-                                        reqSend <- eventWriter.send(ctx, &$T{Value: request})
+                                        sErr := eventWriter.send(ctx, &$T{Value: params})
+                                        reqSend <- sErr
                                     }()
-                                    """, getWriterEventWrapperInitialRequestType(symbolProvider,
-                                    inputInfo.get().getEventStreamTarget().asUnionShape().get(), serviceShape));
+                                    """, CONTEXT_GET_EVENT_STREAM_INPUT, symbolProvider.toSymbol(inputShape),
+                                    errorf, getWriterEventWrapperInitialRequestType(symbolProvider,
+                                            inputInfo.get().getEventStreamTarget().asUnionShape().get(), serviceShape));
                         }
                     }
 
@@ -328,6 +385,16 @@ public final class AwsEventStreamUtils {
                     w.write("out, metadata, err = next.HandleDeserialize(ctx, in)");
 
                     writer.openBlock("if err != nil {", "}", () -> {
+                        if (withInitialMessages && inputInfo.isPresent()) {
+                            w.write("""
+                                    select {
+                                    case sErr := <-reqSend:
+                                        if sErr != nil {
+                                            err = $T("%v: %w", err, sErr)
+                                        }
+                                    default:
+                                    }""", errorf);
+                        }
                         writer.write("return out, metadata, err");
                     }).write("");
 
@@ -436,17 +503,30 @@ public final class AwsEventStreamUtils {
                      """, middleware.getMiddlewareSymbol(), deserializeOutput, httpResponse, copy, discard);
 
         var stack = getSymbol("Stack", SmithyGoDependency.SMITHY_MIDDLEWARE);
+        var after = getSymbol("After", SmithyGoDependency.SMITHY_MIDDLEWARE);
         var before = getSymbol("Before", SmithyGoDependency.SMITHY_MIDDLEWARE);
 
-        writer.write("""
-                     func $T(stack $P, options Options) error {
-                         return stack.Deserialize.Insert(&$T{
-                             LogEventStreamWrites: options.ClientLogMode.IsRequestEventMessage(),
-                             LogEventStreamReads:  options.ClientLogMode.IsResponseEventMessage(),
-                         }, "OperationDeserializer", $T)
-                     }
-                     """, getAddEventStreamOperationMiddlewareSymbol(operationShape),
-                stack, middleware.getMiddlewareSymbol(), before);
+        writer.openBlock("func $T(stack $P, options Options) error {", "}",
+                getAddEventStreamOperationMiddlewareSymbol(operationShape), stack,
+                () -> {
+                    if (withInitialMessages && inputInfo.isPresent()) {
+                        writer.write("""
+                                     if err := stack.Serialize.Insert(&$T{}, "OperationSerializer", $T); err != nil {
+                                         return err
+                                     }
+                                     """, getModuleSymbol(context.getSettings(), EVENT_STREAM_SERIALIZER_HELPER),
+                                after);
+                    }
+                    writer.write("""
+                                 if err := stack.Deserialize.Insert(&$T{
+                                     LogEventStreamWrites: options.ClientLogMode.IsRequestEventMessage(),
+                                     LogEventStreamReads:  options.ClientLogMode.IsResponseEventMessage(),
+                                 }, "OperationDeserializer", $T); err != nil {
+                                     return err
+                                 }
+                                 return nil
+                                 """, middleware.getMiddlewareSymbol(), before);
+                });
     }
 
     private static void generateEventSignerInterface(GoSettings settings, GoWriter writer) {
@@ -782,7 +862,7 @@ public final class AwsEventStreamUtils {
         var writeCloser = getSymbol("WriteCloser", SmithyGoDependency.IO);
         var signerInterface = getModuleSymbol(settings, EVENT_STREAM_SIGNER_INTERFACE);
 
-        var messageSymbol = getEventStreamSymbol("Message", false);
+        var messageSymbol = getEventStreamSymbol("Message", true);
 
         if (withInitialMessages) {
             generateEventStreamWriterMessageWrapper(eventStream, service, symbolProvider, writer, eventUnionSymbol);
@@ -939,6 +1019,9 @@ public final class AwsEventStreamUtils {
                     writer.write("w.serializationBuffer.Reset()").write("")
                             .write("eventMessage := $T{}", messageSymbol).write("");
 
+                    var eventStreamSerializerName = getEventStreamSerializerName(eventStream, service,
+                            context.getProtocolName());
+
                     if (withInitialMessages) {
                         var initialRequestType = getWriterEventWrapperInitialRequestType(symbolProvider, eventStream,
                                 service);
@@ -958,14 +1041,14 @@ public final class AwsEventStreamUtils {
                                      default:
                                          return nil, $T("unknown event wrapper type: %v", event)
                                      }
-                                     """, initialRequestType, messageEventType, errorf);
+                                     """, initialRequestType, messageEventType, eventStreamSerializerName, errorf);
                     } else {
                         writer.write("""
                                      if err := $L(event, &eventMessage); err != nil {
                                          return nil, err
                                      }
                                      """,
-                                getEventStreamSerializerName(eventStream, service, context.getProtocolName()));
+                                eventStreamSerializerName);
                     }
 
                     writer.write("""
@@ -1445,7 +1528,7 @@ public final class AwsEventStreamUtils {
                             var dest = String.format("v.%s",
                                     symbolProvider.toMemberName(headerBinding));
                             new HeaderShapeDeserVisitor(writer, model, headerBinding, dest,
-                                    headerBinding.getMemberName(), "msg").writeDeserializer();
+                                    headerBinding.getMemberName(), "msg.Headers").writeDeserializer();
                         }
                         if (payloadBinding.isPresent()) {
                             var memberShape = payloadBinding.get();
@@ -1521,12 +1604,18 @@ public final class AwsEventStreamUtils {
         return getSerDeName(toShapeId, serviceShape, protocolName, "_serializeEventMessage");
     }
 
-    private static String getEventStreamWriterImplConstructorName(UnionShape unionShape, ServiceShape serviceShape) {
-        return "new" + StringUtils.capitalize(getEventStreamReaderImplName(unionShape, serviceShape));
+    private static String getEventStreamWriterImplConstructorName(
+            UnionShape unionShape, ServiceShape
+            serviceShape
+    ) {
+        return "new" + StringUtils.capitalize(getEventStreamWriterImplName(unionShape, serviceShape));
     }
 
-    private static String getEventStreamReaderImplConstructorName(UnionShape unionShape, ServiceShape serviceShape) {
-        return "new" + StringUtils.capitalize(getEventStreamWriterImplName(unionShape, serviceShape));
+    private static String getEventStreamReaderImplConstructorName(
+            UnionShape unionShape, ServiceShape
+            serviceShape
+    ) {
+        return "new" + StringUtils.capitalize(getEventStreamReaderImplName(unionShape, serviceShape));
     }
 
     private static void generateAsyncWriteReporter(GoWriter writer, Symbol eventSymbol, Symbol asyncEventSymbol) {
@@ -1549,12 +1638,12 @@ public final class AwsEventStreamUtils {
 
     public static String getEventStreamWriterImplName(Shape shape, ServiceShape serviceShape) {
         var name = shape.getId().getName(serviceShape);
-        return StringUtils.uncapitalize(name);
+        return StringUtils.uncapitalize(name) + "Writer";
     }
 
     public static String getEventStreamReaderImplName(Shape shape, ServiceShape serviceShape) {
         var name = shape.getId().getName(serviceShape);
-        return StringUtils.uncapitalize(name);
+        return StringUtils.uncapitalize(name) + "Reader";
     }
 
     private static Symbol getEventStreamSymbol(String name) {
@@ -1686,10 +1775,12 @@ public final class AwsEventStreamUtils {
 
     public static void writeOperationSerializerMiddlewareEventStreamSetup(
             GenerationContext context,
-            EventStreamInfo info
+            EventStreamInfo info,
+            String encoderIdentifier
     ) {
         context.getWriter().get()
-                .write("restEncoder.SetHeader(\"Content-Type\").String($S)", "application/vnd.amazon.eventstream")
+                .write("$L.SetHeader(\"Content-Type\").String($S)", encoderIdentifier,
+                        "application/vnd.amazon.eventstream")
                 .write("");
     }
 
@@ -1905,7 +1996,7 @@ public final class AwsEventStreamUtils {
         private void writeTypeDeserializer(Symbol apiHeaderType, Symbol concreteType, Runnable setter) {
             writer.openBlock("{", "}", () -> {
                 var errorf = SymbolUtils.createValueSymbolBuilder("Errorf", SmithyGoDependency.FMT).build();
-                writer.write("headerValue := $L.Get($S)", dest, headerName)
+                writer.write("headerValue := $L.Get($S)", dataSource, headerName)
                         .openBlock("if headerValue != nil {", "}", () -> {
                             writer.write("hv, ok := headerValue.($P)", apiHeaderType)
                                     .write("""
@@ -1913,7 +2004,7 @@ public final class AwsEventStreamUtils {
                                             return $T("unexpected event header %s with type %T:", $S, headerValue)
                                            }
                                            """, errorf, headerName).write("")
-                                    .write("ihv := headerValue.Get().($P)", concreteType);
+                                    .write("ihv := hv.Get().($P)", concreteType);
                             setter.run();
                         });
             }).write("");

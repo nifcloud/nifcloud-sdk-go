@@ -1,5 +1,5 @@
 // This code was forked from github.com/aws/aws-sdk-go-v2. DO NOT EDIT.
-// URL: https://github.com/aws/aws-sdk-go-v2/tree/v1.14.0/codegen/smithy-aws-go-codegen/src/main/java/software.nifcloud.smithy.nifcloud.go.codegen/customization/AwsCustomGoDependency.java
+// URL: https://github.com/aws/aws-sdk-go-v2/tree/v1.16.5/codegen/smithy-aws-go-codegen/src/main/java/software.nifcloud.smithy.nifcloud.go.codegen/customization/AwsCustomGoDependency.java
 
 /*
  * Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
@@ -29,7 +29,6 @@ public final class AwsCustomGoDependency extends AwsGoDependency {
             "service/dynamodb/internal/customizations", "ddbcust");
     public static final GoDependency S3_CUSTOMIZATION = aws("service/s3/internal/customizations", "s3cust");
     public static final GoDependency S3CONTROL_CUSTOMIZATION = aws("service/s3control/internal/customizations", "s3controlcust");
-    public static final GoDependency S3_SIGV4A_CUSTOMIZATION = aws("service/s3/internal/v4a");
     public static final GoDependency APIGATEWAY_CUSTOMIZATION = aws(
             "service/apigateway/internal/customizations", "agcust");
     public static final GoDependency GLACIER_CUSTOMIZATION = aws(
@@ -46,6 +45,7 @@ public final class AwsCustomGoDependency extends AwsGoDependency {
             "service/route53/internal/customizations", "route53cust");
     public static final GoDependency PRESIGNEDURL_CUSTOMIZATION = awsModuleDep(
             "service/internal/presigned-url", null, Versions.INTERNAL_PRESIGNURL, "presignedurlcust");
+    public static final GoDependency EVENTBRIDGE_CUSTOMIZATION = aws("service/eventbridge/internal/customizations", "ebcust");
 
     private AwsCustomGoDependency() {
         super();

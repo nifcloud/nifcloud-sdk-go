@@ -1,5 +1,5 @@
 // This code was forked from github.com/aws/aws-sdk-go-v2. DO NOT EDIT.
-// URL: https://github.com/aws/aws-sdk-go-v2/tree/v1.14.0/codegen/smithy-aws-go-codegen/src/main/java/software.nifcloud.smithy.nifcloud.go.codegen/EndpointGenerator.java
+// URL: https://github.com/aws/aws-sdk-go-v2/tree/v1.16.5/codegen/smithy-aws-go-codegen/src/main/java/software.nifcloud.smithy.nifcloud.go.codegen/EndpointGenerator.java
 
 /*
  * Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
@@ -362,8 +362,25 @@ public final class EndpointGenerator implements Runnable {
                 });
                 writer.openBlock("default:", "", () -> writer.write("return \"\", fmt.Errorf(\"unknown partition\")"));
             });
-        });
-        writer.write("");
+        }).write("");
+
+        writer.writeDocs("GetDNSSuffixFromRegion returns the DNS suffix for the provided region and options.");
+        writer.openBlock("func GetDNSSuffixFromRegion(region string, options $T) (string, error) {", "}", optionsSymbol,
+                () -> {
+                    List<Partition> sortedPartitions = getSortedPartitions();
+                    writer.openBlock("switch {", "}", () -> {
+                        sortedPartitions.forEach(partition -> {
+                            writer.write("""
+                                         case partitionRegexp.$L.MatchString(region):
+                                             return GetDNSSuffix($S, options)
+                                         """, getPartitionIDFieldName(partition.getId()), partition.getId());
+                        });
+                        writer.write("""
+                                     default:
+                                         return GetDNSSuffix("aws", options)
+                                     """);
+                    });
+                }).write("");
     }
 
     private void generateAwsEndpointResolverWrapper(GoWriter writer) {

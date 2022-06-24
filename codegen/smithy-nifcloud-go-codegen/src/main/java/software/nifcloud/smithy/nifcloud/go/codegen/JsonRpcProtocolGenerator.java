@@ -1,5 +1,5 @@
 // This code was forked from github.com/aws/aws-sdk-go-v2. DO NOT EDIT.
-// URL: https://github.com/aws/aws-sdk-go-v2/tree/v1.14.0/codegen/smithy-aws-go-codegen/src/main/java/software.nifcloud.smithy.nifcloud.go.codegen/JsonRpcProtocolGenerator.java
+// URL: https://github.com/aws/aws-sdk-go-v2/tree/v1.16.5/codegen/smithy-aws-go-codegen/src/main/java/software.nifcloud.smithy.nifcloud.go.codegen/JsonRpcProtocolGenerator.java
 
 /*
  * Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
@@ -206,7 +206,8 @@ abstract class JsonRpcProtocolGenerator extends HttpRpcProtocolGenerator {
 
     @Override
     protected void writeOperationSerializerMiddlewareEventStreamSetup(GenerationContext context, EventStreamInfo info) {
-        AwsEventStreamUtils.writeOperationSerializerMiddlewareEventStreamSetup(context, info);
+        AwsEventStreamUtils.writeOperationSerializerMiddlewareEventStreamSetup(context, info,
+                "httpBindingEncoder");
     }
 
     @Override
@@ -318,7 +319,7 @@ abstract class JsonRpcProtocolGenerator extends HttpRpcProtocolGenerator {
                                     payloadTarget, ctx.getService(), getProtocolName());
                             var ctxWriter = ctx.getWriter().get();
                             ctxWriter.openBlock("if err := $L(&$L, shape); err != nil {", "}", functionName, operand,
-                                    () -> handleDecodeError(ctxWriter))
+                                            () -> handleDecodeError(ctxWriter))
                                     .write("return nil");
                         });
 
@@ -351,7 +352,7 @@ abstract class JsonRpcProtocolGenerator extends HttpRpcProtocolGenerator {
                         AwsProtocolUtils.initializeJsonEventMessageDeserializer(ctx, "nil,");
                         var ctxWriter = ctx.getWriter().get();
                         ctxWriter.openBlock("if err := $L(&$L, shape); err != nil {", "}", functionName, operand,
-                                () -> handleDecodeError(ctxWriter, "nil,"))
+                                        () -> handleDecodeError(ctxWriter, "nil,"))
                                 .write("return v, nil");
                     });
             var initialMessageMembers = streamInfo.getInitialMessageMembers()
