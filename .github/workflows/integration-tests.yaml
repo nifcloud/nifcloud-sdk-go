@@ -8,6 +8,8 @@ env:
   GOPROXY: https://proxy.golang.org
   NIFCLOUD_ACCESS_KEY_ID: ${{ secrets.NIFCLOUD_ACCESS_KEY_ID }}
   NIFCLOUD_SECRET_ACCESS_KEY: ${{ secrets.NIFCLOUD_SECRET_ACCESS_KEY }}
+  NIFCLOUD_STORAGE_ACCESS_KEY_ID: ${{ secrets.NIFCLOUD_STORAGE_ACCESS_KEY_ID }}
+  NIFCLOUD_STORAGE_SECRET_ACCESS_KEY: ${{ secrets.NIFCLOUD_STORAGE_SECRET_ACCESS_KEY }}
 jobs:
   integration-test:
     runs-on: ubuntu-latest

@@ -15,12 +15,32 @@ func LoadConfigWithDefaultRegion(defaultRegion string) nifcloud.Config {
 
 	if strings.EqualFold(os.Getenv("NIFCLOUD_DEBUG_REQUEST"), "true") {
 		lm |= aws.LogRequest
-
 	} else if strings.EqualFold(os.Getenv("NIFCLOUD_DEBUG_REQUEST_BODY"), "true") {
 		lm |= aws.LogRequestWithBody
 	}
 
 	cfg := nifcloud.NewConfig(os.Getenv("NIFCLOUD_ACCESS_KEY_ID"), os.Getenv("NIFCLOUD_SECRET_ACCESS_KEY"), defaultRegion)
+	cfg.ClientLogMode = lm
+
+	return cfg
+}
+
+// LoadConfigWithStorageDefaultRegion loads the default configuration for the storage SDK,
+// and falls back to a default region if one is not specified.
+func LoadConfigWithStorageDefaultRegion(defaultRegion string) nifcloud.Config {
+	var lm aws.ClientLogMode
+
+	if strings.EqualFold(os.Getenv("NIFCLOUD_DEBUG_REQUEST"), "true") {
+		lm |= aws.LogRequest
+	} else if strings.EqualFold(os.Getenv("NIFCLOUD_DEBUG_REQUEST_BODY"), "true") {
+		lm |= aws.LogRequestWithBody
+	}
+
+	cfg := nifcloud.NewConfig(
+		os.Getenv("NIFCLOUD_STORAGE_ACCESS_KEY_ID"),
+		os.Getenv("NIFCLOUD_STORAGE_SECRET_ACCESS_KEY"),
+		defaultRegion,
+	)
 	cfg.ClientLogMode = lm
 
 	return cfg
