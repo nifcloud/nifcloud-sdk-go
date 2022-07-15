@@ -1,5 +1,17 @@
 # Changelog
 
+## [Unreleased](https://github.com/nifcloud/nifcloud-sdk-go/tree/HEAD)
+
+[Full Changelog](https://github.com/nifcloud/nifcloud-sdk-go/compare/v1.15.0...HEAD)
+
+**Merged pull requests:**
+
+- Add storage integration test [\#45](https://github.com/nifcloud/nifcloud-sdk-go/pull/45) ([fuku2014](https://github.com/fuku2014))
+- Add ObjectStorageService [\#44](https://github.com/nifcloud/nifcloud-sdk-go/pull/44) ([fuku2014](https://github.com/fuku2014))
+- Update sdk\(for UpgradeDBEngineVersion etc.\) [\#43](https://github.com/nifcloud/nifcloud-sdk-go/pull/43) ([fuku2014](https://github.com/fuku2014))
+- Fix/sdk bug [\#42](https://github.com/nifcloud/nifcloud-sdk-go/pull/42) ([fuku2014](https://github.com/fuku2014))
+- Fix bug of operation [\#41](https://github.com/nifcloud/nifcloud-sdk-go/pull/41) ([fuku2014](https://github.com/fuku2014))
+
 ## [v1.15.0](https://github.com/nifcloud/nifcloud-sdk-go/tree/v1.15.0) (2022-03-24)
 
 [Full Changelog](https://github.com/nifcloud/nifcloud-sdk-go/compare/v1.14.0...v1.15.0)
