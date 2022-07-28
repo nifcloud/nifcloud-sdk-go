@@ -1796,41 +1796,41 @@ service ObjectStorageService {
 }
 
 
-@http(method: "GET", uri: "/{Bucket}/{Object}?x-id=GetObject" )
+@http(method: "GET", uri: "/{Bucket}/{Object+}?x-id=GetObject" )
 @readonly
 operation GetObject {
     input: GetObjectRequest,
     output: GetObjectResult,
 }
 
-@http(method: "GET", uri: "/{Bucket}/{Object}?acl&x-id=GetObjectACL" )
+@http(method: "GET", uri: "/{Bucket}/{Object+}?acl&x-id=GetObjectACL" )
 @readonly
 operation GetObjectACL {
     input: GetObjectACLRequest,
     output: GetObjectACLResult,
 }
 
-@http(method: "HEAD", uri: "/{Bucket}/{Object}?x-id=HeadObject" )
+@http(method: "HEAD", uri: "/{Bucket}/{Object+}?x-id=HeadObject" )
 operation HeadObject {
     input: HeadObjectRequest,
     output: HeadObjectResult,
 }
 
-@http(method: "PUT", uri: "/{Bucket}/{Object}?x-id=PutObject" )
+@http(method: "PUT", uri: "/{Bucket}/{Object+}?x-id=PutObject" )
 @idempotent
 operation PutObject {
     input: PutObjectRequest,
     output: PutObjectResult,
 }
 
-@http(method: "PUT", uri: "/{Bucket}/{Object}?x-id=PutObjectCopy" )
+@http(method: "PUT", uri: "/{Bucket}/{Object+}?x-id=PutObjectCopy" )
 @idempotent
 operation PutObjectCopy {
     input: PutObjectCopyRequest,
     output: PutObjectCopyResult,
 }
 
-@http(method: "DELETE", uri: "/{Bucket}/{Object}?x-id=DeleteObject" )
+@http(method: "DELETE", uri: "/{Bucket}/{Object+}?x-id=DeleteObject" )
 @idempotent
 operation DeleteObject {
     input: DeleteObjectRequest,
@@ -1843,61 +1843,61 @@ operation DeleteMultipleObjects {
     output: DeleteMultipleObjectsResult,
 }
 
-@http(method: "GET", uri: "/{Bucket}/{Object}?tagging&x-id=GetObjectTagging" )
+@http(method: "GET", uri: "/{Bucket}/{Object+}?tagging&x-id=GetObjectTagging" )
 @readonly
 operation GetObjectTagging {
     input: GetObjectTaggingRequest,
     output: GetObjectTaggingResult,
 }
 
-@http(method: "PUT", uri: "/{Bucket}/{Object}?tagging&x-id=PutObjectTagging" )
+@http(method: "PUT", uri: "/{Bucket}/{Object+}?tagging&x-id=PutObjectTagging" )
 @idempotent
 operation PutObjectTagging {
     input: PutObjectTaggingRequest,
     output: PutObjectTaggingResult,
 }
 
-@http(method: "DELETE", uri: "/{Bucket}/{Object}?tagging&x-id=DeleteObjectTagging" )
+@http(method: "DELETE", uri: "/{Bucket}/{Object+}?tagging&x-id=DeleteObjectTagging" )
 @idempotent
 operation DeleteObjectTagging {
     input: DeleteObjectTaggingRequest,
     output: DeleteObjectTaggingResult,
 }
 
-@http(method: "POST", uri: "/{Bucket}/{Object}?uploads&x-id=InitiateMultipartUpload" )
+@http(method: "POST", uri: "/{Bucket}/{Object+}?uploads&x-id=InitiateMultipartUpload" )
 operation InitiateMultipartUpload {
     input: InitiateMultipartUploadRequest,
     output: InitiateMultipartUploadResult,
 }
 
-@http(method: "PUT", uri: "/{Bucket}/{Object}?x-id=UploadPart" )
+@http(method: "PUT", uri: "/{Bucket}/{Object+}?x-id=UploadPart" )
 @idempotent
 operation UploadPart {
     input: UploadPartRequest,
     output: UploadPartResult,
 }
 
-@http(method: "PUT", uri: "/{Bucket}/{Object}?x-id=UploadPartCopy" )
+@http(method: "PUT", uri: "/{Bucket}/{Object+}?x-id=UploadPartCopy" )
 @idempotent
 operation UploadPartCopy {
     input: UploadPartCopyRequest,
     output: UploadPartCopyResult,
 }
 
-@http(method: "GET", uri: "/{Bucket}/{Object}?x-id=ListParts" )
+@http(method: "GET", uri: "/{Bucket}/{Object+}?x-id=ListParts" )
 @readonly
 operation ListParts {
     input: ListPartsRequest,
     output: ListPartsResult,
 }
 
-@http(method: "POST", uri: "/{Bucket}/{Object}?x-id=CompleteMultipartUpload" )
+@http(method: "POST", uri: "/{Bucket}/{Object+}?x-id=CompleteMultipartUpload" )
 operation CompleteMultipartUpload {
     input: CompleteMultipartUploadRequest,
     output: CompleteMultipartUploadResult,
 }
 
-@http(method: "DELETE", uri: "/{Bucket}/{Object}?x-id=AbortMultipartUpload" )
+@http(method: "DELETE", uri: "/{Bucket}/{Object+}?x-id=AbortMultipartUpload" )
 @idempotent
 operation AbortMultipartUpload {
     input: AbortMultipartUploadRequest,
