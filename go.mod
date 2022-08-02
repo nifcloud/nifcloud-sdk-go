@@ -4,7 +4,7 @@ go 1.17
 
 require (
 	github.com/aws/aws-sdk-go-v2 v1.16.5
-	github.com/aws/smithy-go v1.11.3
+	github.com/aws/smithy-go v1.12.0
 	github.com/golangci/golangci-lint v1.30.0
 	github.com/jmespath/go-jmespath v0.4.0
 	golang.org/x/tools v0.0.0-20200811032001-fd80f4dbb3ea
