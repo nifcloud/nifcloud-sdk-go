@@ -22663,6 +22663,19 @@ func awsEc2query_deserializeDocumentAttachmentSet(v **types.AttachmentSet, decod
 				sv.VolumeId = ptr.String(xtv)
 			}
 
+		case strings.EqualFold("volumeUniqueId", t.Name.Local):
+			val, err := decoder.Value()
+			if err != nil {
+				return err
+			}
+			if val == nil {
+				break
+			}
+			{
+				xtv := string(val)
+				sv.VolumeUniqueId = ptr.String(xtv)
+			}
+
 		default:
 			// Do nothing and ignore the unexpected tag element
 			err = decoder.Decoder.Skip()
@@ -26803,6 +26816,19 @@ func awsEc2query_deserializeDocumentEbs(v **types.Ebs, decoder smithyxml.NodeDec
 				sv.VolumeId = ptr.String(xtv)
 			}
 
+		case strings.EqualFold("volumeUniqueId", t.Name.Local):
+			val, err := decoder.Value()
+			if err != nil {
+				return err
+			}
+			if val == nil {
+				break
+			}
+			{
+				xtv := string(val)
+				sv.VolumeUniqueId = ptr.String(xtv)
+			}
+
 		default:
 			// Do nothing and ignore the unexpected tag element
 			err = decoder.Decoder.Skip()
@@ -26968,6 +26994,19 @@ func awsEc2query_deserializeDocumentEbsOfRunInstances(v **types.EbsOfRunInstance
 			{
 				xtv := string(val)
 				sv.VolumeId = ptr.String(xtv)
+			}
+
+		case strings.EqualFold("volumeUniqueId", t.Name.Local):
+			val, err := decoder.Value()
+			if err != nil {
+				return err
+			}
+			if val == nil {
+				break
+			}
+			{
+				xtv := string(val)
+				sv.VolumeUniqueId = ptr.String(xtv)
 			}
 
 		default:
@@ -64841,6 +64880,19 @@ func awsEc2query_deserializeDocumentVolumeSet(v **types.VolumeSet, decoder smith
 				sv.VolumeId = ptr.String(xtv)
 			}
 
+		case strings.EqualFold("volumeUniqueId", t.Name.Local):
+			val, err := decoder.Value()
+			if err != nil {
+				return err
+			}
+			if val == nil {
+				break
+			}
+			{
+				xtv := string(val)
+				sv.VolumeUniqueId = ptr.String(xtv)
+			}
+
 		default:
 			// Do nothing and ignore the unexpected tag element
 			err = decoder.Decoder.Skip()
@@ -67081,6 +67133,19 @@ func awsEc2query_deserializeOpDocumentAttachVolumeOutput(v **AttachVolumeOutput,
 				sv.VolumeId = ptr.String(xtv)
 			}
 
+		case strings.EqualFold("volumeUniqueId", t.Name.Local):
+			val, err := decoder.Value()
+			if err != nil {
+				return err
+			}
+			if val == nil {
+				break
+			}
+			{
+				xtv := string(val)
+				sv.VolumeUniqueId = ptr.String(xtv)
+			}
+
 		default:
 			// Do nothing and ignore the unexpected tag element
 			err = decoder.Decoder.Skip()
@@ -68627,6 +68692,19 @@ func awsEc2query_deserializeOpDocumentCreateVolumeOutput(v **CreateVolumeOutput,
 			{
 				xtv := string(val)
 				sv.VolumeId = ptr.String(xtv)
+			}
+
+		case strings.EqualFold("volumeUniqueId", t.Name.Local):
+			val, err := decoder.Value()
+			if err != nil {
+				return err
+			}
+			if val == nil {
+				break
+			}
+			{
+				xtv := string(val)
+				sv.VolumeUniqueId = ptr.String(xtv)
 			}
 
 		default:
@@ -72144,6 +72222,19 @@ func awsEc2query_deserializeOpDocumentDetachVolumeOutput(v **DetachVolumeOutput,
 			{
 				xtv := string(val)
 				sv.VolumeId = ptr.String(xtv)
+			}
+
+		case strings.EqualFold("volumeUniqueId", t.Name.Local):
+			val, err := decoder.Value()
+			if err != nil {
+				return err
+			}
+			if val == nil {
+				break
+			}
+			{
+				xtv := string(val)
+				sv.VolumeUniqueId = ptr.String(xtv)
 			}
 
 		default:

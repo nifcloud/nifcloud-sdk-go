@@ -371,6 +371,8 @@ type AttachmentSet struct {
 	
 	VolumeId *string
 	
+	VolumeUniqueId *string
+	
 	noSmithyDocumentSerde
 }
 
@@ -992,6 +994,8 @@ type Ebs struct {
 	
 	VolumeId *string
 	
+	VolumeUniqueId *string
+	
 	noSmithyDocumentSerde
 }
 
@@ -1015,6 +1019,8 @@ type EbsOfRunInstances struct {
 	Status *string
 	
 	VolumeId *string
+	
+	VolumeUniqueId *string
 	
 	noSmithyDocumentSerde
 }
@@ -6138,6 +6144,8 @@ type VolumeSet struct {
 	Status *string
 	
 	VolumeId *string
+	
+	VolumeUniqueId *string
 	
 	noSmithyDocumentSerde
 }
