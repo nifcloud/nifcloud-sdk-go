@@ -52,6 +52,8 @@ type AttachVolumeOutput struct {
 
 	VolumeId *string
 
+	VolumeUniqueId *string
+
 	// Metadata pertaining to the operation's result.
 	ResultMetadata middleware.Metadata
 

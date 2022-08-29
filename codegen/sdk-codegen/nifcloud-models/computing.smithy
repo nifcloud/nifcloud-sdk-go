@@ -173,6 +173,9 @@ structure Ebs {
     @xmlName("volumeId")
     @ec2QueryName("volumeId")
     VolumeId: String,
+    @xmlName("volumeUniqueId")
+    @ec2QueryName("volumeUniqueId")
+    VolumeUniqueId: String,
 }
 
 structure AccountingType {
@@ -1670,6 +1673,9 @@ structure EbsOfRunInstances {
     @xmlName("volumeId")
     @ec2QueryName("volumeId")
     VolumeId: String,
+    @xmlName("volumeUniqueId")
+    @ec2QueryName("volumeUniqueId")
+    VolumeUniqueId: String,
 }
 
 list ListOfNetworkInterfaceSetOfRunInstances {
@@ -3499,6 +3505,9 @@ structure AttachVolumeResult {
     @xmlName("volumeId")
     @ec2QueryName("volumeId")
     VolumeId: String,
+    @xmlName("volumeUniqueId")
+    @ec2QueryName("volumeUniqueId")
+    VolumeUniqueId: String,
 }
 
 @enum([
@@ -3605,6 +3614,9 @@ structure CreateVolumeResult {
     @xmlName("volumeId")
     @ec2QueryName("volumeId")
     VolumeId: String,
+    @xmlName("volumeUniqueId")
+    @ec2QueryName("volumeUniqueId")
+    VolumeUniqueId: String,
 }
 
 structure DeleteVolumeRequest {
@@ -3681,6 +3693,9 @@ structure VolumeSet {
     @xmlName("volumeId")
     @ec2QueryName("volumeId")
     VolumeId: String,
+    @xmlName("volumeUniqueId")
+    @ec2QueryName("volumeUniqueId")
+    VolumeUniqueId: String,
 }
 
 list ListOfAttachmentSet {
@@ -3710,6 +3725,9 @@ structure AttachmentSet {
     @xmlName("volumeId")
     @ec2QueryName("volumeId")
     VolumeId: String,
+    @xmlName("volumeUniqueId")
+    @ec2QueryName("volumeUniqueId")
+    VolumeUniqueId: String,
 }
 
 structure DetachVolumeRequest {
@@ -3753,6 +3771,9 @@ structure DetachVolumeResult {
     @xmlName("volumeId")
     @ec2QueryName("volumeId")
     VolumeId: String,
+    @xmlName("volumeUniqueId")
+    @ec2QueryName("volumeUniqueId")
+    VolumeUniqueId: String,
 }
 
 @enum([
