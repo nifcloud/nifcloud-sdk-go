@@ -1,8 +1,17 @@
 # Changelog
 
-## [Unreleased](https://github.com/nifcloud/nifcloud-sdk-go/tree/HEAD)
+## [v1.17.0](https://github.com/nifcloud/nifcloud-sdk-go/tree/v1.17.0) (2022-08-29)
 
-[Full Changelog](https://github.com/nifcloud/nifcloud-sdk-go/compare/v1.15.0...HEAD)
+[Full Changelog](https://github.com/nifcloud/nifcloud-sdk-go/compare/v1.16.0...v1.17.0)
+
+**Merged pull requests:**
+
+- Update computing model [\#47](https://github.com/nifcloud/nifcloud-sdk-go/pull/47) ([aokumasan](https://github.com/aokumasan))
+- Update model for storage service [\#46](https://github.com/nifcloud/nifcloud-sdk-go/pull/46) ([aokumasan](https://github.com/aokumasan))
+
+## [v1.16.0](https://github.com/nifcloud/nifcloud-sdk-go/tree/v1.16.0) (2022-07-15)
+
+[Full Changelog](https://github.com/nifcloud/nifcloud-sdk-go/compare/v1.15.0...v1.16.0)
 
 **Merged pull requests:**
 
