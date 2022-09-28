@@ -27,6 +27,8 @@ func (c *Client) ListClusters(ctx context.Context, params *ListClustersInput, op
 }
 
 type ListClustersInput struct {
+	Filters *string
+
 	noSmithyDocumentSerde
 }
 

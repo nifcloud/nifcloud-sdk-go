@@ -111,6 +111,26 @@ func (m *validateOpCreateSnapshot) HandleInitialize(ctx context.Context, in midd
 	return next.HandleInitialize(ctx, in)
 }
 
+type validateOpCreateTags struct {
+}
+
+func (*validateOpCreateTags) ID() string {
+	return "OperationInputValidation"
+}
+
+func (m *validateOpCreateTags) HandleInitialize(ctx context.Context, in middleware.InitializeInput, next middleware.InitializeHandler) (
+	out middleware.InitializeOutput, metadata middleware.Metadata, err error,
+) {
+	input, ok := in.Parameters.(*CreateTagsInput)
+	if !ok {
+		return out, metadata, fmt.Errorf("unknown input parameters type %T", in.Parameters)
+	}
+	if err := validateOpCreateTagsInput(input); err != nil {
+		return out, metadata, err
+	}
+	return next.HandleInitialize(ctx, in)
+}
+
 type validateOpDeleteCluster struct {
 }
 
@@ -226,6 +246,26 @@ func (m *validateOpDeleteSnapshot) HandleInitialize(ctx context.Context, in midd
 		return out, metadata, fmt.Errorf("unknown input parameters type %T", in.Parameters)
 	}
 	if err := validateOpDeleteSnapshotInput(input); err != nil {
+		return out, metadata, err
+	}
+	return next.HandleInitialize(ctx, in)
+}
+
+type validateOpDeleteTags struct {
+}
+
+func (*validateOpDeleteTags) ID() string {
+	return "OperationInputValidation"
+}
+
+func (m *validateOpDeleteTags) HandleInitialize(ctx context.Context, in middleware.InitializeInput, next middleware.InitializeHandler) (
+	out middleware.InitializeOutput, metadata middleware.Metadata, err error,
+) {
+	input, ok := in.Parameters.(*DeleteTagsInput)
+	if !ok {
+		return out, metadata, fmt.Errorf("unknown input parameters type %T", in.Parameters)
+	}
+	if err := validateOpDeleteTagsInput(input); err != nil {
 		return out, metadata, err
 	}
 	return next.HandleInitialize(ctx, in)
@@ -471,6 +511,26 @@ func (m *validateOpUpdateFirewallGroup) HandleInitialize(ctx context.Context, in
 	return next.HandleInitialize(ctx, in)
 }
 
+type validateOpUpdateNodePool struct {
+}
+
+func (*validateOpUpdateNodePool) ID() string {
+	return "OperationInputValidation"
+}
+
+func (m *validateOpUpdateNodePool) HandleInitialize(ctx context.Context, in middleware.InitializeInput, next middleware.InitializeHandler) (
+	out middleware.InitializeOutput, metadata middleware.Metadata, err error,
+) {
+	input, ok := in.Parameters.(*UpdateNodePoolInput)
+	if !ok {
+		return out, metadata, fmt.Errorf("unknown input parameters type %T", in.Parameters)
+	}
+	if err := validateOpUpdateNodePoolInput(input); err != nil {
+		return out, metadata, err
+	}
+	return next.HandleInitialize(ctx, in)
+}
+
 type validateOpUpdateSnapshot struct {
 }
 
@@ -486,6 +546,26 @@ func (m *validateOpUpdateSnapshot) HandleInitialize(ctx context.Context, in midd
 		return out, metadata, fmt.Errorf("unknown input parameters type %T", in.Parameters)
 	}
 	if err := validateOpUpdateSnapshotInput(input); err != nil {
+		return out, metadata, err
+	}
+	return next.HandleInitialize(ctx, in)
+}
+
+type validateOpUpdateTags struct {
+}
+
+func (*validateOpUpdateTags) ID() string {
+	return "OperationInputValidation"
+}
+
+func (m *validateOpUpdateTags) HandleInitialize(ctx context.Context, in middleware.InitializeInput, next middleware.InitializeHandler) (
+	out middleware.InitializeOutput, metadata middleware.Metadata, err error,
+) {
+	input, ok := in.Parameters.(*UpdateTagsInput)
+	if !ok {
+		return out, metadata, fmt.Errorf("unknown input parameters type %T", in.Parameters)
+	}
+	if err := validateOpUpdateTagsInput(input); err != nil {
 		return out, metadata, err
 	}
 	return next.HandleInitialize(ctx, in)
@@ -511,6 +591,10 @@ func addOpCreateSnapshotValidationMiddleware(stack *middleware.Stack) error {
 	return stack.Initialize.Add(&validateOpCreateSnapshot{}, middleware.After)
 }
 
+func addOpCreateTagsValidationMiddleware(stack *middleware.Stack) error {
+	return stack.Initialize.Add(&validateOpCreateTags{}, middleware.After)
+}
+
 func addOpDeleteClusterValidationMiddleware(stack *middleware.Stack) error {
 	return stack.Initialize.Add(&validateOpDeleteCluster{}, middleware.After)
 }
@@ -533,6 +617,10 @@ func addOpDeleteNodePoolsValidationMiddleware(stack *middleware.Stack) error {
 
 func addOpDeleteSnapshotValidationMiddleware(stack *middleware.Stack) error {
 	return stack.Initialize.Add(&validateOpDeleteSnapshot{}, middleware.After)
+}
+
+func addOpDeleteTagsValidationMiddleware(stack *middleware.Stack) error {
+	return stack.Initialize.Add(&validateOpDeleteTags{}, middleware.After)
 }
 
 func addOpGetClusterCredentialsValidationMiddleware(stack *middleware.Stack) error {
@@ -583,8 +671,16 @@ func addOpUpdateFirewallGroupValidationMiddleware(stack *middleware.Stack) error
 	return stack.Initialize.Add(&validateOpUpdateFirewallGroup{}, middleware.After)
 }
 
+func addOpUpdateNodePoolValidationMiddleware(stack *middleware.Stack) error {
+	return stack.Initialize.Add(&validateOpUpdateNodePool{}, middleware.After)
+}
+
 func addOpUpdateSnapshotValidationMiddleware(stack *middleware.Stack) error {
 	return stack.Initialize.Add(&validateOpUpdateSnapshot{}, middleware.After)
+}
+
+func addOpUpdateTagsValidationMiddleware(stack *middleware.Stack) error {
+	return stack.Initialize.Add(&validateOpUpdateTags{}, middleware.After)
 }
 
 func validateListOfRequestNodePools(v []types.RequestNodePools) error {
@@ -611,6 +707,40 @@ func validateListOfRequestRules(v []types.RequestRules) error {
 	invalidParams := smithy.InvalidParamsError{Context: "ListOfRequestRules"}
 	for i := range v {
 		if err := validateRequestRules(&v[i]); err != nil {
+			invalidParams.AddNested(fmt.Sprintf("[%d]", i), err.(smithy.InvalidParamsError))
+		}
+	}
+	if invalidParams.Len() > 0 {
+	return invalidParams
+	} else {
+	return nil
+	}
+}
+
+func validateListOfRequestTagsOfCreateTags(v []types.RequestTagsOfCreateTags) error {
+	if v == nil {
+		return nil
+	}
+	invalidParams := smithy.InvalidParamsError{Context: "ListOfRequestTagsOfCreateTags"}
+	for i := range v {
+		if err := validateRequestTagsOfCreateTags(&v[i]); err != nil {
+			invalidParams.AddNested(fmt.Sprintf("[%d]", i), err.(smithy.InvalidParamsError))
+		}
+	}
+	if invalidParams.Len() > 0 {
+	return invalidParams
+	} else {
+	return nil
+	}
+}
+
+func validateListOfRequestTagsOfUpdateTags(v []types.RequestTagsOfUpdateTags) error {
+	if v == nil {
+		return nil
+	}
+	invalidParams := smithy.InvalidParamsError{Context: "ListOfRequestTagsOfUpdateTags"}
+	for i := range v {
+		if err := validateRequestTagsOfUpdateTags(&v[i]); err != nil {
 			invalidParams.AddNested(fmt.Sprintf("[%d]", i), err.(smithy.InvalidParamsError))
 		}
 	}
@@ -773,6 +903,48 @@ func validateRequestSnapshot(v *types.RequestSnapshot) error {
 	}
 }
 
+func validateRequestTagsOfCreateTags(v *types.RequestTagsOfCreateTags) error {
+	if v == nil {
+		return nil
+	}
+	invalidParams := smithy.InvalidParamsError{Context: "RequestTagsOfCreateTags"}
+	if v.Key == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("Key"))
+	}
+	if v.Nrn == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("Nrn"))
+	}
+	if v.Value == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("Value"))
+	}
+	if invalidParams.Len() > 0 {
+	return invalidParams
+	} else {
+	return nil
+	}
+}
+
+func validateRequestTagsOfUpdateTags(v *types.RequestTagsOfUpdateTags) error {
+	if v == nil {
+		return nil
+	}
+	invalidParams := smithy.InvalidParamsError{Context: "RequestTagsOfUpdateTags"}
+	if v.Key == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("Key"))
+	}
+	if v.Nrn == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("Nrn"))
+	}
+	if v.Value == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("Value"))
+	}
+	if invalidParams.Len() > 0 {
+	return invalidParams
+	} else {
+	return nil
+	}
+}
+
 func validateOpAuthorizeFirewallGroupInput(v *AuthorizeFirewallGroupInput) error {
 	if v == nil {
 		return nil
@@ -874,6 +1046,25 @@ func validateOpCreateSnapshotInput(v *CreateSnapshotInput) error {
 	}
 }
 
+func validateOpCreateTagsInput(v *CreateTagsInput) error {
+	if v == nil {
+		return nil
+	}
+	invalidParams := smithy.InvalidParamsError{Context: "CreateTagsInput"}
+	if v.Tags == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("Tags"))
+	} else if v.Tags != nil {
+		if err := validateListOfRequestTagsOfCreateTags(v.Tags); err != nil {
+			invalidParams.AddNested("Tags", err.(smithy.InvalidParamsError))
+		}
+	}
+	if invalidParams.Len() > 0 {
+	return invalidParams
+	} else {
+	return nil
+	}
+}
+
 func validateOpDeleteClusterInput(v *DeleteClusterInput) error {
 	if v == nil {
 		return nil
@@ -962,6 +1153,21 @@ func validateOpDeleteSnapshotInput(v *DeleteSnapshotInput) error {
 	invalidParams := smithy.InvalidParamsError{Context: "DeleteSnapshotInput"}
 	if v.SnapshotName == nil {
 	invalidParams.Add(smithy.NewErrParamRequired("SnapshotName"))
+	}
+	if invalidParams.Len() > 0 {
+	return invalidParams
+	} else {
+	return nil
+	}
+}
+
+func validateOpDeleteTagsInput(v *DeleteTagsInput) error {
+	if v == nil {
+		return nil
+	}
+	invalidParams := smithy.InvalidParamsError{Context: "DeleteTagsInput"}
+	if v.Ids == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("Ids"))
 	}
 	if invalidParams.Len() > 0 {
 	return invalidParams
@@ -1172,6 +1378,24 @@ func validateOpUpdateFirewallGroupInput(v *UpdateFirewallGroupInput) error {
 	}
 }
 
+func validateOpUpdateNodePoolInput(v *UpdateNodePoolInput) error {
+	if v == nil {
+		return nil
+	}
+	invalidParams := smithy.InvalidParamsError{Context: "UpdateNodePoolInput"}
+	if v.ClusterName == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("ClusterName"))
+	}
+	if v.NodePoolName == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("NodePoolName"))
+	}
+	if invalidParams.Len() > 0 {
+	return invalidParams
+	} else {
+	return nil
+	}
+}
+
 func validateOpUpdateSnapshotInput(v *UpdateSnapshotInput) error {
 	if v == nil {
 		return nil
@@ -1179,6 +1403,25 @@ func validateOpUpdateSnapshotInput(v *UpdateSnapshotInput) error {
 	invalidParams := smithy.InvalidParamsError{Context: "UpdateSnapshotInput"}
 	if v.SnapshotName == nil {
 	invalidParams.Add(smithy.NewErrParamRequired("SnapshotName"))
+	}
+	if invalidParams.Len() > 0 {
+	return invalidParams
+	} else {
+	return nil
+	}
+}
+
+func validateOpUpdateTagsInput(v *UpdateTagsInput) error {
+	if v == nil {
+		return nil
+	}
+	invalidParams := smithy.InvalidParamsError{Context: "UpdateTagsInput"}
+	if v.Tags == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("Tags"))
+	} else if v.Tags != nil {
+		if err := validateListOfRequestTagsOfUpdateTags(v.Tags); err != nil {
+			invalidParams.AddNested("Tags", err.(smithy.InvalidParamsError))
+		}
 	}
 	if invalidParams.Len() > 0 {
 	return invalidParams
