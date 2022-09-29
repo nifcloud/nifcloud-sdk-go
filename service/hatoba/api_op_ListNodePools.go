@@ -31,6 +31,8 @@ type ListNodePoolsInput struct {
 	// This member is required.
 	ClusterName *string
 
+	Filters *string
+
 	noSmithyDocumentSerde
 }
 

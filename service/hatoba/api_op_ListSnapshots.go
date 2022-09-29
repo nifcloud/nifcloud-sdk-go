@@ -27,6 +27,8 @@ func (c *Client) ListSnapshots(ctx context.Context, params *ListSnapshotsInput, 
 }
 
 type ListSnapshotsInput struct {
+	Filters *string
+
 	noSmithyDocumentSerde
 }
 

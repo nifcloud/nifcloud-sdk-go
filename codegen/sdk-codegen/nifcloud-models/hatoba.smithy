@@ -42,8 +42,12 @@ structure Cluster {
     NodeCount: Integer,
     @jsonName("nodePools")
     NodePools: ListOfNodePools,
+    @jsonName("nrn")
+    Nrn: String,
     @jsonName("status")
     Status: String,
+    @jsonName("tags")
+    Tags: ListOfTags,
 }
 
 structure AddonsConfig {
@@ -71,8 +75,12 @@ structure NodePools {
     NodeCount: Integer,
     @jsonName("nodes")
     Nodes: ListOfNodes,
+    @jsonName("nrn")
+    Nrn: String,
     @jsonName("status")
     Status: String,
+    @jsonName("tags")
+    Tags: ListOfTags,
 }
 
 list ListOfNodes {
@@ -92,6 +100,19 @@ structure Nodes {
     Status: String,
 }
 
+list ListOfTags {
+    member: Tags,
+}
+
+structure Tags {
+    @jsonName("id")
+    Id: String,
+    @jsonName("key")
+    Key: String,
+    @jsonName("value")
+    Value: String,
+}
+
 list ListOfLocations {
     member: String,
 }
@@ -106,7 +127,11 @@ structure GetClusterResult {
     Cluster: Cluster,
 }
 
-structure ListClustersRequest {}
+structure ListClustersRequest {
+    @httpQuery("filters")
+    @jsonName("filters")
+    Filters: String,
+}
 
 list ListOfClusters {
     member: Clusters,
@@ -137,8 +162,12 @@ structure Clusters {
     NodeCount: Integer,
     @jsonName("nodePools")
     NodePools: ListOfNodePools,
+    @jsonName("nrn")
+    Nrn: String,
     @jsonName("status")
     Status: String,
+    @jsonName("tags")
+    Tags: ListOfTags,
 }
 
 structure ListClustersResult {
@@ -160,6 +189,8 @@ structure RequestCluster {
     @required
     @jsonName("nodePools")
     ListOfRequestNodePools: ListOfRequestNodePools,
+    @jsonName("tags")
+    ListOfRequestTags: ListOfRequestTags,
     @required
     @jsonName("name")
     Name: String,
@@ -171,18 +202,6 @@ structure RequestCluster {
 
 @enum([
   {
-      name: "V1_21_1",
-      value: "v1.21.1",
-  },
-  {
-      name: "V1_21_5",
-      value: "v1.21.5",
-  },
-  {
-      name: "V1_21_9",
-      value: "v1.21.9",
-  },
-  {
       name: "V1_22_2",
       value: "v1.22.2",
   },
@@ -191,8 +210,20 @@ structure RequestCluster {
       value: "v1.22.6",
   },
   {
+      name: "V1_22_12",
+      value: "v1.22.12",
+  },
+  {
       name: "V1_23_3",
       value: "v1.23.3",
+  },
+  {
+      name: "V1_23_9",
+      value: "v1.23.9",
+  },
+  {
+      name: "V1_24_3",
+      value: "v1.24.3",
   },
 ])
 string KubernetesVersionOfclusterForCreateCluster
@@ -215,6 +246,8 @@ structure RequestNodePools {
     @required
     @jsonName("instanceType")
     InstanceType: InstanceTypeOfclusterForCreateCluster,
+    @jsonName("tags")
+    ListOfRequestTags: ListOfRequestTags,
     @required
     @jsonName("name")
     Name: String,
@@ -418,6 +451,17 @@ list ListOfRequestNodePools {
 ])
 string InstanceTypeOfclusterForCreateCluster
 
+structure RequestTags {
+    @jsonName("key")
+    Key: String,
+    @jsonName("value")
+    Value: String,
+}
+
+list ListOfRequestTags {
+    member: RequestTags,
+}
+
 structure RequestNetworkConfig {
     @jsonName("networkId")
     NetworkId: String,
@@ -439,6 +483,8 @@ structure RequestClusterOfUpdateCluster {
     Description: String,
     @jsonName("kubernetesVersion")
     KubernetesVersion: KubernetesVersionOfclusterForUpdateCluster,
+    @jsonName("tags")
+    ListOfRequestTags: ListOfRequestTags,
     @jsonName("name")
     Name: String,
     @jsonName("addonsConfig")
@@ -446,18 +492,6 @@ structure RequestClusterOfUpdateCluster {
 }
 
 @enum([
-  {
-      name: "V1_21_1",
-      value: "v1.21.1",
-  },
-  {
-      name: "V1_21_5",
-      value: "v1.21.5",
-  },
-  {
-      name: "V1_21_9",
-      value: "v1.21.9",
-  },
   {
       name: "V1_22_2",
       value: "v1.22.2",
@@ -467,8 +501,20 @@ structure RequestClusterOfUpdateCluster {
       value: "v1.22.6",
   },
   {
+      name: "V1_22_12",
+      value: "v1.22.12",
+  },
+  {
       name: "V1_23_3",
       value: "v1.23.3",
+  },
+  {
+      name: "V1_23_9",
+      value: "v1.23.9",
+  },
+  {
+      name: "V1_24_3",
+      value: "v1.24.3",
   },
 ])
 string KubernetesVersionOfclusterForUpdateCluster
@@ -545,8 +591,12 @@ structure NodePool {
     NodeCount: Integer,
     @jsonName("nodes")
     Nodes: ListOfNodes,
+    @jsonName("nrn")
+    Nrn: String,
     @jsonName("status")
     Status: String,
+    @jsonName("tags")
+    Tags: ListOfTags,
 }
 
 structure GetNodePoolResult {
@@ -559,6 +609,9 @@ structure ListNodePoolsRequest {
     @httpLabel
     @jsonName("ClusterName")
     ClusterName: String,
+    @httpQuery("filters")
+    @jsonName("filters")
+    Filters: String,
 }
 
 structure ListNodePoolsResult {
@@ -570,6 +623,8 @@ structure RequestNodePool {
     @required
     @jsonName("instanceType")
     InstanceType: InstanceTypeOfnodePoolForCreateNodePool,
+    @jsonName("tags")
+    ListOfRequestTags: ListOfRequestTags,
     @required
     @jsonName("name")
     Name: String,
@@ -784,6 +839,29 @@ structure CreateNodePoolResult {
     NodePool: NodePool,
 }
 
+structure RequestNodePoolOfUpdateNodePool {
+    @jsonName("tags")
+    ListOfRequestTags: ListOfRequestTags,
+}
+
+structure UpdateNodePoolRequest {
+    @required
+    @httpLabel
+    @jsonName("ClusterName")
+    ClusterName: String,
+    @jsonName("nodePool")
+    NodePool: RequestNodePoolOfUpdateNodePool,
+    @required
+    @httpLabel
+    @jsonName("NodePoolName")
+    NodePoolName: String,
+}
+
+structure UpdateNodePoolResult {
+    @jsonName("nodePool")
+    NodePool: NodePool,
+}
+
 structure SetNodePoolSizeRequest {
     @required
     @httpLabel
@@ -865,8 +943,12 @@ structure FirewallGroup {
     Description: String,
     @jsonName("name")
     Name: String,
+    @jsonName("nrn")
+    Nrn: String,
     @jsonName("rules")
     Rules: ListOfRules,
+    @jsonName("tags")
+    Tags: ListOfTags,
 }
 
 list ListOfRules {
@@ -897,7 +979,11 @@ structure GetFirewallGroupResult {
     FirewallGroup: FirewallGroup,
 }
 
-structure ListFirewallGroupsRequest {}
+structure ListFirewallGroupsRequest {
+    @httpQuery("filters")
+    @jsonName("filters")
+    Filters: String,
+}
 
 list ListOfFirewallGroups {
     member: FirewallGroups,
@@ -908,8 +994,12 @@ structure FirewallGroups {
     Description: String,
     @jsonName("name")
     Name: String,
+    @jsonName("nrn")
+    Nrn: String,
     @jsonName("rules")
     Rules: ListOfRules,
+    @jsonName("tags")
+    Tags: ListOfTags,
 }
 
 structure ListFirewallGroupsResult {
@@ -920,6 +1010,8 @@ structure ListFirewallGroupsResult {
 structure RequestFirewallGroup {
     @jsonName("description")
     Description: String,
+    @jsonName("tags")
+    ListOfRequestTags: ListOfRequestTags,
     @required
     @jsonName("name")
     Name: String,
@@ -939,6 +1031,8 @@ structure CreateFirewallGroupResult {
 structure RequestFirewallGroupOfUpdateFirewallGroup {
     @jsonName("description")
     Description: String,
+    @jsonName("tags")
+    ListOfRequestTags: ListOfRequestTags,
     @jsonName("name")
     Name: String,
 }
@@ -1116,10 +1210,14 @@ structure Snapshot {
     ExpirationTime: String,
     @jsonName("name")
     Name: String,
+    @jsonName("nrn")
+    Nrn: String,
     @jsonName("resourceVersion")
     ResourceVersion: String,
     @jsonName("status")
     Status: String,
+    @jsonName("tags")
+    Tags: ListOfTags,
 }
 
 structure ClusterOfGetSnapshot {
@@ -1149,7 +1247,11 @@ structure GetSnapshotResult {
     Snapshot: Snapshot,
 }
 
-structure ListSnapshotsRequest {}
+structure ListSnapshotsRequest {
+    @httpQuery("filters")
+    @jsonName("filters")
+    Filters: String,
+}
 
 list ListOfSnapshots {
     member: Snapshots,
@@ -1166,10 +1268,14 @@ structure Snapshots {
     ExpirationTime: String,
     @jsonName("name")
     Name: String,
+    @jsonName("nrn")
+    Nrn: String,
     @jsonName("resourceVersion")
     ResourceVersion: String,
     @jsonName("status")
     Status: String,
+    @jsonName("tags")
+    Tags: ListOfTags,
 }
 
 structure ClusterOfListSnapshots {
@@ -1204,6 +1310,8 @@ structure RequestSnapshot {
     Description: String,
     @jsonName("expirationTime")
     ExpirationTime: String,
+    @jsonName("tags")
+    ListOfRequestTags: ListOfRequestTags,
     @required
     @jsonName("name")
     Name: String,
@@ -1235,10 +1343,14 @@ structure SnapshotOfCreateSnapshot {
     ExpirationTime: String,
     @jsonName("name")
     Name: String,
+    @jsonName("nrn")
+    Nrn: String,
     @jsonName("resourceVersion")
     ResourceVersion: String,
     @jsonName("status")
     Status: String,
+    @jsonName("tags")
+    Tags: ListOfTags,
 }
 
 structure ClusterOfCreateSnapshot {
@@ -1273,6 +1385,8 @@ structure RequestSnapshotOfUpdateSnapshot {
     Description: String,
     @jsonName("expirationTime")
     ExpirationTime: String,
+    @jsonName("tags")
+    ListOfRequestTags: ListOfRequestTags,
     @jsonName("name")
     Name: String,
 }
@@ -1297,10 +1411,14 @@ structure SnapshotOfUpdateSnapshot {
     ExpirationTime: String,
     @jsonName("name")
     Name: String,
+    @jsonName("nrn")
+    Nrn: String,
     @jsonName("resourceVersion")
     ResourceVersion: String,
     @jsonName("status")
     Status: String,
+    @jsonName("tags")
+    Tags: ListOfTags,
 }
 
 structure ClusterOfUpdateSnapshot {
@@ -1348,10 +1466,14 @@ structure SnapshotOfDeleteSnapshot {
     ExpirationTime: String,
     @jsonName("name")
     Name: String,
+    @jsonName("nrn")
+    Nrn: String,
     @jsonName("resourceVersion")
     ResourceVersion: String,
     @jsonName("status")
     Status: String,
+    @jsonName("tags")
+    Tags: ListOfTags,
 }
 
 structure ClusterOfDeleteSnapshot {
@@ -1402,10 +1524,14 @@ structure SnapshotsOfDeleteSnapshots {
     ExpirationTime: String,
     @jsonName("name")
     Name: String,
+    @jsonName("nrn")
+    Nrn: String,
     @jsonName("resourceVersion")
     ResourceVersion: String,
     @jsonName("status")
     Status: String,
+    @jsonName("tags")
+    Tags: ListOfTags,
 }
 
 structure ClusterOfDeleteSnapshots {
@@ -1444,6 +1570,8 @@ structure RequestClusterOfRestoreClusterFromSnapshot {
     @required
     @jsonName("locations")
     ListOfRequestLocations: ListOfRequestLocations,
+    @jsonName("tags")
+    ListOfRequestTags: ListOfRequestTags,
     @required
     @jsonName("name")
     Name: String,
@@ -1706,6 +1834,143 @@ structure ListLoadBalancersResult {
     LoadBalancers: ListOfLoadBalancersOfListLoadBalancers,
 }
 
+structure ListTagsRequest {
+    @httpQuery("nrn")
+    @jsonName("nrn")
+    Nrn: String,
+}
+
+list ListOfTagsOfListTags {
+    member: TagsOfListTags,
+}
+
+structure TagsOfListTags {
+    @jsonName("id")
+    Id: String,
+    @jsonName("key")
+    Key: String,
+    @jsonName("nrn")
+    Nrn: String,
+    @jsonName("value")
+    Value: String,
+}
+
+structure ListTagsResult {
+    @jsonName("tags")
+    Tags: ListOfTagsOfListTags,
+}
+
+structure RequestTagsOfCreateTags {
+    @required
+    @jsonName("key")
+    Key: String,
+    @required
+    @jsonName("nrn")
+    Nrn: String,
+    @required
+    @jsonName("value")
+    Value: String,
+}
+
+list ListOfRequestTagsOfCreateTags {
+    member: RequestTagsOfCreateTags,
+}
+
+structure CreateTagsRequest {
+    @required
+    @jsonName("tags")
+    Tags: ListOfRequestTagsOfCreateTags,
+}
+
+list ListOfTagsOfCreateTags {
+    member: TagsOfCreateTags,
+}
+
+structure TagsOfCreateTags {
+    @jsonName("id")
+    Id: String,
+    @jsonName("key")
+    Key: String,
+    @jsonName("nrn")
+    Nrn: String,
+    @jsonName("value")
+    Value: String,
+}
+
+structure CreateTagsResult {
+    @jsonName("tags")
+    Tags: ListOfTagsOfCreateTags,
+}
+
+structure RequestTagsOfUpdateTags {
+    @required
+    @jsonName("key")
+    Key: String,
+    @required
+    @jsonName("nrn")
+    Nrn: String,
+    @required
+    @jsonName("value")
+    Value: String,
+}
+
+list ListOfRequestTagsOfUpdateTags {
+    member: RequestTagsOfUpdateTags,
+}
+
+structure UpdateTagsRequest {
+    @required
+    @jsonName("tags")
+    Tags: ListOfRequestTagsOfUpdateTags,
+}
+
+list ListOfTagsOfUpdateTags {
+    member: TagsOfUpdateTags,
+}
+
+structure TagsOfUpdateTags {
+    @jsonName("id")
+    Id: String,
+    @jsonName("key")
+    Key: String,
+    @jsonName("nrn")
+    Nrn: String,
+    @jsonName("value")
+    Value: String,
+}
+
+structure UpdateTagsResult {
+    @jsonName("tags")
+    Tags: ListOfTagsOfUpdateTags,
+}
+
+structure DeleteTagsRequest {
+    @required
+    @httpQuery("ids")
+    @jsonName("ids")
+    Ids: String,
+}
+
+list ListOfTagsOfDeleteTags {
+    member: TagsOfDeleteTags,
+}
+
+structure TagsOfDeleteTags {
+    @jsonName("id")
+    Id: String,
+    @jsonName("key")
+    Key: String,
+    @jsonName("nrn")
+    Nrn: String,
+    @jsonName("value")
+    Value: String,
+}
+
+structure DeleteTagsResult {
+    @jsonName("tags")
+    Tags: ListOfTagsOfDeleteTags,
+}
+
 @restJson1
 @sigv4(name: "hatoba")
 @service(
@@ -1726,6 +1991,7 @@ service KubernetesServiceHatoba {
         GetNodePool,
         ListNodePools,
         CreateNodePool,
+        UpdateNodePool,
         SetNodePoolSize,
         DeleteNodePool,
         DeleteNodePools,
@@ -1747,6 +2013,10 @@ service KubernetesServiceHatoba {
         RestoreClusterFromSnapshot,
         GetLoadBalancer,
         ListLoadBalancers,
+        ListTags,
+        CreateTags,
+        UpdateTags,
+        DeleteTags,
     ],
 }
 
@@ -1905,6 +2175,13 @@ operation ListNodePools {
 operation CreateNodePool {
     input: CreateNodePoolRequest,
     output: CreateNodePoolResult,
+}
+
+@http(method: "PUT", uri: "/v1/clusters/{ClusterName}/nodePools/{NodePoolName}" )
+@idempotent
+operation UpdateNodePool {
+    input: UpdateNodePoolRequest,
+    output: UpdateNodePoolResult,
 }
 
 @http(method: "POST", uri: "/v1/clusters/{ClusterName}/nodePools/{NodePoolName}/:setSize" , code: 201)
@@ -2101,4 +2378,31 @@ operation GetLoadBalancer {
 operation ListLoadBalancers {
     input: ListLoadBalancersRequest,
     output: ListLoadBalancersResult,
+}
+
+@http(method: "GET", uri: "/v1/tags" )
+@readonly
+operation ListTags {
+    input: ListTagsRequest,
+    output: ListTagsResult,
+}
+
+@http(method: "POST", uri: "/v1/tags" , code: 201)
+operation CreateTags {
+    input: CreateTagsRequest,
+    output: CreateTagsResult,
+}
+
+@http(method: "PUT", uri: "/v1/tags" )
+@idempotent
+operation UpdateTags {
+    input: UpdateTagsRequest,
+    output: UpdateTagsResult,
+}
+
+@http(method: "DELETE", uri: "/v1/tags" )
+@idempotent
+operation DeleteTags {
+    input: DeleteTagsRequest,
+    output: DeleteTagsResult,
 }

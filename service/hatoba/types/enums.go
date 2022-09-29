@@ -244,12 +244,12 @@ type KubernetesVersionOfclusterForCreateCluster string
 
 // Enum values for KubernetesVersionOfclusterForCreateCluster
 const (
-	KubernetesVersionOfclusterForCreateClusterV1211 KubernetesVersionOfclusterForCreateCluster = "v1.21.1"
-	KubernetesVersionOfclusterForCreateClusterV1215 KubernetesVersionOfclusterForCreateCluster = "v1.21.5"
-	KubernetesVersionOfclusterForCreateClusterV1219 KubernetesVersionOfclusterForCreateCluster = "v1.21.9"
 	KubernetesVersionOfclusterForCreateClusterV1222 KubernetesVersionOfclusterForCreateCluster = "v1.22.2"
 	KubernetesVersionOfclusterForCreateClusterV1226 KubernetesVersionOfclusterForCreateCluster = "v1.22.6"
+	KubernetesVersionOfclusterForCreateClusterV12212 KubernetesVersionOfclusterForCreateCluster = "v1.22.12"
 	KubernetesVersionOfclusterForCreateClusterV1233 KubernetesVersionOfclusterForCreateCluster = "v1.23.3"
+	KubernetesVersionOfclusterForCreateClusterV1239 KubernetesVersionOfclusterForCreateCluster = "v1.23.9"
+	KubernetesVersionOfclusterForCreateClusterV1243 KubernetesVersionOfclusterForCreateCluster = "v1.24.3"
 )
 
 // Values returns all known values for KubernetesVersionOfclusterForCreateCluster.
@@ -258,12 +258,12 @@ const (
 // updates.
 func (KubernetesVersionOfclusterForCreateCluster) Values() []KubernetesVersionOfclusterForCreateCluster {
 	return []KubernetesVersionOfclusterForCreateCluster{
-		"v1.21.1",
-		"v1.21.5",
-		"v1.21.9",
 		"v1.22.2",
 		"v1.22.6",
+		"v1.22.12",
 		"v1.23.3",
+		"v1.23.9",
+		"v1.24.3",
 	}
 }
 
@@ -271,12 +271,12 @@ type KubernetesVersionOfclusterForUpdateCluster string
 
 // Enum values for KubernetesVersionOfclusterForUpdateCluster
 const (
-	KubernetesVersionOfclusterForUpdateClusterV1211 KubernetesVersionOfclusterForUpdateCluster = "v1.21.1"
-	KubernetesVersionOfclusterForUpdateClusterV1215 KubernetesVersionOfclusterForUpdateCluster = "v1.21.5"
-	KubernetesVersionOfclusterForUpdateClusterV1219 KubernetesVersionOfclusterForUpdateCluster = "v1.21.9"
 	KubernetesVersionOfclusterForUpdateClusterV1222 KubernetesVersionOfclusterForUpdateCluster = "v1.22.2"
 	KubernetesVersionOfclusterForUpdateClusterV1226 KubernetesVersionOfclusterForUpdateCluster = "v1.22.6"
+	KubernetesVersionOfclusterForUpdateClusterV12212 KubernetesVersionOfclusterForUpdateCluster = "v1.22.12"
 	KubernetesVersionOfclusterForUpdateClusterV1233 KubernetesVersionOfclusterForUpdateCluster = "v1.23.3"
+	KubernetesVersionOfclusterForUpdateClusterV1239 KubernetesVersionOfclusterForUpdateCluster = "v1.23.9"
+	KubernetesVersionOfclusterForUpdateClusterV1243 KubernetesVersionOfclusterForUpdateCluster = "v1.24.3"
 )
 
 // Values returns all known values for KubernetesVersionOfclusterForUpdateCluster.
@@ -285,12 +285,12 @@ const (
 // updates.
 func (KubernetesVersionOfclusterForUpdateCluster) Values() []KubernetesVersionOfclusterForUpdateCluster {
 	return []KubernetesVersionOfclusterForUpdateCluster{
-		"v1.21.1",
-		"v1.21.5",
-		"v1.21.9",
 		"v1.22.2",
 		"v1.22.6",
+		"v1.22.12",
 		"v1.23.3",
+		"v1.23.9",
+		"v1.24.3",
 	}
 }
 

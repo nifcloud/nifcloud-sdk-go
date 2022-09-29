@@ -11,29 +11,31 @@ import (
 	"github.com/nifcloud/nifcloud-sdk-go/service/hatoba/types"
 )
 
-func (c *Client) ListFirewallGroups(ctx context.Context, params *ListFirewallGroupsInput, optFns ...func(*Options)) (*ListFirewallGroupsOutput, error) {
+func (c *Client) UpdateTags(ctx context.Context, params *UpdateTagsInput, optFns ...func(*Options)) (*UpdateTagsOutput, error) {
 	if params == nil {
-		params = &ListFirewallGroupsInput{}
+		params = &UpdateTagsInput{}
 	}
 
-	result, metadata, err := c.invokeOperation(ctx, "ListFirewallGroups", params, optFns, c.addOperationListFirewallGroupsMiddlewares)
+	result, metadata, err := c.invokeOperation(ctx, "UpdateTags", params, optFns, c.addOperationUpdateTagsMiddlewares)
 	if err != nil {
 		return nil, err
 	}
 
-	out := result.(*ListFirewallGroupsOutput)
+	out := result.(*UpdateTagsOutput)
 	out.ResultMetadata = metadata
 	return out, nil
 }
 
-type ListFirewallGroupsInput struct {
-	Filters *string
+type UpdateTagsInput struct {
+
+	// This member is required.
+	Tags []types.RequestTagsOfUpdateTags
 
 	noSmithyDocumentSerde
 }
 
-type ListFirewallGroupsOutput struct {
-	FirewallGroups []types.FirewallGroups
+type UpdateTagsOutput struct {
+	Tags []types.TagsOfUpdateTags
 
 	// Metadata pertaining to the operation's result.
 	ResultMetadata middleware.Metadata
@@ -41,12 +43,12 @@ type ListFirewallGroupsOutput struct {
 	noSmithyDocumentSerde
 }
 
-func (c *Client) addOperationListFirewallGroupsMiddlewares(stack *middleware.Stack, options Options) (err error) {
-	err = stack.Serialize.Add(&awsRestjson1_serializeOpListFirewallGroups{}, middleware.After)
+func (c *Client) addOperationUpdateTagsMiddlewares(stack *middleware.Stack, options Options) (err error) {
+	err = stack.Serialize.Add(&awsRestjson1_serializeOpUpdateTags{}, middleware.After)
 	if err != nil {
 		return err
 	}
-	err = stack.Deserialize.Add(&awsRestjson1_deserializeOpListFirewallGroups{}, middleware.After)
+	err = stack.Deserialize.Add(&awsRestjson1_deserializeOpUpdateTags{}, middleware.After)
 	if err != nil {
 		return err
 	}
@@ -86,7 +88,10 @@ func (c *Client) addOperationListFirewallGroupsMiddlewares(stack *middleware.Sta
 	if err = smithyhttp.AddCloseResponseBodyMiddleware(stack); err != nil {
 		return err
 	}
-	if err = stack.Initialize.Add(newServiceMetadataMiddleware_opListFirewallGroups(options.Region), middleware.Before); err != nil {
+	if err = addOpUpdateTagsValidationMiddleware(stack); err != nil {
+		return err
+	}
+	if err = stack.Initialize.Add(newServiceMetadataMiddleware_opUpdateTags(options.Region), middleware.Before); err != nil {
 		return err
 	}
 	if err = addRequestIDRetrieverMiddleware(stack); err != nil {
@@ -101,11 +106,11 @@ func (c *Client) addOperationListFirewallGroupsMiddlewares(stack *middleware.Sta
 	return nil
 }
 
-func newServiceMetadataMiddleware_opListFirewallGroups(region string) *awsmiddleware.RegisterServiceMetadata {
+func newServiceMetadataMiddleware_opUpdateTags(region string) *awsmiddleware.RegisterServiceMetadata {
 	return &awsmiddleware.RegisterServiceMetadata{
 		Region:        region,
 		ServiceID:     ServiceID,
 		SigningName:   "hatoba",
-		OperationName: "ListFirewallGroups",
+		OperationName: "UpdateTags",
 	}
 }

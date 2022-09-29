@@ -40,7 +40,11 @@ type Cluster struct {
 	
 	NodePools []NodePools
 	
+	Nrn *string
+	
 	Status *string
+	
+	Tags []Tags
 	
 	noSmithyDocumentSerde
 }
@@ -137,7 +141,11 @@ type Clusters struct {
 	
 	NodePools []NodePools
 	
+	Nrn *string
+	
 	Status *string
+	
+	Tags []Tags
 	
 	noSmithyDocumentSerde
 }
@@ -175,7 +183,11 @@ type FirewallGroup struct {
 	
 	Name *string
 	
+	Nrn *string
+	
 	Rules []Rules
+	
+	Tags []Tags
 	
 	noSmithyDocumentSerde
 }
@@ -186,7 +198,11 @@ type FirewallGroups struct {
 	
 	Name *string
 	
+	Nrn *string
+	
 	Rules []Rules
+	
+	Tags []Tags
 	
 	noSmithyDocumentSerde
 }
@@ -320,7 +336,11 @@ type NodePool struct {
 	
 	Nodes []Nodes
 	
+	Nrn *string
+	
 	Status *string
+	
+	Tags []Tags
 	
 	noSmithyDocumentSerde
 }
@@ -337,7 +357,11 @@ type NodePools struct {
 	
 	Nodes []Nodes
 	
+	Nrn *string
+	
 	Status *string
+	
+	Tags []Tags
 	
 	noSmithyDocumentSerde
 }
@@ -505,6 +529,8 @@ type RequestCluster struct {
 	
 	KubernetesVersion KubernetesVersionOfclusterForCreateCluster
 	
+	ListOfRequestTags []RequestTags
+	
 	RequestAddonsConfig *RequestAddonsConfig
 	
 	RequestNetworkConfig *RequestNetworkConfig
@@ -533,6 +559,8 @@ type RequestClusterOfRestoreClusterFromSnapshot struct {
 	
 	Description *string
 	
+	ListOfRequestTags []RequestTags
+	
 	RequestAddonsConfig *RequestAddonsConfig
 	
 	RequestNetworkConfig *RequestNetworkConfig
@@ -545,6 +573,8 @@ type RequestClusterOfUpdateCluster struct {
 	Description *string
 	
 	KubernetesVersion KubernetesVersionOfclusterForUpdateCluster
+	
+	ListOfRequestTags []RequestTags
 	
 	Name *string
 	
@@ -560,12 +590,16 @@ type RequestFirewallGroup struct {
 	
 	Description *string
 	
+	ListOfRequestTags []RequestTags
+	
 	noSmithyDocumentSerde
 }
 
 type RequestFirewallGroupOfUpdateFirewallGroup struct {
 	
 	Description *string
+	
+	ListOfRequestTags []RequestTags
 	
 	Name *string
 	
@@ -594,7 +628,16 @@ type RequestNodePool struct {
 	// This member is required.
 	Name *string
 	
+	ListOfRequestTags []RequestTags
+	
 	NodeCount *int32
+	
+	noSmithyDocumentSerde
+}
+
+type RequestNodePoolOfUpdateNodePool struct {
+	
+	ListOfRequestTags []RequestTags
 	
 	noSmithyDocumentSerde
 }
@@ -606,6 +649,8 @@ type RequestNodePools struct {
 	
 	// This member is required.
 	Name *string
+	
+	ListOfRequestTags []RequestTags
 	
 	NodeCount *int32
 	
@@ -642,6 +687,8 @@ type RequestSnapshot struct {
 	
 	ExpirationTime *string
 	
+	ListOfRequestTags []RequestTags
+	
 	noSmithyDocumentSerde
 }
 
@@ -651,7 +698,46 @@ type RequestSnapshotOfUpdateSnapshot struct {
 	
 	ExpirationTime *string
 	
+	ListOfRequestTags []RequestTags
+	
 	Name *string
+	
+	noSmithyDocumentSerde
+}
+
+type RequestTags struct {
+	
+	Key *string
+	
+	Value *string
+	
+	noSmithyDocumentSerde
+}
+
+type RequestTagsOfCreateTags struct {
+	
+	// This member is required.
+	Key *string
+	
+	// This member is required.
+	Nrn *string
+	
+	// This member is required.
+	Value *string
+	
+	noSmithyDocumentSerde
+}
+
+type RequestTagsOfUpdateTags struct {
+	
+	// This member is required.
+	Key *string
+	
+	// This member is required.
+	Nrn *string
+	
+	// This member is required.
+	Value *string
 	
 	noSmithyDocumentSerde
 }
@@ -707,9 +793,13 @@ type Snapshot struct {
 	
 	Name *string
 	
+	Nrn *string
+	
 	ResourceVersion *string
 	
 	Status *string
+	
+	Tags []Tags
 	
 	noSmithyDocumentSerde
 }
@@ -726,9 +816,13 @@ type SnapshotOfCreateSnapshot struct {
 	
 	Name *string
 	
+	Nrn *string
+	
 	ResourceVersion *string
 	
 	Status *string
+	
+	Tags []Tags
 	
 	noSmithyDocumentSerde
 }
@@ -745,9 +839,13 @@ type SnapshotOfDeleteSnapshot struct {
 	
 	Name *string
 	
+	Nrn *string
+	
 	ResourceVersion *string
 	
 	Status *string
+	
+	Tags []Tags
 	
 	noSmithyDocumentSerde
 }
@@ -764,9 +862,13 @@ type SnapshotOfUpdateSnapshot struct {
 	
 	Name *string
 	
+	Nrn *string
+	
 	ResourceVersion *string
 	
 	Status *string
+	
+	Tags []Tags
 	
 	noSmithyDocumentSerde
 }
@@ -783,9 +885,13 @@ type Snapshots struct {
 	
 	Name *string
 	
+	Nrn *string
+	
 	ResourceVersion *string
 	
 	Status *string
+	
+	Tags []Tags
 	
 	noSmithyDocumentSerde
 }
@@ -802,9 +908,13 @@ type SnapshotsOfDeleteSnapshots struct {
 	
 	Name *string
 	
+	Nrn *string
+	
 	ResourceVersion *string
 	
 	Status *string
+	
+	Tags []Tags
 	
 	noSmithyDocumentSerde
 }
@@ -814,6 +924,69 @@ type SorryPage struct {
 	Enabled *bool
 	
 	StatusCode *int32
+	
+	noSmithyDocumentSerde
+}
+
+type Tags struct {
+	
+	Id *string
+	
+	Key *string
+	
+	Value *string
+	
+	noSmithyDocumentSerde
+}
+
+type TagsOfCreateTags struct {
+	
+	Id *string
+	
+	Key *string
+	
+	Nrn *string
+	
+	Value *string
+	
+	noSmithyDocumentSerde
+}
+
+type TagsOfDeleteTags struct {
+	
+	Id *string
+	
+	Key *string
+	
+	Nrn *string
+	
+	Value *string
+	
+	noSmithyDocumentSerde
+}
+
+type TagsOfListTags struct {
+	
+	Id *string
+	
+	Key *string
+	
+	Nrn *string
+	
+	Value *string
+	
+	noSmithyDocumentSerde
+}
+
+type TagsOfUpdateTags struct {
+	
+	Id *string
+	
+	Key *string
+	
+	Nrn *string
+	
+	Value *string
 	
 	noSmithyDocumentSerde
 }
