@@ -1,5 +1,13 @@
 # Changelog
 
+## [v1.18.0](https://github.com/nifcloud/nifcloud-sdk-go/tree/v1.18.0) (2022-09-29)
+
+[Full Changelog](https://github.com/nifcloud/nifcloud-sdk-go/compare/v1.17.0...v1.18.0)
+
+**Merged pull requests:**
+
+- Update Hatoba model [\#48](https://github.com/nifcloud/nifcloud-sdk-go/pull/48) ([aokumasan](https://github.com/aokumasan))
+
 ## [v1.17.0](https://github.com/nifcloud/nifcloud-sdk-go/tree/v1.17.0) (2022-08-29)
 
 [Full Changelog](https://github.com/nifcloud/nifcloud-sdk-go/compare/v1.16.0...v1.17.0)
