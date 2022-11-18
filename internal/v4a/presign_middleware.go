@@ -1,5 +1,5 @@
 // This code was forked from github.com/aws/aws-sdk-go-v2. DO NOT EDIT.
-// URL: https://github.com/aws/aws-sdk-go-v2/tree/v1.16.5/internal/v4a/presign_middleware.go
+// URL: https://github.com/aws/aws-sdk-go-v2/tree/v1.17.1/internal/v4a/presign_middleware.go
 
 package v4a
 

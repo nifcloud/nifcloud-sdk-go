@@ -45,4 +45,5 @@ software.nifcloud.smithy.nifcloud.go.codegen.RequestResponseLogging
 software.nifcloud.smithy.nifcloud.go.codegen.customization.S3AddPutObjectUnseekableBodyDoc
 software.nifcloud.smithy.nifcloud.go.codegen.customization.BackfillEc2UnboxedToBoxedShapes
 software.nifcloud.smithy.nifcloud.go.codegen.customization.AdjustAwsRestJsonContentType
+software.nifcloud.smithy.nifcloud.go.codegen.customization.SQSValidateMessageChecksum
 software.nifcloud.smithy.nifcloud.go.codegen.EndpointDiscoveryGenerator

@@ -1,5 +1,5 @@
 // This code was forked from github.com/aws/aws-sdk-go-v2. DO NOT EDIT.
-// URL: https://github.com/aws/aws-sdk-go-v2/tree/v1.16.5/service/internal/s3shared/arn/accesspoint_arn.go
+// URL: https://github.com/aws/aws-sdk-go-v2/tree/v1.17.1/service/internal/s3shared/arn/accesspoint_arn.go
 
 package arn
 
@@ -24,9 +24,8 @@ func (a AccessPointARN) GetARN() arn.ARN {
 // AccessPoint resource.
 //
 // Supported Access point resource format:
-//	- Access point format: arn:{partition}:s3:{region}:{accountId}:accesspoint/{accesspointName}
-//	- example: arn:aws:s3:us-west-2:012345678901:accesspoint/myaccesspoint
-//
+//   - Access point format: arn:{partition}:s3:{region}:{accountId}:accesspoint/{accesspointName}
+//   - example: arn:aws:s3:us-west-2:012345678901:accesspoint/myaccesspoint
 func ParseAccessPointResource(a arn.ARN, resParts []string) (AccessPointARN, error) {
 	if isFIPS(a.Region) {
 		return AccessPointARN{}, InvalidARNError{ARN: a, Reason: "FIPS region not allowed in ARN"}

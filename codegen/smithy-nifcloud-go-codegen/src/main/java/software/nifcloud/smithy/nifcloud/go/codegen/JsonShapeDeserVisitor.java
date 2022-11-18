@@ -1,5 +1,5 @@
 // This code was forked from github.com/aws/aws-sdk-go-v2. DO NOT EDIT.
-// URL: https://github.com/aws/aws-sdk-go-v2/tree/v1.16.5/codegen/smithy-aws-go-codegen/src/main/java/software.nifcloud.smithy.nifcloud.go.codegen/JsonShapeDeserVisitor.java
+// URL: https://github.com/aws/aws-sdk-go-v2/tree/v1.17.1/codegen/smithy-aws-go-codegen/src/main/java/software.nifcloud.smithy.nifcloud.go.codegen/JsonShapeDeserVisitor.java
 
 /*
  * Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
@@ -234,8 +234,9 @@ public class JsonShapeDeserVisitor extends DocumentShapeDeserVisitor {
                             symbolProvider.toMemberName(member),
                             symbol.getNamespace()
                     ).build();
+                    String serializedMemberName = getSerializedMemberName(member);
 
-                    writer.openBlock("case $S:", "", member.getMemberName(), () -> {
+                    writer.openBlock("case $S:", "", serializedMemberName, () -> {
                         writer.write("var mv $P", targetSymbol);
                         target.accept(getMemberDeserVisitor(member, "mv"));
 
