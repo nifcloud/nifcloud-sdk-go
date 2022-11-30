@@ -13,11 +13,11 @@ func TestParseNRN(t *testing.T) {
 	}{
 		{
 			input: "invalid",
-			err:   errors.New(invalidPrefix),
+			err:   ErrInvalidPrefix,
 		},
 		{
 			input: "nrn:nope",
-			err:   errors.New(invalidSections),
+			err:   ErrInvalidSections,
 		},
 		{
 			input: "nrn:nifcloud:hatoba:jp-east-1:BCT*****:cluster:8a97827f-747a-488e-a8d0-6c7b56a9e50c",
@@ -50,7 +50,7 @@ func TestParseNRN(t *testing.T) {
 				t.Errorf("Expected err to be %v, but got nil", tc.err)
 			} else if err != nil && tc.err == nil {
 				t.Errorf("Expected err to be nil, but got %v", err)
-			} else if err != nil && tc.err != nil && err.Error() != tc.err.Error() {
+			} else if err != nil && tc.err != nil && !errors.Is(err, tc.err) {
 				t.Errorf("Expected err to be %v, but got %v", tc.err, err)
 			}
 		})

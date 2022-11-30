@@ -17,10 +17,13 @@ const (
 	sectionRegion     = 3
 	sectionNifcloudID = 4
 	sectionResource   = 5
+)
 
-	// errors
-	invalidPrefix   = "nrn: invalid prefix"
-	invalidSections = "nrn: not enough sections"
+var (
+	// ErrInvalidPrefix is error of nrn invalid prefix
+	ErrInvalidPrefix = errors.New("nrn: invalid prefix")
+	// ErrInvalidSections is error of nrn not enough sections
+	ErrInvalidSections = errors.New("nrn: not enough sections")
 )
 
 // NRN captures the individual fields of an NIFCLOUD Resource Name.
@@ -50,11 +53,11 @@ type NRN struct {
 // nrn:nifcloud:hatoba:jp-east-1:BCT*****:cluster:8a97827f-747a-488e-a8d0-6c7b56a9e50c
 func Parse(nrn string) (NRN, error) {
 	if !strings.HasPrefix(nrn, nrnPrefix) {
-		return NRN{}, errors.New(invalidPrefix)
+		return NRN{}, ErrInvalidPrefix
 	}
 	sections := strings.SplitN(nrn, nrnDelimiter, nrnSections)
 	if len(sections) != nrnSections {
-		return NRN{}, errors.New(invalidSections)
+		return NRN{}, ErrInvalidSections
 	}
 	return NRN{
 		Partition:  sections[sectionPartition],
