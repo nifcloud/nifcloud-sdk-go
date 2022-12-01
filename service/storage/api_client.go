@@ -481,8 +481,7 @@ func resolveCredentialProvider(o *Options) {
 		return
 	}
 
-	switch o.Credentials.(type) {
-	case aws.AnonymousCredentials, *aws.AnonymousCredentials:
+	if aws.IsCredentialsProvider(o.Credentials, (*aws.AnonymousCredentials)(nil)) {
 		return
 	}
 

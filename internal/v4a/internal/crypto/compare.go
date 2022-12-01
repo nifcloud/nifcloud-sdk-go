@@ -1,5 +1,5 @@
 // This code was forked from github.com/aws/aws-sdk-go-v2. DO NOT EDIT.
-// URL: https://github.com/aws/aws-sdk-go-v2/tree/v1.16.5/internal/v4a/internal/crypto/compare.go
+// URL: https://github.com/aws/aws-sdk-go-v2/tree/v1.17.1/internal/v4a/internal/crypto/compare.go
 
 package crypto
 
@@ -8,10 +8,10 @@ import "fmt"
 // ConstantTimeByteCompare is a constant-time byte comparison of x and y. This function performs an absolute comparison
 // if the two byte slices assuming they represent a big-endian number.
 //
-// 	 error if len(x) != len(y)
-//   -1 if x <  y
-//    0 if x == y
-//   +1 if x >  y
+//		 error if len(x) != len(y)
+//	  -1 if x <  y
+//	   0 if x == y
+//	  +1 if x >  y
 func ConstantTimeByteCompare(x, y []byte) (int, error) {
 	if len(x) != len(y) {
 		return 0, fmt.Errorf("slice lengths do not match")

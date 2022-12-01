@@ -1,5 +1,5 @@
 // This code was forked from github.com/aws/aws-sdk-go-v2. DO NOT EDIT.
-// URL: https://github.com/aws/aws-sdk-go-v2/tree/v1.16.5/codegen/smithy-aws-go-codegen/src/main/java/software.nifcloud.smithy.nifcloud.go.codegen/JsonShapeSerVisitor.java
+// URL: https://github.com/aws/aws-sdk-go-v2/tree/v1.17.1/codegen/smithy-aws-go-codegen/src/main/java/software.nifcloud.smithy.nifcloud.go.codegen/JsonShapeSerVisitor.java
 
 /*
  * Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
@@ -238,9 +238,10 @@ final class JsonShapeSerVisitor extends DocumentShapeSerVisitor {
                         symbolProvider.toMemberName(member),
                         symbol.getNamespace()
                 ).build();
+                String serializedMemberName = getSerializedMemberName(member);
 
                 writer.openBlock("case *$T:", "", memberSymbol, () -> {
-                    writer.write("av := object.Key($S)", member.getMemberName());
+                    writer.write("av := object.Key($S)", serializedMemberName);
                     target.accept(getMemberSerVisitor(member, "uv.Value", "av"));
                 });
             }

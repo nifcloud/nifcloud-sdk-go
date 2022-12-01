@@ -1,5 +1,5 @@
 // This code was forked from github.com/aws/aws-sdk-go-v2. DO NOT EDIT.
-// URL: https://github.com/aws/aws-sdk-go-v2/tree/v1.16.5/codegen/smithy-aws-go-codegen/src/main/java/software.nifcloud.smithy.nifcloud.go.codegen/AwsProtocolUtils.java
+// URL: https://github.com/aws/aws-sdk-go-v2/tree/v1.17.1/codegen/smithy-aws-go-codegen/src/main/java/software.nifcloud.smithy.nifcloud.go.codegen/AwsProtocolUtils.java
 
 /*
  * Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
@@ -107,12 +107,8 @@ final class AwsProtocolUtils {
                 .build());
 
         Set<HttpProtocolUnitTestGenerator.SkipTest> inputSkipTests = new TreeSet<>(SetUtils.of(
-                // Smithy 1.6 changed unit tests that the SDK codegen don't support or are opinionated.
-                HttpProtocolUnitTestGenerator.SkipTest.builder()
-                        .service(ShapeId.from("aws.protocoltests.restjson#RestJson"))
-                        .operation(ShapeId.from("aws.protocoltests.restjson#EmptyInputAndEmptyOutput"))
-                        .addTestName("RestJsonEmptyInputAndEmptyOutputWithJson")
-                        .build(),
+                // Endpoint prefix serialization doesn't work with test runner's handling of request URLs.
+                // e.g. http://foo.127.0.0.1:59850/ dial fail
                 HttpProtocolUnitTestGenerator.SkipTest.builder()
                         .service(ShapeId.from("aws.protocoltests.restjson#RestJson"))
                         .operation(ShapeId.from("aws.protocoltests.restjson#EndpointOperation"))
@@ -123,6 +119,9 @@ final class AwsProtocolUtils {
                         .operation(ShapeId.from("aws.protocoltests.restjson#EndpointWithHostLabelOperation"))
                         .addTestName("RestJsonEndpointTraitWithHostLabel")
                         .build(),
+
+                // Endpoint prefix serialization doesn't work with test runner's handling of request URLs.
+                // e.g. http://foo.127.0.0.1:59850/ dial fail
                 HttpProtocolUnitTestGenerator.SkipTest.builder()
                         .service(ShapeId.from("aws.protocoltests.ec2#AwsEc2"))
                         .operation(ShapeId.from("aws.protocoltests.ec2#EndpointOperation"))
@@ -133,11 +132,9 @@ final class AwsProtocolUtils {
                         .operation(ShapeId.from("aws.protocoltests.ec2#EndpointWithHostLabelOperation"))
                         .addTestName("Ec2QueryEndpointTraitWithHostLabel")
                         .build(),
-                HttpProtocolUnitTestGenerator.SkipTest.builder()
-                        .service(ShapeId.from("aws.protocoltests.json#JsonProtocol"))
-                        .operation(ShapeId.from("aws.protocoltests.json#EmptyOperation"))
-                        .addTestName("json_1_1_service_supports_empty_payload_for_no_input_shape")
-                        .build(),
+
+                // Endpoint prefix serialization doesn't work with test runner's handling of request URLs.
+                // e.g. http://foo.127.0.0.1:59850/ dial fail
                 HttpProtocolUnitTestGenerator.SkipTest.builder()
                         .service(ShapeId.from("aws.protocoltests.json#JsonProtocol"))
                         .operation(ShapeId.from("aws.protocoltests.json#EndpointOperation"))
@@ -148,11 +145,9 @@ final class AwsProtocolUtils {
                         .operation(ShapeId.from("aws.protocoltests.json#EndpointWithHostLabelOperation"))
                         .addTestName("AwsJson11EndpointTraitWithHostLabel")
                         .build(),
-                HttpProtocolUnitTestGenerator.SkipTest.builder()
-                        .service(ShapeId.from("aws.protocoltests.json10#JsonRpc10"))
-                        .operation(ShapeId.from("aws.protocoltests.json10#NoInputAndNoOutput"))
-                        .addTestName("AwsJson10ServiceSupportsNoPayloadForNoInput")
-                        .build(),
+
+                // Endpoint prefix serialization doesn't work with test runner's handling of request URLs.
+                // e.g. http://foo.127.0.0.1:59850/ dial fail
                 HttpProtocolUnitTestGenerator.SkipTest.builder()
                         .service(ShapeId.from("aws.protocoltests.json10#JsonRpc10"))
                         .operation(ShapeId.from("aws.protocoltests.json10#EndpointOperation"))
@@ -163,6 +158,9 @@ final class AwsProtocolUtils {
                         .operation(ShapeId.from("aws.protocoltests.json10#EndpointWithHostLabelOperation"))
                         .addTestName("AwsJson10EndpointTraitWithHostLabel")
                         .build(),
+
+                // Endpoint prefix serialization doesn't work with test runner's handling of request URLs.
+                // e.g. http://foo.127.0.0.1:59850/ dial fail
                 HttpProtocolUnitTestGenerator.SkipTest.builder()
                         .service(ShapeId.from("aws.protocoltests.query#AwsQuery"))
                         .operation(ShapeId.from("aws.protocoltests.query#EndpointOperation"))
@@ -173,6 +171,9 @@ final class AwsProtocolUtils {
                         .operation(ShapeId.from("aws.protocoltests.query#EndpointWithHostLabelOperation"))
                         .addTestName("AwsQueryEndpointTraitWithHostLabel")
                         .build(),
+
+                // Endpoint prefix serialization doesn't work with test runner's handling of request URLs.
+                // e.g. http://foo.127.0.0.1:59850/ dial fail
                 HttpProtocolUnitTestGenerator.SkipTest.builder()
                         .service(ShapeId.from("aws.protocoltests.restxml#RestXml"))
                         .operation(ShapeId.from("aws.protocoltests.restxml#EndpointOperation"))
@@ -187,39 +188,8 @@ final class AwsProtocolUtils {
                         .service(ShapeId.from("aws.protocoltests.restxml#RestXml"))
                         .operation(ShapeId.from("aws.protocoltests.restxml#EndpointWithHostLabelOperation"))
                         .addTestName("RestXmlEndpointTraitWithHostLabel")
-                        .build(),
-
-                // Null lists/maps without sparse tag
-                HttpProtocolUnitTestGenerator.SkipTest.builder()
-                        .service(ShapeId.from("aws.protocoltests.restjson#RestJson"))
-                        .operation(ShapeId.from("aws.protocoltests.restjson#JsonLists"))
-                        .addTestName("RestJsonListsSerializeNull")
-                        .build(),
-                HttpProtocolUnitTestGenerator.SkipTest.builder()
-                        .service(ShapeId.from("aws.protocoltests.restjson#RestJson"))
-                        .operation(ShapeId.from("aws.protocoltests.restjson#JsonMaps"))
-                        .addTestName("RestJsonSerializesNullMapValues")
-                        .build(),
-                HttpProtocolUnitTestGenerator.SkipTest.builder()
-                        .service(ShapeId.from("aws.protocoltests.json#JsonProtocol"))
-                        .operation(ShapeId.from("aws.protocoltests.json#NullOperation"))
-                        .addTestName("AwsJson11MapsSerializeNullValues")
-                        .addTestName("AwsJson11ListsSerializeNull")
-                        .build(),
-
-                // JSON RPC serialize empty modeled input should always serialize something
-                HttpProtocolUnitTestGenerator.SkipTest.builder()
-                        .service(ShapeId.from("aws.protocoltests.json10#JsonRpc10"))
-                        .operation(ShapeId.from("aws.protocoltests.json10#EmptyInputAndEmptyOutput"))
-                        .addTestName("AwsJson10EmptyInputAndEmptyOutput")
-                        .build(),
-
-                // HTTP Payload Values that are unset vs set by the customer and how content-type should be handled.
-                HttpProtocolUnitTestGenerator.SkipTest.builder()
-                        .service(ShapeId.from("aws.protocoltests.restjson#RestJson"))
-                        .operation(ShapeId.from("aws.protocoltests.restjson#TestPayloadBlob"))
-                        .addTestName("RestJsonHttpWithEmptyBlobPayload")
                         .build()
+
         ));
 
         Set<HttpProtocolUnitTestGenerator.SkipTest> outputSkipTests = new TreeSet<>(SetUtils.of(

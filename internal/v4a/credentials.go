@@ -1,5 +1,5 @@
 // This code was forked from github.com/aws/aws-sdk-go-v2. DO NOT EDIT.
-// URL: https://github.com/aws/aws-sdk-go-v2/tree/v1.16.5/internal/v4a/credentials.go
+// URL: https://github.com/aws/aws-sdk-go-v2/tree/v1.17.1/internal/v4a/credentials.go
 
 package v4a
 
@@ -54,7 +54,7 @@ type SymmetricCredentialAdaptor struct {
 func (s *SymmetricCredentialAdaptor) Retrieve(ctx context.Context) (aws.Credentials, error) {
 	symCreds, err := s.retrieveFromSymmetricProvider(ctx)
 	if err != nil {
-		return aws.Credentials{}, nil
+		return aws.Credentials{}, err
 	}
 
 	if asymCreds := s.getCreds(); asymCreds == nil {

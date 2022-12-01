@@ -1,5 +1,5 @@
 // This code was forked from github.com/aws/aws-sdk-go-v2. DO NOT EDIT.
-// URL: https://github.com/aws/aws-sdk-go-v2/tree/v1.16.5/codegen/smithy-aws-go-codegen/src/main/java/software.nifcloud.smithy.nifcloud.go.codegen/AwsSignatureVersion4aUtils.java
+// URL: https://github.com/aws/aws-sdk-go-v2/tree/v1.17.1/codegen/smithy-aws-go-codegen/src/main/java/software.nifcloud.smithy.nifcloud.go.codegen/AwsSignatureVersion4aUtils.java
 
 /*
  * Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
@@ -45,6 +45,8 @@ public final class AwsSignatureVersion4aUtils {
                 AwsCustomGoDependency.INTERNAL_SIGV4A).build());
         writer.putContext("anonType", SymbolUtils.createPointableSymbolBuilder("AnonymousCredentials",
                 AwsCustomGoDependency.AWS_CORE).build());
+        writer.putContext("isProvider", SymbolUtils.createValueSymbolBuilder("IsCredentialsProvider",
+                AwsCustomGoDependency.AWS_CORE).build());
         writer.putContext("adapType", SymbolUtils.createPointableSymbolBuilder("SymmetricCredentialAdaptor",
                 AwsCustomGoDependency.INTERNAL_SIGV4A).build());
         writer.write("""
@@ -57,9 +59,8 @@ public final class AwsSignatureVersion4aUtils {
                              return
                          }
                          
-                         switch o.$fieldName:L.(type) {
-                         case $anonType:T, $anonType:P:
-                             return
+                         if $isProvider:T(o.$fieldName:L, ($anonType:P)(nil)) {
+                            return
                          }
                          
                          o.$fieldName:L = &$adapType:T{SymmetricProvider: o.$fieldName:L}
