@@ -3,8 +3,8 @@ module github.com/nifcloud/nifcloud-sdk-go
 go 1.17
 
 require (
-	github.com/aws/aws-sdk-go-v2 v1.17.1
-	github.com/aws/smithy-go v1.13.4
+	github.com/aws/aws-sdk-go-v2 v1.17.4
+	github.com/aws/smithy-go v1.13.5
 	github.com/golangci/golangci-lint v1.30.0
 	github.com/jmespath/go-jmespath v0.4.0
 	golang.org/x/tools v0.0.0-20200811032001-fd80f4dbb3ea

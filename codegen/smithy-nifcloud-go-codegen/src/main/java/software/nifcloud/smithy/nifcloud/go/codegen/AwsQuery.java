@@ -1,5 +1,5 @@
 // This code was forked from github.com/aws/aws-sdk-go-v2. DO NOT EDIT.
-// URL: https://github.com/aws/aws-sdk-go-v2/tree/v1.17.1/codegen/smithy-aws-go-codegen/src/main/java/software.nifcloud.smithy.nifcloud.go.codegen/AwsQuery.java
+// URL: https://github.com/aws/aws-sdk-go-v2/tree/v1.17.4/codegen/smithy-aws-go-codegen/src/main/java/software.nifcloud.smithy.nifcloud.go.codegen/AwsQuery.java
 
 package software.nifcloud.smithy.nifcloud.go.codegen;
 
@@ -18,7 +18,6 @@ import software.amazon.smithy.codegen.core.Symbol;
 import software.amazon.smithy.go.codegen.GoWriter;
 import software.amazon.smithy.go.codegen.SmithyGoDependency;
 import software.amazon.smithy.go.codegen.SymbolUtils;
-import software.amazon.smithy.go.codegen.SyntheticClone;
 import software.amazon.smithy.go.codegen.integration.HttpRpcProtocolGenerator;
 import software.amazon.smithy.go.codegen.integration.ProtocolGenerator;
 import software.amazon.smithy.go.codegen.integration.ProtocolUtils;

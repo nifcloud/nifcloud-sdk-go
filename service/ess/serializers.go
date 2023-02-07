@@ -841,9 +841,6 @@ func (m *awsAwsquery_serializeOpVerifyEmailIdentity) HandleSerialize(ctx context
 	return next.HandleSerialize(ctx, in)
 }
 func awsAwsquery_serializeDocumentListOfRequestBccAddresses(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("member")
 
 	for i := range v {
@@ -854,9 +851,6 @@ func awsAwsquery_serializeDocumentListOfRequestBccAddresses(v []string, value qu
 }
 
 func awsAwsquery_serializeDocumentListOfRequestCcAddresses(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("member")
 
 	for i := range v {
@@ -867,9 +861,6 @@ func awsAwsquery_serializeDocumentListOfRequestCcAddresses(v []string, value que
 }
 
 func awsAwsquery_serializeDocumentListOfRequestDestinations(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("member")
 
 	for i := range v {
@@ -880,9 +871,6 @@ func awsAwsquery_serializeDocumentListOfRequestDestinations(v []string, value qu
 }
 
 func awsAwsquery_serializeDocumentListOfRequestIdentities(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("member")
 
 	for i := range v {
@@ -893,9 +881,6 @@ func awsAwsquery_serializeDocumentListOfRequestIdentities(v []string, value quer
 }
 
 func awsAwsquery_serializeDocumentListOfRequestReplyToAddresses(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("member")
 
 	for i := range v {
@@ -906,9 +891,6 @@ func awsAwsquery_serializeDocumentListOfRequestReplyToAddresses(v []string, valu
 }
 
 func awsAwsquery_serializeDocumentListOfRequestToAddresses(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("member")
 
 	for i := range v {

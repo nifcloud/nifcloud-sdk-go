@@ -1,5 +1,5 @@
 // This code was forked from github.com/aws/aws-sdk-go-v2. DO NOT EDIT.
-// URL: https://github.com/aws/aws-sdk-go-v2/tree/v1.17.1/internal/v4a/v4a.go
+// URL: https://github.com/aws/aws-sdk-go-v2/tree/v1.17.4/internal/v4a/v4a.go
 
 package v4a
 

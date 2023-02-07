@@ -1,5 +1,5 @@
 // This code was forked from github.com/aws/aws-sdk-go-v2. DO NOT EDIT.
-// URL: https://github.com/aws/aws-sdk-go-v2/tree/v1.17.1/codegen/smithy-aws-go-codegen/src/main/java/software.nifcloud.smithy.nifcloud.go.codegen/customization/PresignURLAutoFill.java
+// URL: https://github.com/aws/aws-sdk-go-v2/tree/v1.17.4/codegen/smithy-aws-go-codegen/src/main/java/software.nifcloud.smithy.nifcloud.go.codegen/customization/PresignURLAutoFill.java
 
 /*
  * Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
