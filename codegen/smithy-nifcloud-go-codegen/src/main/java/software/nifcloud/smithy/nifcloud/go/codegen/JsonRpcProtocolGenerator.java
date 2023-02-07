@@ -1,5 +1,5 @@
 // This code was forked from github.com/aws/aws-sdk-go-v2. DO NOT EDIT.
-// URL: https://github.com/aws/aws-sdk-go-v2/tree/v1.17.1/codegen/smithy-aws-go-codegen/src/main/java/software.nifcloud.smithy.nifcloud.go.codegen/JsonRpcProtocolGenerator.java
+// URL: https://github.com/aws/aws-sdk-go-v2/tree/v1.17.4/codegen/smithy-aws-go-codegen/src/main/java/software.nifcloud.smithy.nifcloud.go.codegen/JsonRpcProtocolGenerator.java
 
 /*
  * Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
@@ -82,9 +82,9 @@ abstract class JsonRpcProtocolGenerator extends HttpRpcProtocolGenerator {
     protected void serializeInputDocument(GenerationContext context, OperationShape operation) {
         GoWriter writer = context.getWriter().get();
 
-        // Stub synthetic clone inputs mean there never was an input modeled, always serialize empty JSON object
+        // Stub synthetic inputs mean there never was an input modeled, always serialize empty JSON object
         // as place holder.
-        if (CodegenUtils.isStubSyntheticClone(ProtocolUtils.expectInput(context.getModel(), operation))) {
+        if (CodegenUtils.isStubSynthetic(ProtocolUtils.expectInput(context.getModel(), operation))) {
             writer.addUseImports(SmithyGoDependency.STRINGS);
             writer.openBlock("if request, err = request.SetStream(strings.NewReader(`{}`)); err != nil {",
                     "}", () -> {

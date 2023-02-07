@@ -14209,9 +14209,6 @@ func (m *awsEc2query_serializeOpUploadSslCertificate) HandleSerialize(ctx contex
 	return next.HandleSerialize(ctx, in)
 }
 func awsEc2query_serializeDocumentListOfRequestAccountingType(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -14222,9 +14219,6 @@ func awsEc2query_serializeDocumentListOfRequestAccountingType(v []string, value 
 }
 
 func awsEc2query_serializeDocumentListOfRequestAdd(v []types.RequestAdd, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -14251,9 +14245,6 @@ func awsEc2query_serializeDocumentListOfRequestAdditionalAttributes(v *types.Lis
 }
 
 func awsEc2query_serializeDocumentListOfRequestAdditionalAttributesMember(v []types.RequestAdditionalAttributes, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -14266,9 +14257,6 @@ func awsEc2query_serializeDocumentListOfRequestAdditionalAttributesMember(v []ty
 }
 
 func awsEc2query_serializeDocumentListOfRequestAllocationId(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -14279,9 +14267,6 @@ func awsEc2query_serializeDocumentListOfRequestAllocationId(v []string, value qu
 }
 
 func awsEc2query_serializeDocumentListOfRequestAutoScalingGroupName(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -14306,9 +14291,6 @@ func awsEc2query_serializeDocumentListOfRequestAvailabilityZones(v *types.ListOf
 }
 
 func awsEc2query_serializeDocumentListOfRequestAvailabilityZonesMember(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -14319,9 +14301,6 @@ func awsEc2query_serializeDocumentListOfRequestAvailabilityZonesMember(v []strin
 }
 
 func awsEc2query_serializeDocumentListOfRequestBlockDeviceMapping(v []types.RequestBlockDeviceMapping, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -14334,9 +14313,6 @@ func awsEc2query_serializeDocumentListOfRequestBlockDeviceMapping(v []types.Requ
 }
 
 func awsEc2query_serializeDocumentListOfRequestConversionTaskId(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -14347,9 +14323,6 @@ func awsEc2query_serializeDocumentListOfRequestConversionTaskId(v []string, valu
 }
 
 func awsEc2query_serializeDocumentListOfRequestCustomerGatewayId(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -14360,9 +14333,6 @@ func awsEc2query_serializeDocumentListOfRequestCustomerGatewayId(v []string, val
 }
 
 func awsEc2query_serializeDocumentListOfRequestDataType(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -14373,9 +14343,6 @@ func awsEc2query_serializeDocumentListOfRequestDataType(v []string, value query.
 }
 
 func awsEc2query_serializeDocumentListOfRequestDhcpConfigId(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -14386,9 +14353,6 @@ func awsEc2query_serializeDocumentListOfRequestDhcpConfigId(v []string, value qu
 }
 
 func awsEc2query_serializeDocumentListOfRequestDhcpConfiguration(v []types.RequestDhcpConfiguration, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -14401,9 +14365,6 @@ func awsEc2query_serializeDocumentListOfRequestDhcpConfiguration(v []types.Reque
 }
 
 func awsEc2query_serializeDocumentListOfRequestDhcpOptionsId(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -14414,9 +14375,6 @@ func awsEc2query_serializeDocumentListOfRequestDhcpOptionsId(v []string, value q
 }
 
 func awsEc2query_serializeDocumentListOfRequestDiskImage(v []types.RequestDiskImage, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -14429,9 +14387,6 @@ func awsEc2query_serializeDocumentListOfRequestDiskImage(v []types.RequestDiskIm
 }
 
 func awsEc2query_serializeDocumentListOfRequestDistributionId(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -14442,9 +14397,6 @@ func awsEc2query_serializeDocumentListOfRequestDistributionId(v []string, value 
 }
 
 func awsEc2query_serializeDocumentListOfRequestElasticLoadBalancerId(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -14455,9 +14407,6 @@ func awsEc2query_serializeDocumentListOfRequestElasticLoadBalancerId(v []string,
 }
 
 func awsEc2query_serializeDocumentListOfRequestElasticLoadBalancerName(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -14468,9 +14417,6 @@ func awsEc2query_serializeDocumentListOfRequestElasticLoadBalancerName(v []strin
 }
 
 func awsEc2query_serializeDocumentListOfRequestElasticLoadBalancerPort(v []int32, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -14481,9 +14427,6 @@ func awsEc2query_serializeDocumentListOfRequestElasticLoadBalancerPort(v []int32
 }
 
 func awsEc2query_serializeDocumentListOfRequestElasticLoadBalancerProtocol(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -14494,9 +14437,6 @@ func awsEc2query_serializeDocumentListOfRequestElasticLoadBalancerProtocol(v []s
 }
 
 func awsEc2query_serializeDocumentListOfRequestEmailAddress(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -14507,9 +14447,6 @@ func awsEc2query_serializeDocumentListOfRequestEmailAddress(v []string, value qu
 }
 
 func awsEc2query_serializeDocumentListOfRequestExecutableBy(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -14534,9 +14471,6 @@ func awsEc2query_serializeDocumentListOfRequestExpectation(v *types.ListOfReques
 }
 
 func awsEc2query_serializeDocumentListOfRequestExpectationMember(v []types.RequestExpectation, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -14549,9 +14483,6 @@ func awsEc2query_serializeDocumentListOfRequestExpectationMember(v []types.Reque
 }
 
 func awsEc2query_serializeDocumentListOfRequestFilter(v []types.RequestFilter, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -14564,9 +14495,6 @@ func awsEc2query_serializeDocumentListOfRequestFilter(v []types.RequestFilter, v
 }
 
 func awsEc2query_serializeDocumentListOfRequestFilterOfDescribeAddresses(v []types.RequestFilterOfDescribeAddresses, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -14579,9 +14507,6 @@ func awsEc2query_serializeDocumentListOfRequestFilterOfDescribeAddresses(v []typ
 }
 
 func awsEc2query_serializeDocumentListOfRequestFilterOfDescribeCustomerGateways(v []types.RequestFilterOfDescribeCustomerGateways, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -14594,9 +14519,6 @@ func awsEc2query_serializeDocumentListOfRequestFilterOfDescribeCustomerGateways(
 }
 
 func awsEc2query_serializeDocumentListOfRequestFilterOfDescribeDhcpOptions(v []types.RequestFilterOfDescribeDhcpOptions, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -14609,9 +14531,6 @@ func awsEc2query_serializeDocumentListOfRequestFilterOfDescribeDhcpOptions(v []t
 }
 
 func awsEc2query_serializeDocumentListOfRequestFilterOfDescribeNetworkInterfaces(v []types.RequestFilterOfDescribeNetworkInterfaces, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -14624,9 +14543,6 @@ func awsEc2query_serializeDocumentListOfRequestFilterOfDescribeNetworkInterfaces
 }
 
 func awsEc2query_serializeDocumentListOfRequestFilterOfDescribeRegions(v []types.RequestFilterOfDescribeRegions, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -14639,9 +14555,6 @@ func awsEc2query_serializeDocumentListOfRequestFilterOfDescribeRegions(v []types
 }
 
 func awsEc2query_serializeDocumentListOfRequestFilterOfDescribeRouteTables(v []types.RequestFilterOfDescribeRouteTables, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -14654,9 +14567,6 @@ func awsEc2query_serializeDocumentListOfRequestFilterOfDescribeRouteTables(v []t
 }
 
 func awsEc2query_serializeDocumentListOfRequestFilterOfDescribeSecurityGroups(v []types.RequestFilterOfDescribeSecurityGroups, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -14669,9 +14579,6 @@ func awsEc2query_serializeDocumentListOfRequestFilterOfDescribeSecurityGroups(v 
 }
 
 func awsEc2query_serializeDocumentListOfRequestFilterOfDescribeVpnConnections(v []types.RequestFilterOfDescribeVpnConnections, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -14684,9 +14591,6 @@ func awsEc2query_serializeDocumentListOfRequestFilterOfDescribeVpnConnections(v 
 }
 
 func awsEc2query_serializeDocumentListOfRequestFilterOfDescribeVpnGateways(v []types.RequestFilterOfDescribeVpnGateways, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -14699,9 +14603,6 @@ func awsEc2query_serializeDocumentListOfRequestFilterOfDescribeVpnGateways(v []t
 }
 
 func awsEc2query_serializeDocumentListOfRequestFilterOfNiftyDescribeDhcpConfigs(v []types.RequestFilterOfNiftyDescribeDhcpConfigs, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -14714,9 +14615,6 @@ func awsEc2query_serializeDocumentListOfRequestFilterOfNiftyDescribeDhcpConfigs(
 }
 
 func awsEc2query_serializeDocumentListOfRequestFilterOfNiftyDescribeElasticLoadBalancers(v []types.RequestFilterOfNiftyDescribeElasticLoadBalancers, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -14729,9 +14627,6 @@ func awsEc2query_serializeDocumentListOfRequestFilterOfNiftyDescribeElasticLoadB
 }
 
 func awsEc2query_serializeDocumentListOfRequestFilterOfNiftyDescribeNatTables(v []types.RequestFilterOfNiftyDescribeNatTables, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -14744,9 +14639,6 @@ func awsEc2query_serializeDocumentListOfRequestFilterOfNiftyDescribeNatTables(v 
 }
 
 func awsEc2query_serializeDocumentListOfRequestFilterOfNiftyDescribePrivateLans(v []types.RequestFilterOfNiftyDescribePrivateLans, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -14759,9 +14651,6 @@ func awsEc2query_serializeDocumentListOfRequestFilterOfNiftyDescribePrivateLans(
 }
 
 func awsEc2query_serializeDocumentListOfRequestFilterOfNiftyDescribeRouters(v []types.RequestFilterOfNiftyDescribeRouters, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -14774,9 +14663,6 @@ func awsEc2query_serializeDocumentListOfRequestFilterOfNiftyDescribeRouters(v []
 }
 
 func awsEc2query_serializeDocumentListOfRequestFilterOfNiftyDescribeSeparateInstanceRules(v []types.RequestFilterOfNiftyDescribeSeparateInstanceRules, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -14789,9 +14675,6 @@ func awsEc2query_serializeDocumentListOfRequestFilterOfNiftyDescribeSeparateInst
 }
 
 func awsEc2query_serializeDocumentListOfRequestFilterOfNiftyDescribeWebProxies(v []types.RequestFilterOfNiftyDescribeWebProxies, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -14804,9 +14687,6 @@ func awsEc2query_serializeDocumentListOfRequestFilterOfNiftyDescribeWebProxies(v
 }
 
 func awsEc2query_serializeDocumentListOfRequestFqdn(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -14817,9 +14697,6 @@ func awsEc2query_serializeDocumentListOfRequestFqdn(v []string, value query.Valu
 }
 
 func awsEc2query_serializeDocumentListOfRequestFqdnId(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -14830,9 +14707,6 @@ func awsEc2query_serializeDocumentListOfRequestFqdnId(v []string, value query.Va
 }
 
 func awsEc2query_serializeDocumentListOfRequestGroupName(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -14843,9 +14717,6 @@ func awsEc2query_serializeDocumentListOfRequestGroupName(v []string, value query
 }
 
 func awsEc2query_serializeDocumentListOfRequestGroups(v []types.RequestGroups, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -14858,9 +14729,6 @@ func awsEc2query_serializeDocumentListOfRequestGroups(v []types.RequestGroups, v
 }
 
 func awsEc2query_serializeDocumentListOfRequestImageId(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -14871,9 +14739,6 @@ func awsEc2query_serializeDocumentListOfRequestImageId(v []string, value query.V
 }
 
 func awsEc2query_serializeDocumentListOfRequestImageName(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -14884,9 +14749,6 @@ func awsEc2query_serializeDocumentListOfRequestImageName(v []string, value query
 }
 
 func awsEc2query_serializeDocumentListOfRequestInstanceBackupRuleId(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -14897,9 +14759,6 @@ func awsEc2query_serializeDocumentListOfRequestInstanceBackupRuleId(v []string, 
 }
 
 func awsEc2query_serializeDocumentListOfRequestInstanceId(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -14910,9 +14769,6 @@ func awsEc2query_serializeDocumentListOfRequestInstanceId(v []string, value quer
 }
 
 func awsEc2query_serializeDocumentListOfRequestInstancePort(v []int32, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -14937,9 +14793,6 @@ func awsEc2query_serializeDocumentListOfRequestInstances(v *types.ListOfRequestI
 }
 
 func awsEc2query_serializeDocumentListOfRequestInstancesMember(v []types.RequestInstances, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -14952,9 +14805,6 @@ func awsEc2query_serializeDocumentListOfRequestInstancesMember(v []types.Request
 }
 
 func awsEc2query_serializeDocumentListOfRequestInstanceSnapshotId(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -14979,9 +14829,6 @@ func awsEc2query_serializeDocumentListOfRequestInstancesOfDescribeInstanceHealth
 }
 
 func awsEc2query_serializeDocumentListOfRequestInstancesOfDescribeInstanceHealthMember(v []types.RequestInstancesOfDescribeInstanceHealth, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15008,9 +14855,6 @@ func awsEc2query_serializeDocumentListOfRequestInstancesOfNiftyCreateElasticLoad
 }
 
 func awsEc2query_serializeDocumentListOfRequestInstancesOfNiftyCreateElasticLoadBalancerMember(v []types.RequestInstancesOfNiftyCreateElasticLoadBalancer, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15037,9 +14881,6 @@ func awsEc2query_serializeDocumentListOfRequestInstancesOfNiftyDeregisterInstanc
 }
 
 func awsEc2query_serializeDocumentListOfRequestInstancesOfNiftyDeregisterInstancesFromElasticLoadBalancerMember(v []types.RequestInstancesOfNiftyDeregisterInstancesFromElasticLoadBalancer, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15066,9 +14907,6 @@ func awsEc2query_serializeDocumentListOfRequestInstancesOfNiftyDescribeInstanceE
 }
 
 func awsEc2query_serializeDocumentListOfRequestInstancesOfNiftyDescribeInstanceElasticLoadBalancerHealthMember(v []types.RequestInstancesOfNiftyDescribeInstanceElasticLoadBalancerHealth, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15095,9 +14933,6 @@ func awsEc2query_serializeDocumentListOfRequestInstancesOfNiftyRegisterInstances
 }
 
 func awsEc2query_serializeDocumentListOfRequestInstancesOfNiftyRegisterInstancesWithElasticLoadBalancerMember(v []types.RequestInstancesOfNiftyRegisterInstancesWithElasticLoadBalancer, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15110,9 +14945,6 @@ func awsEc2query_serializeDocumentListOfRequestInstancesOfNiftyRegisterInstances
 }
 
 func awsEc2query_serializeDocumentListOfRequestInstanceType(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15123,9 +14955,6 @@ func awsEc2query_serializeDocumentListOfRequestInstanceType(v []string, value qu
 }
 
 func awsEc2query_serializeDocumentListOfRequestInstanceUniqueId(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15136,9 +14965,6 @@ func awsEc2query_serializeDocumentListOfRequestInstanceUniqueId(v []string, valu
 }
 
 func awsEc2query_serializeDocumentListOfRequestIpAddress(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15163,9 +14989,6 @@ func awsEc2query_serializeDocumentListOfRequestIPAddresses(v *types.ListOfReques
 }
 
 func awsEc2query_serializeDocumentListOfRequestIPAddressesMember(v []types.RequestIPAddresses, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15178,9 +15001,6 @@ func awsEc2query_serializeDocumentListOfRequestIPAddressesMember(v []types.Reque
 }
 
 func awsEc2query_serializeDocumentListOfRequestIpPermissions(v []types.RequestIpPermissions, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15193,9 +15013,6 @@ func awsEc2query_serializeDocumentListOfRequestIpPermissions(v []types.RequestIp
 }
 
 func awsEc2query_serializeDocumentListOfRequestIpPermissionsOfRevokeSecurityGroupIngress(v []types.RequestIpPermissionsOfRevokeSecurityGroupIngress, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15208,9 +15025,6 @@ func awsEc2query_serializeDocumentListOfRequestIpPermissionsOfRevokeSecurityGrou
 }
 
 func awsEc2query_serializeDocumentListOfRequestIpRanges(v []types.RequestIpRanges, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15223,9 +15037,6 @@ func awsEc2query_serializeDocumentListOfRequestIpRanges(v []types.RequestIpRange
 }
 
 func awsEc2query_serializeDocumentListOfRequestKeyName(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15236,9 +15047,6 @@ func awsEc2query_serializeDocumentListOfRequestKeyName(v []string, value query.V
 }
 
 func awsEc2query_serializeDocumentListOfRequestLicense(v []types.RequestLicense, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15265,9 +15073,6 @@ func awsEc2query_serializeDocumentListOfRequestListeners(v *types.ListOfRequestL
 }
 
 func awsEc2query_serializeDocumentListOfRequestListenersMember(v []types.RequestListeners, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15294,9 +15099,6 @@ func awsEc2query_serializeDocumentListOfRequestListenersOfNiftyCreateElasticLoad
 }
 
 func awsEc2query_serializeDocumentListOfRequestListenersOfNiftyCreateElasticLoadBalancerMember(v []types.RequestListenersOfNiftyCreateElasticLoadBalancer, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15323,9 +15125,6 @@ func awsEc2query_serializeDocumentListOfRequestListenersOfNiftyRegisterPortWithE
 }
 
 func awsEc2query_serializeDocumentListOfRequestListenersOfNiftyRegisterPortWithElasticLoadBalancerMember(v []types.RequestListenersOfNiftyRegisterPortWithElasticLoadBalancer, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15352,9 +15151,6 @@ func awsEc2query_serializeDocumentListOfRequestListenersOfRegisterPortWithLoadBa
 }
 
 func awsEc2query_serializeDocumentListOfRequestListenersOfRegisterPortWithLoadBalancerMember(v []types.RequestListenersOfRegisterPortWithLoadBalancer, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15367,9 +15163,6 @@ func awsEc2query_serializeDocumentListOfRequestListenersOfRegisterPortWithLoadBa
 }
 
 func awsEc2query_serializeDocumentListOfRequestLoadBalancerName(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15394,9 +15187,6 @@ func awsEc2query_serializeDocumentListOfRequestLoadBalancerNames(v *types.ListOf
 }
 
 func awsEc2query_serializeDocumentListOfRequestLoadBalancerNamesMember(v []types.RequestLoadBalancerNames, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15409,9 +15199,6 @@ func awsEc2query_serializeDocumentListOfRequestLoadBalancerNamesMember(v []types
 }
 
 func awsEc2query_serializeDocumentListOfRequestLoadBalancerPort(v []int32, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15422,9 +15209,6 @@ func awsEc2query_serializeDocumentListOfRequestLoadBalancerPort(v []int32, value
 }
 
 func awsEc2query_serializeDocumentListOfRequestLoadBalancers(v []types.RequestLoadBalancers, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15437,9 +15221,6 @@ func awsEc2query_serializeDocumentListOfRequestLoadBalancers(v []types.RequestLo
 }
 
 func awsEc2query_serializeDocumentListOfRequestLoadBalancersOfNiftyCreateAutoScalingGroup(v []types.RequestLoadBalancersOfNiftyCreateAutoScalingGroup, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15452,9 +15233,6 @@ func awsEc2query_serializeDocumentListOfRequestLoadBalancersOfNiftyCreateAutoSca
 }
 
 func awsEc2query_serializeDocumentListOfRequestLoadBalancersOfNiftyUpdateAutoScalingGroup(v []types.RequestLoadBalancersOfNiftyUpdateAutoScalingGroup, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15467,9 +15245,6 @@ func awsEc2query_serializeDocumentListOfRequestLoadBalancersOfNiftyUpdateAutoSca
 }
 
 func awsEc2query_serializeDocumentListOfRequestMultiIpAddressGroupId(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15480,9 +15255,6 @@ func awsEc2query_serializeDocumentListOfRequestMultiIpAddressGroupId(v []string,
 }
 
 func awsEc2query_serializeDocumentListOfRequestNatTableId(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15493,9 +15265,6 @@ func awsEc2query_serializeDocumentListOfRequestNatTableId(v []string, value quer
 }
 
 func awsEc2query_serializeDocumentListOfRequestNetworkId(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15506,9 +15275,6 @@ func awsEc2query_serializeDocumentListOfRequestNetworkId(v []string, value query
 }
 
 func awsEc2query_serializeDocumentListOfRequestNetworkInterface(v []types.RequestNetworkInterface, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15521,9 +15287,6 @@ func awsEc2query_serializeDocumentListOfRequestNetworkInterface(v []types.Reques
 }
 
 func awsEc2query_serializeDocumentListOfRequestNetworkInterfaceId(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15534,9 +15297,6 @@ func awsEc2query_serializeDocumentListOfRequestNetworkInterfaceId(v []string, va
 }
 
 func awsEc2query_serializeDocumentListOfRequestNetworkInterfaceOfCopyFromBackupInstance(v []types.RequestNetworkInterfaceOfCopyFromBackupInstance, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15549,9 +15309,6 @@ func awsEc2query_serializeDocumentListOfRequestNetworkInterfaceOfCopyFromBackupI
 }
 
 func awsEc2query_serializeDocumentListOfRequestNetworkInterfaceOfNiftyCreateElasticLoadBalancer(v []types.RequestNetworkInterfaceOfNiftyCreateElasticLoadBalancer, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15564,9 +15321,6 @@ func awsEc2query_serializeDocumentListOfRequestNetworkInterfaceOfNiftyCreateElas
 }
 
 func awsEc2query_serializeDocumentListOfRequestNetworkInterfaceOfNiftyCreateRouter(v []types.RequestNetworkInterfaceOfNiftyCreateRouter, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15579,9 +15333,6 @@ func awsEc2query_serializeDocumentListOfRequestNetworkInterfaceOfNiftyCreateRout
 }
 
 func awsEc2query_serializeDocumentListOfRequestNetworkInterfaceOfNiftyUpdateRouterNetworkInterfaces(v []types.RequestNetworkInterfaceOfNiftyUpdateRouterNetworkInterfaces, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15594,9 +15345,6 @@ func awsEc2query_serializeDocumentListOfRequestNetworkInterfaceOfNiftyUpdateRout
 }
 
 func awsEc2query_serializeDocumentListOfRequestNiftyCustomerGatewayName(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15607,9 +15355,6 @@ func awsEc2query_serializeDocumentListOfRequestNiftyCustomerGatewayName(v []stri
 }
 
 func awsEc2query_serializeDocumentListOfRequestNiftyVpnGatewayName(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15620,9 +15365,6 @@ func awsEc2query_serializeDocumentListOfRequestNiftyVpnGatewayName(v []string, v
 }
 
 func awsEc2query_serializeDocumentListOfRequestOwner(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15633,9 +15375,6 @@ func awsEc2query_serializeDocumentListOfRequestOwner(v []string, value query.Val
 }
 
 func awsEc2query_serializeDocumentListOfRequestPartition(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15646,9 +15385,6 @@ func awsEc2query_serializeDocumentListOfRequestPartition(v []string, value query
 }
 
 func awsEc2query_serializeDocumentListOfRequestPrivateIpAddress(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15659,9 +15395,6 @@ func awsEc2query_serializeDocumentListOfRequestPrivateIpAddress(v []string, valu
 }
 
 func awsEc2query_serializeDocumentListOfRequestPrivateLanName(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15672,9 +15405,6 @@ func awsEc2query_serializeDocumentListOfRequestPrivateLanName(v []string, value 
 }
 
 func awsEc2query_serializeDocumentListOfRequestProductCode(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15685,9 +15415,6 @@ func awsEc2query_serializeDocumentListOfRequestProductCode(v []string, value que
 }
 
 func awsEc2query_serializeDocumentListOfRequestProtocol(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15698,9 +15425,6 @@ func awsEc2query_serializeDocumentListOfRequestProtocol(v []string, value query.
 }
 
 func awsEc2query_serializeDocumentListOfRequestPublicIp(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15711,9 +15435,6 @@ func awsEc2query_serializeDocumentListOfRequestPublicIp(v []string, value query.
 }
 
 func awsEc2query_serializeDocumentListOfRequestRegionName(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15724,9 +15445,6 @@ func awsEc2query_serializeDocumentListOfRequestRegionName(v []string, value quer
 }
 
 func awsEc2query_serializeDocumentListOfRequestRemove(v []types.RequestRemove, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15739,9 +15457,6 @@ func awsEc2query_serializeDocumentListOfRequestRemove(v []types.RequestRemove, v
 }
 
 func awsEc2query_serializeDocumentListOfRequestResourceName(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15752,9 +15467,6 @@ func awsEc2query_serializeDocumentListOfRequestResourceName(v []string, value qu
 }
 
 func awsEc2query_serializeDocumentListOfRequestRouter(v []types.RequestRouter, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15767,9 +15479,6 @@ func awsEc2query_serializeDocumentListOfRequestRouter(v []types.RequestRouter, v
 }
 
 func awsEc2query_serializeDocumentListOfRequestRouterId(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15780,9 +15489,6 @@ func awsEc2query_serializeDocumentListOfRequestRouterId(v []string, value query.
 }
 
 func awsEc2query_serializeDocumentListOfRequestRouterName(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15793,9 +15499,6 @@ func awsEc2query_serializeDocumentListOfRequestRouterName(v []string, value quer
 }
 
 func awsEc2query_serializeDocumentListOfRequestRouterSet(v []types.RequestRouterSet, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15808,9 +15511,6 @@ func awsEc2query_serializeDocumentListOfRequestRouterSet(v []types.RequestRouter
 }
 
 func awsEc2query_serializeDocumentListOfRequestRouteTableId(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15821,9 +15521,6 @@ func awsEc2query_serializeDocumentListOfRequestRouteTableId(v []string, value qu
 }
 
 func awsEc2query_serializeDocumentListOfRequestRule(v []types.RequestRule, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15836,9 +15533,6 @@ func awsEc2query_serializeDocumentListOfRequestRule(v []types.RequestRule, value
 }
 
 func awsEc2query_serializeDocumentListOfRequestRuleOfNiftyDescribeAlarmHistory(v []types.RequestRuleOfNiftyDescribeAlarmHistory, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15851,9 +15545,6 @@ func awsEc2query_serializeDocumentListOfRequestRuleOfNiftyDescribeAlarmHistory(v
 }
 
 func awsEc2query_serializeDocumentListOfRequestRuleOfNiftyDescribeAlarmRulesActivities(v []types.RequestRuleOfNiftyDescribeAlarmRulesActivities, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15866,9 +15557,6 @@ func awsEc2query_serializeDocumentListOfRequestRuleOfNiftyDescribeAlarmRulesActi
 }
 
 func awsEc2query_serializeDocumentListOfRequestRuleOfNiftyDescribeAlarms(v []types.RequestRuleOfNiftyDescribeAlarms, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15881,9 +15569,6 @@ func awsEc2query_serializeDocumentListOfRequestRuleOfNiftyDescribeAlarms(v []typ
 }
 
 func awsEc2query_serializeDocumentListOfRequestRuleOfNiftyUpdateAlarm(v []types.RequestRuleOfNiftyUpdateAlarm, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15896,9 +15581,6 @@ func awsEc2query_serializeDocumentListOfRequestRuleOfNiftyUpdateAlarm(v []types.
 }
 
 func awsEc2query_serializeDocumentListOfRequestScalingSchedule(v []types.RequestScalingSchedule, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15911,9 +15593,6 @@ func awsEc2query_serializeDocumentListOfRequestScalingSchedule(v []types.Request
 }
 
 func awsEc2query_serializeDocumentListOfRequestScalingScheduleOfNiftyUpdateAutoScalingGroup(v []types.RequestScalingScheduleOfNiftyUpdateAutoScalingGroup, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15926,9 +15605,6 @@ func awsEc2query_serializeDocumentListOfRequestScalingScheduleOfNiftyUpdateAutoS
 }
 
 func awsEc2query_serializeDocumentListOfRequestScalingTrigger(v []types.RequestScalingTrigger, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15941,9 +15617,6 @@ func awsEc2query_serializeDocumentListOfRequestScalingTrigger(v []types.RequestS
 }
 
 func awsEc2query_serializeDocumentListOfRequestScalingTriggerOfNiftyUpdateAutoScalingGroup(v []types.RequestScalingTriggerOfNiftyUpdateAutoScalingGroup, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15956,9 +15629,6 @@ func awsEc2query_serializeDocumentListOfRequestScalingTriggerOfNiftyUpdateAutoSc
 }
 
 func awsEc2query_serializeDocumentListOfRequestSecurityGroup(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15969,9 +15639,6 @@ func awsEc2query_serializeDocumentListOfRequestSecurityGroup(v []string, value q
 }
 
 func awsEc2query_serializeDocumentListOfRequestSecurityGroupId(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15982,9 +15649,6 @@ func awsEc2query_serializeDocumentListOfRequestSecurityGroupId(v []string, value
 }
 
 func awsEc2query_serializeDocumentListOfRequestSeparateInstanceRuleName(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -15995,9 +15659,6 @@ func awsEc2query_serializeDocumentListOfRequestSeparateInstanceRuleName(v []stri
 }
 
 func awsEc2query_serializeDocumentListOfRequestSnapshotName(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -16008,9 +15669,6 @@ func awsEc2query_serializeDocumentListOfRequestSnapshotName(v []string, value qu
 }
 
 func awsEc2query_serializeDocumentListOfRequestTenancy(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -16035,9 +15693,6 @@ func awsEc2query_serializeDocumentListOfRequestUsers(v *types.ListOfRequestUsers
 }
 
 func awsEc2query_serializeDocumentListOfRequestUsersMember(v []types.RequestUsers, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -16050,9 +15705,6 @@ func awsEc2query_serializeDocumentListOfRequestUsersMember(v []types.RequestUser
 }
 
 func awsEc2query_serializeDocumentListOfRequestValue(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -16063,9 +15715,6 @@ func awsEc2query_serializeDocumentListOfRequestValue(v []string, value query.Val
 }
 
 func awsEc2query_serializeDocumentListOfRequestVolumeId(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -16076,9 +15725,6 @@ func awsEc2query_serializeDocumentListOfRequestVolumeId(v []string, value query.
 }
 
 func awsEc2query_serializeDocumentListOfRequestVpnConnectionId(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -16089,9 +15735,6 @@ func awsEc2query_serializeDocumentListOfRequestVpnConnectionId(v []string, value
 }
 
 func awsEc2query_serializeDocumentListOfRequestVpnGateway(v []types.RequestVpnGateway, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -16104,9 +15747,6 @@ func awsEc2query_serializeDocumentListOfRequestVpnGateway(v []types.RequestVpnGa
 }
 
 func awsEc2query_serializeDocumentListOfRequestVpnGatewayId(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -16117,9 +15757,6 @@ func awsEc2query_serializeDocumentListOfRequestVpnGatewayId(v []string, value qu
 }
 
 func awsEc2query_serializeDocumentListOfRequestVpnGatewaySet(v []types.RequestVpnGatewaySet, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {
@@ -16132,9 +15769,6 @@ func awsEc2query_serializeDocumentListOfRequestVpnGatewaySet(v []types.RequestVp
 }
 
 func awsEc2query_serializeDocumentListOfRequestZoneName(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("Member")
 
 	for i := range v {

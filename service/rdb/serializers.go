@@ -2897,9 +2897,6 @@ func (m *awsAwsquery_serializeOpUpgradeDBEngineVersion) HandleSerialize(ctx cont
 	return next.HandleSerialize(ctx, in)
 }
 func awsAwsquery_serializeDocumentListOfRequestDBSecurityGroups(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("member")
 
 	for i := range v {
@@ -2910,9 +2907,6 @@ func awsAwsquery_serializeDocumentListOfRequestDBSecurityGroups(v []string, valu
 }
 
 func awsAwsquery_serializeDocumentListOfRequestDimensions(v []types.RequestDimensions, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("member")
 
 	for i := range v {
@@ -2925,9 +2919,6 @@ func awsAwsquery_serializeDocumentListOfRequestDimensions(v []types.RequestDimen
 }
 
 func awsAwsquery_serializeDocumentListOfRequestEventCategories(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("member")
 
 	for i := range v {
@@ -2938,9 +2929,6 @@ func awsAwsquery_serializeDocumentListOfRequestEventCategories(v []string, value
 }
 
 func awsAwsquery_serializeDocumentListOfRequestFilter(v []types.RequestFilter, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("member")
 
 	for i := range v {
@@ -2953,9 +2941,6 @@ func awsAwsquery_serializeDocumentListOfRequestFilter(v []types.RequestFilter, v
 }
 
 func awsAwsquery_serializeDocumentListOfRequestFilters(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("member")
 
 	for i := range v {
@@ -2966,9 +2951,6 @@ func awsAwsquery_serializeDocumentListOfRequestFilters(v []string, value query.V
 }
 
 func awsAwsquery_serializeDocumentListOfRequestNiftyDBSecurityGroups(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("member")
 
 	for i := range v {
@@ -2979,9 +2961,6 @@ func awsAwsquery_serializeDocumentListOfRequestNiftyDBSecurityGroups(v []string,
 }
 
 func awsAwsquery_serializeDocumentListOfRequestNiftyEmailAddresses(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("member")
 
 	for i := range v {
@@ -2992,9 +2971,6 @@ func awsAwsquery_serializeDocumentListOfRequestNiftyEmailAddresses(v []string, v
 }
 
 func awsAwsquery_serializeDocumentListOfRequestNiftySourceIds(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("member")
 
 	for i := range v {
@@ -3005,9 +2981,6 @@ func awsAwsquery_serializeDocumentListOfRequestNiftySourceIds(v []string, value 
 }
 
 func awsAwsquery_serializeDocumentListOfRequestParameters(v []types.RequestParameters, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("member")
 
 	for i := range v {
@@ -3020,9 +2993,6 @@ func awsAwsquery_serializeDocumentListOfRequestParameters(v []types.RequestParam
 }
 
 func awsAwsquery_serializeDocumentListOfRequestParametersOfResetDBParameterGroup(v []types.RequestParametersOfResetDBParameterGroup, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("member")
 
 	for i := range v {
@@ -3035,9 +3005,6 @@ func awsAwsquery_serializeDocumentListOfRequestParametersOfResetDBParameterGroup
 }
 
 func awsAwsquery_serializeDocumentListOfRequestSourceIds(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("member")
 
 	for i := range v {
@@ -3048,9 +3015,6 @@ func awsAwsquery_serializeDocumentListOfRequestSourceIds(v []string, value query
 }
 
 func awsAwsquery_serializeDocumentListOfRequestVpcSecurityGroupIds(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("member")
 
 	for i := range v {

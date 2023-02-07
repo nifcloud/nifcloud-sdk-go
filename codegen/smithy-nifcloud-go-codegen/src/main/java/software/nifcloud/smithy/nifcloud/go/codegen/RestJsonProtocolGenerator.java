@@ -1,5 +1,5 @@
 // This code was forked from github.com/aws/aws-sdk-go-v2. DO NOT EDIT.
-// URL: https://github.com/aws/aws-sdk-go-v2/tree/v1.17.1/codegen/smithy-aws-go-codegen/src/main/java/software.nifcloud.smithy.nifcloud.go.codegen/RestJsonProtocolGenerator.java
+// URL: https://github.com/aws/aws-sdk-go-v2/tree/v1.17.4/codegen/smithy-aws-go-codegen/src/main/java/software.nifcloud.smithy.nifcloud.go.codegen/RestJsonProtocolGenerator.java
 
 /*
  * Copyright 2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
@@ -36,7 +36,7 @@ import software.amazon.smithy.go.codegen.GoStackStepMiddlewareGenerator;
 import software.amazon.smithy.go.codegen.GoValueAccessUtils;
 import software.amazon.smithy.go.codegen.GoWriter;
 import software.amazon.smithy.go.codegen.SmithyGoDependency;
-import software.amazon.smithy.go.codegen.SyntheticClone;
+import software.amazon.smithy.go.codegen.Synthetic;
 import software.amazon.smithy.go.codegen.integration.HttpBindingProtocolGenerator;
 import software.amazon.smithy.go.codegen.integration.ProtocolGenerator;
 import software.amazon.smithy.go.codegen.integration.ProtocolUtils;
@@ -67,7 +67,7 @@ import software.amazon.smithy.model.traits.XmlNamespaceTrait;
  * It handles reading and writing from document bodies, including generating any
  * functions needed for performing serde.
  *
- * @see <a href="https://awslabs.github.io/smithy/spec/http.html">Smithy HTTP protocol bindings.</a>
+ * @see <a href="https://smithy.io/2.0/spec/http-bindings.html">Smithy HTTP protocol bindings.</a>
  */
 abstract class RestJsonProtocolGenerator extends HttpBindingProtocolGenerator {
     private final Set<ShapeId> generatedDocumentBodyShapeSerializers = new HashSet<>();
@@ -122,7 +122,7 @@ abstract class RestJsonProtocolGenerator extends HttpBindingProtocolGenerator {
         Shape payloadShape = model.expectShape(memberShape.getTarget());
 
         String functionName;
-        if (payloadShape.hasTrait(SyntheticClone.class)) {
+        if (payloadShape.hasTrait(Synthetic.class)) {
             functionName = ProtocolGenerator.getDocumentSerializerFunctionName(
                     payloadShape, context.getService(), context.getProtocolName());
         } else {

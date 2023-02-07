@@ -33,7 +33,7 @@ type Config struct {
 	// will prevent the SDK from modifying the HTTP client.
 	HTTPClient aws.HTTPClient
 
-	//nolint:staticcheck SA1019 to use aws.EndpointResolver
+	//nolint:staticcheck // SA1019 to use aws.EndpointResolver
 	EndpointResolver aws.EndpointResolver
 
 	// An endpoint resolver that can be used to provide or override an endpoint for the given

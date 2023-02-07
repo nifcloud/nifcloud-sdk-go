@@ -1,5 +1,5 @@
 // This code was forked from github.com/aws/aws-sdk-go-v2. DO NOT EDIT.
-// URL: https://github.com/aws/aws-sdk-go-v2/tree/v1.17.1/codegen/smithy-aws-go-codegen/src/main/java/software.nifcloud.smithy.nifcloud.go.codegen/QueryShapeSerVisitor.java
+// URL: https://github.com/aws/aws-sdk-go-v2/tree/v1.17.4/codegen/smithy-aws-go-codegen/src/main/java/software.nifcloud.smithy.nifcloud.go.codegen/QueryShapeSerVisitor.java
 
 package software.nifcloud.smithy.nifcloud.go.codegen;
 
@@ -77,9 +77,6 @@ class QueryShapeSerVisitor extends DocumentShapeSerVisitor {
         GoWriter writer = context.getWriter().get();
         MemberShape member = shape.getMember();
         Shape target = context.getModel().expectShape(member.getTarget());
-
-        // If the list is empty, exit early to avoid extra effort.
-        writer.write("if len(v) == 0 { return nil }");
 
         writer.write("array := value.Array($S)", getSerializedLocationName(member, "member"));
         writer.write("");

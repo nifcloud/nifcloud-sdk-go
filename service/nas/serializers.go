@@ -849,9 +849,6 @@ func (m *awsAwsquery_serializeOpUpgradeNASInstance) HandleSerialize(ctx context.
 	return next.HandleSerialize(ctx, in)
 }
 func awsAwsquery_serializeDocumentListOfRequestDimensions(v []types.RequestDimensions, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("member")
 
 	for i := range v {
@@ -864,9 +861,6 @@ func awsAwsquery_serializeDocumentListOfRequestDimensions(v []types.RequestDimen
 }
 
 func awsAwsquery_serializeDocumentListOfRequestDomainControllers(v []types.RequestDomainControllers, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("member")
 
 	for i := range v {
@@ -879,9 +873,6 @@ func awsAwsquery_serializeDocumentListOfRequestDomainControllers(v []types.Reque
 }
 
 func awsAwsquery_serializeDocumentListOfRequestNASSecurityGroups(v []string, value query.Value) error {
-	if len(v) == 0 {
-		return nil
-	}
 	array := value.Array("member")
 
 	for i := range v {

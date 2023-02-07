@@ -1,5 +1,5 @@
 // This code was forked from github.com/aws/aws-sdk-go-v2. DO NOT EDIT.
-// URL: https://github.com/aws/aws-sdk-go-v2/tree/v1.17.1/service/internal/accept-encoding/accept_encoding_gzip.go
+// URL: https://github.com/aws/aws-sdk-go-v2/tree/v1.17.4/service/internal/accept-encoding/accept_encoding_gzip.go
 
 package acceptencoding
 
