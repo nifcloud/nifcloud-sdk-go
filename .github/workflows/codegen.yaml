@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        go: [ '1.17' ]
+        go: [ '1.20' ]
     env:
       JAVA_TOOL_OPTIONS: "-Xmx2g"
     name: Go ${{ matrix.go }} generate
