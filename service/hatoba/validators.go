@@ -11,6 +11,26 @@ import (
 	"github.com/nifcloud/nifcloud-sdk-go/service/hatoba/types"
 )
 
+type validateOpAttachDisk struct {
+}
+
+func (*validateOpAttachDisk) ID() string {
+	return "OperationInputValidation"
+}
+
+func (m *validateOpAttachDisk) HandleInitialize(ctx context.Context, in middleware.InitializeInput, next middleware.InitializeHandler) (
+	out middleware.InitializeOutput, metadata middleware.Metadata, err error,
+) {
+	input, ok := in.Parameters.(*AttachDiskInput)
+	if !ok {
+		return out, metadata, fmt.Errorf("unknown input parameters type %T", in.Parameters)
+	}
+	if err := validateOpAttachDiskInput(input); err != nil {
+		return out, metadata, err
+	}
+	return next.HandleInitialize(ctx, in)
+}
+
 type validateOpAuthorizeFirewallGroup struct {
 }
 
@@ -46,6 +66,26 @@ func (m *validateOpCreateCluster) HandleInitialize(ctx context.Context, in middl
 		return out, metadata, fmt.Errorf("unknown input parameters type %T", in.Parameters)
 	}
 	if err := validateOpCreateClusterInput(input); err != nil {
+		return out, metadata, err
+	}
+	return next.HandleInitialize(ctx, in)
+}
+
+type validateOpCreateDisk struct {
+}
+
+func (*validateOpCreateDisk) ID() string {
+	return "OperationInputValidation"
+}
+
+func (m *validateOpCreateDisk) HandleInitialize(ctx context.Context, in middleware.InitializeInput, next middleware.InitializeHandler) (
+	out middleware.InitializeOutput, metadata middleware.Metadata, err error,
+) {
+	input, ok := in.Parameters.(*CreateDiskInput)
+	if !ok {
+		return out, metadata, fmt.Errorf("unknown input parameters type %T", in.Parameters)
+	}
+	if err := validateOpCreateDiskInput(input); err != nil {
 		return out, metadata, err
 	}
 	return next.HandleInitialize(ctx, in)
@@ -171,6 +211,46 @@ func (m *validateOpDeleteClusters) HandleInitialize(ctx context.Context, in midd
 	return next.HandleInitialize(ctx, in)
 }
 
+type validateOpDeleteDisk struct {
+}
+
+func (*validateOpDeleteDisk) ID() string {
+	return "OperationInputValidation"
+}
+
+func (m *validateOpDeleteDisk) HandleInitialize(ctx context.Context, in middleware.InitializeInput, next middleware.InitializeHandler) (
+	out middleware.InitializeOutput, metadata middleware.Metadata, err error,
+) {
+	input, ok := in.Parameters.(*DeleteDiskInput)
+	if !ok {
+		return out, metadata, fmt.Errorf("unknown input parameters type %T", in.Parameters)
+	}
+	if err := validateOpDeleteDiskInput(input); err != nil {
+		return out, metadata, err
+	}
+	return next.HandleInitialize(ctx, in)
+}
+
+type validateOpDeleteDisks struct {
+}
+
+func (*validateOpDeleteDisks) ID() string {
+	return "OperationInputValidation"
+}
+
+func (m *validateOpDeleteDisks) HandleInitialize(ctx context.Context, in middleware.InitializeInput, next middleware.InitializeHandler) (
+	out middleware.InitializeOutput, metadata middleware.Metadata, err error,
+) {
+	input, ok := in.Parameters.(*DeleteDisksInput)
+	if !ok {
+		return out, metadata, fmt.Errorf("unknown input parameters type %T", in.Parameters)
+	}
+	if err := validateOpDeleteDisksInput(input); err != nil {
+		return out, metadata, err
+	}
+	return next.HandleInitialize(ctx, in)
+}
+
 type validateOpDeleteFirewallGroup struct {
 }
 
@@ -271,6 +351,26 @@ func (m *validateOpDeleteTags) HandleInitialize(ctx context.Context, in middlewa
 	return next.HandleInitialize(ctx, in)
 }
 
+type validateOpDetachDisk struct {
+}
+
+func (*validateOpDetachDisk) ID() string {
+	return "OperationInputValidation"
+}
+
+func (m *validateOpDetachDisk) HandleInitialize(ctx context.Context, in middleware.InitializeInput, next middleware.InitializeHandler) (
+	out middleware.InitializeOutput, metadata middleware.Metadata, err error,
+) {
+	input, ok := in.Parameters.(*DetachDiskInput)
+	if !ok {
+		return out, metadata, fmt.Errorf("unknown input parameters type %T", in.Parameters)
+	}
+	if err := validateOpDetachDiskInput(input); err != nil {
+		return out, metadata, err
+	}
+	return next.HandleInitialize(ctx, in)
+}
+
 type validateOpGetClusterCredentials struct {
 }
 
@@ -306,6 +406,26 @@ func (m *validateOpGetCluster) HandleInitialize(ctx context.Context, in middlewa
 		return out, metadata, fmt.Errorf("unknown input parameters type %T", in.Parameters)
 	}
 	if err := validateOpGetClusterInput(input); err != nil {
+		return out, metadata, err
+	}
+	return next.HandleInitialize(ctx, in)
+}
+
+type validateOpGetDisk struct {
+}
+
+func (*validateOpGetDisk) ID() string {
+	return "OperationInputValidation"
+}
+
+func (m *validateOpGetDisk) HandleInitialize(ctx context.Context, in middleware.InitializeInput, next middleware.InitializeHandler) (
+	out middleware.InitializeOutput, metadata middleware.Metadata, err error,
+) {
+	input, ok := in.Parameters.(*GetDiskInput)
+	if !ok {
+		return out, metadata, fmt.Errorf("unknown input parameters type %T", in.Parameters)
+	}
+	if err := validateOpGetDiskInput(input); err != nil {
 		return out, metadata, err
 	}
 	return next.HandleInitialize(ctx, in)
@@ -411,6 +531,26 @@ func (m *validateOpListNodePools) HandleInitialize(ctx context.Context, in middl
 	return next.HandleInitialize(ctx, in)
 }
 
+type validateOpRebootNode struct {
+}
+
+func (*validateOpRebootNode) ID() string {
+	return "OperationInputValidation"
+}
+
+func (m *validateOpRebootNode) HandleInitialize(ctx context.Context, in middleware.InitializeInput, next middleware.InitializeHandler) (
+	out middleware.InitializeOutput, metadata middleware.Metadata, err error,
+) {
+	input, ok := in.Parameters.(*RebootNodeInput)
+	if !ok {
+		return out, metadata, fmt.Errorf("unknown input parameters type %T", in.Parameters)
+	}
+	if err := validateOpRebootNodeInput(input); err != nil {
+		return out, metadata, err
+	}
+	return next.HandleInitialize(ctx, in)
+}
+
 type validateOpRestoreClusterFromSnapshot struct {
 }
 
@@ -486,6 +626,26 @@ func (m *validateOpUpdateCluster) HandleInitialize(ctx context.Context, in middl
 		return out, metadata, fmt.Errorf("unknown input parameters type %T", in.Parameters)
 	}
 	if err := validateOpUpdateClusterInput(input); err != nil {
+		return out, metadata, err
+	}
+	return next.HandleInitialize(ctx, in)
+}
+
+type validateOpUpdateDisk struct {
+}
+
+func (*validateOpUpdateDisk) ID() string {
+	return "OperationInputValidation"
+}
+
+func (m *validateOpUpdateDisk) HandleInitialize(ctx context.Context, in middleware.InitializeInput, next middleware.InitializeHandler) (
+	out middleware.InitializeOutput, metadata middleware.Metadata, err error,
+) {
+	input, ok := in.Parameters.(*UpdateDiskInput)
+	if !ok {
+		return out, metadata, fmt.Errorf("unknown input parameters type %T", in.Parameters)
+	}
+	if err := validateOpUpdateDiskInput(input); err != nil {
 		return out, metadata, err
 	}
 	return next.HandleInitialize(ctx, in)
@@ -571,12 +731,20 @@ func (m *validateOpUpdateTags) HandleInitialize(ctx context.Context, in middlewa
 	return next.HandleInitialize(ctx, in)
 }
 
+func addOpAttachDiskValidationMiddleware(stack *middleware.Stack) error {
+	return stack.Initialize.Add(&validateOpAttachDisk{}, middleware.After)
+}
+
 func addOpAuthorizeFirewallGroupValidationMiddleware(stack *middleware.Stack) error {
 	return stack.Initialize.Add(&validateOpAuthorizeFirewallGroup{}, middleware.After)
 }
 
 func addOpCreateClusterValidationMiddleware(stack *middleware.Stack) error {
 	return stack.Initialize.Add(&validateOpCreateCluster{}, middleware.After)
+}
+
+func addOpCreateDiskValidationMiddleware(stack *middleware.Stack) error {
+	return stack.Initialize.Add(&validateOpCreateDisk{}, middleware.After)
 }
 
 func addOpCreateFirewallGroupValidationMiddleware(stack *middleware.Stack) error {
@@ -603,6 +771,14 @@ func addOpDeleteClustersValidationMiddleware(stack *middleware.Stack) error {
 	return stack.Initialize.Add(&validateOpDeleteClusters{}, middleware.After)
 }
 
+func addOpDeleteDiskValidationMiddleware(stack *middleware.Stack) error {
+	return stack.Initialize.Add(&validateOpDeleteDisk{}, middleware.After)
+}
+
+func addOpDeleteDisksValidationMiddleware(stack *middleware.Stack) error {
+	return stack.Initialize.Add(&validateOpDeleteDisks{}, middleware.After)
+}
+
 func addOpDeleteFirewallGroupValidationMiddleware(stack *middleware.Stack) error {
 	return stack.Initialize.Add(&validateOpDeleteFirewallGroup{}, middleware.After)
 }
@@ -623,12 +799,20 @@ func addOpDeleteTagsValidationMiddleware(stack *middleware.Stack) error {
 	return stack.Initialize.Add(&validateOpDeleteTags{}, middleware.After)
 }
 
+func addOpDetachDiskValidationMiddleware(stack *middleware.Stack) error {
+	return stack.Initialize.Add(&validateOpDetachDisk{}, middleware.After)
+}
+
 func addOpGetClusterCredentialsValidationMiddleware(stack *middleware.Stack) error {
 	return stack.Initialize.Add(&validateOpGetClusterCredentials{}, middleware.After)
 }
 
 func addOpGetClusterValidationMiddleware(stack *middleware.Stack) error {
 	return stack.Initialize.Add(&validateOpGetCluster{}, middleware.After)
+}
+
+func addOpGetDiskValidationMiddleware(stack *middleware.Stack) error {
+	return stack.Initialize.Add(&validateOpGetDisk{}, middleware.After)
 }
 
 func addOpGetFirewallGroupValidationMiddleware(stack *middleware.Stack) error {
@@ -651,6 +835,10 @@ func addOpListNodePoolsValidationMiddleware(stack *middleware.Stack) error {
 	return stack.Initialize.Add(&validateOpListNodePools{}, middleware.After)
 }
 
+func addOpRebootNodeValidationMiddleware(stack *middleware.Stack) error {
+	return stack.Initialize.Add(&validateOpRebootNode{}, middleware.After)
+}
+
 func addOpRestoreClusterFromSnapshotValidationMiddleware(stack *middleware.Stack) error {
 	return stack.Initialize.Add(&validateOpRestoreClusterFromSnapshot{}, middleware.After)
 }
@@ -665,6 +853,10 @@ func addOpSetNodePoolSizeValidationMiddleware(stack *middleware.Stack) error {
 
 func addOpUpdateClusterValidationMiddleware(stack *middleware.Stack) error {
 	return stack.Initialize.Add(&validateOpUpdateCluster{}, middleware.After)
+}
+
+func addOpUpdateDiskValidationMiddleware(stack *middleware.Stack) error {
+	return stack.Initialize.Add(&validateOpUpdateDisk{}, middleware.After)
 }
 
 func addOpUpdateFirewallGroupValidationMiddleware(stack *middleware.Stack) error {
@@ -815,6 +1007,27 @@ func validateRequestClusterOfRestoreClusterFromSnapshot(v *types.RequestClusterO
 	}
 }
 
+func validateRequestDisk(v *types.RequestDisk) error {
+	if v == nil {
+		return nil
+	}
+	invalidParams := smithy.InvalidParamsError{Context: "RequestDisk"}
+	if v.Name == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("Name"))
+	}
+	if v.Size == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("Size"))
+	}
+	if len(v.Type) == 0 {
+	invalidParams.Add(smithy.NewErrParamRequired("Type"))
+	}
+	if invalidParams.Len() > 0 {
+	return invalidParams
+	} else {
+	return nil
+	}
+}
+
 func validateRequestFirewallGroup(v *types.RequestFirewallGroup) error {
 	if v == nil {
 		return nil
@@ -945,6 +1158,24 @@ func validateRequestTagsOfUpdateTags(v *types.RequestTagsOfUpdateTags) error {
 	}
 }
 
+func validateOpAttachDiskInput(v *AttachDiskInput) error {
+	if v == nil {
+		return nil
+	}
+	invalidParams := smithy.InvalidParamsError{Context: "AttachDiskInput"}
+	if v.DiskName == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("DiskName"))
+	}
+	if v.NodeName == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("NodeName"))
+	}
+	if invalidParams.Len() > 0 {
+	return invalidParams
+	} else {
+	return nil
+	}
+}
+
 func validateOpAuthorizeFirewallGroupInput(v *AuthorizeFirewallGroupInput) error {
 	if v == nil {
 		return nil
@@ -977,6 +1208,25 @@ func validateOpCreateClusterInput(v *CreateClusterInput) error {
 	} else if v.Cluster != nil {
 		if err := validateRequestCluster(v.Cluster); err != nil {
 			invalidParams.AddNested("Cluster", err.(smithy.InvalidParamsError))
+		}
+	}
+	if invalidParams.Len() > 0 {
+	return invalidParams
+	} else {
+	return nil
+	}
+}
+
+func validateOpCreateDiskInput(v *CreateDiskInput) error {
+	if v == nil {
+		return nil
+	}
+	invalidParams := smithy.InvalidParamsError{Context: "CreateDiskInput"}
+	if v.Disk == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("Disk"))
+	} else if v.Disk != nil {
+		if err := validateRequestDisk(v.Disk); err != nil {
+			invalidParams.AddNested("Disk", err.(smithy.InvalidParamsError))
 		}
 	}
 	if invalidParams.Len() > 0 {
@@ -1095,6 +1345,36 @@ func validateOpDeleteClustersInput(v *DeleteClustersInput) error {
 	}
 }
 
+func validateOpDeleteDiskInput(v *DeleteDiskInput) error {
+	if v == nil {
+		return nil
+	}
+	invalidParams := smithy.InvalidParamsError{Context: "DeleteDiskInput"}
+	if v.DiskName == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("DiskName"))
+	}
+	if invalidParams.Len() > 0 {
+	return invalidParams
+	} else {
+	return nil
+	}
+}
+
+func validateOpDeleteDisksInput(v *DeleteDisksInput) error {
+	if v == nil {
+		return nil
+	}
+	invalidParams := smithy.InvalidParamsError{Context: "DeleteDisksInput"}
+	if v.Names == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("Names"))
+	}
+	if invalidParams.Len() > 0 {
+	return invalidParams
+	} else {
+	return nil
+	}
+}
+
 func validateOpDeleteFirewallGroupInput(v *DeleteFirewallGroupInput) error {
 	if v == nil {
 		return nil
@@ -1176,6 +1456,24 @@ func validateOpDeleteTagsInput(v *DeleteTagsInput) error {
 	}
 }
 
+func validateOpDetachDiskInput(v *DetachDiskInput) error {
+	if v == nil {
+		return nil
+	}
+	invalidParams := smithy.InvalidParamsError{Context: "DetachDiskInput"}
+	if v.DiskName == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("DiskName"))
+	}
+	if v.NodeName == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("NodeName"))
+	}
+	if invalidParams.Len() > 0 {
+	return invalidParams
+	} else {
+	return nil
+	}
+}
+
 func validateOpGetClusterCredentialsInput(v *GetClusterCredentialsInput) error {
 	if v == nil {
 		return nil
@@ -1198,6 +1496,21 @@ func validateOpGetClusterInput(v *GetClusterInput) error {
 	invalidParams := smithy.InvalidParamsError{Context: "GetClusterInput"}
 	if v.ClusterName == nil {
 	invalidParams.Add(smithy.NewErrParamRequired("ClusterName"))
+	}
+	if invalidParams.Len() > 0 {
+	return invalidParams
+	} else {
+	return nil
+	}
+}
+
+func validateOpGetDiskInput(v *GetDiskInput) error {
+	if v == nil {
+		return nil
+	}
+	invalidParams := smithy.InvalidParamsError{Context: "GetDiskInput"}
+	if v.DiskName == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("DiskName"))
 	}
 	if invalidParams.Len() > 0 {
 	return invalidParams
@@ -1290,6 +1603,27 @@ func validateOpListNodePoolsInput(v *ListNodePoolsInput) error {
 	}
 }
 
+func validateOpRebootNodeInput(v *RebootNodeInput) error {
+	if v == nil {
+		return nil
+	}
+	invalidParams := smithy.InvalidParamsError{Context: "RebootNodeInput"}
+	if v.ClusterName == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("ClusterName"))
+	}
+	if v.NodeName == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("NodeName"))
+	}
+	if v.NodePoolName == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("NodePoolName"))
+	}
+	if invalidParams.Len() > 0 {
+	return invalidParams
+	} else {
+	return nil
+	}
+}
+
 func validateOpRestoreClusterFromSnapshotInput(v *RestoreClusterFromSnapshotInput) error {
 	if v == nil {
 		return nil
@@ -1355,6 +1689,21 @@ func validateOpUpdateClusterInput(v *UpdateClusterInput) error {
 	invalidParams := smithy.InvalidParamsError{Context: "UpdateClusterInput"}
 	if v.ClusterName == nil {
 	invalidParams.Add(smithy.NewErrParamRequired("ClusterName"))
+	}
+	if invalidParams.Len() > 0 {
+	return invalidParams
+	} else {
+	return nil
+	}
+}
+
+func validateOpUpdateDiskInput(v *UpdateDiskInput) error {
+	if v == nil {
+		return nil
+	}
+	invalidParams := smithy.InvalidParamsError{Context: "UpdateDiskInput"}
+	if v.DiskName == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("DiskName"))
 	}
 	if invalidParams.Len() > 0 {
 	return invalidParams

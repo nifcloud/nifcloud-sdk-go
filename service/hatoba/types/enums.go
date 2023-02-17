@@ -244,9 +244,6 @@ type KubernetesVersionOfclusterForCreateCluster string
 
 // Enum values for KubernetesVersionOfclusterForCreateCluster
 const (
-	KubernetesVersionOfclusterForCreateClusterV1222 KubernetesVersionOfclusterForCreateCluster = "v1.22.2"
-	KubernetesVersionOfclusterForCreateClusterV1226 KubernetesVersionOfclusterForCreateCluster = "v1.22.6"
-	KubernetesVersionOfclusterForCreateClusterV12212 KubernetesVersionOfclusterForCreateCluster = "v1.22.12"
 	KubernetesVersionOfclusterForCreateClusterV1233 KubernetesVersionOfclusterForCreateCluster = "v1.23.3"
 	KubernetesVersionOfclusterForCreateClusterV1239 KubernetesVersionOfclusterForCreateCluster = "v1.23.9"
 	KubernetesVersionOfclusterForCreateClusterV1243 KubernetesVersionOfclusterForCreateCluster = "v1.24.3"
@@ -258,9 +255,6 @@ const (
 // updates.
 func (KubernetesVersionOfclusterForCreateCluster) Values() []KubernetesVersionOfclusterForCreateCluster {
 	return []KubernetesVersionOfclusterForCreateCluster{
-		"v1.22.2",
-		"v1.22.6",
-		"v1.22.12",
 		"v1.23.3",
 		"v1.23.9",
 		"v1.24.3",
@@ -271,9 +265,6 @@ type KubernetesVersionOfclusterForUpdateCluster string
 
 // Enum values for KubernetesVersionOfclusterForUpdateCluster
 const (
-	KubernetesVersionOfclusterForUpdateClusterV1222 KubernetesVersionOfclusterForUpdateCluster = "v1.22.2"
-	KubernetesVersionOfclusterForUpdateClusterV1226 KubernetesVersionOfclusterForUpdateCluster = "v1.22.6"
-	KubernetesVersionOfclusterForUpdateClusterV12212 KubernetesVersionOfclusterForUpdateCluster = "v1.22.12"
 	KubernetesVersionOfclusterForUpdateClusterV1233 KubernetesVersionOfclusterForUpdateCluster = "v1.23.3"
 	KubernetesVersionOfclusterForUpdateClusterV1239 KubernetesVersionOfclusterForUpdateCluster = "v1.23.9"
 	KubernetesVersionOfclusterForUpdateClusterV1243 KubernetesVersionOfclusterForUpdateCluster = "v1.24.3"
@@ -285,9 +276,6 @@ const (
 // updates.
 func (KubernetesVersionOfclusterForUpdateCluster) Values() []KubernetesVersionOfclusterForUpdateCluster {
 	return []KubernetesVersionOfclusterForUpdateCluster{
-		"v1.22.2",
-		"v1.22.6",
-		"v1.22.12",
 		"v1.23.3",
 		"v1.23.9",
 		"v1.24.3",
@@ -332,5 +320,27 @@ func (ProtocolOfrulesForAuthorizeFirewallGroup) Values() []ProtocolOfrulesForAut
 		"AH",
 		"VRRP",
 		"L2TP",
+	}
+}
+
+type TypeOfdiskForCreateDisk string
+
+// Enum values for TypeOfdiskForCreateDisk
+const (
+	TypeOfdiskForCreateDiskStandardFlashA TypeOfdiskForCreateDisk = "standard-flash-a"
+	TypeOfdiskForCreateDiskStandardFlashB TypeOfdiskForCreateDisk = "standard-flash-b"
+	TypeOfdiskForCreateDiskHighSpeedFlashA TypeOfdiskForCreateDisk = "high-speed-flash-a"
+	TypeOfdiskForCreateDiskHighSpeedFlashB TypeOfdiskForCreateDisk = "high-speed-flash-b"
+)
+
+// Values returns all known values for TypeOfdiskForCreateDisk. Note that this can
+// be expanded in the future, and so it is only as up to date as the client. The
+// ordering of this slice is not guaranteed to be stable across updates.
+func (TypeOfdiskForCreateDisk) Values() []TypeOfdiskForCreateDisk {
+	return []TypeOfdiskForCreateDisk{
+		"standard-flash-a",
+		"standard-flash-b",
+		"high-speed-flash-a",
+		"high-speed-flash-b",
 	}
 }

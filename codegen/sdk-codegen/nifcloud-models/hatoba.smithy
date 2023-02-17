@@ -202,18 +202,6 @@ structure RequestCluster {
 
 @enum([
   {
-      name: "V1_22_2",
-      value: "v1.22.2",
-  },
-  {
-      name: "V1_22_6",
-      value: "v1.22.6",
-  },
-  {
-      name: "V1_22_12",
-      value: "v1.22.12",
-  },
-  {
       name: "V1_23_3",
       value: "v1.23.3",
   },
@@ -492,18 +480,6 @@ structure RequestClusterOfUpdateCluster {
 }
 
 @enum([
-  {
-      name: "V1_22_2",
-      value: "v1.22.2",
-  },
-  {
-      name: "V1_22_6",
-      value: "v1.22.6",
-  },
-  {
-      name: "V1_22_12",
-      value: "v1.22.12",
-  },
   {
       name: "V1_23_3",
       value: "v1.23.3",
@@ -913,6 +889,41 @@ structure DeleteNodePoolsResult {
     NodePools: ListOfNodePools,
 }
 
+structure RebootNodeRequest {
+    @required
+    @httpLabel
+    @jsonName("ClusterName")
+    ClusterName: String,
+    @jsonName("force")
+    Force: Boolean,
+    @required
+    @httpLabel
+    @jsonName("NodeName")
+    NodeName: String,
+    @required
+    @httpLabel
+    @jsonName("NodePoolName")
+    NodePoolName: String,
+}
+
+structure Node {
+    @jsonName("availabilityZone")
+    AvailabilityZone: String,
+    @jsonName("name")
+    Name: String,
+    @jsonName("privateIpAddress")
+    PrivateIpAddress: String,
+    @jsonName("publicIpAddress")
+    PublicIpAddress: String,
+    @jsonName("status")
+    Status: String,
+}
+
+structure RebootNodeResult {
+    @jsonName("node")
+    Node: Node,
+}
+
 structure GetServerConfigRequest {}
 
 structure ServerConfig {
@@ -1190,6 +1201,420 @@ structure RevokeFirewallGroupRequest {
 structure RevokeFirewallGroupResult {
     @jsonName("firewallGroup")
     FirewallGroup: FirewallGroup,
+}
+
+structure GetDiskRequest {
+    @required
+    @httpLabel
+    @jsonName("DiskName")
+    DiskName: String,
+}
+
+structure Disk {
+    @jsonName("attachments")
+    Attachments: ListOfAttachments,
+    @jsonName("availability_zone")
+    AvailabilityZone: String,
+    @jsonName("cluster")
+    Cluster: ClusterOfGetDisk,
+    @jsonName("createTime")
+    CreateTime: String,
+    @jsonName("description")
+    Description: String,
+    @jsonName("name")
+    Name: String,
+    @jsonName("nrn")
+    Nrn: String,
+    @jsonName("size")
+    Size: Integer,
+    @jsonName("status")
+    Status: String,
+    @jsonName("tags")
+    Tags: ListOfTags,
+    @jsonName("type")
+    Type: String,
+}
+
+structure ClusterOfGetDisk {
+    @jsonName("name")
+    Name: String,
+}
+
+list ListOfAttachments {
+    member: Attachments,
+}
+
+structure Attachments {
+    @jsonName("attachTime")
+    AttachTime: String,
+    @jsonName("devicePath")
+    DevicePath: String,
+    @jsonName("nodeName")
+    NodeName: String,
+    @jsonName("status")
+    Status: String,
+}
+
+structure GetDiskResult {
+    @jsonName("disk")
+    Disk: Disk,
+}
+
+structure ListDisksRequest {
+    @httpQuery("filters")
+    @jsonName("filters")
+    Filters: String,
+}
+
+list ListOfDisks {
+    member: Disks,
+}
+
+structure Disks {
+    @jsonName("attachments")
+    Attachments: ListOfAttachments,
+    @jsonName("availability_zone")
+    AvailabilityZone: String,
+    @jsonName("cluster")
+    Cluster: ClusterOfListDisks,
+    @jsonName("createTime")
+    CreateTime: String,
+    @jsonName("description")
+    Description: String,
+    @jsonName("name")
+    Name: String,
+    @jsonName("nrn")
+    Nrn: String,
+    @jsonName("size")
+    Size: Integer,
+    @jsonName("status")
+    Status: String,
+    @jsonName("tags")
+    Tags: ListOfTags,
+    @jsonName("type")
+    Type: String,
+}
+
+structure ClusterOfListDisks {
+    @jsonName("name")
+    Name: String,
+}
+
+structure ListDisksResult {
+    @jsonName("disks")
+    Disks: ListOfDisks,
+}
+
+structure RequestDisk {
+    @jsonName("availabilityZone")
+    AvailabilityZone: String,
+    @jsonName("description")
+    Description: String,
+    @jsonName("tags")
+    ListOfRequestTags: ListOfRequestTags,
+    @required
+    @jsonName("name")
+    Name: String,
+    @required
+    @jsonName("size")
+    Size: Integer,
+    @required
+    @jsonName("type")
+    Type: TypeOfdiskForCreateDisk,
+}
+
+@enum([
+  {
+      name: "STANDARD_FLASH_A",
+      value: "standard-flash-a",
+  },
+  {
+      name: "STANDARD_FLASH_B",
+      value: "standard-flash-b",
+  },
+  {
+      name: "HIGH_SPEED_FLASH_A",
+      value: "high-speed-flash-a",
+  },
+  {
+      name: "HIGH_SPEED_FLASH_B",
+      value: "high-speed-flash-b",
+  },
+])
+string TypeOfdiskForCreateDisk
+
+structure CreateDiskRequest {
+    @required
+    @jsonName("disk")
+    Disk: RequestDisk,
+}
+
+structure DiskOfCreateDisk {
+    @jsonName("attachments")
+    Attachments: ListOfAttachments,
+    @jsonName("availability_zone")
+    AvailabilityZone: String,
+    @jsonName("cluster")
+    Cluster: ClusterOfCreateDisk,
+    @jsonName("createTime")
+    CreateTime: String,
+    @jsonName("description")
+    Description: String,
+    @jsonName("name")
+    Name: String,
+    @jsonName("nrn")
+    Nrn: String,
+    @jsonName("size")
+    Size: Integer,
+    @jsonName("status")
+    Status: String,
+    @jsonName("tags")
+    Tags: ListOfTags,
+    @jsonName("type")
+    Type: String,
+}
+
+structure ClusterOfCreateDisk {
+    @jsonName("name")
+    Name: String,
+}
+
+structure CreateDiskResult {
+    @jsonName("disk")
+    Disk: DiskOfCreateDisk,
+}
+
+structure RequestDiskOfUpdateDisk {
+    @jsonName("description")
+    Description: String,
+    @jsonName("tags")
+    ListOfRequestTags: ListOfRequestTags,
+    @jsonName("name")
+    Name: String,
+    @jsonName("size")
+    Size: Integer,
+}
+
+structure UpdateDiskRequest {
+    @jsonName("disk")
+    Disk: RequestDiskOfUpdateDisk,
+    @required
+    @httpLabel
+    @jsonName("DiskName")
+    DiskName: String,
+}
+
+structure DiskOfUpdateDisk {
+    @jsonName("attachments")
+    Attachments: ListOfAttachments,
+    @jsonName("availability_zone")
+    AvailabilityZone: String,
+    @jsonName("cluster")
+    Cluster: ClusterOfUpdateDisk,
+    @jsonName("createTime")
+    CreateTime: String,
+    @jsonName("description")
+    Description: String,
+    @jsonName("name")
+    Name: String,
+    @jsonName("nrn")
+    Nrn: String,
+    @jsonName("size")
+    Size: Integer,
+    @jsonName("status")
+    Status: String,
+    @jsonName("tags")
+    Tags: ListOfTags,
+    @jsonName("type")
+    Type: String,
+}
+
+structure ClusterOfUpdateDisk {
+    @jsonName("name")
+    Name: String,
+}
+
+structure UpdateDiskResult {
+    @jsonName("disk")
+    Disk: DiskOfUpdateDisk,
+}
+
+structure DeleteDiskRequest {
+    @required
+    @httpLabel
+    @jsonName("DiskName")
+    DiskName: String,
+}
+
+structure DiskOfDeleteDisk {
+    @jsonName("attachments")
+    Attachments: ListOfAttachments,
+    @jsonName("availability_zone")
+    AvailabilityZone: String,
+    @jsonName("cluster")
+    Cluster: ClusterOfDeleteDisk,
+    @jsonName("createTime")
+    CreateTime: String,
+    @jsonName("description")
+    Description: String,
+    @jsonName("name")
+    Name: String,
+    @jsonName("nrn")
+    Nrn: String,
+    @jsonName("size")
+    Size: Integer,
+    @jsonName("status")
+    Status: String,
+    @jsonName("tags")
+    Tags: ListOfTags,
+    @jsonName("type")
+    Type: String,
+}
+
+structure ClusterOfDeleteDisk {
+    @jsonName("name")
+    Name: String,
+}
+
+structure DeleteDiskResult {
+    @jsonName("disk")
+    Disk: DiskOfDeleteDisk,
+}
+
+structure DeleteDisksRequest {
+    @required
+    @httpQuery("names")
+    @jsonName("names")
+    Names: String,
+}
+
+list ListOfDisksOfDeleteDisks {
+    member: DisksOfDeleteDisks,
+}
+
+structure DisksOfDeleteDisks {
+    @jsonName("attachments")
+    Attachments: ListOfAttachments,
+    @jsonName("availability_zone")
+    AvailabilityZone: String,
+    @jsonName("cluster")
+    Cluster: ClusterOfDeleteDisks,
+    @jsonName("createTime")
+    CreateTime: String,
+    @jsonName("description")
+    Description: String,
+    @jsonName("name")
+    Name: String,
+    @jsonName("nrn")
+    Nrn: String,
+    @jsonName("size")
+    Size: Integer,
+    @jsonName("status")
+    Status: String,
+    @jsonName("tags")
+    Tags: ListOfTags,
+    @jsonName("type")
+    Type: String,
+}
+
+structure ClusterOfDeleteDisks {
+    @jsonName("name")
+    Name: String,
+}
+
+structure DeleteDisksResult {
+    @jsonName("disks")
+    Disks: ListOfDisksOfDeleteDisks,
+}
+
+structure AttachDiskRequest {
+    @required
+    @httpLabel
+    @jsonName("DiskName")
+    DiskName: String,
+    @required
+    @jsonName("nodeName")
+    NodeName: String,
+}
+
+structure DiskOfAttachDisk {
+    @jsonName("attachments")
+    Attachments: ListOfAttachments,
+    @jsonName("availability_zone")
+    AvailabilityZone: String,
+    @jsonName("cluster")
+    Cluster: ClusterOfAttachDisk,
+    @jsonName("createTime")
+    CreateTime: String,
+    @jsonName("description")
+    Description: String,
+    @jsonName("name")
+    Name: String,
+    @jsonName("nrn")
+    Nrn: String,
+    @jsonName("size")
+    Size: Integer,
+    @jsonName("status")
+    Status: String,
+    @jsonName("tags")
+    Tags: ListOfTags,
+    @jsonName("type")
+    Type: String,
+}
+
+structure ClusterOfAttachDisk {
+    @jsonName("name")
+    Name: String,
+}
+
+structure AttachDiskResult {
+    @jsonName("disk")
+    Disk: DiskOfAttachDisk,
+}
+
+structure DetachDiskRequest {
+    @required
+    @httpLabel
+    @jsonName("DiskName")
+    DiskName: String,
+    @required
+    @jsonName("nodeName")
+    NodeName: String,
+}
+
+structure DiskOfDetachDisk {
+    @jsonName("attachments")
+    Attachments: ListOfAttachments,
+    @jsonName("availability_zone")
+    AvailabilityZone: String,
+    @jsonName("cluster")
+    Cluster: ClusterOfDetachDisk,
+    @jsonName("createTime")
+    CreateTime: String,
+    @jsonName("description")
+    Description: String,
+    @jsonName("name")
+    Name: String,
+    @jsonName("nrn")
+    Nrn: String,
+    @jsonName("size")
+    Size: Integer,
+    @jsonName("status")
+    Status: String,
+    @jsonName("tags")
+    Tags: ListOfTags,
+    @jsonName("type")
+    Type: String,
+}
+
+structure ClusterOfDetachDisk {
+    @jsonName("name")
+    Name: String,
+}
+
+structure DetachDiskResult {
+    @jsonName("disk")
+    Disk: DiskOfDetachDisk,
 }
 
 structure GetSnapshotRequest {
@@ -1995,6 +2420,7 @@ service KubernetesServiceHatoba {
         SetNodePoolSize,
         DeleteNodePool,
         DeleteNodePools,
+        RebootNode,
         GetServerConfig,
         GetFirewallGroup,
         ListFirewallGroups,
@@ -2004,6 +2430,14 @@ service KubernetesServiceHatoba {
         DeleteFirewallGroups,
         AuthorizeFirewallGroup,
         RevokeFirewallGroup,
+        GetDisk,
+        ListDisks,
+        CreateDisk,
+        UpdateDisk,
+        DeleteDisk,
+        DeleteDisks,
+        AttachDisk,
+        DetachDisk,
         GetSnapshot,
         ListSnapshots,
         CreateSnapshot,
@@ -2204,6 +2638,12 @@ operation DeleteNodePools {
     output: DeleteNodePoolsResult,
 }
 
+@http(method: "POST", uri: "/v1/clusters/{ClusterName}/nodePools/{NodePoolName}/nodes/{NodeName}/:reboot" , code: 201)
+operation RebootNode {
+    input: RebootNodeRequest,
+    output: RebootNodeResult,
+}
+
 @http(method: "GET", uri: "/v1/serverConfig" )
 @readonly
 operation GetServerConfig {
@@ -2290,6 +2730,59 @@ operation AuthorizeFirewallGroup {
 operation RevokeFirewallGroup {
     input: RevokeFirewallGroupRequest,
     output: RevokeFirewallGroupResult,
+}
+
+@http(method: "GET", uri: "/v1/disks/{DiskName}" )
+@readonly
+operation GetDisk {
+    input: GetDiskRequest,
+    output: GetDiskResult,
+}
+
+@http(method: "GET", uri: "/v1/disks" )
+@readonly
+operation ListDisks {
+    input: ListDisksRequest,
+    output: ListDisksResult,
+}
+
+@http(method: "POST", uri: "/v1/disks" , code: 201)
+operation CreateDisk {
+    input: CreateDiskRequest,
+    output: CreateDiskResult,
+}
+
+@http(method: "PUT", uri: "/v1/disks/{DiskName}" )
+@idempotent
+operation UpdateDisk {
+    input: UpdateDiskRequest,
+    output: UpdateDiskResult,
+}
+
+@http(method: "DELETE", uri: "/v1/disks/{DiskName}" )
+@idempotent
+operation DeleteDisk {
+    input: DeleteDiskRequest,
+    output: DeleteDiskResult,
+}
+
+@http(method: "DELETE", uri: "/v1/disks" )
+@idempotent
+operation DeleteDisks {
+    input: DeleteDisksRequest,
+    output: DeleteDisksResult,
+}
+
+@http(method: "POST", uri: "/v1/disks/{DiskName}/:attach" , code: 201)
+operation AttachDisk {
+    input: AttachDiskRequest,
+    output: AttachDiskResult,
+}
+
+@http(method: "POST", uri: "/v1/disks/{DiskName}/:detach" , code: 201)
+operation DetachDisk {
+    input: DetachDiskRequest,
+    output: DetachDiskResult,
 }
 
 @http(method: "GET", uri: "/v1/snapshots/{SnapshotName}" )
