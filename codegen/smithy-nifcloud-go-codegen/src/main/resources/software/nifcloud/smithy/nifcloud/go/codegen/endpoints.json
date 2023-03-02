@@ -13,6 +13,7 @@
         ]
       },
       "dnsSuffix": "api.nifcloud.com",
+      "serviceActivitySuffix": "api.nifcloud.com",
       "partition": "nifcloud",
       "partitionName": "NIFCLOUD Standard",
       "regionRegex": "^(us|jp)\\-\\w+\\-\\d+$",
@@ -135,6 +136,15 @@
             "jp-east-1": {},
             "jp-west-2": {}
           }
+        },
+        "service-activity": {
+          "endpoints" : {
+            "aws-global" : {
+              "hostname" : "service-activity.api.nifcloud.com"
+            }
+          },
+          "isRegionalized" : false,
+          "partitionEndpoint" : "aws-global"
         }
       }
     }

@@ -103,7 +103,15 @@ var defaultPartitions = endpoints.Partitions{
 				SignatureVersions: []string{"v4", "v3", "v2"},
 			},
 		},
-		RegionRegex:    partitionRegexp.Nifcloud,
-		IsRegionalized: true,
+		RegionRegex:       partitionRegexp.Nifcloud,
+		IsRegionalized:    false,
+		PartitionEndpoint: "aws-global",
+		Endpoints: endpoints.Endpoints{
+			endpoints.EndpointKey{
+				Region: "aws-global",
+			}: endpoints.Endpoint{
+				Hostname: "service-activity.api.nifcloud.com",
+			},
+		},
 	},
 }
