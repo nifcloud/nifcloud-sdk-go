@@ -5,5 +5,6 @@
   "KubernetesServiceHatoba": "hatoba",
   "NAS": "nas",
   "ObjectStorageService": "storage",
-  "RDB": "rdb"
+  "RDB": "rdb",
+  "ServiceActivity": "serviceActivity"
 }

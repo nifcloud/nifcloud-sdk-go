@@ -14,6 +14,19 @@ type AddonsConfig struct {
 	noSmithyDocumentSerde
 }
 
+type Attachments struct {
+	
+	AttachTime *string
+	
+	DevicePath *string
+	
+	NodeName *string
+	
+	Status *string
+	
+	noSmithyDocumentSerde
+}
+
 type Cluster struct {
 	
 	AddonsConfig *AddonsConfig
@@ -49,6 +62,20 @@ type Cluster struct {
 	noSmithyDocumentSerde
 }
 
+type ClusterOfAttachDisk struct {
+	
+	Name *string
+	
+	noSmithyDocumentSerde
+}
+
+type ClusterOfCreateDisk struct {
+	
+	Name *string
+	
+	noSmithyDocumentSerde
+}
+
 type ClusterOfCreateSnapshot struct {
 	
 	KubernetesVersion *string
@@ -56,6 +83,20 @@ type ClusterOfCreateSnapshot struct {
 	Name *string
 	
 	NodePools []NodePoolsOfCreateSnapshot
+	
+	noSmithyDocumentSerde
+}
+
+type ClusterOfDeleteDisk struct {
+	
+	Name *string
+	
+	noSmithyDocumentSerde
+}
+
+type ClusterOfDeleteDisks struct {
+	
+	Name *string
 	
 	noSmithyDocumentSerde
 }
@@ -82,6 +123,20 @@ type ClusterOfDeleteSnapshots struct {
 	noSmithyDocumentSerde
 }
 
+type ClusterOfDetachDisk struct {
+	
+	Name *string
+	
+	noSmithyDocumentSerde
+}
+
+type ClusterOfGetDisk struct {
+	
+	Name *string
+	
+	noSmithyDocumentSerde
+}
+
 type ClusterOfGetSnapshot struct {
 	
 	KubernetesVersion *string
@@ -93,6 +148,13 @@ type ClusterOfGetSnapshot struct {
 	noSmithyDocumentSerde
 }
 
+type ClusterOfListDisks struct {
+	
+	Name *string
+	
+	noSmithyDocumentSerde
+}
+
 type ClusterOfListSnapshots struct {
 	
 	KubernetesVersion *string
@@ -100,6 +162,13 @@ type ClusterOfListSnapshots struct {
 	Name *string
 	
 	NodePools []NodePoolsOfListSnapshots
+	
+	noSmithyDocumentSerde
+}
+
+type ClusterOfUpdateDisk struct {
+	
+	Name *string
 	
 	noSmithyDocumentSerde
 }
@@ -164,6 +233,222 @@ type ClustersOfListLoadBalancers struct {
 	Name *string
 	
 	NodePools []NodePoolsOfListLoadBalancers
+	
+	noSmithyDocumentSerde
+}
+
+type Disk struct {
+	
+	Attachments []Attachments
+	
+	AvailabilityZone *string
+	
+	Cluster *ClusterOfGetDisk
+	
+	CreateTime *string
+	
+	Description *string
+	
+	Name *string
+	
+	Nrn *string
+	
+	Size *int32
+	
+	Status *string
+	
+	Tags []Tags
+	
+	Type *string
+	
+	noSmithyDocumentSerde
+}
+
+type DiskOfAttachDisk struct {
+	
+	Attachments []Attachments
+	
+	AvailabilityZone *string
+	
+	Cluster *ClusterOfAttachDisk
+	
+	CreateTime *string
+	
+	Description *string
+	
+	Name *string
+	
+	Nrn *string
+	
+	Size *int32
+	
+	Status *string
+	
+	Tags []Tags
+	
+	Type *string
+	
+	noSmithyDocumentSerde
+}
+
+type DiskOfCreateDisk struct {
+	
+	Attachments []Attachments
+	
+	AvailabilityZone *string
+	
+	Cluster *ClusterOfCreateDisk
+	
+	CreateTime *string
+	
+	Description *string
+	
+	Name *string
+	
+	Nrn *string
+	
+	Size *int32
+	
+	Status *string
+	
+	Tags []Tags
+	
+	Type *string
+	
+	noSmithyDocumentSerde
+}
+
+type DiskOfDeleteDisk struct {
+	
+	Attachments []Attachments
+	
+	AvailabilityZone *string
+	
+	Cluster *ClusterOfDeleteDisk
+	
+	CreateTime *string
+	
+	Description *string
+	
+	Name *string
+	
+	Nrn *string
+	
+	Size *int32
+	
+	Status *string
+	
+	Tags []Tags
+	
+	Type *string
+	
+	noSmithyDocumentSerde
+}
+
+type DiskOfDetachDisk struct {
+	
+	Attachments []Attachments
+	
+	AvailabilityZone *string
+	
+	Cluster *ClusterOfDetachDisk
+	
+	CreateTime *string
+	
+	Description *string
+	
+	Name *string
+	
+	Nrn *string
+	
+	Size *int32
+	
+	Status *string
+	
+	Tags []Tags
+	
+	Type *string
+	
+	noSmithyDocumentSerde
+}
+
+type DiskOfUpdateDisk struct {
+	
+	Attachments []Attachments
+	
+	AvailabilityZone *string
+	
+	Cluster *ClusterOfUpdateDisk
+	
+	CreateTime *string
+	
+	Description *string
+	
+	Name *string
+	
+	Nrn *string
+	
+	Size *int32
+	
+	Status *string
+	
+	Tags []Tags
+	
+	Type *string
+	
+	noSmithyDocumentSerde
+}
+
+type Disks struct {
+	
+	Attachments []Attachments
+	
+	AvailabilityZone *string
+	
+	Cluster *ClusterOfListDisks
+	
+	CreateTime *string
+	
+	Description *string
+	
+	Name *string
+	
+	Nrn *string
+	
+	Size *int32
+	
+	Status *string
+	
+	Tags []Tags
+	
+	Type *string
+	
+	noSmithyDocumentSerde
+}
+
+type DisksOfDeleteDisks struct {
+	
+	Attachments []Attachments
+	
+	AvailabilityZone *string
+	
+	Cluster *ClusterOfDeleteDisks
+	
+	CreateTime *string
+	
+	Description *string
+	
+	Name *string
+	
+	Nrn *string
+	
+	Size *int32
+	
+	Status *string
+	
+	Tags []Tags
+	
+	Type *string
 	
 	noSmithyDocumentSerde
 }
@@ -320,6 +605,21 @@ type LoadBalancersOfListLoadBalancers struct {
 type NetworkConfig struct {
 	
 	NetworkId *string
+	
+	noSmithyDocumentSerde
+}
+
+type Node struct {
+	
+	AvailabilityZone *string
+	
+	Name *string
+	
+	PrivateIpAddress *string
+	
+	PublicIpAddress *string
+	
+	Status *string
 	
 	noSmithyDocumentSerde
 }
@@ -579,6 +879,39 @@ type RequestClusterOfUpdateCluster struct {
 	Name *string
 	
 	RequestAddonsConfig *RequestAddonsConfig
+	
+	noSmithyDocumentSerde
+}
+
+type RequestDisk struct {
+	
+	// This member is required.
+	Name *string
+	
+	// This member is required.
+	Size *int32
+	
+	// This member is required.
+	Type TypeOfdiskForCreateDisk
+	
+	AvailabilityZone *string
+	
+	Description *string
+	
+	ListOfRequestTags []RequestTags
+	
+	noSmithyDocumentSerde
+}
+
+type RequestDiskOfUpdateDisk struct {
+	
+	Description *string
+	
+	ListOfRequestTags []RequestTags
+	
+	Name *string
+	
+	Size *int32
 	
 	noSmithyDocumentSerde
 }
