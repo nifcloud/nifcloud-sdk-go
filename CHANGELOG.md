@@ -1,5 +1,17 @@
 # Changelog
 
+## [v1.19.0](https://github.com/nifcloud/nifcloud-sdk-go/tree/v1.19.0) (2023-03-03)
+
+[Full Changelog](https://github.com/nifcloud/nifcloud-sdk-go/compare/v1.18.0...v1.19.0)
+
+**Merged pull requests:**
+
+- Add Service Activity Model & Update Hatoba Model [\#53](https://github.com/nifcloud/nifcloud-sdk-go/pull/53) ([fujita-hiroki1115](https://github.com/fujita-hiroki1115))
+- add config pkg [\#52](https://github.com/nifcloud/nifcloud-sdk-go/pull/52) ([fuku2014](https://github.com/fuku2014))
+- Feature/update aws [\#51](https://github.com/nifcloud/nifcloud-sdk-go/pull/51) ([fuku2014](https://github.com/fuku2014))
+- Feature/nrn [\#50](https://github.com/nifcloud/nifcloud-sdk-go/pull/50) ([fuku2014](https://github.com/fuku2014))
+- Update README.md [\#49](https://github.com/nifcloud/nifcloud-sdk-go/pull/49) ([fuku2014](https://github.com/fuku2014))
+
 ## [v1.18.0](https://github.com/nifcloud/nifcloud-sdk-go/tree/v1.18.0) (2022-09-29)
 
 [Full Changelog](https://github.com/nifcloud/nifcloud-sdk-go/compare/v1.17.0...v1.18.0)
