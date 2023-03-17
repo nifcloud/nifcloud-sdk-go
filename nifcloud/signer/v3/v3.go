@@ -8,6 +8,9 @@ import (
 	"fmt"
 	"time"
 
+	// embeding timezones
+	_ "time/tzdata"
+
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/smithy-go/logging"
 	smithyhttp "github.com/aws/smithy-go/transport/http"
