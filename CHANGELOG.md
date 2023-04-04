@@ -1,5 +1,18 @@
 # Changelog
 
+## [v1.19.1](https://github.com/nifcloud/nifcloud-sdk-go/tree/v1.19.1) (2023-03-17)
+
+[Full Changelog](https://github.com/nifcloud/nifcloud-sdk-go/compare/v1.19.0...v1.19.1)
+
+**Closed issues:**
+
+- Signature V3 faild on missing timezone environment [\#54](https://github.com/nifcloud/nifcloud-sdk-go/issues/54)
+
+**Merged pull requests:**
+
+- rm test\_api2.go [\#56](https://github.com/nifcloud/nifcloud-sdk-go/pull/56) ([fujita-hiroki1115](https://github.com/fujita-hiroki1115))
+- embeding timezones for sigv3 [\#55](https://github.com/nifcloud/nifcloud-sdk-go/pull/55) ([fuku2014](https://github.com/fuku2014))
+
 ## [v1.19.0](https://github.com/nifcloud/nifcloud-sdk-go/tree/v1.19.0) (2023-03-03)
 
 [Full Changelog](https://github.com/nifcloud/nifcloud-sdk-go/compare/v1.18.0...v1.19.0)
