@@ -471,6 +471,46 @@ func (m *validateOpCreateNetworkInterface) HandleInitialize(ctx context.Context,
 	return next.HandleInitialize(ctx, in)
 }
 
+type validateOpCreateRemoteAccessVpnGateway struct {
+}
+
+func (*validateOpCreateRemoteAccessVpnGateway) ID() string {
+	return "OperationInputValidation"
+}
+
+func (m *validateOpCreateRemoteAccessVpnGateway) HandleInitialize(ctx context.Context, in middleware.InitializeInput, next middleware.InitializeHandler) (
+	out middleware.InitializeOutput, metadata middleware.Metadata, err error,
+) {
+	input, ok := in.Parameters.(*CreateRemoteAccessVpnGatewayInput)
+	if !ok {
+		return out, metadata, fmt.Errorf("unknown input parameters type %T", in.Parameters)
+	}
+	if err := validateOpCreateRemoteAccessVpnGatewayInput(input); err != nil {
+		return out, metadata, err
+	}
+	return next.HandleInitialize(ctx, in)
+}
+
+type validateOpCreateRemoteAccessVpnGatewayUsers struct {
+}
+
+func (*validateOpCreateRemoteAccessVpnGatewayUsers) ID() string {
+	return "OperationInputValidation"
+}
+
+func (m *validateOpCreateRemoteAccessVpnGatewayUsers) HandleInitialize(ctx context.Context, in middleware.InitializeInput, next middleware.InitializeHandler) (
+	out middleware.InitializeOutput, metadata middleware.Metadata, err error,
+) {
+	input, ok := in.Parameters.(*CreateRemoteAccessVpnGatewayUsersInput)
+	if !ok {
+		return out, metadata, fmt.Errorf("unknown input parameters type %T", in.Parameters)
+	}
+	if err := validateOpCreateRemoteAccessVpnGatewayUsersInput(input); err != nil {
+		return out, metadata, err
+	}
+	return next.HandleInitialize(ctx, in)
+}
+
 type validateOpCreateRoute struct {
 }
 
@@ -711,6 +751,66 @@ func (m *validateOpDeleteNetworkInterface) HandleInitialize(ctx context.Context,
 	return next.HandleInitialize(ctx, in)
 }
 
+type validateOpDeleteRemoteAccessVpnGatewayConnections struct {
+}
+
+func (*validateOpDeleteRemoteAccessVpnGatewayConnections) ID() string {
+	return "OperationInputValidation"
+}
+
+func (m *validateOpDeleteRemoteAccessVpnGatewayConnections) HandleInitialize(ctx context.Context, in middleware.InitializeInput, next middleware.InitializeHandler) (
+	out middleware.InitializeOutput, metadata middleware.Metadata, err error,
+) {
+	input, ok := in.Parameters.(*DeleteRemoteAccessVpnGatewayConnectionsInput)
+	if !ok {
+		return out, metadata, fmt.Errorf("unknown input parameters type %T", in.Parameters)
+	}
+	if err := validateOpDeleteRemoteAccessVpnGatewayConnectionsInput(input); err != nil {
+		return out, metadata, err
+	}
+	return next.HandleInitialize(ctx, in)
+}
+
+type validateOpDeleteRemoteAccessVpnGateway struct {
+}
+
+func (*validateOpDeleteRemoteAccessVpnGateway) ID() string {
+	return "OperationInputValidation"
+}
+
+func (m *validateOpDeleteRemoteAccessVpnGateway) HandleInitialize(ctx context.Context, in middleware.InitializeInput, next middleware.InitializeHandler) (
+	out middleware.InitializeOutput, metadata middleware.Metadata, err error,
+) {
+	input, ok := in.Parameters.(*DeleteRemoteAccessVpnGatewayInput)
+	if !ok {
+		return out, metadata, fmt.Errorf("unknown input parameters type %T", in.Parameters)
+	}
+	if err := validateOpDeleteRemoteAccessVpnGatewayInput(input); err != nil {
+		return out, metadata, err
+	}
+	return next.HandleInitialize(ctx, in)
+}
+
+type validateOpDeleteRemoteAccessVpnGatewayUsers struct {
+}
+
+func (*validateOpDeleteRemoteAccessVpnGatewayUsers) ID() string {
+	return "OperationInputValidation"
+}
+
+func (m *validateOpDeleteRemoteAccessVpnGatewayUsers) HandleInitialize(ctx context.Context, in middleware.InitializeInput, next middleware.InitializeHandler) (
+	out middleware.InitializeOutput, metadata middleware.Metadata, err error,
+) {
+	input, ok := in.Parameters.(*DeleteRemoteAccessVpnGatewayUsersInput)
+	if !ok {
+		return out, metadata, fmt.Errorf("unknown input parameters type %T", in.Parameters)
+	}
+	if err := validateOpDeleteRemoteAccessVpnGatewayUsersInput(input); err != nil {
+		return out, metadata, err
+	}
+	return next.HandleInitialize(ctx, in)
+}
+
 type validateOpDeleteRoute struct {
 }
 
@@ -946,6 +1046,66 @@ func (m *validateOpDescribeInstanceHealth) HandleInitialize(ctx context.Context,
 		return out, metadata, fmt.Errorf("unknown input parameters type %T", in.Parameters)
 	}
 	if err := validateOpDescribeInstanceHealthInput(input); err != nil {
+		return out, metadata, err
+	}
+	return next.HandleInitialize(ctx, in)
+}
+
+type validateOpDescribeRemoteAccessVpnGatewayActivities struct {
+}
+
+func (*validateOpDescribeRemoteAccessVpnGatewayActivities) ID() string {
+	return "OperationInputValidation"
+}
+
+func (m *validateOpDescribeRemoteAccessVpnGatewayActivities) HandleInitialize(ctx context.Context, in middleware.InitializeInput, next middleware.InitializeHandler) (
+	out middleware.InitializeOutput, metadata middleware.Metadata, err error,
+) {
+	input, ok := in.Parameters.(*DescribeRemoteAccessVpnGatewayActivitiesInput)
+	if !ok {
+		return out, metadata, fmt.Errorf("unknown input parameters type %T", in.Parameters)
+	}
+	if err := validateOpDescribeRemoteAccessVpnGatewayActivitiesInput(input); err != nil {
+		return out, metadata, err
+	}
+	return next.HandleInitialize(ctx, in)
+}
+
+type validateOpDescribeRemoteAccessVpnGatewayClientConfig struct {
+}
+
+func (*validateOpDescribeRemoteAccessVpnGatewayClientConfig) ID() string {
+	return "OperationInputValidation"
+}
+
+func (m *validateOpDescribeRemoteAccessVpnGatewayClientConfig) HandleInitialize(ctx context.Context, in middleware.InitializeInput, next middleware.InitializeHandler) (
+	out middleware.InitializeOutput, metadata middleware.Metadata, err error,
+) {
+	input, ok := in.Parameters.(*DescribeRemoteAccessVpnGatewayClientConfigInput)
+	if !ok {
+		return out, metadata, fmt.Errorf("unknown input parameters type %T", in.Parameters)
+	}
+	if err := validateOpDescribeRemoteAccessVpnGatewayClientConfigInput(input); err != nil {
+		return out, metadata, err
+	}
+	return next.HandleInitialize(ctx, in)
+}
+
+type validateOpDescribeRemoteAccessVpnGatewayConnections struct {
+}
+
+func (*validateOpDescribeRemoteAccessVpnGatewayConnections) ID() string {
+	return "OperationInputValidation"
+}
+
+func (m *validateOpDescribeRemoteAccessVpnGatewayConnections) HandleInitialize(ctx context.Context, in middleware.InitializeInput, next middleware.InitializeHandler) (
+	out middleware.InitializeOutput, metadata middleware.Metadata, err error,
+) {
+	input, ok := in.Parameters.(*DescribeRemoteAccessVpnGatewayConnectionsInput)
+	if !ok {
+		return out, metadata, fmt.Errorf("unknown input parameters type %T", in.Parameters)
+	}
+	if err := validateOpDescribeRemoteAccessVpnGatewayConnectionsInput(input); err != nil {
 		return out, metadata, err
 	}
 	return next.HandleInitialize(ctx, in)
@@ -1306,6 +1466,46 @@ func (m *validateOpModifyNetworkInterfaceAttribute) HandleInitialize(ctx context
 		return out, metadata, fmt.Errorf("unknown input parameters type %T", in.Parameters)
 	}
 	if err := validateOpModifyNetworkInterfaceAttributeInput(input); err != nil {
+		return out, metadata, err
+	}
+	return next.HandleInitialize(ctx, in)
+}
+
+type validateOpModifyRemoteAccessVpnGatewayAttribute struct {
+}
+
+func (*validateOpModifyRemoteAccessVpnGatewayAttribute) ID() string {
+	return "OperationInputValidation"
+}
+
+func (m *validateOpModifyRemoteAccessVpnGatewayAttribute) HandleInitialize(ctx context.Context, in middleware.InitializeInput, next middleware.InitializeHandler) (
+	out middleware.InitializeOutput, metadata middleware.Metadata, err error,
+) {
+	input, ok := in.Parameters.(*ModifyRemoteAccessVpnGatewayAttributeInput)
+	if !ok {
+		return out, metadata, fmt.Errorf("unknown input parameters type %T", in.Parameters)
+	}
+	if err := validateOpModifyRemoteAccessVpnGatewayAttributeInput(input); err != nil {
+		return out, metadata, err
+	}
+	return next.HandleInitialize(ctx, in)
+}
+
+type validateOpModifyRemoteAccessVpnGatewayUserAttribute struct {
+}
+
+func (*validateOpModifyRemoteAccessVpnGatewayUserAttribute) ID() string {
+	return "OperationInputValidation"
+}
+
+func (m *validateOpModifyRemoteAccessVpnGatewayUserAttribute) HandleInitialize(ctx context.Context, in middleware.InitializeInput, next middleware.InitializeHandler) (
+	out middleware.InitializeOutput, metadata middleware.Metadata, err error,
+) {
+	input, ok := in.Parameters.(*ModifyRemoteAccessVpnGatewayUserAttributeInput)
+	if !ok {
+		return out, metadata, fmt.Errorf("unknown input parameters type %T", in.Parameters)
+	}
+	if err := validateOpModifyRemoteAccessVpnGatewayUserAttributeInput(input); err != nil {
 		return out, metadata, err
 	}
 	return next.HandleInitialize(ctx, in)
@@ -2611,6 +2811,26 @@ func (m *validateOpRebootInstances) HandleInitialize(ctx context.Context, in mid
 	return next.HandleInitialize(ctx, in)
 }
 
+type validateOpRebootRemoteAccessVpnGateway struct {
+}
+
+func (*validateOpRebootRemoteAccessVpnGateway) ID() string {
+	return "OperationInputValidation"
+}
+
+func (m *validateOpRebootRemoteAccessVpnGateway) HandleInitialize(ctx context.Context, in middleware.InitializeInput, next middleware.InitializeHandler) (
+	out middleware.InitializeOutput, metadata middleware.Metadata, err error,
+) {
+	input, ok := in.Parameters.(*RebootRemoteAccessVpnGatewayInput)
+	if !ok {
+		return out, metadata, fmt.Errorf("unknown input parameters type %T", in.Parameters)
+	}
+	if err := validateOpRebootRemoteAccessVpnGatewayInput(input); err != nil {
+		return out, metadata, err
+	}
+	return next.HandleInitialize(ctx, in)
+}
+
 type validateOpRefreshInstanceBackupRule struct {
 }
 
@@ -2726,6 +2946,26 @@ func (m *validateOpReleaseMultiIpAddresses) HandleInitialize(ctx context.Context
 		return out, metadata, fmt.Errorf("unknown input parameters type %T", in.Parameters)
 	}
 	if err := validateOpReleaseMultiIpAddressesInput(input); err != nil {
+		return out, metadata, err
+	}
+	return next.HandleInitialize(ctx, in)
+}
+
+type validateOpReplaceRemoteAccessVpnGatewayLatestVersion struct {
+}
+
+func (*validateOpReplaceRemoteAccessVpnGatewayLatestVersion) ID() string {
+	return "OperationInputValidation"
+}
+
+func (m *validateOpReplaceRemoteAccessVpnGatewayLatestVersion) HandleInitialize(ctx context.Context, in middleware.InitializeInput, next middleware.InitializeHandler) (
+	out middleware.InitializeOutput, metadata middleware.Metadata, err error,
+) {
+	input, ok := in.Parameters.(*ReplaceRemoteAccessVpnGatewayLatestVersionInput)
+	if !ok {
+		return out, metadata, fmt.Errorf("unknown input parameters type %T", in.Parameters)
+	}
+	if err := validateOpReplaceRemoteAccessVpnGatewayLatestVersionInput(input); err != nil {
 		return out, metadata, err
 	}
 	return next.HandleInitialize(ctx, in)
@@ -2851,6 +3091,46 @@ func (m *validateOpSetLoadBalancerListenerSSLCertificate) HandleInitialize(ctx c
 	return next.HandleInitialize(ctx, in)
 }
 
+type validateOpSetRemoteAccessVpnGatewayCACertificate struct {
+}
+
+func (*validateOpSetRemoteAccessVpnGatewayCACertificate) ID() string {
+	return "OperationInputValidation"
+}
+
+func (m *validateOpSetRemoteAccessVpnGatewayCACertificate) HandleInitialize(ctx context.Context, in middleware.InitializeInput, next middleware.InitializeHandler) (
+	out middleware.InitializeOutput, metadata middleware.Metadata, err error,
+) {
+	input, ok := in.Parameters.(*SetRemoteAccessVpnGatewayCACertificateInput)
+	if !ok {
+		return out, metadata, fmt.Errorf("unknown input parameters type %T", in.Parameters)
+	}
+	if err := validateOpSetRemoteAccessVpnGatewayCACertificateInput(input); err != nil {
+		return out, metadata, err
+	}
+	return next.HandleInitialize(ctx, in)
+}
+
+type validateOpSetRemoteAccessVpnGatewaySSLCertificate struct {
+}
+
+func (*validateOpSetRemoteAccessVpnGatewaySSLCertificate) ID() string {
+	return "OperationInputValidation"
+}
+
+func (m *validateOpSetRemoteAccessVpnGatewaySSLCertificate) HandleInitialize(ctx context.Context, in middleware.InitializeInput, next middleware.InitializeHandler) (
+	out middleware.InitializeOutput, metadata middleware.Metadata, err error,
+) {
+	input, ok := in.Parameters.(*SetRemoteAccessVpnGatewaySSLCertificateInput)
+	if !ok {
+		return out, metadata, fmt.Errorf("unknown input parameters type %T", in.Parameters)
+	}
+	if err := validateOpSetRemoteAccessVpnGatewaySSLCertificateInput(input); err != nil {
+		return out, metadata, err
+	}
+	return next.HandleInitialize(ctx, in)
+}
+
 type validateOpStartInstances struct {
 }
 
@@ -2926,6 +3206,46 @@ func (m *validateOpUnsetLoadBalancerListenerSSLCertificate) HandleInitialize(ctx
 		return out, metadata, fmt.Errorf("unknown input parameters type %T", in.Parameters)
 	}
 	if err := validateOpUnsetLoadBalancerListenerSSLCertificateInput(input); err != nil {
+		return out, metadata, err
+	}
+	return next.HandleInitialize(ctx, in)
+}
+
+type validateOpUnsetRemoteAccessVpnGatewayCACertificate struct {
+}
+
+func (*validateOpUnsetRemoteAccessVpnGatewayCACertificate) ID() string {
+	return "OperationInputValidation"
+}
+
+func (m *validateOpUnsetRemoteAccessVpnGatewayCACertificate) HandleInitialize(ctx context.Context, in middleware.InitializeInput, next middleware.InitializeHandler) (
+	out middleware.InitializeOutput, metadata middleware.Metadata, err error,
+) {
+	input, ok := in.Parameters.(*UnsetRemoteAccessVpnGatewayCACertificateInput)
+	if !ok {
+		return out, metadata, fmt.Errorf("unknown input parameters type %T", in.Parameters)
+	}
+	if err := validateOpUnsetRemoteAccessVpnGatewayCACertificateInput(input); err != nil {
+		return out, metadata, err
+	}
+	return next.HandleInitialize(ctx, in)
+}
+
+type validateOpUnsetRemoteAccessVpnGatewaySSLCertificate struct {
+}
+
+func (*validateOpUnsetRemoteAccessVpnGatewaySSLCertificate) ID() string {
+	return "OperationInputValidation"
+}
+
+func (m *validateOpUnsetRemoteAccessVpnGatewaySSLCertificate) HandleInitialize(ctx context.Context, in middleware.InitializeInput, next middleware.InitializeHandler) (
+	out middleware.InitializeOutput, metadata middleware.Metadata, err error,
+) {
+	input, ok := in.Parameters.(*UnsetRemoteAccessVpnGatewaySSLCertificateInput)
+	if !ok {
+		return out, metadata, fmt.Errorf("unknown input parameters type %T", in.Parameters)
+	}
+	if err := validateOpUnsetRemoteAccessVpnGatewaySSLCertificateInput(input); err != nil {
 		return out, metadata, err
 	}
 	return next.HandleInitialize(ctx, in)
@@ -3123,6 +3443,14 @@ func addOpCreateNetworkInterfaceValidationMiddleware(stack *middleware.Stack) er
 	return stack.Initialize.Add(&validateOpCreateNetworkInterface{}, middleware.After)
 }
 
+func addOpCreateRemoteAccessVpnGatewayValidationMiddleware(stack *middleware.Stack) error {
+	return stack.Initialize.Add(&validateOpCreateRemoteAccessVpnGateway{}, middleware.After)
+}
+
+func addOpCreateRemoteAccessVpnGatewayUsersValidationMiddleware(stack *middleware.Stack) error {
+	return stack.Initialize.Add(&validateOpCreateRemoteAccessVpnGatewayUsers{}, middleware.After)
+}
+
 func addOpCreateRouteValidationMiddleware(stack *middleware.Stack) error {
 	return stack.Initialize.Add(&validateOpCreateRoute{}, middleware.After)
 }
@@ -3171,6 +3499,18 @@ func addOpDeleteNetworkInterfaceValidationMiddleware(stack *middleware.Stack) er
 	return stack.Initialize.Add(&validateOpDeleteNetworkInterface{}, middleware.After)
 }
 
+func addOpDeleteRemoteAccessVpnGatewayConnectionsValidationMiddleware(stack *middleware.Stack) error {
+	return stack.Initialize.Add(&validateOpDeleteRemoteAccessVpnGatewayConnections{}, middleware.After)
+}
+
+func addOpDeleteRemoteAccessVpnGatewayValidationMiddleware(stack *middleware.Stack) error {
+	return stack.Initialize.Add(&validateOpDeleteRemoteAccessVpnGateway{}, middleware.After)
+}
+
+func addOpDeleteRemoteAccessVpnGatewayUsersValidationMiddleware(stack *middleware.Stack) error {
+	return stack.Initialize.Add(&validateOpDeleteRemoteAccessVpnGatewayUsers{}, middleware.After)
+}
+
 func addOpDeleteRouteValidationMiddleware(stack *middleware.Stack) error {
 	return stack.Initialize.Add(&validateOpDeleteRoute{}, middleware.After)
 }
@@ -3217,6 +3557,18 @@ func addOpDescribeInstanceBackupRuleActivitiesValidationMiddleware(stack *middle
 
 func addOpDescribeInstanceHealthValidationMiddleware(stack *middleware.Stack) error {
 	return stack.Initialize.Add(&validateOpDescribeInstanceHealth{}, middleware.After)
+}
+
+func addOpDescribeRemoteAccessVpnGatewayActivitiesValidationMiddleware(stack *middleware.Stack) error {
+	return stack.Initialize.Add(&validateOpDescribeRemoteAccessVpnGatewayActivities{}, middleware.After)
+}
+
+func addOpDescribeRemoteAccessVpnGatewayClientConfigValidationMiddleware(stack *middleware.Stack) error {
+	return stack.Initialize.Add(&validateOpDescribeRemoteAccessVpnGatewayClientConfig{}, middleware.After)
+}
+
+func addOpDescribeRemoteAccessVpnGatewayConnectionsValidationMiddleware(stack *middleware.Stack) error {
+	return stack.Initialize.Add(&validateOpDescribeRemoteAccessVpnGatewayConnections{}, middleware.After)
 }
 
 func addOpDescribeSecurityActivitiesValidationMiddleware(stack *middleware.Stack) error {
@@ -3289,6 +3641,14 @@ func addOpModifyMultiIpAddressGroupAttributeValidationMiddleware(stack *middlewa
 
 func addOpModifyNetworkInterfaceAttributeValidationMiddleware(stack *middleware.Stack) error {
 	return stack.Initialize.Add(&validateOpModifyNetworkInterfaceAttribute{}, middleware.After)
+}
+
+func addOpModifyRemoteAccessVpnGatewayAttributeValidationMiddleware(stack *middleware.Stack) error {
+	return stack.Initialize.Add(&validateOpModifyRemoteAccessVpnGatewayAttribute{}, middleware.After)
+}
+
+func addOpModifyRemoteAccessVpnGatewayUserAttributeValidationMiddleware(stack *middleware.Stack) error {
+	return stack.Initialize.Add(&validateOpModifyRemoteAccessVpnGatewayUserAttribute{}, middleware.After)
 }
 
 func addOpModifySslCertificateAttributeValidationMiddleware(stack *middleware.Stack) error {
@@ -3551,6 +3911,10 @@ func addOpRebootInstancesValidationMiddleware(stack *middleware.Stack) error {
 	return stack.Initialize.Add(&validateOpRebootInstances{}, middleware.After)
 }
 
+func addOpRebootRemoteAccessVpnGatewayValidationMiddleware(stack *middleware.Stack) error {
+	return stack.Initialize.Add(&validateOpRebootRemoteAccessVpnGateway{}, middleware.After)
+}
+
 func addOpRefreshInstanceBackupRuleValidationMiddleware(stack *middleware.Stack) error {
 	return stack.Initialize.Add(&validateOpRefreshInstanceBackupRule{}, middleware.After)
 }
@@ -3573,6 +3937,10 @@ func addOpRegisterPortWithLoadBalancerValidationMiddleware(stack *middleware.Sta
 
 func addOpReleaseMultiIpAddressesValidationMiddleware(stack *middleware.Stack) error {
 	return stack.Initialize.Add(&validateOpReleaseMultiIpAddresses{}, middleware.After)
+}
+
+func addOpReplaceRemoteAccessVpnGatewayLatestVersionValidationMiddleware(stack *middleware.Stack) error {
+	return stack.Initialize.Add(&validateOpReplaceRemoteAccessVpnGatewayLatestVersion{}, middleware.After)
 }
 
 func addOpReplaceRouteValidationMiddleware(stack *middleware.Stack) error {
@@ -3599,6 +3967,14 @@ func addOpSetLoadBalancerListenerSSLCertificateValidationMiddleware(stack *middl
 	return stack.Initialize.Add(&validateOpSetLoadBalancerListenerSSLCertificate{}, middleware.After)
 }
 
+func addOpSetRemoteAccessVpnGatewayCACertificateValidationMiddleware(stack *middleware.Stack) error {
+	return stack.Initialize.Add(&validateOpSetRemoteAccessVpnGatewayCACertificate{}, middleware.After)
+}
+
+func addOpSetRemoteAccessVpnGatewaySSLCertificateValidationMiddleware(stack *middleware.Stack) error {
+	return stack.Initialize.Add(&validateOpSetRemoteAccessVpnGatewaySSLCertificate{}, middleware.After)
+}
+
 func addOpStartInstancesValidationMiddleware(stack *middleware.Stack) error {
 	return stack.Initialize.Add(&validateOpStartInstances{}, middleware.After)
 }
@@ -3613,6 +3989,14 @@ func addOpTerminateInstancesValidationMiddleware(stack *middleware.Stack) error 
 
 func addOpUnsetLoadBalancerListenerSSLCertificateValidationMiddleware(stack *middleware.Stack) error {
 	return stack.Initialize.Add(&validateOpUnsetLoadBalancerListenerSSLCertificate{}, middleware.After)
+}
+
+func addOpUnsetRemoteAccessVpnGatewayCACertificateValidationMiddleware(stack *middleware.Stack) error {
+	return stack.Initialize.Add(&validateOpUnsetRemoteAccessVpnGatewayCACertificate{}, middleware.After)
+}
+
+func addOpUnsetRemoteAccessVpnGatewaySSLCertificateValidationMiddleware(stack *middleware.Stack) error {
+	return stack.Initialize.Add(&validateOpUnsetRemoteAccessVpnGatewaySSLCertificate{}, middleware.After)
 }
 
 func addOpUpdateLoadBalancerValidationMiddleware(stack *middleware.Stack) error {
@@ -3633,6 +4017,23 @@ func addOpUploadIsoImageValidationMiddleware(stack *middleware.Stack) error {
 
 func addOpUploadSslCertificateValidationMiddleware(stack *middleware.Stack) error {
 	return stack.Initialize.Add(&validateOpUploadSslCertificate{}, middleware.After)
+}
+
+func validateListOfRequestConnection(v []types.RequestConnection) error {
+	if v == nil {
+		return nil
+	}
+	invalidParams := smithy.InvalidParamsError{Context: "ListOfRequestConnection"}
+	for i := range v {
+		if err := validateRequestConnection(&v[i]); err != nil {
+			invalidParams.AddNested(fmt.Sprintf("[%d]", i), err.(smithy.InvalidParamsError))
+		}
+	}
+	if invalidParams.Len() > 0 {
+	return invalidParams
+	} else {
+	return nil
+	}
 }
 
 func validateListOfRequestDhcpConfiguration(v []types.RequestDhcpConfiguration) error {
@@ -3754,6 +4155,57 @@ func validateListOfRequestListenersOfNiftyRegisterPortWithElasticLoadBalancerMem
 	}
 }
 
+func validateListOfRequestNetworkInterfaceOfCreateRemoteAccessVpnGateway(v []types.RequestNetworkInterfaceOfCreateRemoteAccessVpnGateway) error {
+	if v == nil {
+		return nil
+	}
+	invalidParams := smithy.InvalidParamsError{Context: "ListOfRequestNetworkInterfaceOfCreateRemoteAccessVpnGateway"}
+	for i := range v {
+		if err := validateRequestNetworkInterfaceOfCreateRemoteAccessVpnGateway(&v[i]); err != nil {
+			invalidParams.AddNested(fmt.Sprintf("[%d]", i), err.(smithy.InvalidParamsError))
+		}
+	}
+	if invalidParams.Len() > 0 {
+	return invalidParams
+	} else {
+	return nil
+	}
+}
+
+func validateListOfRequestRemoteUser(v []types.RequestRemoteUser) error {
+	if v == nil {
+		return nil
+	}
+	invalidParams := smithy.InvalidParamsError{Context: "ListOfRequestRemoteUser"}
+	for i := range v {
+		if err := validateRequestRemoteUser(&v[i]); err != nil {
+			invalidParams.AddNested(fmt.Sprintf("[%d]", i), err.(smithy.InvalidParamsError))
+		}
+	}
+	if invalidParams.Len() > 0 {
+	return invalidParams
+	} else {
+	return nil
+	}
+}
+
+func validateListOfRequestRemoteUserOfDeleteRemoteAccessVpnGatewayUsers(v []types.RequestRemoteUserOfDeleteRemoteAccessVpnGatewayUsers) error {
+	if v == nil {
+		return nil
+	}
+	invalidParams := smithy.InvalidParamsError{Context: "ListOfRequestRemoteUserOfDeleteRemoteAccessVpnGatewayUsers"}
+	for i := range v {
+		if err := validateRequestRemoteUserOfDeleteRemoteAccessVpnGatewayUsers(&v[i]); err != nil {
+			invalidParams.AddNested(fmt.Sprintf("[%d]", i), err.(smithy.InvalidParamsError))
+		}
+	}
+	if invalidParams.Len() > 0 {
+	return invalidParams
+	} else {
+	return nil
+	}
+}
+
 func validateListOfRequestRule(v []types.RequestRule) error {
 	if v == nil {
 		return nil
@@ -3848,6 +4300,21 @@ func validateListOfRequestUsersMember(v []types.RequestUsers) error {
 		if err := validateRequestUsers(&v[i]); err != nil {
 			invalidParams.AddNested(fmt.Sprintf("[%d]", i), err.(smithy.InvalidParamsError))
 		}
+	}
+	if invalidParams.Len() > 0 {
+	return invalidParams
+	} else {
+	return nil
+	}
+}
+
+func validateRequestConnection(v *types.RequestConnection) error {
+	if v == nil {
+		return nil
+	}
+	invalidParams := smithy.InvalidParamsError{Context: "RequestConnection"}
+	if v.ConnectionId == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("ConnectionId"))
 	}
 	if invalidParams.Len() > 0 {
 	return invalidParams
@@ -3985,6 +4452,24 @@ func validateRequestListenersOfNiftyRegisterPortWithElasticLoadBalancer(v *types
 	}
 }
 
+func validateRequestNetworkInterfaceOfCreateRemoteAccessVpnGateway(v *types.RequestNetworkInterfaceOfCreateRemoteAccessVpnGateway) error {
+	if v == nil {
+		return nil
+	}
+	invalidParams := smithy.InvalidParamsError{Context: "RequestNetworkInterfaceOfCreateRemoteAccessVpnGateway"}
+	if v.IpAddress == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("IpAddress"))
+	}
+	if v.NetworkId == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("NetworkId"))
+	}
+	if invalidParams.Len() > 0 {
+	return invalidParams
+	} else {
+	return nil
+	}
+}
+
 func validateRequestPlacementOfCreateMultiIpAddressGroup(v *types.RequestPlacementOfCreateMultiIpAddressGroup) error {
 	if v == nil {
 		return nil
@@ -4007,6 +4492,39 @@ func validateRequestPlacementOfNiftyCreateSeparateInstanceRule(v *types.RequestP
 	invalidParams := smithy.InvalidParamsError{Context: "RequestPlacementOfNiftyCreateSeparateInstanceRule"}
 	if v.AvailabilityZone == nil {
 	invalidParams.Add(smithy.NewErrParamRequired("AvailabilityZone"))
+	}
+	if invalidParams.Len() > 0 {
+	return invalidParams
+	} else {
+	return nil
+	}
+}
+
+func validateRequestRemoteUser(v *types.RequestRemoteUser) error {
+	if v == nil {
+		return nil
+	}
+	invalidParams := smithy.InvalidParamsError{Context: "RequestRemoteUser"}
+	if v.Password == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("Password"))
+	}
+	if v.UserName == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("UserName"))
+	}
+	if invalidParams.Len() > 0 {
+	return invalidParams
+	} else {
+	return nil
+	}
+}
+
+func validateRequestRemoteUserOfDeleteRemoteAccessVpnGatewayUsers(v *types.RequestRemoteUserOfDeleteRemoteAccessVpnGatewayUsers) error {
+	if v == nil {
+		return nil
+	}
+	invalidParams := smithy.InvalidParamsError{Context: "RequestRemoteUserOfDeleteRemoteAccessVpnGatewayUsers"}
+	if v.UserName == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("UserName"))
 	}
 	if invalidParams.Len() > 0 {
 	return invalidParams
@@ -4512,6 +5030,56 @@ func validateOpCreateNetworkInterfaceInput(v *CreateNetworkInterfaceInput) error
 	}
 }
 
+func validateOpCreateRemoteAccessVpnGatewayInput(v *CreateRemoteAccessVpnGatewayInput) error {
+	if v == nil {
+		return nil
+	}
+	invalidParams := smithy.InvalidParamsError{Context: "CreateRemoteAccessVpnGatewayInput"}
+	if v.CipherSuite == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("CipherSuite"))
+	}
+	if v.NetworkInterface == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("NetworkInterface"))
+	} else if v.NetworkInterface != nil {
+		if err := validateListOfRequestNetworkInterfaceOfCreateRemoteAccessVpnGateway(v.NetworkInterface); err != nil {
+			invalidParams.AddNested("NetworkInterface", err.(smithy.InvalidParamsError))
+		}
+	}
+	if v.PoolNetworkCidr == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("PoolNetworkCidr"))
+	}
+	if v.SSLCertificateId == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("SSLCertificateId"))
+	}
+	if invalidParams.Len() > 0 {
+	return invalidParams
+	} else {
+	return nil
+	}
+}
+
+func validateOpCreateRemoteAccessVpnGatewayUsersInput(v *CreateRemoteAccessVpnGatewayUsersInput) error {
+	if v == nil {
+		return nil
+	}
+	invalidParams := smithy.InvalidParamsError{Context: "CreateRemoteAccessVpnGatewayUsersInput"}
+	if v.RemoteAccessVpnGatewayId == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("RemoteAccessVpnGatewayId"))
+	}
+	if v.RemoteUser == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("RemoteUser"))
+	} else if v.RemoteUser != nil {
+		if err := validateListOfRequestRemoteUser(v.RemoteUser); err != nil {
+			invalidParams.AddNested("RemoteUser", err.(smithy.InvalidParamsError))
+		}
+	}
+	if invalidParams.Len() > 0 {
+	return invalidParams
+	} else {
+	return nil
+	}
+}
+
 func validateOpCreateRouteInput(v *CreateRouteInput) error {
 	if v == nil {
 		return nil
@@ -4693,6 +5261,65 @@ func validateOpDeleteNetworkInterfaceInput(v *DeleteNetworkInterfaceInput) error
 	invalidParams := smithy.InvalidParamsError{Context: "DeleteNetworkInterfaceInput"}
 	if v.NetworkInterfaceId == nil {
 	invalidParams.Add(smithy.NewErrParamRequired("NetworkInterfaceId"))
+	}
+	if invalidParams.Len() > 0 {
+	return invalidParams
+	} else {
+	return nil
+	}
+}
+
+func validateOpDeleteRemoteAccessVpnGatewayConnectionsInput(v *DeleteRemoteAccessVpnGatewayConnectionsInput) error {
+	if v == nil {
+		return nil
+	}
+	invalidParams := smithy.InvalidParamsError{Context: "DeleteRemoteAccessVpnGatewayConnectionsInput"}
+	if v.Connection == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("Connection"))
+	} else if v.Connection != nil {
+		if err := validateListOfRequestConnection(v.Connection); err != nil {
+			invalidParams.AddNested("Connection", err.(smithy.InvalidParamsError))
+		}
+	}
+	if v.RemoteAccessVpnGatewayId == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("RemoteAccessVpnGatewayId"))
+	}
+	if invalidParams.Len() > 0 {
+	return invalidParams
+	} else {
+	return nil
+	}
+}
+
+func validateOpDeleteRemoteAccessVpnGatewayInput(v *DeleteRemoteAccessVpnGatewayInput) error {
+	if v == nil {
+		return nil
+	}
+	invalidParams := smithy.InvalidParamsError{Context: "DeleteRemoteAccessVpnGatewayInput"}
+	if v.RemoteAccessVpnGatewayId == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("RemoteAccessVpnGatewayId"))
+	}
+	if invalidParams.Len() > 0 {
+	return invalidParams
+	} else {
+	return nil
+	}
+}
+
+func validateOpDeleteRemoteAccessVpnGatewayUsersInput(v *DeleteRemoteAccessVpnGatewayUsersInput) error {
+	if v == nil {
+		return nil
+	}
+	invalidParams := smithy.InvalidParamsError{Context: "DeleteRemoteAccessVpnGatewayUsersInput"}
+	if v.RemoteAccessVpnGatewayId == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("RemoteAccessVpnGatewayId"))
+	}
+	if v.RemoteUser == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("RemoteUser"))
+	} else if v.RemoteUser != nil {
+		if err := validateListOfRequestRemoteUserOfDeleteRemoteAccessVpnGatewayUsers(v.RemoteUser); err != nil {
+			invalidParams.AddNested("RemoteUser", err.(smithy.InvalidParamsError))
+		}
 	}
 	if invalidParams.Len() > 0 {
 	return invalidParams
@@ -4898,6 +5525,51 @@ func validateOpDescribeInstanceHealthInput(v *DescribeInstanceHealthInput) error
 	}
 	if v.LoadBalancerPort == nil {
 	invalidParams.Add(smithy.NewErrParamRequired("LoadBalancerPort"))
+	}
+	if invalidParams.Len() > 0 {
+	return invalidParams
+	} else {
+	return nil
+	}
+}
+
+func validateOpDescribeRemoteAccessVpnGatewayActivitiesInput(v *DescribeRemoteAccessVpnGatewayActivitiesInput) error {
+	if v == nil {
+		return nil
+	}
+	invalidParams := smithy.InvalidParamsError{Context: "DescribeRemoteAccessVpnGatewayActivitiesInput"}
+	if v.RemoteAccessVpnGatewayId == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("RemoteAccessVpnGatewayId"))
+	}
+	if invalidParams.Len() > 0 {
+	return invalidParams
+	} else {
+	return nil
+	}
+}
+
+func validateOpDescribeRemoteAccessVpnGatewayClientConfigInput(v *DescribeRemoteAccessVpnGatewayClientConfigInput) error {
+	if v == nil {
+		return nil
+	}
+	invalidParams := smithy.InvalidParamsError{Context: "DescribeRemoteAccessVpnGatewayClientConfigInput"}
+	if v.RemoteAccessVpnGatewayId == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("RemoteAccessVpnGatewayId"))
+	}
+	if invalidParams.Len() > 0 {
+	return invalidParams
+	} else {
+	return nil
+	}
+}
+
+func validateOpDescribeRemoteAccessVpnGatewayConnectionsInput(v *DescribeRemoteAccessVpnGatewayConnectionsInput) error {
+	if v == nil {
+		return nil
+	}
+	invalidParams := smithy.InvalidParamsError{Context: "DescribeRemoteAccessVpnGatewayConnectionsInput"}
+	if v.RemoteAccessVpnGatewayId == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("RemoteAccessVpnGatewayId"))
 	}
 	if invalidParams.Len() > 0 {
 	return invalidParams
@@ -5196,6 +5868,39 @@ func validateOpModifyNetworkInterfaceAttributeInput(v *ModifyNetworkInterfaceAtt
 	invalidParams := smithy.InvalidParamsError{Context: "ModifyNetworkInterfaceAttributeInput"}
 	if v.NetworkInterfaceId == nil {
 	invalidParams.Add(smithy.NewErrParamRequired("NetworkInterfaceId"))
+	}
+	if invalidParams.Len() > 0 {
+	return invalidParams
+	} else {
+	return nil
+	}
+}
+
+func validateOpModifyRemoteAccessVpnGatewayAttributeInput(v *ModifyRemoteAccessVpnGatewayAttributeInput) error {
+	if v == nil {
+		return nil
+	}
+	invalidParams := smithy.InvalidParamsError{Context: "ModifyRemoteAccessVpnGatewayAttributeInput"}
+	if v.RemoteAccessVpnGatewayId == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("RemoteAccessVpnGatewayId"))
+	}
+	if invalidParams.Len() > 0 {
+	return invalidParams
+	} else {
+	return nil
+	}
+}
+
+func validateOpModifyRemoteAccessVpnGatewayUserAttributeInput(v *ModifyRemoteAccessVpnGatewayUserAttributeInput) error {
+	if v == nil {
+		return nil
+	}
+	invalidParams := smithy.InvalidParamsError{Context: "ModifyRemoteAccessVpnGatewayUserAttributeInput"}
+	if v.RemoteAccessVpnGatewayId == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("RemoteAccessVpnGatewayId"))
+	}
+	if v.UserName == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("UserName"))
 	}
 	if invalidParams.Len() > 0 {
 	return invalidParams
@@ -6418,6 +7123,21 @@ func validateOpRebootInstancesInput(v *RebootInstancesInput) error {
 	}
 }
 
+func validateOpRebootRemoteAccessVpnGatewayInput(v *RebootRemoteAccessVpnGatewayInput) error {
+	if v == nil {
+		return nil
+	}
+	invalidParams := smithy.InvalidParamsError{Context: "RebootRemoteAccessVpnGatewayInput"}
+	if v.RemoteAccessVpnGatewayId == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("RemoteAccessVpnGatewayId"))
+	}
+	if invalidParams.Len() > 0 {
+	return invalidParams
+	} else {
+	return nil
+	}
+}
+
 func validateOpRefreshInstanceBackupRuleInput(v *RefreshInstanceBackupRuleInput) error {
 	if v == nil {
 		return nil
@@ -6581,6 +7301,21 @@ func validateOpReleaseMultiIpAddressesInput(v *ReleaseMultiIpAddressesInput) err
 	}
 }
 
+func validateOpReplaceRemoteAccessVpnGatewayLatestVersionInput(v *ReplaceRemoteAccessVpnGatewayLatestVersionInput) error {
+	if v == nil {
+		return nil
+	}
+	invalidParams := smithy.InvalidParamsError{Context: "ReplaceRemoteAccessVpnGatewayLatestVersionInput"}
+	if v.RemoteAccessVpnGatewayId == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("RemoteAccessVpnGatewayId"))
+	}
+	if invalidParams.Len() > 0 {
+	return invalidParams
+	} else {
+	return nil
+	}
+}
+
 func validateOpReplaceRouteInput(v *ReplaceRouteInput) error {
 	if v == nil {
 		return nil
@@ -6692,6 +7427,42 @@ func validateOpSetLoadBalancerListenerSSLCertificateInput(v *SetLoadBalancerList
 	}
 }
 
+func validateOpSetRemoteAccessVpnGatewayCACertificateInput(v *SetRemoteAccessVpnGatewayCACertificateInput) error {
+	if v == nil {
+		return nil
+	}
+	invalidParams := smithy.InvalidParamsError{Context: "SetRemoteAccessVpnGatewayCACertificateInput"}
+	if v.CACertificateId == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("CACertificateId"))
+	}
+	if v.RemoteAccessVpnGatewayId == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("RemoteAccessVpnGatewayId"))
+	}
+	if invalidParams.Len() > 0 {
+	return invalidParams
+	} else {
+	return nil
+	}
+}
+
+func validateOpSetRemoteAccessVpnGatewaySSLCertificateInput(v *SetRemoteAccessVpnGatewaySSLCertificateInput) error {
+	if v == nil {
+		return nil
+	}
+	invalidParams := smithy.InvalidParamsError{Context: "SetRemoteAccessVpnGatewaySSLCertificateInput"}
+	if v.RemoteAccessVpnGatewayId == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("RemoteAccessVpnGatewayId"))
+	}
+	if v.SSLCertificateId == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("SSLCertificateId"))
+	}
+	if invalidParams.Len() > 0 {
+	return invalidParams
+	} else {
+	return nil
+	}
+}
+
 func validateOpStartInstancesInput(v *StartInstancesInput) error {
 	if v == nil {
 		return nil
@@ -6750,6 +7521,36 @@ func validateOpUnsetLoadBalancerListenerSSLCertificateInput(v *UnsetLoadBalancer
 	}
 	if v.LoadBalancerPort == nil {
 	invalidParams.Add(smithy.NewErrParamRequired("LoadBalancerPort"))
+	}
+	if invalidParams.Len() > 0 {
+	return invalidParams
+	} else {
+	return nil
+	}
+}
+
+func validateOpUnsetRemoteAccessVpnGatewayCACertificateInput(v *UnsetRemoteAccessVpnGatewayCACertificateInput) error {
+	if v == nil {
+		return nil
+	}
+	invalidParams := smithy.InvalidParamsError{Context: "UnsetRemoteAccessVpnGatewayCACertificateInput"}
+	if v.RemoteAccessVpnGatewayId == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("RemoteAccessVpnGatewayId"))
+	}
+	if invalidParams.Len() > 0 {
+	return invalidParams
+	} else {
+	return nil
+	}
+}
+
+func validateOpUnsetRemoteAccessVpnGatewaySSLCertificateInput(v *UnsetRemoteAccessVpnGatewaySSLCertificateInput) error {
+	if v == nil {
+		return nil
+	}
+	invalidParams := smithy.InvalidParamsError{Context: "UnsetRemoteAccessVpnGatewaySSLCertificateInput"}
+	if v.RemoteAccessVpnGatewayId == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("RemoteAccessVpnGatewayId"))
 	}
 	if invalidParams.Len() > 0 {
 	return invalidParams

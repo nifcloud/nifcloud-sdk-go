@@ -35,6 +35,8 @@ type GetObjectInput struct {
 	// This member is required.
 	Object *string
 
+	PartNumber *string
+
 	Range *string
 
 	ResponseContentDisposition *string
@@ -68,6 +70,8 @@ type GetObjectOutput struct {
 	LastModified *string
 
 	XAmzExpiration *string
+
+	XAmzMpPartsCount *string
 
 	XAmzServerSideEncryption *string
 

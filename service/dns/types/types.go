@@ -131,8 +131,6 @@ type RequestResourceRecordSet struct {
 	
 	XniftyComment *string
 	
-	XniftyDefaultHost *string
-	
 	noSmithyDocumentSerde
 }
 
@@ -177,8 +175,6 @@ type ResourceRecordSets struct {
 	Weight *int32
 	
 	XniftyComment *string
-	
-	XniftyDefaultHost *string
 	
 	XniftyHealthCheckConfig *XniftyHealthCheckConfig
 	

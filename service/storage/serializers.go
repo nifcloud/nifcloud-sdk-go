@@ -1425,6 +1425,10 @@ func awsRestxml_serializeOpHttpBindingsGetObjectInput(v *GetObjectInput, encoder
 		}
 	}
 
+	if v.PartNumber != nil {
+		encoder.SetQuery("partNumber").String(*v.PartNumber)
+	}
+
 	if v.Range != nil && len(*v.Range) > 0 {
 		locationName := "Range"
 		encoder.SetHeader(locationName).String(*v.Range)
@@ -1776,6 +1780,10 @@ func awsRestxml_serializeOpHttpBindingsHeadObjectInput(v *HeadObjectInput, encod
 		if err := encoder.SetURI("Object").String(*v.Object); err != nil {
 			return err
 		}
+	}
+
+	if v.PartNumber != nil {
+		encoder.SetQuery("partNumber").String(*v.PartNumber)
 	}
 
 	if v.VersionId != nil {

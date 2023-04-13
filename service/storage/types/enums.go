@@ -10,8 +10,8 @@ const (
 	ContentEncodingOfPutObjectRequestAwsChunked ContentEncodingOfPutObjectRequest = "aws-chunked"
 )
 
-// Values returns all known values for ContentEncodingOfPutObjectRequest. Note that
-// this can be expanded in the future, and so it is only as up to date as the
+// Values returns all known values for ContentEncodingOfPutObjectRequest. Note
+// that this can be expanded in the future, and so it is only as up to date as the
 // client. The ordering of this slice is not guaranteed to be stable across
 // updates.
 func (ContentEncodingOfPutObjectRequest) Values() []ContentEncodingOfPutObjectRequest {
@@ -104,10 +104,10 @@ const (
 	XAmzMetadataDirectiveOfPutObjectCopyRequestReplace XAmzMetadataDirectiveOfPutObjectCopyRequest = "REPLACE"
 )
 
-// Values returns all known values for XAmzMetadataDirectiveOfPutObjectCopyRequest.
-// Note that this can be expanded in the future, and so it is only as up to date as
-// the client. The ordering of this slice is not guaranteed to be stable across
-// updates.
+// Values returns all known values for
+// XAmzMetadataDirectiveOfPutObjectCopyRequest. Note that this can be expanded in
+// the future, and so it is only as up to date as the client. The ordering of this
+// slice is not guaranteed to be stable across updates.
 func (XAmzMetadataDirectiveOfPutObjectCopyRequest) Values() []XAmzMetadataDirectiveOfPutObjectCopyRequest {
 	return []XAmzMetadataDirectiveOfPutObjectCopyRequest{
 		"COPY",
@@ -280,9 +280,9 @@ const (
 	XAmzStorageClassOfPutObjectCopyRequestReducedRedundancy XAmzStorageClassOfPutObjectCopyRequest = "REDUCED_REDUNDANCY"
 )
 
-// Values returns all known values for XAmzStorageClassOfPutObjectCopyRequest. Note
-// that this can be expanded in the future, and so it is only as up to date as the
-// client. The ordering of this slice is not guaranteed to be stable across
+// Values returns all known values for XAmzStorageClassOfPutObjectCopyRequest.
+// Note that this can be expanded in the future, and so it is only as up to date as
+// the client. The ordering of this slice is not guaranteed to be stable across
 // updates.
 func (XAmzStorageClassOfPutObjectCopyRequest) Values() []XAmzStorageClassOfPutObjectCopyRequest {
 	return []XAmzStorageClassOfPutObjectCopyRequest{
@@ -337,10 +337,10 @@ const (
 	XAmzTaggingOfInitiateMultipartUploadRequestReplace XAmzTaggingOfInitiateMultipartUploadRequest = "REPLACE"
 )
 
-// Values returns all known values for XAmzTaggingOfInitiateMultipartUploadRequest.
-// Note that this can be expanded in the future, and so it is only as up to date as
-// the client. The ordering of this slice is not guaranteed to be stable across
-// updates.
+// Values returns all known values for
+// XAmzTaggingOfInitiateMultipartUploadRequest. Note that this can be expanded in
+// the future, and so it is only as up to date as the client. The ordering of this
+// slice is not guaranteed to be stable across updates.
 func (XAmzTaggingOfInitiateMultipartUploadRequest) Values() []XAmzTaggingOfInitiateMultipartUploadRequest {
 	return []XAmzTaggingOfInitiateMultipartUploadRequest{
 		"COPY",

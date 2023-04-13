@@ -37,8 +37,6 @@ type GetBucketVersioningInput struct {
 type GetBucketVersioningOutput struct {
 	ContentType *string
 
-	MfaDelete *string
-
 	Status *string
 
 	// Metadata pertaining to the operation's result.

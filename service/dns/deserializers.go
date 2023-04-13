@@ -1943,19 +1943,6 @@ func awsRestxml_deserializeDocumentResourceRecordSets(v **types.ResourceRecordSe
 				sv.XniftyComment = ptr.String(xtv)
 			}
 
-		case strings.EqualFold("XniftyDefaultHost", t.Name.Local):
-			val, err := decoder.Value()
-			if err != nil {
-				return err
-			}
-			if val == nil {
-				break
-			}
-			{
-				xtv := string(val)
-				sv.XniftyDefaultHost = ptr.String(xtv)
-			}
-
 		case strings.EqualFold("XniftyHealthCheckConfig", t.Name.Local):
 			nodeDecoder := smithyxml.WrapNodeDecoder(decoder.Decoder, t)
 			if err := awsRestxml_deserializeDocumentXniftyHealthCheckConfig(&sv.XniftyHealthCheckConfig, nodeDecoder); err != nil {

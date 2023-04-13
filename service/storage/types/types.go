@@ -61,27 +61,6 @@ type Contents struct {
 	noSmithyDocumentSerde
 }
 
-type ContentsOfGetBucketVersion2 struct {
-	
-	DisplayName *string
-	
-	ETag *string
-	
-	ID *string
-	
-	Key *string
-	
-	LastModified *time.Time
-	
-	Owner *string
-	
-	Size *string
-	
-	StorageClass *string
-	
-	noSmithyDocumentSerde
-}
-
 type CORSRule struct {
 	
 	AllowedHeader *string

@@ -117,6 +117,25 @@ func (AccountingTypeOfImportInstanceRequest) Values() []AccountingTypeOfImportIn
 	}
 }
 
+type AccountingTypeOfModifyRemoteAccessVpnGatewayAttributeRequest string
+
+// Enum values for AccountingTypeOfModifyRemoteAccessVpnGatewayAttributeRequest
+const (
+	AccountingTypeOfModifyRemoteAccessVpnGatewayAttributeRequestMonthly AccountingTypeOfModifyRemoteAccessVpnGatewayAttributeRequest = "1"
+	AccountingTypeOfModifyRemoteAccessVpnGatewayAttributeRequestHourly AccountingTypeOfModifyRemoteAccessVpnGatewayAttributeRequest = "2"
+)
+
+// Values returns all known values for
+// AccountingTypeOfModifyRemoteAccessVpnGatewayAttributeRequest. Note that this can
+// be expanded in the future, and so it is only as up to date as the client. The
+// ordering of this slice is not guaranteed to be stable across updates.
+func (AccountingTypeOfModifyRemoteAccessVpnGatewayAttributeRequest) Values() []AccountingTypeOfModifyRemoteAccessVpnGatewayAttributeRequest {
+	return []AccountingTypeOfModifyRemoteAccessVpnGatewayAttributeRequest{
+		"1",
+		"2",
+	}
+}
+
 type AccountingTypeOfNiftyCreateElasticLoadBalancerRequest string
 
 // Enum values for AccountingTypeOfNiftyCreateElasticLoadBalancerRequest
@@ -251,10 +270,10 @@ const (
 	AttributeOfDescribeInstanceAttributeRequestElasticloadbalancing AttributeOfDescribeInstanceAttributeRequest = "elasticloadbalancing"
 )
 
-// Values returns all known values for AttributeOfDescribeInstanceAttributeRequest.
-// Note that this can be expanded in the future, and so it is only as up to date as
-// the client. The ordering of this slice is not guaranteed to be stable across
-// updates.
+// Values returns all known values for
+// AttributeOfDescribeInstanceAttributeRequest. Note that this can be expanded in
+// the future, and so it is only as up to date as the client. The ordering of this
+// slice is not guaranteed to be stable across updates.
 func (AttributeOfDescribeInstanceAttributeRequest) Values() []AttributeOfDescribeInstanceAttributeRequest {
 	return []AttributeOfDescribeInstanceAttributeRequest{
 		"instanceType",
@@ -319,9 +338,9 @@ const (
 	AttributeOfModifyImageAttributeRequestDetailDescription AttributeOfModifyImageAttributeRequest = "detailDescription"
 )
 
-// Values returns all known values for AttributeOfModifyImageAttributeRequest. Note
-// that this can be expanded in the future, and so it is only as up to date as the
-// client. The ordering of this slice is not guaranteed to be stable across
+// Values returns all known values for AttributeOfModifyImageAttributeRequest.
+// Note that this can be expanded in the future, and so it is only as up to date as
+// the client. The ordering of this slice is not guaranteed to be stable across
 // updates.
 func (AttributeOfModifyImageAttributeRequest) Values() []AttributeOfModifyImageAttributeRequest {
 	return []AttributeOfModifyImageAttributeRequest{
@@ -554,6 +573,25 @@ func (AttributeOfNiftyModifyWebProxyAttributeRequest) Values() []AttributeOfNift
 	}
 }
 
+type ClientTunnelModeOfModifyRemoteAccessVpnGatewayAttributeRequest string
+
+// Enum values for ClientTunnelModeOfModifyRemoteAccessVpnGatewayAttributeRequest
+const (
+	ClientTunnelModeOfModifyRemoteAccessVpnGatewayAttributeRequestSplit ClientTunnelModeOfModifyRemoteAccessVpnGatewayAttributeRequest = "split"
+	ClientTunnelModeOfModifyRemoteAccessVpnGatewayAttributeRequestFull ClientTunnelModeOfModifyRemoteAccessVpnGatewayAttributeRequest = "full"
+)
+
+// Values returns all known values for
+// ClientTunnelModeOfModifyRemoteAccessVpnGatewayAttributeRequest. Note that this
+// can be expanded in the future, and so it is only as up to date as the client.
+// The ordering of this slice is not guaranteed to be stable across updates.
+func (ClientTunnelModeOfModifyRemoteAccessVpnGatewayAttributeRequest) Values() []ClientTunnelModeOfModifyRemoteAccessVpnGatewayAttributeRequest {
+	return []ClientTunnelModeOfModifyRemoteAccessVpnGatewayAttributeRequest{
+		"split",
+		"full",
+	}
+}
+
 type DiskTypeOfCreateVolumeRequest string
 
 // Enum values for DiskTypeOfCreateVolumeRequest
@@ -656,10 +694,10 @@ const (
 	FilterTypeOfSetFilterForLoadBalancerRequestDeny FilterTypeOfSetFilterForLoadBalancerRequest = "2"
 )
 
-// Values returns all known values for FilterTypeOfSetFilterForLoadBalancerRequest.
-// Note that this can be expanded in the future, and so it is only as up to date as
-// the client. The ordering of this slice is not guaranteed to be stable across
-// updates.
+// Values returns all known values for
+// FilterTypeOfSetFilterForLoadBalancerRequest. Note that this can be expanded in
+// the future, and so it is only as up to date as the client. The ordering of this
+// slice is not guaranteed to be stable across updates.
 func (FilterTypeOfSetFilterForLoadBalancerRequest) Values() []FilterTypeOfSetFilterForLoadBalancerRequest {
 	return []FilterTypeOfSetFilterForLoadBalancerRequest{
 		"1",
@@ -1059,10 +1097,10 @@ const (
 	InstanceTypeOfCopyFromBackupInstanceRequestSeptaLarge128 InstanceTypeOfCopyFromBackupInstanceRequest = "septa-large128"
 )
 
-// Values returns all known values for InstanceTypeOfCopyFromBackupInstanceRequest.
-// Note that this can be expanded in the future, and so it is only as up to date as
-// the client. The ordering of this slice is not guaranteed to be stable across
-// updates.
+// Values returns all known values for
+// InstanceTypeOfCopyFromBackupInstanceRequest. Note that this can be expanded in
+// the future, and so it is only as up to date as the client. The ordering of this
+// slice is not guaranteed to be stable across updates.
 func (InstanceTypeOfCopyFromBackupInstanceRequest) Values() []InstanceTypeOfCopyFromBackupInstanceRequest {
 	return []InstanceTypeOfCopyFromBackupInstanceRequest{
 		"e-mini",
@@ -2204,8 +2242,8 @@ const (
 	InstanceTypeOfRunInstancesRequestSeptaLarge128 InstanceTypeOfRunInstancesRequest = "septa-large128"
 )
 
-// Values returns all known values for InstanceTypeOfRunInstancesRequest. Note that
-// this can be expanded in the future, and so it is only as up to date as the
+// Values returns all known values for InstanceTypeOfRunInstancesRequest. Note
+// that this can be expanded in the future, and so it is only as up to date as the
 // client. The ordering of this slice is not guaranteed to be stable across
 // updates.
 func (InstanceTypeOfRunInstancesRequest) Values() []InstanceTypeOfRunInstancesRequest {
@@ -3090,9 +3128,9 @@ const (
 	NameOfFilterForNiftyDescribeWebProxiesOptionNameServer NameOfFilterForNiftyDescribeWebProxies = "option-name-server"
 )
 
-// Values returns all known values for NameOfFilterForNiftyDescribeWebProxies. Note
-// that this can be expanded in the future, and so it is only as up to date as the
-// client. The ordering of this slice is not guaranteed to be stable across
+// Values returns all known values for NameOfFilterForNiftyDescribeWebProxies.
+// Note that this can be expanded in the future, and so it is only as up to date as
+// the client. The ordering of this slice is not guaranteed to be stable across
 // updates.
 func (NameOfFilterForNiftyDescribeWebProxies) Values() []NameOfFilterForNiftyDescribeWebProxies {
 	return []NameOfFilterForNiftyDescribeWebProxies{
@@ -3320,10 +3358,10 @@ const (
 	NiftyRebootOfModifyInstanceAttributeRequestFalse NiftyRebootOfModifyInstanceAttributeRequest = "false"
 )
 
-// Values returns all known values for NiftyRebootOfModifyInstanceAttributeRequest.
-// Note that this can be expanded in the future, and so it is only as up to date as
-// the client. The ordering of this slice is not guaranteed to be stable across
-// updates.
+// Values returns all known values for
+// NiftyRebootOfModifyInstanceAttributeRequest. Note that this can be expanded in
+// the future, and so it is only as up to date as the client. The ordering of this
+// slice is not guaranteed to be stable across updates.
 func (NiftyRebootOfModifyInstanceAttributeRequest) Values() []NiftyRebootOfModifyInstanceAttributeRequest {
 	return []NiftyRebootOfModifyInstanceAttributeRequest{
 		"force",
@@ -3386,6 +3424,25 @@ const (
 // ordering of this slice is not guaranteed to be stable across updates.
 func (NiftyRebootOfNiftyUpdateVpnGatewayNetworkInterfacesRequest) Values() []NiftyRebootOfNiftyUpdateVpnGatewayNetworkInterfacesRequest {
 	return []NiftyRebootOfNiftyUpdateVpnGatewayNetworkInterfacesRequest{
+		"force",
+		"true",
+	}
+}
+
+type NiftyRebootOfRebootRemoteAccessVpnGatewayRequest string
+
+// Enum values for NiftyRebootOfRebootRemoteAccessVpnGatewayRequest
+const (
+	NiftyRebootOfRebootRemoteAccessVpnGatewayRequestForce NiftyRebootOfRebootRemoteAccessVpnGatewayRequest = "force"
+	NiftyRebootOfRebootRemoteAccessVpnGatewayRequestTrue NiftyRebootOfRebootRemoteAccessVpnGatewayRequest = "true"
+)
+
+// Values returns all known values for
+// NiftyRebootOfRebootRemoteAccessVpnGatewayRequest. Note that this can be expanded
+// in the future, and so it is only as up to date as the client. The ordering of
+// this slice is not guaranteed to be stable across updates.
+func (NiftyRebootOfRebootRemoteAccessVpnGatewayRequest) Values() []NiftyRebootOfRebootRemoteAccessVpnGatewayRequest {
+	return []NiftyRebootOfRebootRemoteAccessVpnGatewayRequest{
 		"force",
 		"true",
 	}
@@ -3808,6 +3865,50 @@ func (ProtocolOfNiftyReplaceNatRuleRequest) Values() []ProtocolOfNiftyReplaceNat
 	}
 }
 
+type RemoteAccessVpnGatewayTypeOfCreateRemoteAccessVpnGatewayRequest string
+
+// Enum values for RemoteAccessVpnGatewayTypeOfCreateRemoteAccessVpnGatewayRequest
+const (
+	RemoteAccessVpnGatewayTypeOfCreateRemoteAccessVpnGatewayRequestSmall RemoteAccessVpnGatewayTypeOfCreateRemoteAccessVpnGatewayRequest = "small"
+	RemoteAccessVpnGatewayTypeOfCreateRemoteAccessVpnGatewayRequestMedium RemoteAccessVpnGatewayTypeOfCreateRemoteAccessVpnGatewayRequest = "medium"
+	RemoteAccessVpnGatewayTypeOfCreateRemoteAccessVpnGatewayRequestLarge RemoteAccessVpnGatewayTypeOfCreateRemoteAccessVpnGatewayRequest = "large"
+)
+
+// Values returns all known values for
+// RemoteAccessVpnGatewayTypeOfCreateRemoteAccessVpnGatewayRequest. Note that this
+// can be expanded in the future, and so it is only as up to date as the client.
+// The ordering of this slice is not guaranteed to be stable across updates.
+func (RemoteAccessVpnGatewayTypeOfCreateRemoteAccessVpnGatewayRequest) Values() []RemoteAccessVpnGatewayTypeOfCreateRemoteAccessVpnGatewayRequest {
+	return []RemoteAccessVpnGatewayTypeOfCreateRemoteAccessVpnGatewayRequest{
+		"small",
+		"medium",
+		"large",
+	}
+}
+
+type RemoteAccessVpnGatewayTypeOfModifyRemoteAccessVpnGatewayAttributeRequest string
+
+// Enum values for
+// RemoteAccessVpnGatewayTypeOfModifyRemoteAccessVpnGatewayAttributeRequest
+const (
+	RemoteAccessVpnGatewayTypeOfModifyRemoteAccessVpnGatewayAttributeRequestSmall RemoteAccessVpnGatewayTypeOfModifyRemoteAccessVpnGatewayAttributeRequest = "small"
+	RemoteAccessVpnGatewayTypeOfModifyRemoteAccessVpnGatewayAttributeRequestMedium RemoteAccessVpnGatewayTypeOfModifyRemoteAccessVpnGatewayAttributeRequest = "medium"
+	RemoteAccessVpnGatewayTypeOfModifyRemoteAccessVpnGatewayAttributeRequestLarge RemoteAccessVpnGatewayTypeOfModifyRemoteAccessVpnGatewayAttributeRequest = "large"
+)
+
+// Values returns all known values for
+// RemoteAccessVpnGatewayTypeOfModifyRemoteAccessVpnGatewayAttributeRequest. Note
+// that this can be expanded in the future, and so it is only as up to date as the
+// client. The ordering of this slice is not guaranteed to be stable across
+// updates.
+func (RemoteAccessVpnGatewayTypeOfModifyRemoteAccessVpnGatewayAttributeRequest) Values() []RemoteAccessVpnGatewayTypeOfModifyRemoteAccessVpnGatewayAttributeRequest {
+	return []RemoteAccessVpnGatewayTypeOfModifyRemoteAccessVpnGatewayAttributeRequest{
+		"small",
+		"medium",
+		"large",
+	}
+}
+
 type ResourceOfScalingTriggerForNiftyCreateAutoScalingGroup string
 
 // Enum values for ResourceOfScalingTriggerForNiftyCreateAutoScalingGroup
@@ -4195,10 +4296,10 @@ const (
 	TimeSlotIdOfCreateInstanceBackupRuleRequestFrom2200To2359 TimeSlotIdOfCreateInstanceBackupRuleRequest = "12"
 )
 
-// Values returns all known values for TimeSlotIdOfCreateInstanceBackupRuleRequest.
-// Note that this can be expanded in the future, and so it is only as up to date as
-// the client. The ordering of this slice is not guaranteed to be stable across
-// updates.
+// Values returns all known values for
+// TimeSlotIdOfCreateInstanceBackupRuleRequest. Note that this can be expanded in
+// the future, and so it is only as up to date as the client. The ordering of this
+// slice is not guaranteed to be stable across updates.
 func (TimeSlotIdOfCreateInstanceBackupRuleRequest) Values() []TimeSlotIdOfCreateInstanceBackupRuleRequest {
 	return []TimeSlotIdOfCreateInstanceBackupRuleRequest{
 		"1",

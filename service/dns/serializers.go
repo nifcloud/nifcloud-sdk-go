@@ -788,17 +788,6 @@ func awsRestxml_serializeDocumentRequestResourceRecordSet(v *types.RequestResour
 		el := value.MemberElement(root)
 		el.String(*v.XniftyComment)
 	}
-	if v.XniftyDefaultHost != nil {
-		rootAttr := []smithyxml.Attr{}
-		root := smithyxml.StartElement{
-			Name: smithyxml.Name{
-				Local: "XniftyDefaultHost",
-			},
-			Attr: rootAttr,
-		}
-		el := value.MemberElement(root)
-		el.String(*v.XniftyDefaultHost)
-	}
 	return nil
 }
 

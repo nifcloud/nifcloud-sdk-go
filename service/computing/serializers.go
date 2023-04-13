@@ -1553,6 +1553,134 @@ func (m *awsEc2query_serializeOpCreateNetworkInterface) HandleSerialize(ctx cont
 	return next.HandleSerialize(ctx, in)
 }
 
+type awsEc2query_serializeOpCreateRemoteAccessVpnGateway struct {
+}
+
+func (*awsEc2query_serializeOpCreateRemoteAccessVpnGateway) ID() string {
+	return "OperationSerializer"
+}
+
+func (m *awsEc2query_serializeOpCreateRemoteAccessVpnGateway) HandleSerialize(ctx context.Context, in middleware.SerializeInput, next middleware.SerializeHandler) (
+	out middleware.SerializeOutput, metadata middleware.Metadata, err error,
+) {
+	request, ok := in.Request.(*smithyhttp.Request)
+	if !ok {
+		return out, metadata, &smithy.SerializationError{Err: fmt.Errorf("unknown transport type %T", in.Request)}
+	}
+
+	input, ok := in.Parameters.(*CreateRemoteAccessVpnGatewayInput)
+	_ = input
+	if !ok {
+		return out, metadata, &smithy.SerializationError{Err: fmt.Errorf("unknown input parameters type %T", in.Parameters)}
+	}
+
+	operationPath := "/api/"
+	if len(request.Request.URL.Path) == 0 {
+		request.Request.URL.Path = operationPath
+	} else {
+		request.Request.URL.Path = path.Join(request.Request.URL.Path, operationPath)
+		if request.Request.URL.Path != "/" && operationPath[len(operationPath)-1] == '/' {
+			request.Request.URL.Path += "/"
+		}
+	}
+	request.Request.Method = "POST"
+	httpBindingEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	if err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+	httpBindingEncoder.SetHeader("Content-Type").String("application/x-www-form-urlencoded")
+
+	bodyWriter := bytes.NewBuffer(nil)
+	bodyEncoder := query.NewEncoder(bodyWriter)
+	body := bodyEncoder.Object()
+	body.Key("Action").String("CreateRemoteAccessVpnGateway")
+	body.Key("Version").String("3.0")
+
+	if err := awsEc2query_serializeOpDocumentCreateRemoteAccessVpnGatewayInput(input, bodyEncoder.Value); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	err = bodyEncoder.Encode()
+	if err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	if request, err = request.SetStream(bytes.NewReader(bodyWriter.Bytes())); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	if request.Request, err = httpBindingEncoder.Encode(request.Request); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+	in.Request = request
+
+	return next.HandleSerialize(ctx, in)
+}
+
+type awsEc2query_serializeOpCreateRemoteAccessVpnGatewayUsers struct {
+}
+
+func (*awsEc2query_serializeOpCreateRemoteAccessVpnGatewayUsers) ID() string {
+	return "OperationSerializer"
+}
+
+func (m *awsEc2query_serializeOpCreateRemoteAccessVpnGatewayUsers) HandleSerialize(ctx context.Context, in middleware.SerializeInput, next middleware.SerializeHandler) (
+	out middleware.SerializeOutput, metadata middleware.Metadata, err error,
+) {
+	request, ok := in.Request.(*smithyhttp.Request)
+	if !ok {
+		return out, metadata, &smithy.SerializationError{Err: fmt.Errorf("unknown transport type %T", in.Request)}
+	}
+
+	input, ok := in.Parameters.(*CreateRemoteAccessVpnGatewayUsersInput)
+	_ = input
+	if !ok {
+		return out, metadata, &smithy.SerializationError{Err: fmt.Errorf("unknown input parameters type %T", in.Parameters)}
+	}
+
+	operationPath := "/api/"
+	if len(request.Request.URL.Path) == 0 {
+		request.Request.URL.Path = operationPath
+	} else {
+		request.Request.URL.Path = path.Join(request.Request.URL.Path, operationPath)
+		if request.Request.URL.Path != "/" && operationPath[len(operationPath)-1] == '/' {
+			request.Request.URL.Path += "/"
+		}
+	}
+	request.Request.Method = "POST"
+	httpBindingEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	if err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+	httpBindingEncoder.SetHeader("Content-Type").String("application/x-www-form-urlencoded")
+
+	bodyWriter := bytes.NewBuffer(nil)
+	bodyEncoder := query.NewEncoder(bodyWriter)
+	body := bodyEncoder.Object()
+	body.Key("Action").String("CreateRemoteAccessVpnGatewayUsers")
+	body.Key("Version").String("3.0")
+
+	if err := awsEc2query_serializeOpDocumentCreateRemoteAccessVpnGatewayUsersInput(input, bodyEncoder.Value); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	err = bodyEncoder.Encode()
+	if err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	if request, err = request.SetStream(bytes.NewReader(bodyWriter.Bytes())); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	if request.Request, err = httpBindingEncoder.Encode(request.Request); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+	in.Request = request
+
+	return next.HandleSerialize(ctx, in)
+}
+
 type awsEc2query_serializeOpCreateRoute struct {
 }
 
@@ -2557,6 +2685,198 @@ func (m *awsEc2query_serializeOpDeleteNetworkInterface) HandleSerialize(ctx cont
 	body.Key("Version").String("3.0")
 
 	if err := awsEc2query_serializeOpDocumentDeleteNetworkInterfaceInput(input, bodyEncoder.Value); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	err = bodyEncoder.Encode()
+	if err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	if request, err = request.SetStream(bytes.NewReader(bodyWriter.Bytes())); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	if request.Request, err = httpBindingEncoder.Encode(request.Request); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+	in.Request = request
+
+	return next.HandleSerialize(ctx, in)
+}
+
+type awsEc2query_serializeOpDeleteRemoteAccessVpnGateway struct {
+}
+
+func (*awsEc2query_serializeOpDeleteRemoteAccessVpnGateway) ID() string {
+	return "OperationSerializer"
+}
+
+func (m *awsEc2query_serializeOpDeleteRemoteAccessVpnGateway) HandleSerialize(ctx context.Context, in middleware.SerializeInput, next middleware.SerializeHandler) (
+	out middleware.SerializeOutput, metadata middleware.Metadata, err error,
+) {
+	request, ok := in.Request.(*smithyhttp.Request)
+	if !ok {
+		return out, metadata, &smithy.SerializationError{Err: fmt.Errorf("unknown transport type %T", in.Request)}
+	}
+
+	input, ok := in.Parameters.(*DeleteRemoteAccessVpnGatewayInput)
+	_ = input
+	if !ok {
+		return out, metadata, &smithy.SerializationError{Err: fmt.Errorf("unknown input parameters type %T", in.Parameters)}
+	}
+
+	operationPath := "/api/"
+	if len(request.Request.URL.Path) == 0 {
+		request.Request.URL.Path = operationPath
+	} else {
+		request.Request.URL.Path = path.Join(request.Request.URL.Path, operationPath)
+		if request.Request.URL.Path != "/" && operationPath[len(operationPath)-1] == '/' {
+			request.Request.URL.Path += "/"
+		}
+	}
+	request.Request.Method = "POST"
+	httpBindingEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	if err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+	httpBindingEncoder.SetHeader("Content-Type").String("application/x-www-form-urlencoded")
+
+	bodyWriter := bytes.NewBuffer(nil)
+	bodyEncoder := query.NewEncoder(bodyWriter)
+	body := bodyEncoder.Object()
+	body.Key("Action").String("DeleteRemoteAccessVpnGateway")
+	body.Key("Version").String("3.0")
+
+	if err := awsEc2query_serializeOpDocumentDeleteRemoteAccessVpnGatewayInput(input, bodyEncoder.Value); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	err = bodyEncoder.Encode()
+	if err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	if request, err = request.SetStream(bytes.NewReader(bodyWriter.Bytes())); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	if request.Request, err = httpBindingEncoder.Encode(request.Request); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+	in.Request = request
+
+	return next.HandleSerialize(ctx, in)
+}
+
+type awsEc2query_serializeOpDeleteRemoteAccessVpnGatewayConnections struct {
+}
+
+func (*awsEc2query_serializeOpDeleteRemoteAccessVpnGatewayConnections) ID() string {
+	return "OperationSerializer"
+}
+
+func (m *awsEc2query_serializeOpDeleteRemoteAccessVpnGatewayConnections) HandleSerialize(ctx context.Context, in middleware.SerializeInput, next middleware.SerializeHandler) (
+	out middleware.SerializeOutput, metadata middleware.Metadata, err error,
+) {
+	request, ok := in.Request.(*smithyhttp.Request)
+	if !ok {
+		return out, metadata, &smithy.SerializationError{Err: fmt.Errorf("unknown transport type %T", in.Request)}
+	}
+
+	input, ok := in.Parameters.(*DeleteRemoteAccessVpnGatewayConnectionsInput)
+	_ = input
+	if !ok {
+		return out, metadata, &smithy.SerializationError{Err: fmt.Errorf("unknown input parameters type %T", in.Parameters)}
+	}
+
+	operationPath := "/api/"
+	if len(request.Request.URL.Path) == 0 {
+		request.Request.URL.Path = operationPath
+	} else {
+		request.Request.URL.Path = path.Join(request.Request.URL.Path, operationPath)
+		if request.Request.URL.Path != "/" && operationPath[len(operationPath)-1] == '/' {
+			request.Request.URL.Path += "/"
+		}
+	}
+	request.Request.Method = "POST"
+	httpBindingEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	if err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+	httpBindingEncoder.SetHeader("Content-Type").String("application/x-www-form-urlencoded")
+
+	bodyWriter := bytes.NewBuffer(nil)
+	bodyEncoder := query.NewEncoder(bodyWriter)
+	body := bodyEncoder.Object()
+	body.Key("Action").String("DeleteRemoteAccessVpnGatewayConnections")
+	body.Key("Version").String("3.0")
+
+	if err := awsEc2query_serializeOpDocumentDeleteRemoteAccessVpnGatewayConnectionsInput(input, bodyEncoder.Value); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	err = bodyEncoder.Encode()
+	if err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	if request, err = request.SetStream(bytes.NewReader(bodyWriter.Bytes())); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	if request.Request, err = httpBindingEncoder.Encode(request.Request); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+	in.Request = request
+
+	return next.HandleSerialize(ctx, in)
+}
+
+type awsEc2query_serializeOpDeleteRemoteAccessVpnGatewayUsers struct {
+}
+
+func (*awsEc2query_serializeOpDeleteRemoteAccessVpnGatewayUsers) ID() string {
+	return "OperationSerializer"
+}
+
+func (m *awsEc2query_serializeOpDeleteRemoteAccessVpnGatewayUsers) HandleSerialize(ctx context.Context, in middleware.SerializeInput, next middleware.SerializeHandler) (
+	out middleware.SerializeOutput, metadata middleware.Metadata, err error,
+) {
+	request, ok := in.Request.(*smithyhttp.Request)
+	if !ok {
+		return out, metadata, &smithy.SerializationError{Err: fmt.Errorf("unknown transport type %T", in.Request)}
+	}
+
+	input, ok := in.Parameters.(*DeleteRemoteAccessVpnGatewayUsersInput)
+	_ = input
+	if !ok {
+		return out, metadata, &smithy.SerializationError{Err: fmt.Errorf("unknown input parameters type %T", in.Parameters)}
+	}
+
+	operationPath := "/api/"
+	if len(request.Request.URL.Path) == 0 {
+		request.Request.URL.Path = operationPath
+	} else {
+		request.Request.URL.Path = path.Join(request.Request.URL.Path, operationPath)
+		if request.Request.URL.Path != "/" && operationPath[len(operationPath)-1] == '/' {
+			request.Request.URL.Path += "/"
+		}
+	}
+	request.Request.Method = "POST"
+	httpBindingEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	if err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+	httpBindingEncoder.SetHeader("Content-Type").String("application/x-www-form-urlencoded")
+
+	bodyWriter := bytes.NewBuffer(nil)
+	bodyEncoder := query.NewEncoder(bodyWriter)
+	body := bodyEncoder.Object()
+	body.Key("Action").String("DeleteRemoteAccessVpnGatewayUsers")
+	body.Key("Version").String("3.0")
+
+	if err := awsEc2query_serializeOpDocumentDeleteRemoteAccessVpnGatewayUsersInput(input, bodyEncoder.Value); err != nil {
 		return out, metadata, &smithy.SerializationError{Err: err}
 	}
 
@@ -4221,6 +4541,262 @@ func (m *awsEc2query_serializeOpDescribeRegions) HandleSerialize(ctx context.Con
 	body.Key("Version").String("3.0")
 
 	if err := awsEc2query_serializeOpDocumentDescribeRegionsInput(input, bodyEncoder.Value); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	err = bodyEncoder.Encode()
+	if err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	if request, err = request.SetStream(bytes.NewReader(bodyWriter.Bytes())); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	if request.Request, err = httpBindingEncoder.Encode(request.Request); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+	in.Request = request
+
+	return next.HandleSerialize(ctx, in)
+}
+
+type awsEc2query_serializeOpDescribeRemoteAccessVpnGatewayActivities struct {
+}
+
+func (*awsEc2query_serializeOpDescribeRemoteAccessVpnGatewayActivities) ID() string {
+	return "OperationSerializer"
+}
+
+func (m *awsEc2query_serializeOpDescribeRemoteAccessVpnGatewayActivities) HandleSerialize(ctx context.Context, in middleware.SerializeInput, next middleware.SerializeHandler) (
+	out middleware.SerializeOutput, metadata middleware.Metadata, err error,
+) {
+	request, ok := in.Request.(*smithyhttp.Request)
+	if !ok {
+		return out, metadata, &smithy.SerializationError{Err: fmt.Errorf("unknown transport type %T", in.Request)}
+	}
+
+	input, ok := in.Parameters.(*DescribeRemoteAccessVpnGatewayActivitiesInput)
+	_ = input
+	if !ok {
+		return out, metadata, &smithy.SerializationError{Err: fmt.Errorf("unknown input parameters type %T", in.Parameters)}
+	}
+
+	operationPath := "/api/"
+	if len(request.Request.URL.Path) == 0 {
+		request.Request.URL.Path = operationPath
+	} else {
+		request.Request.URL.Path = path.Join(request.Request.URL.Path, operationPath)
+		if request.Request.URL.Path != "/" && operationPath[len(operationPath)-1] == '/' {
+			request.Request.URL.Path += "/"
+		}
+	}
+	request.Request.Method = "POST"
+	httpBindingEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	if err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+	httpBindingEncoder.SetHeader("Content-Type").String("application/x-www-form-urlencoded")
+
+	bodyWriter := bytes.NewBuffer(nil)
+	bodyEncoder := query.NewEncoder(bodyWriter)
+	body := bodyEncoder.Object()
+	body.Key("Action").String("DescribeRemoteAccessVpnGatewayActivities")
+	body.Key("Version").String("3.0")
+
+	if err := awsEc2query_serializeOpDocumentDescribeRemoteAccessVpnGatewayActivitiesInput(input, bodyEncoder.Value); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	err = bodyEncoder.Encode()
+	if err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	if request, err = request.SetStream(bytes.NewReader(bodyWriter.Bytes())); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	if request.Request, err = httpBindingEncoder.Encode(request.Request); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+	in.Request = request
+
+	return next.HandleSerialize(ctx, in)
+}
+
+type awsEc2query_serializeOpDescribeRemoteAccessVpnGatewayClientConfig struct {
+}
+
+func (*awsEc2query_serializeOpDescribeRemoteAccessVpnGatewayClientConfig) ID() string {
+	return "OperationSerializer"
+}
+
+func (m *awsEc2query_serializeOpDescribeRemoteAccessVpnGatewayClientConfig) HandleSerialize(ctx context.Context, in middleware.SerializeInput, next middleware.SerializeHandler) (
+	out middleware.SerializeOutput, metadata middleware.Metadata, err error,
+) {
+	request, ok := in.Request.(*smithyhttp.Request)
+	if !ok {
+		return out, metadata, &smithy.SerializationError{Err: fmt.Errorf("unknown transport type %T", in.Request)}
+	}
+
+	input, ok := in.Parameters.(*DescribeRemoteAccessVpnGatewayClientConfigInput)
+	_ = input
+	if !ok {
+		return out, metadata, &smithy.SerializationError{Err: fmt.Errorf("unknown input parameters type %T", in.Parameters)}
+	}
+
+	operationPath := "/api/"
+	if len(request.Request.URL.Path) == 0 {
+		request.Request.URL.Path = operationPath
+	} else {
+		request.Request.URL.Path = path.Join(request.Request.URL.Path, operationPath)
+		if request.Request.URL.Path != "/" && operationPath[len(operationPath)-1] == '/' {
+			request.Request.URL.Path += "/"
+		}
+	}
+	request.Request.Method = "POST"
+	httpBindingEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	if err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+	httpBindingEncoder.SetHeader("Content-Type").String("application/x-www-form-urlencoded")
+
+	bodyWriter := bytes.NewBuffer(nil)
+	bodyEncoder := query.NewEncoder(bodyWriter)
+	body := bodyEncoder.Object()
+	body.Key("Action").String("DescribeRemoteAccessVpnGatewayClientConfig")
+	body.Key("Version").String("3.0")
+
+	if err := awsEc2query_serializeOpDocumentDescribeRemoteAccessVpnGatewayClientConfigInput(input, bodyEncoder.Value); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	err = bodyEncoder.Encode()
+	if err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	if request, err = request.SetStream(bytes.NewReader(bodyWriter.Bytes())); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	if request.Request, err = httpBindingEncoder.Encode(request.Request); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+	in.Request = request
+
+	return next.HandleSerialize(ctx, in)
+}
+
+type awsEc2query_serializeOpDescribeRemoteAccessVpnGatewayConnections struct {
+}
+
+func (*awsEc2query_serializeOpDescribeRemoteAccessVpnGatewayConnections) ID() string {
+	return "OperationSerializer"
+}
+
+func (m *awsEc2query_serializeOpDescribeRemoteAccessVpnGatewayConnections) HandleSerialize(ctx context.Context, in middleware.SerializeInput, next middleware.SerializeHandler) (
+	out middleware.SerializeOutput, metadata middleware.Metadata, err error,
+) {
+	request, ok := in.Request.(*smithyhttp.Request)
+	if !ok {
+		return out, metadata, &smithy.SerializationError{Err: fmt.Errorf("unknown transport type %T", in.Request)}
+	}
+
+	input, ok := in.Parameters.(*DescribeRemoteAccessVpnGatewayConnectionsInput)
+	_ = input
+	if !ok {
+		return out, metadata, &smithy.SerializationError{Err: fmt.Errorf("unknown input parameters type %T", in.Parameters)}
+	}
+
+	operationPath := "/api/"
+	if len(request.Request.URL.Path) == 0 {
+		request.Request.URL.Path = operationPath
+	} else {
+		request.Request.URL.Path = path.Join(request.Request.URL.Path, operationPath)
+		if request.Request.URL.Path != "/" && operationPath[len(operationPath)-1] == '/' {
+			request.Request.URL.Path += "/"
+		}
+	}
+	request.Request.Method = "POST"
+	httpBindingEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	if err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+	httpBindingEncoder.SetHeader("Content-Type").String("application/x-www-form-urlencoded")
+
+	bodyWriter := bytes.NewBuffer(nil)
+	bodyEncoder := query.NewEncoder(bodyWriter)
+	body := bodyEncoder.Object()
+	body.Key("Action").String("DescribeRemoteAccessVpnGatewayConnections")
+	body.Key("Version").String("3.0")
+
+	if err := awsEc2query_serializeOpDocumentDescribeRemoteAccessVpnGatewayConnectionsInput(input, bodyEncoder.Value); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	err = bodyEncoder.Encode()
+	if err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	if request, err = request.SetStream(bytes.NewReader(bodyWriter.Bytes())); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	if request.Request, err = httpBindingEncoder.Encode(request.Request); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+	in.Request = request
+
+	return next.HandleSerialize(ctx, in)
+}
+
+type awsEc2query_serializeOpDescribeRemoteAccessVpnGateways struct {
+}
+
+func (*awsEc2query_serializeOpDescribeRemoteAccessVpnGateways) ID() string {
+	return "OperationSerializer"
+}
+
+func (m *awsEc2query_serializeOpDescribeRemoteAccessVpnGateways) HandleSerialize(ctx context.Context, in middleware.SerializeInput, next middleware.SerializeHandler) (
+	out middleware.SerializeOutput, metadata middleware.Metadata, err error,
+) {
+	request, ok := in.Request.(*smithyhttp.Request)
+	if !ok {
+		return out, metadata, &smithy.SerializationError{Err: fmt.Errorf("unknown transport type %T", in.Request)}
+	}
+
+	input, ok := in.Parameters.(*DescribeRemoteAccessVpnGatewaysInput)
+	_ = input
+	if !ok {
+		return out, metadata, &smithy.SerializationError{Err: fmt.Errorf("unknown input parameters type %T", in.Parameters)}
+	}
+
+	operationPath := "/api/"
+	if len(request.Request.URL.Path) == 0 {
+		request.Request.URL.Path = operationPath
+	} else {
+		request.Request.URL.Path = path.Join(request.Request.URL.Path, operationPath)
+		if request.Request.URL.Path != "/" && operationPath[len(operationPath)-1] == '/' {
+			request.Request.URL.Path += "/"
+		}
+	}
+	request.Request.Method = "POST"
+	httpBindingEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	if err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+	httpBindingEncoder.SetHeader("Content-Type").String("application/x-www-form-urlencoded")
+
+	bodyWriter := bytes.NewBuffer(nil)
+	bodyEncoder := query.NewEncoder(bodyWriter)
+	body := bodyEncoder.Object()
+	body.Key("Action").String("DescribeRemoteAccessVpnGateways")
+	body.Key("Version").String("3.0")
+
+	if err := awsEc2query_serializeOpDocumentDescribeRemoteAccessVpnGatewaysInput(input, bodyEncoder.Value); err != nil {
 		return out, metadata, &smithy.SerializationError{Err: err}
 	}
 
@@ -6137,6 +6713,134 @@ func (m *awsEc2query_serializeOpModifyNetworkInterfaceAttribute) HandleSerialize
 	body.Key("Version").String("3.0")
 
 	if err := awsEc2query_serializeOpDocumentModifyNetworkInterfaceAttributeInput(input, bodyEncoder.Value); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	err = bodyEncoder.Encode()
+	if err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	if request, err = request.SetStream(bytes.NewReader(bodyWriter.Bytes())); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	if request.Request, err = httpBindingEncoder.Encode(request.Request); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+	in.Request = request
+
+	return next.HandleSerialize(ctx, in)
+}
+
+type awsEc2query_serializeOpModifyRemoteAccessVpnGatewayAttribute struct {
+}
+
+func (*awsEc2query_serializeOpModifyRemoteAccessVpnGatewayAttribute) ID() string {
+	return "OperationSerializer"
+}
+
+func (m *awsEc2query_serializeOpModifyRemoteAccessVpnGatewayAttribute) HandleSerialize(ctx context.Context, in middleware.SerializeInput, next middleware.SerializeHandler) (
+	out middleware.SerializeOutput, metadata middleware.Metadata, err error,
+) {
+	request, ok := in.Request.(*smithyhttp.Request)
+	if !ok {
+		return out, metadata, &smithy.SerializationError{Err: fmt.Errorf("unknown transport type %T", in.Request)}
+	}
+
+	input, ok := in.Parameters.(*ModifyRemoteAccessVpnGatewayAttributeInput)
+	_ = input
+	if !ok {
+		return out, metadata, &smithy.SerializationError{Err: fmt.Errorf("unknown input parameters type %T", in.Parameters)}
+	}
+
+	operationPath := "/api/"
+	if len(request.Request.URL.Path) == 0 {
+		request.Request.URL.Path = operationPath
+	} else {
+		request.Request.URL.Path = path.Join(request.Request.URL.Path, operationPath)
+		if request.Request.URL.Path != "/" && operationPath[len(operationPath)-1] == '/' {
+			request.Request.URL.Path += "/"
+		}
+	}
+	request.Request.Method = "POST"
+	httpBindingEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	if err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+	httpBindingEncoder.SetHeader("Content-Type").String("application/x-www-form-urlencoded")
+
+	bodyWriter := bytes.NewBuffer(nil)
+	bodyEncoder := query.NewEncoder(bodyWriter)
+	body := bodyEncoder.Object()
+	body.Key("Action").String("ModifyRemoteAccessVpnGatewayAttribute")
+	body.Key("Version").String("3.0")
+
+	if err := awsEc2query_serializeOpDocumentModifyRemoteAccessVpnGatewayAttributeInput(input, bodyEncoder.Value); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	err = bodyEncoder.Encode()
+	if err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	if request, err = request.SetStream(bytes.NewReader(bodyWriter.Bytes())); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	if request.Request, err = httpBindingEncoder.Encode(request.Request); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+	in.Request = request
+
+	return next.HandleSerialize(ctx, in)
+}
+
+type awsEc2query_serializeOpModifyRemoteAccessVpnGatewayUserAttribute struct {
+}
+
+func (*awsEc2query_serializeOpModifyRemoteAccessVpnGatewayUserAttribute) ID() string {
+	return "OperationSerializer"
+}
+
+func (m *awsEc2query_serializeOpModifyRemoteAccessVpnGatewayUserAttribute) HandleSerialize(ctx context.Context, in middleware.SerializeInput, next middleware.SerializeHandler) (
+	out middleware.SerializeOutput, metadata middleware.Metadata, err error,
+) {
+	request, ok := in.Request.(*smithyhttp.Request)
+	if !ok {
+		return out, metadata, &smithy.SerializationError{Err: fmt.Errorf("unknown transport type %T", in.Request)}
+	}
+
+	input, ok := in.Parameters.(*ModifyRemoteAccessVpnGatewayUserAttributeInput)
+	_ = input
+	if !ok {
+		return out, metadata, &smithy.SerializationError{Err: fmt.Errorf("unknown input parameters type %T", in.Parameters)}
+	}
+
+	operationPath := "/api/"
+	if len(request.Request.URL.Path) == 0 {
+		request.Request.URL.Path = operationPath
+	} else {
+		request.Request.URL.Path = path.Join(request.Request.URL.Path, operationPath)
+		if request.Request.URL.Path != "/" && operationPath[len(operationPath)-1] == '/' {
+			request.Request.URL.Path += "/"
+		}
+	}
+	request.Request.Method = "POST"
+	httpBindingEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	if err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+	httpBindingEncoder.SetHeader("Content-Type").String("application/x-www-form-urlencoded")
+
+	bodyWriter := bytes.NewBuffer(nil)
+	bodyEncoder := query.NewEncoder(bodyWriter)
+	body := bodyEncoder.Object()
+	body.Key("Action").String("ModifyRemoteAccessVpnGatewayUserAttribute")
+	body.Key("Version").String("3.0")
+
+	if err := awsEc2query_serializeOpDocumentModifyRemoteAccessVpnGatewayUserAttributeInput(input, bodyEncoder.Value); err != nil {
 		return out, metadata, &smithy.SerializationError{Err: err}
 	}
 
@@ -12801,6 +13505,70 @@ func (m *awsEc2query_serializeOpRebootInstances) HandleSerialize(ctx context.Con
 	return next.HandleSerialize(ctx, in)
 }
 
+type awsEc2query_serializeOpRebootRemoteAccessVpnGateway struct {
+}
+
+func (*awsEc2query_serializeOpRebootRemoteAccessVpnGateway) ID() string {
+	return "OperationSerializer"
+}
+
+func (m *awsEc2query_serializeOpRebootRemoteAccessVpnGateway) HandleSerialize(ctx context.Context, in middleware.SerializeInput, next middleware.SerializeHandler) (
+	out middleware.SerializeOutput, metadata middleware.Metadata, err error,
+) {
+	request, ok := in.Request.(*smithyhttp.Request)
+	if !ok {
+		return out, metadata, &smithy.SerializationError{Err: fmt.Errorf("unknown transport type %T", in.Request)}
+	}
+
+	input, ok := in.Parameters.(*RebootRemoteAccessVpnGatewayInput)
+	_ = input
+	if !ok {
+		return out, metadata, &smithy.SerializationError{Err: fmt.Errorf("unknown input parameters type %T", in.Parameters)}
+	}
+
+	operationPath := "/api/"
+	if len(request.Request.URL.Path) == 0 {
+		request.Request.URL.Path = operationPath
+	} else {
+		request.Request.URL.Path = path.Join(request.Request.URL.Path, operationPath)
+		if request.Request.URL.Path != "/" && operationPath[len(operationPath)-1] == '/' {
+			request.Request.URL.Path += "/"
+		}
+	}
+	request.Request.Method = "POST"
+	httpBindingEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	if err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+	httpBindingEncoder.SetHeader("Content-Type").String("application/x-www-form-urlencoded")
+
+	bodyWriter := bytes.NewBuffer(nil)
+	bodyEncoder := query.NewEncoder(bodyWriter)
+	body := bodyEncoder.Object()
+	body.Key("Action").String("RebootRemoteAccessVpnGateway")
+	body.Key("Version").String("3.0")
+
+	if err := awsEc2query_serializeOpDocumentRebootRemoteAccessVpnGatewayInput(input, bodyEncoder.Value); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	err = bodyEncoder.Encode()
+	if err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	if request, err = request.SetStream(bytes.NewReader(bodyWriter.Bytes())); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	if request.Request, err = httpBindingEncoder.Encode(request.Request); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+	in.Request = request
+
+	return next.HandleSerialize(ctx, in)
+}
+
 type awsEc2query_serializeOpRefreshInstanceBackupRule struct {
 }
 
@@ -13249,6 +14017,70 @@ func (m *awsEc2query_serializeOpReleaseMultiIpAddresses) HandleSerialize(ctx con
 	return next.HandleSerialize(ctx, in)
 }
 
+type awsEc2query_serializeOpReplaceRemoteAccessVpnGatewayLatestVersion struct {
+}
+
+func (*awsEc2query_serializeOpReplaceRemoteAccessVpnGatewayLatestVersion) ID() string {
+	return "OperationSerializer"
+}
+
+func (m *awsEc2query_serializeOpReplaceRemoteAccessVpnGatewayLatestVersion) HandleSerialize(ctx context.Context, in middleware.SerializeInput, next middleware.SerializeHandler) (
+	out middleware.SerializeOutput, metadata middleware.Metadata, err error,
+) {
+	request, ok := in.Request.(*smithyhttp.Request)
+	if !ok {
+		return out, metadata, &smithy.SerializationError{Err: fmt.Errorf("unknown transport type %T", in.Request)}
+	}
+
+	input, ok := in.Parameters.(*ReplaceRemoteAccessVpnGatewayLatestVersionInput)
+	_ = input
+	if !ok {
+		return out, metadata, &smithy.SerializationError{Err: fmt.Errorf("unknown input parameters type %T", in.Parameters)}
+	}
+
+	operationPath := "/api/"
+	if len(request.Request.URL.Path) == 0 {
+		request.Request.URL.Path = operationPath
+	} else {
+		request.Request.URL.Path = path.Join(request.Request.URL.Path, operationPath)
+		if request.Request.URL.Path != "/" && operationPath[len(operationPath)-1] == '/' {
+			request.Request.URL.Path += "/"
+		}
+	}
+	request.Request.Method = "POST"
+	httpBindingEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	if err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+	httpBindingEncoder.SetHeader("Content-Type").String("application/x-www-form-urlencoded")
+
+	bodyWriter := bytes.NewBuffer(nil)
+	bodyEncoder := query.NewEncoder(bodyWriter)
+	body := bodyEncoder.Object()
+	body.Key("Action").String("ReplaceRemoteAccessVpnGatewayLatestVersion")
+	body.Key("Version").String("3.0")
+
+	if err := awsEc2query_serializeOpDocumentReplaceRemoteAccessVpnGatewayLatestVersionInput(input, bodyEncoder.Value); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	err = bodyEncoder.Encode()
+	if err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	if request, err = request.SetStream(bytes.NewReader(bodyWriter.Bytes())); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	if request.Request, err = httpBindingEncoder.Encode(request.Request); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+	in.Request = request
+
+	return next.HandleSerialize(ctx, in)
+}
+
 type awsEc2query_serializeOpReplaceRoute struct {
 }
 
@@ -13633,6 +14465,134 @@ func (m *awsEc2query_serializeOpSetLoadBalancerListenerSSLCertificate) HandleSer
 	return next.HandleSerialize(ctx, in)
 }
 
+type awsEc2query_serializeOpSetRemoteAccessVpnGatewayCACertificate struct {
+}
+
+func (*awsEc2query_serializeOpSetRemoteAccessVpnGatewayCACertificate) ID() string {
+	return "OperationSerializer"
+}
+
+func (m *awsEc2query_serializeOpSetRemoteAccessVpnGatewayCACertificate) HandleSerialize(ctx context.Context, in middleware.SerializeInput, next middleware.SerializeHandler) (
+	out middleware.SerializeOutput, metadata middleware.Metadata, err error,
+) {
+	request, ok := in.Request.(*smithyhttp.Request)
+	if !ok {
+		return out, metadata, &smithy.SerializationError{Err: fmt.Errorf("unknown transport type %T", in.Request)}
+	}
+
+	input, ok := in.Parameters.(*SetRemoteAccessVpnGatewayCACertificateInput)
+	_ = input
+	if !ok {
+		return out, metadata, &smithy.SerializationError{Err: fmt.Errorf("unknown input parameters type %T", in.Parameters)}
+	}
+
+	operationPath := "/api/"
+	if len(request.Request.URL.Path) == 0 {
+		request.Request.URL.Path = operationPath
+	} else {
+		request.Request.URL.Path = path.Join(request.Request.URL.Path, operationPath)
+		if request.Request.URL.Path != "/" && operationPath[len(operationPath)-1] == '/' {
+			request.Request.URL.Path += "/"
+		}
+	}
+	request.Request.Method = "POST"
+	httpBindingEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	if err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+	httpBindingEncoder.SetHeader("Content-Type").String("application/x-www-form-urlencoded")
+
+	bodyWriter := bytes.NewBuffer(nil)
+	bodyEncoder := query.NewEncoder(bodyWriter)
+	body := bodyEncoder.Object()
+	body.Key("Action").String("SetRemoteAccessVpnGatewayCACertificate")
+	body.Key("Version").String("3.0")
+
+	if err := awsEc2query_serializeOpDocumentSetRemoteAccessVpnGatewayCACertificateInput(input, bodyEncoder.Value); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	err = bodyEncoder.Encode()
+	if err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	if request, err = request.SetStream(bytes.NewReader(bodyWriter.Bytes())); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	if request.Request, err = httpBindingEncoder.Encode(request.Request); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+	in.Request = request
+
+	return next.HandleSerialize(ctx, in)
+}
+
+type awsEc2query_serializeOpSetRemoteAccessVpnGatewaySSLCertificate struct {
+}
+
+func (*awsEc2query_serializeOpSetRemoteAccessVpnGatewaySSLCertificate) ID() string {
+	return "OperationSerializer"
+}
+
+func (m *awsEc2query_serializeOpSetRemoteAccessVpnGatewaySSLCertificate) HandleSerialize(ctx context.Context, in middleware.SerializeInput, next middleware.SerializeHandler) (
+	out middleware.SerializeOutput, metadata middleware.Metadata, err error,
+) {
+	request, ok := in.Request.(*smithyhttp.Request)
+	if !ok {
+		return out, metadata, &smithy.SerializationError{Err: fmt.Errorf("unknown transport type %T", in.Request)}
+	}
+
+	input, ok := in.Parameters.(*SetRemoteAccessVpnGatewaySSLCertificateInput)
+	_ = input
+	if !ok {
+		return out, metadata, &smithy.SerializationError{Err: fmt.Errorf("unknown input parameters type %T", in.Parameters)}
+	}
+
+	operationPath := "/api/"
+	if len(request.Request.URL.Path) == 0 {
+		request.Request.URL.Path = operationPath
+	} else {
+		request.Request.URL.Path = path.Join(request.Request.URL.Path, operationPath)
+		if request.Request.URL.Path != "/" && operationPath[len(operationPath)-1] == '/' {
+			request.Request.URL.Path += "/"
+		}
+	}
+	request.Request.Method = "POST"
+	httpBindingEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	if err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+	httpBindingEncoder.SetHeader("Content-Type").String("application/x-www-form-urlencoded")
+
+	bodyWriter := bytes.NewBuffer(nil)
+	bodyEncoder := query.NewEncoder(bodyWriter)
+	body := bodyEncoder.Object()
+	body.Key("Action").String("SetRemoteAccessVpnGatewaySSLCertificate")
+	body.Key("Version").String("3.0")
+
+	if err := awsEc2query_serializeOpDocumentSetRemoteAccessVpnGatewaySSLCertificateInput(input, bodyEncoder.Value); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	err = bodyEncoder.Encode()
+	if err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	if request, err = request.SetStream(bytes.NewReader(bodyWriter.Bytes())); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	if request.Request, err = httpBindingEncoder.Encode(request.Request); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+	in.Request = request
+
+	return next.HandleSerialize(ctx, in)
+}
+
 type awsEc2query_serializeOpStartInstances struct {
 }
 
@@ -13869,6 +14829,134 @@ func (m *awsEc2query_serializeOpUnsetLoadBalancerListenerSSLCertificate) HandleS
 	body.Key("Version").String("3.0")
 
 	if err := awsEc2query_serializeOpDocumentUnsetLoadBalancerListenerSSLCertificateInput(input, bodyEncoder.Value); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	err = bodyEncoder.Encode()
+	if err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	if request, err = request.SetStream(bytes.NewReader(bodyWriter.Bytes())); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	if request.Request, err = httpBindingEncoder.Encode(request.Request); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+	in.Request = request
+
+	return next.HandleSerialize(ctx, in)
+}
+
+type awsEc2query_serializeOpUnsetRemoteAccessVpnGatewayCACertificate struct {
+}
+
+func (*awsEc2query_serializeOpUnsetRemoteAccessVpnGatewayCACertificate) ID() string {
+	return "OperationSerializer"
+}
+
+func (m *awsEc2query_serializeOpUnsetRemoteAccessVpnGatewayCACertificate) HandleSerialize(ctx context.Context, in middleware.SerializeInput, next middleware.SerializeHandler) (
+	out middleware.SerializeOutput, metadata middleware.Metadata, err error,
+) {
+	request, ok := in.Request.(*smithyhttp.Request)
+	if !ok {
+		return out, metadata, &smithy.SerializationError{Err: fmt.Errorf("unknown transport type %T", in.Request)}
+	}
+
+	input, ok := in.Parameters.(*UnsetRemoteAccessVpnGatewayCACertificateInput)
+	_ = input
+	if !ok {
+		return out, metadata, &smithy.SerializationError{Err: fmt.Errorf("unknown input parameters type %T", in.Parameters)}
+	}
+
+	operationPath := "/api/"
+	if len(request.Request.URL.Path) == 0 {
+		request.Request.URL.Path = operationPath
+	} else {
+		request.Request.URL.Path = path.Join(request.Request.URL.Path, operationPath)
+		if request.Request.URL.Path != "/" && operationPath[len(operationPath)-1] == '/' {
+			request.Request.URL.Path += "/"
+		}
+	}
+	request.Request.Method = "POST"
+	httpBindingEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	if err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+	httpBindingEncoder.SetHeader("Content-Type").String("application/x-www-form-urlencoded")
+
+	bodyWriter := bytes.NewBuffer(nil)
+	bodyEncoder := query.NewEncoder(bodyWriter)
+	body := bodyEncoder.Object()
+	body.Key("Action").String("UnsetRemoteAccessVpnGatewayCACertificate")
+	body.Key("Version").String("3.0")
+
+	if err := awsEc2query_serializeOpDocumentUnsetRemoteAccessVpnGatewayCACertificateInput(input, bodyEncoder.Value); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	err = bodyEncoder.Encode()
+	if err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	if request, err = request.SetStream(bytes.NewReader(bodyWriter.Bytes())); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	if request.Request, err = httpBindingEncoder.Encode(request.Request); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+	in.Request = request
+
+	return next.HandleSerialize(ctx, in)
+}
+
+type awsEc2query_serializeOpUnsetRemoteAccessVpnGatewaySSLCertificate struct {
+}
+
+func (*awsEc2query_serializeOpUnsetRemoteAccessVpnGatewaySSLCertificate) ID() string {
+	return "OperationSerializer"
+}
+
+func (m *awsEc2query_serializeOpUnsetRemoteAccessVpnGatewaySSLCertificate) HandleSerialize(ctx context.Context, in middleware.SerializeInput, next middleware.SerializeHandler) (
+	out middleware.SerializeOutput, metadata middleware.Metadata, err error,
+) {
+	request, ok := in.Request.(*smithyhttp.Request)
+	if !ok {
+		return out, metadata, &smithy.SerializationError{Err: fmt.Errorf("unknown transport type %T", in.Request)}
+	}
+
+	input, ok := in.Parameters.(*UnsetRemoteAccessVpnGatewaySSLCertificateInput)
+	_ = input
+	if !ok {
+		return out, metadata, &smithy.SerializationError{Err: fmt.Errorf("unknown input parameters type %T", in.Parameters)}
+	}
+
+	operationPath := "/api/"
+	if len(request.Request.URL.Path) == 0 {
+		request.Request.URL.Path = operationPath
+	} else {
+		request.Request.URL.Path = path.Join(request.Request.URL.Path, operationPath)
+		if request.Request.URL.Path != "/" && operationPath[len(operationPath)-1] == '/' {
+			request.Request.URL.Path += "/"
+		}
+	}
+	request.Request.Method = "POST"
+	httpBindingEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	if err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+	httpBindingEncoder.SetHeader("Content-Type").String("application/x-www-form-urlencoded")
+
+	bodyWriter := bytes.NewBuffer(nil)
+	bodyEncoder := query.NewEncoder(bodyWriter)
+	body := bodyEncoder.Object()
+	body.Key("Action").String("UnsetRemoteAccessVpnGatewaySSLCertificate")
+	body.Key("Version").String("3.0")
+
+	if err := awsEc2query_serializeOpDocumentUnsetRemoteAccessVpnGatewaySSLCertificateInput(input, bodyEncoder.Value); err != nil {
 		return out, metadata, &smithy.SerializationError{Err: err}
 	}
 
@@ -14306,6 +15394,28 @@ func awsEc2query_serializeDocumentListOfRequestBlockDeviceMapping(v []types.Requ
 	for i := range v {
 		av := array.Value()
 		if err := awsEc2query_serializeDocumentRequestBlockDeviceMapping(&v[i], av); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+func awsEc2query_serializeDocumentListOfRequestCipherSuite(v []string, value query.Value) error {
+	array := value.Array("Member")
+
+	for i := range v {
+		av := array.Value()
+		av.String(v[i])
+	}
+	return nil
+}
+
+func awsEc2query_serializeDocumentListOfRequestConnection(v []types.RequestConnection, value query.Value) error {
+	array := value.Array("Member")
+
+	for i := range v {
+		av := array.Value()
+		if err := awsEc2query_serializeDocumentRequestConnection(&v[i], av); err != nil {
 			return err
 		}
 	}
@@ -15308,6 +16418,18 @@ func awsEc2query_serializeDocumentListOfRequestNetworkInterfaceOfCopyFromBackupI
 	return nil
 }
 
+func awsEc2query_serializeDocumentListOfRequestNetworkInterfaceOfCreateRemoteAccessVpnGateway(v []types.RequestNetworkInterfaceOfCreateRemoteAccessVpnGateway, value query.Value) error {
+	array := value.Array("Member")
+
+	for i := range v {
+		av := array.Value()
+		if err := awsEc2query_serializeDocumentRequestNetworkInterfaceOfCreateRemoteAccessVpnGateway(&v[i], av); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
 func awsEc2query_serializeDocumentListOfRequestNetworkInterfaceOfNiftyCreateElasticLoadBalancer(v []types.RequestNetworkInterfaceOfNiftyCreateElasticLoadBalancer, value query.Value) error {
 	array := value.Array("Member")
 
@@ -15440,6 +16562,40 @@ func awsEc2query_serializeDocumentListOfRequestRegionName(v []string, value quer
 	for i := range v {
 		av := array.Value()
 		av.String(v[i])
+	}
+	return nil
+}
+
+func awsEc2query_serializeDocumentListOfRequestRemoteAccessVpnGatewayId(v []string, value query.Value) error {
+	array := value.Array("Member")
+
+	for i := range v {
+		av := array.Value()
+		av.String(v[i])
+	}
+	return nil
+}
+
+func awsEc2query_serializeDocumentListOfRequestRemoteUser(v []types.RequestRemoteUser, value query.Value) error {
+	array := value.Array("Member")
+
+	for i := range v {
+		av := array.Value()
+		if err := awsEc2query_serializeDocumentRequestRemoteUser(&v[i], av); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+func awsEc2query_serializeDocumentListOfRequestRemoteUserOfDeleteRemoteAccessVpnGatewayUsers(v []types.RequestRemoteUserOfDeleteRemoteAccessVpnGatewayUsers, value query.Value) error {
+	array := value.Array("Member")
+
+	for i := range v {
+		av := array.Value()
+		if err := awsEc2query_serializeDocumentRequestRemoteUserOfDeleteRemoteAccessVpnGatewayUsers(&v[i], av); err != nil {
+			return err
+		}
 	}
 	return nil
 }
@@ -15885,6 +17041,18 @@ func awsEc2query_serializeDocumentRequestCertInfo(v *types.RequestCertInfo, valu
 	if v.StateName != nil {
 		objectKey := object.Key("StateName")
 		objectKey.String(*v.StateName)
+	}
+
+	return nil
+}
+
+func awsEc2query_serializeDocumentRequestConnection(v *types.RequestConnection, value query.Value) error {
+	object := value.Object()
+	_ = object
+
+	if v.ConnectionId != nil {
+		objectKey := object.Key("ConnectionId")
+		objectKey.String(*v.ConnectionId)
 	}
 
 	return nil
@@ -17351,6 +18519,23 @@ func awsEc2query_serializeDocumentRequestNetworkInterfaceOfCopyFromBackupInstanc
 	return nil
 }
 
+func awsEc2query_serializeDocumentRequestNetworkInterfaceOfCreateRemoteAccessVpnGateway(v *types.RequestNetworkInterfaceOfCreateRemoteAccessVpnGateway, value query.Value) error {
+	object := value.Object()
+	_ = object
+
+	if v.IpAddress != nil {
+		objectKey := object.Key("IpAddress")
+		objectKey.String(*v.IpAddress)
+	}
+
+	if v.NetworkId != nil {
+		objectKey := object.Key("NetworkId")
+		objectKey.String(*v.NetworkId)
+	}
+
+	return nil
+}
+
 func awsEc2query_serializeDocumentRequestNetworkInterfaceOfNiftyCreateElasticLoadBalancer(v *types.RequestNetworkInterfaceOfNiftyCreateElasticLoadBalancer, value query.Value) error {
 	object := value.Object()
 	_ = object
@@ -17720,6 +18905,18 @@ func awsEc2query_serializeDocumentRequestPlacementOfCreateNetworkInterface(v *ty
 	return nil
 }
 
+func awsEc2query_serializeDocumentRequestPlacementOfCreateRemoteAccessVpnGateway(v *types.RequestPlacementOfCreateRemoteAccessVpnGateway, value query.Value) error {
+	object := value.Object()
+	_ = object
+
+	if v.AvailabilityZone != nil {
+		objectKey := object.Key("AvailabilityZone")
+		objectKey.String(*v.AvailabilityZone)
+	}
+
+	return nil
+}
+
 func awsEc2query_serializeDocumentRequestPlacementOfCreateSecurityGroup(v *types.RequestPlacementOfCreateSecurityGroup, value query.Value) error {
 	object := value.Object()
 	_ = object
@@ -17802,6 +18999,40 @@ func awsEc2query_serializeDocumentRequestRangeOfDescribeUserActivities(v *types.
 	if v.StartNumber != nil {
 		objectKey := object.Key("StartNumber")
 		objectKey.Integer(*v.StartNumber)
+	}
+
+	return nil
+}
+
+func awsEc2query_serializeDocumentRequestRemoteUser(v *types.RequestRemoteUser, value query.Value) error {
+	object := value.Object()
+	_ = object
+
+	if v.Description != nil {
+		objectKey := object.Key("Description")
+		objectKey.String(*v.Description)
+	}
+
+	if v.Password != nil {
+		objectKey := object.Key("Password")
+		objectKey.String(*v.Password)
+	}
+
+	if v.UserName != nil {
+		objectKey := object.Key("UserName")
+		objectKey.String(*v.UserName)
+	}
+
+	return nil
+}
+
+func awsEc2query_serializeDocumentRequestRemoteUserOfDeleteRemoteAccessVpnGatewayUsers(v *types.RequestRemoteUserOfDeleteRemoteAccessVpnGatewayUsers, value query.Value) error {
+	object := value.Object()
+	_ = object
+
+	if v.UserName != nil {
+		objectKey := object.Key("UserName")
+		objectKey.String(*v.UserName)
 	}
 
 	return nil
@@ -19083,6 +20314,88 @@ func awsEc2query_serializeOpDocumentCreateNetworkInterfaceInput(v *CreateNetwork
 	return nil
 }
 
+func awsEc2query_serializeOpDocumentCreateRemoteAccessVpnGatewayInput(v *CreateRemoteAccessVpnGatewayInput, value query.Value) error {
+	object := value.Object()
+	_ = object
+
+	if v.AccountingType != nil {
+		objectKey := object.Key("AccountingType")
+		objectKey.Integer(*v.AccountingType)
+	}
+
+	if v.CACertificateId != nil {
+		objectKey := object.Key("CACertificateId")
+		objectKey.String(*v.CACertificateId)
+	}
+
+	if v.CipherSuite != nil {
+		objectKey := object.FlatKey("CipherSuite")
+		if err := awsEc2query_serializeDocumentListOfRequestCipherSuite(v.CipherSuite, objectKey); err != nil {
+			return err
+		}
+	}
+
+	if v.Description != nil {
+		objectKey := object.Key("Description")
+		objectKey.String(*v.Description)
+	}
+
+	if v.NetworkInterface != nil {
+		objectKey := object.FlatKey("NetworkInterface")
+		if err := awsEc2query_serializeDocumentListOfRequestNetworkInterfaceOfCreateRemoteAccessVpnGateway(v.NetworkInterface, objectKey); err != nil {
+			return err
+		}
+	}
+
+	if v.Placement != nil {
+		objectKey := object.Key("Placement")
+		if err := awsEc2query_serializeDocumentRequestPlacementOfCreateRemoteAccessVpnGateway(v.Placement, objectKey); err != nil {
+			return err
+		}
+	}
+
+	if v.PoolNetworkCidr != nil {
+		objectKey := object.Key("PoolNetworkCidr")
+		objectKey.String(*v.PoolNetworkCidr)
+	}
+
+	if v.RemoteAccessVpnGatewayName != nil {
+		objectKey := object.Key("RemoteAccessVpnGatewayName")
+		objectKey.String(*v.RemoteAccessVpnGatewayName)
+	}
+
+	if len(v.RemoteAccessVpnGatewayType) > 0 {
+		objectKey := object.Key("RemoteAccessVpnGatewayType")
+		objectKey.String(string(v.RemoteAccessVpnGatewayType))
+	}
+
+	if v.SSLCertificateId != nil {
+		objectKey := object.Key("SSLCertificateId")
+		objectKey.String(*v.SSLCertificateId)
+	}
+
+	return nil
+}
+
+func awsEc2query_serializeOpDocumentCreateRemoteAccessVpnGatewayUsersInput(v *CreateRemoteAccessVpnGatewayUsersInput, value query.Value) error {
+	object := value.Object()
+	_ = object
+
+	if v.RemoteAccessVpnGatewayId != nil {
+		objectKey := object.Key("RemoteAccessVpnGatewayId")
+		objectKey.String(*v.RemoteAccessVpnGatewayId)
+	}
+
+	if v.RemoteUser != nil {
+		objectKey := object.FlatKey("RemoteUser")
+		if err := awsEc2query_serializeDocumentListOfRequestRemoteUser(v.RemoteUser, objectKey); err != nil {
+			return err
+		}
+	}
+
+	return nil
+}
+
 func awsEc2query_serializeOpDocumentCreateRouteInput(v *CreateRouteInput, value query.Value) error {
 	object := value.Object()
 	_ = object
@@ -19499,6 +20812,56 @@ func awsEc2query_serializeOpDocumentDeleteNetworkInterfaceInput(v *DeleteNetwork
 	if v.NetworkInterfaceId != nil {
 		objectKey := object.Key("NetworkInterfaceId")
 		objectKey.String(*v.NetworkInterfaceId)
+	}
+
+	return nil
+}
+
+func awsEc2query_serializeOpDocumentDeleteRemoteAccessVpnGatewayConnectionsInput(v *DeleteRemoteAccessVpnGatewayConnectionsInput, value query.Value) error {
+	object := value.Object()
+	_ = object
+
+	if v.Connection != nil {
+		objectKey := object.FlatKey("Connection")
+		if err := awsEc2query_serializeDocumentListOfRequestConnection(v.Connection, objectKey); err != nil {
+			return err
+		}
+	}
+
+	if v.RemoteAccessVpnGatewayId != nil {
+		objectKey := object.Key("RemoteAccessVpnGatewayId")
+		objectKey.String(*v.RemoteAccessVpnGatewayId)
+	}
+
+	return nil
+}
+
+func awsEc2query_serializeOpDocumentDeleteRemoteAccessVpnGatewayInput(v *DeleteRemoteAccessVpnGatewayInput, value query.Value) error {
+	object := value.Object()
+	_ = object
+
+	if v.RemoteAccessVpnGatewayId != nil {
+		objectKey := object.Key("RemoteAccessVpnGatewayId")
+		objectKey.String(*v.RemoteAccessVpnGatewayId)
+	}
+
+	return nil
+}
+
+func awsEc2query_serializeOpDocumentDeleteRemoteAccessVpnGatewayUsersInput(v *DeleteRemoteAccessVpnGatewayUsersInput, value query.Value) error {
+	object := value.Object()
+	_ = object
+
+	if v.RemoteAccessVpnGatewayId != nil {
+		objectKey := object.Key("RemoteAccessVpnGatewayId")
+		objectKey.String(*v.RemoteAccessVpnGatewayId)
+	}
+
+	if v.RemoteUser != nil {
+		objectKey := object.FlatKey("RemoteUser")
+		if err := awsEc2query_serializeDocumentListOfRequestRemoteUserOfDeleteRemoteAccessVpnGatewayUsers(v.RemoteUser, objectKey); err != nil {
+			return err
+		}
 	}
 
 	return nil
@@ -20005,6 +21368,56 @@ func awsEc2query_serializeOpDocumentDescribeRegionsInput(v *DescribeRegionsInput
 	if v.RegionName != nil {
 		objectKey := object.FlatKey("RegionName")
 		if err := awsEc2query_serializeDocumentListOfRequestRegionName(v.RegionName, objectKey); err != nil {
+			return err
+		}
+	}
+
+	return nil
+}
+
+func awsEc2query_serializeOpDocumentDescribeRemoteAccessVpnGatewayActivitiesInput(v *DescribeRemoteAccessVpnGatewayActivitiesInput, value query.Value) error {
+	object := value.Object()
+	_ = object
+
+	if v.RemoteAccessVpnGatewayId != nil {
+		objectKey := object.Key("RemoteAccessVpnGatewayId")
+		objectKey.String(*v.RemoteAccessVpnGatewayId)
+	}
+
+	return nil
+}
+
+func awsEc2query_serializeOpDocumentDescribeRemoteAccessVpnGatewayClientConfigInput(v *DescribeRemoteAccessVpnGatewayClientConfigInput, value query.Value) error {
+	object := value.Object()
+	_ = object
+
+	if v.RemoteAccessVpnGatewayId != nil {
+		objectKey := object.Key("RemoteAccessVpnGatewayId")
+		objectKey.String(*v.RemoteAccessVpnGatewayId)
+	}
+
+	return nil
+}
+
+func awsEc2query_serializeOpDocumentDescribeRemoteAccessVpnGatewayConnectionsInput(v *DescribeRemoteAccessVpnGatewayConnectionsInput, value query.Value) error {
+	object := value.Object()
+	_ = object
+
+	if v.RemoteAccessVpnGatewayId != nil {
+		objectKey := object.Key("RemoteAccessVpnGatewayId")
+		objectKey.String(*v.RemoteAccessVpnGatewayId)
+	}
+
+	return nil
+}
+
+func awsEc2query_serializeOpDocumentDescribeRemoteAccessVpnGatewaysInput(v *DescribeRemoteAccessVpnGatewaysInput, value query.Value) error {
+	object := value.Object()
+	_ = object
+
+	if v.RemoteAccessVpnGatewayId != nil {
+		objectKey := object.FlatKey("RemoteAccessVpnGatewayId")
+		if err := awsEc2query_serializeDocumentListOfRequestRemoteAccessVpnGatewayId(v.RemoteAccessVpnGatewayId, objectKey); err != nil {
 			return err
 		}
 	}
@@ -20735,6 +22148,70 @@ func awsEc2query_serializeOpDocumentModifyNetworkInterfaceAttributeInput(v *Modi
 	if v.NetworkInterfaceId != nil {
 		objectKey := object.Key("NetworkInterfaceId")
 		objectKey.String(*v.NetworkInterfaceId)
+	}
+
+	return nil
+}
+
+func awsEc2query_serializeOpDocumentModifyRemoteAccessVpnGatewayAttributeInput(v *ModifyRemoteAccessVpnGatewayAttributeInput, value query.Value) error {
+	object := value.Object()
+	_ = object
+
+	if len(v.AccountingType) > 0 {
+		objectKey := object.Key("AccountingType")
+		objectKey.String(string(v.AccountingType))
+	}
+
+	if len(v.ClientTunnelMode) > 0 {
+		objectKey := object.Key("ClientTunnelMode")
+		objectKey.String(string(v.ClientTunnelMode))
+	}
+
+	if v.Description != nil {
+		objectKey := object.Key("Description")
+		objectKey.String(*v.Description)
+	}
+
+	if v.RemoteAccessVpnGatewayId != nil {
+		objectKey := object.Key("RemoteAccessVpnGatewayId")
+		objectKey.String(*v.RemoteAccessVpnGatewayId)
+	}
+
+	if v.RemoteAccessVpnGatewayName != nil {
+		objectKey := object.Key("RemoteAccessVpnGatewayName")
+		objectKey.String(*v.RemoteAccessVpnGatewayName)
+	}
+
+	if len(v.RemoteAccessVpnGatewayType) > 0 {
+		objectKey := object.Key("RemoteAccessVpnGatewayType")
+		objectKey.String(string(v.RemoteAccessVpnGatewayType))
+	}
+
+	return nil
+}
+
+func awsEc2query_serializeOpDocumentModifyRemoteAccessVpnGatewayUserAttributeInput(v *ModifyRemoteAccessVpnGatewayUserAttributeInput, value query.Value) error {
+	object := value.Object()
+	_ = object
+
+	if v.Description != nil {
+		objectKey := object.Key("Description")
+		objectKey.String(*v.Description)
+	}
+
+	if v.Password != nil {
+		objectKey := object.Key("Password")
+		objectKey.String(*v.Password)
+	}
+
+	if v.RemoteAccessVpnGatewayId != nil {
+		objectKey := object.Key("RemoteAccessVpnGatewayId")
+		objectKey.String(*v.RemoteAccessVpnGatewayId)
+	}
+
+	if v.UserName != nil {
+		objectKey := object.Key("UserName")
+		objectKey.String(*v.UserName)
 	}
 
 	return nil
@@ -23604,6 +25081,23 @@ func awsEc2query_serializeOpDocumentRebootInstancesInput(v *RebootInstancesInput
 	return nil
 }
 
+func awsEc2query_serializeOpDocumentRebootRemoteAccessVpnGatewayInput(v *RebootRemoteAccessVpnGatewayInput, value query.Value) error {
+	object := value.Object()
+	_ = object
+
+	if len(v.NiftyReboot) > 0 {
+		objectKey := object.Key("NiftyReboot")
+		objectKey.String(string(v.NiftyReboot))
+	}
+
+	if v.RemoteAccessVpnGatewayId != nil {
+		objectKey := object.Key("RemoteAccessVpnGatewayId")
+		objectKey.String(*v.RemoteAccessVpnGatewayId)
+	}
+
+	return nil
+}
+
 func awsEc2query_serializeOpDocumentRefreshInstanceBackupRuleInput(v *RefreshInstanceBackupRuleInput, value query.Value) error {
 	object := value.Object()
 	_ = object
@@ -23826,6 +25320,18 @@ func awsEc2query_serializeOpDocumentReleaseMultiIpAddressesInput(v *ReleaseMulti
 	if v.MultiIpAddressGroupId != nil {
 		objectKey := object.Key("MultiIpAddressGroupId")
 		objectKey.String(*v.MultiIpAddressGroupId)
+	}
+
+	return nil
+}
+
+func awsEc2query_serializeOpDocumentReplaceRemoteAccessVpnGatewayLatestVersionInput(v *ReplaceRemoteAccessVpnGatewayLatestVersionInput, value query.Value) error {
+	object := value.Object()
+	_ = object
+
+	if v.RemoteAccessVpnGatewayId != nil {
+		objectKey := object.Key("RemoteAccessVpnGatewayId")
+		objectKey.String(*v.RemoteAccessVpnGatewayId)
 	}
 
 	return nil
@@ -24141,6 +25647,40 @@ func awsEc2query_serializeOpDocumentSetLoadBalancerListenerSSLCertificateInput(v
 	return nil
 }
 
+func awsEc2query_serializeOpDocumentSetRemoteAccessVpnGatewayCACertificateInput(v *SetRemoteAccessVpnGatewayCACertificateInput, value query.Value) error {
+	object := value.Object()
+	_ = object
+
+	if v.CACertificateId != nil {
+		objectKey := object.Key("CACertificateId")
+		objectKey.String(*v.CACertificateId)
+	}
+
+	if v.RemoteAccessVpnGatewayId != nil {
+		objectKey := object.Key("RemoteAccessVpnGatewayId")
+		objectKey.String(*v.RemoteAccessVpnGatewayId)
+	}
+
+	return nil
+}
+
+func awsEc2query_serializeOpDocumentSetRemoteAccessVpnGatewaySSLCertificateInput(v *SetRemoteAccessVpnGatewaySSLCertificateInput, value query.Value) error {
+	object := value.Object()
+	_ = object
+
+	if v.RemoteAccessVpnGatewayId != nil {
+		objectKey := object.Key("RemoteAccessVpnGatewayId")
+		objectKey.String(*v.RemoteAccessVpnGatewayId)
+	}
+
+	if v.SSLCertificateId != nil {
+		objectKey := object.Key("SSLCertificateId")
+		objectKey.String(*v.SSLCertificateId)
+	}
+
+	return nil
+}
+
 func awsEc2query_serializeOpDocumentStartInstancesInput(v *StartInstancesInput, value query.Value) error {
 	object := value.Object()
 	_ = object
@@ -24245,6 +25785,30 @@ func awsEc2query_serializeOpDocumentUnsetLoadBalancerListenerSSLCertificateInput
 	if v.LoadBalancerPort != nil {
 		objectKey := object.Key("LoadBalancerPort")
 		objectKey.Integer(*v.LoadBalancerPort)
+	}
+
+	return nil
+}
+
+func awsEc2query_serializeOpDocumentUnsetRemoteAccessVpnGatewayCACertificateInput(v *UnsetRemoteAccessVpnGatewayCACertificateInput, value query.Value) error {
+	object := value.Object()
+	_ = object
+
+	if v.RemoteAccessVpnGatewayId != nil {
+		objectKey := object.Key("RemoteAccessVpnGatewayId")
+		objectKey.String(*v.RemoteAccessVpnGatewayId)
+	}
+
+	return nil
+}
+
+func awsEc2query_serializeOpDocumentUnsetRemoteAccessVpnGatewaySSLCertificateInput(v *UnsetRemoteAccessVpnGatewaySSLCertificateInput, value query.Value) error {
+	object := value.Object()
+	_ = object
+
+	if v.RemoteAccessVpnGatewayId != nil {
+		objectKey := object.Key("RemoteAccessVpnGatewayId")
+		objectKey.String(*v.RemoteAccessVpnGatewayId)
 	}
 
 	return nil

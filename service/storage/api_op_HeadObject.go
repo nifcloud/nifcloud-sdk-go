@@ -37,6 +37,8 @@ type HeadObjectInput struct {
 
 	ConsistencyControl *string
 
+	PartNumber *string
+
 	VersionId *string
 
 	XAmzServerSideEncryptionCustomerAlgorithm types.XAmzServerSideEncryptionCustomerAlgorithmOfHeadObjectRequest
@@ -58,6 +60,8 @@ type HeadObjectOutput struct {
 	LastModified *string
 
 	XAmzExpiration *string
+
+	XAmzMpPartsCount *string
 
 	XAmzServerSideEncryption *string
 

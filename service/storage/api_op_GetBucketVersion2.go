@@ -59,7 +59,7 @@ type GetBucketVersion2Output struct {
 
 	ContentType *string
 
-	Contents []types.ContentsOfGetBucketVersion2
+	Contents []types.Contents
 
 	ContinuationToken *string
 

@@ -27,6 +27,9 @@ structure GetObjectRequest {
     @httpLabel
     @xmlName("Object")
     Object: String,
+    @httpQuery("partNumber")
+    @xmlName("partNumber")
+    PartNumber: String,
     @httpHeader("Range")
     @xmlName("Range")
     Range: String,
@@ -75,6 +78,9 @@ structure GetObjectResult {
     @httpHeader("x-amz-expiration")
     @xmlName("x-amz-expiration")
     XAmzExpiration: String,
+    @httpHeader("x-amz-mp-parts-count")
+    @xmlName("x-amz-mp-parts-count")
+    XAmzMpPartsCount: String,
     @httpHeader("x-amz-server-side-encryption")
     @xmlName("x-amz-server-side-encryption")
     XAmzServerSideEncryption: String,
@@ -150,6 +156,9 @@ structure HeadObjectRequest {
     @httpLabel
     @xmlName("Object")
     Object: String,
+    @httpQuery("partNumber")
+    @xmlName("partNumber")
+    PartNumber: String,
     @httpQuery("versionId")
     @xmlName("versionId")
     VersionId: String,
@@ -180,6 +189,9 @@ structure HeadObjectResult {
     @httpHeader("x-amz-expiration")
     @xmlName("x-amz-expiration")
     XAmzExpiration: String,
+    @httpHeader("x-amz-mp-parts-count")
+    @xmlName("x-amz-mp-parts-count")
+    XAmzMpPartsCount: String,
     @httpHeader("x-amz-server-side-encryption")
     @xmlName("x-amz-server-side-encryption")
     XAmzServerSideEncryption: String,
@@ -1112,7 +1124,7 @@ structure GetBucketVersion2Result {
     CommonPrefixes: String,
     @xmlFlattened
     @xmlName("Contents")
-    Contents: ListOfContentsOfGetBucketVersion2,
+    Contents: ListOfContents,
     @httpHeader("Content-Type")
     @xmlName("Content-Type")
     ContentType: String,
@@ -1136,29 +1148,6 @@ structure GetBucketVersion2Result {
     Prefix: String,
     @xmlName("StartAfter")
     StartAfter: String,
-}
-
-structure ContentsOfGetBucketVersion2 {
-    @xmlName("DisplayName")
-    DisplayName: String,
-    @xmlName("ETag")
-    ETag: String,
-    @xmlName("ID")
-    ID: String,
-    @xmlName("Key")
-    Key: String,
-    @xmlName("LastModified")
-    LastModified: Timestamp,
-    @xmlName("Owner")
-    Owner: String,
-    @xmlName("Size")
-    Size: String,
-    @xmlName("StorageClass")
-    StorageClass: String,
-}
-
-list ListOfContentsOfGetBucketVersion2 {
-    member: ContentsOfGetBucketVersion2,
 }
 
 structure GetBucketObjectVersionsRequest {
@@ -1504,8 +1493,6 @@ structure GetBucketVersioningResult {
     @httpHeader("Content-Type")
     @xmlName("Content-Type")
     ContentType: String,
-    @xmlName("MfaDelete")
-    MfaDelete: String,
     @xmlName("Status")
     Status: String,
 }
