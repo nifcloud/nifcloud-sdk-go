@@ -78,10 +78,6 @@ type CreateDBInstanceInput struct {
 
 	NiftyNetworkId *string
 
-	NiftyReadReplicaDBInstanceIdentifier *string
-
-	NiftyReadReplicaPrivateAddress *string
-
 	NiftySlavePrivateAddress *string
 
 	NiftyStorageType *int32
@@ -97,8 +93,6 @@ type CreateDBInstanceInput struct {
 	PreferredMaintenanceWindow *string
 
 	PubliclyAccessible *bool
-
-	ReadReplicaAccountingType types.ReadReplicaAccountingTypeOfCreateDBInstanceRequest
 
 	VpcSecurityGroupIds []string
 

@@ -166,10 +166,6 @@ structure DeleteHostedZoneResult {
       name: "PTR",
       value: "PTR",
   },
-  {
-      name: "LBR",
-      value: "LBR",
-  },
 ])
 string TypeOfListResourceRecordSetsRequest
 
@@ -231,8 +227,6 @@ structure ResourceRecordSets {
     Weight: Integer,
     @xmlName("XniftyComment")
     XniftyComment: String,
-    @xmlName("XniftyDefaultHost")
-    XniftyDefaultHost: String,
     @xmlName("XniftyHealthCheckConfig")
     XniftyHealthCheckConfig: XniftyHealthCheckConfig,
 }
@@ -331,8 +325,6 @@ structure RequestResourceRecordSet {
     Weight: Integer,
     @xmlName("XniftyComment")
     XniftyComment: String,
-    @xmlName("XniftyDefaultHost")
-    XniftyDefaultHost: String,
 }
 
 @enum([
@@ -363,10 +355,6 @@ structure RequestResourceRecordSet {
   {
       name: "PTR",
       value: "PTR",
-  },
-  {
-      name: "LBR",
-      value: "LBR",
   },
 ])
 string TypeOfChangeResourceRecordSetsRequestForChangeResourceRecordSets

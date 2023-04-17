@@ -18096,6 +18096,1004 @@ structure VpnConnectionSet {
     VpnGatewayId: String,
 }
 
+@enum([
+  {
+      name: "SMALL",
+      value: "small",
+  },
+  {
+      name: "MEDIUM",
+      value: "medium",
+  },
+  {
+      name: "LARGE",
+      value: "large",
+  },
+])
+string RemoteAccessVpnGatewayTypeOfCreateRemoteAccessVpnGatewayRequest
+
+structure RequestPlacementOfCreateRemoteAccessVpnGateway {
+    @xmlName("AvailabilityZone")
+    @ec2QueryName("AvailabilityZone")
+    AvailabilityZone: String,
+}
+
+structure RequestNetworkInterfaceOfCreateRemoteAccessVpnGateway {
+    @required
+    @xmlName("IpAddress")
+    @ec2QueryName("IpAddress")
+    IpAddress: String,
+    @required
+    @xmlName("NetworkId")
+    @ec2QueryName("NetworkId")
+    NetworkId: String,
+}
+
+list ListOfRequestNetworkInterfaceOfCreateRemoteAccessVpnGateway {
+    member: RequestNetworkInterfaceOfCreateRemoteAccessVpnGateway,
+}
+
+list ListOfRequestCipherSuite {
+    member: String,
+}
+
+structure CreateRemoteAccessVpnGatewayRequest {
+    @xmlName("AccountingType")
+    @ec2QueryName("AccountingType")
+    AccountingType: Integer,
+    @xmlName("CACertificateId")
+    @ec2QueryName("CACertificateId")
+    CACertificateId: String,
+    @required
+    @xmlName("CipherSuite")
+    @ec2QueryName("CipherSuite")
+    CipherSuite: ListOfRequestCipherSuite,
+    @xmlName("Description")
+    @ec2QueryName("Description")
+    Description: String,
+    @required
+    @xmlName("NetworkInterface")
+    @ec2QueryName("NetworkInterface")
+    NetworkInterface: ListOfRequestNetworkInterfaceOfCreateRemoteAccessVpnGateway,
+    @xmlName("Placement")
+    @ec2QueryName("Placement")
+    Placement: RequestPlacementOfCreateRemoteAccessVpnGateway,
+    @required
+    @xmlName("PoolNetworkCidr")
+    @ec2QueryName("PoolNetworkCidr")
+    PoolNetworkCidr: String,
+    @xmlName("RemoteAccessVpnGatewayName")
+    @ec2QueryName("RemoteAccessVpnGatewayName")
+    RemoteAccessVpnGatewayName: String,
+    @xmlName("RemoteAccessVpnGatewayType")
+    @ec2QueryName("RemoteAccessVpnGatewayType")
+    RemoteAccessVpnGatewayType: RemoteAccessVpnGatewayTypeOfCreateRemoteAccessVpnGatewayRequest,
+    @required
+    @xmlName("SSLCertificateId")
+    @ec2QueryName("SSLCertificateId")
+    SSLCertificateId: String,
+}
+
+structure CreateRemoteAccessVpnGatewayResult {
+    @xmlName("remoteAccessVpnGateway")
+    @ec2QueryName("remoteAccessVpnGateway")
+    RemoteAccessVpnGateway: RemoteAccessVpnGateway,
+    @xmlName("requestId")
+    @ec2QueryName("requestId")
+    RequestId: String,
+    @xmlName("return")
+    @ec2QueryName("return")
+    Return: Boolean,
+}
+
+structure RemoteAccessVpnGateway {
+    @xmlName("accountingType")
+    @ec2QueryName("accountingType")
+    AccountingType: String,
+    @xmlName("authTypeSet")
+    @ec2QueryName("authTypeSet")
+    AuthTypeSet: ListOfAuthTypeSet,
+    @xmlName("availabilityZone")
+    @ec2QueryName("availabilityZone")
+    AvailabilityZone: String,
+    @xmlName("caCertificateId")
+    @ec2QueryName("caCertificateId")
+    CaCertificateId: String,
+    @xmlName("cipherSuiteSet")
+    @ec2QueryName("cipherSuiteSet")
+    CipherSuiteSet: ListOfCipherSuiteSet,
+    @xmlName("clientDownloadEndpoint")
+    @ec2QueryName("clientDownloadEndpoint")
+    ClientDownloadEndpoint: String,
+    @xmlName("clientTunnelMode")
+    @ec2QueryName("clientTunnelMode")
+    ClientTunnelMode: String,
+    @xmlName("createdTime")
+    @ec2QueryName("createdTime")
+    CreatedTime: String,
+    @xmlName("description")
+    @ec2QueryName("description")
+    Description: String,
+    @xmlName("groupSet")
+    @ec2QueryName("groupSet")
+    GroupSet: String,
+    @xmlName("isConfiguredNat")
+    @ec2QueryName("isConfiguredNat")
+    IsConfiguredNat: String,
+    @xmlName("networkInterfaceSet")
+    @ec2QueryName("networkInterfaceSet")
+    NetworkInterfaceSet: ListOfNetworkInterfaceSetOfCreateRemoteAccessVpnGateway,
+    @xmlName("nextMonthAccountingType")
+    @ec2QueryName("nextMonthAccountingType")
+    NextMonthAccountingType: String,
+    @xmlName("poolNetworkCidr")
+    @ec2QueryName("poolNetworkCidr")
+    PoolNetworkCidr: String,
+    @xmlName("poolNetworkGatewayIpAddress")
+    @ec2QueryName("poolNetworkGatewayIpAddress")
+    PoolNetworkGatewayIpAddress: String,
+    @xmlName("remoteAccessVpnGatewayId")
+    @ec2QueryName("remoteAccessVpnGatewayId")
+    RemoteAccessVpnGatewayId: String,
+    @xmlName("remoteAccessVpnGatewayName")
+    @ec2QueryName("remoteAccessVpnGatewayName")
+    RemoteAccessVpnGatewayName: String,
+    @xmlName("remoteAccessVpnGatewayType")
+    @ec2QueryName("remoteAccessVpnGatewayType")
+    RemoteAccessVpnGatewayType: String,
+    @xmlName("remoteUserSet")
+    @ec2QueryName("remoteUserSet")
+    RemoteUserSet: String,
+    @xmlName("routeTableAssociationId")
+    @ec2QueryName("routeTableAssociationId")
+    RouteTableAssociationId: String,
+    @xmlName("routeTableId")
+    @ec2QueryName("routeTableId")
+    RouteTableId: String,
+    @xmlName("sslCertificateId")
+    @ec2QueryName("sslCertificateId")
+    SslCertificateId: String,
+    @xmlName("status")
+    @ec2QueryName("status")
+    Status: String,
+    @xmlName("versionInformation")
+    @ec2QueryName("versionInformation")
+    VersionInformation: VersionInformationOfCreateRemoteAccessVpnGateway,
+}
+
+list ListOfNetworkInterfaceSetOfCreateRemoteAccessVpnGateway {
+    @xmlName("item")
+    member: NetworkInterfaceSetOfCreateRemoteAccessVpnGateway,
+}
+
+structure NetworkInterfaceSetOfCreateRemoteAccessVpnGateway {
+    @xmlName("association")
+    @ec2QueryName("association")
+    Association: AssociationOfCreateRemoteAccessVpnGateway,
+    @xmlName("attachment")
+    @ec2QueryName("attachment")
+    Attachment: AttachmentOfCreateRemoteAccessVpnGateway,
+    @xmlName("availabilityZone")
+    @ec2QueryName("availabilityZone")
+    AvailabilityZone: String,
+    @xmlName("description")
+    @ec2QueryName("description")
+    Description: String,
+    @xmlName("groupSet")
+    @ec2QueryName("groupSet")
+    GroupSet: String,
+    @xmlName("interfaceType")
+    @ec2QueryName("interfaceType")
+    InterfaceType: String,
+    @xmlName("ipv6AddressesSet")
+    @ec2QueryName("ipv6AddressesSet")
+    Ipv6AddressesSet: String,
+    @xmlName("macAddress")
+    @ec2QueryName("macAddress")
+    MacAddress: String,
+    @xmlName("networkInterfaceId")
+    @ec2QueryName("networkInterfaceId")
+    NetworkInterfaceId: String,
+    @xmlName("niftyNetworkId")
+    @ec2QueryName("niftyNetworkId")
+    NiftyNetworkId: String,
+    @xmlName("niftyNetworkName")
+    @ec2QueryName("niftyNetworkName")
+    NiftyNetworkName: String,
+    @xmlName("ownerId")
+    @ec2QueryName("ownerId")
+    OwnerId: String,
+    @xmlName("privateDnsName")
+    @ec2QueryName("privateDnsName")
+    PrivateDnsName: String,
+    @xmlName("privateIpAddress")
+    @ec2QueryName("privateIpAddress")
+    PrivateIpAddress: String,
+    @xmlName("privateIpAddressesSet")
+    @ec2QueryName("privateIpAddressesSet")
+    PrivateIpAddressesSet: String,
+    @xmlName("privateIpAddressV6")
+    @ec2QueryName("privateIpAddressV6")
+    PrivateIpAddressV6: String,
+    @xmlName("requesterId")
+    @ec2QueryName("requesterId")
+    RequesterId: String,
+    @xmlName("requesterManaged")
+    @ec2QueryName("requesterManaged")
+    RequesterManaged: String,
+    @xmlName("sourceDestCheck")
+    @ec2QueryName("sourceDestCheck")
+    SourceDestCheck: String,
+    @xmlName("status")
+    @ec2QueryName("status")
+    Status: String,
+    @xmlName("subnetId")
+    @ec2QueryName("subnetId")
+    SubnetId: String,
+    @xmlName("tagSet")
+    @ec2QueryName("tagSet")
+    TagSet: String,
+    @xmlName("vpcId")
+    @ec2QueryName("vpcId")
+    VpcId: String,
+}
+
+structure AttachmentOfCreateRemoteAccessVpnGateway {
+    @xmlName("attachmentId")
+    @ec2QueryName("attachmentId")
+    AttachmentId: String,
+    @xmlName("attachTime")
+    @ec2QueryName("attachTime")
+    AttachTime: String,
+    @xmlName("deleteOnTermination")
+    @ec2QueryName("deleteOnTermination")
+    DeleteOnTermination: String,
+    @xmlName("deviceIndex")
+    @ec2QueryName("deviceIndex")
+    DeviceIndex: String,
+    @xmlName("instanceId")
+    @ec2QueryName("instanceId")
+    InstanceId: String,
+    @xmlName("instanceOwnerId")
+    @ec2QueryName("instanceOwnerId")
+    InstanceOwnerId: String,
+    @xmlName("status")
+    @ec2QueryName("status")
+    Status: String,
+}
+
+structure AssociationOfCreateRemoteAccessVpnGateway {
+    @xmlName("allocationId")
+    @ec2QueryName("allocationId")
+    AllocationId: String,
+    @xmlName("associationId")
+    @ec2QueryName("associationId")
+    AssociationId: String,
+    @xmlName("ipOwnerId")
+    @ec2QueryName("ipOwnerId")
+    IpOwnerId: String,
+    @xmlName("publicDnsName")
+    @ec2QueryName("publicDnsName")
+    PublicDnsName: String,
+    @xmlName("publicIp")
+    @ec2QueryName("publicIp")
+    PublicIp: String,
+    @xmlName("publicIpV6")
+    @ec2QueryName("publicIpV6")
+    PublicIpV6: String,
+}
+
+list ListOfCipherSuiteSet {
+    @xmlName("item")
+    member: CipherSuiteSet,
+}
+
+structure CipherSuiteSet {
+    @xmlName("cipherSuite")
+    @ec2QueryName("cipherSuite")
+    CipherSuite: String,
+}
+
+list ListOfAuthTypeSet {
+    @xmlName("item")
+    member: AuthTypeSet,
+}
+
+structure AuthTypeSet {
+    @xmlName("authType")
+    @ec2QueryName("authType")
+    AuthType: String,
+}
+
+structure VersionInformationOfCreateRemoteAccessVpnGateway {
+    @xmlName("isLatest")
+    @ec2QueryName("isLatest")
+    IsLatest: String,
+    @xmlName("version")
+    @ec2QueryName("version")
+    Version: String,
+}
+
+structure DeleteRemoteAccessVpnGatewayRequest {
+    @required
+    @xmlName("RemoteAccessVpnGatewayId")
+    @ec2QueryName("RemoteAccessVpnGatewayId")
+    RemoteAccessVpnGatewayId: String,
+}
+
+structure DeleteRemoteAccessVpnGatewayResult {
+    @xmlName("requestId")
+    @ec2QueryName("requestId")
+    RequestId: String,
+    @xmlName("return")
+    @ec2QueryName("return")
+    Return: Boolean,
+}
+
+list ListOfRequestRemoteAccessVpnGatewayId {
+    member: String,
+}
+
+structure DescribeRemoteAccessVpnGatewaysRequest {
+    @xmlName("RemoteAccessVpnGatewayId")
+    @ec2QueryName("RemoteAccessVpnGatewayId")
+    RemoteAccessVpnGatewayId: ListOfRequestRemoteAccessVpnGatewayId,
+}
+
+structure DescribeRemoteAccessVpnGatewaysResult {
+    @xmlName("remoteAccessVpnGatewaySet")
+    @ec2QueryName("remoteAccessVpnGatewaySet")
+    RemoteAccessVpnGatewaySet: ListOfRemoteAccessVpnGatewaySetOfDescribeRemoteAccessVpnGateways,
+    @xmlName("requestId")
+    @ec2QueryName("requestId")
+    RequestId: String,
+}
+
+list ListOfRemoteAccessVpnGatewaySetOfDescribeRemoteAccessVpnGateways {
+    @xmlName("item")
+    member: RemoteAccessVpnGatewaySetOfDescribeRemoteAccessVpnGateways,
+}
+
+structure RemoteAccessVpnGatewaySetOfDescribeRemoteAccessVpnGateways {
+    @xmlName("accountingType")
+    @ec2QueryName("accountingType")
+    AccountingType: String,
+    @xmlName("authTypeSet")
+    @ec2QueryName("authTypeSet")
+    AuthTypeSet: ListOfAuthTypeSet,
+    @xmlName("availabilityZone")
+    @ec2QueryName("availabilityZone")
+    AvailabilityZone: String,
+    @xmlName("caCertificateId")
+    @ec2QueryName("caCertificateId")
+    CaCertificateId: String,
+    @xmlName("cipherSuiteSet")
+    @ec2QueryName("cipherSuiteSet")
+    CipherSuiteSet: ListOfCipherSuiteSet,
+    @xmlName("clientDownloadEndpoint")
+    @ec2QueryName("clientDownloadEndpoint")
+    ClientDownloadEndpoint: String,
+    @xmlName("clientTunnelMode")
+    @ec2QueryName("clientTunnelMode")
+    ClientTunnelMode: String,
+    @xmlName("createdTime")
+    @ec2QueryName("createdTime")
+    CreatedTime: String,
+    @xmlName("description")
+    @ec2QueryName("description")
+    Description: String,
+    @xmlName("groupSet")
+    @ec2QueryName("groupSet")
+    GroupSet: String,
+    @xmlName("isConfiguredNat")
+    @ec2QueryName("isConfiguredNat")
+    IsConfiguredNat: String,
+    @xmlName("networkInterfaceSet")
+    @ec2QueryName("networkInterfaceSet")
+    NetworkInterfaceSet: ListOfNetworkInterfaceSetOfDescribeRemoteAccessVpnGateways,
+    @xmlName("nextMonthAccountingType")
+    @ec2QueryName("nextMonthAccountingType")
+    NextMonthAccountingType: String,
+    @xmlName("poolNetworkCidr")
+    @ec2QueryName("poolNetworkCidr")
+    PoolNetworkCidr: String,
+    @xmlName("poolNetworkGatewayIpAddress")
+    @ec2QueryName("poolNetworkGatewayIpAddress")
+    PoolNetworkGatewayIpAddress: String,
+    @xmlName("remoteAccessVpnGatewayId")
+    @ec2QueryName("remoteAccessVpnGatewayId")
+    RemoteAccessVpnGatewayId: String,
+    @xmlName("remoteAccessVpnGatewayName")
+    @ec2QueryName("remoteAccessVpnGatewayName")
+    RemoteAccessVpnGatewayName: String,
+    @xmlName("remoteAccessVpnGatewayType")
+    @ec2QueryName("remoteAccessVpnGatewayType")
+    RemoteAccessVpnGatewayType: String,
+    @xmlName("remoteUserSet")
+    @ec2QueryName("remoteUserSet")
+    RemoteUserSet: ListOfRemoteUserSet,
+    @xmlName("routeTableAssociationId")
+    @ec2QueryName("routeTableAssociationId")
+    RouteTableAssociationId: String,
+    @xmlName("routeTableId")
+    @ec2QueryName("routeTableId")
+    RouteTableId: String,
+    @xmlName("sslCertificateId")
+    @ec2QueryName("sslCertificateId")
+    SslCertificateId: String,
+    @xmlName("status")
+    @ec2QueryName("status")
+    Status: String,
+    @xmlName("versionInformation")
+    @ec2QueryName("versionInformation")
+    VersionInformation: VersionInformationOfDescribeRemoteAccessVpnGateways,
+}
+
+list ListOfNetworkInterfaceSetOfDescribeRemoteAccessVpnGateways {
+    @xmlName("item")
+    member: NetworkInterfaceSetOfDescribeRemoteAccessVpnGateways,
+}
+
+structure NetworkInterfaceSetOfDescribeRemoteAccessVpnGateways {
+    @xmlName("association")
+    @ec2QueryName("association")
+    Association: AssociationOfDescribeRemoteAccessVpnGateways,
+    @xmlName("attachment")
+    @ec2QueryName("attachment")
+    Attachment: AttachmentOfDescribeRemoteAccessVpnGateways,
+    @xmlName("availabilityZone")
+    @ec2QueryName("availabilityZone")
+    AvailabilityZone: String,
+    @xmlName("description")
+    @ec2QueryName("description")
+    Description: String,
+    @xmlName("groupSet")
+    @ec2QueryName("groupSet")
+    GroupSet: String,
+    @xmlName("interfaceType")
+    @ec2QueryName("interfaceType")
+    InterfaceType: String,
+    @xmlName("ipv6AddressesSet")
+    @ec2QueryName("ipv6AddressesSet")
+    Ipv6AddressesSet: String,
+    @xmlName("macAddress")
+    @ec2QueryName("macAddress")
+    MacAddress: String,
+    @xmlName("networkInterfaceId")
+    @ec2QueryName("networkInterfaceId")
+    NetworkInterfaceId: String,
+    @xmlName("niftyNetworkId")
+    @ec2QueryName("niftyNetworkId")
+    NiftyNetworkId: String,
+    @xmlName("niftyNetworkName")
+    @ec2QueryName("niftyNetworkName")
+    NiftyNetworkName: String,
+    @xmlName("ownerId")
+    @ec2QueryName("ownerId")
+    OwnerId: String,
+    @xmlName("privateDnsName")
+    @ec2QueryName("privateDnsName")
+    PrivateDnsName: String,
+    @xmlName("privateIpAddress")
+    @ec2QueryName("privateIpAddress")
+    PrivateIpAddress: String,
+    @xmlName("privateIpAddressesSet")
+    @ec2QueryName("privateIpAddressesSet")
+    PrivateIpAddressesSet: String,
+    @xmlName("privateIpAddressV6")
+    @ec2QueryName("privateIpAddressV6")
+    PrivateIpAddressV6: String,
+    @xmlName("requesterId")
+    @ec2QueryName("requesterId")
+    RequesterId: String,
+    @xmlName("requesterManaged")
+    @ec2QueryName("requesterManaged")
+    RequesterManaged: String,
+    @xmlName("sourceDestCheck")
+    @ec2QueryName("sourceDestCheck")
+    SourceDestCheck: String,
+    @xmlName("status")
+    @ec2QueryName("status")
+    Status: String,
+    @xmlName("subnetId")
+    @ec2QueryName("subnetId")
+    SubnetId: String,
+    @xmlName("tagSet")
+    @ec2QueryName("tagSet")
+    TagSet: String,
+    @xmlName("vpcId")
+    @ec2QueryName("vpcId")
+    VpcId: String,
+}
+
+structure AttachmentOfDescribeRemoteAccessVpnGateways {
+    @xmlName("attachmentId")
+    @ec2QueryName("attachmentId")
+    AttachmentId: String,
+    @xmlName("attachTime")
+    @ec2QueryName("attachTime")
+    AttachTime: String,
+    @xmlName("deleteOnTermination")
+    @ec2QueryName("deleteOnTermination")
+    DeleteOnTermination: String,
+    @xmlName("deviceIndex")
+    @ec2QueryName("deviceIndex")
+    DeviceIndex: String,
+    @xmlName("instanceId")
+    @ec2QueryName("instanceId")
+    InstanceId: String,
+    @xmlName("instanceOwnerId")
+    @ec2QueryName("instanceOwnerId")
+    InstanceOwnerId: String,
+    @xmlName("status")
+    @ec2QueryName("status")
+    Status: String,
+}
+
+structure AssociationOfDescribeRemoteAccessVpnGateways {
+    @xmlName("allocationId")
+    @ec2QueryName("allocationId")
+    AllocationId: String,
+    @xmlName("associationId")
+    @ec2QueryName("associationId")
+    AssociationId: String,
+    @xmlName("ipOwnerId")
+    @ec2QueryName("ipOwnerId")
+    IpOwnerId: String,
+    @xmlName("publicDnsName")
+    @ec2QueryName("publicDnsName")
+    PublicDnsName: String,
+    @xmlName("publicIp")
+    @ec2QueryName("publicIp")
+    PublicIp: String,
+    @xmlName("publicIpV6")
+    @ec2QueryName("publicIpV6")
+    PublicIpV6: String,
+}
+
+list ListOfRemoteUserSet {
+    @xmlName("item")
+    member: RemoteUserSet,
+}
+
+structure RemoteUserSet {
+    @xmlName("description")
+    @ec2QueryName("description")
+    Description: String,
+    @xmlName("userName")
+    @ec2QueryName("userName")
+    UserName: String,
+}
+
+structure VersionInformationOfDescribeRemoteAccessVpnGateways {
+    @xmlName("isLatest")
+    @ec2QueryName("isLatest")
+    IsLatest: String,
+    @xmlName("version")
+    @ec2QueryName("version")
+    Version: String,
+}
+
+structure DescribeRemoteAccessVpnGatewayClientConfigRequest {
+    @required
+    @xmlName("RemoteAccessVpnGatewayId")
+    @ec2QueryName("RemoteAccessVpnGatewayId")
+    RemoteAccessVpnGatewayId: String,
+}
+
+structure DescribeRemoteAccessVpnGatewayClientConfigResult {
+    @xmlName("encoding")
+    @ec2QueryName("encoding")
+    Encoding: String,
+    @xmlName("fileData")
+    @ec2QueryName("fileData")
+    FileData: String,
+    @xmlName("requestId")
+    @ec2QueryName("requestId")
+    RequestId: String,
+}
+
+@enum([
+  {
+      name: "SPLIT",
+      value: "split",
+  },
+  {
+      name: "FULL",
+      value: "full",
+  },
+])
+string ClientTunnelModeOfModifyRemoteAccessVpnGatewayAttributeRequest
+
+@enum([
+  {
+      name: "MONTHLY",
+      value: "1",
+  },
+  {
+      name: "HOURLY",
+      value: "2",
+  },
+])
+string AccountingTypeOfModifyRemoteAccessVpnGatewayAttributeRequest
+
+@enum([
+  {
+      name: "SMALL",
+      value: "small",
+  },
+  {
+      name: "MEDIUM",
+      value: "medium",
+  },
+  {
+      name: "LARGE",
+      value: "large",
+  },
+])
+string RemoteAccessVpnGatewayTypeOfModifyRemoteAccessVpnGatewayAttributeRequest
+
+structure ModifyRemoteAccessVpnGatewayAttributeRequest {
+    @xmlName("AccountingType")
+    @ec2QueryName("AccountingType")
+    AccountingType: AccountingTypeOfModifyRemoteAccessVpnGatewayAttributeRequest,
+    @xmlName("ClientTunnelMode")
+    @ec2QueryName("ClientTunnelMode")
+    ClientTunnelMode: ClientTunnelModeOfModifyRemoteAccessVpnGatewayAttributeRequest,
+    @xmlName("Description")
+    @ec2QueryName("Description")
+    Description: String,
+    @required
+    @xmlName("RemoteAccessVpnGatewayId")
+    @ec2QueryName("RemoteAccessVpnGatewayId")
+    RemoteAccessVpnGatewayId: String,
+    @xmlName("RemoteAccessVpnGatewayName")
+    @ec2QueryName("RemoteAccessVpnGatewayName")
+    RemoteAccessVpnGatewayName: String,
+    @xmlName("RemoteAccessVpnGatewayType")
+    @ec2QueryName("RemoteAccessVpnGatewayType")
+    RemoteAccessVpnGatewayType: RemoteAccessVpnGatewayTypeOfModifyRemoteAccessVpnGatewayAttributeRequest,
+}
+
+structure ModifyRemoteAccessVpnGatewayAttributeResult {
+    @xmlName("requestId")
+    @ec2QueryName("requestId")
+    RequestId: String,
+    @xmlName("return")
+    @ec2QueryName("return")
+    Return: Boolean,
+}
+
+structure RequestRemoteUser {
+    @xmlName("Description")
+    @ec2QueryName("Description")
+    Description: String,
+    @required
+    @xmlName("Password")
+    @ec2QueryName("Password")
+    Password: String,
+    @required
+    @xmlName("UserName")
+    @ec2QueryName("UserName")
+    UserName: String,
+}
+
+list ListOfRequestRemoteUser {
+    member: RequestRemoteUser,
+}
+
+structure CreateRemoteAccessVpnGatewayUsersRequest {
+    @required
+    @xmlName("RemoteAccessVpnGatewayId")
+    @ec2QueryName("RemoteAccessVpnGatewayId")
+    RemoteAccessVpnGatewayId: String,
+    @required
+    @xmlName("RemoteUser")
+    @ec2QueryName("RemoteUser")
+    RemoteUser: ListOfRequestRemoteUser,
+}
+
+structure CreateRemoteAccessVpnGatewayUsersResult {
+    @xmlName("remoteAccessVpnGatewayId")
+    @ec2QueryName("remoteAccessVpnGatewayId")
+    RemoteAccessVpnGatewayId: String,
+    @xmlName("remoteAccessVpnGatewayName")
+    @ec2QueryName("remoteAccessVpnGatewayName")
+    RemoteAccessVpnGatewayName: String,
+    @xmlName("remoteUserSet")
+    @ec2QueryName("remoteUserSet")
+    RemoteUserSet: ListOfRemoteUserSet,
+    @xmlName("requestId")
+    @ec2QueryName("requestId")
+    RequestId: String,
+    @xmlName("return")
+    @ec2QueryName("return")
+    Return: Boolean,
+}
+
+structure RequestRemoteUserOfDeleteRemoteAccessVpnGatewayUsers {
+    @required
+    @xmlName("UserName")
+    @ec2QueryName("UserName")
+    UserName: String,
+}
+
+list ListOfRequestRemoteUserOfDeleteRemoteAccessVpnGatewayUsers {
+    member: RequestRemoteUserOfDeleteRemoteAccessVpnGatewayUsers,
+}
+
+structure DeleteRemoteAccessVpnGatewayUsersRequest {
+    @required
+    @xmlName("RemoteAccessVpnGatewayId")
+    @ec2QueryName("RemoteAccessVpnGatewayId")
+    RemoteAccessVpnGatewayId: String,
+    @required
+    @xmlName("RemoteUser")
+    @ec2QueryName("RemoteUser")
+    RemoteUser: ListOfRequestRemoteUserOfDeleteRemoteAccessVpnGatewayUsers,
+}
+
+structure DeleteRemoteAccessVpnGatewayUsersResult {
+    @xmlName("requestId")
+    @ec2QueryName("requestId")
+    RequestId: String,
+    @xmlName("return")
+    @ec2QueryName("return")
+    Return: Boolean,
+}
+
+structure ModifyRemoteAccessVpnGatewayUserAttributeRequest {
+    @xmlName("Description")
+    @ec2QueryName("Description")
+    Description: String,
+    @xmlName("Password")
+    @ec2QueryName("Password")
+    Password: String,
+    @required
+    @xmlName("RemoteAccessVpnGatewayId")
+    @ec2QueryName("RemoteAccessVpnGatewayId")
+    RemoteAccessVpnGatewayId: String,
+    @required
+    @xmlName("UserName")
+    @ec2QueryName("UserName")
+    UserName: String,
+}
+
+structure ModifyRemoteAccessVpnGatewayUserAttributeResult {
+    @xmlName("requestId")
+    @ec2QueryName("requestId")
+    RequestId: String,
+    @xmlName("return")
+    @ec2QueryName("return")
+    Return: Boolean,
+}
+
+structure SetRemoteAccessVpnGatewayCACertificateRequest {
+    @required
+    @xmlName("CACertificateId")
+    @ec2QueryName("CACertificateId")
+    CACertificateId: String,
+    @required
+    @xmlName("RemoteAccessVpnGatewayId")
+    @ec2QueryName("RemoteAccessVpnGatewayId")
+    RemoteAccessVpnGatewayId: String,
+}
+
+structure SetRemoteAccessVpnGatewayCACertificateResult {
+    @xmlName("requestId")
+    @ec2QueryName("requestId")
+    RequestId: String,
+    @xmlName("return")
+    @ec2QueryName("return")
+    Return: Boolean,
+}
+
+structure UnsetRemoteAccessVpnGatewayCACertificateRequest {
+    @required
+    @xmlName("RemoteAccessVpnGatewayId")
+    @ec2QueryName("RemoteAccessVpnGatewayId")
+    RemoteAccessVpnGatewayId: String,
+}
+
+structure UnsetRemoteAccessVpnGatewayCACertificateResult {
+    @xmlName("requestId")
+    @ec2QueryName("requestId")
+    RequestId: String,
+    @xmlName("return")
+    @ec2QueryName("return")
+    Return: Boolean,
+}
+
+structure SetRemoteAccessVpnGatewaySSLCertificateRequest {
+    @required
+    @xmlName("RemoteAccessVpnGatewayId")
+    @ec2QueryName("RemoteAccessVpnGatewayId")
+    RemoteAccessVpnGatewayId: String,
+    @required
+    @xmlName("SSLCertificateId")
+    @ec2QueryName("SSLCertificateId")
+    SSLCertificateId: String,
+}
+
+structure SetRemoteAccessVpnGatewaySSLCertificateResult {
+    @xmlName("requestId")
+    @ec2QueryName("requestId")
+    RequestId: String,
+    @xmlName("return")
+    @ec2QueryName("return")
+    Return: Boolean,
+}
+
+structure UnsetRemoteAccessVpnGatewaySSLCertificateRequest {
+    @required
+    @xmlName("RemoteAccessVpnGatewayId")
+    @ec2QueryName("RemoteAccessVpnGatewayId")
+    RemoteAccessVpnGatewayId: String,
+}
+
+structure UnsetRemoteAccessVpnGatewaySSLCertificateResult {
+    @xmlName("requestId")
+    @ec2QueryName("requestId")
+    RequestId: String,
+    @xmlName("return")
+    @ec2QueryName("return")
+    Return: Boolean,
+}
+
+structure DescribeRemoteAccessVpnGatewayConnectionsRequest {
+    @required
+    @xmlName("RemoteAccessVpnGatewayId")
+    @ec2QueryName("RemoteAccessVpnGatewayId")
+    RemoteAccessVpnGatewayId: String,
+}
+
+structure DescribeRemoteAccessVpnGatewayConnectionsResult {
+    @xmlName("remoteAccessVpnGatewayConnection")
+    @ec2QueryName("remoteAccessVpnGatewayConnection")
+    RemoteAccessVpnGatewayConnection: RemoteAccessVpnGatewayConnection,
+    @xmlName("remoteAccessVpnGatewayId")
+    @ec2QueryName("remoteAccessVpnGatewayId")
+    RemoteAccessVpnGatewayId: String,
+    @xmlName("remoteAccessVpnGatewayName")
+    @ec2QueryName("remoteAccessVpnGatewayName")
+    RemoteAccessVpnGatewayName: String,
+    @xmlName("requestId")
+    @ec2QueryName("requestId")
+    RequestId: String,
+}
+
+structure RemoteAccessVpnGatewayConnection {
+    @xmlName("connectionCount")
+    @ec2QueryName("connectionCount")
+    ConnectionCount: Integer,
+    @xmlName("connectionSet")
+    @ec2QueryName("connectionSet")
+    ConnectionSet: ListOfConnectionSet,
+}
+
+list ListOfConnectionSet {
+    @xmlName("item")
+    member: ConnectionSet,
+}
+
+structure ConnectionSet {
+    @xmlName("assignedIpAddress")
+    @ec2QueryName("assignedIpAddress")
+    AssignedIpAddress: String,
+    @xmlName("clientIpAddress")
+    @ec2QueryName("clientIpAddress")
+    ClientIpAddress: String,
+    @xmlName("connectionId")
+    @ec2QueryName("connectionId")
+    ConnectionId: String,
+    @xmlName("remoteUserName")
+    @ec2QueryName("remoteUserName")
+    RemoteUserName: String,
+    @xmlName("startTime")
+    @ec2QueryName("startTime")
+    StartTime: String,
+}
+
+structure RequestConnection {
+    @required
+    @xmlName("ConnectionId")
+    @ec2QueryName("ConnectionId")
+    ConnectionId: String,
+}
+
+list ListOfRequestConnection {
+    member: RequestConnection,
+}
+
+structure DeleteRemoteAccessVpnGatewayConnectionsRequest {
+    @required
+    @xmlName("Connection")
+    @ec2QueryName("Connection")
+    Connection: ListOfRequestConnection,
+    @required
+    @xmlName("RemoteAccessVpnGatewayId")
+    @ec2QueryName("RemoteAccessVpnGatewayId")
+    RemoteAccessVpnGatewayId: String,
+}
+
+structure DeleteRemoteAccessVpnGatewayConnectionsResult {
+    @xmlName("requestId")
+    @ec2QueryName("requestId")
+    RequestId: String,
+    @xmlName("return")
+    @ec2QueryName("return")
+    Return: Boolean,
+}
+
+@enum([
+  {
+      name: "FORCE",
+      value: "force",
+  },
+  {
+      name: "TRUE",
+      value: "true",
+  },
+])
+string NiftyRebootOfRebootRemoteAccessVpnGatewayRequest
+
+structure RebootRemoteAccessVpnGatewayRequest {
+    @xmlName("NiftyReboot")
+    @ec2QueryName("NiftyReboot")
+    NiftyReboot: NiftyRebootOfRebootRemoteAccessVpnGatewayRequest,
+    @required
+    @xmlName("RemoteAccessVpnGatewayId")
+    @ec2QueryName("RemoteAccessVpnGatewayId")
+    RemoteAccessVpnGatewayId: String,
+}
+
+structure RebootRemoteAccessVpnGatewayResult {
+    @xmlName("requestId")
+    @ec2QueryName("requestId")
+    RequestId: String,
+    @xmlName("return")
+    @ec2QueryName("return")
+    Return: Boolean,
+}
+
+structure DescribeRemoteAccessVpnGatewayActivitiesRequest {
+    @required
+    @xmlName("RemoteAccessVpnGatewayId")
+    @ec2QueryName("RemoteAccessVpnGatewayId")
+    RemoteAccessVpnGatewayId: String,
+}
+
+structure DescribeRemoteAccessVpnGatewayActivitiesResult {
+    @xmlName("log")
+    @ec2QueryName("log")
+    Log: String,
+    @xmlName("remoteAccessVpnGatewayId")
+    @ec2QueryName("remoteAccessVpnGatewayId")
+    RemoteAccessVpnGatewayId: String,
+    @xmlName("remoteAccessVpnGatewayName")
+    @ec2QueryName("remoteAccessVpnGatewayName")
+    RemoteAccessVpnGatewayName: String,
+    @xmlName("requestId")
+    @ec2QueryName("requestId")
+    RequestId: String,
+}
+
+structure ReplaceRemoteAccessVpnGatewayLatestVersionRequest {
+    @required
+    @xmlName("RemoteAccessVpnGatewayId")
+    @ec2QueryName("RemoteAccessVpnGatewayId")
+    RemoteAccessVpnGatewayId: String,
+}
+
+structure ReplaceRemoteAccessVpnGatewayLatestVersionResult {
+    @xmlName("requestId")
+    @ec2QueryName("requestId")
+    RequestId: String,
+    @xmlName("return")
+    @ec2QueryName("return")
+    Return: Boolean,
+}
+
 list ListOfRequestInstanceUniqueId {
     member: String,
 }
@@ -20059,6 +21057,23 @@ service Computing {
         CreateVpnConnection,
         DeleteVpnConnection,
         DescribeVpnConnections,
+        CreateRemoteAccessVpnGateway,
+        DeleteRemoteAccessVpnGateway,
+        DescribeRemoteAccessVpnGateways,
+        DescribeRemoteAccessVpnGatewayClientConfig,
+        ModifyRemoteAccessVpnGatewayAttribute,
+        CreateRemoteAccessVpnGatewayUsers,
+        DeleteRemoteAccessVpnGatewayUsers,
+        ModifyRemoteAccessVpnGatewayUserAttribute,
+        SetRemoteAccessVpnGatewayCACertificate,
+        UnsetRemoteAccessVpnGatewayCACertificate,
+        SetRemoteAccessVpnGatewaySSLCertificate,
+        UnsetRemoteAccessVpnGatewaySSLCertificate,
+        DescribeRemoteAccessVpnGatewayConnections,
+        DeleteRemoteAccessVpnGatewayConnections,
+        RebootRemoteAccessVpnGateway,
+        DescribeRemoteAccessVpnGatewayActivities,
+        ReplaceRemoteAccessVpnGatewayLatestVersion,
         NiftyCreateSeparateInstanceRule,
         NiftyDeleteSeparateInstanceRule,
         NiftyDeregisterInstancesFromSeparateInstanceRule,
@@ -21982,6 +22997,91 @@ operation DeleteVpnConnection {
 operation DescribeVpnConnections {
     input: DescribeVpnConnectionsRequest,
     output: DescribeVpnConnectionsResult,
+}
+
+operation CreateRemoteAccessVpnGateway {
+    input: CreateRemoteAccessVpnGatewayRequest,
+    output: CreateRemoteAccessVpnGatewayResult,
+}
+
+operation DeleteRemoteAccessVpnGateway {
+    input: DeleteRemoteAccessVpnGatewayRequest,
+    output: DeleteRemoteAccessVpnGatewayResult,
+}
+
+operation DescribeRemoteAccessVpnGateways {
+    input: DescribeRemoteAccessVpnGatewaysRequest,
+    output: DescribeRemoteAccessVpnGatewaysResult,
+}
+
+operation DescribeRemoteAccessVpnGatewayClientConfig {
+    input: DescribeRemoteAccessVpnGatewayClientConfigRequest,
+    output: DescribeRemoteAccessVpnGatewayClientConfigResult,
+}
+
+operation ModifyRemoteAccessVpnGatewayAttribute {
+    input: ModifyRemoteAccessVpnGatewayAttributeRequest,
+    output: ModifyRemoteAccessVpnGatewayAttributeResult,
+}
+
+operation CreateRemoteAccessVpnGatewayUsers {
+    input: CreateRemoteAccessVpnGatewayUsersRequest,
+    output: CreateRemoteAccessVpnGatewayUsersResult,
+}
+
+operation DeleteRemoteAccessVpnGatewayUsers {
+    input: DeleteRemoteAccessVpnGatewayUsersRequest,
+    output: DeleteRemoteAccessVpnGatewayUsersResult,
+}
+
+operation ModifyRemoteAccessVpnGatewayUserAttribute {
+    input: ModifyRemoteAccessVpnGatewayUserAttributeRequest,
+    output: ModifyRemoteAccessVpnGatewayUserAttributeResult,
+}
+
+operation SetRemoteAccessVpnGatewayCACertificate {
+    input: SetRemoteAccessVpnGatewayCACertificateRequest,
+    output: SetRemoteAccessVpnGatewayCACertificateResult,
+}
+
+operation UnsetRemoteAccessVpnGatewayCACertificate {
+    input: UnsetRemoteAccessVpnGatewayCACertificateRequest,
+    output: UnsetRemoteAccessVpnGatewayCACertificateResult,
+}
+
+operation SetRemoteAccessVpnGatewaySSLCertificate {
+    input: SetRemoteAccessVpnGatewaySSLCertificateRequest,
+    output: SetRemoteAccessVpnGatewaySSLCertificateResult,
+}
+
+operation UnsetRemoteAccessVpnGatewaySSLCertificate {
+    input: UnsetRemoteAccessVpnGatewaySSLCertificateRequest,
+    output: UnsetRemoteAccessVpnGatewaySSLCertificateResult,
+}
+
+operation DescribeRemoteAccessVpnGatewayConnections {
+    input: DescribeRemoteAccessVpnGatewayConnectionsRequest,
+    output: DescribeRemoteAccessVpnGatewayConnectionsResult,
+}
+
+operation DeleteRemoteAccessVpnGatewayConnections {
+    input: DeleteRemoteAccessVpnGatewayConnectionsRequest,
+    output: DeleteRemoteAccessVpnGatewayConnectionsResult,
+}
+
+operation RebootRemoteAccessVpnGateway {
+    input: RebootRemoteAccessVpnGatewayRequest,
+    output: RebootRemoteAccessVpnGatewayResult,
+}
+
+operation DescribeRemoteAccessVpnGatewayActivities {
+    input: DescribeRemoteAccessVpnGatewayActivitiesRequest,
+    output: DescribeRemoteAccessVpnGatewayActivitiesResult,
+}
+
+operation ReplaceRemoteAccessVpnGatewayLatestVersion {
+    input: ReplaceRemoteAccessVpnGatewayLatestVersionRequest,
+    output: ReplaceRemoteAccessVpnGatewayLatestVersionResult,
 }
 
 operation NiftyCreateSeparateInstanceRule {

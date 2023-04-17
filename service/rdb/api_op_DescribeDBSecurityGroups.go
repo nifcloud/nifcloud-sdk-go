@@ -147,9 +147,10 @@ type DBSecurityGroupExistsWaiterOptions struct {
 	// that MinDelay must resolve to a value lesser than or equal to the MaxDelay.
 	MinDelay time.Duration
 
-	// MaxDelay is the maximum amount of time to delay between retries. If unset or set
-	// to zero, DBSecurityGroupExistsWaiter will use default max delay of 120 seconds.
-	// Note that MaxDelay must resolve to value greater than or equal to the MinDelay.
+	// MaxDelay is the maximum amount of time to delay between retries. If unset or
+	// set to zero, DBSecurityGroupExistsWaiter will use default max delay of 120
+	// seconds. Note that MaxDelay must resolve to value greater than or equal to the
+	// MinDelay.
 	MaxDelay time.Duration
 
 	// LogWaitAttempts is used to enable logging for waiter retry attempts
@@ -325,10 +326,10 @@ type DBSecurityGroupEC2SecurityGroupsAuthorizedWaiterOptions struct {
 	// to the MaxDelay.
 	MinDelay time.Duration
 
-	// MaxDelay is the maximum amount of time to delay between retries. If unset or set
-	// to zero, DBSecurityGroupEC2SecurityGroupsAuthorizedWaiter will use default max
-	// delay of 120 seconds. Note that MaxDelay must resolve to value greater than or
-	// equal to the MinDelay.
+	// MaxDelay is the maximum amount of time to delay between retries. If unset or
+	// set to zero, DBSecurityGroupEC2SecurityGroupsAuthorizedWaiter will use default
+	// max delay of 120 seconds. Note that MaxDelay must resolve to value greater than
+	// or equal to the MinDelay.
 	MaxDelay time.Duration
 
 	// LogWaitAttempts is used to enable logging for waiter retry attempts
@@ -505,10 +506,10 @@ type DBSecurityGroupEC2SecurityGroupsAuthFailedWaiterOptions struct {
 	// to the MaxDelay.
 	MinDelay time.Duration
 
-	// MaxDelay is the maximum amount of time to delay between retries. If unset or set
-	// to zero, DBSecurityGroupEC2SecurityGroupsAuthFailedWaiter will use default max
-	// delay of 120 seconds. Note that MaxDelay must resolve to value greater than or
-	// equal to the MinDelay.
+	// MaxDelay is the maximum amount of time to delay between retries. If unset or
+	// set to zero, DBSecurityGroupEC2SecurityGroupsAuthFailedWaiter will use default
+	// max delay of 120 seconds. Note that MaxDelay must resolve to value greater than
+	// or equal to the MinDelay.
 	MaxDelay time.Duration
 
 	// LogWaitAttempts is used to enable logging for waiter retry attempts
@@ -670,8 +671,8 @@ func dBSecurityGroupEC2SecurityGroupsAuthFailedStateRetryable(ctx context.Contex
 	return true, nil
 }
 
-// DBSecurityGroupEC2SecurityGroupsRevokeFailedWaiterOptions are waiter options for
-// DBSecurityGroupEC2SecurityGroupsRevokeFailedWaiter
+// DBSecurityGroupEC2SecurityGroupsRevokeFailedWaiterOptions are waiter options
+// for DBSecurityGroupEC2SecurityGroupsRevokeFailedWaiter
 type DBSecurityGroupEC2SecurityGroupsRevokeFailedWaiterOptions struct {
 
 	// Set of options to modify how an operation is invoked. These apply to all
@@ -685,10 +686,10 @@ type DBSecurityGroupEC2SecurityGroupsRevokeFailedWaiterOptions struct {
 	// equal to the MaxDelay.
 	MinDelay time.Duration
 
-	// MaxDelay is the maximum amount of time to delay between retries. If unset or set
-	// to zero, DBSecurityGroupEC2SecurityGroupsRevokeFailedWaiter will use default max
-	// delay of 120 seconds. Note that MaxDelay must resolve to value greater than or
-	// equal to the MinDelay.
+	// MaxDelay is the maximum amount of time to delay between retries. If unset or
+	// set to zero, DBSecurityGroupEC2SecurityGroupsRevokeFailedWaiter will use default
+	// max delay of 120 seconds. Note that MaxDelay must resolve to value greater than
+	// or equal to the MinDelay.
 	MaxDelay time.Duration
 
 	// LogWaitAttempts is used to enable logging for waiter retry attempts
@@ -865,8 +866,8 @@ type DBSecurityGroupEC2SecurityGroupsEmptiedWaiterOptions struct {
 	// the MaxDelay.
 	MinDelay time.Duration
 
-	// MaxDelay is the maximum amount of time to delay between retries. If unset or set
-	// to zero, DBSecurityGroupEC2SecurityGroupsEmptiedWaiter will use default max
+	// MaxDelay is the maximum amount of time to delay between retries. If unset or
+	// set to zero, DBSecurityGroupEC2SecurityGroupsEmptiedWaiter will use default max
 	// delay of 120 seconds. Note that MaxDelay must resolve to value greater than or
 	// equal to the MinDelay.
 	MaxDelay time.Duration
@@ -1034,10 +1035,10 @@ type DBSecurityGroupIPRangesAuthorizedWaiterOptions struct {
 	// MaxDelay.
 	MinDelay time.Duration
 
-	// MaxDelay is the maximum amount of time to delay between retries. If unset or set
-	// to zero, DBSecurityGroupIPRangesAuthorizedWaiter will use default max delay of
-	// 120 seconds. Note that MaxDelay must resolve to value greater than or equal to
-	// the MinDelay.
+	// MaxDelay is the maximum amount of time to delay between retries. If unset or
+	// set to zero, DBSecurityGroupIPRangesAuthorizedWaiter will use default max delay
+	// of 120 seconds. Note that MaxDelay must resolve to value greater than or equal
+	// to the MinDelay.
 	MaxDelay time.Duration
 
 	// LogWaitAttempts is used to enable logging for waiter retry attempts
@@ -1079,9 +1080,9 @@ func NewDBSecurityGroupIPRangesAuthorizedWaiter(client DescribeDBSecurityGroupsA
 	}
 }
 
-// Wait calls the waiter function for DBSecurityGroupIPRangesAuthorized waiter. The
-// maxWaitDur is the maximum wait duration the waiter will wait. The maxWaitDur is
-// required and must be greater than zero.
+// Wait calls the waiter function for DBSecurityGroupIPRangesAuthorized waiter.
+// The maxWaitDur is the maximum wait duration the waiter will wait. The maxWaitDur
+// is required and must be greater than zero.
 func (w *DBSecurityGroupIPRangesAuthorizedWaiter) Wait(ctx context.Context, params *DescribeDBSecurityGroupsInput, maxWaitDur time.Duration, optFns ...func(*DBSecurityGroupIPRangesAuthorizedWaiterOptions)) error {
 	_, err := w.WaitForOutput(ctx, params, maxWaitDur, optFns...)
 	return err
@@ -1214,10 +1215,10 @@ type DBSecurityGroupIPRangesAuthFailedWaiterOptions struct {
 	// MaxDelay.
 	MinDelay time.Duration
 
-	// MaxDelay is the maximum amount of time to delay between retries. If unset or set
-	// to zero, DBSecurityGroupIPRangesAuthFailedWaiter will use default max delay of
-	// 120 seconds. Note that MaxDelay must resolve to value greater than or equal to
-	// the MinDelay.
+	// MaxDelay is the maximum amount of time to delay between retries. If unset or
+	// set to zero, DBSecurityGroupIPRangesAuthFailedWaiter will use default max delay
+	// of 120 seconds. Note that MaxDelay must resolve to value greater than or equal
+	// to the MinDelay.
 	MaxDelay time.Duration
 
 	// LogWaitAttempts is used to enable logging for waiter retry attempts
@@ -1259,9 +1260,9 @@ func NewDBSecurityGroupIPRangesAuthFailedWaiter(client DescribeDBSecurityGroupsA
 	}
 }
 
-// Wait calls the waiter function for DBSecurityGroupIPRangesAuthFailed waiter. The
-// maxWaitDur is the maximum wait duration the waiter will wait. The maxWaitDur is
-// required and must be greater than zero.
+// Wait calls the waiter function for DBSecurityGroupIPRangesAuthFailed waiter.
+// The maxWaitDur is the maximum wait duration the waiter will wait. The maxWaitDur
+// is required and must be greater than zero.
 func (w *DBSecurityGroupIPRangesAuthFailedWaiter) Wait(ctx context.Context, params *DescribeDBSecurityGroupsInput, maxWaitDur time.Duration, optFns ...func(*DBSecurityGroupIPRangesAuthFailedWaiterOptions)) error {
 	_, err := w.WaitForOutput(ctx, params, maxWaitDur, optFns...)
 	return err
@@ -1394,10 +1395,10 @@ type DBSecurityGroupIPRangesRevokeFailedWaiterOptions struct {
 	// MaxDelay.
 	MinDelay time.Duration
 
-	// MaxDelay is the maximum amount of time to delay between retries. If unset or set
-	// to zero, DBSecurityGroupIPRangesRevokeFailedWaiter will use default max delay of
-	// 120 seconds. Note that MaxDelay must resolve to value greater than or equal to
-	// the MinDelay.
+	// MaxDelay is the maximum amount of time to delay between retries. If unset or
+	// set to zero, DBSecurityGroupIPRangesRevokeFailedWaiter will use default max
+	// delay of 120 seconds. Note that MaxDelay must resolve to value greater than or
+	// equal to the MinDelay.
 	MaxDelay time.Duration
 
 	// LogWaitAttempts is used to enable logging for waiter retry attempts
@@ -1574,10 +1575,10 @@ type DBSecurityGroupIPRangesEmptiedWaiterOptions struct {
 	// MaxDelay.
 	MinDelay time.Duration
 
-	// MaxDelay is the maximum amount of time to delay between retries. If unset or set
-	// to zero, DBSecurityGroupIPRangesEmptiedWaiter will use default max delay of 120
-	// seconds. Note that MaxDelay must resolve to value greater than or equal to the
-	// MinDelay.
+	// MaxDelay is the maximum amount of time to delay between retries. If unset or
+	// set to zero, DBSecurityGroupIPRangesEmptiedWaiter will use default max delay of
+	// 120 seconds. Note that MaxDelay must resolve to value greater than or equal to
+	// the MinDelay.
 	MaxDelay time.Duration
 
 	// LogWaitAttempts is used to enable logging for waiter retry attempts
@@ -1742,9 +1743,10 @@ type DBSecurityGroupDeletedWaiterOptions struct {
 	// that MinDelay must resolve to a value lesser than or equal to the MaxDelay.
 	MinDelay time.Duration
 
-	// MaxDelay is the maximum amount of time to delay between retries. If unset or set
-	// to zero, DBSecurityGroupDeletedWaiter will use default max delay of 120 seconds.
-	// Note that MaxDelay must resolve to value greater than or equal to the MinDelay.
+	// MaxDelay is the maximum amount of time to delay between retries. If unset or
+	// set to zero, DBSecurityGroupDeletedWaiter will use default max delay of 120
+	// seconds. Note that MaxDelay must resolve to value greater than or equal to the
+	// MinDelay.
 	MaxDelay time.Duration
 
 	// LogWaitAttempts is used to enable logging for waiter retry attempts
@@ -1784,9 +1786,9 @@ func NewDBSecurityGroupDeletedWaiter(client DescribeDBSecurityGroupsAPIClient, o
 	}
 }
 
-// Wait calls the waiter function for DBSecurityGroupDeleted waiter. The maxWaitDur
-// is the maximum wait duration the waiter will wait. The maxWaitDur is required
-// and must be greater than zero.
+// Wait calls the waiter function for DBSecurityGroupDeleted waiter. The
+// maxWaitDur is the maximum wait duration the waiter will wait. The maxWaitDur is
+// required and must be greater than zero.
 func (w *DBSecurityGroupDeletedWaiter) Wait(ctx context.Context, params *DescribeDBSecurityGroupsInput, maxWaitDur time.Duration, optFns ...func(*DBSecurityGroupDeletedWaiterOptions)) error {
 	_, err := w.WaitForOutput(ctx, params, maxWaitDur, optFns...)
 	return err

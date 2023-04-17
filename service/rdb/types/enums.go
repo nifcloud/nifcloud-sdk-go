@@ -1003,7 +1003,6 @@ type EngineOfCreateDBInstanceRequest string
 const (
 	EngineOfCreateDBInstanceRequestMysql EngineOfCreateDBInstanceRequest = "MySQL"
 	EngineOfCreateDBInstanceRequestPostgres EngineOfCreateDBInstanceRequest = "postgres"
-	EngineOfCreateDBInstanceRequestMariadb EngineOfCreateDBInstanceRequest = "MariaDB"
 )
 
 // Values returns all known values for EngineOfCreateDBInstanceRequest. Note that
@@ -1014,7 +1013,6 @@ func (EngineOfCreateDBInstanceRequest) Values() []EngineOfCreateDBInstanceReques
 	return []EngineOfCreateDBInstanceRequest{
 		"MySQL",
 		"postgres",
-		"MariaDB",
 	}
 }
 
@@ -1101,10 +1099,10 @@ const (
 	MetricNameOfNiftyGetMetricStatisticsRequestWriteThroughput MetricNameOfNiftyGetMetricStatisticsRequest = "WriteThroughput"
 )
 
-// Values returns all known values for MetricNameOfNiftyGetMetricStatisticsRequest.
-// Note that this can be expanded in the future, and so it is only as up to date as
-// the client. The ordering of this slice is not guaranteed to be stable across
-// updates.
+// Values returns all known values for
+// MetricNameOfNiftyGetMetricStatisticsRequest. Note that this can be expanded in
+// the future, and so it is only as up to date as the client. The ordering of this
+// slice is not guaranteed to be stable across updates.
 func (MetricNameOfNiftyGetMetricStatisticsRequest) Values() []MetricNameOfNiftyGetMetricStatisticsRequest {
 	return []MetricNameOfNiftyGetMetricStatisticsRequest{
 		"BinLogDiskUsage",
@@ -1165,84 +1163,6 @@ func (NIftySortKeyOfDescribeEventSubscriptionsRequest) Values() []NIftySortKeyOf
 		"SourceType",
 		"Enabled",
 		"SubscriptionCreationTime",
-	}
-}
-
-type ReadReplicaAccountingTypeOfCreateDBInstanceRequest string
-
-// Enum values for ReadReplicaAccountingTypeOfCreateDBInstanceRequest
-const (
-	ReadReplicaAccountingTypeOfCreateDBInstanceRequestMonthly ReadReplicaAccountingTypeOfCreateDBInstanceRequest = "1"
-	ReadReplicaAccountingTypeOfCreateDBInstanceRequestHourly ReadReplicaAccountingTypeOfCreateDBInstanceRequest = "2"
-)
-
-// Values returns all known values for
-// ReadReplicaAccountingTypeOfCreateDBInstanceRequest. Note that this can be
-// expanded in the future, and so it is only as up to date as the client. The
-// ordering of this slice is not guaranteed to be stable across updates.
-func (ReadReplicaAccountingTypeOfCreateDBInstanceRequest) Values() []ReadReplicaAccountingTypeOfCreateDBInstanceRequest {
-	return []ReadReplicaAccountingTypeOfCreateDBInstanceRequest{
-		"1",
-		"2",
-	}
-}
-
-type ReadReplicaAccountingTypeOfModifyDBInstanceRequest string
-
-// Enum values for ReadReplicaAccountingTypeOfModifyDBInstanceRequest
-const (
-	ReadReplicaAccountingTypeOfModifyDBInstanceRequestMonthly ReadReplicaAccountingTypeOfModifyDBInstanceRequest = "1"
-	ReadReplicaAccountingTypeOfModifyDBInstanceRequestHourly ReadReplicaAccountingTypeOfModifyDBInstanceRequest = "2"
-)
-
-// Values returns all known values for
-// ReadReplicaAccountingTypeOfModifyDBInstanceRequest. Note that this can be
-// expanded in the future, and so it is only as up to date as the client. The
-// ordering of this slice is not guaranteed to be stable across updates.
-func (ReadReplicaAccountingTypeOfModifyDBInstanceRequest) Values() []ReadReplicaAccountingTypeOfModifyDBInstanceRequest {
-	return []ReadReplicaAccountingTypeOfModifyDBInstanceRequest{
-		"1",
-		"2",
-	}
-}
-
-type ReadReplicaAccountingTypeOfRestoreDBInstanceFromDBSnapshotRequest string
-
-// Enum values for
-// ReadReplicaAccountingTypeOfRestoreDBInstanceFromDBSnapshotRequest
-const (
-	ReadReplicaAccountingTypeOfRestoreDBInstanceFromDBSnapshotRequestMonthly ReadReplicaAccountingTypeOfRestoreDBInstanceFromDBSnapshotRequest = "1"
-	ReadReplicaAccountingTypeOfRestoreDBInstanceFromDBSnapshotRequestHourly ReadReplicaAccountingTypeOfRestoreDBInstanceFromDBSnapshotRequest = "2"
-)
-
-// Values returns all known values for
-// ReadReplicaAccountingTypeOfRestoreDBInstanceFromDBSnapshotRequest. Note that
-// this can be expanded in the future, and so it is only as up to date as the
-// client. The ordering of this slice is not guaranteed to be stable across
-// updates.
-func (ReadReplicaAccountingTypeOfRestoreDBInstanceFromDBSnapshotRequest) Values() []ReadReplicaAccountingTypeOfRestoreDBInstanceFromDBSnapshotRequest {
-	return []ReadReplicaAccountingTypeOfRestoreDBInstanceFromDBSnapshotRequest{
-		"1",
-		"2",
-	}
-}
-
-type ReadReplicaAccountingTypeOfRestoreDBInstanceToPointInTimeRequest string
-
-// Enum values for ReadReplicaAccountingTypeOfRestoreDBInstanceToPointInTimeRequest
-const (
-	ReadReplicaAccountingTypeOfRestoreDBInstanceToPointInTimeRequestMonthly ReadReplicaAccountingTypeOfRestoreDBInstanceToPointInTimeRequest = "1"
-	ReadReplicaAccountingTypeOfRestoreDBInstanceToPointInTimeRequestHourly ReadReplicaAccountingTypeOfRestoreDBInstanceToPointInTimeRequest = "2"
-)
-
-// Values returns all known values for
-// ReadReplicaAccountingTypeOfRestoreDBInstanceToPointInTimeRequest. Note that this
-// can be expanded in the future, and so it is only as up to date as the client.
-// The ordering of this slice is not guaranteed to be stable across updates.
-func (ReadReplicaAccountingTypeOfRestoreDBInstanceToPointInTimeRequest) Values() []ReadReplicaAccountingTypeOfRestoreDBInstanceToPointInTimeRequest {
-	return []ReadReplicaAccountingTypeOfRestoreDBInstanceToPointInTimeRequest{
-		"1",
-		"2",
 	}
 }
 
@@ -1342,8 +1262,8 @@ const (
 	SourceTypeOfDescribeEventsRequestDbSnapshot SourceTypeOfDescribeEventsRequest = "db-snapshot"
 )
 
-// Values returns all known values for SourceTypeOfDescribeEventsRequest. Note that
-// this can be expanded in the future, and so it is only as up to date as the
+// Values returns all known values for SourceTypeOfDescribeEventsRequest. Note
+// that this can be expanded in the future, and so it is only as up to date as the
 // client. The ordering of this slice is not guaranteed to be stable across
 // updates.
 func (SourceTypeOfDescribeEventsRequest) Values() []SourceTypeOfDescribeEventsRequest {

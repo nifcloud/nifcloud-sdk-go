@@ -79,7 +79,6 @@ const (
 	TypeOfChangeResourceRecordSetsRequestForChangeResourceRecordSetsMx TypeOfChangeResourceRecordSetsRequestForChangeResourceRecordSets = "MX"
 	TypeOfChangeResourceRecordSetsRequestForChangeResourceRecordSetsTxt TypeOfChangeResourceRecordSetsRequestForChangeResourceRecordSets = "TXT"
 	TypeOfChangeResourceRecordSetsRequestForChangeResourceRecordSetsPtr TypeOfChangeResourceRecordSetsRequestForChangeResourceRecordSets = "PTR"
-	TypeOfChangeResourceRecordSetsRequestForChangeResourceRecordSetsLbr TypeOfChangeResourceRecordSetsRequestForChangeResourceRecordSets = "LBR"
 )
 
 // Values returns all known values for
@@ -95,7 +94,6 @@ func (TypeOfChangeResourceRecordSetsRequestForChangeResourceRecordSets) Values()
 		"MX",
 		"TXT",
 		"PTR",
-		"LBR",
 	}
 }
 
@@ -110,7 +108,6 @@ const (
 	TypeOfListResourceRecordSetsRequestMx TypeOfListResourceRecordSetsRequest = "MX"
 	TypeOfListResourceRecordSetsRequestTxt TypeOfListResourceRecordSetsRequest = "TXT"
 	TypeOfListResourceRecordSetsRequestPtr TypeOfListResourceRecordSetsRequest = "PTR"
-	TypeOfListResourceRecordSetsRequestLbr TypeOfListResourceRecordSetsRequest = "LBR"
 )
 
 // Values returns all known values for TypeOfListResourceRecordSetsRequest. Note
@@ -126,6 +123,5 @@ func (TypeOfListResourceRecordSetsRequest) Values() []TypeOfListResourceRecordSe
 		"MX",
 		"TXT",
 		"PTR",
-		"LBR",
 	}
 }

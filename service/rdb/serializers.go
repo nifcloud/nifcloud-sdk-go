@@ -3293,16 +3293,6 @@ func awsAwsquery_serializeOpDocumentCreateDBInstanceInput(v *CreateDBInstanceInp
 		objectKey.String(*v.NiftyNetworkId)
 	}
 
-	if v.NiftyReadReplicaDBInstanceIdentifier != nil {
-		objectKey := object.Key("NiftyReadReplicaDBInstanceIdentifier")
-		objectKey.String(*v.NiftyReadReplicaDBInstanceIdentifier)
-	}
-
-	if v.NiftyReadReplicaPrivateAddress != nil {
-		objectKey := object.Key("NiftyReadReplicaPrivateAddress")
-		objectKey.String(*v.NiftyReadReplicaPrivateAddress)
-	}
-
 	if v.NiftySlavePrivateAddress != nil {
 		objectKey := object.Key("NiftySlavePrivateAddress")
 		objectKey.String(*v.NiftySlavePrivateAddress)
@@ -3341,11 +3331,6 @@ func awsAwsquery_serializeOpDocumentCreateDBInstanceInput(v *CreateDBInstanceInp
 	if v.PubliclyAccessible != nil {
 		objectKey := object.Key("PubliclyAccessible")
 		objectKey.Boolean(*v.PubliclyAccessible)
-	}
-
-	if len(v.ReadReplicaAccountingType) > 0 {
-		objectKey := object.Key("ReadReplicaAccountingType")
-		objectKey.String(string(v.ReadReplicaAccountingType))
 	}
 
 	if v.VpcSecurityGroupIds != nil {
@@ -4237,16 +4222,6 @@ func awsAwsquery_serializeOpDocumentModifyDBInstanceInput(v *ModifyDBInstanceInp
 		objectKey.Integer(*v.NiftyMultiAZType)
 	}
 
-	if v.NiftyReadReplicaDBInstanceIdentifier != nil {
-		objectKey := object.Key("NiftyReadReplicaDBInstanceIdentifier")
-		objectKey.String(*v.NiftyReadReplicaDBInstanceIdentifier)
-	}
-
-	if v.NiftyReadReplicaPrivateAddress != nil {
-		objectKey := object.Key("NiftyReadReplicaPrivateAddress")
-		objectKey.String(*v.NiftyReadReplicaPrivateAddress)
-	}
-
 	if v.NiftySlavePrivateAddress != nil {
 		objectKey := object.Key("NiftySlavePrivateAddress")
 		objectKey.String(*v.NiftySlavePrivateAddress)
@@ -4265,11 +4240,6 @@ func awsAwsquery_serializeOpDocumentModifyDBInstanceInput(v *ModifyDBInstanceInp
 	if v.PreferredMaintenanceWindow != nil {
 		objectKey := object.Key("PreferredMaintenanceWindow")
 		objectKey.String(*v.PreferredMaintenanceWindow)
-	}
-
-	if len(v.ReadReplicaAccountingType) > 0 {
-		objectKey := object.Key("ReadReplicaAccountingType")
-		objectKey.String(string(v.ReadReplicaAccountingType))
 	}
 
 	if v.VpcSecurityGroupIds != nil {
@@ -4588,16 +4558,6 @@ func awsAwsquery_serializeOpDocumentRestoreDBInstanceFromDBSnapshotInput(v *Rest
 		objectKey.String(*v.NiftyNetworkId)
 	}
 
-	if v.NiftyReadReplicaDBInstanceIdentifier != nil {
-		objectKey := object.Key("NiftyReadReplicaDBInstanceIdentifier")
-		objectKey.String(*v.NiftyReadReplicaDBInstanceIdentifier)
-	}
-
-	if v.NiftyReadReplicaPrivateAddress != nil {
-		objectKey := object.Key("NiftyReadReplicaPrivateAddress")
-		objectKey.String(*v.NiftyReadReplicaPrivateAddress)
-	}
-
 	if v.NiftySlavePrivateAddress != nil {
 		objectKey := object.Key("NiftySlavePrivateAddress")
 		objectKey.String(*v.NiftySlavePrivateAddress)
@@ -4626,11 +4586,6 @@ func awsAwsquery_serializeOpDocumentRestoreDBInstanceFromDBSnapshotInput(v *Rest
 	if v.PubliclyAccessible != nil {
 		objectKey := object.Key("PubliclyAccessible")
 		objectKey.Boolean(*v.PubliclyAccessible)
-	}
-
-	if len(v.ReadReplicaAccountingType) > 0 {
-		objectKey := object.Key("ReadReplicaAccountingType")
-		objectKey.String(string(v.ReadReplicaAccountingType))
 	}
 
 	return nil
@@ -4717,16 +4672,6 @@ func awsAwsquery_serializeOpDocumentRestoreDBInstanceToPointInTimeInput(v *Resto
 		objectKey.String(*v.NiftyNetworkId)
 	}
 
-	if v.NiftyReadReplicaDBInstanceIdentifier != nil {
-		objectKey := object.Key("NiftyReadReplicaDBInstanceIdentifier")
-		objectKey.String(*v.NiftyReadReplicaDBInstanceIdentifier)
-	}
-
-	if v.NiftyReadReplicaPrivateAddress != nil {
-		objectKey := object.Key("NiftyReadReplicaPrivateAddress")
-		objectKey.String(*v.NiftyReadReplicaPrivateAddress)
-	}
-
 	if v.NiftySlavePrivateAddress != nil {
 		objectKey := object.Key("NiftySlavePrivateAddress")
 		objectKey.String(*v.NiftySlavePrivateAddress)
@@ -4755,11 +4700,6 @@ func awsAwsquery_serializeOpDocumentRestoreDBInstanceToPointInTimeInput(v *Resto
 	if v.PubliclyAccessible != nil {
 		objectKey := object.Key("PubliclyAccessible")
 		objectKey.Boolean(*v.PubliclyAccessible)
-	}
-
-	if len(v.ReadReplicaAccountingType) > 0 {
-		objectKey := object.Key("ReadReplicaAccountingType")
-		objectKey.String(string(v.ReadReplicaAccountingType))
 	}
 
 	if v.RestoreTime != nil {

@@ -65,10 +65,6 @@ type RestoreDBInstanceFromDBSnapshotInput struct {
 
 	NiftyNetworkId *string
 
-	NiftyReadReplicaDBInstanceIdentifier *string
-
-	NiftyReadReplicaPrivateAddress *string
-
 	NiftySlavePrivateAddress *string
 
 	NiftyStorageType *int32
@@ -80,8 +76,6 @@ type RestoreDBInstanceFromDBSnapshotInput struct {
 	Port *int32
 
 	PubliclyAccessible *bool
-
-	ReadReplicaAccountingType types.ReadReplicaAccountingTypeOfRestoreDBInstanceFromDBSnapshotRequest
 
 	noSmithyDocumentSerde
 }

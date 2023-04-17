@@ -2531,7 +2531,7 @@ func awsRestxml_deserializeOpDocumentGetBucketVersion2Output(v **GetBucketVersio
 
 		case strings.EqualFold("Contents", t.Name.Local):
 			nodeDecoder := smithyxml.WrapNodeDecoder(decoder.Decoder, t)
-			if err := awsRestxml_deserializeDocumentListOfContentsOfGetBucketVersion2Unwrapped(&sv.Contents, nodeDecoder); err != nil {
+			if err := awsRestxml_deserializeDocumentListOfContentsUnwrapped(&sv.Contents, nodeDecoder); err != nil {
 				return err
 			}
 
@@ -2818,19 +2818,6 @@ func awsRestxml_deserializeOpDocumentGetBucketVersioningOutput(v **GetBucketVers
 		originalDecoder := decoder
 		decoder = smithyxml.WrapNodeDecoder(originalDecoder.Decoder, t)
 		switch {
-		case strings.EqualFold("MfaDelete", t.Name.Local):
-			val, err := decoder.Value()
-			if err != nil {
-				return err
-			}
-			if val == nil {
-				break
-			}
-			{
-				xtv := string(val)
-				sv.MfaDelete = ptr.String(xtv)
-			}
-
 		case strings.EqualFold("Status", t.Name.Local):
 			val, err := decoder.Value()
 			if err != nil {
@@ -2970,6 +2957,11 @@ func awsRestxml_deserializeOpHttpBindingsGetObjectOutput(v *GetObjectOutput, res
 	if headerValues := response.Header.Values("x-amz-expiration"); len(headerValues) != 0 {
 		headerValues[0] = strings.TrimSpace(headerValues[0])
 		v.XAmzExpiration = ptr.String(headerValues[0])
+	}
+
+	if headerValues := response.Header.Values("x-amz-mp-parts-count"); len(headerValues) != 0 {
+		headerValues[0] = strings.TrimSpace(headerValues[0])
+		v.XAmzMpPartsCount = ptr.String(headerValues[0])
 	}
 
 	if headerValues := response.Header.Values("x-amz-server-side-encryption"); len(headerValues) != 0 {
@@ -3645,6 +3637,11 @@ func awsRestxml_deserializeOpHttpBindingsHeadObjectOutput(v *HeadObjectOutput, r
 	if headerValues := response.Header.Values("x-amz-expiration"); len(headerValues) != 0 {
 		headerValues[0] = strings.TrimSpace(headerValues[0])
 		v.XAmzExpiration = ptr.String(headerValues[0])
+	}
+
+	if headerValues := response.Header.Values("x-amz-mp-parts-count"); len(headerValues) != 0 {
+		headerValues[0] = strings.TrimSpace(headerValues[0])
+		v.XAmzMpPartsCount = ptr.String(headerValues[0])
 	}
 
 	if headerValues := response.Header.Values("x-amz-server-side-encryption"); len(headerValues) != 0 {
@@ -5930,150 +5927,6 @@ func awsRestxml_deserializeDocumentContents(v **types.Contents, decoder smithyxm
 	return nil
 }
 
-func awsRestxml_deserializeDocumentContentsOfGetBucketVersion2(v **types.ContentsOfGetBucketVersion2, decoder smithyxml.NodeDecoder) error {
-	if v == nil {
-		return fmt.Errorf("unexpected nil of type %T", v)
-	}
-	var sv *types.ContentsOfGetBucketVersion2
-	if *v == nil {
-		sv = &types.ContentsOfGetBucketVersion2{}
-	} else {
-		sv = *v
-	}
-
-	for {
-		t, done, err := decoder.Token()
-		if err != nil {
-			return err
-		}
-		if done {
-			break
-		}
-		originalDecoder := decoder
-		decoder = smithyxml.WrapNodeDecoder(originalDecoder.Decoder, t)
-		switch {
-		case strings.EqualFold("DisplayName", t.Name.Local):
-			val, err := decoder.Value()
-			if err != nil {
-				return err
-			}
-			if val == nil {
-				break
-			}
-			{
-				xtv := string(val)
-				sv.DisplayName = ptr.String(xtv)
-			}
-
-		case strings.EqualFold("ETag", t.Name.Local):
-			val, err := decoder.Value()
-			if err != nil {
-				return err
-			}
-			if val == nil {
-				break
-			}
-			{
-				xtv := string(val)
-				sv.ETag = ptr.String(xtv)
-			}
-
-		case strings.EqualFold("ID", t.Name.Local):
-			val, err := decoder.Value()
-			if err != nil {
-				return err
-			}
-			if val == nil {
-				break
-			}
-			{
-				xtv := string(val)
-				sv.ID = ptr.String(xtv)
-			}
-
-		case strings.EqualFold("Key", t.Name.Local):
-			val, err := decoder.Value()
-			if err != nil {
-				return err
-			}
-			if val == nil {
-				break
-			}
-			{
-				xtv := string(val)
-				sv.Key = ptr.String(xtv)
-			}
-
-		case strings.EqualFold("LastModified", t.Name.Local):
-			val, err := decoder.Value()
-			if err != nil {
-				return err
-			}
-			if val == nil {
-				break
-			}
-			{
-				xtv := string(val)
-				t, err := smithytime.ParseDateTime(xtv)
-				if err != nil {
-					return err
-				}
-				sv.LastModified = ptr.Time(t)
-			}
-
-		case strings.EqualFold("Owner", t.Name.Local):
-			val, err := decoder.Value()
-			if err != nil {
-				return err
-			}
-			if val == nil {
-				break
-			}
-			{
-				xtv := string(val)
-				sv.Owner = ptr.String(xtv)
-			}
-
-		case strings.EqualFold("Size", t.Name.Local):
-			val, err := decoder.Value()
-			if err != nil {
-				return err
-			}
-			if val == nil {
-				break
-			}
-			{
-				xtv := string(val)
-				sv.Size = ptr.String(xtv)
-			}
-
-		case strings.EqualFold("StorageClass", t.Name.Local):
-			val, err := decoder.Value()
-			if err != nil {
-				return err
-			}
-			if val == nil {
-				break
-			}
-			{
-				xtv := string(val)
-				sv.StorageClass = ptr.String(xtv)
-			}
-
-		default:
-			// Do nothing and ignore the unexpected tag element
-			err = decoder.Decoder.Skip()
-			if err != nil {
-				return err
-			}
-
-		}
-		decoder = originalDecoder
-	}
-	*v = sv
-	return nil
-}
-
 func awsRestxml_deserializeDocumentCORSRule(v **types.CORSRule, decoder smithyxml.NodeDecoder) error {
 	if v == nil {
 		return fmt.Errorf("unexpected nil of type %T", v)
@@ -6801,74 +6654,6 @@ func awsRestxml_deserializeDocumentListOfContentsUnwrapped(v *[]types.Contents, 
 		nodeDecoder := smithyxml.WrapNodeDecoder(decoder.Decoder, t)
 		destAddr := &mv
 		if err := awsRestxml_deserializeDocumentContents(&destAddr, nodeDecoder); err != nil {
-			return err
-		}
-		mv = *destAddr
-		sv = append(sv, mv)
-	}
-	*v = sv
-	return nil
-}
-func awsRestxml_deserializeDocumentListOfContentsOfGetBucketVersion2(v *[]types.ContentsOfGetBucketVersion2, decoder smithyxml.NodeDecoder) error {
-	if v == nil {
-		return fmt.Errorf("unexpected nil of type %T", v)
-	}
-	var sv []types.ContentsOfGetBucketVersion2
-	if *v == nil {
-		sv = make([]types.ContentsOfGetBucketVersion2, 0)
-	} else {
-		sv = *v
-	}
-
-	originalDecoder := decoder
-	for {
-		t, done, err := decoder.Token()
-		if err != nil {
-			return err
-		}
-		if done {
-			break
-		}
-		switch {
-		case strings.EqualFold("member", t.Name.Local):
-			var col types.ContentsOfGetBucketVersion2
-			nodeDecoder := smithyxml.WrapNodeDecoder(decoder.Decoder, t)
-			destAddr := &col
-			if err := awsRestxml_deserializeDocumentContentsOfGetBucketVersion2(&destAddr, nodeDecoder); err != nil {
-				return err
-			}
-			col = *destAddr
-			sv = append(sv, col)
-
-		default:
-			err = decoder.Decoder.Skip()
-			if err != nil {
-				return err
-			}
-
-		}
-		decoder = originalDecoder
-	}
-	*v = sv
-	return nil
-}
-
-func awsRestxml_deserializeDocumentListOfContentsOfGetBucketVersion2Unwrapped(v *[]types.ContentsOfGetBucketVersion2, decoder smithyxml.NodeDecoder) error {
-	var sv []types.ContentsOfGetBucketVersion2
-	if *v == nil {
-		sv = make([]types.ContentsOfGetBucketVersion2, 0)
-	} else {
-		sv = *v
-	}
-
-	switch {
-	default:
-		var mv types.ContentsOfGetBucketVersion2
-		t := decoder.StartEl
-		_ = t
-		nodeDecoder := smithyxml.WrapNodeDecoder(decoder.Decoder, t)
-		destAddr := &mv
-		if err := awsRestxml_deserializeDocumentContentsOfGetBucketVersion2(&destAddr, nodeDecoder); err != nil {
 			return err
 		}
 		mv = *destAddr

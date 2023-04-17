@@ -111,8 +111,8 @@ func (c *Client) addOperationDescribeVpnGatewaysMiddlewares(stack *middleware.St
 	return nil
 }
 
-// DescribeVpnGatewaysAPIClient is a client that implements the DescribeVpnGateways
-// operation.
+// DescribeVpnGatewaysAPIClient is a client that implements the
+// DescribeVpnGateways operation.
 type DescribeVpnGatewaysAPIClient interface {
 	DescribeVpnGateways(context.Context, *DescribeVpnGatewaysInput, ...func(*Options)) (*DescribeVpnGatewaysOutput, error)
 }
@@ -132,9 +132,9 @@ type VpnGatewayExistsWaiterOptions struct {
 	// MinDelay must resolve to a value lesser than or equal to the MaxDelay.
 	MinDelay time.Duration
 
-	// MaxDelay is the maximum amount of time to delay between retries. If unset or set
-	// to zero, VpnGatewayExistsWaiter will use default max delay of 120 seconds. Note
-	// that MaxDelay must resolve to value greater than or equal to the MinDelay.
+	// MaxDelay is the maximum amount of time to delay between retries. If unset or
+	// set to zero, VpnGatewayExistsWaiter will use default max delay of 120 seconds.
+	// Note that MaxDelay must resolve to value greater than or equal to the MinDelay.
 	MaxDelay time.Duration
 
 	// LogWaitAttempts is used to enable logging for waiter retry attempts
@@ -321,9 +321,10 @@ type VpnGatewayAvailableWaiterOptions struct {
 	// that MinDelay must resolve to a value lesser than or equal to the MaxDelay.
 	MinDelay time.Duration
 
-	// MaxDelay is the maximum amount of time to delay between retries. If unset or set
-	// to zero, VpnGatewayAvailableWaiter will use default max delay of 120 seconds.
-	// Note that MaxDelay must resolve to value greater than or equal to the MinDelay.
+	// MaxDelay is the maximum amount of time to delay between retries. If unset or
+	// set to zero, VpnGatewayAvailableWaiter will use default max delay of 120
+	// seconds. Note that MaxDelay must resolve to value greater than or equal to the
+	// MinDelay.
 	MaxDelay time.Duration
 
 	// LogWaitAttempts is used to enable logging for waiter retry attempts
@@ -363,9 +364,9 @@ func NewVpnGatewayAvailableWaiter(client DescribeVpnGatewaysAPIClient, optFns ..
 	}
 }
 
-// Wait calls the waiter function for VpnGatewayAvailable waiter. The maxWaitDur is
-// the maximum wait duration the waiter will wait. The maxWaitDur is required and
-// must be greater than zero.
+// Wait calls the waiter function for VpnGatewayAvailable waiter. The maxWaitDur
+// is the maximum wait duration the waiter will wait. The maxWaitDur is required
+// and must be greater than zero.
 func (w *VpnGatewayAvailableWaiter) Wait(ctx context.Context, params *DescribeVpnGatewaysInput, maxWaitDur time.Duration, optFns ...func(*VpnGatewayAvailableWaiterOptions)) error {
 	_, err := w.WaitForOutput(ctx, params, maxWaitDur, optFns...)
 	return err
@@ -496,9 +497,9 @@ type VpnGatewayStoppedWaiterOptions struct {
 	// MinDelay must resolve to a value lesser than or equal to the MaxDelay.
 	MinDelay time.Duration
 
-	// MaxDelay is the maximum amount of time to delay between retries. If unset or set
-	// to zero, VpnGatewayStoppedWaiter will use default max delay of 120 seconds. Note
-	// that MaxDelay must resolve to value greater than or equal to the MinDelay.
+	// MaxDelay is the maximum amount of time to delay between retries. If unset or
+	// set to zero, VpnGatewayStoppedWaiter will use default max delay of 120 seconds.
+	// Note that MaxDelay must resolve to value greater than or equal to the MinDelay.
 	MaxDelay time.Duration
 
 	// LogWaitAttempts is used to enable logging for waiter retry attempts
@@ -546,10 +547,10 @@ func (w *VpnGatewayStoppedWaiter) Wait(ctx context.Context, params *DescribeVpnG
 	return err
 }
 
-// WaitForOutput calls the waiter function for VpnGatewayStopped waiter and returns
-// the output of the successful operation. The maxWaitDur is the maximum wait
-// duration the waiter will wait. The maxWaitDur is required and must be greater
-// than zero.
+// WaitForOutput calls the waiter function for VpnGatewayStopped waiter and
+// returns the output of the successful operation. The maxWaitDur is the maximum
+// wait duration the waiter will wait. The maxWaitDur is required and must be
+// greater than zero.
 func (w *VpnGatewayStoppedWaiter) WaitForOutput(ctx context.Context, params *DescribeVpnGatewaysInput, maxWaitDur time.Duration, optFns ...func(*VpnGatewayStoppedWaiterOptions)) (*DescribeVpnGatewaysOutput, error) {
 	if maxWaitDur <= 0 {
 		return nil, fmt.Errorf("maximum wait time for waiter must be greater than zero")
@@ -671,9 +672,9 @@ type VpnGatewayWarningWaiterOptions struct {
 	// MinDelay must resolve to a value lesser than or equal to the MaxDelay.
 	MinDelay time.Duration
 
-	// MaxDelay is the maximum amount of time to delay between retries. If unset or set
-	// to zero, VpnGatewayWarningWaiter will use default max delay of 120 seconds. Note
-	// that MaxDelay must resolve to value greater than or equal to the MinDelay.
+	// MaxDelay is the maximum amount of time to delay between retries. If unset or
+	// set to zero, VpnGatewayWarningWaiter will use default max delay of 120 seconds.
+	// Note that MaxDelay must resolve to value greater than or equal to the MinDelay.
 	MaxDelay time.Duration
 
 	// LogWaitAttempts is used to enable logging for waiter retry attempts
@@ -721,10 +722,10 @@ func (w *VpnGatewayWarningWaiter) Wait(ctx context.Context, params *DescribeVpnG
 	return err
 }
 
-// WaitForOutput calls the waiter function for VpnGatewayWarning waiter and returns
-// the output of the successful operation. The maxWaitDur is the maximum wait
-// duration the waiter will wait. The maxWaitDur is required and must be greater
-// than zero.
+// WaitForOutput calls the waiter function for VpnGatewayWarning waiter and
+// returns the output of the successful operation. The maxWaitDur is the maximum
+// wait duration the waiter will wait. The maxWaitDur is required and must be
+// greater than zero.
 func (w *VpnGatewayWarningWaiter) WaitForOutput(ctx context.Context, params *DescribeVpnGatewaysInput, maxWaitDur time.Duration, optFns ...func(*VpnGatewayWarningWaiterOptions)) (*DescribeVpnGatewaysOutput, error) {
 	if maxWaitDur <= 0 {
 		return nil, fmt.Errorf("maximum wait time for waiter must be greater than zero")
@@ -846,9 +847,9 @@ type VpnGatewayDeletedWaiterOptions struct {
 	// MinDelay must resolve to a value lesser than or equal to the MaxDelay.
 	MinDelay time.Duration
 
-	// MaxDelay is the maximum amount of time to delay between retries. If unset or set
-	// to zero, VpnGatewayDeletedWaiter will use default max delay of 120 seconds. Note
-	// that MaxDelay must resolve to value greater than or equal to the MinDelay.
+	// MaxDelay is the maximum amount of time to delay between retries. If unset or
+	// set to zero, VpnGatewayDeletedWaiter will use default max delay of 120 seconds.
+	// Note that MaxDelay must resolve to value greater than or equal to the MinDelay.
 	MaxDelay time.Duration
 
 	// LogWaitAttempts is used to enable logging for waiter retry attempts
@@ -896,10 +897,10 @@ func (w *VpnGatewayDeletedWaiter) Wait(ctx context.Context, params *DescribeVpnG
 	return err
 }
 
-// WaitForOutput calls the waiter function for VpnGatewayDeleted waiter and returns
-// the output of the successful operation. The maxWaitDur is the maximum wait
-// duration the waiter will wait. The maxWaitDur is required and must be greater
-// than zero.
+// WaitForOutput calls the waiter function for VpnGatewayDeleted waiter and
+// returns the output of the successful operation. The maxWaitDur is the maximum
+// wait duration the waiter will wait. The maxWaitDur is required and must be
+// greater than zero.
 func (w *VpnGatewayDeletedWaiter) WaitForOutput(ctx context.Context, params *DescribeVpnGatewaysInput, maxWaitDur time.Duration, optFns ...func(*VpnGatewayDeletedWaiterOptions)) (*DescribeVpnGatewaysOutput, error) {
 	if maxWaitDur <= 0 {
 		return nil, fmt.Errorf("maximum wait time for waiter must be greater than zero")

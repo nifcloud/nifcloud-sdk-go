@@ -67,10 +67,6 @@ type ModifyDBInstanceInput struct {
 
 	NiftyMultiAZType *int32
 
-	NiftyReadReplicaDBInstanceIdentifier *string
-
-	NiftyReadReplicaPrivateAddress *string
-
 	NiftySlavePrivateAddress *string
 
 	OptionGroupName *string
@@ -78,8 +74,6 @@ type ModifyDBInstanceInput struct {
 	PreferredBackupWindow *string
 
 	PreferredMaintenanceWindow *string
-
-	ReadReplicaAccountingType types.ReadReplicaAccountingTypeOfModifyDBInstanceRequest
 
 	VpcSecurityGroupIds []string
 

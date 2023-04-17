@@ -288,24 +288,8 @@ list ListOfRequestDBSecurityGroups {
       name: "POSTGRES",
       value: "postgres",
   },
-  {
-      name: "MARIADB",
-      value: "MariaDB",
-  },
 ])
 string EngineOfCreateDBInstanceRequest
-
-@enum([
-  {
-      name: "MONTHLY",
-      value: "1",
-  },
-  {
-      name: "HOURLY",
-      value: "2",
-  },
-])
-string ReadReplicaAccountingTypeOfCreateDBInstanceRequest
 
 list ListOfRequestVpcSecurityGroupIds {
     @xmlName("member")
@@ -363,10 +347,6 @@ structure CreateDBInstanceRequest {
     NiftyMultiAZType: Integer,
     @xmlName("NiftyNetworkId")
     NiftyNetworkId: String,
-    @xmlName("NiftyReadReplicaDBInstanceIdentifier")
-    NiftyReadReplicaDBInstanceIdentifier: String,
-    @xmlName("NiftyReadReplicaPrivateAddress")
-    NiftyReadReplicaPrivateAddress: String,
     @xmlName("NiftySlavePrivateAddress")
     NiftySlavePrivateAddress: String,
     @xmlName("NiftyStorageType")
@@ -383,8 +363,6 @@ structure CreateDBInstanceRequest {
     PreferredMaintenanceWindow: String,
     @xmlName("PubliclyAccessible")
     PubliclyAccessible: Boolean,
-    @xmlName("ReadReplicaAccountingType")
-    ReadReplicaAccountingType: ReadReplicaAccountingTypeOfCreateDBInstanceRequest,
     @xmlName("VpcSecurityGroupIds")
     VpcSecurityGroupIds: ListOfRequestVpcSecurityGroupIds,
 }
@@ -1321,18 +1299,6 @@ string AccountingTypeOfModifyDBInstanceRequest
 ])
 string DBInstanceClassOfModifyDBInstanceRequest
 
-@enum([
-  {
-      name: "MONTHLY",
-      value: "1",
-  },
-  {
-      name: "HOURLY",
-      value: "2",
-  },
-])
-string ReadReplicaAccountingTypeOfModifyDBInstanceRequest
-
 structure ModifyDBInstanceRequest {
     @xmlName("AccountingType")
     AccountingType: AccountingTypeOfModifyDBInstanceRequest,
@@ -1373,10 +1339,6 @@ structure ModifyDBInstanceRequest {
     NewDBInstanceIdentifier: String,
     @xmlName("NiftyMultiAZType")
     NiftyMultiAZType: Integer,
-    @xmlName("NiftyReadReplicaDBInstanceIdentifier")
-    NiftyReadReplicaDBInstanceIdentifier: String,
-    @xmlName("NiftyReadReplicaPrivateAddress")
-    NiftyReadReplicaPrivateAddress: String,
     @xmlName("NiftySlavePrivateAddress")
     NiftySlavePrivateAddress: String,
     @xmlName("OptionGroupName")
@@ -1385,8 +1347,6 @@ structure ModifyDBInstanceRequest {
     PreferredBackupWindow: String,
     @xmlName("PreferredMaintenanceWindow")
     PreferredMaintenanceWindow: String,
-    @xmlName("ReadReplicaAccountingType")
-    ReadReplicaAccountingType: ReadReplicaAccountingTypeOfModifyDBInstanceRequest,
     @xmlName("VpcSecurityGroupIds")
     VpcSecurityGroupIds: ListOfRequestVpcSecurityGroupIds,
 }
@@ -2332,18 +2292,6 @@ list ListOfRequestNiftyDBSecurityGroups {
     member: String,
 }
 
-@enum([
-  {
-      name: "MONTHLY",
-      value: "1",
-  },
-  {
-      name: "HOURLY",
-      value: "2",
-  },
-])
-string ReadReplicaAccountingTypeOfRestoreDBInstanceFromDBSnapshotRequest
-
 structure RestoreDBInstanceFromDBSnapshotRequest {
     @xmlName("AccountingType")
     AccountingType: AccountingTypeOfRestoreDBInstanceFromDBSnapshotRequest,
@@ -2382,10 +2330,6 @@ structure RestoreDBInstanceFromDBSnapshotRequest {
     NiftyMultiAZType: Integer,
     @xmlName("NiftyNetworkId")
     NiftyNetworkId: String,
-    @xmlName("NiftyReadReplicaDBInstanceIdentifier")
-    NiftyReadReplicaDBInstanceIdentifier: String,
-    @xmlName("NiftyReadReplicaPrivateAddress")
-    NiftyReadReplicaPrivateAddress: String,
     @xmlName("NiftySlavePrivateAddress")
     NiftySlavePrivateAddress: String,
     @xmlName("NiftyStorageType")
@@ -2398,8 +2342,6 @@ structure RestoreDBInstanceFromDBSnapshotRequest {
     Port: Integer,
     @xmlName("PubliclyAccessible")
     PubliclyAccessible: Boolean,
-    @xmlName("ReadReplicaAccountingType")
-    ReadReplicaAccountingType: ReadReplicaAccountingTypeOfRestoreDBInstanceFromDBSnapshotRequest,
 }
 
 structure RestoreDBInstanceFromDBSnapshotResult {
@@ -2673,18 +2615,6 @@ string AccountingTypeOfRestoreDBInstanceToPointInTimeRequest
 ])
 string DBInstanceClassOfRestoreDBInstanceToPointInTimeRequest
 
-@enum([
-  {
-      name: "MONTHLY",
-      value: "1",
-  },
-  {
-      name: "HOURLY",
-      value: "2",
-  },
-])
-string ReadReplicaAccountingTypeOfRestoreDBInstanceToPointInTimeRequest
-
 structure RestoreDBInstanceToPointInTimeRequest {
     @xmlName("AccountingType")
     AccountingType: AccountingTypeOfRestoreDBInstanceToPointInTimeRequest,
@@ -2716,10 +2646,6 @@ structure RestoreDBInstanceToPointInTimeRequest {
     NiftyMultiAZType: Integer,
     @xmlName("NiftyNetworkId")
     NiftyNetworkId: String,
-    @xmlName("NiftyReadReplicaDBInstanceIdentifier")
-    NiftyReadReplicaDBInstanceIdentifier: String,
-    @xmlName("NiftyReadReplicaPrivateAddress")
-    NiftyReadReplicaPrivateAddress: String,
     @xmlName("NiftySlavePrivateAddress")
     NiftySlavePrivateAddress: String,
     @xmlName("NiftyStorageType")
@@ -2732,8 +2658,6 @@ structure RestoreDBInstanceToPointInTimeRequest {
     Port: Integer,
     @xmlName("PubliclyAccessible")
     PubliclyAccessible: Boolean,
-    @xmlName("ReadReplicaAccountingType")
-    ReadReplicaAccountingType: ReadReplicaAccountingTypeOfRestoreDBInstanceToPointInTimeRequest,
     @xmlName("RestoreTime")
     RestoreTime: Timestamp,
     @required

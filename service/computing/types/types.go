@@ -188,7 +188,41 @@ type AssociationOfCreateNetworkInterface struct {
 	noSmithyDocumentSerde
 }
 
+type AssociationOfCreateRemoteAccessVpnGateway struct {
+	
+	AllocationId *string
+	
+	AssociationId *string
+	
+	IpOwnerId *string
+	
+	PublicDnsName *string
+	
+	PublicIp *string
+	
+	PublicIpV6 *string
+	
+	noSmithyDocumentSerde
+}
+
 type AssociationOfDescribeNetworkInterfaces struct {
+	
+	AllocationId *string
+	
+	AssociationId *string
+	
+	IpOwnerId *string
+	
+	PublicDnsName *string
+	
+	PublicIp *string
+	
+	PublicIpV6 *string
+	
+	noSmithyDocumentSerde
+}
+
+type AssociationOfDescribeRemoteAccessVpnGateways struct {
 	
 	AllocationId *string
 	
@@ -306,7 +340,45 @@ type AttachmentOfCreateNetworkInterface struct {
 	noSmithyDocumentSerde
 }
 
+type AttachmentOfCreateRemoteAccessVpnGateway struct {
+	
+	AttachTime *string
+	
+	AttachmentId *string
+	
+	DeleteOnTermination *string
+	
+	DeviceIndex *string
+	
+	InstanceId *string
+	
+	InstanceOwnerId *string
+	
+	Status *string
+	
+	noSmithyDocumentSerde
+}
+
 type AttachmentOfDescribeNetworkInterfaces struct {
+	
+	AttachTime *string
+	
+	AttachmentId *string
+	
+	DeleteOnTermination *string
+	
+	DeviceIndex *string
+	
+	InstanceId *string
+	
+	InstanceOwnerId *string
+	
+	Status *string
+	
+	noSmithyDocumentSerde
+}
+
+type AttachmentOfDescribeRemoteAccessVpnGateways struct {
 	
 	AttachTime *string
 	
@@ -372,6 +444,13 @@ type AttachmentSet struct {
 	VolumeId *string
 	
 	VolumeUniqueId *string
+	
+	noSmithyDocumentSerde
+}
+
+type AuthTypeSet struct {
+	
+	AuthType *string
 	
 	noSmithyDocumentSerde
 }
@@ -626,9 +705,31 @@ type ChargeDetailInfo struct {
 	noSmithyDocumentSerde
 }
 
+type CipherSuiteSet struct {
+	
+	CipherSuite *string
+	
+	noSmithyDocumentSerde
+}
+
 type ConfigureHealthCheckResult struct {
 	
 	HealthCheck *HealthCheck
+	
+	noSmithyDocumentSerde
+}
+
+type ConnectionSet struct {
+	
+	AssignedIpAddress *string
+	
+	ClientIpAddress *string
+	
+	ConnectionId *string
+	
+	RemoteUserName *string
+	
+	StartTime *string
 	
 	noSmithyDocumentSerde
 }
@@ -3031,6 +3132,57 @@ type NetworkInterfaceSetOfCopyFromBackupInstance struct {
 	noSmithyDocumentSerde
 }
 
+type NetworkInterfaceSetOfCreateRemoteAccessVpnGateway struct {
+	
+	Association *AssociationOfCreateRemoteAccessVpnGateway
+	
+	Attachment *AttachmentOfCreateRemoteAccessVpnGateway
+	
+	AvailabilityZone *string
+	
+	Description *string
+	
+	GroupSet *string
+	
+	InterfaceType *string
+	
+	Ipv6AddressesSet *string
+	
+	MacAddress *string
+	
+	NetworkInterfaceId *string
+	
+	NiftyNetworkId *string
+	
+	NiftyNetworkName *string
+	
+	OwnerId *string
+	
+	PrivateDnsName *string
+	
+	PrivateIpAddress *string
+	
+	PrivateIpAddressV6 *string
+	
+	PrivateIpAddressesSet *string
+	
+	RequesterId *string
+	
+	RequesterManaged *string
+	
+	SourceDestCheck *string
+	
+	Status *string
+	
+	SubnetId *string
+	
+	TagSet *string
+	
+	VpcId *string
+	
+	noSmithyDocumentSerde
+}
+
 type NetworkInterfaceSetOfCreateVpnGateway struct {
 	
 	IpAddress *string
@@ -3128,6 +3280,57 @@ type NetworkInterfaceSetOfDescribeNetworkInterfaces struct {
 	SubnetId *string
 	
 	TagSet []TagSet
+	
+	VpcId *string
+	
+	noSmithyDocumentSerde
+}
+
+type NetworkInterfaceSetOfDescribeRemoteAccessVpnGateways struct {
+	
+	Association *AssociationOfDescribeRemoteAccessVpnGateways
+	
+	Attachment *AttachmentOfDescribeRemoteAccessVpnGateways
+	
+	AvailabilityZone *string
+	
+	Description *string
+	
+	GroupSet *string
+	
+	InterfaceType *string
+	
+	Ipv6AddressesSet *string
+	
+	MacAddress *string
+	
+	NetworkInterfaceId *string
+	
+	NiftyNetworkId *string
+	
+	NiftyNetworkName *string
+	
+	OwnerId *string
+	
+	PrivateDnsName *string
+	
+	PrivateIpAddress *string
+	
+	PrivateIpAddressV6 *string
+	
+	PrivateIpAddressesSet *string
+	
+	RequesterId *string
+	
+	RequesterManaged *string
+	
+	SourceDestCheck *string
+	
+	Status *string
+	
+	SubnetId *string
+	
+	TagSet *string
 	
 	VpcId *string
 	
@@ -3862,6 +4065,68 @@ type RegisterPortWithLoadBalancerResult struct {
 	noSmithyDocumentSerde
 }
 
+type RemoteAccessVpnGateway struct {
+	
+	AccountingType *string
+	
+	AuthTypeSet []AuthTypeSet
+	
+	AvailabilityZone *string
+	
+	CaCertificateId *string
+	
+	CipherSuiteSet []CipherSuiteSet
+	
+	ClientDownloadEndpoint *string
+	
+	ClientTunnelMode *string
+	
+	CreatedTime *string
+	
+	Description *string
+	
+	GroupSet *string
+	
+	IsConfiguredNat *string
+	
+	NetworkInterfaceSet []NetworkInterfaceSetOfCreateRemoteAccessVpnGateway
+	
+	NextMonthAccountingType *string
+	
+	PoolNetworkCidr *string
+	
+	PoolNetworkGatewayIpAddress *string
+	
+	RemoteAccessVpnGatewayId *string
+	
+	RemoteAccessVpnGatewayName *string
+	
+	RemoteAccessVpnGatewayType *string
+	
+	RemoteUserSet *string
+	
+	RouteTableAssociationId *string
+	
+	RouteTableId *string
+	
+	SslCertificateId *string
+	
+	Status *string
+	
+	VersionInformation *VersionInformationOfCreateRemoteAccessVpnGateway
+	
+	noSmithyDocumentSerde
+}
+
+type RemoteAccessVpnGatewayConnection struct {
+	
+	ConnectionCount *int32
+	
+	ConnectionSet []ConnectionSet
+	
+	noSmithyDocumentSerde
+}
+
 type RemoteAccessVpnGatewayInfo struct {
 	
 	RemoteAccessVpnGatewayMeasuredRateSet []RemoteAccessVpnGatewayMeasuredRateSet
@@ -3906,6 +4171,59 @@ type RemoteAccessVpnGatewaySet struct {
 	noSmithyDocumentSerde
 }
 
+type RemoteAccessVpnGatewaySetOfDescribeRemoteAccessVpnGateways struct {
+	
+	AccountingType *string
+	
+	AuthTypeSet []AuthTypeSet
+	
+	AvailabilityZone *string
+	
+	CaCertificateId *string
+	
+	CipherSuiteSet []CipherSuiteSet
+	
+	ClientDownloadEndpoint *string
+	
+	ClientTunnelMode *string
+	
+	CreatedTime *string
+	
+	Description *string
+	
+	GroupSet *string
+	
+	IsConfiguredNat *string
+	
+	NetworkInterfaceSet []NetworkInterfaceSetOfDescribeRemoteAccessVpnGateways
+	
+	NextMonthAccountingType *string
+	
+	PoolNetworkCidr *string
+	
+	PoolNetworkGatewayIpAddress *string
+	
+	RemoteAccessVpnGatewayId *string
+	
+	RemoteAccessVpnGatewayName *string
+	
+	RemoteAccessVpnGatewayType *string
+	
+	RemoteUserSet []RemoteUserSet
+	
+	RouteTableAssociationId *string
+	
+	RouteTableId *string
+	
+	SslCertificateId *string
+	
+	Status *string
+	
+	VersionInformation *VersionInformationOfDescribeRemoteAccessVpnGateways
+	
+	noSmithyDocumentSerde
+}
+
 type RemoteAccessVpnGatewaySetOfNiftyCreatePrivateLan struct {
 	
 	DeviceIndex *string
@@ -3928,6 +4246,15 @@ type RemoteAccessVpnGatewaySetOfNiftyDescribePrivateLans struct {
 	RemoteAccessVpnGatewayId *string
 	
 	RemoteAccessVpnGatewayName *string
+	
+	noSmithyDocumentSerde
+}
+
+type RemoteUserSet struct {
+	
+	Description *string
+	
+	UserName *string
 	
 	noSmithyDocumentSerde
 }
@@ -3983,6 +4310,14 @@ type RequestCertInfo struct {
 	OrganizationUnitName *string
 	
 	StateName *string
+	
+	noSmithyDocumentSerde
+}
+
+type RequestConnection struct {
+	
+	// This member is required.
+	ConnectionId *string
 	
 	noSmithyDocumentSerde
 }
@@ -4689,6 +5024,17 @@ type RequestNetworkInterfaceOfCopyFromBackupInstance struct {
 	noSmithyDocumentSerde
 }
 
+type RequestNetworkInterfaceOfCreateRemoteAccessVpnGateway struct {
+	
+	// This member is required.
+	IpAddress *string
+	
+	// This member is required.
+	NetworkId *string
+	
+	noSmithyDocumentSerde
+}
+
 type RequestNetworkInterfaceOfNiftyCreateElasticLoadBalancer struct {
 	
 	IpAddress *string
@@ -4869,6 +5215,13 @@ type RequestPlacementOfCreateNetworkInterface struct {
 	noSmithyDocumentSerde
 }
 
+type RequestPlacementOfCreateRemoteAccessVpnGateway struct {
+	
+	AvailabilityZone *string
+	
+	noSmithyDocumentSerde
+}
+
 type RequestPlacementOfCreateSecurityGroup struct {
 	
 	AvailabilityZone *string
@@ -4914,6 +5267,27 @@ type RequestRangeOfDescribeUserActivities struct {
 	EndNumber *int32
 	
 	StartNumber *int32
+	
+	noSmithyDocumentSerde
+}
+
+type RequestRemoteUser struct {
+	
+	// This member is required.
+	Password *string
+	
+	// This member is required.
+	UserName *string
+	
+	Description *string
+	
+	noSmithyDocumentSerde
+}
+
+type RequestRemoteUserOfDeleteRemoteAccessVpnGatewayUsers struct {
+	
+	// This member is required.
+	UserName *string
 	
 	noSmithyDocumentSerde
 }
@@ -5970,9 +6344,27 @@ type VersionInformation struct {
 	noSmithyDocumentSerde
 }
 
+type VersionInformationOfCreateRemoteAccessVpnGateway struct {
+	
+	IsLatest *string
+	
+	Version *string
+	
+	noSmithyDocumentSerde
+}
+
 type VersionInformationOfCreateVpnGateway struct {
 	
 	IsLatest *bool
+	
+	Version *string
+	
+	noSmithyDocumentSerde
+}
+
+type VersionInformationOfDescribeRemoteAccessVpnGateways struct {
+	
+	IsLatest *string
 	
 	Version *string
 	
