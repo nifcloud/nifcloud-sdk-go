@@ -23009,6 +23009,65 @@ operation DeleteRemoteAccessVpnGateway {
     output: DeleteRemoteAccessVpnGatewayResult,
 }
 
+@waitable(
+    RemoteAccessVpnGatewayExists: {
+        acceptors: [
+            {
+                state: "success",
+                matcher: {
+                    output: {
+                         path: "length(RemoteAccessVpnGatewaySet[]) > `0`",
+                         comparator: "booleanEquals",
+                         expected: "true",
+                    },
+                },
+            },
+            {
+                state: "retry",
+                matcher: {
+                    errorType: "Client.InvalidParameterNotFound.RemoteAccessVpnGatewayId",
+                },
+            },
+        ],
+        minDelay: 20,
+    },
+    RemoteAccessVpnGatewayAvailable: {
+        acceptors: [
+            {
+                state: "success",
+                matcher: {
+                    output: {
+                         path: "RemoteAccessVpnGatewaySet[].Status",
+                         comparator: "allStringEquals",
+                         expected: "available",
+                    },
+                },
+            },
+        ],
+        minDelay: 20,
+    },
+    RemoteAccessVpnGatewayDeleted: {
+        acceptors: [
+            {
+                state: "success",
+                matcher: {
+                    errorType: "Client.InvalidParameterNotFound.RemoteAccessVpnGatewayId",
+                },
+            },
+            {
+                state: "success",
+                matcher: {
+                    output: {
+                         path: "length(RemoteAccessVpnGatewaySet[]) == `0`",
+                         comparator: "booleanEquals",
+                         expected: "true",
+                    },
+                },
+            },
+        ],
+        minDelay: 20,
+    },
+)
 operation DescribeRemoteAccessVpnGateways {
     input: DescribeRemoteAccessVpnGatewaysRequest,
     output: DescribeRemoteAccessVpnGatewaysResult,
