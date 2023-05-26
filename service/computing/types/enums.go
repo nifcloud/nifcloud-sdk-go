@@ -946,6 +946,31 @@ func (HashAlgorithmOfNiftyIpsecConfigurationForCreateVpnConnection) Values() []H
 	}
 }
 
+type HttpCodeOfListenersForNiftyCreateElasticLoadBalancer string
+
+// Enum values for HttpCodeOfListenersForNiftyCreateElasticLoadBalancer
+const (
+	HttpCodeOfListenersForNiftyCreateElasticLoadBalancerInformational HttpCodeOfListenersForNiftyCreateElasticLoadBalancer = "1xx"
+	HttpCodeOfListenersForNiftyCreateElasticLoadBalancerSuccessful HttpCodeOfListenersForNiftyCreateElasticLoadBalancer = "2xx"
+	HttpCodeOfListenersForNiftyCreateElasticLoadBalancerRedirection HttpCodeOfListenersForNiftyCreateElasticLoadBalancer = "3xx"
+	HttpCodeOfListenersForNiftyCreateElasticLoadBalancerClientError HttpCodeOfListenersForNiftyCreateElasticLoadBalancer = "4xx"
+	HttpCodeOfListenersForNiftyCreateElasticLoadBalancerServerError HttpCodeOfListenersForNiftyCreateElasticLoadBalancer = "5xx"
+)
+
+// Values returns all known values for
+// HttpCodeOfListenersForNiftyCreateElasticLoadBalancer. Note that this can be
+// expanded in the future, and so it is only as up to date as the client. The
+// ordering of this slice is not guaranteed to be stable across updates.
+func (HttpCodeOfListenersForNiftyCreateElasticLoadBalancer) Values() []HttpCodeOfListenersForNiftyCreateElasticLoadBalancer {
+	return []HttpCodeOfListenersForNiftyCreateElasticLoadBalancer{
+		"1xx",
+		"2xx",
+		"3xx",
+		"4xx",
+		"5xx",
+	}
+}
+
 type InOutOfIpPermissionsForAuthorizeSecurityGroupIngress string
 
 // Enum values for InOutOfIpPermissionsForAuthorizeSecurityGroupIngress
