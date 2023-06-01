@@ -30,6 +30,8 @@ type NiftyReplaceElasticLoadBalancerLatestVersionInput struct {
 
 	ElasticLoadBalancerName *string
 
+	NetworkInterface []types.RequestNetworkInterfaceOfNiftyReplaceElasticLoadBalancerLatestVersion
+
 	noSmithyDocumentSerde
 }
 

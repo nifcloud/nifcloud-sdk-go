@@ -30020,11 +30020,7 @@ func awsEc2query_deserializeDocumentExpectation(v **types.Expectation, decoder s
 			}
 			{
 				xtv := string(val)
-				i64, err := strconv.ParseInt(xtv, 10, 64)
-				if err != nil {
-					return err
-				}
-				sv.HttpCode = ptr.Int32(int32(i64))
+				sv.HttpCode = ptr.String(xtv)
 			}
 
 		default:
@@ -50369,6 +50365,74 @@ func awsEc2query_deserializeDocumentListOfStoppedScaleOutOsSetUnwrapped(v *[]typ
 	*v = sv
 	return nil
 }
+func awsEc2query_deserializeDocumentListOfSystemIpAddresses(v *[]types.SystemIpAddresses, decoder smithyxml.NodeDecoder) error {
+	if v == nil {
+		return fmt.Errorf("unexpected nil of type %T", v)
+	}
+	var sv []types.SystemIpAddresses
+	if *v == nil {
+		sv = make([]types.SystemIpAddresses, 0)
+	} else {
+		sv = *v
+	}
+
+	originalDecoder := decoder
+	for {
+		t, done, err := decoder.Token()
+		if err != nil {
+			return err
+		}
+		if done {
+			break
+		}
+		switch {
+		case strings.EqualFold("member", t.Name.Local):
+			var col types.SystemIpAddresses
+			nodeDecoder := smithyxml.WrapNodeDecoder(decoder.Decoder, t)
+			destAddr := &col
+			if err := awsEc2query_deserializeDocumentSystemIpAddresses(&destAddr, nodeDecoder); err != nil {
+				return err
+			}
+			col = *destAddr
+			sv = append(sv, col)
+
+		default:
+			err = decoder.Decoder.Skip()
+			if err != nil {
+				return err
+			}
+
+		}
+		decoder = originalDecoder
+	}
+	*v = sv
+	return nil
+}
+
+func awsEc2query_deserializeDocumentListOfSystemIpAddressesUnwrapped(v *[]types.SystemIpAddresses, decoder smithyxml.NodeDecoder) error {
+	var sv []types.SystemIpAddresses
+	if *v == nil {
+		sv = make([]types.SystemIpAddresses, 0)
+	} else {
+		sv = *v
+	}
+
+	switch {
+	default:
+		var mv types.SystemIpAddresses
+		t := decoder.StartEl
+		_ = t
+		nodeDecoder := smithyxml.WrapNodeDecoder(decoder.Decoder, t)
+		destAddr := &mv
+		if err := awsEc2query_deserializeDocumentSystemIpAddresses(&destAddr, nodeDecoder); err != nil {
+			return err
+		}
+		mv = *destAddr
+		sv = append(sv, mv)
+	}
+	*v = sv
+	return nil
+}
 func awsEc2query_deserializeDocumentListOfTagSet(v *[]types.TagSet, decoder smithyxml.NodeDecoder) error {
 	if v == nil {
 		return fmt.Errorf("unexpected nil of type %T", v)
@@ -54994,6 +55058,12 @@ func awsEc2query_deserializeDocumentNetworkInterfaces(v **types.NetworkInterface
 			{
 				xtv := string(val)
 				sv.NetworkName = ptr.String(xtv)
+			}
+
+		case strings.EqualFold("SystemIpAddresses", t.Name.Local):
+			nodeDecoder := smithyxml.WrapNodeDecoder(decoder.Decoder, t)
+			if err := awsEc2query_deserializeDocumentListOfSystemIpAddresses(&sv.SystemIpAddresses, nodeDecoder); err != nil {
+				return err
 			}
 
 		default:
@@ -67039,6 +67109,55 @@ func awsEc2query_deserializeDocumentStoppedScaleOutOsSet(v **types.StoppedScaleO
 					return err
 				}
 				sv.Value = ptr.Int32(int32(i64))
+			}
+
+		default:
+			// Do nothing and ignore the unexpected tag element
+			err = decoder.Decoder.Skip()
+			if err != nil {
+				return err
+			}
+
+		}
+		decoder = originalDecoder
+	}
+	*v = sv
+	return nil
+}
+
+func awsEc2query_deserializeDocumentSystemIpAddresses(v **types.SystemIpAddresses, decoder smithyxml.NodeDecoder) error {
+	if v == nil {
+		return fmt.Errorf("unexpected nil of type %T", v)
+	}
+	var sv *types.SystemIpAddresses
+	if *v == nil {
+		sv = &types.SystemIpAddresses{}
+	} else {
+		sv = *v
+	}
+
+	for {
+		t, done, err := decoder.Token()
+		if err != nil {
+			return err
+		}
+		if done {
+			break
+		}
+		originalDecoder := decoder
+		decoder = smithyxml.WrapNodeDecoder(originalDecoder.Decoder, t)
+		switch {
+		case strings.EqualFold("SystemIpAddress", t.Name.Local):
+			val, err := decoder.Value()
+			if err != nil {
+				return err
+			}
+			if val == nil {
+				break
+			}
+			{
+				xtv := string(val)
+				sv.SystemIpAddress = ptr.String(xtv)
 			}
 
 		default:
