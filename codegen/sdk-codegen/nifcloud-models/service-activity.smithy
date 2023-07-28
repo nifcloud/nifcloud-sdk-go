@@ -189,12 +189,12 @@ list ListOfEvent {
 }
 
 structure Event {
-    @jsonName("affectedService")
-    AffectedService: ListOfAffectedService,
+    @jsonName("affectedServices")
+    AffectedServices: ListOfAffectedServices,
     @jsonName("endAt")
     EndAt: String,
-    @jsonName("eventHistory")
-    EventHistory: ListOfEventHistory,
+    @jsonName("eventHistories")
+    EventHistories: ListOfEventHistories,
     @jsonName("eventID")
     EventID: String,
     @jsonName("eventStatus")
@@ -203,22 +203,22 @@ structure Event {
     StartAt: String,
 }
 
-list ListOfEventHistory {
-    member: EventHistory,
+list ListOfEventHistories {
+    member: EventHistories,
 }
 
-structure EventHistory {
+structure EventHistories {
     @jsonName("date")
     Date: String,
     @jsonName("message")
     Message: String,
 }
 
-list ListOfAffectedService {
-    member: AffectedService,
+list ListOfAffectedServices {
+    member: AffectedServices,
 }
 
-structure AffectedService {
+structure AffectedServices {
     @jsonName("endAt")
     EndAt: String,
     @jsonName("influence")
@@ -229,8 +229,8 @@ structure AffectedService {
     Menu: String,
     @jsonName("number")
     Number: Integer,
-    @jsonName("resource")
-    Resource: ListOfResource,
+    @jsonName("resources")
+    Resources: ListOfResources,
     @jsonName("service")
     Service: String,
     @jsonName("startAt")
@@ -239,11 +239,11 @@ structure AffectedService {
     Status: String,
 }
 
-list ListOfResource {
-    member: Resource,
+list ListOfResources {
+    member: Resources,
 }
 
-structure Resource {
+structure Resources {
     @jsonName("diskName")
     DiskName: String,
     @jsonName("resourceName")

@@ -69,10 +69,6 @@ structure NASInstance {
     AuthenticationType: Integer,
     @xmlName("AvailabilityZone")
     AvailabilityZone: String,
-    @xmlName("DirectoryServiceDomainName")
-    DirectoryServiceDomainName: String,
-    @xmlName("DomainControllers")
-    DomainControllers: ListOfDomainControllers,
     @xmlName("Endpoint")
     Endpoint: Endpoint,
     @xmlName("MasterUsername")
@@ -134,23 +130,7 @@ structure Endpoint {
     PrivateAddress: String,
 }
 
-list ListOfDomainControllers {
-    @xmlName("DomainController")
-    member: DomainControllers,
-}
-
-structure DomainControllers {
-    @xmlName("Hostname")
-    Hostname: String,
-    @xmlName("IPAddress")
-    IPAddress: String,
-}
-
 structure DeleteNASInstanceRequest {
-    @xmlName("DirectoryServiceAdministratorName")
-    DirectoryServiceAdministratorName: String,
-    @xmlName("DirectoryServiceAdministratorPassword")
-    DirectoryServiceAdministratorPassword: String,
     @required
     @xmlName("NASInstanceIdentifier")
     NASInstanceIdentifier: String,
@@ -187,10 +167,6 @@ structure NASInstances {
     AuthenticationType: Integer,
     @xmlName("AvailabilityZone")
     AvailabilityZone: String,
-    @xmlName("DirectoryServiceDomainName")
-    DirectoryServiceDomainName: String,
-    @xmlName("DomainControllers")
-    DomainControllers: ListOfDomainControllers,
     @xmlName("Endpoint")
     Endpoint: Endpoint,
     @xmlName("MasterUsername")
@@ -221,31 +197,11 @@ structure NASInstances {
     UpgradeRequired: Boolean,
 }
 
-structure RequestDomainControllers {
-    @xmlName("Hostname")
-    Hostname: String,
-    @xmlName("IPAddress")
-    IPAddress: String,
-}
-
-list ListOfRequestDomainControllers {
-    @xmlName("member")
-    member: RequestDomainControllers,
-}
-
 structure ModifyNASInstanceRequest {
     @xmlName("AllocatedStorage")
     AllocatedStorage: Integer,
     @xmlName("AuthenticationType")
     AuthenticationType: Integer,
-    @xmlName("DirectoryServiceAdministratorName")
-    DirectoryServiceAdministratorName: String,
-    @xmlName("DirectoryServiceAdministratorPassword")
-    DirectoryServiceAdministratorPassword: String,
-    @xmlName("DirectoryServiceDomainName")
-    DirectoryServiceDomainName: String,
-    @xmlName("DomainControllers")
-    DomainControllers: ListOfRequestDomainControllers,
     @xmlName("MasterPrivateAddress")
     MasterPrivateAddress: String,
     @xmlName("MasterUserPassword")

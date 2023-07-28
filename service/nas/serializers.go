@@ -860,18 +860,6 @@ func awsAwsquery_serializeDocumentListOfRequestDimensions(v []types.RequestDimen
 	return nil
 }
 
-func awsAwsquery_serializeDocumentListOfRequestDomainControllers(v []types.RequestDomainControllers, value query.Value) error {
-	array := value.Array("member")
-
-	for i := range v {
-		av := array.Value()
-		if err := awsAwsquery_serializeDocumentRequestDomainControllers(&v[i], av); err != nil {
-			return err
-		}
-	}
-	return nil
-}
-
 func awsAwsquery_serializeDocumentListOfRequestNASSecurityGroups(v []string, value query.Value) error {
 	array := value.Array("member")
 
@@ -894,23 +882,6 @@ func awsAwsquery_serializeDocumentRequestDimensions(v *types.RequestDimensions, 
 	if v.Value != nil {
 		objectKey := object.Key("Value")
 		objectKey.String(*v.Value)
-	}
-
-	return nil
-}
-
-func awsAwsquery_serializeDocumentRequestDomainControllers(v *types.RequestDomainControllers, value query.Value) error {
-	object := value.Object()
-	_ = object
-
-	if v.Hostname != nil {
-		objectKey := object.Key("Hostname")
-		objectKey.String(*v.Hostname)
-	}
-
-	if v.IPAddress != nil {
-		objectKey := object.Key("IPAddress")
-		objectKey.String(*v.IPAddress)
 	}
 
 	return nil
@@ -1045,16 +1016,6 @@ func awsAwsquery_serializeOpDocumentDeleteNASInstanceInput(v *DeleteNASInstanceI
 	object := value.Object()
 	_ = object
 
-	if v.DirectoryServiceAdministratorName != nil {
-		objectKey := object.Key("DirectoryServiceAdministratorName")
-		objectKey.String(*v.DirectoryServiceAdministratorName)
-	}
-
-	if v.DirectoryServiceAdministratorPassword != nil {
-		objectKey := object.Key("DirectoryServiceAdministratorPassword")
-		objectKey.String(*v.DirectoryServiceAdministratorPassword)
-	}
-
 	if v.NASInstanceIdentifier != nil {
 		objectKey := object.Key("NASInstanceIdentifier")
 		objectKey.String(*v.NASInstanceIdentifier)
@@ -1140,28 +1101,6 @@ func awsAwsquery_serializeOpDocumentModifyNASInstanceInput(v *ModifyNASInstanceI
 	if v.AuthenticationType != nil {
 		objectKey := object.Key("AuthenticationType")
 		objectKey.Integer(*v.AuthenticationType)
-	}
-
-	if v.DirectoryServiceAdministratorName != nil {
-		objectKey := object.Key("DirectoryServiceAdministratorName")
-		objectKey.String(*v.DirectoryServiceAdministratorName)
-	}
-
-	if v.DirectoryServiceAdministratorPassword != nil {
-		objectKey := object.Key("DirectoryServiceAdministratorPassword")
-		objectKey.String(*v.DirectoryServiceAdministratorPassword)
-	}
-
-	if v.DirectoryServiceDomainName != nil {
-		objectKey := object.Key("DirectoryServiceDomainName")
-		objectKey.String(*v.DirectoryServiceDomainName)
-	}
-
-	if v.DomainControllers != nil {
-		objectKey := object.Key("DomainControllers")
-		if err := awsAwsquery_serializeDocumentListOfRequestDomainControllers(v.DomainControllers, objectKey); err != nil {
-			return err
-		}
 	}
 
 	if v.MasterPrivateAddress != nil {

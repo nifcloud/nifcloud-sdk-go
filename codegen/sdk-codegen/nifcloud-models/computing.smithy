@@ -5675,7 +5675,7 @@ structure RequestHealthCheckOfNiftyConfigureElasticLoadBalancerHealthCheck {
 structure RequestExpectation {
     @xmlName("HttpCode")
     @ec2QueryName("HttpCode")
-    HttpCode: Integer,
+    HttpCode: String,
 }
 
 structure ListOfRequestExpectation {
@@ -5750,7 +5750,7 @@ list ListOfExpectation {
 structure Expectation {
     @xmlName("HttpCode")
     @ec2QueryName("HttpCode")
-    HttpCode: Integer,
+    HttpCode: String,
 }
 
 @enum([
@@ -5835,7 +5835,7 @@ structure RequestHealthCheckOfNiftyCreateElasticLoadBalancer {
     Interval: Integer,
     @xmlName("Expectation")
     @ec2QueryName("Expectation")
-    ListOfRequestExpectation: ListOfRequestExpectation,
+    ListOfRequestExpectation: ListOfRequestExpectationOfNiftyCreateElasticLoadBalancer,
     @xmlName("Path")
     @ec2QueryName("Path")
     Path: String,
@@ -5845,6 +5845,42 @@ structure RequestHealthCheckOfNiftyCreateElasticLoadBalancer {
     @xmlName("UnhealthyThreshold")
     @ec2QueryName("UnhealthyThreshold")
     UnhealthyThreshold: Integer,
+}
+
+@enum([
+  {
+      name: "INFORMATIONAL",
+      value: "1xx",
+  },
+  {
+      name: "SUCCESSFUL",
+      value: "2xx",
+  },
+  {
+      name: "REDIRECTION",
+      value: "3xx",
+  },
+  {
+      name: "CLIENT_ERROR",
+      value: "4xx",
+  },
+  {
+      name: "SERVER_ERROR",
+      value: "5xx",
+  },
+])
+string HttpCodeOfListenersForNiftyCreateElasticLoadBalancer
+
+structure RequestExpectationOfNiftyCreateElasticLoadBalancer {
+    @xmlName("HttpCode")
+    @ec2QueryName("HttpCode")
+    HttpCode: HttpCodeOfListenersForNiftyCreateElasticLoadBalancer,
+}
+
+structure ListOfRequestExpectationOfNiftyCreateElasticLoadBalancer {
+    @xmlName("member")
+    @ec2QueryName("member")
+    Member: ListOfRequestExpectationOfNiftyCreateElasticLoadBalancerMember,
 }
 
 structure RequestStickinessPolicy {
@@ -5905,6 +5941,9 @@ structure RequestNetworkInterfaceOfNiftyCreateElasticLoadBalancer {
     @xmlName("IsVipNetwork")
     @ec2QueryName("IsVipNetwork")
     IsVipNetwork: Boolean,
+    @xmlName("SystemIpAddresses")
+    @ec2QueryName("SystemIpAddresses")
+    ListOfRequestSystemIpAddresses: ListOfRequestSystemIpAddresses,
     @xmlName("NetworkId")
     @ec2QueryName("NetworkId")
     NetworkId: String,
@@ -5915,6 +5954,16 @@ structure RequestNetworkInterfaceOfNiftyCreateElasticLoadBalancer {
 
 list ListOfRequestNetworkInterfaceOfNiftyCreateElasticLoadBalancer {
     member: RequestNetworkInterfaceOfNiftyCreateElasticLoadBalancer,
+}
+
+structure RequestSystemIpAddresses {
+    @xmlName("SystemIpAddress")
+    @ec2QueryName("SystemIpAddress")
+    SystemIpAddress: String,
+}
+
+list ListOfRequestSystemIpAddresses {
+    member: RequestSystemIpAddresses,
 }
 
 structure NiftyCreateElasticLoadBalancerRequest {
@@ -6418,6 +6467,20 @@ structure NetworkInterfaces {
     @xmlName("NetworkName")
     @ec2QueryName("NetworkName")
     NetworkName: String,
+    @xmlName("SystemIpAddresses")
+    @ec2QueryName("SystemIpAddresses")
+    SystemIpAddresses: ListOfSystemIpAddresses,
+}
+
+list ListOfSystemIpAddresses {
+    @xmlName("member")
+    member: SystemIpAddresses,
+}
+
+structure SystemIpAddresses {
+    @xmlName("SystemIpAddress")
+    @ec2QueryName("SystemIpAddress")
+    SystemIpAddress: String,
 }
 
 structure VersionInformation {
@@ -6760,6 +6823,19 @@ structure NiftyUpdateElasticLoadBalancerResult {
     ResponseMetadata: ResponseMetadata,
 }
 
+structure RequestNetworkInterfaceOfNiftyReplaceElasticLoadBalancerLatestVersion {
+    @xmlName("SystemIpAddresses")
+    @ec2QueryName("SystemIpAddresses")
+    ListOfRequestSystemIpAddresses: ListOfRequestSystemIpAddresses,
+    @xmlName("NetworkId")
+    @ec2QueryName("NetworkId")
+    NetworkId: String,
+}
+
+list ListOfRequestNetworkInterfaceOfNiftyReplaceElasticLoadBalancerLatestVersion {
+    member: RequestNetworkInterfaceOfNiftyReplaceElasticLoadBalancerLatestVersion,
+}
+
 structure NiftyReplaceElasticLoadBalancerLatestVersionRequest {
     @xmlName("ElasticLoadBalancerId")
     @ec2QueryName("ElasticLoadBalancerId")
@@ -6767,6 +6843,9 @@ structure NiftyReplaceElasticLoadBalancerLatestVersionRequest {
     @xmlName("ElasticLoadBalancerName")
     @ec2QueryName("ElasticLoadBalancerName")
     ElasticLoadBalancerName: String,
+    @xmlName("NetworkInterface")
+    @ec2QueryName("NetworkInterface")
+    NetworkInterface: ListOfRequestNetworkInterfaceOfNiftyReplaceElasticLoadBalancerLatestVersion,
 }
 
 structure NiftyReplaceElasticLoadBalancerLatestVersionResultWrapper {
@@ -20814,6 +20893,11 @@ list ListOfRequestInstancesOfNiftyCreateElasticLoadBalancerMember {
     member: RequestInstancesOfNiftyCreateElasticLoadBalancer,
 }
 
+list ListOfRequestExpectationOfNiftyCreateElasticLoadBalancerMember {
+    @xmlName("member")
+    member: RequestExpectationOfNiftyCreateElasticLoadBalancer,
+}
+
 list ListOfRequestInstancesOfNiftyDeregisterInstancesFromElasticLoadBalancerMember {
     @xmlName("member")
     member: RequestInstancesOfNiftyDeregisterInstancesFromElasticLoadBalancer,
@@ -23009,6 +23093,65 @@ operation DeleteRemoteAccessVpnGateway {
     output: DeleteRemoteAccessVpnGatewayResult,
 }
 
+@waitable(
+    RemoteAccessVpnGatewayExists: {
+        acceptors: [
+            {
+                state: "success",
+                matcher: {
+                    output: {
+                         path: "length(RemoteAccessVpnGatewaySet[]) > `0`",
+                         comparator: "booleanEquals",
+                         expected: "true",
+                    },
+                },
+            },
+            {
+                state: "retry",
+                matcher: {
+                    errorType: "Client.InvalidParameterNotFound.RemoteAccessVpnGatewayId",
+                },
+            },
+        ],
+        minDelay: 20,
+    },
+    RemoteAccessVpnGatewayAvailable: {
+        acceptors: [
+            {
+                state: "success",
+                matcher: {
+                    output: {
+                         path: "RemoteAccessVpnGatewaySet[].Status",
+                         comparator: "allStringEquals",
+                         expected: "available",
+                    },
+                },
+            },
+        ],
+        minDelay: 20,
+    },
+    RemoteAccessVpnGatewayDeleted: {
+        acceptors: [
+            {
+                state: "success",
+                matcher: {
+                    errorType: "Client.InvalidParameterNotFound.RemoteAccessVpnGatewayId",
+                },
+            },
+            {
+                state: "success",
+                matcher: {
+                    output: {
+                         path: "length(RemoteAccessVpnGatewaySet[]) == `0`",
+                         comparator: "booleanEquals",
+                         expected: "true",
+                    },
+                },
+            },
+        ],
+        minDelay: 20,
+    },
+)
 operation DescribeRemoteAccessVpnGateways {
     input: DescribeRemoteAccessVpnGatewaysRequest,
     output: DescribeRemoteAccessVpnGatewaysResult,

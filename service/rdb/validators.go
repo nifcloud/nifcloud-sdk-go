@@ -451,26 +451,6 @@ func (m *validateOpModifyEventSubscription) HandleInitialize(ctx context.Context
 	return next.HandleInitialize(ctx, in)
 }
 
-type validateOpNiftyFailoverDBInstance struct {
-}
-
-func (*validateOpNiftyFailoverDBInstance) ID() string {
-	return "OperationInputValidation"
-}
-
-func (m *validateOpNiftyFailoverDBInstance) HandleInitialize(ctx context.Context, in middleware.InitializeInput, next middleware.InitializeHandler) (
-	out middleware.InitializeOutput, metadata middleware.Metadata, err error,
-) {
-	input, ok := in.Parameters.(*NiftyFailoverDBInstanceInput)
-	if !ok {
-		return out, metadata, fmt.Errorf("unknown input parameters type %T", in.Parameters)
-	}
-	if err := validateOpNiftyFailoverDBInstanceInput(input); err != nil {
-		return out, metadata, err
-	}
-	return next.HandleInitialize(ctx, in)
-}
-
 type validateOpNiftyGetMetricStatistics struct {
 }
 
@@ -797,10 +777,6 @@ func addOpModifyDBParameterGroupValidationMiddleware(stack *middleware.Stack) er
 
 func addOpModifyEventSubscriptionValidationMiddleware(stack *middleware.Stack) error {
 	return stack.Initialize.Add(&validateOpModifyEventSubscription{}, middleware.After)
-}
-
-func addOpNiftyFailoverDBInstanceValidationMiddleware(stack *middleware.Stack) error {
-	return stack.Initialize.Add(&validateOpNiftyFailoverDBInstance{}, middleware.After)
 }
 
 func addOpNiftyGetMetricStatisticsValidationMiddleware(stack *middleware.Stack) error {
@@ -1295,21 +1271,6 @@ func validateOpModifyEventSubscriptionInput(v *ModifyEventSubscriptionInput) err
 	invalidParams := smithy.InvalidParamsError{Context: "ModifyEventSubscriptionInput"}
 	if v.SubscriptionName == nil {
 	invalidParams.Add(smithy.NewErrParamRequired("SubscriptionName"))
-	}
-	if invalidParams.Len() > 0 {
-	return invalidParams
-	} else {
-	return nil
-	}
-}
-
-func validateOpNiftyFailoverDBInstanceInput(v *NiftyFailoverDBInstanceInput) error {
-	if v == nil {
-		return nil
-	}
-	invalidParams := smithy.InvalidParamsError{Context: "NiftyFailoverDBInstanceInput"}
-	if v.DBInstanceIdentifier == nil {
-	invalidParams.Add(smithy.NewErrParamRequired("DBInstanceIdentifier"))
 	}
 	if invalidParams.Len() > 0 {
 	return invalidParams

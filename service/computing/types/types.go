@@ -1241,7 +1241,7 @@ type EmailAddressSet struct {
 
 type Expectation struct {
 	
-	HttpCode *int32
+	HttpCode *string
 	
 	noSmithyDocumentSerde
 }
@@ -2490,6 +2490,13 @@ type ListOfRequestExpectation struct {
 	noSmithyDocumentSerde
 }
 
+type ListOfRequestExpectationOfNiftyCreateElasticLoadBalancer struct {
+	
+	Member []RequestExpectationOfNiftyCreateElasticLoadBalancer
+	
+	noSmithyDocumentSerde
+}
+
 type ListOfRequestInstances struct {
 	
 	Member []RequestInstances
@@ -3050,6 +3057,8 @@ type NetworkInterfaces struct {
 	NetworkId *string
 	
 	NetworkName *string
+	
+	SystemIpAddresses []SystemIpAddresses
 	
 	noSmithyDocumentSerde
 }
@@ -4455,7 +4464,14 @@ type RequestElasticLoadBalancers struct {
 
 type RequestExpectation struct {
 	
-	HttpCode *int32
+	HttpCode *string
+	
+	noSmithyDocumentSerde
+}
+
+type RequestExpectationOfNiftyCreateElasticLoadBalancer struct {
+	
+	HttpCode HttpCodeOfListenersForNiftyCreateElasticLoadBalancer
 	
 	noSmithyDocumentSerde
 }
@@ -4662,7 +4678,7 @@ type RequestHealthCheckOfNiftyCreateElasticLoadBalancer struct {
 	
 	Interval *int32
 	
-	ListOfRequestExpectation *ListOfRequestExpectation
+	ListOfRequestExpectation *ListOfRequestExpectationOfNiftyCreateElasticLoadBalancer
 	
 	Path *string
 	
@@ -5041,6 +5057,8 @@ type RequestNetworkInterfaceOfNiftyCreateElasticLoadBalancer struct {
 	
 	IsVipNetwork *bool
 	
+	ListOfRequestSystemIpAddresses []RequestSystemIpAddresses
+	
 	NetworkId *string
 	
 	NetworkName *string
@@ -5065,6 +5083,15 @@ type RequestNetworkInterfaceOfNiftyCreateRouter struct {
 	NetworkId *string
 	
 	NetworkName *string
+	
+	noSmithyDocumentSerde
+}
+
+type RequestNetworkInterfaceOfNiftyReplaceElasticLoadBalancerLatestVersion struct {
+	
+	ListOfRequestSystemIpAddresses []RequestSystemIpAddresses
+	
+	NetworkId *string
 	
 	noSmithyDocumentSerde
 }
@@ -5507,6 +5534,13 @@ type RequestStickinessPolicyOfNiftyModifyElasticLoadBalancerAttributes struct {
 	ExpirationPeriod *int32
 	
 	Method MethodOfLoadBalancerAttributesForNiftyModifyElasticLoadBalancerAttributes
+	
+	noSmithyDocumentSerde
+}
+
+type RequestSystemIpAddresses struct {
+	
+	SystemIpAddress *string
 	
 	noSmithyDocumentSerde
 }
@@ -6240,6 +6274,13 @@ type StoppedScaleOutOsSet struct {
 	Unit *string
 	
 	Value *int32
+	
+	noSmithyDocumentSerde
+}
+
+type SystemIpAddresses struct {
+	
+	SystemIpAddress *string
 	
 	noSmithyDocumentSerde
 }

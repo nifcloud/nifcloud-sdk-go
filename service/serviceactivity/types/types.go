@@ -7,7 +7,7 @@ import (
 	smithydocument "github.com/aws/smithy-go/document"
 )
 
-type AffectedService struct {
+type AffectedServices struct {
 	
 	EndAt *string
 	
@@ -19,7 +19,7 @@ type AffectedService struct {
 	
 	Number *int32
 	
-	Resource []Resource
+	Resources []Resources
 	
 	Service *string
 	
@@ -84,11 +84,11 @@ type DataOfDescribeEventCalendar struct {
 
 type Event struct {
 	
-	AffectedService []AffectedService
+	AffectedServices []AffectedServices
 	
 	EndAt *string
 	
-	EventHistory []EventHistory
+	EventHistories []EventHistories
 	
 	EventID *string
 	
@@ -99,7 +99,7 @@ type Event struct {
 	noSmithyDocumentSerde
 }
 
-type EventHistory struct {
+type EventHistories struct {
 	
 	Date *string
 	
@@ -108,7 +108,7 @@ type EventHistory struct {
 	noSmithyDocumentSerde
 }
 
-type Resource struct {
+type Resources struct {
 	
 	DiskName *string
 	

@@ -503,7 +503,7 @@ func awsRestjson1_deserializeOpDocumentDescribeServiceStatusesOutput(v **Describ
 	return nil
 }
 
-func awsRestjson1_deserializeDocumentAffectedService(v **types.AffectedService, value interface{}) error {
+func awsRestjson1_deserializeDocumentAffectedServices(v **types.AffectedServices, value interface{}) error {
 	if v == nil {
 		return fmt.Errorf("unexpected nil of type %T", v)
 	}
@@ -516,9 +516,9 @@ func awsRestjson1_deserializeDocumentAffectedService(v **types.AffectedService, 
 		return fmt.Errorf("unexpected JSON type %v", value)
 	}
 
-	var sv *types.AffectedService
+	var sv *types.AffectedServices
 	if *v == nil {
-		sv = &types.AffectedService{}
+		sv = &types.AffectedServices{}
 	} else {
 		sv = *v
 	}
@@ -574,8 +574,8 @@ func awsRestjson1_deserializeDocumentAffectedService(v **types.AffectedService, 
 				sv.Number = ptr.Int32(int32(i64))
 			}
 
-		case "resource":
-			if err := awsRestjson1_deserializeDocumentListOfResource(&sv.Resource, value); err != nil {
+		case "resources":
+			if err := awsRestjson1_deserializeDocumentListOfResources(&sv.Resources, value); err != nil {
 				return err
 			}
 
@@ -893,8 +893,8 @@ func awsRestjson1_deserializeDocumentEvent(v **types.Event, value interface{}) e
 
 	for key, value := range shape {
 		switch key {
-		case "affectedService":
-			if err := awsRestjson1_deserializeDocumentListOfAffectedService(&sv.AffectedService, value); err != nil {
+		case "affectedServices":
+			if err := awsRestjson1_deserializeDocumentListOfAffectedServices(&sv.AffectedServices, value); err != nil {
 				return err
 			}
 
@@ -907,8 +907,8 @@ func awsRestjson1_deserializeDocumentEvent(v **types.Event, value interface{}) e
 				sv.EndAt = ptr.String(jtv)
 			}
 
-		case "eventHistory":
-			if err := awsRestjson1_deserializeDocumentListOfEventHistory(&sv.EventHistory, value); err != nil {
+		case "eventHistories":
+			if err := awsRestjson1_deserializeDocumentListOfEventHistories(&sv.EventHistories, value); err != nil {
 				return err
 			}
 
@@ -948,7 +948,7 @@ func awsRestjson1_deserializeDocumentEvent(v **types.Event, value interface{}) e
 	return nil
 }
 
-func awsRestjson1_deserializeDocumentEventHistory(v **types.EventHistory, value interface{}) error {
+func awsRestjson1_deserializeDocumentEventHistories(v **types.EventHistories, value interface{}) error {
 	if v == nil {
 		return fmt.Errorf("unexpected nil of type %T", v)
 	}
@@ -961,9 +961,9 @@ func awsRestjson1_deserializeDocumentEventHistory(v **types.EventHistory, value 
 		return fmt.Errorf("unexpected JSON type %v", value)
 	}
 
-	var sv *types.EventHistory
+	var sv *types.EventHistories
 	if *v == nil {
-		sv = &types.EventHistory{}
+		sv = &types.EventHistories{}
 	} else {
 		sv = *v
 	}
@@ -997,7 +997,7 @@ func awsRestjson1_deserializeDocumentEventHistory(v **types.EventHistory, value 
 	return nil
 }
 
-func awsRestjson1_deserializeDocumentListOfAffectedService(v *[]types.AffectedService, value interface{}) error {
+func awsRestjson1_deserializeDocumentListOfAffectedServices(v *[]types.AffectedServices, value interface{}) error {
 	if v == nil {
 		return fmt.Errorf("unexpected nil of type %T", v)
 	}
@@ -1010,17 +1010,17 @@ func awsRestjson1_deserializeDocumentListOfAffectedService(v *[]types.AffectedSe
 		return fmt.Errorf("unexpected JSON type %v", value)
 	}
 
-	var cv []types.AffectedService
+	var cv []types.AffectedServices
 	if *v == nil {
-		cv = []types.AffectedService{}
+		cv = []types.AffectedServices{}
 	} else {
 		cv = *v
 	}
 
 	for _, value := range shape {
-		var col types.AffectedService
+		var col types.AffectedServices
 		destAddr := &col
-		if err := awsRestjson1_deserializeDocumentAffectedService(&destAddr, value); err != nil {
+		if err := awsRestjson1_deserializeDocumentAffectedServices(&destAddr, value); err != nil {
 			return err
 		}
 		col = *destAddr
@@ -1099,7 +1099,7 @@ func awsRestjson1_deserializeDocumentListOfEvent(v *[]types.Event, value interfa
 	return nil
 }
 
-func awsRestjson1_deserializeDocumentListOfEventHistory(v *[]types.EventHistory, value interface{}) error {
+func awsRestjson1_deserializeDocumentListOfEventHistories(v *[]types.EventHistories, value interface{}) error {
 	if v == nil {
 		return fmt.Errorf("unexpected nil of type %T", v)
 	}
@@ -1112,17 +1112,17 @@ func awsRestjson1_deserializeDocumentListOfEventHistory(v *[]types.EventHistory,
 		return fmt.Errorf("unexpected JSON type %v", value)
 	}
 
-	var cv []types.EventHistory
+	var cv []types.EventHistories
 	if *v == nil {
-		cv = []types.EventHistory{}
+		cv = []types.EventHistories{}
 	} else {
 		cv = *v
 	}
 
 	for _, value := range shape {
-		var col types.EventHistory
+		var col types.EventHistories
 		destAddr := &col
-		if err := awsRestjson1_deserializeDocumentEventHistory(&destAddr, value); err != nil {
+		if err := awsRestjson1_deserializeDocumentEventHistories(&destAddr, value); err != nil {
 			return err
 		}
 		col = *destAddr
@@ -1133,7 +1133,7 @@ func awsRestjson1_deserializeDocumentListOfEventHistory(v *[]types.EventHistory,
 	return nil
 }
 
-func awsRestjson1_deserializeDocumentListOfResource(v *[]types.Resource, value interface{}) error {
+func awsRestjson1_deserializeDocumentListOfResources(v *[]types.Resources, value interface{}) error {
 	if v == nil {
 		return fmt.Errorf("unexpected nil of type %T", v)
 	}
@@ -1146,17 +1146,17 @@ func awsRestjson1_deserializeDocumentListOfResource(v *[]types.Resource, value i
 		return fmt.Errorf("unexpected JSON type %v", value)
 	}
 
-	var cv []types.Resource
+	var cv []types.Resources
 	if *v == nil {
-		cv = []types.Resource{}
+		cv = []types.Resources{}
 	} else {
 		cv = *v
 	}
 
 	for _, value := range shape {
-		var col types.Resource
+		var col types.Resources
 		destAddr := &col
-		if err := awsRestjson1_deserializeDocumentResource(&destAddr, value); err != nil {
+		if err := awsRestjson1_deserializeDocumentResources(&destAddr, value); err != nil {
 			return err
 		}
 		col = *destAddr
@@ -1269,7 +1269,7 @@ func awsRestjson1_deserializeDocumentListOfStatuses(v *[]types.Statuses, value i
 	return nil
 }
 
-func awsRestjson1_deserializeDocumentResource(v **types.Resource, value interface{}) error {
+func awsRestjson1_deserializeDocumentResources(v **types.Resources, value interface{}) error {
 	if v == nil {
 		return fmt.Errorf("unexpected nil of type %T", v)
 	}
@@ -1282,9 +1282,9 @@ func awsRestjson1_deserializeDocumentResource(v **types.Resource, value interfac
 		return fmt.Errorf("unexpected JSON type %v", value)
 	}
 
-	var sv *types.Resource
+	var sv *types.Resources
 	if *v == nil {
-		sv = &types.Resource{}
+		sv = &types.Resources{}
 	} else {
 		sv = *v
 	}

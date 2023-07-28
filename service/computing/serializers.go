@@ -15592,6 +15592,32 @@ func awsEc2query_serializeDocumentListOfRequestExpectationMember(v []types.Reque
 	return nil
 }
 
+func awsEc2query_serializeDocumentListOfRequestExpectationOfNiftyCreateElasticLoadBalancer(v *types.ListOfRequestExpectationOfNiftyCreateElasticLoadBalancer, value query.Value) error {
+	object := value.Object()
+	_ = object
+
+	if v.Member != nil {
+		objectKey := object.FlatKey("member")
+		if err := awsEc2query_serializeDocumentListOfRequestExpectationOfNiftyCreateElasticLoadBalancerMember(v.Member, objectKey); err != nil {
+			return err
+		}
+	}
+
+	return nil
+}
+
+func awsEc2query_serializeDocumentListOfRequestExpectationOfNiftyCreateElasticLoadBalancerMember(v []types.RequestExpectationOfNiftyCreateElasticLoadBalancer, value query.Value) error {
+	array := value.Array("Member")
+
+	for i := range v {
+		av := array.Value()
+		if err := awsEc2query_serializeDocumentRequestExpectationOfNiftyCreateElasticLoadBalancer(&v[i], av); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
 func awsEc2query_serializeDocumentListOfRequestFilter(v []types.RequestFilter, value query.Value) error {
 	array := value.Array("Member")
 
@@ -16454,6 +16480,18 @@ func awsEc2query_serializeDocumentListOfRequestNetworkInterfaceOfNiftyCreateRout
 	return nil
 }
 
+func awsEc2query_serializeDocumentListOfRequestNetworkInterfaceOfNiftyReplaceElasticLoadBalancerLatestVersion(v []types.RequestNetworkInterfaceOfNiftyReplaceElasticLoadBalancerLatestVersion, value query.Value) error {
+	array := value.Array("Member")
+
+	for i := range v {
+		av := array.Value()
+		if err := awsEc2query_serializeDocumentRequestNetworkInterfaceOfNiftyReplaceElasticLoadBalancerLatestVersion(&v[i], av); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
 func awsEc2query_serializeDocumentListOfRequestNetworkInterfaceOfNiftyUpdateRouterNetworkInterfaces(v []types.RequestNetworkInterfaceOfNiftyUpdateRouterNetworkInterfaces, value query.Value) error {
 	array := value.Array("Member")
 
@@ -16820,6 +16858,18 @@ func awsEc2query_serializeDocumentListOfRequestSnapshotName(v []string, value qu
 	for i := range v {
 		av := array.Value()
 		av.String(v[i])
+	}
+	return nil
+}
+
+func awsEc2query_serializeDocumentListOfRequestSystemIpAddresses(v []types.RequestSystemIpAddresses, value query.Value) error {
+	array := value.Array("Member")
+
+	for i := range v {
+		av := array.Value()
+		if err := awsEc2query_serializeDocumentRequestSystemIpAddresses(&v[i], av); err != nil {
+			return err
+		}
 	}
 	return nil
 }
@@ -17351,7 +17401,19 @@ func awsEc2query_serializeDocumentRequestExpectation(v *types.RequestExpectation
 
 	if v.HttpCode != nil {
 		objectKey := object.Key("HttpCode")
-		objectKey.Integer(*v.HttpCode)
+		objectKey.String(*v.HttpCode)
+	}
+
+	return nil
+}
+
+func awsEc2query_serializeDocumentRequestExpectationOfNiftyCreateElasticLoadBalancer(v *types.RequestExpectationOfNiftyCreateElasticLoadBalancer, value query.Value) error {
+	object := value.Object()
+	_ = object
+
+	if len(v.HttpCode) > 0 {
+		objectKey := object.Key("HttpCode")
+		objectKey.String(string(v.HttpCode))
 	}
 
 	return nil
@@ -17774,7 +17836,7 @@ func awsEc2query_serializeDocumentRequestHealthCheckOfNiftyCreateElasticLoadBala
 
 	if v.ListOfRequestExpectation != nil {
 		objectKey := object.Key("Expectation")
-		if err := awsEc2query_serializeDocumentListOfRequestExpectation(v.ListOfRequestExpectation, objectKey); err != nil {
+		if err := awsEc2query_serializeDocumentListOfRequestExpectationOfNiftyCreateElasticLoadBalancer(v.ListOfRequestExpectation, objectKey); err != nil {
 			return err
 		}
 	}
@@ -18550,6 +18612,13 @@ func awsEc2query_serializeDocumentRequestNetworkInterfaceOfNiftyCreateElasticLoa
 		objectKey.Boolean(*v.IsVipNetwork)
 	}
 
+	if v.ListOfRequestSystemIpAddresses != nil {
+		objectKey := object.FlatKey("SystemIpAddresses")
+		if err := awsEc2query_serializeDocumentListOfRequestSystemIpAddresses(v.ListOfRequestSystemIpAddresses, objectKey); err != nil {
+			return err
+		}
+	}
+
 	if v.NetworkId != nil {
 		objectKey := object.Key("NetworkId")
 		objectKey.String(*v.NetworkId)
@@ -18607,6 +18676,25 @@ func awsEc2query_serializeDocumentRequestNetworkInterfaceOfNiftyCreateRouter(v *
 	if v.NetworkName != nil {
 		objectKey := object.Key("NetworkName")
 		objectKey.String(*v.NetworkName)
+	}
+
+	return nil
+}
+
+func awsEc2query_serializeDocumentRequestNetworkInterfaceOfNiftyReplaceElasticLoadBalancerLatestVersion(v *types.RequestNetworkInterfaceOfNiftyReplaceElasticLoadBalancerLatestVersion, value query.Value) error {
+	object := value.Object()
+	_ = object
+
+	if v.ListOfRequestSystemIpAddresses != nil {
+		objectKey := object.FlatKey("SystemIpAddresses")
+		if err := awsEc2query_serializeDocumentListOfRequestSystemIpAddresses(v.ListOfRequestSystemIpAddresses, objectKey); err != nil {
+			return err
+		}
+	}
+
+	if v.NetworkId != nil {
+		objectKey := object.Key("NetworkId")
+		objectKey.String(*v.NetworkId)
 	}
 
 	return nil
@@ -19525,6 +19613,18 @@ func awsEc2query_serializeDocumentRequestStickinessPolicyOfNiftyModifyElasticLoa
 	if len(v.Method) > 0 {
 		objectKey := object.Key("Method")
 		objectKey.String(string(v.Method))
+	}
+
+	return nil
+}
+
+func awsEc2query_serializeDocumentRequestSystemIpAddresses(v *types.RequestSystemIpAddresses, value query.Value) error {
+	object := value.Object()
+	_ = object
+
+	if v.SystemIpAddress != nil {
+		objectKey := object.Key("SystemIpAddress")
+		objectKey.String(*v.SystemIpAddress)
 	}
 
 	return nil
@@ -24371,6 +24471,13 @@ func awsEc2query_serializeOpDocumentNiftyReplaceElasticLoadBalancerLatestVersion
 	if v.ElasticLoadBalancerName != nil {
 		objectKey := object.Key("ElasticLoadBalancerName")
 		objectKey.String(*v.ElasticLoadBalancerName)
+	}
+
+	if v.NetworkInterface != nil {
+		objectKey := object.FlatKey("NetworkInterface")
+		if err := awsEc2query_serializeDocumentListOfRequestNetworkInterfaceOfNiftyReplaceElasticLoadBalancerLatestVersion(v.NetworkInterface, objectKey); err != nil {
+			return err
+		}
 	}
 
 	return nil

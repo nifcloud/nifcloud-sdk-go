@@ -21,15 +21,6 @@ type Datapoints struct {
 	noSmithyDocumentSerde
 }
 
-type DomainControllers struct {
-	
-	Hostname *string
-	
-	IPAddress *string
-	
-	noSmithyDocumentSerde
-}
-
 type Endpoint struct {
 	
 	Address *string
@@ -55,10 +46,6 @@ type NASInstance struct {
 	AuthenticationType *int32
 	
 	AvailabilityZone *string
-	
-	DirectoryServiceDomainName *string
-	
-	DomainControllers []DomainControllers
 	
 	Endpoint *Endpoint
 	
@@ -107,10 +94,6 @@ type NASInstances struct {
 	AuthenticationType *int32
 	
 	AvailabilityZone *string
-	
-	DirectoryServiceDomainName *string
-	
-	DomainControllers []DomainControllers
 	
 	Endpoint *Endpoint
 	
@@ -193,15 +176,6 @@ type RequestDimensions struct {
 	
 	// This member is required.
 	Value *string
-	
-	noSmithyDocumentSerde
-}
-
-type RequestDomainControllers struct {
-	
-	Hostname *string
-	
-	IPAddress *string
 	
 	noSmithyDocumentSerde
 }

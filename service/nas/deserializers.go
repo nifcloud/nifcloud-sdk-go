@@ -1453,68 +1453,6 @@ func awsAwsquery_deserializeDocumentDatapoints(v **types.Datapoints, decoder smi
 	return nil
 }
 
-func awsAwsquery_deserializeDocumentDomainControllers(v **types.DomainControllers, decoder smithyxml.NodeDecoder) error {
-	if v == nil {
-		return fmt.Errorf("unexpected nil of type %T", v)
-	}
-	var sv *types.DomainControllers
-	if *v == nil {
-		sv = &types.DomainControllers{}
-	} else {
-		sv = *v
-	}
-
-	for {
-		t, done, err := decoder.Token()
-		if err != nil {
-			return err
-		}
-		if done {
-			break
-		}
-		originalDecoder := decoder
-		decoder = smithyxml.WrapNodeDecoder(originalDecoder.Decoder, t)
-		switch {
-		case strings.EqualFold("Hostname", t.Name.Local):
-			val, err := decoder.Value()
-			if err != nil {
-				return err
-			}
-			if val == nil {
-				break
-			}
-			{
-				xtv := string(val)
-				sv.Hostname = ptr.String(xtv)
-			}
-
-		case strings.EqualFold("IPAddress", t.Name.Local):
-			val, err := decoder.Value()
-			if err != nil {
-				return err
-			}
-			if val == nil {
-				break
-			}
-			{
-				xtv := string(val)
-				sv.IPAddress = ptr.String(xtv)
-			}
-
-		default:
-			// Do nothing and ignore the unexpected tag element
-			err = decoder.Decoder.Skip()
-			if err != nil {
-				return err
-			}
-
-		}
-		decoder = originalDecoder
-	}
-	*v = sv
-	return nil
-}
-
 func awsAwsquery_deserializeDocumentEndpoint(v **types.Endpoint, decoder smithyxml.NodeDecoder) error {
 	if v == nil {
 		return fmt.Errorf("unexpected nil of type %T", v)
@@ -1699,74 +1637,6 @@ func awsAwsquery_deserializeDocumentListOfDatapointsUnwrapped(v *[]types.Datapoi
 		nodeDecoder := smithyxml.WrapNodeDecoder(decoder.Decoder, t)
 		destAddr := &mv
 		if err := awsAwsquery_deserializeDocumentDatapoints(&destAddr, nodeDecoder); err != nil {
-			return err
-		}
-		mv = *destAddr
-		sv = append(sv, mv)
-	}
-	*v = sv
-	return nil
-}
-func awsAwsquery_deserializeDocumentListOfDomainControllers(v *[]types.DomainControllers, decoder smithyxml.NodeDecoder) error {
-	if v == nil {
-		return fmt.Errorf("unexpected nil of type %T", v)
-	}
-	var sv []types.DomainControllers
-	if *v == nil {
-		sv = make([]types.DomainControllers, 0)
-	} else {
-		sv = *v
-	}
-
-	originalDecoder := decoder
-	for {
-		t, done, err := decoder.Token()
-		if err != nil {
-			return err
-		}
-		if done {
-			break
-		}
-		switch {
-		case strings.EqualFold("DomainController", t.Name.Local):
-			var col types.DomainControllers
-			nodeDecoder := smithyxml.WrapNodeDecoder(decoder.Decoder, t)
-			destAddr := &col
-			if err := awsAwsquery_deserializeDocumentDomainControllers(&destAddr, nodeDecoder); err != nil {
-				return err
-			}
-			col = *destAddr
-			sv = append(sv, col)
-
-		default:
-			err = decoder.Decoder.Skip()
-			if err != nil {
-				return err
-			}
-
-		}
-		decoder = originalDecoder
-	}
-	*v = sv
-	return nil
-}
-
-func awsAwsquery_deserializeDocumentListOfDomainControllersUnwrapped(v *[]types.DomainControllers, decoder smithyxml.NodeDecoder) error {
-	var sv []types.DomainControllers
-	if *v == nil {
-		sv = make([]types.DomainControllers, 0)
-	} else {
-		sv = *v
-	}
-
-	switch {
-	default:
-		var mv types.DomainControllers
-		t := decoder.StartEl
-		_ = t
-		nodeDecoder := smithyxml.WrapNodeDecoder(decoder.Decoder, t)
-		destAddr := &mv
-		if err := awsAwsquery_deserializeDocumentDomainControllers(&destAddr, nodeDecoder); err != nil {
 			return err
 		}
 		mv = *destAddr
@@ -2184,25 +2054,6 @@ func awsAwsquery_deserializeDocumentNASInstance(v **types.NASInstance, decoder s
 				sv.AvailabilityZone = ptr.String(xtv)
 			}
 
-		case strings.EqualFold("DirectoryServiceDomainName", t.Name.Local):
-			val, err := decoder.Value()
-			if err != nil {
-				return err
-			}
-			if val == nil {
-				break
-			}
-			{
-				xtv := string(val)
-				sv.DirectoryServiceDomainName = ptr.String(xtv)
-			}
-
-		case strings.EqualFold("DomainControllers", t.Name.Local):
-			nodeDecoder := smithyxml.WrapNodeDecoder(decoder.Decoder, t)
-			if err := awsAwsquery_deserializeDocumentListOfDomainControllers(&sv.DomainControllers, nodeDecoder); err != nil {
-				return err
-			}
-
 		case strings.EqualFold("Endpoint", t.Name.Local):
 			nodeDecoder := smithyxml.WrapNodeDecoder(decoder.Decoder, t)
 			if err := awsAwsquery_deserializeDocumentEndpoint(&sv.Endpoint, nodeDecoder); err != nil {
@@ -2521,25 +2372,6 @@ func awsAwsquery_deserializeDocumentNASInstances(v **types.NASInstances, decoder
 			{
 				xtv := string(val)
 				sv.AvailabilityZone = ptr.String(xtv)
-			}
-
-		case strings.EqualFold("DirectoryServiceDomainName", t.Name.Local):
-			val, err := decoder.Value()
-			if err != nil {
-				return err
-			}
-			if val == nil {
-				break
-			}
-			{
-				xtv := string(val)
-				sv.DirectoryServiceDomainName = ptr.String(xtv)
-			}
-
-		case strings.EqualFold("DomainControllers", t.Name.Local):
-			nodeDecoder := smithyxml.WrapNodeDecoder(decoder.Decoder, t)
-			if err := awsAwsquery_deserializeDocumentListOfDomainControllers(&sv.DomainControllers, nodeDecoder); err != nil {
-				return err
 			}
 
 		case strings.EqualFold("Endpoint", t.Name.Local):
