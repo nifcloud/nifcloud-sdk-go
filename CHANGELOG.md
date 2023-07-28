@@ -1,5 +1,14 @@
 # Changelog
 
+## [v1.20.0](https://github.com/nifcloud/nifcloud-sdk-go/tree/v1.20.0) (2023-04-18)
+
+[Full Changelog](https://github.com/nifcloud/nifcloud-sdk-go/compare/v1.19.1...v1.20.0)
+
+**Merged pull requests:**
+
+- Add waiter for remote access vpn gateway [\#58](https://github.com/nifcloud/nifcloud-sdk-go/pull/58) ([aokumasan](https://github.com/aokumasan))
+- Update model [\#57](https://github.com/nifcloud/nifcloud-sdk-go/pull/57) ([aokumasan](https://github.com/aokumasan))
+
 ## [v1.19.1](https://github.com/nifcloud/nifcloud-sdk-go/tree/v1.19.1) (2023-03-17)
 
 [Full Changelog](https://github.com/nifcloud/nifcloud-sdk-go/compare/v1.19.0...v1.19.1)
