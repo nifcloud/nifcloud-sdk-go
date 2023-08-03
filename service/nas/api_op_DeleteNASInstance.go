@@ -31,10 +31,6 @@ type DeleteNASInstanceInput struct {
 	// This member is required.
 	NASInstanceIdentifier *string
 
-	DirectoryServiceAdministratorName *string
-
-	DirectoryServiceAdministratorPassword *string
-
 	noSmithyDocumentSerde
 }
 

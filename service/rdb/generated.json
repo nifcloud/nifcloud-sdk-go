@@ -41,7 +41,6 @@
         "api_op_ModifyDBInstanceNetwork.go",
         "api_op_ModifyDBParameterGroup.go",
         "api_op_ModifyEventSubscription.go",
-        "api_op_NiftyFailoverDBInstance.go",
         "api_op_NiftyGetMetricStatistics.go",
         "api_op_RebootDBInstance.go",
         "api_op_RemoveSourceIdentifierFromSubscription.go",

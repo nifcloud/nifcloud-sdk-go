@@ -1379,19 +1379,6 @@ structure ModifyDBInstanceNetworkResult {
     ResponseMetadata: ResponseMetadata,
 }
 
-structure NiftyFailoverDBInstanceRequest {
-    @required
-    @xmlName("DBInstanceIdentifier")
-    DBInstanceIdentifier: String,
-}
-
-structure NiftyFailoverDBInstanceResult {
-    @xmlName("DBInstance")
-    DBInstance: DBInstance,
-    @xmlName("ResponseMetadata")
-    ResponseMetadata: ResponseMetadata,
-}
-
 structure UpgradeDBEngineVersionRequest {
     @xmlName("AllowMajorVersionUpgrade")
     AllowMajorVersionUpgrade: Boolean,
@@ -1440,8 +1427,8 @@ structure UpgradeDBEngineVersionResult {
       value: "postgres11",
   },
   {
-      name: "MARIADB10_1",
-      value: "mariadb10.1",
+      name: "POSTGRES13",
+      value: "postgres13",
   },
 ])
 string DBParameterGroupFamilyOfDescribeDBEngineVersionsRequest
@@ -1454,10 +1441,6 @@ string DBParameterGroupFamilyOfDescribeDBEngineVersionsRequest
   {
       name: "POSTGRES",
       value: "postgres",
-  },
-  {
-      name: "MARIADB",
-      value: "MariaDB",
   },
 ])
 string EngineOfDescribeDBEngineVersionsRequest
@@ -1792,10 +1775,6 @@ string DBInstanceClassOfDescribeOrderableDBInstanceOptionsRequest
   {
       name: "POSTGRES",
       value: "postgres",
-  },
-  {
-      name: "MARIADB",
-      value: "MariaDB",
   },
 ])
 string EngineOfDescribeOrderableDBInstanceOptionsRequest
@@ -3782,7 +3761,6 @@ service RDB {
         DescribeDBInstances,
         ModifyDBInstance,
         ModifyDBInstanceNetwork,
-        NiftyFailoverDBInstance,
         UpgradeDBEngineVersion,
         DescribeDBEngineVersions,
         DescribeOrderableDBInstanceOptions,
@@ -3956,11 +3934,6 @@ operation ModifyDBInstance {
 operation ModifyDBInstanceNetwork {
     input: ModifyDBInstanceNetworkRequest,
     output: ModifyDBInstanceNetworkResult,
-}
-
-operation NiftyFailoverDBInstance {
-    input: NiftyFailoverDBInstanceRequest,
-    output: NiftyFailoverDBInstanceResult,
 }
 
 operation UpgradeDBEngineVersion {

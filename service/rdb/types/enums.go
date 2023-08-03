@@ -979,7 +979,7 @@ const (
 	DBParameterGroupFamilyOfDescribeDBEngineVersionsRequestPostgres93 DBParameterGroupFamilyOfDescribeDBEngineVersionsRequest = "postgres9.3"
 	DBParameterGroupFamilyOfDescribeDBEngineVersionsRequestPostgres96 DBParameterGroupFamilyOfDescribeDBEngineVersionsRequest = "postgres9.6"
 	DBParameterGroupFamilyOfDescribeDBEngineVersionsRequestPostgres11 DBParameterGroupFamilyOfDescribeDBEngineVersionsRequest = "postgres11"
-	DBParameterGroupFamilyOfDescribeDBEngineVersionsRequestMariadb101 DBParameterGroupFamilyOfDescribeDBEngineVersionsRequest = "mariadb10.1"
+	DBParameterGroupFamilyOfDescribeDBEngineVersionsRequestPostgres13 DBParameterGroupFamilyOfDescribeDBEngineVersionsRequest = "postgres13"
 )
 
 // Values returns all known values for
@@ -993,7 +993,7 @@ func (DBParameterGroupFamilyOfDescribeDBEngineVersionsRequest) Values() []DBPara
 		"postgres9.3",
 		"postgres9.6",
 		"postgres11",
-		"mariadb10.1",
+		"postgres13",
 	}
 }
 
@@ -1022,7 +1022,6 @@ type EngineOfDescribeDBEngineVersionsRequest string
 const (
 	EngineOfDescribeDBEngineVersionsRequestMysql EngineOfDescribeDBEngineVersionsRequest = "MySQL"
 	EngineOfDescribeDBEngineVersionsRequestPostgres EngineOfDescribeDBEngineVersionsRequest = "postgres"
-	EngineOfDescribeDBEngineVersionsRequestMariadb EngineOfDescribeDBEngineVersionsRequest = "MariaDB"
 )
 
 // Values returns all known values for EngineOfDescribeDBEngineVersionsRequest.
@@ -1033,7 +1032,6 @@ func (EngineOfDescribeDBEngineVersionsRequest) Values() []EngineOfDescribeDBEngi
 	return []EngineOfDescribeDBEngineVersionsRequest{
 		"MySQL",
 		"postgres",
-		"MariaDB",
 	}
 }
 
@@ -1043,7 +1041,6 @@ type EngineOfDescribeOrderableDBInstanceOptionsRequest string
 const (
 	EngineOfDescribeOrderableDBInstanceOptionsRequestMysql EngineOfDescribeOrderableDBInstanceOptionsRequest = "MySQL"
 	EngineOfDescribeOrderableDBInstanceOptionsRequestPostgres EngineOfDescribeOrderableDBInstanceOptionsRequest = "postgres"
-	EngineOfDescribeOrderableDBInstanceOptionsRequestMariadb EngineOfDescribeOrderableDBInstanceOptionsRequest = "MariaDB"
 )
 
 // Values returns all known values for
@@ -1054,7 +1051,6 @@ func (EngineOfDescribeOrderableDBInstanceOptionsRequest) Values() []EngineOfDesc
 	return []EngineOfDescribeOrderableDBInstanceOptionsRequest{
 		"MySQL",
 		"postgres",
-		"MariaDB",
 	}
 }
 

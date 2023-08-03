@@ -35,14 +35,6 @@ type ModifyNASInstanceInput struct {
 
 	AuthenticationType *int32
 
-	DirectoryServiceAdministratorName *string
-
-	DirectoryServiceAdministratorPassword *string
-
-	DirectoryServiceDomainName *string
-
-	DomainControllers []types.RequestDomainControllers
-
 	MasterPrivateAddress *string
 
 	MasterUserPassword *string
