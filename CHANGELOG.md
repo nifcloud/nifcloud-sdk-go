@@ -1,5 +1,13 @@
 # Changelog
 
+## [v1.22.0](https://github.com/nifcloud/nifcloud-sdk-go/tree/v1.22.0) (2023-08-03)
+
+[Full Changelog](https://github.com/nifcloud/nifcloud-sdk-go/compare/v1.21.0...v1.22.0)
+
+**Merged pull requests:**
+
+- Feature/update models [\#60](https://github.com/nifcloud/nifcloud-sdk-go/pull/60) ([fujita-hiroki1115](https://github.com/fujita-hiroki1115))
+
 ## [v1.21.0](https://github.com/nifcloud/nifcloud-sdk-go/tree/v1.21.0) (2023-06-01)
 
 [Full Changelog](https://github.com/nifcloud/nifcloud-sdk-go/compare/v1.20.0...v1.21.0)
