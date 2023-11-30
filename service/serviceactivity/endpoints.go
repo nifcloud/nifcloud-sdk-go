@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	awsmiddleware "github.com/aws/aws-sdk-go-v2/aws/middleware"
+	smithyendpoints "github.com/aws/smithy-go/endpoints"
 	"github.com/aws/smithy-go/middleware"
 	smithyhttp "github.com/aws/smithy-go/transport/http"
 	internalendpoints "github.com/nifcloud/nifcloud-sdk-go/service/serviceactivity/internal/endpoints"
@@ -197,4 +198,35 @@ func finalizeClientEndpointResolverOptions(options *Options) {
 		}
 	}
 
+}
+
+// EndpointParameters provides the parameters that influence how endpoints are
+// resolved.
+type EndpointParameters struct {
+}
+
+// EndpointResolverV2 provides the interface for resolving service endpoints.
+type EndpointResolverV2 interface {
+	// ResolveEndpoint attempts to resolve the endpoint with the provided options,
+	// returning the endpoint if found. Otherwise an error is returned.
+	ResolveEndpoint(ctx context.Context, params EndpointParameters) (
+		smithyendpoints.Endpoint, error,
+	)
+}
+
+// resolver provides the implementation for resolving endpoints.
+type resolver struct{}
+
+func NewDefaultEndpointResolverV2() EndpointResolverV2 {
+	return &resolver{}
+}
+
+// ResolveEndpoint attempts to resolve the endpoint with the provided options,
+// returning the endpoint if found. Otherwise an error is returned.
+func (r *resolver) ResolveEndpoint(
+	ctx context.Context, params EndpointParameters,
+) (
+	endpoint smithyendpoints.Endpoint, err error,
+) {
+	return endpoint, fmt.Errorf("no endpoint rules defined")
 }

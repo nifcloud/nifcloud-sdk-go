@@ -41,7 +41,14 @@ func (m *awsRestxml_serializeOpAbortMultipartUpload) HandleSerialize(ctx context
 	request.URL.Path = smithyhttp.JoinPath(request.URL.Path, opPath)
 	request.URL.RawQuery = smithyhttp.JoinRawQuery(request.URL.RawQuery, opQuery)
 	request.Method = "DELETE"
-	restEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	var restEncoder *httpbinding.Encoder
+	if request.URL.RawPath == "" {
+		restEncoder, err = httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	} else {
+		request.URL.RawPath = smithyhttp.JoinPath(request.URL.RawPath, opPath)
+		restEncoder, err = httpbinding.NewEncoderWithRawPath(request.URL.Path, request.URL.RawPath, request.URL.RawQuery, request.Header)
+	}
+
 	if err != nil {
 		return out, metadata, &smithy.SerializationError{Err: err}
 	}
@@ -112,7 +119,14 @@ func (m *awsRestxml_serializeOpCompleteMultipartUpload) HandleSerialize(ctx cont
 	request.URL.Path = smithyhttp.JoinPath(request.URL.Path, opPath)
 	request.URL.RawQuery = smithyhttp.JoinRawQuery(request.URL.RawQuery, opQuery)
 	request.Method = "POST"
-	restEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	var restEncoder *httpbinding.Encoder
+	if request.URL.RawPath == "" {
+		restEncoder, err = httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	} else {
+		request.URL.RawPath = smithyhttp.JoinPath(request.URL.RawPath, opPath)
+		restEncoder, err = httpbinding.NewEncoderWithRawPath(request.URL.Path, request.URL.RawPath, request.URL.RawQuery, request.Header)
+	}
+
 	if err != nil {
 		return out, metadata, &smithy.SerializationError{Err: err}
 	}
@@ -207,7 +221,14 @@ func (m *awsRestxml_serializeOpDeleteBucket) HandleSerialize(ctx context.Context
 	request.URL.Path = smithyhttp.JoinPath(request.URL.Path, opPath)
 	request.URL.RawQuery = smithyhttp.JoinRawQuery(request.URL.RawQuery, opQuery)
 	request.Method = "DELETE"
-	restEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	var restEncoder *httpbinding.Encoder
+	if request.URL.RawPath == "" {
+		restEncoder, err = httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	} else {
+		request.URL.RawPath = smithyhttp.JoinPath(request.URL.RawPath, opPath)
+		restEncoder, err = httpbinding.NewEncoderWithRawPath(request.URL.Path, request.URL.RawPath, request.URL.RawQuery, request.Header)
+	}
+
 	if err != nil {
 		return out, metadata, &smithy.SerializationError{Err: err}
 	}
@@ -265,7 +286,14 @@ func (m *awsRestxml_serializeOpDeleteBucketCors) HandleSerialize(ctx context.Con
 	request.URL.Path = smithyhttp.JoinPath(request.URL.Path, opPath)
 	request.URL.RawQuery = smithyhttp.JoinRawQuery(request.URL.RawQuery, opQuery)
 	request.Method = "DELETE"
-	restEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	var restEncoder *httpbinding.Encoder
+	if request.URL.RawPath == "" {
+		restEncoder, err = httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	} else {
+		request.URL.RawPath = smithyhttp.JoinPath(request.URL.RawPath, opPath)
+		restEncoder, err = httpbinding.NewEncoderWithRawPath(request.URL.Path, request.URL.RawPath, request.URL.RawQuery, request.Header)
+	}
+
 	if err != nil {
 		return out, metadata, &smithy.SerializationError{Err: err}
 	}
@@ -323,7 +351,14 @@ func (m *awsRestxml_serializeOpDeleteBucketLifecycle) HandleSerialize(ctx contex
 	request.URL.Path = smithyhttp.JoinPath(request.URL.Path, opPath)
 	request.URL.RawQuery = smithyhttp.JoinRawQuery(request.URL.RawQuery, opQuery)
 	request.Method = "DELETE"
-	restEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	var restEncoder *httpbinding.Encoder
+	if request.URL.RawPath == "" {
+		restEncoder, err = httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	} else {
+		request.URL.RawPath = smithyhttp.JoinPath(request.URL.RawPath, opPath)
+		restEncoder, err = httpbinding.NewEncoderWithRawPath(request.URL.Path, request.URL.RawPath, request.URL.RawQuery, request.Header)
+	}
+
 	if err != nil {
 		return out, metadata, &smithy.SerializationError{Err: err}
 	}
@@ -381,7 +416,14 @@ func (m *awsRestxml_serializeOpDeleteBucketPolicy) HandleSerialize(ctx context.C
 	request.URL.Path = smithyhttp.JoinPath(request.URL.Path, opPath)
 	request.URL.RawQuery = smithyhttp.JoinRawQuery(request.URL.RawQuery, opQuery)
 	request.Method = "DELETE"
-	restEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	var restEncoder *httpbinding.Encoder
+	if request.URL.RawPath == "" {
+		restEncoder, err = httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	} else {
+		request.URL.RawPath = smithyhttp.JoinPath(request.URL.RawPath, opPath)
+		restEncoder, err = httpbinding.NewEncoderWithRawPath(request.URL.Path, request.URL.RawPath, request.URL.RawQuery, request.Header)
+	}
+
 	if err != nil {
 		return out, metadata, &smithy.SerializationError{Err: err}
 	}
@@ -439,7 +481,14 @@ func (m *awsRestxml_serializeOpDeleteBucketTagging) HandleSerialize(ctx context.
 	request.URL.Path = smithyhttp.JoinPath(request.URL.Path, opPath)
 	request.URL.RawQuery = smithyhttp.JoinRawQuery(request.URL.RawQuery, opQuery)
 	request.Method = "DELETE"
-	restEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	var restEncoder *httpbinding.Encoder
+	if request.URL.RawPath == "" {
+		restEncoder, err = httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	} else {
+		request.URL.RawPath = smithyhttp.JoinPath(request.URL.RawPath, opPath)
+		restEncoder, err = httpbinding.NewEncoderWithRawPath(request.URL.Path, request.URL.RawPath, request.URL.RawQuery, request.Header)
+	}
+
 	if err != nil {
 		return out, metadata, &smithy.SerializationError{Err: err}
 	}
@@ -497,7 +546,14 @@ func (m *awsRestxml_serializeOpDeleteMultipleObjects) HandleSerialize(ctx contex
 	request.URL.Path = smithyhttp.JoinPath(request.URL.Path, opPath)
 	request.URL.RawQuery = smithyhttp.JoinRawQuery(request.URL.RawQuery, opQuery)
 	request.Method = "POST"
-	restEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	var restEncoder *httpbinding.Encoder
+	if request.URL.RawPath == "" {
+		restEncoder, err = httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	} else {
+		request.URL.RawPath = smithyhttp.JoinPath(request.URL.RawPath, opPath)
+		restEncoder, err = httpbinding.NewEncoderWithRawPath(request.URL.Path, request.URL.RawPath, request.URL.RawQuery, request.Header)
+	}
+
 	if err != nil {
 		return out, metadata, &smithy.SerializationError{Err: err}
 	}
@@ -584,7 +640,14 @@ func (m *awsRestxml_serializeOpDeleteObject) HandleSerialize(ctx context.Context
 	request.URL.Path = smithyhttp.JoinPath(request.URL.Path, opPath)
 	request.URL.RawQuery = smithyhttp.JoinRawQuery(request.URL.RawQuery, opQuery)
 	request.Method = "DELETE"
-	restEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	var restEncoder *httpbinding.Encoder
+	if request.URL.RawPath == "" {
+		restEncoder, err = httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	} else {
+		request.URL.RawPath = smithyhttp.JoinPath(request.URL.RawPath, opPath)
+		restEncoder, err = httpbinding.NewEncoderWithRawPath(request.URL.Path, request.URL.RawPath, request.URL.RawQuery, request.Header)
+	}
+
 	if err != nil {
 		return out, metadata, &smithy.SerializationError{Err: err}
 	}
@@ -655,7 +718,14 @@ func (m *awsRestxml_serializeOpDeleteObjectTagging) HandleSerialize(ctx context.
 	request.URL.Path = smithyhttp.JoinPath(request.URL.Path, opPath)
 	request.URL.RawQuery = smithyhttp.JoinRawQuery(request.URL.RawQuery, opQuery)
 	request.Method = "DELETE"
-	restEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	var restEncoder *httpbinding.Encoder
+	if request.URL.RawPath == "" {
+		restEncoder, err = httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	} else {
+		request.URL.RawPath = smithyhttp.JoinPath(request.URL.RawPath, opPath)
+		restEncoder, err = httpbinding.NewEncoderWithRawPath(request.URL.Path, request.URL.RawPath, request.URL.RawQuery, request.Header)
+	}
+
 	if err != nil {
 		return out, metadata, &smithy.SerializationError{Err: err}
 	}
@@ -726,7 +796,14 @@ func (m *awsRestxml_serializeOpGetBucket) HandleSerialize(ctx context.Context, i
 	request.URL.Path = smithyhttp.JoinPath(request.URL.Path, opPath)
 	request.URL.RawQuery = smithyhttp.JoinRawQuery(request.URL.RawQuery, opQuery)
 	request.Method = "GET"
-	restEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	var restEncoder *httpbinding.Encoder
+	if request.URL.RawPath == "" {
+		restEncoder, err = httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	} else {
+		request.URL.RawPath = smithyhttp.JoinPath(request.URL.RawPath, opPath)
+		restEncoder, err = httpbinding.NewEncoderWithRawPath(request.URL.Path, request.URL.RawPath, request.URL.RawQuery, request.Header)
+	}
+
 	if err != nil {
 		return out, metadata, &smithy.SerializationError{Err: err}
 	}
@@ -804,7 +881,14 @@ func (m *awsRestxml_serializeOpGetBucketACL) HandleSerialize(ctx context.Context
 	request.URL.Path = smithyhttp.JoinPath(request.URL.Path, opPath)
 	request.URL.RawQuery = smithyhttp.JoinRawQuery(request.URL.RawQuery, opQuery)
 	request.Method = "GET"
-	restEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	var restEncoder *httpbinding.Encoder
+	if request.URL.RawPath == "" {
+		restEncoder, err = httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	} else {
+		request.URL.RawPath = smithyhttp.JoinPath(request.URL.RawPath, opPath)
+		restEncoder, err = httpbinding.NewEncoderWithRawPath(request.URL.Path, request.URL.RawPath, request.URL.RawQuery, request.Header)
+	}
+
 	if err != nil {
 		return out, metadata, &smithy.SerializationError{Err: err}
 	}
@@ -862,7 +946,14 @@ func (m *awsRestxml_serializeOpGetBucketConsistency) HandleSerialize(ctx context
 	request.URL.Path = smithyhttp.JoinPath(request.URL.Path, opPath)
 	request.URL.RawQuery = smithyhttp.JoinRawQuery(request.URL.RawQuery, opQuery)
 	request.Method = "GET"
-	restEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	var restEncoder *httpbinding.Encoder
+	if request.URL.RawPath == "" {
+		restEncoder, err = httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	} else {
+		request.URL.RawPath = smithyhttp.JoinPath(request.URL.RawPath, opPath)
+		restEncoder, err = httpbinding.NewEncoderWithRawPath(request.URL.Path, request.URL.RawPath, request.URL.RawQuery, request.Header)
+	}
+
 	if err != nil {
 		return out, metadata, &smithy.SerializationError{Err: err}
 	}
@@ -920,7 +1011,14 @@ func (m *awsRestxml_serializeOpGetBucketCors) HandleSerialize(ctx context.Contex
 	request.URL.Path = smithyhttp.JoinPath(request.URL.Path, opPath)
 	request.URL.RawQuery = smithyhttp.JoinRawQuery(request.URL.RawQuery, opQuery)
 	request.Method = "GET"
-	restEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	var restEncoder *httpbinding.Encoder
+	if request.URL.RawPath == "" {
+		restEncoder, err = httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	} else {
+		request.URL.RawPath = smithyhttp.JoinPath(request.URL.RawPath, opPath)
+		restEncoder, err = httpbinding.NewEncoderWithRawPath(request.URL.Path, request.URL.RawPath, request.URL.RawQuery, request.Header)
+	}
+
 	if err != nil {
 		return out, metadata, &smithy.SerializationError{Err: err}
 	}
@@ -978,7 +1076,14 @@ func (m *awsRestxml_serializeOpGetBucketLifecycleConfiguration) HandleSerialize(
 	request.URL.Path = smithyhttp.JoinPath(request.URL.Path, opPath)
 	request.URL.RawQuery = smithyhttp.JoinRawQuery(request.URL.RawQuery, opQuery)
 	request.Method = "GET"
-	restEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	var restEncoder *httpbinding.Encoder
+	if request.URL.RawPath == "" {
+		restEncoder, err = httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	} else {
+		request.URL.RawPath = smithyhttp.JoinPath(request.URL.RawPath, opPath)
+		restEncoder, err = httpbinding.NewEncoderWithRawPath(request.URL.Path, request.URL.RawPath, request.URL.RawQuery, request.Header)
+	}
+
 	if err != nil {
 		return out, metadata, &smithy.SerializationError{Err: err}
 	}
@@ -1036,7 +1141,14 @@ func (m *awsRestxml_serializeOpGetBucketObjectVersions) HandleSerialize(ctx cont
 	request.URL.Path = smithyhttp.JoinPath(request.URL.Path, opPath)
 	request.URL.RawQuery = smithyhttp.JoinRawQuery(request.URL.RawQuery, opQuery)
 	request.Method = "GET"
-	restEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	var restEncoder *httpbinding.Encoder
+	if request.URL.RawPath == "" {
+		restEncoder, err = httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	} else {
+		request.URL.RawPath = smithyhttp.JoinPath(request.URL.RawPath, opPath)
+		restEncoder, err = httpbinding.NewEncoderWithRawPath(request.URL.Path, request.URL.RawPath, request.URL.RawQuery, request.Header)
+	}
+
 	if err != nil {
 		return out, metadata, &smithy.SerializationError{Err: err}
 	}
@@ -1118,7 +1230,14 @@ func (m *awsRestxml_serializeOpGetBucketPolicy) HandleSerialize(ctx context.Cont
 	request.URL.Path = smithyhttp.JoinPath(request.URL.Path, opPath)
 	request.URL.RawQuery = smithyhttp.JoinRawQuery(request.URL.RawQuery, opQuery)
 	request.Method = "GET"
-	restEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	var restEncoder *httpbinding.Encoder
+	if request.URL.RawPath == "" {
+		restEncoder, err = httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	} else {
+		request.URL.RawPath = smithyhttp.JoinPath(request.URL.RawPath, opPath)
+		restEncoder, err = httpbinding.NewEncoderWithRawPath(request.URL.Path, request.URL.RawPath, request.URL.RawQuery, request.Header)
+	}
+
 	if err != nil {
 		return out, metadata, &smithy.SerializationError{Err: err}
 	}
@@ -1176,7 +1295,14 @@ func (m *awsRestxml_serializeOpGetBucketTagging) HandleSerialize(ctx context.Con
 	request.URL.Path = smithyhttp.JoinPath(request.URL.Path, opPath)
 	request.URL.RawQuery = smithyhttp.JoinRawQuery(request.URL.RawQuery, opQuery)
 	request.Method = "GET"
-	restEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	var restEncoder *httpbinding.Encoder
+	if request.URL.RawPath == "" {
+		restEncoder, err = httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	} else {
+		request.URL.RawPath = smithyhttp.JoinPath(request.URL.RawPath, opPath)
+		restEncoder, err = httpbinding.NewEncoderWithRawPath(request.URL.Path, request.URL.RawPath, request.URL.RawQuery, request.Header)
+	}
+
 	if err != nil {
 		return out, metadata, &smithy.SerializationError{Err: err}
 	}
@@ -1234,7 +1360,14 @@ func (m *awsRestxml_serializeOpGetBucketVersion2) HandleSerialize(ctx context.Co
 	request.URL.Path = smithyhttp.JoinPath(request.URL.Path, opPath)
 	request.URL.RawQuery = smithyhttp.JoinRawQuery(request.URL.RawQuery, opQuery)
 	request.Method = "GET"
-	restEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	var restEncoder *httpbinding.Encoder
+	if request.URL.RawPath == "" {
+		restEncoder, err = httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	} else {
+		request.URL.RawPath = smithyhttp.JoinPath(request.URL.RawPath, opPath)
+		restEncoder, err = httpbinding.NewEncoderWithRawPath(request.URL.Path, request.URL.RawPath, request.URL.RawQuery, request.Header)
+	}
+
 	if err != nil {
 		return out, metadata, &smithy.SerializationError{Err: err}
 	}
@@ -1328,7 +1461,14 @@ func (m *awsRestxml_serializeOpGetBucketVersioning) HandleSerialize(ctx context.
 	request.URL.Path = smithyhttp.JoinPath(request.URL.Path, opPath)
 	request.URL.RawQuery = smithyhttp.JoinRawQuery(request.URL.RawQuery, opQuery)
 	request.Method = "GET"
-	restEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	var restEncoder *httpbinding.Encoder
+	if request.URL.RawPath == "" {
+		restEncoder, err = httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	} else {
+		request.URL.RawPath = smithyhttp.JoinPath(request.URL.RawPath, opPath)
+		restEncoder, err = httpbinding.NewEncoderWithRawPath(request.URL.Path, request.URL.RawPath, request.URL.RawQuery, request.Header)
+	}
+
 	if err != nil {
 		return out, metadata, &smithy.SerializationError{Err: err}
 	}
@@ -1386,7 +1526,14 @@ func (m *awsRestxml_serializeOpGetObject) HandleSerialize(ctx context.Context, i
 	request.URL.Path = smithyhttp.JoinPath(request.URL.Path, opPath)
 	request.URL.RawQuery = smithyhttp.JoinRawQuery(request.URL.RawQuery, opQuery)
 	request.Method = "GET"
-	restEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	var restEncoder *httpbinding.Encoder
+	if request.URL.RawPath == "" {
+		restEncoder, err = httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	} else {
+		request.URL.RawPath = smithyhttp.JoinPath(request.URL.RawPath, opPath)
+		restEncoder, err = httpbinding.NewEncoderWithRawPath(request.URL.Path, request.URL.RawPath, request.URL.RawQuery, request.Header)
+	}
+
 	if err != nil {
 		return out, metadata, &smithy.SerializationError{Err: err}
 	}
@@ -1493,7 +1640,14 @@ func (m *awsRestxml_serializeOpGetObjectACL) HandleSerialize(ctx context.Context
 	request.URL.Path = smithyhttp.JoinPath(request.URL.Path, opPath)
 	request.URL.RawQuery = smithyhttp.JoinRawQuery(request.URL.RawQuery, opQuery)
 	request.Method = "GET"
-	restEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	var restEncoder *httpbinding.Encoder
+	if request.URL.RawPath == "" {
+		restEncoder, err = httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	} else {
+		request.URL.RawPath = smithyhttp.JoinPath(request.URL.RawPath, opPath)
+		restEncoder, err = httpbinding.NewEncoderWithRawPath(request.URL.Path, request.URL.RawPath, request.URL.RawQuery, request.Header)
+	}
+
 	if err != nil {
 		return out, metadata, &smithy.SerializationError{Err: err}
 	}
@@ -1564,7 +1718,14 @@ func (m *awsRestxml_serializeOpGetObjectTagging) HandleSerialize(ctx context.Con
 	request.URL.Path = smithyhttp.JoinPath(request.URL.Path, opPath)
 	request.URL.RawQuery = smithyhttp.JoinRawQuery(request.URL.RawQuery, opQuery)
 	request.Method = "GET"
-	restEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	var restEncoder *httpbinding.Encoder
+	if request.URL.RawPath == "" {
+		restEncoder, err = httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	} else {
+		request.URL.RawPath = smithyhttp.JoinPath(request.URL.RawPath, opPath)
+		restEncoder, err = httpbinding.NewEncoderWithRawPath(request.URL.Path, request.URL.RawPath, request.URL.RawQuery, request.Header)
+	}
+
 	if err != nil {
 		return out, metadata, &smithy.SerializationError{Err: err}
 	}
@@ -1635,7 +1796,14 @@ func (m *awsRestxml_serializeOpGetService) HandleSerialize(ctx context.Context, 
 	request.URL.Path = smithyhttp.JoinPath(request.URL.Path, opPath)
 	request.URL.RawQuery = smithyhttp.JoinRawQuery(request.URL.RawQuery, opQuery)
 	request.Method = "GET"
-	restEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	var restEncoder *httpbinding.Encoder
+	if request.URL.RawPath == "" {
+		restEncoder, err = httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	} else {
+		request.URL.RawPath = smithyhttp.JoinPath(request.URL.RawPath, opPath)
+		restEncoder, err = httpbinding.NewEncoderWithRawPath(request.URL.Path, request.URL.RawPath, request.URL.RawQuery, request.Header)
+	}
+
 	if err != nil {
 		return out, metadata, &smithy.SerializationError{Err: err}
 	}
@@ -1680,7 +1848,14 @@ func (m *awsRestxml_serializeOpHeadBucket) HandleSerialize(ctx context.Context, 
 	request.URL.Path = smithyhttp.JoinPath(request.URL.Path, opPath)
 	request.URL.RawQuery = smithyhttp.JoinRawQuery(request.URL.RawQuery, opQuery)
 	request.Method = "HEAD"
-	restEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	var restEncoder *httpbinding.Encoder
+	if request.URL.RawPath == "" {
+		restEncoder, err = httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	} else {
+		request.URL.RawPath = smithyhttp.JoinPath(request.URL.RawPath, opPath)
+		restEncoder, err = httpbinding.NewEncoderWithRawPath(request.URL.Path, request.URL.RawPath, request.URL.RawQuery, request.Header)
+	}
+
 	if err != nil {
 		return out, metadata, &smithy.SerializationError{Err: err}
 	}
@@ -1738,7 +1913,14 @@ func (m *awsRestxml_serializeOpHeadObject) HandleSerialize(ctx context.Context, 
 	request.URL.Path = smithyhttp.JoinPath(request.URL.Path, opPath)
 	request.URL.RawQuery = smithyhttp.JoinRawQuery(request.URL.RawQuery, opQuery)
 	request.Method = "HEAD"
-	restEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	var restEncoder *httpbinding.Encoder
+	if request.URL.RawPath == "" {
+		restEncoder, err = httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	} else {
+		request.URL.RawPath = smithyhttp.JoinPath(request.URL.RawPath, opPath)
+		restEncoder, err = httpbinding.NewEncoderWithRawPath(request.URL.Path, request.URL.RawPath, request.URL.RawQuery, request.Header)
+	}
+
 	if err != nil {
 		return out, metadata, &smithy.SerializationError{Err: err}
 	}
@@ -1833,7 +2015,14 @@ func (m *awsRestxml_serializeOpInitiateMultipartUpload) HandleSerialize(ctx cont
 	request.URL.Path = smithyhttp.JoinPath(request.URL.Path, opPath)
 	request.URL.RawQuery = smithyhttp.JoinRawQuery(request.URL.RawQuery, opQuery)
 	request.Method = "POST"
-	restEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	var restEncoder *httpbinding.Encoder
+	if request.URL.RawPath == "" {
+		restEncoder, err = httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	} else {
+		request.URL.RawPath = smithyhttp.JoinPath(request.URL.RawPath, opPath)
+		restEncoder, err = httpbinding.NewEncoderWithRawPath(request.URL.Path, request.URL.RawPath, request.URL.RawQuery, request.Header)
+	}
+
 	if err != nil {
 		return out, metadata, &smithy.SerializationError{Err: err}
 	}
@@ -1950,7 +2139,14 @@ func (m *awsRestxml_serializeOpListMultipartUploads) HandleSerialize(ctx context
 	request.URL.Path = smithyhttp.JoinPath(request.URL.Path, opPath)
 	request.URL.RawQuery = smithyhttp.JoinRawQuery(request.URL.RawQuery, opQuery)
 	request.Method = "GET"
-	restEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	var restEncoder *httpbinding.Encoder
+	if request.URL.RawPath == "" {
+		restEncoder, err = httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	} else {
+		request.URL.RawPath = smithyhttp.JoinPath(request.URL.RawPath, opPath)
+		restEncoder, err = httpbinding.NewEncoderWithRawPath(request.URL.Path, request.URL.RawPath, request.URL.RawQuery, request.Header)
+	}
+
 	if err != nil {
 		return out, metadata, &smithy.SerializationError{Err: err}
 	}
@@ -2033,7 +2229,14 @@ func (m *awsRestxml_serializeOpListParts) HandleSerialize(ctx context.Context, i
 	request.URL.Path = smithyhttp.JoinPath(request.URL.Path, opPath)
 	request.URL.RawQuery = smithyhttp.JoinRawQuery(request.URL.RawQuery, opQuery)
 	request.Method = "GET"
-	restEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	var restEncoder *httpbinding.Encoder
+	if request.URL.RawPath == "" {
+		restEncoder, err = httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	} else {
+		request.URL.RawPath = smithyhttp.JoinPath(request.URL.RawPath, opPath)
+		restEncoder, err = httpbinding.NewEncoderWithRawPath(request.URL.Path, request.URL.RawPath, request.URL.RawQuery, request.Header)
+	}
+
 	if err != nil {
 		return out, metadata, &smithy.SerializationError{Err: err}
 	}
@@ -2116,7 +2319,14 @@ func (m *awsRestxml_serializeOpPutBucket) HandleSerialize(ctx context.Context, i
 	request.URL.Path = smithyhttp.JoinPath(request.URL.Path, opPath)
 	request.URL.RawQuery = smithyhttp.JoinRawQuery(request.URL.RawQuery, opQuery)
 	request.Method = "PUT"
-	restEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	var restEncoder *httpbinding.Encoder
+	if request.URL.RawPath == "" {
+		restEncoder, err = httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	} else {
+		request.URL.RawPath = smithyhttp.JoinPath(request.URL.RawPath, opPath)
+		restEncoder, err = httpbinding.NewEncoderWithRawPath(request.URL.Path, request.URL.RawPath, request.URL.RawQuery, request.Header)
+	}
+
 	if err != nil {
 		return out, metadata, &smithy.SerializationError{Err: err}
 	}
@@ -2174,7 +2384,14 @@ func (m *awsRestxml_serializeOpPutBucketConsistency) HandleSerialize(ctx context
 	request.URL.Path = smithyhttp.JoinPath(request.URL.Path, opPath)
 	request.URL.RawQuery = smithyhttp.JoinRawQuery(request.URL.RawQuery, opQuery)
 	request.Method = "PUT"
-	restEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	var restEncoder *httpbinding.Encoder
+	if request.URL.RawPath == "" {
+		restEncoder, err = httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	} else {
+		request.URL.RawPath = smithyhttp.JoinPath(request.URL.RawPath, opPath)
+		restEncoder, err = httpbinding.NewEncoderWithRawPath(request.URL.Path, request.URL.RawPath, request.URL.RawQuery, request.Header)
+	}
+
 	if err != nil {
 		return out, metadata, &smithy.SerializationError{Err: err}
 	}
@@ -2236,7 +2453,14 @@ func (m *awsRestxml_serializeOpPutBucketCors) HandleSerialize(ctx context.Contex
 	request.URL.Path = smithyhttp.JoinPath(request.URL.Path, opPath)
 	request.URL.RawQuery = smithyhttp.JoinRawQuery(request.URL.RawQuery, opQuery)
 	request.Method = "PUT"
-	restEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	var restEncoder *httpbinding.Encoder
+	if request.URL.RawPath == "" {
+		restEncoder, err = httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	} else {
+		request.URL.RawPath = smithyhttp.JoinPath(request.URL.RawPath, opPath)
+		restEncoder, err = httpbinding.NewEncoderWithRawPath(request.URL.Path, request.URL.RawPath, request.URL.RawQuery, request.Header)
+	}
+
 	if err != nil {
 		return out, metadata, &smithy.SerializationError{Err: err}
 	}
@@ -2318,7 +2542,14 @@ func (m *awsRestxml_serializeOpPutBucketLifecycleConfiguration) HandleSerialize(
 	request.URL.Path = smithyhttp.JoinPath(request.URL.Path, opPath)
 	request.URL.RawQuery = smithyhttp.JoinRawQuery(request.URL.RawQuery, opQuery)
 	request.Method = "PUT"
-	restEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	var restEncoder *httpbinding.Encoder
+	if request.URL.RawPath == "" {
+		restEncoder, err = httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	} else {
+		request.URL.RawPath = smithyhttp.JoinPath(request.URL.RawPath, opPath)
+		restEncoder, err = httpbinding.NewEncoderWithRawPath(request.URL.Path, request.URL.RawPath, request.URL.RawQuery, request.Header)
+	}
+
 	if err != nil {
 		return out, metadata, &smithy.SerializationError{Err: err}
 	}
@@ -2400,7 +2631,14 @@ func (m *awsRestxml_serializeOpPutBucketPolicy) HandleSerialize(ctx context.Cont
 	request.URL.Path = smithyhttp.JoinPath(request.URL.Path, opPath)
 	request.URL.RawQuery = smithyhttp.JoinRawQuery(request.URL.RawQuery, opQuery)
 	request.Method = "PUT"
-	restEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	var restEncoder *httpbinding.Encoder
+	if request.URL.RawPath == "" {
+		restEncoder, err = httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	} else {
+		request.URL.RawPath = smithyhttp.JoinPath(request.URL.RawPath, opPath)
+		restEncoder, err = httpbinding.NewEncoderWithRawPath(request.URL.Path, request.URL.RawPath, request.URL.RawQuery, request.Header)
+	}
+
 	if err != nil {
 		return out, metadata, &smithy.SerializationError{Err: err}
 	}
@@ -2475,7 +2713,14 @@ func (m *awsRestxml_serializeOpPutBucketTagging) HandleSerialize(ctx context.Con
 	request.URL.Path = smithyhttp.JoinPath(request.URL.Path, opPath)
 	request.URL.RawQuery = smithyhttp.JoinRawQuery(request.URL.RawQuery, opQuery)
 	request.Method = "PUT"
-	restEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	var restEncoder *httpbinding.Encoder
+	if request.URL.RawPath == "" {
+		restEncoder, err = httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	} else {
+		request.URL.RawPath = smithyhttp.JoinPath(request.URL.RawPath, opPath)
+		restEncoder, err = httpbinding.NewEncoderWithRawPath(request.URL.Path, request.URL.RawPath, request.URL.RawQuery, request.Header)
+	}
+
 	if err != nil {
 		return out, metadata, &smithy.SerializationError{Err: err}
 	}
@@ -2562,7 +2807,14 @@ func (m *awsRestxml_serializeOpPutBucketVersioning) HandleSerialize(ctx context.
 	request.URL.Path = smithyhttp.JoinPath(request.URL.Path, opPath)
 	request.URL.RawQuery = smithyhttp.JoinRawQuery(request.URL.RawQuery, opQuery)
 	request.Method = "PUT"
-	restEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	var restEncoder *httpbinding.Encoder
+	if request.URL.RawPath == "" {
+		restEncoder, err = httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	} else {
+		request.URL.RawPath = smithyhttp.JoinPath(request.URL.RawPath, opPath)
+		restEncoder, err = httpbinding.NewEncoderWithRawPath(request.URL.Path, request.URL.RawPath, request.URL.RawQuery, request.Header)
+	}
+
 	if err != nil {
 		return out, metadata, &smithy.SerializationError{Err: err}
 	}
@@ -2649,7 +2901,14 @@ func (m *awsRestxml_serializeOpPutObject) HandleSerialize(ctx context.Context, i
 	request.URL.Path = smithyhttp.JoinPath(request.URL.Path, opPath)
 	request.URL.RawQuery = smithyhttp.JoinRawQuery(request.URL.RawQuery, opQuery)
 	request.Method = "PUT"
-	restEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	var restEncoder *httpbinding.Encoder
+	if request.URL.RawPath == "" {
+		restEncoder, err = httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	} else {
+		request.URL.RawPath = smithyhttp.JoinPath(request.URL.RawPath, opPath)
+		restEncoder, err = httpbinding.NewEncoderWithRawPath(request.URL.Path, request.URL.RawPath, request.URL.RawQuery, request.Header)
+	}
+
 	if err != nil {
 		return out, metadata, &smithy.SerializationError{Err: err}
 	}
@@ -2783,7 +3042,14 @@ func (m *awsRestxml_serializeOpPutObjectCopy) HandleSerialize(ctx context.Contex
 	request.URL.Path = smithyhttp.JoinPath(request.URL.Path, opPath)
 	request.URL.RawQuery = smithyhttp.JoinRawQuery(request.URL.RawQuery, opQuery)
 	request.Method = "PUT"
-	restEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	var restEncoder *httpbinding.Encoder
+	if request.URL.RawPath == "" {
+		restEncoder, err = httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	} else {
+		request.URL.RawPath = smithyhttp.JoinPath(request.URL.RawPath, opPath)
+		restEncoder, err = httpbinding.NewEncoderWithRawPath(request.URL.Path, request.URL.RawPath, request.URL.RawQuery, request.Header)
+	}
+
 	if err != nil {
 		return out, metadata, &smithy.SerializationError{Err: err}
 	}
@@ -2930,7 +3196,14 @@ func (m *awsRestxml_serializeOpPutObjectTagging) HandleSerialize(ctx context.Con
 	request.URL.Path = smithyhttp.JoinPath(request.URL.Path, opPath)
 	request.URL.RawQuery = smithyhttp.JoinRawQuery(request.URL.RawQuery, opQuery)
 	request.Method = "PUT"
-	restEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	var restEncoder *httpbinding.Encoder
+	if request.URL.RawPath == "" {
+		restEncoder, err = httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	} else {
+		request.URL.RawPath = smithyhttp.JoinPath(request.URL.RawPath, opPath)
+		restEncoder, err = httpbinding.NewEncoderWithRawPath(request.URL.Path, request.URL.RawPath, request.URL.RawQuery, request.Header)
+	}
+
 	if err != nil {
 		return out, metadata, &smithy.SerializationError{Err: err}
 	}
@@ -3030,7 +3303,14 @@ func (m *awsRestxml_serializeOpUploadPart) HandleSerialize(ctx context.Context, 
 	request.URL.Path = smithyhttp.JoinPath(request.URL.Path, opPath)
 	request.URL.RawQuery = smithyhttp.JoinRawQuery(request.URL.RawQuery, opQuery)
 	request.Method = "PUT"
-	restEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	var restEncoder *httpbinding.Encoder
+	if request.URL.RawPath == "" {
+		restEncoder, err = httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	} else {
+		request.URL.RawPath = smithyhttp.JoinPath(request.URL.RawPath, opPath)
+		restEncoder, err = httpbinding.NewEncoderWithRawPath(request.URL.Path, request.URL.RawPath, request.URL.RawQuery, request.Header)
+	}
+
 	if err != nil {
 		return out, metadata, &smithy.SerializationError{Err: err}
 	}
@@ -3137,7 +3417,14 @@ func (m *awsRestxml_serializeOpUploadPartCopy) HandleSerialize(ctx context.Conte
 	request.URL.Path = smithyhttp.JoinPath(request.URL.Path, opPath)
 	request.URL.RawQuery = smithyhttp.JoinRawQuery(request.URL.RawQuery, opQuery)
 	request.Method = "PUT"
-	restEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	var restEncoder *httpbinding.Encoder
+	if request.URL.RawPath == "" {
+		restEncoder, err = httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	} else {
+		request.URL.RawPath = smithyhttp.JoinPath(request.URL.RawPath, opPath)
+		restEncoder, err = httpbinding.NewEncoderWithRawPath(request.URL.Path, request.URL.RawPath, request.URL.RawQuery, request.Header)
+	}
+
 	if err != nil {
 		return out, metadata, &smithy.SerializationError{Err: err}
 	}
