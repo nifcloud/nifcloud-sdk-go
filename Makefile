@@ -3,6 +3,7 @@ GOBIN=$(shell pwd)/bin
 SDK_CORE_PKGS=./nifcloud/... ./internal/...
 SDK_CLIENT_PKGS=./service/...
 SDK_ALL_PKGS=${SDK_CLIENT_PKGS} ${SDK_CORE_PKGS}
+SMITHY_GO_VERSION=$(shell grep smithy-go go.mod | cut -d " " -f 2)
 
 all: install-deps generate test
 
@@ -20,7 +21,7 @@ update-third-party:
 
 smithy-go-publish-local:
 	rm -rf /tmp/smithy-go-local
-	git clone https://github.com/aws/smithy-go /tmp/smithy-go-local
+	git clone -b ${SMITHY_GO_VERSION} https://github.com/aws/smithy-go /tmp/smithy-go-local --depth 1
 	make -C /tmp/smithy-go-local smithy-clean smithy-publish-local
 
 ###########

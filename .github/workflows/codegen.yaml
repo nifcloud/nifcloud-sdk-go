@@ -33,10 +33,15 @@ jobs:
         with:
           go-version: ${{ matrix.go }}
 
+      - name: Set smity-go version
+        id: smithy_go_version
+        run: echo "version=$(grep smithy-go go.mod | cut -d " " -f 2)" >> $GITHUB_OUTPUT
+
       - uses: actions/checkout@v2
         with:
           repository: aws/smithy-go
           path: tmp-smithy-go
+          ref: ${{ steps.smithy_go_version.outputs.version }}
 
       - name: Build and publish smithy-go
         working-directory: tmp-smithy-go
