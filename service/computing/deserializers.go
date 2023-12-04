@@ -16,6 +16,7 @@ import (
 	"github.com/aws/smithy-go/ptr"
 	smithytime "github.com/aws/smithy-go/time"
 	smithyhttp "github.com/aws/smithy-go/transport/http"
+	"github.com/nifcloud/nifcloud-sdk-go/internal/deserializers"
 	"github.com/nifcloud/nifcloud-sdk-go/service/computing/types"
 	"io"
 	"strconv"
@@ -37652,7 +37653,7 @@ func awsEc2query_deserializeDocumentListenerOfNiftyDescribeElasticLoadBalancers(
 
 		case strings.EqualFold("SessionStickinessPolicy", t.Name.Local):
 			nodeDecoder := smithyxml.WrapNodeDecoder(decoder.Decoder, t)
-			if err := awsEc2query_deserializeDocumentSessionStickinessPolicyOfNiftyDescribeElasticLoadBalancers(&sv.SessionStickinessPolicy, nodeDecoder); err != nil {
+			if err := deserializers.DeserializeDocumentSessionStickinessPolicyOfNiftyDescribeElasticLoadBalancers(&sv.SessionStickinessPolicy, nodeDecoder); err != nil {
 				return err
 			}
 
@@ -58601,7 +58602,7 @@ func awsEc2query_deserializeDocumentOption(v **types.Option, decoder smithyxml.N
 		switch {
 		case strings.EqualFold("SessionStickinessPolicy", t.Name.Local):
 			nodeDecoder := smithyxml.WrapNodeDecoder(decoder.Decoder, t)
-			if err := awsEc2query_deserializeDocumentSessionStickinessPolicy(&sv.SessionStickinessPolicy, nodeDecoder); err != nil {
+			if err := deserializers.DeserializeDocumentSessionStickinessPolicy(&sv.SessionStickinessPolicy, nodeDecoder); err != nil {
 				return err
 			}
 
