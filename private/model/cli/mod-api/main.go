@@ -1,3 +1,4 @@
+//go:build codegen
 // +build codegen
 
 package main
@@ -278,15 +279,34 @@ func rewriteSerializersFile(path string) error {
 }
 
 func rewriteDeserializersFile(path string) error {
-	imports := []map[string]string{
-		{"github.com/aws/aws-sdk-go-v2/service/internal/s3shared": "github.com/nifcloud/nifcloud-sdk-go/service/internal/s3shared"},
-	}
+	imports := []map[string]string{}
 	replaces := []map[string]string{}
 
 	// remove Operation suffix
 	replaces = append(replaces, map[string]string{
 		"OperationResult": "Result",
 	})
+
+	serviceName := filepath.Base(filepath.Dir(path))
+	if serviceName == "computing" {
+		imports = append(imports, map[string]string{
+			"": "github.com/nifcloud/nifcloud-sdk-go/internal/deserializers",
+		})
+
+		// to use internal/deserializers
+		replaces = append(
+			replaces,
+			map[string]string{
+				"awsEc2query_deserializeDocumentSessionStickinessPolicy\\(&sv\\.":                                    "deserializers.DeserializeDocumentSessionStickinessPolicy(&sv.",
+				"awsEc2query_deserializeDocumentSessionStickinessPolicyOfNiftyDescribeElasticLoadBalancers\\(&sv\\.": "deserializers.DeserializeDocumentSessionStickinessPolicyOfNiftyDescribeElasticLoadBalancers(&sv.",
+			})
+	}
+
+	if serviceName == "storage" {
+		imports = append(imports, map[string]string{
+			"github.com/aws/aws-sdk-go-v2/service/internal/s3shared": "github.com/nifcloud/nifcloud-sdk-go/service/internal/s3shared",
+		})
+	}
 
 	return rewrite(path, imports, replaces)
 }
