@@ -1,5 +1,18 @@
 # Changelog
 
+## [v1.22.1](https://github.com/nifcloud/nifcloud-sdk-go/tree/v1.22.1) (2023-12-18)
+
+[Full Changelog](https://github.com/nifcloud/nifcloud-sdk-go/compare/v1.22.0...v1.22.1)
+
+**Closed issues:**
+
+- Wait 系の機能が欲しい [\#62](https://github.com/nifcloud/nifcloud-sdk-go/issues/62)
+
+**Merged pull requests:**
+
+- Add custom deserializers for ELB [\#64](https://github.com/nifcloud/nifcloud-sdk-go/pull/64) ([aokumasan](https://github.com/aokumasan))
+- Fixed smity go version [\#63](https://github.com/nifcloud/nifcloud-sdk-go/pull/63) ([aokumasan](https://github.com/aokumasan))
+
 ## [v1.22.0](https://github.com/nifcloud/nifcloud-sdk-go/tree/v1.22.0) (2023-08-03)
 
 [Full Changelog](https://github.com/nifcloud/nifcloud-sdk-go/compare/v1.21.0...v1.22.0)
