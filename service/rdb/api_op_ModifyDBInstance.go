@@ -65,8 +65,6 @@ type ModifyDBInstanceInput struct {
 
 	NewDBInstanceIdentifier *string
 
-	NiftyMultiAZType *int32
-
 	NiftySlavePrivateAddress *string
 
 	OptionGroupName *string

@@ -1098,11 +1098,6 @@ func awsAwsquery_serializeOpDocumentModifyNASInstanceInput(v *ModifyNASInstanceI
 		objectKey.Integer(*v.AllocatedStorage)
 	}
 
-	if v.AuthenticationType != nil {
-		objectKey := object.Key("AuthenticationType")
-		objectKey.Integer(*v.AuthenticationType)
-	}
-
 	if v.MasterPrivateAddress != nil {
 		objectKey := object.Key("MasterPrivateAddress")
 		objectKey.String(*v.MasterPrivateAddress)

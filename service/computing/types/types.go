@@ -1400,6 +1400,8 @@ type ImagesSet struct {
 	
 	ImageType *string
 	
+	IsGpuConfigurable *bool
+	
 	IsPublic *bool
 	
 	KernelId *string
@@ -1814,6 +1816,8 @@ type InstancesSet struct {
 	IpAddressV6 *string
 	
 	IpType *string
+	
+	IsGpuConfigurable *bool
 	
 	IsoImageSet []IsoImageSet
 	
@@ -3196,6 +3200,8 @@ type NetworkInterfaceSetOfCreateVpnGateway struct {
 	
 	IpAddress *string
 	
+	IsOutsideNetwork *bool
+	
 	NetworkId *string
 	
 	NetworkName *string
@@ -3355,6 +3361,8 @@ type NetworkInterfaceSetOfDescribeVpnGateways struct {
 	DeviceIndex *string
 	
 	IpAddress *string
+	
+	IsOutsideNetwork *bool
 	
 	NetworkId *string
 	
@@ -5051,6 +5059,19 @@ type RequestNetworkInterfaceOfCreateRemoteAccessVpnGateway struct {
 	noSmithyDocumentSerde
 }
 
+type RequestNetworkInterfaceOfCreateVpnGateway struct {
+	
+	IpAddress *string
+	
+	IsOutsideNetwork *bool
+	
+	NetworkId *string
+	
+	NetworkName *string
+	
+	noSmithyDocumentSerde
+}
+
 type RequestNetworkInterfaceOfNiftyCreateElasticLoadBalancer struct {
 	
 	IpAddress *string
@@ -5120,6 +5141,12 @@ type RequestNetworkInterfaceOfNiftyUpdateRouterNetworkInterfaces struct {
 type RequestNetworkInterfaceOfNiftyUpdateVpnGatewayNetworkInterfaces struct {
 	
 	IpAddress *string
+	
+	IsOutsideNetwork *bool
+	
+	NetworkId *string
+	
+	NetworkName *string
 	
 	noSmithyDocumentSerde
 }

@@ -501,6 +501,9 @@ structure InstancesSet {
     @xmlName("ipType")
     @ec2QueryName("ipType")
     IpType: String,
+    @xmlName("isGpuConfigurable")
+    @ec2QueryName("isGpuConfigurable")
+    IsGpuConfigurable: Boolean,
     @xmlName("isoImageSet")
     @ec2QueryName("isoImageSet")
     IsoImageSet: ListOfIsoImageSet,
@@ -901,6 +904,10 @@ list ListOfRequestSecurityGroup {
 
 @enum([
   {
+      name: "E2_MINI",
+      value: "e2-mini",
+  },
+  {
       name: "E_MINI",
       value: "e-mini",
   },
@@ -913,8 +920,24 @@ list ListOfRequestSecurityGroup {
       value: "mini",
   },
   {
+      name: "C2_SMALL",
+      value: "c2-small",
+  },
+  {
+      name: "C2R_SMALL",
+      value: "c2r-small",
+  },
+  {
       name: "C_SMALL",
       value: "c-small",
+  },
+  {
+      name: "E2_SMALL",
+      value: "e2-small",
+  },
+  {
+      name: "E2R_SMALL",
+      value: "e2r-small",
   },
   {
       name: "E_SMALL",
@@ -925,12 +948,32 @@ list ListOfRequestSecurityGroup {
       value: "h2-small",
   },
   {
+      name: "H2R_SMALL",
+      value: "h2r-small",
+  },
+  {
       name: "SMALL",
       value: "small",
   },
   {
+      name: "C2_SMALL2",
+      value: "c2-small2",
+  },
+  {
+      name: "C2R_SMALL2",
+      value: "c2r-small2",
+  },
+  {
       name: "C_SMALL2",
       value: "c-small2",
+  },
+  {
+      name: "E2_SMALL2",
+      value: "e2-small2",
+  },
+  {
+      name: "E2R_SMALL2",
+      value: "e2r-small2",
   },
   {
       name: "E_SMALL2",
@@ -941,12 +984,24 @@ list ListOfRequestSecurityGroup {
       value: "h2-small2",
   },
   {
+      name: "H2R_SMALL2",
+      value: "h2r-small2",
+  },
+  {
       name: "SMALL2",
       value: "small2",
   },
   {
+      name: "C2_SMALL4",
+      value: "c2-small4",
+  },
+  {
       name: "C_SMALL4",
       value: "c-small4",
+  },
+  {
+      name: "E2_SMALL4",
+      value: "e2-small4",
   },
   {
       name: "E_SMALL4",
@@ -957,8 +1012,16 @@ list ListOfRequestSecurityGroup {
       value: "h2-small4",
   },
   {
+      name: "H2R_SMALL4",
+      value: "h2r-small4",
+  },
+  {
       name: "SMALL4",
       value: "small4",
+  },
+  {
+      name: "E2_SMALL8",
+      value: "e2-small8",
   },
   {
       name: "E_SMALL8",
@@ -973,6 +1036,10 @@ list ListOfRequestSecurityGroup {
       value: "small8",
   },
   {
+      name: "E2_SMALL16",
+      value: "e2-small16",
+  },
+  {
       name: "E_SMALL16",
       value: "e-small16",
   },
@@ -985,8 +1052,24 @@ list ListOfRequestSecurityGroup {
       value: "small16",
   },
   {
+      name: "C2_MEDIUM",
+      value: "c2-medium",
+  },
+  {
+      name: "C2R_MEDIUM",
+      value: "c2r-medium",
+  },
+  {
       name: "C_MEDIUM",
       value: "c-medium",
+  },
+  {
+      name: "E2_MEDIUM",
+      value: "e2-medium",
+  },
+  {
+      name: "E2R_MEDIUM",
+      value: "e2r-medium",
   },
   {
       name: "E_MEDIUM",
@@ -997,12 +1080,32 @@ list ListOfRequestSecurityGroup {
       value: "h2-medium",
   },
   {
+      name: "H2R_MEDIUM",
+      value: "h2r-medium",
+  },
+  {
       name: "MEDIUM",
       value: "medium",
   },
   {
+      name: "C2_MEDIUM4",
+      value: "c2-medium4",
+  },
+  {
+      name: "C2R_MEDIUM4",
+      value: "c2r-medium4",
+  },
+  {
       name: "C_MEDIUM4",
       value: "c-medium4",
+  },
+  {
+      name: "E2_MEDIUM4",
+      value: "e2-medium4",
+  },
+  {
+      name: "E2R_MEDIUM4",
+      value: "e2r-medium4",
   },
   {
       name: "E_MEDIUM4",
@@ -1013,12 +1116,24 @@ list ListOfRequestSecurityGroup {
       value: "h2-medium4",
   },
   {
+      name: "H2R_MEDIUM4",
+      value: "h2r-medium4",
+  },
+  {
       name: "MEDIUM4",
       value: "medium4",
   },
   {
+      name: "C2_MEDIUM8",
+      value: "c2-medium8",
+  },
+  {
       name: "C_MEDIUM8",
       value: "c-medium8",
+  },
+  {
+      name: "E2_MEDIUM8",
+      value: "e2-medium8",
   },
   {
       name: "E_MEDIUM8",
@@ -1029,8 +1144,16 @@ list ListOfRequestSecurityGroup {
       value: "h2-medium8",
   },
   {
+      name: "H2R_MEDIUM8",
+      value: "h2r-medium8",
+  },
+  {
       name: "MEDIUM8",
       value: "medium8",
+  },
+  {
+      name: "E2_MEDIUM16",
+      value: "e2-medium16",
   },
   {
       name: "E_MEDIUM16",
@@ -1045,6 +1168,10 @@ list ListOfRequestSecurityGroup {
       value: "medium16",
   },
   {
+      name: "E2_MEDIUM24",
+      value: "e2-medium24",
+  },
+  {
       name: "E_MEDIUM24",
       value: "e-medium24",
   },
@@ -1057,8 +1184,24 @@ list ListOfRequestSecurityGroup {
       value: "medium24",
   },
   {
+      name: "C2_LARGE",
+      value: "c2-large",
+  },
+  {
+      name: "C2R_LARGE",
+      value: "c2r-large",
+  },
+  {
       name: "C_LARGE",
       value: "c-large",
+  },
+  {
+      name: "E2_LARGE",
+      value: "e2-large",
+  },
+  {
+      name: "E2R_LARGE",
+      value: "e2r-large",
   },
   {
       name: "E_LARGE",
@@ -1069,12 +1212,28 @@ list ListOfRequestSecurityGroup {
       value: "h2-large",
   },
   {
+      name: "H2R_LARGE",
+      value: "h2r-large",
+  },
+  {
       name: "LARGE",
       value: "large",
   },
   {
+      name: "C2_LARGE8",
+      value: "c2-large8",
+  },
+  {
       name: "C_LARGE8",
       value: "c-large8",
+  },
+  {
+      name: "E2_LARGE8",
+      value: "e2-large8",
+  },
+  {
+      name: "E2R_LARGE8",
+      value: "e2r-large8",
   },
   {
       name: "E_LARGE8",
@@ -1085,8 +1244,16 @@ list ListOfRequestSecurityGroup {
       value: "h2-large8",
   },
   {
+      name: "H2R_LARGE8",
+      value: "h2r-large8",
+  },
+  {
       name: "LARGE8",
       value: "large8",
+  },
+  {
+      name: "E2_LARGE16",
+      value: "e2-large16",
   },
   {
       name: "E_LARGE16",
@@ -1097,8 +1264,16 @@ list ListOfRequestSecurityGroup {
       value: "h2-large16",
   },
   {
+      name: "H2R_LARGE16",
+      value: "h2r-large16",
+  },
+  {
       name: "LARGE16",
       value: "large16",
+  },
+  {
+      name: "E2_LARGE24",
+      value: "e2-large24",
   },
   {
       name: "E_LARGE24",
@@ -1113,6 +1288,10 @@ list ListOfRequestSecurityGroup {
       value: "large24",
   },
   {
+      name: "E2_LARGE32",
+      value: "e2-large32",
+  },
+  {
       name: "E_LARGE32",
       value: "e-large32",
   },
@@ -1125,6 +1304,14 @@ list ListOfRequestSecurityGroup {
       value: "large32",
   },
   {
+      name: "E2_EXTRA_LARGE8",
+      value: "e2-extra-large8",
+  },
+  {
+      name: "E2R_EXTRA_LARGE8",
+      value: "e2r-extra-large8",
+  },
+  {
       name: "E_EXTRA_LARGE8",
       value: "e-extra-large8",
   },
@@ -1133,8 +1320,16 @@ list ListOfRequestSecurityGroup {
       value: "h2-extra-large8",
   },
   {
+      name: "H2R_EXTRA_LARGE8",
+      value: "h2r-extra-large8",
+  },
+  {
       name: "EXTRA_LARGE8",
       value: "extra-large8",
+  },
+  {
+      name: "E2_EXTRA_LARGE16",
+      value: "e2-extra-large16",
   },
   {
       name: "E_EXTRA_LARGE16",
@@ -1145,8 +1340,16 @@ list ListOfRequestSecurityGroup {
       value: "h2-extra-large16",
   },
   {
+      name: "H2R_EXTRA_LARGE16",
+      value: "h2r-extra-large16",
+  },
+  {
       name: "EXTRA_LARGE16",
       value: "extra-large16",
+  },
+  {
+      name: "E2_EXTRA_LARGE24",
+      value: "e2-extra-large24",
   },
   {
       name: "E_EXTRA_LARGE24",
@@ -1157,8 +1360,16 @@ list ListOfRequestSecurityGroup {
       value: "h2-extra-large24",
   },
   {
+      name: "H2R_EXTRA_LARGE24",
+      value: "h2r-extra-large24",
+  },
+  {
       name: "EXTRA_LARGE24",
       value: "extra-large24",
+  },
+  {
+      name: "E2_EXTRA_LARGE32",
+      value: "e2-extra-large32",
   },
   {
       name: "E_EXTRA_LARGE32",
@@ -1173,6 +1384,10 @@ list ListOfRequestSecurityGroup {
       value: "extra-large32",
   },
   {
+      name: "E2_EXTRA_LARGE48",
+      value: "e2-extra-large48",
+  },
+  {
       name: "E_EXTRA_LARGE48",
       value: "e-extra-large48",
   },
@@ -1185,6 +1400,14 @@ list ListOfRequestSecurityGroup {
       value: "extra-large48",
   },
   {
+      name: "E2_DOUBLE_LARGE16",
+      value: "e2-double-large16",
+  },
+  {
+      name: "E2R_DOUBLE_LARGE16",
+      value: "e2r-double-large16",
+  },
+  {
       name: "E_DOUBLE_LARGE16",
       value: "e-double-large16",
   },
@@ -1193,8 +1416,16 @@ list ListOfRequestSecurityGroup {
       value: "h2-double-large16",
   },
   {
+      name: "H2R_DOUBLE_LARGE16",
+      value: "h2r-double-large16",
+  },
+  {
       name: "DOUBLE_LARGE16",
       value: "double-large16",
+  },
+  {
+      name: "E2_DOUBLE_LARGE24",
+      value: "e2-double-large24",
   },
   {
       name: "E_DOUBLE_LARGE24",
@@ -1205,8 +1436,16 @@ list ListOfRequestSecurityGroup {
       value: "h2-double-large24",
   },
   {
+      name: "H2R_DOUBLE_LARGE24",
+      value: "h2r-double-large24",
+  },
+  {
       name: "DOUBLE_LARGE24",
       value: "double-large24",
+  },
+  {
+      name: "E2_DOUBLE_LARGE32",
+      value: "e2-double-large32",
   },
   {
       name: "E_DOUBLE_LARGE32",
@@ -1217,8 +1456,16 @@ list ListOfRequestSecurityGroup {
       value: "h2-double-large32",
   },
   {
+      name: "H2R_DOUBLE_LARGE32",
+      value: "h2r-double-large32",
+  },
+  {
       name: "DOUBLE_LARGE32",
       value: "double-large32",
+  },
+  {
+      name: "E2_DOUBLE_LARGE48",
+      value: "e2-double-large48",
   },
   {
       name: "E_DOUBLE_LARGE48",
@@ -1233,6 +1480,10 @@ list ListOfRequestSecurityGroup {
       value: "double-large48",
   },
   {
+      name: "E2_DOUBLE_LARGE64",
+      value: "e2-double-large64",
+  },
+  {
       name: "E_DOUBLE_LARGE64",
       value: "e-double-large64",
   },
@@ -1243,6 +1494,10 @@ list ListOfRequestSecurityGroup {
   {
       name: "DOUBLE_LARGE64",
       value: "double-large64",
+  },
+  {
+      name: "E2_DOUBLE_LARGE96",
+      value: "e2-double-large96",
   },
   {
       name: "E_DOUBLE_LARGE96",
@@ -1261,12 +1516,20 @@ list ListOfRequestSecurityGroup {
       value: "h2-triple-large32",
   },
   {
+      name: "H2R_TRIPLE_LARGE32",
+      value: "h2r-triple-large32",
+  },
+  {
       name: "TRIPLE_LARGE32",
       value: "triple-large32",
   },
   {
       name: "H2_TRIPLE_LARGE48",
       value: "h2-triple-large48",
+  },
+  {
+      name: "H2R_TRIPLE_LARGE48",
+      value: "h2r-triple-large48",
   },
   {
       name: "TRIPLE_LARGE48",
@@ -1301,6 +1564,10 @@ list ListOfRequestSecurityGroup {
       value: "h2-quad-large64",
   },
   {
+      name: "H2R_QUAD_LARGE64",
+      value: "h2r-quad-large64",
+  },
+  {
       name: "QUAD_LARGE64",
       value: "quad-large64",
   },
@@ -1321,12 +1588,52 @@ list ListOfRequestSecurityGroup {
       value: "quad-large128",
   },
   {
+      name: "H2_QUAD_LARGE256",
+      value: "h2-quad-large256",
+  },
+  {
+      name: "QUAD_LARGE256",
+      value: "quad-large256",
+  },
+  {
       name: "H2_SEPTA_LARGE128",
       value: "h2-septa-large128",
   },
   {
       name: "SEPTA_LARGE128",
       value: "septa-large128",
+  },
+  {
+      name: "H2_SEPTA_LARGE256",
+      value: "h2-septa-large256",
+  },
+  {
+      name: "SEPTA_LARGE256",
+      value: "septa-large256",
+  },
+  {
+      name: "H2_OCTA_LARGE256",
+      value: "h2-octa-large256",
+  },
+  {
+      name: "OCTA_LARGE256",
+      value: "octa-large256",
+  },
+  {
+      name: "H2_OCTA_LARGE384",
+      value: "h2-octa-large384",
+  },
+  {
+      name: "OCTA_LARGE384",
+      value: "octa-large384",
+  },
+  {
+      name: "H2_OCTA_LARGE512",
+      value: "h2-octa-large512",
+  },
+  {
+      name: "OCTA_LARGE512",
+      value: "octa-large512",
   },
 ])
 string InstanceTypeOfRunInstancesRequest
@@ -1980,6 +2287,10 @@ structure RequestCopyInstance {
 
 @enum([
   {
+      name: "E2_MINI",
+      value: "e2-mini",
+  },
+  {
       name: "E_MINI",
       value: "e-mini",
   },
@@ -1992,8 +2303,24 @@ structure RequestCopyInstance {
       value: "mini",
   },
   {
+      name: "C2_SMALL",
+      value: "c2-small",
+  },
+  {
+      name: "C2R_SMALL",
+      value: "c2r-small",
+  },
+  {
       name: "C_SMALL",
       value: "c-small",
+  },
+  {
+      name: "E2_SMALL",
+      value: "e2-small",
+  },
+  {
+      name: "E2R_SMALL",
+      value: "e2r-small",
   },
   {
       name: "E_SMALL",
@@ -2004,12 +2331,32 @@ structure RequestCopyInstance {
       value: "h2-small",
   },
   {
+      name: "H2R_SMALL",
+      value: "h2r-small",
+  },
+  {
       name: "SMALL",
       value: "small",
   },
   {
+      name: "C2_SMALL2",
+      value: "c2-small2",
+  },
+  {
+      name: "C2R_SMALL2",
+      value: "c2r-small2",
+  },
+  {
       name: "C_SMALL2",
       value: "c-small2",
+  },
+  {
+      name: "E2_SMALL2",
+      value: "e2-small2",
+  },
+  {
+      name: "E2R_SMALL2",
+      value: "e2r-small2",
   },
   {
       name: "E_SMALL2",
@@ -2020,12 +2367,24 @@ structure RequestCopyInstance {
       value: "h2-small2",
   },
   {
+      name: "H2R_SMALL2",
+      value: "h2r-small2",
+  },
+  {
       name: "SMALL2",
       value: "small2",
   },
   {
+      name: "C2_SMALL4",
+      value: "c2-small4",
+  },
+  {
       name: "C_SMALL4",
       value: "c-small4",
+  },
+  {
+      name: "E2_SMALL4",
+      value: "e2-small4",
   },
   {
       name: "E_SMALL4",
@@ -2036,8 +2395,16 @@ structure RequestCopyInstance {
       value: "h2-small4",
   },
   {
+      name: "H2R_SMALL4",
+      value: "h2r-small4",
+  },
+  {
       name: "SMALL4",
       value: "small4",
+  },
+  {
+      name: "E2_SMALL8",
+      value: "e2-small8",
   },
   {
       name: "E_SMALL8",
@@ -2052,6 +2419,10 @@ structure RequestCopyInstance {
       value: "small8",
   },
   {
+      name: "E2_SMALL16",
+      value: "e2-small16",
+  },
+  {
       name: "E_SMALL16",
       value: "e-small16",
   },
@@ -2064,8 +2435,24 @@ structure RequestCopyInstance {
       value: "small16",
   },
   {
+      name: "C2_MEDIUM",
+      value: "c2-medium",
+  },
+  {
+      name: "C2R_MEDIUM",
+      value: "c2r-medium",
+  },
+  {
       name: "C_MEDIUM",
       value: "c-medium",
+  },
+  {
+      name: "E2_MEDIUM",
+      value: "e2-medium",
+  },
+  {
+      name: "E2R_MEDIUM",
+      value: "e2r-medium",
   },
   {
       name: "E_MEDIUM",
@@ -2076,12 +2463,32 @@ structure RequestCopyInstance {
       value: "h2-medium",
   },
   {
+      name: "H2R_MEDIUM",
+      value: "h2r-medium",
+  },
+  {
       name: "MEDIUM",
       value: "medium",
   },
   {
+      name: "C2_MEDIUM4",
+      value: "c2-medium4",
+  },
+  {
+      name: "C2R_MEDIUM4",
+      value: "c2r-medium4",
+  },
+  {
       name: "C_MEDIUM4",
       value: "c-medium4",
+  },
+  {
+      name: "E2_MEDIUM4",
+      value: "e2-medium4",
+  },
+  {
+      name: "E2R_MEDIUM4",
+      value: "e2r-medium4",
   },
   {
       name: "E_MEDIUM4",
@@ -2092,12 +2499,24 @@ structure RequestCopyInstance {
       value: "h2-medium4",
   },
   {
+      name: "H2R_MEDIUM4",
+      value: "h2r-medium4",
+  },
+  {
       name: "MEDIUM4",
       value: "medium4",
   },
   {
+      name: "C2_MEDIUM8",
+      value: "c2-medium8",
+  },
+  {
       name: "C_MEDIUM8",
       value: "c-medium8",
+  },
+  {
+      name: "E2_MEDIUM8",
+      value: "e2-medium8",
   },
   {
       name: "E_MEDIUM8",
@@ -2108,8 +2527,16 @@ structure RequestCopyInstance {
       value: "h2-medium8",
   },
   {
+      name: "H2R_MEDIUM8",
+      value: "h2r-medium8",
+  },
+  {
       name: "MEDIUM8",
       value: "medium8",
+  },
+  {
+      name: "E2_MEDIUM16",
+      value: "e2-medium16",
   },
   {
       name: "E_MEDIUM16",
@@ -2124,6 +2551,10 @@ structure RequestCopyInstance {
       value: "medium16",
   },
   {
+      name: "E2_MEDIUM24",
+      value: "e2-medium24",
+  },
+  {
       name: "E_MEDIUM24",
       value: "e-medium24",
   },
@@ -2136,8 +2567,24 @@ structure RequestCopyInstance {
       value: "medium24",
   },
   {
+      name: "C2_LARGE",
+      value: "c2-large",
+  },
+  {
+      name: "C2R_LARGE",
+      value: "c2r-large",
+  },
+  {
       name: "C_LARGE",
       value: "c-large",
+  },
+  {
+      name: "E2_LARGE",
+      value: "e2-large",
+  },
+  {
+      name: "E2R_LARGE",
+      value: "e2r-large",
   },
   {
       name: "E_LARGE",
@@ -2148,12 +2595,28 @@ structure RequestCopyInstance {
       value: "h2-large",
   },
   {
+      name: "H2R_LARGE",
+      value: "h2r-large",
+  },
+  {
       name: "LARGE",
       value: "large",
   },
   {
+      name: "C2_LARGE8",
+      value: "c2-large8",
+  },
+  {
       name: "C_LARGE8",
       value: "c-large8",
+  },
+  {
+      name: "E2_LARGE8",
+      value: "e2-large8",
+  },
+  {
+      name: "E2R_LARGE8",
+      value: "e2r-large8",
   },
   {
       name: "E_LARGE8",
@@ -2164,8 +2627,16 @@ structure RequestCopyInstance {
       value: "h2-large8",
   },
   {
+      name: "H2R_LARGE8",
+      value: "h2r-large8",
+  },
+  {
       name: "LARGE8",
       value: "large8",
+  },
+  {
+      name: "E2_LARGE16",
+      value: "e2-large16",
   },
   {
       name: "E_LARGE16",
@@ -2176,8 +2647,16 @@ structure RequestCopyInstance {
       value: "h2-large16",
   },
   {
+      name: "H2R_LARGE16",
+      value: "h2r-large16",
+  },
+  {
       name: "LARGE16",
       value: "large16",
+  },
+  {
+      name: "E2_LARGE24",
+      value: "e2-large24",
   },
   {
       name: "E_LARGE24",
@@ -2192,6 +2671,10 @@ structure RequestCopyInstance {
       value: "large24",
   },
   {
+      name: "E2_LARGE32",
+      value: "e2-large32",
+  },
+  {
       name: "E_LARGE32",
       value: "e-large32",
   },
@@ -2204,6 +2687,14 @@ structure RequestCopyInstance {
       value: "large32",
   },
   {
+      name: "E2_EXTRA_LARGE8",
+      value: "e2-extra-large8",
+  },
+  {
+      name: "E2R_EXTRA_LARGE8",
+      value: "e2r-extra-large8",
+  },
+  {
       name: "E_EXTRA_LARGE8",
       value: "e-extra-large8",
   },
@@ -2212,8 +2703,16 @@ structure RequestCopyInstance {
       value: "h2-extra-large8",
   },
   {
+      name: "H2R_EXTRA_LARGE8",
+      value: "h2r-extra-large8",
+  },
+  {
       name: "EXTRA_LARGE8",
       value: "extra-large8",
+  },
+  {
+      name: "E2_EXTRA_LARGE16",
+      value: "e2-extra-large16",
   },
   {
       name: "E_EXTRA_LARGE16",
@@ -2224,8 +2723,16 @@ structure RequestCopyInstance {
       value: "h2-extra-large16",
   },
   {
+      name: "H2R_EXTRA_LARGE16",
+      value: "h2r-extra-large16",
+  },
+  {
       name: "EXTRA_LARGE16",
       value: "extra-large16",
+  },
+  {
+      name: "E2_EXTRA_LARGE24",
+      value: "e2-extra-large24",
   },
   {
       name: "E_EXTRA_LARGE24",
@@ -2236,8 +2743,16 @@ structure RequestCopyInstance {
       value: "h2-extra-large24",
   },
   {
+      name: "H2R_EXTRA_LARGE24",
+      value: "h2r-extra-large24",
+  },
+  {
       name: "EXTRA_LARGE24",
       value: "extra-large24",
+  },
+  {
+      name: "E2_EXTRA_LARGE32",
+      value: "e2-extra-large32",
   },
   {
       name: "E_EXTRA_LARGE32",
@@ -2252,6 +2767,10 @@ structure RequestCopyInstance {
       value: "extra-large32",
   },
   {
+      name: "E2_EXTRA_LARGE48",
+      value: "e2-extra-large48",
+  },
+  {
       name: "E_EXTRA_LARGE48",
       value: "e-extra-large48",
   },
@@ -2264,6 +2783,14 @@ structure RequestCopyInstance {
       value: "extra-large48",
   },
   {
+      name: "E2_DOUBLE_LARGE16",
+      value: "e2-double-large16",
+  },
+  {
+      name: "E2R_DOUBLE_LARGE16",
+      value: "e2r-double-large16",
+  },
+  {
       name: "E_DOUBLE_LARGE16",
       value: "e-double-large16",
   },
@@ -2272,8 +2799,16 @@ structure RequestCopyInstance {
       value: "h2-double-large16",
   },
   {
+      name: "H2R_DOUBLE_LARGE16",
+      value: "h2r-double-large16",
+  },
+  {
       name: "DOUBLE_LARGE16",
       value: "double-large16",
+  },
+  {
+      name: "E2_DOUBLE_LARGE24",
+      value: "e2-double-large24",
   },
   {
       name: "E_DOUBLE_LARGE24",
@@ -2284,8 +2819,16 @@ structure RequestCopyInstance {
       value: "h2-double-large24",
   },
   {
+      name: "H2R_DOUBLE_LARGE24",
+      value: "h2r-double-large24",
+  },
+  {
       name: "DOUBLE_LARGE24",
       value: "double-large24",
+  },
+  {
+      name: "E2_DOUBLE_LARGE32",
+      value: "e2-double-large32",
   },
   {
       name: "E_DOUBLE_LARGE32",
@@ -2296,8 +2839,16 @@ structure RequestCopyInstance {
       value: "h2-double-large32",
   },
   {
+      name: "H2R_DOUBLE_LARGE32",
+      value: "h2r-double-large32",
+  },
+  {
       name: "DOUBLE_LARGE32",
       value: "double-large32",
+  },
+  {
+      name: "E2_DOUBLE_LARGE48",
+      value: "e2-double-large48",
   },
   {
       name: "E_DOUBLE_LARGE48",
@@ -2312,6 +2863,10 @@ structure RequestCopyInstance {
       value: "double-large48",
   },
   {
+      name: "E2_DOUBLE_LARGE64",
+      value: "e2-double-large64",
+  },
+  {
       name: "E_DOUBLE_LARGE64",
       value: "e-double-large64",
   },
@@ -2322,6 +2877,10 @@ structure RequestCopyInstance {
   {
       name: "DOUBLE_LARGE64",
       value: "double-large64",
+  },
+  {
+      name: "E2_DOUBLE_LARGE96",
+      value: "e2-double-large96",
   },
   {
       name: "E_DOUBLE_LARGE96",
@@ -2340,12 +2899,20 @@ structure RequestCopyInstance {
       value: "h2-triple-large32",
   },
   {
+      name: "H2R_TRIPLE_LARGE32",
+      value: "h2r-triple-large32",
+  },
+  {
       name: "TRIPLE_LARGE32",
       value: "triple-large32",
   },
   {
       name: "H2_TRIPLE_LARGE48",
       value: "h2-triple-large48",
+  },
+  {
+      name: "H2R_TRIPLE_LARGE48",
+      value: "h2r-triple-large48",
   },
   {
       name: "TRIPLE_LARGE48",
@@ -2380,6 +2947,10 @@ structure RequestCopyInstance {
       value: "h2-quad-large64",
   },
   {
+      name: "H2R_QUAD_LARGE64",
+      value: "h2r-quad-large64",
+  },
+  {
       name: "QUAD_LARGE64",
       value: "quad-large64",
   },
@@ -2400,12 +2971,52 @@ structure RequestCopyInstance {
       value: "quad-large128",
   },
   {
+      name: "H2_QUAD_LARGE256",
+      value: "h2-quad-large256",
+  },
+  {
+      name: "QUAD_LARGE256",
+      value: "quad-large256",
+  },
+  {
       name: "H2_SEPTA_LARGE128",
       value: "h2-septa-large128",
   },
   {
       name: "SEPTA_LARGE128",
       value: "septa-large128",
+  },
+  {
+      name: "H2_SEPTA_LARGE256",
+      value: "h2-septa-large256",
+  },
+  {
+      name: "SEPTA_LARGE256",
+      value: "septa-large256",
+  },
+  {
+      name: "H2_OCTA_LARGE256",
+      value: "h2-octa-large256",
+  },
+  {
+      name: "OCTA_LARGE256",
+      value: "octa-large256",
+  },
+  {
+      name: "H2_OCTA_LARGE384",
+      value: "h2-octa-large384",
+  },
+  {
+      name: "OCTA_LARGE384",
+      value: "octa-large384",
+  },
+  {
+      name: "H2_OCTA_LARGE512",
+      value: "h2-octa-large512",
+  },
+  {
+      name: "OCTA_LARGE512",
+      value: "octa-large512",
   },
 ])
 string InstanceTypeOfCopyInstanceForCopyInstances
@@ -2523,6 +3134,10 @@ structure RequestUserDataOfImportInstance {
 
 @enum([
   {
+      name: "E2_MINI",
+      value: "e2-mini",
+  },
+  {
       name: "E_MINI",
       value: "e-mini",
   },
@@ -2535,8 +3150,24 @@ structure RequestUserDataOfImportInstance {
       value: "mini",
   },
   {
+      name: "C2_SMALL",
+      value: "c2-small",
+  },
+  {
+      name: "C2R_SMALL",
+      value: "c2r-small",
+  },
+  {
       name: "C_SMALL",
       value: "c-small",
+  },
+  {
+      name: "E2_SMALL",
+      value: "e2-small",
+  },
+  {
+      name: "E2R_SMALL",
+      value: "e2r-small",
   },
   {
       name: "E_SMALL",
@@ -2547,12 +3178,32 @@ structure RequestUserDataOfImportInstance {
       value: "h2-small",
   },
   {
+      name: "H2R_SMALL",
+      value: "h2r-small",
+  },
+  {
       name: "SMALL",
       value: "small",
   },
   {
+      name: "C2_SMALL2",
+      value: "c2-small2",
+  },
+  {
+      name: "C2R_SMALL2",
+      value: "c2r-small2",
+  },
+  {
       name: "C_SMALL2",
       value: "c-small2",
+  },
+  {
+      name: "E2_SMALL2",
+      value: "e2-small2",
+  },
+  {
+      name: "E2R_SMALL2",
+      value: "e2r-small2",
   },
   {
       name: "E_SMALL2",
@@ -2563,12 +3214,24 @@ structure RequestUserDataOfImportInstance {
       value: "h2-small2",
   },
   {
+      name: "H2R_SMALL2",
+      value: "h2r-small2",
+  },
+  {
       name: "SMALL2",
       value: "small2",
   },
   {
+      name: "C2_SMALL4",
+      value: "c2-small4",
+  },
+  {
       name: "C_SMALL4",
       value: "c-small4",
+  },
+  {
+      name: "E2_SMALL4",
+      value: "e2-small4",
   },
   {
       name: "E_SMALL4",
@@ -2579,8 +3242,16 @@ structure RequestUserDataOfImportInstance {
       value: "h2-small4",
   },
   {
+      name: "H2R_SMALL4",
+      value: "h2r-small4",
+  },
+  {
       name: "SMALL4",
       value: "small4",
+  },
+  {
+      name: "E2_SMALL8",
+      value: "e2-small8",
   },
   {
       name: "E_SMALL8",
@@ -2595,6 +3266,10 @@ structure RequestUserDataOfImportInstance {
       value: "small8",
   },
   {
+      name: "E2_SMALL16",
+      value: "e2-small16",
+  },
+  {
       name: "E_SMALL16",
       value: "e-small16",
   },
@@ -2607,8 +3282,24 @@ structure RequestUserDataOfImportInstance {
       value: "small16",
   },
   {
+      name: "C2_MEDIUM",
+      value: "c2-medium",
+  },
+  {
+      name: "C2R_MEDIUM",
+      value: "c2r-medium",
+  },
+  {
       name: "C_MEDIUM",
       value: "c-medium",
+  },
+  {
+      name: "E2_MEDIUM",
+      value: "e2-medium",
+  },
+  {
+      name: "E2R_MEDIUM",
+      value: "e2r-medium",
   },
   {
       name: "E_MEDIUM",
@@ -2619,12 +3310,32 @@ structure RequestUserDataOfImportInstance {
       value: "h2-medium",
   },
   {
+      name: "H2R_MEDIUM",
+      value: "h2r-medium",
+  },
+  {
       name: "MEDIUM",
       value: "medium",
   },
   {
+      name: "C2_MEDIUM4",
+      value: "c2-medium4",
+  },
+  {
+      name: "C2R_MEDIUM4",
+      value: "c2r-medium4",
+  },
+  {
       name: "C_MEDIUM4",
       value: "c-medium4",
+  },
+  {
+      name: "E2_MEDIUM4",
+      value: "e2-medium4",
+  },
+  {
+      name: "E2R_MEDIUM4",
+      value: "e2r-medium4",
   },
   {
       name: "E_MEDIUM4",
@@ -2635,12 +3346,24 @@ structure RequestUserDataOfImportInstance {
       value: "h2-medium4",
   },
   {
+      name: "H2R_MEDIUM4",
+      value: "h2r-medium4",
+  },
+  {
       name: "MEDIUM4",
       value: "medium4",
   },
   {
+      name: "C2_MEDIUM8",
+      value: "c2-medium8",
+  },
+  {
       name: "C_MEDIUM8",
       value: "c-medium8",
+  },
+  {
+      name: "E2_MEDIUM8",
+      value: "e2-medium8",
   },
   {
       name: "E_MEDIUM8",
@@ -2651,8 +3374,16 @@ structure RequestUserDataOfImportInstance {
       value: "h2-medium8",
   },
   {
+      name: "H2R_MEDIUM8",
+      value: "h2r-medium8",
+  },
+  {
       name: "MEDIUM8",
       value: "medium8",
+  },
+  {
+      name: "E2_MEDIUM16",
+      value: "e2-medium16",
   },
   {
       name: "E_MEDIUM16",
@@ -2667,6 +3398,10 @@ structure RequestUserDataOfImportInstance {
       value: "medium16",
   },
   {
+      name: "E2_MEDIUM24",
+      value: "e2-medium24",
+  },
+  {
       name: "E_MEDIUM24",
       value: "e-medium24",
   },
@@ -2679,8 +3414,24 @@ structure RequestUserDataOfImportInstance {
       value: "medium24",
   },
   {
+      name: "C2_LARGE",
+      value: "c2-large",
+  },
+  {
+      name: "C2R_LARGE",
+      value: "c2r-large",
+  },
+  {
       name: "C_LARGE",
       value: "c-large",
+  },
+  {
+      name: "E2_LARGE",
+      value: "e2-large",
+  },
+  {
+      name: "E2R_LARGE",
+      value: "e2r-large",
   },
   {
       name: "E_LARGE",
@@ -2691,12 +3442,28 @@ structure RequestUserDataOfImportInstance {
       value: "h2-large",
   },
   {
+      name: "H2R_LARGE",
+      value: "h2r-large",
+  },
+  {
       name: "LARGE",
       value: "large",
   },
   {
+      name: "C2_LARGE8",
+      value: "c2-large8",
+  },
+  {
       name: "C_LARGE8",
       value: "c-large8",
+  },
+  {
+      name: "E2_LARGE8",
+      value: "e2-large8",
+  },
+  {
+      name: "E2R_LARGE8",
+      value: "e2r-large8",
   },
   {
       name: "E_LARGE8",
@@ -2707,8 +3474,16 @@ structure RequestUserDataOfImportInstance {
       value: "h2-large8",
   },
   {
+      name: "H2R_LARGE8",
+      value: "h2r-large8",
+  },
+  {
       name: "LARGE8",
       value: "large8",
+  },
+  {
+      name: "E2_LARGE16",
+      value: "e2-large16",
   },
   {
       name: "E_LARGE16",
@@ -2719,8 +3494,16 @@ structure RequestUserDataOfImportInstance {
       value: "h2-large16",
   },
   {
+      name: "H2R_LARGE16",
+      value: "h2r-large16",
+  },
+  {
       name: "LARGE16",
       value: "large16",
+  },
+  {
+      name: "E2_LARGE24",
+      value: "e2-large24",
   },
   {
       name: "E_LARGE24",
@@ -2735,6 +3518,10 @@ structure RequestUserDataOfImportInstance {
       value: "large24",
   },
   {
+      name: "E2_LARGE32",
+      value: "e2-large32",
+  },
+  {
       name: "E_LARGE32",
       value: "e-large32",
   },
@@ -2747,6 +3534,14 @@ structure RequestUserDataOfImportInstance {
       value: "large32",
   },
   {
+      name: "E2_EXTRA_LARGE8",
+      value: "e2-extra-large8",
+  },
+  {
+      name: "E2R_EXTRA_LARGE8",
+      value: "e2r-extra-large8",
+  },
+  {
       name: "E_EXTRA_LARGE8",
       value: "e-extra-large8",
   },
@@ -2755,8 +3550,16 @@ structure RequestUserDataOfImportInstance {
       value: "h2-extra-large8",
   },
   {
+      name: "H2R_EXTRA_LARGE8",
+      value: "h2r-extra-large8",
+  },
+  {
       name: "EXTRA_LARGE8",
       value: "extra-large8",
+  },
+  {
+      name: "E2_EXTRA_LARGE16",
+      value: "e2-extra-large16",
   },
   {
       name: "E_EXTRA_LARGE16",
@@ -2767,8 +3570,16 @@ structure RequestUserDataOfImportInstance {
       value: "h2-extra-large16",
   },
   {
+      name: "H2R_EXTRA_LARGE16",
+      value: "h2r-extra-large16",
+  },
+  {
       name: "EXTRA_LARGE16",
       value: "extra-large16",
+  },
+  {
+      name: "E2_EXTRA_LARGE24",
+      value: "e2-extra-large24",
   },
   {
       name: "E_EXTRA_LARGE24",
@@ -2779,8 +3590,16 @@ structure RequestUserDataOfImportInstance {
       value: "h2-extra-large24",
   },
   {
+      name: "H2R_EXTRA_LARGE24",
+      value: "h2r-extra-large24",
+  },
+  {
       name: "EXTRA_LARGE24",
       value: "extra-large24",
+  },
+  {
+      name: "E2_EXTRA_LARGE32",
+      value: "e2-extra-large32",
   },
   {
       name: "E_EXTRA_LARGE32",
@@ -2795,6 +3614,10 @@ structure RequestUserDataOfImportInstance {
       value: "extra-large32",
   },
   {
+      name: "E2_EXTRA_LARGE48",
+      value: "e2-extra-large48",
+  },
+  {
       name: "E_EXTRA_LARGE48",
       value: "e-extra-large48",
   },
@@ -2807,6 +3630,14 @@ structure RequestUserDataOfImportInstance {
       value: "extra-large48",
   },
   {
+      name: "E2_DOUBLE_LARGE16",
+      value: "e2-double-large16",
+  },
+  {
+      name: "E2R_DOUBLE_LARGE16",
+      value: "e2r-double-large16",
+  },
+  {
       name: "E_DOUBLE_LARGE16",
       value: "e-double-large16",
   },
@@ -2815,8 +3646,16 @@ structure RequestUserDataOfImportInstance {
       value: "h2-double-large16",
   },
   {
+      name: "H2R_DOUBLE_LARGE16",
+      value: "h2r-double-large16",
+  },
+  {
       name: "DOUBLE_LARGE16",
       value: "double-large16",
+  },
+  {
+      name: "E2_DOUBLE_LARGE24",
+      value: "e2-double-large24",
   },
   {
       name: "E_DOUBLE_LARGE24",
@@ -2827,8 +3666,16 @@ structure RequestUserDataOfImportInstance {
       value: "h2-double-large24",
   },
   {
+      name: "H2R_DOUBLE_LARGE24",
+      value: "h2r-double-large24",
+  },
+  {
       name: "DOUBLE_LARGE24",
       value: "double-large24",
+  },
+  {
+      name: "E2_DOUBLE_LARGE32",
+      value: "e2-double-large32",
   },
   {
       name: "E_DOUBLE_LARGE32",
@@ -2839,8 +3686,16 @@ structure RequestUserDataOfImportInstance {
       value: "h2-double-large32",
   },
   {
+      name: "H2R_DOUBLE_LARGE32",
+      value: "h2r-double-large32",
+  },
+  {
       name: "DOUBLE_LARGE32",
       value: "double-large32",
+  },
+  {
+      name: "E2_DOUBLE_LARGE48",
+      value: "e2-double-large48",
   },
   {
       name: "E_DOUBLE_LARGE48",
@@ -2855,6 +3710,10 @@ structure RequestUserDataOfImportInstance {
       value: "double-large48",
   },
   {
+      name: "E2_DOUBLE_LARGE64",
+      value: "e2-double-large64",
+  },
+  {
       name: "E_DOUBLE_LARGE64",
       value: "e-double-large64",
   },
@@ -2865,6 +3724,10 @@ structure RequestUserDataOfImportInstance {
   {
       name: "DOUBLE_LARGE64",
       value: "double-large64",
+  },
+  {
+      name: "E2_DOUBLE_LARGE96",
+      value: "e2-double-large96",
   },
   {
       name: "E_DOUBLE_LARGE96",
@@ -2883,12 +3746,20 @@ structure RequestUserDataOfImportInstance {
       value: "h2-triple-large32",
   },
   {
+      name: "H2R_TRIPLE_LARGE32",
+      value: "h2r-triple-large32",
+  },
+  {
       name: "TRIPLE_LARGE32",
       value: "triple-large32",
   },
   {
       name: "H2_TRIPLE_LARGE48",
       value: "h2-triple-large48",
+  },
+  {
+      name: "H2R_TRIPLE_LARGE48",
+      value: "h2r-triple-large48",
   },
   {
       name: "TRIPLE_LARGE48",
@@ -2923,6 +3794,10 @@ structure RequestUserDataOfImportInstance {
       value: "h2-quad-large64",
   },
   {
+      name: "H2R_QUAD_LARGE64",
+      value: "h2r-quad-large64",
+  },
+  {
       name: "QUAD_LARGE64",
       value: "quad-large64",
   },
@@ -2943,12 +3818,52 @@ structure RequestUserDataOfImportInstance {
       value: "quad-large128",
   },
   {
+      name: "H2_QUAD_LARGE256",
+      value: "h2-quad-large256",
+  },
+  {
+      name: "QUAD_LARGE256",
+      value: "quad-large256",
+  },
+  {
       name: "H2_SEPTA_LARGE128",
       value: "h2-septa-large128",
   },
   {
       name: "SEPTA_LARGE128",
       value: "septa-large128",
+  },
+  {
+      name: "H2_SEPTA_LARGE256",
+      value: "h2-septa-large256",
+  },
+  {
+      name: "SEPTA_LARGE256",
+      value: "septa-large256",
+  },
+  {
+      name: "H2_OCTA_LARGE256",
+      value: "h2-octa-large256",
+  },
+  {
+      name: "OCTA_LARGE256",
+      value: "octa-large256",
+  },
+  {
+      name: "H2_OCTA_LARGE384",
+      value: "h2-octa-large384",
+  },
+  {
+      name: "OCTA_LARGE384",
+      value: "octa-large384",
+  },
+  {
+      name: "H2_OCTA_LARGE512",
+      value: "h2-octa-large512",
+  },
+  {
+      name: "OCTA_LARGE512",
+      value: "octa-large512",
   },
 ])
 string InstanceTypeOfImportInstanceRequest
@@ -4090,6 +5005,9 @@ structure ImagesSet {
     @xmlName("imageType")
     @ec2QueryName("imageType")
     ImageType: String,
+    @xmlName("isGpuConfigurable")
+    @ec2QueryName("isGpuConfigurable")
+    IsGpuConfigurable: Boolean,
     @xmlName("isPublic")
     @ec2QueryName("isPublic")
     IsPublic: Boolean,
@@ -11178,6 +12096,10 @@ structure ModifyNetworkInterfaceAttributeResult {
 
 @enum([
   {
+      name: "E2_MINI",
+      value: "e2-mini",
+  },
+  {
       name: "E_MINI",
       value: "e-mini",
   },
@@ -11190,8 +12112,16 @@ structure ModifyNetworkInterfaceAttributeResult {
       value: "mini",
   },
   {
+      name: "C2_SMALL",
+      value: "c2-small",
+  },
+  {
       name: "C_SMALL",
       value: "c-small",
+  },
+  {
+      name: "E2_SMALL",
+      value: "e2-small",
   },
   {
       name: "E_SMALL",
@@ -11206,8 +12136,16 @@ structure ModifyNetworkInterfaceAttributeResult {
       value: "small",
   },
   {
+      name: "C2_SMALL2",
+      value: "c2-small2",
+  },
+  {
       name: "C_SMALL2",
       value: "c-small2",
+  },
+  {
+      name: "E2_SMALL2",
+      value: "e2-small2",
   },
   {
       name: "E_SMALL2",
@@ -11222,8 +12160,16 @@ structure ModifyNetworkInterfaceAttributeResult {
       value: "small2",
   },
   {
+      name: "C2_SMALL4",
+      value: "c2-small4",
+  },
+  {
       name: "C_SMALL4",
       value: "c-small4",
+  },
+  {
+      name: "E2_SMALL4",
+      value: "e2-small4",
   },
   {
       name: "E_SMALL4",
@@ -11238,6 +12184,10 @@ structure ModifyNetworkInterfaceAttributeResult {
       value: "small4",
   },
   {
+      name: "E2_SMALL8",
+      value: "e2-small8",
+  },
+  {
       name: "E_SMALL8",
       value: "e-small8",
   },
@@ -11248,6 +12198,10 @@ structure ModifyNetworkInterfaceAttributeResult {
   {
       name: "SMALL8",
       value: "small8",
+  },
+  {
+      name: "E2_SMALL16",
+      value: "e2-small16",
   },
   {
       name: "E_SMALL16",
@@ -11262,8 +12216,16 @@ structure ModifyNetworkInterfaceAttributeResult {
       value: "small16",
   },
   {
+      name: "C2_MEDIUM",
+      value: "c2-medium",
+  },
+  {
       name: "C_MEDIUM",
       value: "c-medium",
+  },
+  {
+      name: "E2_MEDIUM",
+      value: "e2-medium",
   },
   {
       name: "E_MEDIUM",
@@ -11278,8 +12240,16 @@ structure ModifyNetworkInterfaceAttributeResult {
       value: "medium",
   },
   {
+      name: "C2_MEDIUM4",
+      value: "c2-medium4",
+  },
+  {
       name: "C_MEDIUM4",
       value: "c-medium4",
+  },
+  {
+      name: "E2_MEDIUM4",
+      value: "e2-medium4",
   },
   {
       name: "E_MEDIUM4",
@@ -11294,8 +12264,16 @@ structure ModifyNetworkInterfaceAttributeResult {
       value: "medium4",
   },
   {
+      name: "C2_MEDIUM8",
+      value: "c2-medium8",
+  },
+  {
       name: "C_MEDIUM8",
       value: "c-medium8",
+  },
+  {
+      name: "E2_MEDIUM8",
+      value: "e2-medium8",
   },
   {
       name: "E_MEDIUM8",
@@ -11310,6 +12288,10 @@ structure ModifyNetworkInterfaceAttributeResult {
       value: "medium8",
   },
   {
+      name: "E2_MEDIUM16",
+      value: "e2-medium16",
+  },
+  {
       name: "E_MEDIUM16",
       value: "e-medium16",
   },
@@ -11320,6 +12302,10 @@ structure ModifyNetworkInterfaceAttributeResult {
   {
       name: "MEDIUM16",
       value: "medium16",
+  },
+  {
+      name: "E2_MEDIUM24",
+      value: "e2-medium24",
   },
   {
       name: "E_MEDIUM24",
@@ -11334,8 +12320,16 @@ structure ModifyNetworkInterfaceAttributeResult {
       value: "medium24",
   },
   {
+      name: "C2_LARGE",
+      value: "c2-large",
+  },
+  {
       name: "C_LARGE",
       value: "c-large",
+  },
+  {
+      name: "E2_LARGE",
+      value: "e2-large",
   },
   {
       name: "E_LARGE",
@@ -11350,8 +12344,16 @@ structure ModifyNetworkInterfaceAttributeResult {
       value: "large",
   },
   {
+      name: "C2_LARGE8",
+      value: "c2-large8",
+  },
+  {
       name: "C_LARGE8",
       value: "c-large8",
+  },
+  {
+      name: "E2_LARGE8",
+      value: "e2-large8",
   },
   {
       name: "E_LARGE8",
@@ -11366,6 +12368,10 @@ structure ModifyNetworkInterfaceAttributeResult {
       value: "large8",
   },
   {
+      name: "E2_LARGE16",
+      value: "e2-large16",
+  },
+  {
       name: "E_LARGE16",
       value: "e-large16",
   },
@@ -11376,6 +12382,10 @@ structure ModifyNetworkInterfaceAttributeResult {
   {
       name: "LARGE16",
       value: "large16",
+  },
+  {
+      name: "E2_LARGE24",
+      value: "e2-large24",
   },
   {
       name: "E_LARGE24",
@@ -11390,6 +12400,10 @@ structure ModifyNetworkInterfaceAttributeResult {
       value: "large24",
   },
   {
+      name: "E2_LARGE32",
+      value: "e2-large32",
+  },
+  {
       name: "E_LARGE32",
       value: "e-large32",
   },
@@ -11400,6 +12414,10 @@ structure ModifyNetworkInterfaceAttributeResult {
   {
       name: "LARGE32",
       value: "large32",
+  },
+  {
+      name: "E2_EXTRA_LARGE8",
+      value: "e2-extra-large8",
   },
   {
       name: "E_EXTRA_LARGE8",
@@ -11414,6 +12432,10 @@ structure ModifyNetworkInterfaceAttributeResult {
       value: "extra-large8",
   },
   {
+      name: "E2_EXTRA_LARGE16",
+      value: "e2-extra-large16",
+  },
+  {
       name: "E_EXTRA_LARGE16",
       value: "e-extra-large16",
   },
@@ -11424,6 +12446,10 @@ structure ModifyNetworkInterfaceAttributeResult {
   {
       name: "EXTRA_LARGE16",
       value: "extra-large16",
+  },
+  {
+      name: "E2_EXTRA_LARGE24",
+      value: "e2-extra-large24",
   },
   {
       name: "E_EXTRA_LARGE24",
@@ -11438,6 +12464,10 @@ structure ModifyNetworkInterfaceAttributeResult {
       value: "extra-large24",
   },
   {
+      name: "E2_EXTRA_LARGE32",
+      value: "e2-extra-large32",
+  },
+  {
       name: "E_EXTRA_LARGE32",
       value: "e-extra-large32",
   },
@@ -11448,6 +12478,10 @@ structure ModifyNetworkInterfaceAttributeResult {
   {
       name: "EXTRA_LARGE32",
       value: "extra-large32",
+  },
+  {
+      name: "E2_EXTRA_LARGE48",
+      value: "e2-extra-large48",
   },
   {
       name: "E_EXTRA_LARGE48",
@@ -11462,6 +12496,10 @@ structure ModifyNetworkInterfaceAttributeResult {
       value: "extra-large48",
   },
   {
+      name: "E2_DOUBLE_LARGE16",
+      value: "e2-double-large16",
+  },
+  {
       name: "E_DOUBLE_LARGE16",
       value: "e-double-large16",
   },
@@ -11472,6 +12510,10 @@ structure ModifyNetworkInterfaceAttributeResult {
   {
       name: "DOUBLE_LARGE16",
       value: "double-large16",
+  },
+  {
+      name: "E2_DOUBLE_LARGE24",
+      value: "e2-double-large24",
   },
   {
       name: "E_DOUBLE_LARGE24",
@@ -11486,6 +12528,10 @@ structure ModifyNetworkInterfaceAttributeResult {
       value: "double-large24",
   },
   {
+      name: "E2_DOUBLE_LARGE32",
+      value: "e2-double-large32",
+  },
+  {
       name: "E_DOUBLE_LARGE32",
       value: "e-double-large32",
   },
@@ -11496,6 +12542,10 @@ structure ModifyNetworkInterfaceAttributeResult {
   {
       name: "DOUBLE_LARGE32",
       value: "double-large32",
+  },
+  {
+      name: "E2_DOUBLE_LARGE48",
+      value: "e2-double-large48",
   },
   {
       name: "E_DOUBLE_LARGE48",
@@ -11510,6 +12560,10 @@ structure ModifyNetworkInterfaceAttributeResult {
       value: "double-large48",
   },
   {
+      name: "E2_DOUBLE_LARGE64",
+      value: "e2-double-large64",
+  },
+  {
       name: "E_DOUBLE_LARGE64",
       value: "e-double-large64",
   },
@@ -11520,6 +12574,10 @@ structure ModifyNetworkInterfaceAttributeResult {
   {
       name: "DOUBLE_LARGE64",
       value: "double-large64",
+  },
+  {
+      name: "E2_DOUBLE_LARGE96",
+      value: "e2-double-large96",
   },
   {
       name: "E_DOUBLE_LARGE96",
@@ -12172,6 +13230,10 @@ structure Details {
 
 @enum([
   {
+      name: "E2_MINI",
+      value: "e2-mini",
+  },
+  {
       name: "E_MINI",
       value: "e-mini",
   },
@@ -12184,8 +13246,16 @@ structure Details {
       value: "mini",
   },
   {
+      name: "C2_SMALL",
+      value: "c2-small",
+  },
+  {
       name: "C_SMALL",
       value: "c-small",
+  },
+  {
+      name: "E2_SMALL",
+      value: "e2-small",
   },
   {
       name: "E_SMALL",
@@ -12200,8 +13270,16 @@ structure Details {
       value: "small",
   },
   {
+      name: "C2_SMALL2",
+      value: "c2-small2",
+  },
+  {
       name: "C_SMALL2",
       value: "c-small2",
+  },
+  {
+      name: "E2_SMALL2",
+      value: "e2-small2",
   },
   {
       name: "E_SMALL2",
@@ -12216,8 +13294,16 @@ structure Details {
       value: "small2",
   },
   {
+      name: "C2_SMALL4",
+      value: "c2-small4",
+  },
+  {
       name: "C_SMALL4",
       value: "c-small4",
+  },
+  {
+      name: "E2_SMALL4",
+      value: "e2-small4",
   },
   {
       name: "E_SMALL4",
@@ -12232,6 +13318,10 @@ structure Details {
       value: "small4",
   },
   {
+      name: "E2_SMALL8",
+      value: "e2-small8",
+  },
+  {
       name: "E_SMALL8",
       value: "e-small8",
   },
@@ -12242,6 +13332,10 @@ structure Details {
   {
       name: "SMALL8",
       value: "small8",
+  },
+  {
+      name: "E2_SMALL16",
+      value: "e2-small16",
   },
   {
       name: "E_SMALL16",
@@ -12256,8 +13350,16 @@ structure Details {
       value: "small16",
   },
   {
+      name: "C2_MEDIUM",
+      value: "c2-medium",
+  },
+  {
       name: "C_MEDIUM",
       value: "c-medium",
+  },
+  {
+      name: "E2_MEDIUM",
+      value: "e2-medium",
   },
   {
       name: "E_MEDIUM",
@@ -12272,8 +13374,16 @@ structure Details {
       value: "medium",
   },
   {
+      name: "C2_MEDIUM4",
+      value: "c2-medium4",
+  },
+  {
       name: "C_MEDIUM4",
       value: "c-medium4",
+  },
+  {
+      name: "E2_MEDIUM4",
+      value: "e2-medium4",
   },
   {
       name: "E_MEDIUM4",
@@ -12288,8 +13398,16 @@ structure Details {
       value: "medium4",
   },
   {
+      name: "C2_MEDIUM8",
+      value: "c2-medium8",
+  },
+  {
       name: "C_MEDIUM8",
       value: "c-medium8",
+  },
+  {
+      name: "E2_MEDIUM8",
+      value: "e2-medium8",
   },
   {
       name: "E_MEDIUM8",
@@ -12304,6 +13422,10 @@ structure Details {
       value: "medium8",
   },
   {
+      name: "E2_MEDIUM16",
+      value: "e2-medium16",
+  },
+  {
       name: "E_MEDIUM16",
       value: "e-medium16",
   },
@@ -12314,6 +13436,10 @@ structure Details {
   {
       name: "MEDIUM16",
       value: "medium16",
+  },
+  {
+      name: "E2_MEDIUM24",
+      value: "e2-medium24",
   },
   {
       name: "E_MEDIUM24",
@@ -12328,8 +13454,16 @@ structure Details {
       value: "medium24",
   },
   {
+      name: "C2_LARGE",
+      value: "c2-large",
+  },
+  {
       name: "C_LARGE",
       value: "c-large",
+  },
+  {
+      name: "E2_LARGE",
+      value: "e2-large",
   },
   {
       name: "E_LARGE",
@@ -12344,8 +13478,16 @@ structure Details {
       value: "large",
   },
   {
+      name: "C2_LARGE8",
+      value: "c2-large8",
+  },
+  {
       name: "C_LARGE8",
       value: "c-large8",
+  },
+  {
+      name: "E2_LARGE8",
+      value: "e2-large8",
   },
   {
       name: "E_LARGE8",
@@ -12360,6 +13502,10 @@ structure Details {
       value: "large8",
   },
   {
+      name: "E2_LARGE16",
+      value: "e2-large16",
+  },
+  {
       name: "E_LARGE16",
       value: "e-large16",
   },
@@ -12370,6 +13516,10 @@ structure Details {
   {
       name: "LARGE16",
       value: "large16",
+  },
+  {
+      name: "E2_LARGE24",
+      value: "e2-large24",
   },
   {
       name: "E_LARGE24",
@@ -12384,6 +13534,10 @@ structure Details {
       value: "large24",
   },
   {
+      name: "E2_LARGE32",
+      value: "e2-large32",
+  },
+  {
       name: "E_LARGE32",
       value: "e-large32",
   },
@@ -12394,6 +13548,10 @@ structure Details {
   {
       name: "LARGE32",
       value: "large32",
+  },
+  {
+      name: "E2_EXTRA_LARGE8",
+      value: "e2-extra-large8",
   },
   {
       name: "E_EXTRA_LARGE8",
@@ -12408,6 +13566,10 @@ structure Details {
       value: "extra-large8",
   },
   {
+      name: "E2_EXTRA_LARGE16",
+      value: "e2-extra-large16",
+  },
+  {
       name: "E_EXTRA_LARGE16",
       value: "e-extra-large16",
   },
@@ -12418,6 +13580,10 @@ structure Details {
   {
       name: "EXTRA_LARGE16",
       value: "extra-large16",
+  },
+  {
+      name: "E2_EXTRA_LARGE24",
+      value: "e2-extra-large24",
   },
   {
       name: "E_EXTRA_LARGE24",
@@ -12432,6 +13598,10 @@ structure Details {
       value: "extra-large24",
   },
   {
+      name: "E2_EXTRA_LARGE32",
+      value: "e2-extra-large32",
+  },
+  {
       name: "E_EXTRA_LARGE32",
       value: "e-extra-large32",
   },
@@ -12442,6 +13612,10 @@ structure Details {
   {
       name: "EXTRA_LARGE32",
       value: "extra-large32",
+  },
+  {
+      name: "E2_EXTRA_LARGE48",
+      value: "e2-extra-large48",
   },
   {
       name: "E_EXTRA_LARGE48",
@@ -12456,6 +13630,10 @@ structure Details {
       value: "extra-large48",
   },
   {
+      name: "E2_DOUBLE_LARGE16",
+      value: "e2-double-large16",
+  },
+  {
       name: "E_DOUBLE_LARGE16",
       value: "e-double-large16",
   },
@@ -12466,6 +13644,10 @@ structure Details {
   {
       name: "DOUBLE_LARGE16",
       value: "double-large16",
+  },
+  {
+      name: "E2_DOUBLE_LARGE24",
+      value: "e2-double-large24",
   },
   {
       name: "E_DOUBLE_LARGE24",
@@ -12480,6 +13662,10 @@ structure Details {
       value: "double-large24",
   },
   {
+      name: "E2_DOUBLE_LARGE32",
+      value: "e2-double-large32",
+  },
+  {
       name: "E_DOUBLE_LARGE32",
       value: "e-double-large32",
   },
@@ -12490,6 +13676,10 @@ structure Details {
   {
       name: "DOUBLE_LARGE32",
       value: "double-large32",
+  },
+  {
+      name: "E2_DOUBLE_LARGE48",
+      value: "e2-double-large48",
   },
   {
       name: "E_DOUBLE_LARGE48",
@@ -12504,6 +13694,10 @@ structure Details {
       value: "double-large48",
   },
   {
+      name: "E2_DOUBLE_LARGE64",
+      value: "e2-double-large64",
+  },
+  {
       name: "E_DOUBLE_LARGE64",
       value: "e-double-large64",
   },
@@ -12514,6 +13708,10 @@ structure Details {
   {
       name: "DOUBLE_LARGE64",
       value: "double-large64",
+  },
+  {
+      name: "E2_DOUBLE_LARGE96",
+      value: "e2-double-large96",
   },
   {
       name: "E_DOUBLE_LARGE96",
@@ -16828,10 +18026,32 @@ structure RequestNiftyNetwork {
     NetworkName: String,
 }
 
+structure RequestNetworkInterfaceOfCreateVpnGateway {
+    @xmlName("IpAddress")
+    @ec2QueryName("IpAddress")
+    IpAddress: String,
+    @xmlName("IsOutsideNetwork")
+    @ec2QueryName("IsOutsideNetwork")
+    IsOutsideNetwork: Boolean,
+    @xmlName("NetworkId")
+    @ec2QueryName("NetworkId")
+    NetworkId: String,
+    @xmlName("NetworkName")
+    @ec2QueryName("NetworkName")
+    NetworkName: String,
+}
+
+list ListOfRequestNetworkInterfaceOfCreateVpnGateway {
+    member: RequestNetworkInterfaceOfCreateVpnGateway,
+}
+
 structure CreateVpnGatewayRequest {
     @xmlName("AccountingType")
     @ec2QueryName("AccountingType")
     AccountingType: AccountingTypeOfCreateVpnGatewayRequest,
+    @xmlName("NetworkInterface")
+    @ec2QueryName("NetworkInterface")
+    NetworkInterface: ListOfRequestNetworkInterfaceOfCreateVpnGateway,
     @xmlName("NiftyNetwork")
     @ec2QueryName("NiftyNetwork")
     NiftyNetwork: RequestNiftyNetwork,
@@ -16927,6 +18147,9 @@ structure NetworkInterfaceSetOfCreateVpnGateway {
     @xmlName("ipAddress")
     @ec2QueryName("ipAddress")
     IpAddress: String,
+    @xmlName("isOutsideNetwork")
+    @ec2QueryName("isOutsideNetwork")
+    IsOutsideNetwork: Boolean,
     @xmlName("networkId")
     @ec2QueryName("networkId")
     NetworkId: String,
@@ -17140,6 +18363,9 @@ structure NetworkInterfaceSetOfDescribeVpnGateways {
     @xmlName("ipAddress")
     @ec2QueryName("ipAddress")
     IpAddress: String,
+    @xmlName("isOutsideNetwork")
+    @ec2QueryName("isOutsideNetwork")
+    IsOutsideNetwork: Boolean,
     @xmlName("networkId")
     @ec2QueryName("networkId")
     NetworkId: String,
@@ -17422,6 +18648,19 @@ structure RequestNetworkInterfaceOfNiftyUpdateVpnGatewayNetworkInterfaces {
     @xmlName("IpAddress")
     @ec2QueryName("IpAddress")
     IpAddress: String,
+    @xmlName("IsOutsideNetwork")
+    @ec2QueryName("IsOutsideNetwork")
+    IsOutsideNetwork: Boolean,
+    @xmlName("NetworkId")
+    @ec2QueryName("NetworkId")
+    NetworkId: String,
+    @xmlName("NetworkName")
+    @ec2QueryName("NetworkName")
+    NetworkName: String,
+}
+
+list ListOfRequestNetworkInterfaceOfNiftyUpdateVpnGatewayNetworkInterfaces {
+    member: RequestNetworkInterfaceOfNiftyUpdateVpnGatewayNetworkInterfaces,
 }
 
 @enum([
@@ -17442,7 +18681,7 @@ structure NiftyUpdateVpnGatewayNetworkInterfacesRequest {
     Agreement: Boolean,
     @xmlName("NetworkInterface")
     @ec2QueryName("NetworkInterface")
-    NetworkInterface: RequestNetworkInterfaceOfNiftyUpdateVpnGatewayNetworkInterfaces,
+    NetworkInterface: ListOfRequestNetworkInterfaceOfNiftyUpdateVpnGatewayNetworkInterfaces,
     @xmlName("NiftyReboot")
     @ec2QueryName("NiftyReboot")
     NiftyReboot: NiftyRebootOfNiftyUpdateVpnGatewayNetworkInterfacesRequest,
@@ -19413,6 +20652,10 @@ structure NiftyUpdateSeparateInstanceRuleResult {
 
 @enum([
   {
+      name: "E2_MINI",
+      value: "e2-mini",
+  },
+  {
       name: "E_MINI",
       value: "e-mini",
   },
@@ -19425,8 +20668,24 @@ structure NiftyUpdateSeparateInstanceRuleResult {
       value: "mini",
   },
   {
+      name: "C2_SMALL",
+      value: "c2-small",
+  },
+  {
+      name: "C2R_SMALL",
+      value: "c2r-small",
+  },
+  {
       name: "C_SMALL",
       value: "c-small",
+  },
+  {
+      name: "E2_SMALL",
+      value: "e2-small",
+  },
+  {
+      name: "E2R_SMALL",
+      value: "e2r-small",
   },
   {
       name: "E_SMALL",
@@ -19437,12 +20696,32 @@ structure NiftyUpdateSeparateInstanceRuleResult {
       value: "h2-small",
   },
   {
+      name: "H2R_SMALL",
+      value: "h2r-small",
+  },
+  {
       name: "SMALL",
       value: "small",
   },
   {
+      name: "C2_SMALL2",
+      value: "c2-small2",
+  },
+  {
+      name: "C2R_SMALL2",
+      value: "c2r-small2",
+  },
+  {
       name: "C_SMALL2",
       value: "c-small2",
+  },
+  {
+      name: "E2_SMALL2",
+      value: "e2-small2",
+  },
+  {
+      name: "E2R_SMALL2",
+      value: "e2r-small2",
   },
   {
       name: "E_SMALL2",
@@ -19453,12 +20732,24 @@ structure NiftyUpdateSeparateInstanceRuleResult {
       value: "h2-small2",
   },
   {
+      name: "H2R_SMALL2",
+      value: "h2r-small2",
+  },
+  {
       name: "SMALL2",
       value: "small2",
   },
   {
+      name: "C2_SMALL4",
+      value: "c2-small4",
+  },
+  {
       name: "C_SMALL4",
       value: "c-small4",
+  },
+  {
+      name: "E2_SMALL4",
+      value: "e2-small4",
   },
   {
       name: "E_SMALL4",
@@ -19469,8 +20760,16 @@ structure NiftyUpdateSeparateInstanceRuleResult {
       value: "h2-small4",
   },
   {
+      name: "H2R_SMALL4",
+      value: "h2r-small4",
+  },
+  {
       name: "SMALL4",
       value: "small4",
+  },
+  {
+      name: "E2_SMALL8",
+      value: "e2-small8",
   },
   {
       name: "E_SMALL8",
@@ -19485,6 +20784,10 @@ structure NiftyUpdateSeparateInstanceRuleResult {
       value: "small8",
   },
   {
+      name: "E2_SMALL16",
+      value: "e2-small16",
+  },
+  {
       name: "E_SMALL16",
       value: "e-small16",
   },
@@ -19497,8 +20800,24 @@ structure NiftyUpdateSeparateInstanceRuleResult {
       value: "small16",
   },
   {
+      name: "C2_MEDIUM",
+      value: "c2-medium",
+  },
+  {
+      name: "C2R_MEDIUM",
+      value: "c2r-medium",
+  },
+  {
       name: "C_MEDIUM",
       value: "c-medium",
+  },
+  {
+      name: "E2_MEDIUM",
+      value: "e2-medium",
+  },
+  {
+      name: "E2R_MEDIUM",
+      value: "e2r-medium",
   },
   {
       name: "E_MEDIUM",
@@ -19509,12 +20828,32 @@ structure NiftyUpdateSeparateInstanceRuleResult {
       value: "h2-medium",
   },
   {
+      name: "H2R_MEDIUM",
+      value: "h2r-medium",
+  },
+  {
       name: "MEDIUM",
       value: "medium",
   },
   {
+      name: "C2_MEDIUM4",
+      value: "c2-medium4",
+  },
+  {
+      name: "C2R_MEDIUM4",
+      value: "c2r-medium4",
+  },
+  {
       name: "C_MEDIUM4",
       value: "c-medium4",
+  },
+  {
+      name: "E2_MEDIUM4",
+      value: "e2-medium4",
+  },
+  {
+      name: "E2R_MEDIUM4",
+      value: "e2r-medium4",
   },
   {
       name: "E_MEDIUM4",
@@ -19525,12 +20864,24 @@ structure NiftyUpdateSeparateInstanceRuleResult {
       value: "h2-medium4",
   },
   {
+      name: "H2R_MEDIUM4",
+      value: "h2r-medium4",
+  },
+  {
       name: "MEDIUM4",
       value: "medium4",
   },
   {
+      name: "C2_MEDIUM8",
+      value: "c2-medium8",
+  },
+  {
       name: "C_MEDIUM8",
       value: "c-medium8",
+  },
+  {
+      name: "E2_MEDIUM8",
+      value: "e2-medium8",
   },
   {
       name: "E_MEDIUM8",
@@ -19541,8 +20892,16 @@ structure NiftyUpdateSeparateInstanceRuleResult {
       value: "h2-medium8",
   },
   {
+      name: "H2R_MEDIUM8",
+      value: "h2r-medium8",
+  },
+  {
       name: "MEDIUM8",
       value: "medium8",
+  },
+  {
+      name: "E2_MEDIUM16",
+      value: "e2-medium16",
   },
   {
       name: "E_MEDIUM16",
@@ -19557,6 +20916,10 @@ structure NiftyUpdateSeparateInstanceRuleResult {
       value: "medium16",
   },
   {
+      name: "E2_MEDIUM24",
+      value: "e2-medium24",
+  },
+  {
       name: "E_MEDIUM24",
       value: "e-medium24",
   },
@@ -19569,8 +20932,24 @@ structure NiftyUpdateSeparateInstanceRuleResult {
       value: "medium24",
   },
   {
+      name: "C2_LARGE",
+      value: "c2-large",
+  },
+  {
+      name: "C2R_LARGE",
+      value: "c2r-large",
+  },
+  {
       name: "C_LARGE",
       value: "c-large",
+  },
+  {
+      name: "E2_LARGE",
+      value: "e2-large",
+  },
+  {
+      name: "E2R_LARGE",
+      value: "e2r-large",
   },
   {
       name: "E_LARGE",
@@ -19581,12 +20960,28 @@ structure NiftyUpdateSeparateInstanceRuleResult {
       value: "h2-large",
   },
   {
+      name: "H2R_LARGE",
+      value: "h2r-large",
+  },
+  {
       name: "LARGE",
       value: "large",
   },
   {
+      name: "C2_LARGE8",
+      value: "c2-large8",
+  },
+  {
       name: "C_LARGE8",
       value: "c-large8",
+  },
+  {
+      name: "E2_LARGE8",
+      value: "e2-large8",
+  },
+  {
+      name: "E2R_LARGE8",
+      value: "e2r-large8",
   },
   {
       name: "E_LARGE8",
@@ -19597,8 +20992,16 @@ structure NiftyUpdateSeparateInstanceRuleResult {
       value: "h2-large8",
   },
   {
+      name: "H2R_LARGE8",
+      value: "h2r-large8",
+  },
+  {
       name: "LARGE8",
       value: "large8",
+  },
+  {
+      name: "E2_LARGE16",
+      value: "e2-large16",
   },
   {
       name: "E_LARGE16",
@@ -19609,8 +21012,16 @@ structure NiftyUpdateSeparateInstanceRuleResult {
       value: "h2-large16",
   },
   {
+      name: "H2R_LARGE16",
+      value: "h2r-large16",
+  },
+  {
       name: "LARGE16",
       value: "large16",
+  },
+  {
+      name: "E2_LARGE24",
+      value: "e2-large24",
   },
   {
       name: "E_LARGE24",
@@ -19625,6 +21036,10 @@ structure NiftyUpdateSeparateInstanceRuleResult {
       value: "large24",
   },
   {
+      name: "E2_LARGE32",
+      value: "e2-large32",
+  },
+  {
       name: "E_LARGE32",
       value: "e-large32",
   },
@@ -19637,6 +21052,14 @@ structure NiftyUpdateSeparateInstanceRuleResult {
       value: "large32",
   },
   {
+      name: "E2_EXTRA_LARGE8",
+      value: "e2-extra-large8",
+  },
+  {
+      name: "E2R_EXTRA_LARGE8",
+      value: "e2r-extra-large8",
+  },
+  {
       name: "E_EXTRA_LARGE8",
       value: "e-extra-large8",
   },
@@ -19645,8 +21068,16 @@ structure NiftyUpdateSeparateInstanceRuleResult {
       value: "h2-extra-large8",
   },
   {
+      name: "H2R_EXTRA_LARGE8",
+      value: "h2r-extra-large8",
+  },
+  {
       name: "EXTRA_LARGE8",
       value: "extra-large8",
+  },
+  {
+      name: "E2_EXTRA_LARGE16",
+      value: "e2-extra-large16",
   },
   {
       name: "E_EXTRA_LARGE16",
@@ -19657,8 +21088,16 @@ structure NiftyUpdateSeparateInstanceRuleResult {
       value: "h2-extra-large16",
   },
   {
+      name: "H2R_EXTRA_LARGE16",
+      value: "h2r-extra-large16",
+  },
+  {
       name: "EXTRA_LARGE16",
       value: "extra-large16",
+  },
+  {
+      name: "E2_EXTRA_LARGE24",
+      value: "e2-extra-large24",
   },
   {
       name: "E_EXTRA_LARGE24",
@@ -19669,8 +21108,16 @@ structure NiftyUpdateSeparateInstanceRuleResult {
       value: "h2-extra-large24",
   },
   {
+      name: "H2R_EXTRA_LARGE24",
+      value: "h2r-extra-large24",
+  },
+  {
       name: "EXTRA_LARGE24",
       value: "extra-large24",
+  },
+  {
+      name: "E2_EXTRA_LARGE32",
+      value: "e2-extra-large32",
   },
   {
       name: "E_EXTRA_LARGE32",
@@ -19685,6 +21132,10 @@ structure NiftyUpdateSeparateInstanceRuleResult {
       value: "extra-large32",
   },
   {
+      name: "E2_EXTRA_LARGE48",
+      value: "e2-extra-large48",
+  },
+  {
       name: "E_EXTRA_LARGE48",
       value: "e-extra-large48",
   },
@@ -19697,6 +21148,14 @@ structure NiftyUpdateSeparateInstanceRuleResult {
       value: "extra-large48",
   },
   {
+      name: "E2_DOUBLE_LARGE16",
+      value: "e2-double-large16",
+  },
+  {
+      name: "E2R_DOUBLE_LARGE16",
+      value: "e2r-double-large16",
+  },
+  {
       name: "E_DOUBLE_LARGE16",
       value: "e-double-large16",
   },
@@ -19705,8 +21164,16 @@ structure NiftyUpdateSeparateInstanceRuleResult {
       value: "h2-double-large16",
   },
   {
+      name: "H2R_DOUBLE_LARGE16",
+      value: "h2r-double-large16",
+  },
+  {
       name: "DOUBLE_LARGE16",
       value: "double-large16",
+  },
+  {
+      name: "E2_DOUBLE_LARGE24",
+      value: "e2-double-large24",
   },
   {
       name: "E_DOUBLE_LARGE24",
@@ -19717,8 +21184,16 @@ structure NiftyUpdateSeparateInstanceRuleResult {
       value: "h2-double-large24",
   },
   {
+      name: "H2R_DOUBLE_LARGE24",
+      value: "h2r-double-large24",
+  },
+  {
       name: "DOUBLE_LARGE24",
       value: "double-large24",
+  },
+  {
+      name: "E2_DOUBLE_LARGE32",
+      value: "e2-double-large32",
   },
   {
       name: "E_DOUBLE_LARGE32",
@@ -19729,8 +21204,16 @@ structure NiftyUpdateSeparateInstanceRuleResult {
       value: "h2-double-large32",
   },
   {
+      name: "H2R_DOUBLE_LARGE32",
+      value: "h2r-double-large32",
+  },
+  {
       name: "DOUBLE_LARGE32",
       value: "double-large32",
+  },
+  {
+      name: "E2_DOUBLE_LARGE48",
+      value: "e2-double-large48",
   },
   {
       name: "E_DOUBLE_LARGE48",
@@ -19745,6 +21228,10 @@ structure NiftyUpdateSeparateInstanceRuleResult {
       value: "double-large48",
   },
   {
+      name: "E2_DOUBLE_LARGE64",
+      value: "e2-double-large64",
+  },
+  {
       name: "E_DOUBLE_LARGE64",
       value: "e-double-large64",
   },
@@ -19755,6 +21242,10 @@ structure NiftyUpdateSeparateInstanceRuleResult {
   {
       name: "DOUBLE_LARGE64",
       value: "double-large64",
+  },
+  {
+      name: "E2_DOUBLE_LARGE96",
+      value: "e2-double-large96",
   },
   {
       name: "E_DOUBLE_LARGE96",
@@ -19773,12 +21264,20 @@ structure NiftyUpdateSeparateInstanceRuleResult {
       value: "h2-triple-large32",
   },
   {
+      name: "H2R_TRIPLE_LARGE32",
+      value: "h2r-triple-large32",
+  },
+  {
       name: "TRIPLE_LARGE32",
       value: "triple-large32",
   },
   {
       name: "H2_TRIPLE_LARGE48",
       value: "h2-triple-large48",
+  },
+  {
+      name: "H2R_TRIPLE_LARGE48",
+      value: "h2r-triple-large48",
   },
   {
       name: "TRIPLE_LARGE48",
@@ -19813,6 +21312,10 @@ structure NiftyUpdateSeparateInstanceRuleResult {
       value: "h2-quad-large64",
   },
   {
+      name: "H2R_QUAD_LARGE64",
+      value: "h2r-quad-large64",
+  },
+  {
       name: "QUAD_LARGE64",
       value: "quad-large64",
   },
@@ -19833,12 +21336,52 @@ structure NiftyUpdateSeparateInstanceRuleResult {
       value: "quad-large128",
   },
   {
+      name: "H2_QUAD_LARGE256",
+      value: "h2-quad-large256",
+  },
+  {
+      name: "QUAD_LARGE256",
+      value: "quad-large256",
+  },
+  {
       name: "H2_SEPTA_LARGE128",
       value: "h2-septa-large128",
   },
   {
       name: "SEPTA_LARGE128",
       value: "septa-large128",
+  },
+  {
+      name: "H2_SEPTA_LARGE256",
+      value: "h2-septa-large256",
+  },
+  {
+      name: "SEPTA_LARGE256",
+      value: "septa-large256",
+  },
+  {
+      name: "H2_OCTA_LARGE256",
+      value: "h2-octa-large256",
+  },
+  {
+      name: "OCTA_LARGE256",
+      value: "octa-large256",
+  },
+  {
+      name: "H2_OCTA_LARGE384",
+      value: "h2-octa-large384",
+  },
+  {
+      name: "OCTA_LARGE384",
+      value: "octa-large384",
+  },
+  {
+      name: "H2_OCTA_LARGE512",
+      value: "h2-octa-large512",
+  },
+  {
+      name: "OCTA_LARGE512",
+      value: "octa-large512",
   },
 ])
 string InstanceTypeOfCopyFromBackupInstanceRequest

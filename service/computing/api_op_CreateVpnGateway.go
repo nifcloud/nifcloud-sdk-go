@@ -28,6 +28,8 @@ func (c *Client) CreateVpnGateway(ctx context.Context, params *CreateVpnGatewayI
 type CreateVpnGatewayInput struct {
 	AccountingType types.AccountingTypeOfCreateVpnGatewayRequest
 
+	NetworkInterface []types.RequestNetworkInterfaceOfCreateVpnGateway
+
 	NiftyNetwork *types.RequestNiftyNetwork
 
 	NiftyRedundancy *bool
