@@ -16456,6 +16456,18 @@ func awsEc2query_serializeDocumentListOfRequestNetworkInterfaceOfCreateRemoteAcc
 	return nil
 }
 
+func awsEc2query_serializeDocumentListOfRequestNetworkInterfaceOfCreateVpnGateway(v []types.RequestNetworkInterfaceOfCreateVpnGateway, value query.Value) error {
+	array := value.Array("Member")
+
+	for i := range v {
+		av := array.Value()
+		if err := awsEc2query_serializeDocumentRequestNetworkInterfaceOfCreateVpnGateway(&v[i], av); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
 func awsEc2query_serializeDocumentListOfRequestNetworkInterfaceOfNiftyCreateElasticLoadBalancer(v []types.RequestNetworkInterfaceOfNiftyCreateElasticLoadBalancer, value query.Value) error {
 	array := value.Array("Member")
 
@@ -16498,6 +16510,18 @@ func awsEc2query_serializeDocumentListOfRequestNetworkInterfaceOfNiftyUpdateRout
 	for i := range v {
 		av := array.Value()
 		if err := awsEc2query_serializeDocumentRequestNetworkInterfaceOfNiftyUpdateRouterNetworkInterfaces(&v[i], av); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+func awsEc2query_serializeDocumentListOfRequestNetworkInterfaceOfNiftyUpdateVpnGatewayNetworkInterfaces(v []types.RequestNetworkInterfaceOfNiftyUpdateVpnGatewayNetworkInterfaces, value query.Value) error {
+	array := value.Array("Member")
+
+	for i := range v {
+		av := array.Value()
+		if err := awsEc2query_serializeDocumentRequestNetworkInterfaceOfNiftyUpdateVpnGatewayNetworkInterfaces(&v[i], av); err != nil {
 			return err
 		}
 	}
@@ -18598,6 +18622,33 @@ func awsEc2query_serializeDocumentRequestNetworkInterfaceOfCreateRemoteAccessVpn
 	return nil
 }
 
+func awsEc2query_serializeDocumentRequestNetworkInterfaceOfCreateVpnGateway(v *types.RequestNetworkInterfaceOfCreateVpnGateway, value query.Value) error {
+	object := value.Object()
+	_ = object
+
+	if v.IpAddress != nil {
+		objectKey := object.Key("IpAddress")
+		objectKey.String(*v.IpAddress)
+	}
+
+	if v.IsOutsideNetwork != nil {
+		objectKey := object.Key("IsOutsideNetwork")
+		objectKey.Boolean(*v.IsOutsideNetwork)
+	}
+
+	if v.NetworkId != nil {
+		objectKey := object.Key("NetworkId")
+		objectKey.String(*v.NetworkId)
+	}
+
+	if v.NetworkName != nil {
+		objectKey := object.Key("NetworkName")
+		objectKey.String(*v.NetworkName)
+	}
+
+	return nil
+}
+
 func awsEc2query_serializeDocumentRequestNetworkInterfaceOfNiftyCreateElasticLoadBalancer(v *types.RequestNetworkInterfaceOfNiftyCreateElasticLoadBalancer, value query.Value) error {
 	object := value.Object()
 	_ = object
@@ -18756,6 +18807,21 @@ func awsEc2query_serializeDocumentRequestNetworkInterfaceOfNiftyUpdateVpnGateway
 	if v.IpAddress != nil {
 		objectKey := object.Key("IpAddress")
 		objectKey.String(*v.IpAddress)
+	}
+
+	if v.IsOutsideNetwork != nil {
+		objectKey := object.Key("IsOutsideNetwork")
+		objectKey.Boolean(*v.IsOutsideNetwork)
+	}
+
+	if v.NetworkId != nil {
+		objectKey := object.Key("NetworkId")
+		objectKey.String(*v.NetworkId)
+	}
+
+	if v.NetworkName != nil {
+		objectKey := object.Key("NetworkName")
+		objectKey.String(*v.NetworkName)
 	}
 
 	return nil
@@ -20743,6 +20809,13 @@ func awsEc2query_serializeOpDocumentCreateVpnGatewayInput(v *CreateVpnGatewayInp
 	if len(v.AccountingType) > 0 {
 		objectKey := object.Key("AccountingType")
 		objectKey.String(string(v.AccountingType))
+	}
+
+	if v.NetworkInterface != nil {
+		objectKey := object.FlatKey("NetworkInterface")
+		if err := awsEc2query_serializeDocumentListOfRequestNetworkInterfaceOfCreateVpnGateway(v.NetworkInterface, objectKey); err != nil {
+			return err
+		}
 	}
 
 	if v.NiftyNetwork != nil {
@@ -25126,8 +25199,8 @@ func awsEc2query_serializeOpDocumentNiftyUpdateVpnGatewayNetworkInterfacesInput(
 	}
 
 	if v.NetworkInterface != nil {
-		objectKey := object.Key("NetworkInterface")
-		if err := awsEc2query_serializeDocumentRequestNetworkInterfaceOfNiftyUpdateVpnGatewayNetworkInterfaces(v.NetworkInterface, objectKey); err != nil {
+		objectKey := object.FlatKey("NetworkInterface")
+		if err := awsEc2query_serializeDocumentListOfRequestNetworkInterfaceOfNiftyUpdateVpnGatewayNetworkInterfaces(v.NetworkInterface, objectKey); err != nil {
 			return err
 		}
 	}

@@ -28,7 +28,7 @@ func (c *Client) NiftyUpdateVpnGatewayNetworkInterfaces(ctx context.Context, par
 type NiftyUpdateVpnGatewayNetworkInterfacesInput struct {
 	Agreement *bool
 
-	NetworkInterface *types.RequestNetworkInterfaceOfNiftyUpdateVpnGatewayNetworkInterfaces
+	NetworkInterface []types.RequestNetworkInterfaceOfNiftyUpdateVpnGatewayNetworkInterfaces
 
 	NiftyReboot types.NiftyRebootOfNiftyUpdateVpnGatewayNetworkInterfacesRequest
 

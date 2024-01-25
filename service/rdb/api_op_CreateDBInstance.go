@@ -74,8 +74,6 @@ type CreateDBInstanceInput struct {
 
 	NiftyMasterPrivateAddress *string
 
-	NiftyMultiAZType *int32
-
 	NiftyNetworkId *string
 
 	NiftySlavePrivateAddress *string

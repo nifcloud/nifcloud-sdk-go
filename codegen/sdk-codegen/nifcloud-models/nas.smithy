@@ -200,8 +200,6 @@ structure NASInstances {
 structure ModifyNASInstanceRequest {
     @xmlName("AllocatedStorage")
     AllocatedStorage: Integer,
-    @xmlName("AuthenticationType")
-    AuthenticationType: Integer,
     @xmlName("MasterPrivateAddress")
     MasterPrivateAddress: String,
     @xmlName("MasterUserPassword")

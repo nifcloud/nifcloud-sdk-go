@@ -3219,11 +3219,6 @@ func awsAwsquery_serializeOpDocumentCreateDBInstanceInput(v *CreateDBInstanceInp
 		objectKey.String(*v.NiftyMasterPrivateAddress)
 	}
 
-	if v.NiftyMultiAZType != nil {
-		objectKey := object.Key("NiftyMultiAZType")
-		objectKey.Integer(*v.NiftyMultiAZType)
-	}
-
 	if v.NiftyNetworkId != nil {
 		objectKey := object.Key("NiftyNetworkId")
 		objectKey.String(*v.NiftyNetworkId)
@@ -4153,11 +4148,6 @@ func awsAwsquery_serializeOpDocumentModifyDBInstanceInput(v *ModifyDBInstanceInp
 		objectKey.String(*v.NewDBInstanceIdentifier)
 	}
 
-	if v.NiftyMultiAZType != nil {
-		objectKey := object.Key("NiftyMultiAZType")
-		objectKey.Integer(*v.NiftyMultiAZType)
-	}
-
 	if v.NiftySlavePrivateAddress != nil {
 		objectKey := object.Key("NiftySlavePrivateAddress")
 		objectKey.String(*v.NiftySlavePrivateAddress)
@@ -4472,11 +4462,6 @@ func awsAwsquery_serializeOpDocumentRestoreDBInstanceFromDBSnapshotInput(v *Rest
 		objectKey.String(*v.NiftyMasterPrivateAddress)
 	}
 
-	if v.NiftyMultiAZType != nil {
-		objectKey := object.Key("NiftyMultiAZType")
-		objectKey.Integer(*v.NiftyMultiAZType)
-	}
-
 	if v.NiftyNetworkId != nil {
 		objectKey := object.Key("NiftyNetworkId")
 		objectKey.String(*v.NiftyNetworkId)
@@ -4584,11 +4569,6 @@ func awsAwsquery_serializeOpDocumentRestoreDBInstanceToPointInTimeInput(v *Resto
 	if v.NiftyMasterPrivateAddress != nil {
 		objectKey := object.Key("NiftyMasterPrivateAddress")
 		objectKey.String(*v.NiftyMasterPrivateAddress)
-	}
-
-	if v.NiftyMultiAZType != nil {
-		objectKey := object.Key("NiftyMultiAZType")
-		objectKey.Integer(*v.NiftyMultiAZType)
 	}
 
 	if v.NiftyNetworkId != nil {

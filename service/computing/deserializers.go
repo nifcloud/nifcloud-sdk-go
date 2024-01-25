@@ -31083,6 +31083,22 @@ func awsEc2query_deserializeDocumentImagesSet(v **types.ImagesSet, decoder smith
 				sv.ImageType = ptr.String(xtv)
 			}
 
+		case strings.EqualFold("isGpuConfigurable", t.Name.Local):
+			val, err := decoder.Value()
+			if err != nil {
+				return err
+			}
+			if val == nil {
+				break
+			}
+			{
+				xtv, err := strconv.ParseBool(string(val))
+				if err != nil {
+					return fmt.Errorf("expected Boolean to be of type *bool, got %T instead", val)
+				}
+				sv.IsGpuConfigurable = ptr.Bool(xtv)
+			}
+
 		case strings.EqualFold("isPublic", t.Name.Local):
 			val, err := decoder.Value()
 			if err != nil {
@@ -33720,6 +33736,22 @@ func awsEc2query_deserializeDocumentInstancesSet(v **types.InstancesSet, decoder
 			{
 				xtv := string(val)
 				sv.IpType = ptr.String(xtv)
+			}
+
+		case strings.EqualFold("isGpuConfigurable", t.Name.Local):
+			val, err := decoder.Value()
+			if err != nil {
+				return err
+			}
+			if val == nil {
+				break
+			}
+			{
+				xtv, err := strconv.ParseBool(string(val))
+				if err != nil {
+					return fmt.Errorf("expected Boolean to be of type *bool, got %T instead", val)
+				}
+				sv.IsGpuConfigurable = ptr.Bool(xtv)
 			}
 
 		case strings.EqualFold("isoImageSet", t.Name.Local):
@@ -55902,6 +55934,22 @@ func awsEc2query_deserializeDocumentNetworkInterfaceSetOfCreateVpnGateway(v **ty
 				sv.IpAddress = ptr.String(xtv)
 			}
 
+		case strings.EqualFold("isOutsideNetwork", t.Name.Local):
+			val, err := decoder.Value()
+			if err != nil {
+				return err
+			}
+			if val == nil {
+				break
+			}
+			{
+				xtv, err := strconv.ParseBool(string(val))
+				if err != nil {
+					return fmt.Errorf("expected Boolean to be of type *bool, got %T instead", val)
+				}
+				sv.IsOutsideNetwork = ptr.Bool(xtv)
+			}
+
 		case strings.EqualFold("networkId", t.Name.Local):
 			val, err := decoder.Value()
 			if err != nil {
@@ -56863,6 +56911,22 @@ func awsEc2query_deserializeDocumentNetworkInterfaceSetOfDescribeVpnGateways(v *
 			{
 				xtv := string(val)
 				sv.IpAddress = ptr.String(xtv)
+			}
+
+		case strings.EqualFold("isOutsideNetwork", t.Name.Local):
+			val, err := decoder.Value()
+			if err != nil {
+				return err
+			}
+			if val == nil {
+				break
+			}
+			{
+				xtv, err := strconv.ParseBool(string(val))
+				if err != nil {
+					return fmt.Errorf("expected Boolean to be of type *bool, got %T instead", val)
+				}
+				sv.IsOutsideNetwork = ptr.Bool(xtv)
 			}
 
 		case strings.EqualFold("networkId", t.Name.Local):

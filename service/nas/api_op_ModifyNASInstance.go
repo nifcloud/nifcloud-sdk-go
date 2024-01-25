@@ -33,8 +33,6 @@ type ModifyNASInstanceInput struct {
 
 	AllocatedStorage *int32
 
-	AuthenticationType *int32
-
 	MasterPrivateAddress *string
 
 	MasterUserPassword *string

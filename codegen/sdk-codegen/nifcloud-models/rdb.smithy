@@ -343,8 +343,6 @@ structure CreateDBInstanceRequest {
     MultiAZ: Boolean,
     @xmlName("NiftyMasterPrivateAddress")
     NiftyMasterPrivateAddress: String,
-    @xmlName("NiftyMultiAZType")
-    NiftyMultiAZType: Integer,
     @xmlName("NiftyNetworkId")
     NiftyNetworkId: String,
     @xmlName("NiftySlavePrivateAddress")
@@ -1337,8 +1335,6 @@ structure ModifyDBInstanceRequest {
     MultiAZ: Boolean,
     @xmlName("NewDBInstanceIdentifier")
     NewDBInstanceIdentifier: String,
-    @xmlName("NiftyMultiAZType")
-    NiftyMultiAZType: Integer,
     @xmlName("NiftySlavePrivateAddress")
     NiftySlavePrivateAddress: String,
     @xmlName("OptionGroupName")
@@ -2305,8 +2301,6 @@ structure RestoreDBInstanceFromDBSnapshotRequest {
     NiftyDBSecurityGroups: ListOfRequestNiftyDBSecurityGroups,
     @xmlName("NiftyMasterPrivateAddress")
     NiftyMasterPrivateAddress: String,
-    @xmlName("NiftyMultiAZType")
-    NiftyMultiAZType: Integer,
     @xmlName("NiftyNetworkId")
     NiftyNetworkId: String,
     @xmlName("NiftySlavePrivateAddress")
@@ -2621,8 +2615,6 @@ structure RestoreDBInstanceToPointInTimeRequest {
     NiftyDBSecurityGroups: ListOfRequestNiftyDBSecurityGroups,
     @xmlName("NiftyMasterPrivateAddress")
     NiftyMasterPrivateAddress: String,
-    @xmlName("NiftyMultiAZType")
-    NiftyMultiAZType: Integer,
     @xmlName("NiftyNetworkId")
     NiftyNetworkId: String,
     @xmlName("NiftySlavePrivateAddress")

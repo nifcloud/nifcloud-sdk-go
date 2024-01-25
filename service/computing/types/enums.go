@@ -1013,98 +1013,163 @@ type InstanceTypeOfCopyFromBackupInstanceRequest string
 
 // Enum values for InstanceTypeOfCopyFromBackupInstanceRequest
 const (
+	InstanceTypeOfCopyFromBackupInstanceRequestE2Mini InstanceTypeOfCopyFromBackupInstanceRequest = "e2-mini"
 	InstanceTypeOfCopyFromBackupInstanceRequestEMini InstanceTypeOfCopyFromBackupInstanceRequest = "e-mini"
 	InstanceTypeOfCopyFromBackupInstanceRequestH2Mini InstanceTypeOfCopyFromBackupInstanceRequest = "h2-mini"
 	InstanceTypeOfCopyFromBackupInstanceRequestMini InstanceTypeOfCopyFromBackupInstanceRequest = "mini"
+	InstanceTypeOfCopyFromBackupInstanceRequestC2Small InstanceTypeOfCopyFromBackupInstanceRequest = "c2-small"
+	InstanceTypeOfCopyFromBackupInstanceRequestC2rSmall InstanceTypeOfCopyFromBackupInstanceRequest = "c2r-small"
 	InstanceTypeOfCopyFromBackupInstanceRequestCSmall InstanceTypeOfCopyFromBackupInstanceRequest = "c-small"
+	InstanceTypeOfCopyFromBackupInstanceRequestE2Small InstanceTypeOfCopyFromBackupInstanceRequest = "e2-small"
+	InstanceTypeOfCopyFromBackupInstanceRequestE2rSmall InstanceTypeOfCopyFromBackupInstanceRequest = "e2r-small"
 	InstanceTypeOfCopyFromBackupInstanceRequestESmall InstanceTypeOfCopyFromBackupInstanceRequest = "e-small"
 	InstanceTypeOfCopyFromBackupInstanceRequestH2Small InstanceTypeOfCopyFromBackupInstanceRequest = "h2-small"
+	InstanceTypeOfCopyFromBackupInstanceRequestH2rSmall InstanceTypeOfCopyFromBackupInstanceRequest = "h2r-small"
 	InstanceTypeOfCopyFromBackupInstanceRequestSmall InstanceTypeOfCopyFromBackupInstanceRequest = "small"
+	InstanceTypeOfCopyFromBackupInstanceRequestC2Small2 InstanceTypeOfCopyFromBackupInstanceRequest = "c2-small2"
+	InstanceTypeOfCopyFromBackupInstanceRequestC2rSmall2 InstanceTypeOfCopyFromBackupInstanceRequest = "c2r-small2"
 	InstanceTypeOfCopyFromBackupInstanceRequestCSmall2 InstanceTypeOfCopyFromBackupInstanceRequest = "c-small2"
+	InstanceTypeOfCopyFromBackupInstanceRequestE2Small2 InstanceTypeOfCopyFromBackupInstanceRequest = "e2-small2"
+	InstanceTypeOfCopyFromBackupInstanceRequestE2rSmall2 InstanceTypeOfCopyFromBackupInstanceRequest = "e2r-small2"
 	InstanceTypeOfCopyFromBackupInstanceRequestESmall2 InstanceTypeOfCopyFromBackupInstanceRequest = "e-small2"
 	InstanceTypeOfCopyFromBackupInstanceRequestH2Small2 InstanceTypeOfCopyFromBackupInstanceRequest = "h2-small2"
+	InstanceTypeOfCopyFromBackupInstanceRequestH2rSmall2 InstanceTypeOfCopyFromBackupInstanceRequest = "h2r-small2"
 	InstanceTypeOfCopyFromBackupInstanceRequestSmall2 InstanceTypeOfCopyFromBackupInstanceRequest = "small2"
+	InstanceTypeOfCopyFromBackupInstanceRequestC2Small4 InstanceTypeOfCopyFromBackupInstanceRequest = "c2-small4"
 	InstanceTypeOfCopyFromBackupInstanceRequestCSmall4 InstanceTypeOfCopyFromBackupInstanceRequest = "c-small4"
+	InstanceTypeOfCopyFromBackupInstanceRequestE2Small4 InstanceTypeOfCopyFromBackupInstanceRequest = "e2-small4"
 	InstanceTypeOfCopyFromBackupInstanceRequestESmall4 InstanceTypeOfCopyFromBackupInstanceRequest = "e-small4"
 	InstanceTypeOfCopyFromBackupInstanceRequestH2Small4 InstanceTypeOfCopyFromBackupInstanceRequest = "h2-small4"
+	InstanceTypeOfCopyFromBackupInstanceRequestH2rSmall4 InstanceTypeOfCopyFromBackupInstanceRequest = "h2r-small4"
 	InstanceTypeOfCopyFromBackupInstanceRequestSmall4 InstanceTypeOfCopyFromBackupInstanceRequest = "small4"
+	InstanceTypeOfCopyFromBackupInstanceRequestE2Small8 InstanceTypeOfCopyFromBackupInstanceRequest = "e2-small8"
 	InstanceTypeOfCopyFromBackupInstanceRequestESmall8 InstanceTypeOfCopyFromBackupInstanceRequest = "e-small8"
 	InstanceTypeOfCopyFromBackupInstanceRequestH2Small8 InstanceTypeOfCopyFromBackupInstanceRequest = "h2-small8"
 	InstanceTypeOfCopyFromBackupInstanceRequestSmall8 InstanceTypeOfCopyFromBackupInstanceRequest = "small8"
+	InstanceTypeOfCopyFromBackupInstanceRequestE2Small16 InstanceTypeOfCopyFromBackupInstanceRequest = "e2-small16"
 	InstanceTypeOfCopyFromBackupInstanceRequestESmall16 InstanceTypeOfCopyFromBackupInstanceRequest = "e-small16"
 	InstanceTypeOfCopyFromBackupInstanceRequestH2Small16 InstanceTypeOfCopyFromBackupInstanceRequest = "h2-small16"
 	InstanceTypeOfCopyFromBackupInstanceRequestSmall16 InstanceTypeOfCopyFromBackupInstanceRequest = "small16"
+	InstanceTypeOfCopyFromBackupInstanceRequestC2Medium InstanceTypeOfCopyFromBackupInstanceRequest = "c2-medium"
+	InstanceTypeOfCopyFromBackupInstanceRequestC2rMedium InstanceTypeOfCopyFromBackupInstanceRequest = "c2r-medium"
 	InstanceTypeOfCopyFromBackupInstanceRequestCMedium InstanceTypeOfCopyFromBackupInstanceRequest = "c-medium"
+	InstanceTypeOfCopyFromBackupInstanceRequestE2Medium InstanceTypeOfCopyFromBackupInstanceRequest = "e2-medium"
+	InstanceTypeOfCopyFromBackupInstanceRequestE2rMedium InstanceTypeOfCopyFromBackupInstanceRequest = "e2r-medium"
 	InstanceTypeOfCopyFromBackupInstanceRequestEMedium InstanceTypeOfCopyFromBackupInstanceRequest = "e-medium"
 	InstanceTypeOfCopyFromBackupInstanceRequestH2Medium InstanceTypeOfCopyFromBackupInstanceRequest = "h2-medium"
+	InstanceTypeOfCopyFromBackupInstanceRequestH2rMedium InstanceTypeOfCopyFromBackupInstanceRequest = "h2r-medium"
 	InstanceTypeOfCopyFromBackupInstanceRequestMedium InstanceTypeOfCopyFromBackupInstanceRequest = "medium"
+	InstanceTypeOfCopyFromBackupInstanceRequestC2Medium4 InstanceTypeOfCopyFromBackupInstanceRequest = "c2-medium4"
+	InstanceTypeOfCopyFromBackupInstanceRequestC2rMedium4 InstanceTypeOfCopyFromBackupInstanceRequest = "c2r-medium4"
 	InstanceTypeOfCopyFromBackupInstanceRequestCMedium4 InstanceTypeOfCopyFromBackupInstanceRequest = "c-medium4"
+	InstanceTypeOfCopyFromBackupInstanceRequestE2Medium4 InstanceTypeOfCopyFromBackupInstanceRequest = "e2-medium4"
+	InstanceTypeOfCopyFromBackupInstanceRequestE2rMedium4 InstanceTypeOfCopyFromBackupInstanceRequest = "e2r-medium4"
 	InstanceTypeOfCopyFromBackupInstanceRequestEMedium4 InstanceTypeOfCopyFromBackupInstanceRequest = "e-medium4"
 	InstanceTypeOfCopyFromBackupInstanceRequestH2Medium4 InstanceTypeOfCopyFromBackupInstanceRequest = "h2-medium4"
+	InstanceTypeOfCopyFromBackupInstanceRequestH2rMedium4 InstanceTypeOfCopyFromBackupInstanceRequest = "h2r-medium4"
 	InstanceTypeOfCopyFromBackupInstanceRequestMedium4 InstanceTypeOfCopyFromBackupInstanceRequest = "medium4"
+	InstanceTypeOfCopyFromBackupInstanceRequestC2Medium8 InstanceTypeOfCopyFromBackupInstanceRequest = "c2-medium8"
 	InstanceTypeOfCopyFromBackupInstanceRequestCMedium8 InstanceTypeOfCopyFromBackupInstanceRequest = "c-medium8"
+	InstanceTypeOfCopyFromBackupInstanceRequestE2Medium8 InstanceTypeOfCopyFromBackupInstanceRequest = "e2-medium8"
 	InstanceTypeOfCopyFromBackupInstanceRequestEMedium8 InstanceTypeOfCopyFromBackupInstanceRequest = "e-medium8"
 	InstanceTypeOfCopyFromBackupInstanceRequestH2Medium8 InstanceTypeOfCopyFromBackupInstanceRequest = "h2-medium8"
+	InstanceTypeOfCopyFromBackupInstanceRequestH2rMedium8 InstanceTypeOfCopyFromBackupInstanceRequest = "h2r-medium8"
 	InstanceTypeOfCopyFromBackupInstanceRequestMedium8 InstanceTypeOfCopyFromBackupInstanceRequest = "medium8"
+	InstanceTypeOfCopyFromBackupInstanceRequestE2Medium16 InstanceTypeOfCopyFromBackupInstanceRequest = "e2-medium16"
 	InstanceTypeOfCopyFromBackupInstanceRequestEMedium16 InstanceTypeOfCopyFromBackupInstanceRequest = "e-medium16"
 	InstanceTypeOfCopyFromBackupInstanceRequestH2Medium16 InstanceTypeOfCopyFromBackupInstanceRequest = "h2-medium16"
 	InstanceTypeOfCopyFromBackupInstanceRequestMedium16 InstanceTypeOfCopyFromBackupInstanceRequest = "medium16"
+	InstanceTypeOfCopyFromBackupInstanceRequestE2Medium24 InstanceTypeOfCopyFromBackupInstanceRequest = "e2-medium24"
 	InstanceTypeOfCopyFromBackupInstanceRequestEMedium24 InstanceTypeOfCopyFromBackupInstanceRequest = "e-medium24"
 	InstanceTypeOfCopyFromBackupInstanceRequestH2Medium24 InstanceTypeOfCopyFromBackupInstanceRequest = "h2-medium24"
 	InstanceTypeOfCopyFromBackupInstanceRequestMedium24 InstanceTypeOfCopyFromBackupInstanceRequest = "medium24"
+	InstanceTypeOfCopyFromBackupInstanceRequestC2Large InstanceTypeOfCopyFromBackupInstanceRequest = "c2-large"
+	InstanceTypeOfCopyFromBackupInstanceRequestC2rLarge InstanceTypeOfCopyFromBackupInstanceRequest = "c2r-large"
 	InstanceTypeOfCopyFromBackupInstanceRequestCLarge InstanceTypeOfCopyFromBackupInstanceRequest = "c-large"
+	InstanceTypeOfCopyFromBackupInstanceRequestE2Large InstanceTypeOfCopyFromBackupInstanceRequest = "e2-large"
+	InstanceTypeOfCopyFromBackupInstanceRequestE2rLarge InstanceTypeOfCopyFromBackupInstanceRequest = "e2r-large"
 	InstanceTypeOfCopyFromBackupInstanceRequestELarge InstanceTypeOfCopyFromBackupInstanceRequest = "e-large"
 	InstanceTypeOfCopyFromBackupInstanceRequestH2Large InstanceTypeOfCopyFromBackupInstanceRequest = "h2-large"
+	InstanceTypeOfCopyFromBackupInstanceRequestH2rLarge InstanceTypeOfCopyFromBackupInstanceRequest = "h2r-large"
 	InstanceTypeOfCopyFromBackupInstanceRequestLarge InstanceTypeOfCopyFromBackupInstanceRequest = "large"
+	InstanceTypeOfCopyFromBackupInstanceRequestC2Large8 InstanceTypeOfCopyFromBackupInstanceRequest = "c2-large8"
 	InstanceTypeOfCopyFromBackupInstanceRequestCLarge8 InstanceTypeOfCopyFromBackupInstanceRequest = "c-large8"
+	InstanceTypeOfCopyFromBackupInstanceRequestE2Large8 InstanceTypeOfCopyFromBackupInstanceRequest = "e2-large8"
+	InstanceTypeOfCopyFromBackupInstanceRequestE2rLarge8 InstanceTypeOfCopyFromBackupInstanceRequest = "e2r-large8"
 	InstanceTypeOfCopyFromBackupInstanceRequestELarge8 InstanceTypeOfCopyFromBackupInstanceRequest = "e-large8"
 	InstanceTypeOfCopyFromBackupInstanceRequestH2Large8 InstanceTypeOfCopyFromBackupInstanceRequest = "h2-large8"
+	InstanceTypeOfCopyFromBackupInstanceRequestH2rLarge8 InstanceTypeOfCopyFromBackupInstanceRequest = "h2r-large8"
 	InstanceTypeOfCopyFromBackupInstanceRequestLarge8 InstanceTypeOfCopyFromBackupInstanceRequest = "large8"
+	InstanceTypeOfCopyFromBackupInstanceRequestE2Large16 InstanceTypeOfCopyFromBackupInstanceRequest = "e2-large16"
 	InstanceTypeOfCopyFromBackupInstanceRequestELarge16 InstanceTypeOfCopyFromBackupInstanceRequest = "e-large16"
 	InstanceTypeOfCopyFromBackupInstanceRequestH2Large16 InstanceTypeOfCopyFromBackupInstanceRequest = "h2-large16"
+	InstanceTypeOfCopyFromBackupInstanceRequestH2rLarge16 InstanceTypeOfCopyFromBackupInstanceRequest = "h2r-large16"
 	InstanceTypeOfCopyFromBackupInstanceRequestLarge16 InstanceTypeOfCopyFromBackupInstanceRequest = "large16"
+	InstanceTypeOfCopyFromBackupInstanceRequestE2Large24 InstanceTypeOfCopyFromBackupInstanceRequest = "e2-large24"
 	InstanceTypeOfCopyFromBackupInstanceRequestELarge24 InstanceTypeOfCopyFromBackupInstanceRequest = "e-large24"
 	InstanceTypeOfCopyFromBackupInstanceRequestH2Large24 InstanceTypeOfCopyFromBackupInstanceRequest = "h2-large24"
 	InstanceTypeOfCopyFromBackupInstanceRequestLarge24 InstanceTypeOfCopyFromBackupInstanceRequest = "large24"
+	InstanceTypeOfCopyFromBackupInstanceRequestE2Large32 InstanceTypeOfCopyFromBackupInstanceRequest = "e2-large32"
 	InstanceTypeOfCopyFromBackupInstanceRequestELarge32 InstanceTypeOfCopyFromBackupInstanceRequest = "e-large32"
 	InstanceTypeOfCopyFromBackupInstanceRequestH2Large32 InstanceTypeOfCopyFromBackupInstanceRequest = "h2-large32"
 	InstanceTypeOfCopyFromBackupInstanceRequestLarge32 InstanceTypeOfCopyFromBackupInstanceRequest = "large32"
+	InstanceTypeOfCopyFromBackupInstanceRequestE2ExtraLarge8 InstanceTypeOfCopyFromBackupInstanceRequest = "e2-extra-large8"
+	InstanceTypeOfCopyFromBackupInstanceRequestE2rExtraLarge8 InstanceTypeOfCopyFromBackupInstanceRequest = "e2r-extra-large8"
 	InstanceTypeOfCopyFromBackupInstanceRequestEExtraLarge8 InstanceTypeOfCopyFromBackupInstanceRequest = "e-extra-large8"
 	InstanceTypeOfCopyFromBackupInstanceRequestH2ExtraLarge8 InstanceTypeOfCopyFromBackupInstanceRequest = "h2-extra-large8"
+	InstanceTypeOfCopyFromBackupInstanceRequestH2rExtraLarge8 InstanceTypeOfCopyFromBackupInstanceRequest = "h2r-extra-large8"
 	InstanceTypeOfCopyFromBackupInstanceRequestExtraLarge8 InstanceTypeOfCopyFromBackupInstanceRequest = "extra-large8"
+	InstanceTypeOfCopyFromBackupInstanceRequestE2ExtraLarge16 InstanceTypeOfCopyFromBackupInstanceRequest = "e2-extra-large16"
 	InstanceTypeOfCopyFromBackupInstanceRequestEExtraLarge16 InstanceTypeOfCopyFromBackupInstanceRequest = "e-extra-large16"
 	InstanceTypeOfCopyFromBackupInstanceRequestH2ExtraLarge16 InstanceTypeOfCopyFromBackupInstanceRequest = "h2-extra-large16"
+	InstanceTypeOfCopyFromBackupInstanceRequestH2rExtraLarge16 InstanceTypeOfCopyFromBackupInstanceRequest = "h2r-extra-large16"
 	InstanceTypeOfCopyFromBackupInstanceRequestExtraLarge16 InstanceTypeOfCopyFromBackupInstanceRequest = "extra-large16"
+	InstanceTypeOfCopyFromBackupInstanceRequestE2ExtraLarge24 InstanceTypeOfCopyFromBackupInstanceRequest = "e2-extra-large24"
 	InstanceTypeOfCopyFromBackupInstanceRequestEExtraLarge24 InstanceTypeOfCopyFromBackupInstanceRequest = "e-extra-large24"
 	InstanceTypeOfCopyFromBackupInstanceRequestH2ExtraLarge24 InstanceTypeOfCopyFromBackupInstanceRequest = "h2-extra-large24"
+	InstanceTypeOfCopyFromBackupInstanceRequestH2rExtraLarge24 InstanceTypeOfCopyFromBackupInstanceRequest = "h2r-extra-large24"
 	InstanceTypeOfCopyFromBackupInstanceRequestExtraLarge24 InstanceTypeOfCopyFromBackupInstanceRequest = "extra-large24"
+	InstanceTypeOfCopyFromBackupInstanceRequestE2ExtraLarge32 InstanceTypeOfCopyFromBackupInstanceRequest = "e2-extra-large32"
 	InstanceTypeOfCopyFromBackupInstanceRequestEExtraLarge32 InstanceTypeOfCopyFromBackupInstanceRequest = "e-extra-large32"
 	InstanceTypeOfCopyFromBackupInstanceRequestH2ExtraLarge32 InstanceTypeOfCopyFromBackupInstanceRequest = "h2-extra-large32"
 	InstanceTypeOfCopyFromBackupInstanceRequestExtraLarge32 InstanceTypeOfCopyFromBackupInstanceRequest = "extra-large32"
+	InstanceTypeOfCopyFromBackupInstanceRequestE2ExtraLarge48 InstanceTypeOfCopyFromBackupInstanceRequest = "e2-extra-large48"
 	InstanceTypeOfCopyFromBackupInstanceRequestEExtraLarge48 InstanceTypeOfCopyFromBackupInstanceRequest = "e-extra-large48"
 	InstanceTypeOfCopyFromBackupInstanceRequestH2ExtraLarge48 InstanceTypeOfCopyFromBackupInstanceRequest = "h2-extra-large48"
 	InstanceTypeOfCopyFromBackupInstanceRequestExtraLarge48 InstanceTypeOfCopyFromBackupInstanceRequest = "extra-large48"
+	InstanceTypeOfCopyFromBackupInstanceRequestE2DoubleLarge16 InstanceTypeOfCopyFromBackupInstanceRequest = "e2-double-large16"
+	InstanceTypeOfCopyFromBackupInstanceRequestE2rDoubleLarge16 InstanceTypeOfCopyFromBackupInstanceRequest = "e2r-double-large16"
 	InstanceTypeOfCopyFromBackupInstanceRequestEDoubleLarge16 InstanceTypeOfCopyFromBackupInstanceRequest = "e-double-large16"
 	InstanceTypeOfCopyFromBackupInstanceRequestH2DoubleLarge16 InstanceTypeOfCopyFromBackupInstanceRequest = "h2-double-large16"
+	InstanceTypeOfCopyFromBackupInstanceRequestH2rDoubleLarge16 InstanceTypeOfCopyFromBackupInstanceRequest = "h2r-double-large16"
 	InstanceTypeOfCopyFromBackupInstanceRequestDoubleLarge16 InstanceTypeOfCopyFromBackupInstanceRequest = "double-large16"
+	InstanceTypeOfCopyFromBackupInstanceRequestE2DoubleLarge24 InstanceTypeOfCopyFromBackupInstanceRequest = "e2-double-large24"
 	InstanceTypeOfCopyFromBackupInstanceRequestEDoubleLarge24 InstanceTypeOfCopyFromBackupInstanceRequest = "e-double-large24"
 	InstanceTypeOfCopyFromBackupInstanceRequestH2DoubleLarge24 InstanceTypeOfCopyFromBackupInstanceRequest = "h2-double-large24"
+	InstanceTypeOfCopyFromBackupInstanceRequestH2rDoubleLarge24 InstanceTypeOfCopyFromBackupInstanceRequest = "h2r-double-large24"
 	InstanceTypeOfCopyFromBackupInstanceRequestDoubleLarge24 InstanceTypeOfCopyFromBackupInstanceRequest = "double-large24"
+	InstanceTypeOfCopyFromBackupInstanceRequestE2DoubleLarge32 InstanceTypeOfCopyFromBackupInstanceRequest = "e2-double-large32"
 	InstanceTypeOfCopyFromBackupInstanceRequestEDoubleLarge32 InstanceTypeOfCopyFromBackupInstanceRequest = "e-double-large32"
 	InstanceTypeOfCopyFromBackupInstanceRequestH2DoubleLarge32 InstanceTypeOfCopyFromBackupInstanceRequest = "h2-double-large32"
+	InstanceTypeOfCopyFromBackupInstanceRequestH2rDoubleLarge32 InstanceTypeOfCopyFromBackupInstanceRequest = "h2r-double-large32"
 	InstanceTypeOfCopyFromBackupInstanceRequestDoubleLarge32 InstanceTypeOfCopyFromBackupInstanceRequest = "double-large32"
+	InstanceTypeOfCopyFromBackupInstanceRequestE2DoubleLarge48 InstanceTypeOfCopyFromBackupInstanceRequest = "e2-double-large48"
 	InstanceTypeOfCopyFromBackupInstanceRequestEDoubleLarge48 InstanceTypeOfCopyFromBackupInstanceRequest = "e-double-large48"
 	InstanceTypeOfCopyFromBackupInstanceRequestH2DoubleLarge48 InstanceTypeOfCopyFromBackupInstanceRequest = "h2-double-large48"
 	InstanceTypeOfCopyFromBackupInstanceRequestDoubleLarge48 InstanceTypeOfCopyFromBackupInstanceRequest = "double-large48"
+	InstanceTypeOfCopyFromBackupInstanceRequestE2DoubleLarge64 InstanceTypeOfCopyFromBackupInstanceRequest = "e2-double-large64"
 	InstanceTypeOfCopyFromBackupInstanceRequestEDoubleLarge64 InstanceTypeOfCopyFromBackupInstanceRequest = "e-double-large64"
 	InstanceTypeOfCopyFromBackupInstanceRequestH2DoubleLarge64 InstanceTypeOfCopyFromBackupInstanceRequest = "h2-double-large64"
 	InstanceTypeOfCopyFromBackupInstanceRequestDoubleLarge64 InstanceTypeOfCopyFromBackupInstanceRequest = "double-large64"
+	InstanceTypeOfCopyFromBackupInstanceRequestE2DoubleLarge96 InstanceTypeOfCopyFromBackupInstanceRequest = "e2-double-large96"
 	InstanceTypeOfCopyFromBackupInstanceRequestEDoubleLarge96 InstanceTypeOfCopyFromBackupInstanceRequest = "e-double-large96"
 	InstanceTypeOfCopyFromBackupInstanceRequestH2DoubleLarge96 InstanceTypeOfCopyFromBackupInstanceRequest = "h2-double-large96"
 	InstanceTypeOfCopyFromBackupInstanceRequestDoubleLarge96 InstanceTypeOfCopyFromBackupInstanceRequest = "double-large96"
 	InstanceTypeOfCopyFromBackupInstanceRequestH2TripleLarge32 InstanceTypeOfCopyFromBackupInstanceRequest = "h2-triple-large32"
+	InstanceTypeOfCopyFromBackupInstanceRequestH2rTripleLarge32 InstanceTypeOfCopyFromBackupInstanceRequest = "h2r-triple-large32"
 	InstanceTypeOfCopyFromBackupInstanceRequestTripleLarge32 InstanceTypeOfCopyFromBackupInstanceRequest = "triple-large32"
 	InstanceTypeOfCopyFromBackupInstanceRequestH2TripleLarge48 InstanceTypeOfCopyFromBackupInstanceRequest = "h2-triple-large48"
+	InstanceTypeOfCopyFromBackupInstanceRequestH2rTripleLarge48 InstanceTypeOfCopyFromBackupInstanceRequest = "h2r-triple-large48"
 	InstanceTypeOfCopyFromBackupInstanceRequestTripleLarge48 InstanceTypeOfCopyFromBackupInstanceRequest = "triple-large48"
 	InstanceTypeOfCopyFromBackupInstanceRequestH2TripleLarge64 InstanceTypeOfCopyFromBackupInstanceRequest = "h2-triple-large64"
 	InstanceTypeOfCopyFromBackupInstanceRequestTripleLarge64 InstanceTypeOfCopyFromBackupInstanceRequest = "triple-large64"
@@ -1113,13 +1178,24 @@ const (
 	InstanceTypeOfCopyFromBackupInstanceRequestH2TripleLarge128 InstanceTypeOfCopyFromBackupInstanceRequest = "h2-triple-large128"
 	InstanceTypeOfCopyFromBackupInstanceRequestTripleLarge128 InstanceTypeOfCopyFromBackupInstanceRequest = "triple-large128"
 	InstanceTypeOfCopyFromBackupInstanceRequestH2QuadLarge64 InstanceTypeOfCopyFromBackupInstanceRequest = "h2-quad-large64"
+	InstanceTypeOfCopyFromBackupInstanceRequestH2rQuadLarge64 InstanceTypeOfCopyFromBackupInstanceRequest = "h2r-quad-large64"
 	InstanceTypeOfCopyFromBackupInstanceRequestQuadLarge64 InstanceTypeOfCopyFromBackupInstanceRequest = "quad-large64"
 	InstanceTypeOfCopyFromBackupInstanceRequestH2QuadLarge96 InstanceTypeOfCopyFromBackupInstanceRequest = "h2-quad-large96"
 	InstanceTypeOfCopyFromBackupInstanceRequestQuadLarge96 InstanceTypeOfCopyFromBackupInstanceRequest = "quad-large96"
 	InstanceTypeOfCopyFromBackupInstanceRequestH2QuadLarge128 InstanceTypeOfCopyFromBackupInstanceRequest = "h2-quad-large128"
 	InstanceTypeOfCopyFromBackupInstanceRequestQuadLarge128 InstanceTypeOfCopyFromBackupInstanceRequest = "quad-large128"
+	InstanceTypeOfCopyFromBackupInstanceRequestH2QuadLarge256 InstanceTypeOfCopyFromBackupInstanceRequest = "h2-quad-large256"
+	InstanceTypeOfCopyFromBackupInstanceRequestQuadLarge256 InstanceTypeOfCopyFromBackupInstanceRequest = "quad-large256"
 	InstanceTypeOfCopyFromBackupInstanceRequestH2SeptaLarge128 InstanceTypeOfCopyFromBackupInstanceRequest = "h2-septa-large128"
 	InstanceTypeOfCopyFromBackupInstanceRequestSeptaLarge128 InstanceTypeOfCopyFromBackupInstanceRequest = "septa-large128"
+	InstanceTypeOfCopyFromBackupInstanceRequestH2SeptaLarge256 InstanceTypeOfCopyFromBackupInstanceRequest = "h2-septa-large256"
+	InstanceTypeOfCopyFromBackupInstanceRequestSeptaLarge256 InstanceTypeOfCopyFromBackupInstanceRequest = "septa-large256"
+	InstanceTypeOfCopyFromBackupInstanceRequestH2OctaLarge256 InstanceTypeOfCopyFromBackupInstanceRequest = "h2-octa-large256"
+	InstanceTypeOfCopyFromBackupInstanceRequestOctaLarge256 InstanceTypeOfCopyFromBackupInstanceRequest = "octa-large256"
+	InstanceTypeOfCopyFromBackupInstanceRequestH2OctaLarge384 InstanceTypeOfCopyFromBackupInstanceRequest = "h2-octa-large384"
+	InstanceTypeOfCopyFromBackupInstanceRequestOctaLarge384 InstanceTypeOfCopyFromBackupInstanceRequest = "octa-large384"
+	InstanceTypeOfCopyFromBackupInstanceRequestH2OctaLarge512 InstanceTypeOfCopyFromBackupInstanceRequest = "h2-octa-large512"
+	InstanceTypeOfCopyFromBackupInstanceRequestOctaLarge512 InstanceTypeOfCopyFromBackupInstanceRequest = "octa-large512"
 )
 
 // Values returns all known values for
@@ -1128,98 +1204,163 @@ const (
 // slice is not guaranteed to be stable across updates.
 func (InstanceTypeOfCopyFromBackupInstanceRequest) Values() []InstanceTypeOfCopyFromBackupInstanceRequest {
 	return []InstanceTypeOfCopyFromBackupInstanceRequest{
+		"e2-mini",
 		"e-mini",
 		"h2-mini",
 		"mini",
+		"c2-small",
+		"c2r-small",
 		"c-small",
+		"e2-small",
+		"e2r-small",
 		"e-small",
 		"h2-small",
+		"h2r-small",
 		"small",
+		"c2-small2",
+		"c2r-small2",
 		"c-small2",
+		"e2-small2",
+		"e2r-small2",
 		"e-small2",
 		"h2-small2",
+		"h2r-small2",
 		"small2",
+		"c2-small4",
 		"c-small4",
+		"e2-small4",
 		"e-small4",
 		"h2-small4",
+		"h2r-small4",
 		"small4",
+		"e2-small8",
 		"e-small8",
 		"h2-small8",
 		"small8",
+		"e2-small16",
 		"e-small16",
 		"h2-small16",
 		"small16",
+		"c2-medium",
+		"c2r-medium",
 		"c-medium",
+		"e2-medium",
+		"e2r-medium",
 		"e-medium",
 		"h2-medium",
+		"h2r-medium",
 		"medium",
+		"c2-medium4",
+		"c2r-medium4",
 		"c-medium4",
+		"e2-medium4",
+		"e2r-medium4",
 		"e-medium4",
 		"h2-medium4",
+		"h2r-medium4",
 		"medium4",
+		"c2-medium8",
 		"c-medium8",
+		"e2-medium8",
 		"e-medium8",
 		"h2-medium8",
+		"h2r-medium8",
 		"medium8",
+		"e2-medium16",
 		"e-medium16",
 		"h2-medium16",
 		"medium16",
+		"e2-medium24",
 		"e-medium24",
 		"h2-medium24",
 		"medium24",
+		"c2-large",
+		"c2r-large",
 		"c-large",
+		"e2-large",
+		"e2r-large",
 		"e-large",
 		"h2-large",
+		"h2r-large",
 		"large",
+		"c2-large8",
 		"c-large8",
+		"e2-large8",
+		"e2r-large8",
 		"e-large8",
 		"h2-large8",
+		"h2r-large8",
 		"large8",
+		"e2-large16",
 		"e-large16",
 		"h2-large16",
+		"h2r-large16",
 		"large16",
+		"e2-large24",
 		"e-large24",
 		"h2-large24",
 		"large24",
+		"e2-large32",
 		"e-large32",
 		"h2-large32",
 		"large32",
+		"e2-extra-large8",
+		"e2r-extra-large8",
 		"e-extra-large8",
 		"h2-extra-large8",
+		"h2r-extra-large8",
 		"extra-large8",
+		"e2-extra-large16",
 		"e-extra-large16",
 		"h2-extra-large16",
+		"h2r-extra-large16",
 		"extra-large16",
+		"e2-extra-large24",
 		"e-extra-large24",
 		"h2-extra-large24",
+		"h2r-extra-large24",
 		"extra-large24",
+		"e2-extra-large32",
 		"e-extra-large32",
 		"h2-extra-large32",
 		"extra-large32",
+		"e2-extra-large48",
 		"e-extra-large48",
 		"h2-extra-large48",
 		"extra-large48",
+		"e2-double-large16",
+		"e2r-double-large16",
 		"e-double-large16",
 		"h2-double-large16",
+		"h2r-double-large16",
 		"double-large16",
+		"e2-double-large24",
 		"e-double-large24",
 		"h2-double-large24",
+		"h2r-double-large24",
 		"double-large24",
+		"e2-double-large32",
 		"e-double-large32",
 		"h2-double-large32",
+		"h2r-double-large32",
 		"double-large32",
+		"e2-double-large48",
 		"e-double-large48",
 		"h2-double-large48",
 		"double-large48",
+		"e2-double-large64",
 		"e-double-large64",
 		"h2-double-large64",
 		"double-large64",
+		"e2-double-large96",
 		"e-double-large96",
 		"h2-double-large96",
 		"double-large96",
 		"h2-triple-large32",
+		"h2r-triple-large32",
 		"triple-large32",
 		"h2-triple-large48",
+		"h2r-triple-large48",
 		"triple-large48",
 		"h2-triple-large64",
 		"triple-large64",
@@ -1228,13 +1369,24 @@ func (InstanceTypeOfCopyFromBackupInstanceRequest) Values() []InstanceTypeOfCopy
 		"h2-triple-large128",
 		"triple-large128",
 		"h2-quad-large64",
+		"h2r-quad-large64",
 		"quad-large64",
 		"h2-quad-large96",
 		"quad-large96",
 		"h2-quad-large128",
 		"quad-large128",
+		"h2-quad-large256",
+		"quad-large256",
 		"h2-septa-large128",
 		"septa-large128",
+		"h2-septa-large256",
+		"septa-large256",
+		"h2-octa-large256",
+		"octa-large256",
+		"h2-octa-large384",
+		"octa-large384",
+		"h2-octa-large512",
+		"octa-large512",
 	}
 }
 
@@ -1242,98 +1394,163 @@ type InstanceTypeOfCopyInstanceForCopyInstances string
 
 // Enum values for InstanceTypeOfCopyInstanceForCopyInstances
 const (
+	InstanceTypeOfCopyInstanceForCopyInstancesE2Mini InstanceTypeOfCopyInstanceForCopyInstances = "e2-mini"
 	InstanceTypeOfCopyInstanceForCopyInstancesEMini InstanceTypeOfCopyInstanceForCopyInstances = "e-mini"
 	InstanceTypeOfCopyInstanceForCopyInstancesH2Mini InstanceTypeOfCopyInstanceForCopyInstances = "h2-mini"
 	InstanceTypeOfCopyInstanceForCopyInstancesMini InstanceTypeOfCopyInstanceForCopyInstances = "mini"
+	InstanceTypeOfCopyInstanceForCopyInstancesC2Small InstanceTypeOfCopyInstanceForCopyInstances = "c2-small"
+	InstanceTypeOfCopyInstanceForCopyInstancesC2rSmall InstanceTypeOfCopyInstanceForCopyInstances = "c2r-small"
 	InstanceTypeOfCopyInstanceForCopyInstancesCSmall InstanceTypeOfCopyInstanceForCopyInstances = "c-small"
+	InstanceTypeOfCopyInstanceForCopyInstancesE2Small InstanceTypeOfCopyInstanceForCopyInstances = "e2-small"
+	InstanceTypeOfCopyInstanceForCopyInstancesE2rSmall InstanceTypeOfCopyInstanceForCopyInstances = "e2r-small"
 	InstanceTypeOfCopyInstanceForCopyInstancesESmall InstanceTypeOfCopyInstanceForCopyInstances = "e-small"
 	InstanceTypeOfCopyInstanceForCopyInstancesH2Small InstanceTypeOfCopyInstanceForCopyInstances = "h2-small"
+	InstanceTypeOfCopyInstanceForCopyInstancesH2rSmall InstanceTypeOfCopyInstanceForCopyInstances = "h2r-small"
 	InstanceTypeOfCopyInstanceForCopyInstancesSmall InstanceTypeOfCopyInstanceForCopyInstances = "small"
+	InstanceTypeOfCopyInstanceForCopyInstancesC2Small2 InstanceTypeOfCopyInstanceForCopyInstances = "c2-small2"
+	InstanceTypeOfCopyInstanceForCopyInstancesC2rSmall2 InstanceTypeOfCopyInstanceForCopyInstances = "c2r-small2"
 	InstanceTypeOfCopyInstanceForCopyInstancesCSmall2 InstanceTypeOfCopyInstanceForCopyInstances = "c-small2"
+	InstanceTypeOfCopyInstanceForCopyInstancesE2Small2 InstanceTypeOfCopyInstanceForCopyInstances = "e2-small2"
+	InstanceTypeOfCopyInstanceForCopyInstancesE2rSmall2 InstanceTypeOfCopyInstanceForCopyInstances = "e2r-small2"
 	InstanceTypeOfCopyInstanceForCopyInstancesESmall2 InstanceTypeOfCopyInstanceForCopyInstances = "e-small2"
 	InstanceTypeOfCopyInstanceForCopyInstancesH2Small2 InstanceTypeOfCopyInstanceForCopyInstances = "h2-small2"
+	InstanceTypeOfCopyInstanceForCopyInstancesH2rSmall2 InstanceTypeOfCopyInstanceForCopyInstances = "h2r-small2"
 	InstanceTypeOfCopyInstanceForCopyInstancesSmall2 InstanceTypeOfCopyInstanceForCopyInstances = "small2"
+	InstanceTypeOfCopyInstanceForCopyInstancesC2Small4 InstanceTypeOfCopyInstanceForCopyInstances = "c2-small4"
 	InstanceTypeOfCopyInstanceForCopyInstancesCSmall4 InstanceTypeOfCopyInstanceForCopyInstances = "c-small4"
+	InstanceTypeOfCopyInstanceForCopyInstancesE2Small4 InstanceTypeOfCopyInstanceForCopyInstances = "e2-small4"
 	InstanceTypeOfCopyInstanceForCopyInstancesESmall4 InstanceTypeOfCopyInstanceForCopyInstances = "e-small4"
 	InstanceTypeOfCopyInstanceForCopyInstancesH2Small4 InstanceTypeOfCopyInstanceForCopyInstances = "h2-small4"
+	InstanceTypeOfCopyInstanceForCopyInstancesH2rSmall4 InstanceTypeOfCopyInstanceForCopyInstances = "h2r-small4"
 	InstanceTypeOfCopyInstanceForCopyInstancesSmall4 InstanceTypeOfCopyInstanceForCopyInstances = "small4"
+	InstanceTypeOfCopyInstanceForCopyInstancesE2Small8 InstanceTypeOfCopyInstanceForCopyInstances = "e2-small8"
 	InstanceTypeOfCopyInstanceForCopyInstancesESmall8 InstanceTypeOfCopyInstanceForCopyInstances = "e-small8"
 	InstanceTypeOfCopyInstanceForCopyInstancesH2Small8 InstanceTypeOfCopyInstanceForCopyInstances = "h2-small8"
 	InstanceTypeOfCopyInstanceForCopyInstancesSmall8 InstanceTypeOfCopyInstanceForCopyInstances = "small8"
+	InstanceTypeOfCopyInstanceForCopyInstancesE2Small16 InstanceTypeOfCopyInstanceForCopyInstances = "e2-small16"
 	InstanceTypeOfCopyInstanceForCopyInstancesESmall16 InstanceTypeOfCopyInstanceForCopyInstances = "e-small16"
 	InstanceTypeOfCopyInstanceForCopyInstancesH2Small16 InstanceTypeOfCopyInstanceForCopyInstances = "h2-small16"
 	InstanceTypeOfCopyInstanceForCopyInstancesSmall16 InstanceTypeOfCopyInstanceForCopyInstances = "small16"
+	InstanceTypeOfCopyInstanceForCopyInstancesC2Medium InstanceTypeOfCopyInstanceForCopyInstances = "c2-medium"
+	InstanceTypeOfCopyInstanceForCopyInstancesC2rMedium InstanceTypeOfCopyInstanceForCopyInstances = "c2r-medium"
 	InstanceTypeOfCopyInstanceForCopyInstancesCMedium InstanceTypeOfCopyInstanceForCopyInstances = "c-medium"
+	InstanceTypeOfCopyInstanceForCopyInstancesE2Medium InstanceTypeOfCopyInstanceForCopyInstances = "e2-medium"
+	InstanceTypeOfCopyInstanceForCopyInstancesE2rMedium InstanceTypeOfCopyInstanceForCopyInstances = "e2r-medium"
 	InstanceTypeOfCopyInstanceForCopyInstancesEMedium InstanceTypeOfCopyInstanceForCopyInstances = "e-medium"
 	InstanceTypeOfCopyInstanceForCopyInstancesH2Medium InstanceTypeOfCopyInstanceForCopyInstances = "h2-medium"
+	InstanceTypeOfCopyInstanceForCopyInstancesH2rMedium InstanceTypeOfCopyInstanceForCopyInstances = "h2r-medium"
 	InstanceTypeOfCopyInstanceForCopyInstancesMedium InstanceTypeOfCopyInstanceForCopyInstances = "medium"
+	InstanceTypeOfCopyInstanceForCopyInstancesC2Medium4 InstanceTypeOfCopyInstanceForCopyInstances = "c2-medium4"
+	InstanceTypeOfCopyInstanceForCopyInstancesC2rMedium4 InstanceTypeOfCopyInstanceForCopyInstances = "c2r-medium4"
 	InstanceTypeOfCopyInstanceForCopyInstancesCMedium4 InstanceTypeOfCopyInstanceForCopyInstances = "c-medium4"
+	InstanceTypeOfCopyInstanceForCopyInstancesE2Medium4 InstanceTypeOfCopyInstanceForCopyInstances = "e2-medium4"
+	InstanceTypeOfCopyInstanceForCopyInstancesE2rMedium4 InstanceTypeOfCopyInstanceForCopyInstances = "e2r-medium4"
 	InstanceTypeOfCopyInstanceForCopyInstancesEMedium4 InstanceTypeOfCopyInstanceForCopyInstances = "e-medium4"
 	InstanceTypeOfCopyInstanceForCopyInstancesH2Medium4 InstanceTypeOfCopyInstanceForCopyInstances = "h2-medium4"
+	InstanceTypeOfCopyInstanceForCopyInstancesH2rMedium4 InstanceTypeOfCopyInstanceForCopyInstances = "h2r-medium4"
 	InstanceTypeOfCopyInstanceForCopyInstancesMedium4 InstanceTypeOfCopyInstanceForCopyInstances = "medium4"
+	InstanceTypeOfCopyInstanceForCopyInstancesC2Medium8 InstanceTypeOfCopyInstanceForCopyInstances = "c2-medium8"
 	InstanceTypeOfCopyInstanceForCopyInstancesCMedium8 InstanceTypeOfCopyInstanceForCopyInstances = "c-medium8"
+	InstanceTypeOfCopyInstanceForCopyInstancesE2Medium8 InstanceTypeOfCopyInstanceForCopyInstances = "e2-medium8"
 	InstanceTypeOfCopyInstanceForCopyInstancesEMedium8 InstanceTypeOfCopyInstanceForCopyInstances = "e-medium8"
 	InstanceTypeOfCopyInstanceForCopyInstancesH2Medium8 InstanceTypeOfCopyInstanceForCopyInstances = "h2-medium8"
+	InstanceTypeOfCopyInstanceForCopyInstancesH2rMedium8 InstanceTypeOfCopyInstanceForCopyInstances = "h2r-medium8"
 	InstanceTypeOfCopyInstanceForCopyInstancesMedium8 InstanceTypeOfCopyInstanceForCopyInstances = "medium8"
+	InstanceTypeOfCopyInstanceForCopyInstancesE2Medium16 InstanceTypeOfCopyInstanceForCopyInstances = "e2-medium16"
 	InstanceTypeOfCopyInstanceForCopyInstancesEMedium16 InstanceTypeOfCopyInstanceForCopyInstances = "e-medium16"
 	InstanceTypeOfCopyInstanceForCopyInstancesH2Medium16 InstanceTypeOfCopyInstanceForCopyInstances = "h2-medium16"
 	InstanceTypeOfCopyInstanceForCopyInstancesMedium16 InstanceTypeOfCopyInstanceForCopyInstances = "medium16"
+	InstanceTypeOfCopyInstanceForCopyInstancesE2Medium24 InstanceTypeOfCopyInstanceForCopyInstances = "e2-medium24"
 	InstanceTypeOfCopyInstanceForCopyInstancesEMedium24 InstanceTypeOfCopyInstanceForCopyInstances = "e-medium24"
 	InstanceTypeOfCopyInstanceForCopyInstancesH2Medium24 InstanceTypeOfCopyInstanceForCopyInstances = "h2-medium24"
 	InstanceTypeOfCopyInstanceForCopyInstancesMedium24 InstanceTypeOfCopyInstanceForCopyInstances = "medium24"
+	InstanceTypeOfCopyInstanceForCopyInstancesC2Large InstanceTypeOfCopyInstanceForCopyInstances = "c2-large"
+	InstanceTypeOfCopyInstanceForCopyInstancesC2rLarge InstanceTypeOfCopyInstanceForCopyInstances = "c2r-large"
 	InstanceTypeOfCopyInstanceForCopyInstancesCLarge InstanceTypeOfCopyInstanceForCopyInstances = "c-large"
+	InstanceTypeOfCopyInstanceForCopyInstancesE2Large InstanceTypeOfCopyInstanceForCopyInstances = "e2-large"
+	InstanceTypeOfCopyInstanceForCopyInstancesE2rLarge InstanceTypeOfCopyInstanceForCopyInstances = "e2r-large"
 	InstanceTypeOfCopyInstanceForCopyInstancesELarge InstanceTypeOfCopyInstanceForCopyInstances = "e-large"
 	InstanceTypeOfCopyInstanceForCopyInstancesH2Large InstanceTypeOfCopyInstanceForCopyInstances = "h2-large"
+	InstanceTypeOfCopyInstanceForCopyInstancesH2rLarge InstanceTypeOfCopyInstanceForCopyInstances = "h2r-large"
 	InstanceTypeOfCopyInstanceForCopyInstancesLarge InstanceTypeOfCopyInstanceForCopyInstances = "large"
+	InstanceTypeOfCopyInstanceForCopyInstancesC2Large8 InstanceTypeOfCopyInstanceForCopyInstances = "c2-large8"
 	InstanceTypeOfCopyInstanceForCopyInstancesCLarge8 InstanceTypeOfCopyInstanceForCopyInstances = "c-large8"
+	InstanceTypeOfCopyInstanceForCopyInstancesE2Large8 InstanceTypeOfCopyInstanceForCopyInstances = "e2-large8"
+	InstanceTypeOfCopyInstanceForCopyInstancesE2rLarge8 InstanceTypeOfCopyInstanceForCopyInstances = "e2r-large8"
 	InstanceTypeOfCopyInstanceForCopyInstancesELarge8 InstanceTypeOfCopyInstanceForCopyInstances = "e-large8"
 	InstanceTypeOfCopyInstanceForCopyInstancesH2Large8 InstanceTypeOfCopyInstanceForCopyInstances = "h2-large8"
+	InstanceTypeOfCopyInstanceForCopyInstancesH2rLarge8 InstanceTypeOfCopyInstanceForCopyInstances = "h2r-large8"
 	InstanceTypeOfCopyInstanceForCopyInstancesLarge8 InstanceTypeOfCopyInstanceForCopyInstances = "large8"
+	InstanceTypeOfCopyInstanceForCopyInstancesE2Large16 InstanceTypeOfCopyInstanceForCopyInstances = "e2-large16"
 	InstanceTypeOfCopyInstanceForCopyInstancesELarge16 InstanceTypeOfCopyInstanceForCopyInstances = "e-large16"
 	InstanceTypeOfCopyInstanceForCopyInstancesH2Large16 InstanceTypeOfCopyInstanceForCopyInstances = "h2-large16"
+	InstanceTypeOfCopyInstanceForCopyInstancesH2rLarge16 InstanceTypeOfCopyInstanceForCopyInstances = "h2r-large16"
 	InstanceTypeOfCopyInstanceForCopyInstancesLarge16 InstanceTypeOfCopyInstanceForCopyInstances = "large16"
+	InstanceTypeOfCopyInstanceForCopyInstancesE2Large24 InstanceTypeOfCopyInstanceForCopyInstances = "e2-large24"
 	InstanceTypeOfCopyInstanceForCopyInstancesELarge24 InstanceTypeOfCopyInstanceForCopyInstances = "e-large24"
 	InstanceTypeOfCopyInstanceForCopyInstancesH2Large24 InstanceTypeOfCopyInstanceForCopyInstances = "h2-large24"
 	InstanceTypeOfCopyInstanceForCopyInstancesLarge24 InstanceTypeOfCopyInstanceForCopyInstances = "large24"
+	InstanceTypeOfCopyInstanceForCopyInstancesE2Large32 InstanceTypeOfCopyInstanceForCopyInstances = "e2-large32"
 	InstanceTypeOfCopyInstanceForCopyInstancesELarge32 InstanceTypeOfCopyInstanceForCopyInstances = "e-large32"
 	InstanceTypeOfCopyInstanceForCopyInstancesH2Large32 InstanceTypeOfCopyInstanceForCopyInstances = "h2-large32"
 	InstanceTypeOfCopyInstanceForCopyInstancesLarge32 InstanceTypeOfCopyInstanceForCopyInstances = "large32"
+	InstanceTypeOfCopyInstanceForCopyInstancesE2ExtraLarge8 InstanceTypeOfCopyInstanceForCopyInstances = "e2-extra-large8"
+	InstanceTypeOfCopyInstanceForCopyInstancesE2rExtraLarge8 InstanceTypeOfCopyInstanceForCopyInstances = "e2r-extra-large8"
 	InstanceTypeOfCopyInstanceForCopyInstancesEExtraLarge8 InstanceTypeOfCopyInstanceForCopyInstances = "e-extra-large8"
 	InstanceTypeOfCopyInstanceForCopyInstancesH2ExtraLarge8 InstanceTypeOfCopyInstanceForCopyInstances = "h2-extra-large8"
+	InstanceTypeOfCopyInstanceForCopyInstancesH2rExtraLarge8 InstanceTypeOfCopyInstanceForCopyInstances = "h2r-extra-large8"
 	InstanceTypeOfCopyInstanceForCopyInstancesExtraLarge8 InstanceTypeOfCopyInstanceForCopyInstances = "extra-large8"
+	InstanceTypeOfCopyInstanceForCopyInstancesE2ExtraLarge16 InstanceTypeOfCopyInstanceForCopyInstances = "e2-extra-large16"
 	InstanceTypeOfCopyInstanceForCopyInstancesEExtraLarge16 InstanceTypeOfCopyInstanceForCopyInstances = "e-extra-large16"
 	InstanceTypeOfCopyInstanceForCopyInstancesH2ExtraLarge16 InstanceTypeOfCopyInstanceForCopyInstances = "h2-extra-large16"
+	InstanceTypeOfCopyInstanceForCopyInstancesH2rExtraLarge16 InstanceTypeOfCopyInstanceForCopyInstances = "h2r-extra-large16"
 	InstanceTypeOfCopyInstanceForCopyInstancesExtraLarge16 InstanceTypeOfCopyInstanceForCopyInstances = "extra-large16"
+	InstanceTypeOfCopyInstanceForCopyInstancesE2ExtraLarge24 InstanceTypeOfCopyInstanceForCopyInstances = "e2-extra-large24"
 	InstanceTypeOfCopyInstanceForCopyInstancesEExtraLarge24 InstanceTypeOfCopyInstanceForCopyInstances = "e-extra-large24"
 	InstanceTypeOfCopyInstanceForCopyInstancesH2ExtraLarge24 InstanceTypeOfCopyInstanceForCopyInstances = "h2-extra-large24"
+	InstanceTypeOfCopyInstanceForCopyInstancesH2rExtraLarge24 InstanceTypeOfCopyInstanceForCopyInstances = "h2r-extra-large24"
 	InstanceTypeOfCopyInstanceForCopyInstancesExtraLarge24 InstanceTypeOfCopyInstanceForCopyInstances = "extra-large24"
+	InstanceTypeOfCopyInstanceForCopyInstancesE2ExtraLarge32 InstanceTypeOfCopyInstanceForCopyInstances = "e2-extra-large32"
 	InstanceTypeOfCopyInstanceForCopyInstancesEExtraLarge32 InstanceTypeOfCopyInstanceForCopyInstances = "e-extra-large32"
 	InstanceTypeOfCopyInstanceForCopyInstancesH2ExtraLarge32 InstanceTypeOfCopyInstanceForCopyInstances = "h2-extra-large32"
 	InstanceTypeOfCopyInstanceForCopyInstancesExtraLarge32 InstanceTypeOfCopyInstanceForCopyInstances = "extra-large32"
+	InstanceTypeOfCopyInstanceForCopyInstancesE2ExtraLarge48 InstanceTypeOfCopyInstanceForCopyInstances = "e2-extra-large48"
 	InstanceTypeOfCopyInstanceForCopyInstancesEExtraLarge48 InstanceTypeOfCopyInstanceForCopyInstances = "e-extra-large48"
 	InstanceTypeOfCopyInstanceForCopyInstancesH2ExtraLarge48 InstanceTypeOfCopyInstanceForCopyInstances = "h2-extra-large48"
 	InstanceTypeOfCopyInstanceForCopyInstancesExtraLarge48 InstanceTypeOfCopyInstanceForCopyInstances = "extra-large48"
+	InstanceTypeOfCopyInstanceForCopyInstancesE2DoubleLarge16 InstanceTypeOfCopyInstanceForCopyInstances = "e2-double-large16"
+	InstanceTypeOfCopyInstanceForCopyInstancesE2rDoubleLarge16 InstanceTypeOfCopyInstanceForCopyInstances = "e2r-double-large16"
 	InstanceTypeOfCopyInstanceForCopyInstancesEDoubleLarge16 InstanceTypeOfCopyInstanceForCopyInstances = "e-double-large16"
 	InstanceTypeOfCopyInstanceForCopyInstancesH2DoubleLarge16 InstanceTypeOfCopyInstanceForCopyInstances = "h2-double-large16"
+	InstanceTypeOfCopyInstanceForCopyInstancesH2rDoubleLarge16 InstanceTypeOfCopyInstanceForCopyInstances = "h2r-double-large16"
 	InstanceTypeOfCopyInstanceForCopyInstancesDoubleLarge16 InstanceTypeOfCopyInstanceForCopyInstances = "double-large16"
+	InstanceTypeOfCopyInstanceForCopyInstancesE2DoubleLarge24 InstanceTypeOfCopyInstanceForCopyInstances = "e2-double-large24"
 	InstanceTypeOfCopyInstanceForCopyInstancesEDoubleLarge24 InstanceTypeOfCopyInstanceForCopyInstances = "e-double-large24"
 	InstanceTypeOfCopyInstanceForCopyInstancesH2DoubleLarge24 InstanceTypeOfCopyInstanceForCopyInstances = "h2-double-large24"
+	InstanceTypeOfCopyInstanceForCopyInstancesH2rDoubleLarge24 InstanceTypeOfCopyInstanceForCopyInstances = "h2r-double-large24"
 	InstanceTypeOfCopyInstanceForCopyInstancesDoubleLarge24 InstanceTypeOfCopyInstanceForCopyInstances = "double-large24"
+	InstanceTypeOfCopyInstanceForCopyInstancesE2DoubleLarge32 InstanceTypeOfCopyInstanceForCopyInstances = "e2-double-large32"
 	InstanceTypeOfCopyInstanceForCopyInstancesEDoubleLarge32 InstanceTypeOfCopyInstanceForCopyInstances = "e-double-large32"
 	InstanceTypeOfCopyInstanceForCopyInstancesH2DoubleLarge32 InstanceTypeOfCopyInstanceForCopyInstances = "h2-double-large32"
+	InstanceTypeOfCopyInstanceForCopyInstancesH2rDoubleLarge32 InstanceTypeOfCopyInstanceForCopyInstances = "h2r-double-large32"
 	InstanceTypeOfCopyInstanceForCopyInstancesDoubleLarge32 InstanceTypeOfCopyInstanceForCopyInstances = "double-large32"
+	InstanceTypeOfCopyInstanceForCopyInstancesE2DoubleLarge48 InstanceTypeOfCopyInstanceForCopyInstances = "e2-double-large48"
 	InstanceTypeOfCopyInstanceForCopyInstancesEDoubleLarge48 InstanceTypeOfCopyInstanceForCopyInstances = "e-double-large48"
 	InstanceTypeOfCopyInstanceForCopyInstancesH2DoubleLarge48 InstanceTypeOfCopyInstanceForCopyInstances = "h2-double-large48"
 	InstanceTypeOfCopyInstanceForCopyInstancesDoubleLarge48 InstanceTypeOfCopyInstanceForCopyInstances = "double-large48"
+	InstanceTypeOfCopyInstanceForCopyInstancesE2DoubleLarge64 InstanceTypeOfCopyInstanceForCopyInstances = "e2-double-large64"
 	InstanceTypeOfCopyInstanceForCopyInstancesEDoubleLarge64 InstanceTypeOfCopyInstanceForCopyInstances = "e-double-large64"
 	InstanceTypeOfCopyInstanceForCopyInstancesH2DoubleLarge64 InstanceTypeOfCopyInstanceForCopyInstances = "h2-double-large64"
 	InstanceTypeOfCopyInstanceForCopyInstancesDoubleLarge64 InstanceTypeOfCopyInstanceForCopyInstances = "double-large64"
+	InstanceTypeOfCopyInstanceForCopyInstancesE2DoubleLarge96 InstanceTypeOfCopyInstanceForCopyInstances = "e2-double-large96"
 	InstanceTypeOfCopyInstanceForCopyInstancesEDoubleLarge96 InstanceTypeOfCopyInstanceForCopyInstances = "e-double-large96"
 	InstanceTypeOfCopyInstanceForCopyInstancesH2DoubleLarge96 InstanceTypeOfCopyInstanceForCopyInstances = "h2-double-large96"
 	InstanceTypeOfCopyInstanceForCopyInstancesDoubleLarge96 InstanceTypeOfCopyInstanceForCopyInstances = "double-large96"
 	InstanceTypeOfCopyInstanceForCopyInstancesH2TripleLarge32 InstanceTypeOfCopyInstanceForCopyInstances = "h2-triple-large32"
+	InstanceTypeOfCopyInstanceForCopyInstancesH2rTripleLarge32 InstanceTypeOfCopyInstanceForCopyInstances = "h2r-triple-large32"
 	InstanceTypeOfCopyInstanceForCopyInstancesTripleLarge32 InstanceTypeOfCopyInstanceForCopyInstances = "triple-large32"
 	InstanceTypeOfCopyInstanceForCopyInstancesH2TripleLarge48 InstanceTypeOfCopyInstanceForCopyInstances = "h2-triple-large48"
+	InstanceTypeOfCopyInstanceForCopyInstancesH2rTripleLarge48 InstanceTypeOfCopyInstanceForCopyInstances = "h2r-triple-large48"
 	InstanceTypeOfCopyInstanceForCopyInstancesTripleLarge48 InstanceTypeOfCopyInstanceForCopyInstances = "triple-large48"
 	InstanceTypeOfCopyInstanceForCopyInstancesH2TripleLarge64 InstanceTypeOfCopyInstanceForCopyInstances = "h2-triple-large64"
 	InstanceTypeOfCopyInstanceForCopyInstancesTripleLarge64 InstanceTypeOfCopyInstanceForCopyInstances = "triple-large64"
@@ -1342,13 +1559,24 @@ const (
 	InstanceTypeOfCopyInstanceForCopyInstancesH2TripleLarge128 InstanceTypeOfCopyInstanceForCopyInstances = "h2-triple-large128"
 	InstanceTypeOfCopyInstanceForCopyInstancesTripleLarge128 InstanceTypeOfCopyInstanceForCopyInstances = "triple-large128"
 	InstanceTypeOfCopyInstanceForCopyInstancesH2QuadLarge64 InstanceTypeOfCopyInstanceForCopyInstances = "h2-quad-large64"
+	InstanceTypeOfCopyInstanceForCopyInstancesH2rQuadLarge64 InstanceTypeOfCopyInstanceForCopyInstances = "h2r-quad-large64"
 	InstanceTypeOfCopyInstanceForCopyInstancesQuadLarge64 InstanceTypeOfCopyInstanceForCopyInstances = "quad-large64"
 	InstanceTypeOfCopyInstanceForCopyInstancesH2QuadLarge96 InstanceTypeOfCopyInstanceForCopyInstances = "h2-quad-large96"
 	InstanceTypeOfCopyInstanceForCopyInstancesQuadLarge96 InstanceTypeOfCopyInstanceForCopyInstances = "quad-large96"
 	InstanceTypeOfCopyInstanceForCopyInstancesH2QuadLarge128 InstanceTypeOfCopyInstanceForCopyInstances = "h2-quad-large128"
 	InstanceTypeOfCopyInstanceForCopyInstancesQuadLarge128 InstanceTypeOfCopyInstanceForCopyInstances = "quad-large128"
+	InstanceTypeOfCopyInstanceForCopyInstancesH2QuadLarge256 InstanceTypeOfCopyInstanceForCopyInstances = "h2-quad-large256"
+	InstanceTypeOfCopyInstanceForCopyInstancesQuadLarge256 InstanceTypeOfCopyInstanceForCopyInstances = "quad-large256"
 	InstanceTypeOfCopyInstanceForCopyInstancesH2SeptaLarge128 InstanceTypeOfCopyInstanceForCopyInstances = "h2-septa-large128"
 	InstanceTypeOfCopyInstanceForCopyInstancesSeptaLarge128 InstanceTypeOfCopyInstanceForCopyInstances = "septa-large128"
+	InstanceTypeOfCopyInstanceForCopyInstancesH2SeptaLarge256 InstanceTypeOfCopyInstanceForCopyInstances = "h2-septa-large256"
+	InstanceTypeOfCopyInstanceForCopyInstancesSeptaLarge256 InstanceTypeOfCopyInstanceForCopyInstances = "septa-large256"
+	InstanceTypeOfCopyInstanceForCopyInstancesH2OctaLarge256 InstanceTypeOfCopyInstanceForCopyInstances = "h2-octa-large256"
+	InstanceTypeOfCopyInstanceForCopyInstancesOctaLarge256 InstanceTypeOfCopyInstanceForCopyInstances = "octa-large256"
+	InstanceTypeOfCopyInstanceForCopyInstancesH2OctaLarge384 InstanceTypeOfCopyInstanceForCopyInstances = "h2-octa-large384"
+	InstanceTypeOfCopyInstanceForCopyInstancesOctaLarge384 InstanceTypeOfCopyInstanceForCopyInstances = "octa-large384"
+	InstanceTypeOfCopyInstanceForCopyInstancesH2OctaLarge512 InstanceTypeOfCopyInstanceForCopyInstances = "h2-octa-large512"
+	InstanceTypeOfCopyInstanceForCopyInstancesOctaLarge512 InstanceTypeOfCopyInstanceForCopyInstances = "octa-large512"
 )
 
 // Values returns all known values for InstanceTypeOfCopyInstanceForCopyInstances.
@@ -1357,98 +1585,163 @@ const (
 // updates.
 func (InstanceTypeOfCopyInstanceForCopyInstances) Values() []InstanceTypeOfCopyInstanceForCopyInstances {
 	return []InstanceTypeOfCopyInstanceForCopyInstances{
+		"e2-mini",
 		"e-mini",
 		"h2-mini",
 		"mini",
+		"c2-small",
+		"c2r-small",
 		"c-small",
+		"e2-small",
+		"e2r-small",
 		"e-small",
 		"h2-small",
+		"h2r-small",
 		"small",
+		"c2-small2",
+		"c2r-small2",
 		"c-small2",
+		"e2-small2",
+		"e2r-small2",
 		"e-small2",
 		"h2-small2",
+		"h2r-small2",
 		"small2",
+		"c2-small4",
 		"c-small4",
+		"e2-small4",
 		"e-small4",
 		"h2-small4",
+		"h2r-small4",
 		"small4",
+		"e2-small8",
 		"e-small8",
 		"h2-small8",
 		"small8",
+		"e2-small16",
 		"e-small16",
 		"h2-small16",
 		"small16",
+		"c2-medium",
+		"c2r-medium",
 		"c-medium",
+		"e2-medium",
+		"e2r-medium",
 		"e-medium",
 		"h2-medium",
+		"h2r-medium",
 		"medium",
+		"c2-medium4",
+		"c2r-medium4",
 		"c-medium4",
+		"e2-medium4",
+		"e2r-medium4",
 		"e-medium4",
 		"h2-medium4",
+		"h2r-medium4",
 		"medium4",
+		"c2-medium8",
 		"c-medium8",
+		"e2-medium8",
 		"e-medium8",
 		"h2-medium8",
+		"h2r-medium8",
 		"medium8",
+		"e2-medium16",
 		"e-medium16",
 		"h2-medium16",
 		"medium16",
+		"e2-medium24",
 		"e-medium24",
 		"h2-medium24",
 		"medium24",
+		"c2-large",
+		"c2r-large",
 		"c-large",
+		"e2-large",
+		"e2r-large",
 		"e-large",
 		"h2-large",
+		"h2r-large",
 		"large",
+		"c2-large8",
 		"c-large8",
+		"e2-large8",
+		"e2r-large8",
 		"e-large8",
 		"h2-large8",
+		"h2r-large8",
 		"large8",
+		"e2-large16",
 		"e-large16",
 		"h2-large16",
+		"h2r-large16",
 		"large16",
+		"e2-large24",
 		"e-large24",
 		"h2-large24",
 		"large24",
+		"e2-large32",
 		"e-large32",
 		"h2-large32",
 		"large32",
+		"e2-extra-large8",
+		"e2r-extra-large8",
 		"e-extra-large8",
 		"h2-extra-large8",
+		"h2r-extra-large8",
 		"extra-large8",
+		"e2-extra-large16",
 		"e-extra-large16",
 		"h2-extra-large16",
+		"h2r-extra-large16",
 		"extra-large16",
+		"e2-extra-large24",
 		"e-extra-large24",
 		"h2-extra-large24",
+		"h2r-extra-large24",
 		"extra-large24",
+		"e2-extra-large32",
 		"e-extra-large32",
 		"h2-extra-large32",
 		"extra-large32",
+		"e2-extra-large48",
 		"e-extra-large48",
 		"h2-extra-large48",
 		"extra-large48",
+		"e2-double-large16",
+		"e2r-double-large16",
 		"e-double-large16",
 		"h2-double-large16",
+		"h2r-double-large16",
 		"double-large16",
+		"e2-double-large24",
 		"e-double-large24",
 		"h2-double-large24",
+		"h2r-double-large24",
 		"double-large24",
+		"e2-double-large32",
 		"e-double-large32",
 		"h2-double-large32",
+		"h2r-double-large32",
 		"double-large32",
+		"e2-double-large48",
 		"e-double-large48",
 		"h2-double-large48",
 		"double-large48",
+		"e2-double-large64",
 		"e-double-large64",
 		"h2-double-large64",
 		"double-large64",
+		"e2-double-large96",
 		"e-double-large96",
 		"h2-double-large96",
 		"double-large96",
 		"h2-triple-large32",
+		"h2r-triple-large32",
 		"triple-large32",
 		"h2-triple-large48",
+		"h2r-triple-large48",
 		"triple-large48",
 		"h2-triple-large64",
 		"triple-large64",
@@ -1457,13 +1750,24 @@ func (InstanceTypeOfCopyInstanceForCopyInstances) Values() []InstanceTypeOfCopyI
 		"h2-triple-large128",
 		"triple-large128",
 		"h2-quad-large64",
+		"h2r-quad-large64",
 		"quad-large64",
 		"h2-quad-large96",
 		"quad-large96",
 		"h2-quad-large128",
 		"quad-large128",
+		"h2-quad-large256",
+		"quad-large256",
 		"h2-septa-large128",
 		"septa-large128",
+		"h2-septa-large256",
+		"septa-large256",
+		"h2-octa-large256",
+		"octa-large256",
+		"h2-octa-large384",
+		"octa-large384",
+		"h2-octa-large512",
+		"octa-large512",
 	}
 }
 
@@ -1471,98 +1775,163 @@ type InstanceTypeOfImportInstanceRequest string
 
 // Enum values for InstanceTypeOfImportInstanceRequest
 const (
+	InstanceTypeOfImportInstanceRequestE2Mini InstanceTypeOfImportInstanceRequest = "e2-mini"
 	InstanceTypeOfImportInstanceRequestEMini InstanceTypeOfImportInstanceRequest = "e-mini"
 	InstanceTypeOfImportInstanceRequestH2Mini InstanceTypeOfImportInstanceRequest = "h2-mini"
 	InstanceTypeOfImportInstanceRequestMini InstanceTypeOfImportInstanceRequest = "mini"
+	InstanceTypeOfImportInstanceRequestC2Small InstanceTypeOfImportInstanceRequest = "c2-small"
+	InstanceTypeOfImportInstanceRequestC2rSmall InstanceTypeOfImportInstanceRequest = "c2r-small"
 	InstanceTypeOfImportInstanceRequestCSmall InstanceTypeOfImportInstanceRequest = "c-small"
+	InstanceTypeOfImportInstanceRequestE2Small InstanceTypeOfImportInstanceRequest = "e2-small"
+	InstanceTypeOfImportInstanceRequestE2rSmall InstanceTypeOfImportInstanceRequest = "e2r-small"
 	InstanceTypeOfImportInstanceRequestESmall InstanceTypeOfImportInstanceRequest = "e-small"
 	InstanceTypeOfImportInstanceRequestH2Small InstanceTypeOfImportInstanceRequest = "h2-small"
+	InstanceTypeOfImportInstanceRequestH2rSmall InstanceTypeOfImportInstanceRequest = "h2r-small"
 	InstanceTypeOfImportInstanceRequestSmall InstanceTypeOfImportInstanceRequest = "small"
+	InstanceTypeOfImportInstanceRequestC2Small2 InstanceTypeOfImportInstanceRequest = "c2-small2"
+	InstanceTypeOfImportInstanceRequestC2rSmall2 InstanceTypeOfImportInstanceRequest = "c2r-small2"
 	InstanceTypeOfImportInstanceRequestCSmall2 InstanceTypeOfImportInstanceRequest = "c-small2"
+	InstanceTypeOfImportInstanceRequestE2Small2 InstanceTypeOfImportInstanceRequest = "e2-small2"
+	InstanceTypeOfImportInstanceRequestE2rSmall2 InstanceTypeOfImportInstanceRequest = "e2r-small2"
 	InstanceTypeOfImportInstanceRequestESmall2 InstanceTypeOfImportInstanceRequest = "e-small2"
 	InstanceTypeOfImportInstanceRequestH2Small2 InstanceTypeOfImportInstanceRequest = "h2-small2"
+	InstanceTypeOfImportInstanceRequestH2rSmall2 InstanceTypeOfImportInstanceRequest = "h2r-small2"
 	InstanceTypeOfImportInstanceRequestSmall2 InstanceTypeOfImportInstanceRequest = "small2"
+	InstanceTypeOfImportInstanceRequestC2Small4 InstanceTypeOfImportInstanceRequest = "c2-small4"
 	InstanceTypeOfImportInstanceRequestCSmall4 InstanceTypeOfImportInstanceRequest = "c-small4"
+	InstanceTypeOfImportInstanceRequestE2Small4 InstanceTypeOfImportInstanceRequest = "e2-small4"
 	InstanceTypeOfImportInstanceRequestESmall4 InstanceTypeOfImportInstanceRequest = "e-small4"
 	InstanceTypeOfImportInstanceRequestH2Small4 InstanceTypeOfImportInstanceRequest = "h2-small4"
+	InstanceTypeOfImportInstanceRequestH2rSmall4 InstanceTypeOfImportInstanceRequest = "h2r-small4"
 	InstanceTypeOfImportInstanceRequestSmall4 InstanceTypeOfImportInstanceRequest = "small4"
+	InstanceTypeOfImportInstanceRequestE2Small8 InstanceTypeOfImportInstanceRequest = "e2-small8"
 	InstanceTypeOfImportInstanceRequestESmall8 InstanceTypeOfImportInstanceRequest = "e-small8"
 	InstanceTypeOfImportInstanceRequestH2Small8 InstanceTypeOfImportInstanceRequest = "h2-small8"
 	InstanceTypeOfImportInstanceRequestSmall8 InstanceTypeOfImportInstanceRequest = "small8"
+	InstanceTypeOfImportInstanceRequestE2Small16 InstanceTypeOfImportInstanceRequest = "e2-small16"
 	InstanceTypeOfImportInstanceRequestESmall16 InstanceTypeOfImportInstanceRequest = "e-small16"
 	InstanceTypeOfImportInstanceRequestH2Small16 InstanceTypeOfImportInstanceRequest = "h2-small16"
 	InstanceTypeOfImportInstanceRequestSmall16 InstanceTypeOfImportInstanceRequest = "small16"
+	InstanceTypeOfImportInstanceRequestC2Medium InstanceTypeOfImportInstanceRequest = "c2-medium"
+	InstanceTypeOfImportInstanceRequestC2rMedium InstanceTypeOfImportInstanceRequest = "c2r-medium"
 	InstanceTypeOfImportInstanceRequestCMedium InstanceTypeOfImportInstanceRequest = "c-medium"
+	InstanceTypeOfImportInstanceRequestE2Medium InstanceTypeOfImportInstanceRequest = "e2-medium"
+	InstanceTypeOfImportInstanceRequestE2rMedium InstanceTypeOfImportInstanceRequest = "e2r-medium"
 	InstanceTypeOfImportInstanceRequestEMedium InstanceTypeOfImportInstanceRequest = "e-medium"
 	InstanceTypeOfImportInstanceRequestH2Medium InstanceTypeOfImportInstanceRequest = "h2-medium"
+	InstanceTypeOfImportInstanceRequestH2rMedium InstanceTypeOfImportInstanceRequest = "h2r-medium"
 	InstanceTypeOfImportInstanceRequestMedium InstanceTypeOfImportInstanceRequest = "medium"
+	InstanceTypeOfImportInstanceRequestC2Medium4 InstanceTypeOfImportInstanceRequest = "c2-medium4"
+	InstanceTypeOfImportInstanceRequestC2rMedium4 InstanceTypeOfImportInstanceRequest = "c2r-medium4"
 	InstanceTypeOfImportInstanceRequestCMedium4 InstanceTypeOfImportInstanceRequest = "c-medium4"
+	InstanceTypeOfImportInstanceRequestE2Medium4 InstanceTypeOfImportInstanceRequest = "e2-medium4"
+	InstanceTypeOfImportInstanceRequestE2rMedium4 InstanceTypeOfImportInstanceRequest = "e2r-medium4"
 	InstanceTypeOfImportInstanceRequestEMedium4 InstanceTypeOfImportInstanceRequest = "e-medium4"
 	InstanceTypeOfImportInstanceRequestH2Medium4 InstanceTypeOfImportInstanceRequest = "h2-medium4"
+	InstanceTypeOfImportInstanceRequestH2rMedium4 InstanceTypeOfImportInstanceRequest = "h2r-medium4"
 	InstanceTypeOfImportInstanceRequestMedium4 InstanceTypeOfImportInstanceRequest = "medium4"
+	InstanceTypeOfImportInstanceRequestC2Medium8 InstanceTypeOfImportInstanceRequest = "c2-medium8"
 	InstanceTypeOfImportInstanceRequestCMedium8 InstanceTypeOfImportInstanceRequest = "c-medium8"
+	InstanceTypeOfImportInstanceRequestE2Medium8 InstanceTypeOfImportInstanceRequest = "e2-medium8"
 	InstanceTypeOfImportInstanceRequestEMedium8 InstanceTypeOfImportInstanceRequest = "e-medium8"
 	InstanceTypeOfImportInstanceRequestH2Medium8 InstanceTypeOfImportInstanceRequest = "h2-medium8"
+	InstanceTypeOfImportInstanceRequestH2rMedium8 InstanceTypeOfImportInstanceRequest = "h2r-medium8"
 	InstanceTypeOfImportInstanceRequestMedium8 InstanceTypeOfImportInstanceRequest = "medium8"
+	InstanceTypeOfImportInstanceRequestE2Medium16 InstanceTypeOfImportInstanceRequest = "e2-medium16"
 	InstanceTypeOfImportInstanceRequestEMedium16 InstanceTypeOfImportInstanceRequest = "e-medium16"
 	InstanceTypeOfImportInstanceRequestH2Medium16 InstanceTypeOfImportInstanceRequest = "h2-medium16"
 	InstanceTypeOfImportInstanceRequestMedium16 InstanceTypeOfImportInstanceRequest = "medium16"
+	InstanceTypeOfImportInstanceRequestE2Medium24 InstanceTypeOfImportInstanceRequest = "e2-medium24"
 	InstanceTypeOfImportInstanceRequestEMedium24 InstanceTypeOfImportInstanceRequest = "e-medium24"
 	InstanceTypeOfImportInstanceRequestH2Medium24 InstanceTypeOfImportInstanceRequest = "h2-medium24"
 	InstanceTypeOfImportInstanceRequestMedium24 InstanceTypeOfImportInstanceRequest = "medium24"
+	InstanceTypeOfImportInstanceRequestC2Large InstanceTypeOfImportInstanceRequest = "c2-large"
+	InstanceTypeOfImportInstanceRequestC2rLarge InstanceTypeOfImportInstanceRequest = "c2r-large"
 	InstanceTypeOfImportInstanceRequestCLarge InstanceTypeOfImportInstanceRequest = "c-large"
+	InstanceTypeOfImportInstanceRequestE2Large InstanceTypeOfImportInstanceRequest = "e2-large"
+	InstanceTypeOfImportInstanceRequestE2rLarge InstanceTypeOfImportInstanceRequest = "e2r-large"
 	InstanceTypeOfImportInstanceRequestELarge InstanceTypeOfImportInstanceRequest = "e-large"
 	InstanceTypeOfImportInstanceRequestH2Large InstanceTypeOfImportInstanceRequest = "h2-large"
+	InstanceTypeOfImportInstanceRequestH2rLarge InstanceTypeOfImportInstanceRequest = "h2r-large"
 	InstanceTypeOfImportInstanceRequestLarge InstanceTypeOfImportInstanceRequest = "large"
+	InstanceTypeOfImportInstanceRequestC2Large8 InstanceTypeOfImportInstanceRequest = "c2-large8"
 	InstanceTypeOfImportInstanceRequestCLarge8 InstanceTypeOfImportInstanceRequest = "c-large8"
+	InstanceTypeOfImportInstanceRequestE2Large8 InstanceTypeOfImportInstanceRequest = "e2-large8"
+	InstanceTypeOfImportInstanceRequestE2rLarge8 InstanceTypeOfImportInstanceRequest = "e2r-large8"
 	InstanceTypeOfImportInstanceRequestELarge8 InstanceTypeOfImportInstanceRequest = "e-large8"
 	InstanceTypeOfImportInstanceRequestH2Large8 InstanceTypeOfImportInstanceRequest = "h2-large8"
+	InstanceTypeOfImportInstanceRequestH2rLarge8 InstanceTypeOfImportInstanceRequest = "h2r-large8"
 	InstanceTypeOfImportInstanceRequestLarge8 InstanceTypeOfImportInstanceRequest = "large8"
+	InstanceTypeOfImportInstanceRequestE2Large16 InstanceTypeOfImportInstanceRequest = "e2-large16"
 	InstanceTypeOfImportInstanceRequestELarge16 InstanceTypeOfImportInstanceRequest = "e-large16"
 	InstanceTypeOfImportInstanceRequestH2Large16 InstanceTypeOfImportInstanceRequest = "h2-large16"
+	InstanceTypeOfImportInstanceRequestH2rLarge16 InstanceTypeOfImportInstanceRequest = "h2r-large16"
 	InstanceTypeOfImportInstanceRequestLarge16 InstanceTypeOfImportInstanceRequest = "large16"
+	InstanceTypeOfImportInstanceRequestE2Large24 InstanceTypeOfImportInstanceRequest = "e2-large24"
 	InstanceTypeOfImportInstanceRequestELarge24 InstanceTypeOfImportInstanceRequest = "e-large24"
 	InstanceTypeOfImportInstanceRequestH2Large24 InstanceTypeOfImportInstanceRequest = "h2-large24"
 	InstanceTypeOfImportInstanceRequestLarge24 InstanceTypeOfImportInstanceRequest = "large24"
+	InstanceTypeOfImportInstanceRequestE2Large32 InstanceTypeOfImportInstanceRequest = "e2-large32"
 	InstanceTypeOfImportInstanceRequestELarge32 InstanceTypeOfImportInstanceRequest = "e-large32"
 	InstanceTypeOfImportInstanceRequestH2Large32 InstanceTypeOfImportInstanceRequest = "h2-large32"
 	InstanceTypeOfImportInstanceRequestLarge32 InstanceTypeOfImportInstanceRequest = "large32"
+	InstanceTypeOfImportInstanceRequestE2ExtraLarge8 InstanceTypeOfImportInstanceRequest = "e2-extra-large8"
+	InstanceTypeOfImportInstanceRequestE2rExtraLarge8 InstanceTypeOfImportInstanceRequest = "e2r-extra-large8"
 	InstanceTypeOfImportInstanceRequestEExtraLarge8 InstanceTypeOfImportInstanceRequest = "e-extra-large8"
 	InstanceTypeOfImportInstanceRequestH2ExtraLarge8 InstanceTypeOfImportInstanceRequest = "h2-extra-large8"
+	InstanceTypeOfImportInstanceRequestH2rExtraLarge8 InstanceTypeOfImportInstanceRequest = "h2r-extra-large8"
 	InstanceTypeOfImportInstanceRequestExtraLarge8 InstanceTypeOfImportInstanceRequest = "extra-large8"
+	InstanceTypeOfImportInstanceRequestE2ExtraLarge16 InstanceTypeOfImportInstanceRequest = "e2-extra-large16"
 	InstanceTypeOfImportInstanceRequestEExtraLarge16 InstanceTypeOfImportInstanceRequest = "e-extra-large16"
 	InstanceTypeOfImportInstanceRequestH2ExtraLarge16 InstanceTypeOfImportInstanceRequest = "h2-extra-large16"
+	InstanceTypeOfImportInstanceRequestH2rExtraLarge16 InstanceTypeOfImportInstanceRequest = "h2r-extra-large16"
 	InstanceTypeOfImportInstanceRequestExtraLarge16 InstanceTypeOfImportInstanceRequest = "extra-large16"
+	InstanceTypeOfImportInstanceRequestE2ExtraLarge24 InstanceTypeOfImportInstanceRequest = "e2-extra-large24"
 	InstanceTypeOfImportInstanceRequestEExtraLarge24 InstanceTypeOfImportInstanceRequest = "e-extra-large24"
 	InstanceTypeOfImportInstanceRequestH2ExtraLarge24 InstanceTypeOfImportInstanceRequest = "h2-extra-large24"
+	InstanceTypeOfImportInstanceRequestH2rExtraLarge24 InstanceTypeOfImportInstanceRequest = "h2r-extra-large24"
 	InstanceTypeOfImportInstanceRequestExtraLarge24 InstanceTypeOfImportInstanceRequest = "extra-large24"
+	InstanceTypeOfImportInstanceRequestE2ExtraLarge32 InstanceTypeOfImportInstanceRequest = "e2-extra-large32"
 	InstanceTypeOfImportInstanceRequestEExtraLarge32 InstanceTypeOfImportInstanceRequest = "e-extra-large32"
 	InstanceTypeOfImportInstanceRequestH2ExtraLarge32 InstanceTypeOfImportInstanceRequest = "h2-extra-large32"
 	InstanceTypeOfImportInstanceRequestExtraLarge32 InstanceTypeOfImportInstanceRequest = "extra-large32"
+	InstanceTypeOfImportInstanceRequestE2ExtraLarge48 InstanceTypeOfImportInstanceRequest = "e2-extra-large48"
 	InstanceTypeOfImportInstanceRequestEExtraLarge48 InstanceTypeOfImportInstanceRequest = "e-extra-large48"
 	InstanceTypeOfImportInstanceRequestH2ExtraLarge48 InstanceTypeOfImportInstanceRequest = "h2-extra-large48"
 	InstanceTypeOfImportInstanceRequestExtraLarge48 InstanceTypeOfImportInstanceRequest = "extra-large48"
+	InstanceTypeOfImportInstanceRequestE2DoubleLarge16 InstanceTypeOfImportInstanceRequest = "e2-double-large16"
+	InstanceTypeOfImportInstanceRequestE2rDoubleLarge16 InstanceTypeOfImportInstanceRequest = "e2r-double-large16"
 	InstanceTypeOfImportInstanceRequestEDoubleLarge16 InstanceTypeOfImportInstanceRequest = "e-double-large16"
 	InstanceTypeOfImportInstanceRequestH2DoubleLarge16 InstanceTypeOfImportInstanceRequest = "h2-double-large16"
+	InstanceTypeOfImportInstanceRequestH2rDoubleLarge16 InstanceTypeOfImportInstanceRequest = "h2r-double-large16"
 	InstanceTypeOfImportInstanceRequestDoubleLarge16 InstanceTypeOfImportInstanceRequest = "double-large16"
+	InstanceTypeOfImportInstanceRequestE2DoubleLarge24 InstanceTypeOfImportInstanceRequest = "e2-double-large24"
 	InstanceTypeOfImportInstanceRequestEDoubleLarge24 InstanceTypeOfImportInstanceRequest = "e-double-large24"
 	InstanceTypeOfImportInstanceRequestH2DoubleLarge24 InstanceTypeOfImportInstanceRequest = "h2-double-large24"
+	InstanceTypeOfImportInstanceRequestH2rDoubleLarge24 InstanceTypeOfImportInstanceRequest = "h2r-double-large24"
 	InstanceTypeOfImportInstanceRequestDoubleLarge24 InstanceTypeOfImportInstanceRequest = "double-large24"
+	InstanceTypeOfImportInstanceRequestE2DoubleLarge32 InstanceTypeOfImportInstanceRequest = "e2-double-large32"
 	InstanceTypeOfImportInstanceRequestEDoubleLarge32 InstanceTypeOfImportInstanceRequest = "e-double-large32"
 	InstanceTypeOfImportInstanceRequestH2DoubleLarge32 InstanceTypeOfImportInstanceRequest = "h2-double-large32"
+	InstanceTypeOfImportInstanceRequestH2rDoubleLarge32 InstanceTypeOfImportInstanceRequest = "h2r-double-large32"
 	InstanceTypeOfImportInstanceRequestDoubleLarge32 InstanceTypeOfImportInstanceRequest = "double-large32"
+	InstanceTypeOfImportInstanceRequestE2DoubleLarge48 InstanceTypeOfImportInstanceRequest = "e2-double-large48"
 	InstanceTypeOfImportInstanceRequestEDoubleLarge48 InstanceTypeOfImportInstanceRequest = "e-double-large48"
 	InstanceTypeOfImportInstanceRequestH2DoubleLarge48 InstanceTypeOfImportInstanceRequest = "h2-double-large48"
 	InstanceTypeOfImportInstanceRequestDoubleLarge48 InstanceTypeOfImportInstanceRequest = "double-large48"
+	InstanceTypeOfImportInstanceRequestE2DoubleLarge64 InstanceTypeOfImportInstanceRequest = "e2-double-large64"
 	InstanceTypeOfImportInstanceRequestEDoubleLarge64 InstanceTypeOfImportInstanceRequest = "e-double-large64"
 	InstanceTypeOfImportInstanceRequestH2DoubleLarge64 InstanceTypeOfImportInstanceRequest = "h2-double-large64"
 	InstanceTypeOfImportInstanceRequestDoubleLarge64 InstanceTypeOfImportInstanceRequest = "double-large64"
+	InstanceTypeOfImportInstanceRequestE2DoubleLarge96 InstanceTypeOfImportInstanceRequest = "e2-double-large96"
 	InstanceTypeOfImportInstanceRequestEDoubleLarge96 InstanceTypeOfImportInstanceRequest = "e-double-large96"
 	InstanceTypeOfImportInstanceRequestH2DoubleLarge96 InstanceTypeOfImportInstanceRequest = "h2-double-large96"
 	InstanceTypeOfImportInstanceRequestDoubleLarge96 InstanceTypeOfImportInstanceRequest = "double-large96"
 	InstanceTypeOfImportInstanceRequestH2TripleLarge32 InstanceTypeOfImportInstanceRequest = "h2-triple-large32"
+	InstanceTypeOfImportInstanceRequestH2rTripleLarge32 InstanceTypeOfImportInstanceRequest = "h2r-triple-large32"
 	InstanceTypeOfImportInstanceRequestTripleLarge32 InstanceTypeOfImportInstanceRequest = "triple-large32"
 	InstanceTypeOfImportInstanceRequestH2TripleLarge48 InstanceTypeOfImportInstanceRequest = "h2-triple-large48"
+	InstanceTypeOfImportInstanceRequestH2rTripleLarge48 InstanceTypeOfImportInstanceRequest = "h2r-triple-large48"
 	InstanceTypeOfImportInstanceRequestTripleLarge48 InstanceTypeOfImportInstanceRequest = "triple-large48"
 	InstanceTypeOfImportInstanceRequestH2TripleLarge64 InstanceTypeOfImportInstanceRequest = "h2-triple-large64"
 	InstanceTypeOfImportInstanceRequestTripleLarge64 InstanceTypeOfImportInstanceRequest = "triple-large64"
@@ -1571,13 +1940,24 @@ const (
 	InstanceTypeOfImportInstanceRequestH2TripleLarge128 InstanceTypeOfImportInstanceRequest = "h2-triple-large128"
 	InstanceTypeOfImportInstanceRequestTripleLarge128 InstanceTypeOfImportInstanceRequest = "triple-large128"
 	InstanceTypeOfImportInstanceRequestH2QuadLarge64 InstanceTypeOfImportInstanceRequest = "h2-quad-large64"
+	InstanceTypeOfImportInstanceRequestH2rQuadLarge64 InstanceTypeOfImportInstanceRequest = "h2r-quad-large64"
 	InstanceTypeOfImportInstanceRequestQuadLarge64 InstanceTypeOfImportInstanceRequest = "quad-large64"
 	InstanceTypeOfImportInstanceRequestH2QuadLarge96 InstanceTypeOfImportInstanceRequest = "h2-quad-large96"
 	InstanceTypeOfImportInstanceRequestQuadLarge96 InstanceTypeOfImportInstanceRequest = "quad-large96"
 	InstanceTypeOfImportInstanceRequestH2QuadLarge128 InstanceTypeOfImportInstanceRequest = "h2-quad-large128"
 	InstanceTypeOfImportInstanceRequestQuadLarge128 InstanceTypeOfImportInstanceRequest = "quad-large128"
+	InstanceTypeOfImportInstanceRequestH2QuadLarge256 InstanceTypeOfImportInstanceRequest = "h2-quad-large256"
+	InstanceTypeOfImportInstanceRequestQuadLarge256 InstanceTypeOfImportInstanceRequest = "quad-large256"
 	InstanceTypeOfImportInstanceRequestH2SeptaLarge128 InstanceTypeOfImportInstanceRequest = "h2-septa-large128"
 	InstanceTypeOfImportInstanceRequestSeptaLarge128 InstanceTypeOfImportInstanceRequest = "septa-large128"
+	InstanceTypeOfImportInstanceRequestH2SeptaLarge256 InstanceTypeOfImportInstanceRequest = "h2-septa-large256"
+	InstanceTypeOfImportInstanceRequestSeptaLarge256 InstanceTypeOfImportInstanceRequest = "septa-large256"
+	InstanceTypeOfImportInstanceRequestH2OctaLarge256 InstanceTypeOfImportInstanceRequest = "h2-octa-large256"
+	InstanceTypeOfImportInstanceRequestOctaLarge256 InstanceTypeOfImportInstanceRequest = "octa-large256"
+	InstanceTypeOfImportInstanceRequestH2OctaLarge384 InstanceTypeOfImportInstanceRequest = "h2-octa-large384"
+	InstanceTypeOfImportInstanceRequestOctaLarge384 InstanceTypeOfImportInstanceRequest = "octa-large384"
+	InstanceTypeOfImportInstanceRequestH2OctaLarge512 InstanceTypeOfImportInstanceRequest = "h2-octa-large512"
+	InstanceTypeOfImportInstanceRequestOctaLarge512 InstanceTypeOfImportInstanceRequest = "octa-large512"
 )
 
 // Values returns all known values for InstanceTypeOfImportInstanceRequest. Note
@@ -1586,98 +1966,163 @@ const (
 // updates.
 func (InstanceTypeOfImportInstanceRequest) Values() []InstanceTypeOfImportInstanceRequest {
 	return []InstanceTypeOfImportInstanceRequest{
+		"e2-mini",
 		"e-mini",
 		"h2-mini",
 		"mini",
+		"c2-small",
+		"c2r-small",
 		"c-small",
+		"e2-small",
+		"e2r-small",
 		"e-small",
 		"h2-small",
+		"h2r-small",
 		"small",
+		"c2-small2",
+		"c2r-small2",
 		"c-small2",
+		"e2-small2",
+		"e2r-small2",
 		"e-small2",
 		"h2-small2",
+		"h2r-small2",
 		"small2",
+		"c2-small4",
 		"c-small4",
+		"e2-small4",
 		"e-small4",
 		"h2-small4",
+		"h2r-small4",
 		"small4",
+		"e2-small8",
 		"e-small8",
 		"h2-small8",
 		"small8",
+		"e2-small16",
 		"e-small16",
 		"h2-small16",
 		"small16",
+		"c2-medium",
+		"c2r-medium",
 		"c-medium",
+		"e2-medium",
+		"e2r-medium",
 		"e-medium",
 		"h2-medium",
+		"h2r-medium",
 		"medium",
+		"c2-medium4",
+		"c2r-medium4",
 		"c-medium4",
+		"e2-medium4",
+		"e2r-medium4",
 		"e-medium4",
 		"h2-medium4",
+		"h2r-medium4",
 		"medium4",
+		"c2-medium8",
 		"c-medium8",
+		"e2-medium8",
 		"e-medium8",
 		"h2-medium8",
+		"h2r-medium8",
 		"medium8",
+		"e2-medium16",
 		"e-medium16",
 		"h2-medium16",
 		"medium16",
+		"e2-medium24",
 		"e-medium24",
 		"h2-medium24",
 		"medium24",
+		"c2-large",
+		"c2r-large",
 		"c-large",
+		"e2-large",
+		"e2r-large",
 		"e-large",
 		"h2-large",
+		"h2r-large",
 		"large",
+		"c2-large8",
 		"c-large8",
+		"e2-large8",
+		"e2r-large8",
 		"e-large8",
 		"h2-large8",
+		"h2r-large8",
 		"large8",
+		"e2-large16",
 		"e-large16",
 		"h2-large16",
+		"h2r-large16",
 		"large16",
+		"e2-large24",
 		"e-large24",
 		"h2-large24",
 		"large24",
+		"e2-large32",
 		"e-large32",
 		"h2-large32",
 		"large32",
+		"e2-extra-large8",
+		"e2r-extra-large8",
 		"e-extra-large8",
 		"h2-extra-large8",
+		"h2r-extra-large8",
 		"extra-large8",
+		"e2-extra-large16",
 		"e-extra-large16",
 		"h2-extra-large16",
+		"h2r-extra-large16",
 		"extra-large16",
+		"e2-extra-large24",
 		"e-extra-large24",
 		"h2-extra-large24",
+		"h2r-extra-large24",
 		"extra-large24",
+		"e2-extra-large32",
 		"e-extra-large32",
 		"h2-extra-large32",
 		"extra-large32",
+		"e2-extra-large48",
 		"e-extra-large48",
 		"h2-extra-large48",
 		"extra-large48",
+		"e2-double-large16",
+		"e2r-double-large16",
 		"e-double-large16",
 		"h2-double-large16",
+		"h2r-double-large16",
 		"double-large16",
+		"e2-double-large24",
 		"e-double-large24",
 		"h2-double-large24",
+		"h2r-double-large24",
 		"double-large24",
+		"e2-double-large32",
 		"e-double-large32",
 		"h2-double-large32",
+		"h2r-double-large32",
 		"double-large32",
+		"e2-double-large48",
 		"e-double-large48",
 		"h2-double-large48",
 		"double-large48",
+		"e2-double-large64",
 		"e-double-large64",
 		"h2-double-large64",
 		"double-large64",
+		"e2-double-large96",
 		"e-double-large96",
 		"h2-double-large96",
 		"double-large96",
 		"h2-triple-large32",
+		"h2r-triple-large32",
 		"triple-large32",
 		"h2-triple-large48",
+		"h2r-triple-large48",
 		"triple-large48",
 		"h2-triple-large64",
 		"triple-large64",
@@ -1686,13 +2131,24 @@ func (InstanceTypeOfImportInstanceRequest) Values() []InstanceTypeOfImportInstan
 		"h2-triple-large128",
 		"triple-large128",
 		"h2-quad-large64",
+		"h2r-quad-large64",
 		"quad-large64",
 		"h2-quad-large96",
 		"quad-large96",
 		"h2-quad-large128",
 		"quad-large128",
+		"h2-quad-large256",
+		"quad-large256",
 		"h2-septa-large128",
 		"septa-large128",
+		"h2-septa-large256",
+		"septa-large256",
+		"h2-octa-large256",
+		"octa-large256",
+		"h2-octa-large384",
+		"octa-large384",
+		"h2-octa-large512",
+		"octa-large512",
 	}
 }
 
@@ -1700,92 +2156,127 @@ type InstanceTypeOfNiftyCreateAutoScalingGroupRequest string
 
 // Enum values for InstanceTypeOfNiftyCreateAutoScalingGroupRequest
 const (
+	InstanceTypeOfNiftyCreateAutoScalingGroupRequestE2Mini InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "e2-mini"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestEMini InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "e-mini"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestH2Mini InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "h2-mini"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestMini InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "mini"
+	InstanceTypeOfNiftyCreateAutoScalingGroupRequestC2Small InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "c2-small"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestCSmall InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "c-small"
+	InstanceTypeOfNiftyCreateAutoScalingGroupRequestE2Small InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "e2-small"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestESmall InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "e-small"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestH2Small InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "h2-small"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestSmall InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "small"
+	InstanceTypeOfNiftyCreateAutoScalingGroupRequestC2Small2 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "c2-small2"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestCSmall2 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "c-small2"
+	InstanceTypeOfNiftyCreateAutoScalingGroupRequestE2Small2 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "e2-small2"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestESmall2 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "e-small2"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestH2Small2 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "h2-small2"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestSmall2 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "small2"
+	InstanceTypeOfNiftyCreateAutoScalingGroupRequestC2Small4 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "c2-small4"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestCSmall4 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "c-small4"
+	InstanceTypeOfNiftyCreateAutoScalingGroupRequestE2Small4 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "e2-small4"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestESmall4 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "e-small4"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestH2Small4 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "h2-small4"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestSmall4 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "small4"
+	InstanceTypeOfNiftyCreateAutoScalingGroupRequestE2Small8 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "e2-small8"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestESmall8 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "e-small8"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestH2Small8 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "h2-small8"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestSmall8 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "small8"
+	InstanceTypeOfNiftyCreateAutoScalingGroupRequestE2Small16 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "e2-small16"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestESmall16 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "e-small16"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestH2Small16 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "h2-small16"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestSmall16 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "small16"
+	InstanceTypeOfNiftyCreateAutoScalingGroupRequestC2Medium InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "c2-medium"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestCMedium InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "c-medium"
+	InstanceTypeOfNiftyCreateAutoScalingGroupRequestE2Medium InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "e2-medium"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestEMedium InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "e-medium"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestH2Medium InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "h2-medium"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestMedium InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "medium"
+	InstanceTypeOfNiftyCreateAutoScalingGroupRequestC2Medium4 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "c2-medium4"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestCMedium4 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "c-medium4"
+	InstanceTypeOfNiftyCreateAutoScalingGroupRequestE2Medium4 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "e2-medium4"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestEMedium4 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "e-medium4"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestH2Medium4 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "h2-medium4"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestMedium4 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "medium4"
+	InstanceTypeOfNiftyCreateAutoScalingGroupRequestC2Medium8 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "c2-medium8"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestCMedium8 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "c-medium8"
+	InstanceTypeOfNiftyCreateAutoScalingGroupRequestE2Medium8 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "e2-medium8"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestEMedium8 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "e-medium8"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestH2Medium8 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "h2-medium8"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestMedium8 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "medium8"
+	InstanceTypeOfNiftyCreateAutoScalingGroupRequestE2Medium16 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "e2-medium16"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestEMedium16 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "e-medium16"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestH2Medium16 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "h2-medium16"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestMedium16 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "medium16"
+	InstanceTypeOfNiftyCreateAutoScalingGroupRequestE2Medium24 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "e2-medium24"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestEMedium24 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "e-medium24"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestH2Medium24 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "h2-medium24"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestMedium24 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "medium24"
+	InstanceTypeOfNiftyCreateAutoScalingGroupRequestC2Large InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "c2-large"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestCLarge InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "c-large"
+	InstanceTypeOfNiftyCreateAutoScalingGroupRequestE2Large InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "e2-large"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestELarge InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "e-large"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestH2Large InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "h2-large"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestLarge InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "large"
+	InstanceTypeOfNiftyCreateAutoScalingGroupRequestC2Large8 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "c2-large8"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestCLarge8 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "c-large8"
+	InstanceTypeOfNiftyCreateAutoScalingGroupRequestE2Large8 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "e2-large8"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestELarge8 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "e-large8"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestH2Large8 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "h2-large8"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestLarge8 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "large8"
+	InstanceTypeOfNiftyCreateAutoScalingGroupRequestE2Large16 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "e2-large16"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestELarge16 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "e-large16"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestH2Large16 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "h2-large16"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestLarge16 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "large16"
+	InstanceTypeOfNiftyCreateAutoScalingGroupRequestE2Large24 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "e2-large24"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestELarge24 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "e-large24"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestH2Large24 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "h2-large24"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestLarge24 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "large24"
+	InstanceTypeOfNiftyCreateAutoScalingGroupRequestE2Large32 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "e2-large32"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestELarge32 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "e-large32"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestH2Large32 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "h2-large32"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestLarge32 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "large32"
+	InstanceTypeOfNiftyCreateAutoScalingGroupRequestE2ExtraLarge8 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "e2-extra-large8"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestEExtraLarge8 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "e-extra-large8"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestH2ExtraLarge8 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "h2-extra-large8"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestExtraLarge8 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "extra-large8"
+	InstanceTypeOfNiftyCreateAutoScalingGroupRequestE2ExtraLarge16 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "e2-extra-large16"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestEExtraLarge16 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "e-extra-large16"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestH2ExtraLarge16 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "h2-extra-large16"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestExtraLarge16 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "extra-large16"
+	InstanceTypeOfNiftyCreateAutoScalingGroupRequestE2ExtraLarge24 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "e2-extra-large24"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestEExtraLarge24 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "e-extra-large24"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestH2ExtraLarge24 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "h2-extra-large24"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestExtraLarge24 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "extra-large24"
+	InstanceTypeOfNiftyCreateAutoScalingGroupRequestE2ExtraLarge32 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "e2-extra-large32"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestEExtraLarge32 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "e-extra-large32"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestH2ExtraLarge32 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "h2-extra-large32"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestExtraLarge32 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "extra-large32"
+	InstanceTypeOfNiftyCreateAutoScalingGroupRequestE2ExtraLarge48 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "e2-extra-large48"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestEExtraLarge48 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "e-extra-large48"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestH2ExtraLarge48 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "h2-extra-large48"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestExtraLarge48 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "extra-large48"
+	InstanceTypeOfNiftyCreateAutoScalingGroupRequestE2DoubleLarge16 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "e2-double-large16"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestEDoubleLarge16 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "e-double-large16"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestH2DoubleLarge16 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "h2-double-large16"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestDoubleLarge16 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "double-large16"
+	InstanceTypeOfNiftyCreateAutoScalingGroupRequestE2DoubleLarge24 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "e2-double-large24"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestEDoubleLarge24 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "e-double-large24"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestH2DoubleLarge24 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "h2-double-large24"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestDoubleLarge24 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "double-large24"
+	InstanceTypeOfNiftyCreateAutoScalingGroupRequestE2DoubleLarge32 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "e2-double-large32"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestEDoubleLarge32 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "e-double-large32"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestH2DoubleLarge32 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "h2-double-large32"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestDoubleLarge32 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "double-large32"
+	InstanceTypeOfNiftyCreateAutoScalingGroupRequestE2DoubleLarge48 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "e2-double-large48"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestEDoubleLarge48 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "e-double-large48"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestH2DoubleLarge48 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "h2-double-large48"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestDoubleLarge48 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "double-large48"
+	InstanceTypeOfNiftyCreateAutoScalingGroupRequestE2DoubleLarge64 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "e2-double-large64"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestEDoubleLarge64 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "e-double-large64"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestH2DoubleLarge64 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "h2-double-large64"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestDoubleLarge64 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "double-large64"
+	InstanceTypeOfNiftyCreateAutoScalingGroupRequestE2DoubleLarge96 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "e2-double-large96"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestEDoubleLarge96 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "e-double-large96"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestH2DoubleLarge96 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "h2-double-large96"
 	InstanceTypeOfNiftyCreateAutoScalingGroupRequestDoubleLarge96 InstanceTypeOfNiftyCreateAutoScalingGroupRequest = "double-large96"
@@ -1815,92 +2306,127 @@ const (
 // this slice is not guaranteed to be stable across updates.
 func (InstanceTypeOfNiftyCreateAutoScalingGroupRequest) Values() []InstanceTypeOfNiftyCreateAutoScalingGroupRequest {
 	return []InstanceTypeOfNiftyCreateAutoScalingGroupRequest{
+		"e2-mini",
 		"e-mini",
 		"h2-mini",
 		"mini",
+		"c2-small",
 		"c-small",
+		"e2-small",
 		"e-small",
 		"h2-small",
 		"small",
+		"c2-small2",
 		"c-small2",
+		"e2-small2",
 		"e-small2",
 		"h2-small2",
 		"small2",
+		"c2-small4",
 		"c-small4",
+		"e2-small4",
 		"e-small4",
 		"h2-small4",
 		"small4",
+		"e2-small8",
 		"e-small8",
 		"h2-small8",
 		"small8",
+		"e2-small16",
 		"e-small16",
 		"h2-small16",
 		"small16",
+		"c2-medium",
 		"c-medium",
+		"e2-medium",
 		"e-medium",
 		"h2-medium",
 		"medium",
+		"c2-medium4",
 		"c-medium4",
+		"e2-medium4",
 		"e-medium4",
 		"h2-medium4",
 		"medium4",
+		"c2-medium8",
 		"c-medium8",
+		"e2-medium8",
 		"e-medium8",
 		"h2-medium8",
 		"medium8",
+		"e2-medium16",
 		"e-medium16",
 		"h2-medium16",
 		"medium16",
+		"e2-medium24",
 		"e-medium24",
 		"h2-medium24",
 		"medium24",
+		"c2-large",
 		"c-large",
+		"e2-large",
 		"e-large",
 		"h2-large",
 		"large",
+		"c2-large8",
 		"c-large8",
+		"e2-large8",
 		"e-large8",
 		"h2-large8",
 		"large8",
+		"e2-large16",
 		"e-large16",
 		"h2-large16",
 		"large16",
+		"e2-large24",
 		"e-large24",
 		"h2-large24",
 		"large24",
+		"e2-large32",
 		"e-large32",
 		"h2-large32",
 		"large32",
+		"e2-extra-large8",
 		"e-extra-large8",
 		"h2-extra-large8",
 		"extra-large8",
+		"e2-extra-large16",
 		"e-extra-large16",
 		"h2-extra-large16",
 		"extra-large16",
+		"e2-extra-large24",
 		"e-extra-large24",
 		"h2-extra-large24",
 		"extra-large24",
+		"e2-extra-large32",
 		"e-extra-large32",
 		"h2-extra-large32",
 		"extra-large32",
+		"e2-extra-large48",
 		"e-extra-large48",
 		"h2-extra-large48",
 		"extra-large48",
+		"e2-double-large16",
 		"e-double-large16",
 		"h2-double-large16",
 		"double-large16",
+		"e2-double-large24",
 		"e-double-large24",
 		"h2-double-large24",
 		"double-large24",
+		"e2-double-large32",
 		"e-double-large32",
 		"h2-double-large32",
 		"double-large32",
+		"e2-double-large48",
 		"e-double-large48",
 		"h2-double-large48",
 		"double-large48",
+		"e2-double-large64",
 		"e-double-large64",
 		"h2-double-large64",
 		"double-large64",
+		"e2-double-large96",
 		"e-double-large96",
 		"h2-double-large96",
 		"double-large96",
@@ -1929,92 +2455,127 @@ type InstanceTypeOfNiftyUpdateAutoScalingGroupRequest string
 
 // Enum values for InstanceTypeOfNiftyUpdateAutoScalingGroupRequest
 const (
+	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestE2Mini InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "e2-mini"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestEMini InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "e-mini"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestH2Mini InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "h2-mini"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestMini InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "mini"
+	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestC2Small InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "c2-small"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestCSmall InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "c-small"
+	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestE2Small InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "e2-small"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestESmall InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "e-small"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestH2Small InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "h2-small"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestSmall InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "small"
+	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestC2Small2 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "c2-small2"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestCSmall2 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "c-small2"
+	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestE2Small2 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "e2-small2"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestESmall2 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "e-small2"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestH2Small2 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "h2-small2"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestSmall2 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "small2"
+	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestC2Small4 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "c2-small4"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestCSmall4 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "c-small4"
+	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestE2Small4 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "e2-small4"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestESmall4 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "e-small4"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestH2Small4 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "h2-small4"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestSmall4 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "small4"
+	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestE2Small8 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "e2-small8"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestESmall8 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "e-small8"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestH2Small8 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "h2-small8"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestSmall8 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "small8"
+	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestE2Small16 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "e2-small16"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestESmall16 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "e-small16"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestH2Small16 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "h2-small16"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestSmall16 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "small16"
+	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestC2Medium InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "c2-medium"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestCMedium InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "c-medium"
+	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestE2Medium InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "e2-medium"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestEMedium InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "e-medium"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestH2Medium InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "h2-medium"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestMedium InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "medium"
+	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestC2Medium4 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "c2-medium4"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestCMedium4 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "c-medium4"
+	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestE2Medium4 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "e2-medium4"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestEMedium4 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "e-medium4"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestH2Medium4 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "h2-medium4"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestMedium4 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "medium4"
+	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestC2Medium8 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "c2-medium8"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestCMedium8 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "c-medium8"
+	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestE2Medium8 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "e2-medium8"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestEMedium8 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "e-medium8"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestH2Medium8 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "h2-medium8"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestMedium8 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "medium8"
+	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestE2Medium16 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "e2-medium16"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestEMedium16 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "e-medium16"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestH2Medium16 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "h2-medium16"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestMedium16 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "medium16"
+	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestE2Medium24 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "e2-medium24"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestEMedium24 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "e-medium24"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestH2Medium24 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "h2-medium24"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestMedium24 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "medium24"
+	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestC2Large InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "c2-large"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestCLarge InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "c-large"
+	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestE2Large InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "e2-large"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestELarge InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "e-large"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestH2Large InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "h2-large"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestLarge InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "large"
+	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestC2Large8 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "c2-large8"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestCLarge8 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "c-large8"
+	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestE2Large8 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "e2-large8"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestELarge8 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "e-large8"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestH2Large8 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "h2-large8"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestLarge8 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "large8"
+	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestE2Large16 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "e2-large16"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestELarge16 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "e-large16"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestH2Large16 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "h2-large16"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestLarge16 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "large16"
+	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestE2Large24 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "e2-large24"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestELarge24 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "e-large24"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestH2Large24 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "h2-large24"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestLarge24 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "large24"
+	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestE2Large32 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "e2-large32"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestELarge32 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "e-large32"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestH2Large32 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "h2-large32"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestLarge32 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "large32"
+	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestE2ExtraLarge8 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "e2-extra-large8"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestEExtraLarge8 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "e-extra-large8"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestH2ExtraLarge8 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "h2-extra-large8"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestExtraLarge8 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "extra-large8"
+	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestE2ExtraLarge16 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "e2-extra-large16"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestEExtraLarge16 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "e-extra-large16"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestH2ExtraLarge16 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "h2-extra-large16"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestExtraLarge16 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "extra-large16"
+	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestE2ExtraLarge24 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "e2-extra-large24"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestEExtraLarge24 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "e-extra-large24"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestH2ExtraLarge24 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "h2-extra-large24"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestExtraLarge24 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "extra-large24"
+	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestE2ExtraLarge32 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "e2-extra-large32"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestEExtraLarge32 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "e-extra-large32"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestH2ExtraLarge32 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "h2-extra-large32"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestExtraLarge32 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "extra-large32"
+	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestE2ExtraLarge48 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "e2-extra-large48"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestEExtraLarge48 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "e-extra-large48"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestH2ExtraLarge48 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "h2-extra-large48"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestExtraLarge48 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "extra-large48"
+	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestE2DoubleLarge16 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "e2-double-large16"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestEDoubleLarge16 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "e-double-large16"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestH2DoubleLarge16 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "h2-double-large16"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestDoubleLarge16 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "double-large16"
+	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestE2DoubleLarge24 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "e2-double-large24"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestEDoubleLarge24 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "e-double-large24"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestH2DoubleLarge24 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "h2-double-large24"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestDoubleLarge24 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "double-large24"
+	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestE2DoubleLarge32 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "e2-double-large32"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestEDoubleLarge32 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "e-double-large32"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestH2DoubleLarge32 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "h2-double-large32"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestDoubleLarge32 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "double-large32"
+	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestE2DoubleLarge48 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "e2-double-large48"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestEDoubleLarge48 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "e-double-large48"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestH2DoubleLarge48 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "h2-double-large48"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestDoubleLarge48 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "double-large48"
+	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestE2DoubleLarge64 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "e2-double-large64"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestEDoubleLarge64 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "e-double-large64"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestH2DoubleLarge64 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "h2-double-large64"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestDoubleLarge64 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "double-large64"
+	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestE2DoubleLarge96 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "e2-double-large96"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestEDoubleLarge96 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "e-double-large96"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestH2DoubleLarge96 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "h2-double-large96"
 	InstanceTypeOfNiftyUpdateAutoScalingGroupRequestDoubleLarge96 InstanceTypeOfNiftyUpdateAutoScalingGroupRequest = "double-large96"
@@ -2044,92 +2605,127 @@ const (
 // this slice is not guaranteed to be stable across updates.
 func (InstanceTypeOfNiftyUpdateAutoScalingGroupRequest) Values() []InstanceTypeOfNiftyUpdateAutoScalingGroupRequest {
 	return []InstanceTypeOfNiftyUpdateAutoScalingGroupRequest{
+		"e2-mini",
 		"e-mini",
 		"h2-mini",
 		"mini",
+		"c2-small",
 		"c-small",
+		"e2-small",
 		"e-small",
 		"h2-small",
 		"small",
+		"c2-small2",
 		"c-small2",
+		"e2-small2",
 		"e-small2",
 		"h2-small2",
 		"small2",
+		"c2-small4",
 		"c-small4",
+		"e2-small4",
 		"e-small4",
 		"h2-small4",
 		"small4",
+		"e2-small8",
 		"e-small8",
 		"h2-small8",
 		"small8",
+		"e2-small16",
 		"e-small16",
 		"h2-small16",
 		"small16",
+		"c2-medium",
 		"c-medium",
+		"e2-medium",
 		"e-medium",
 		"h2-medium",
 		"medium",
+		"c2-medium4",
 		"c-medium4",
+		"e2-medium4",
 		"e-medium4",
 		"h2-medium4",
 		"medium4",
+		"c2-medium8",
 		"c-medium8",
+		"e2-medium8",
 		"e-medium8",
 		"h2-medium8",
 		"medium8",
+		"e2-medium16",
 		"e-medium16",
 		"h2-medium16",
 		"medium16",
+		"e2-medium24",
 		"e-medium24",
 		"h2-medium24",
 		"medium24",
+		"c2-large",
 		"c-large",
+		"e2-large",
 		"e-large",
 		"h2-large",
 		"large",
+		"c2-large8",
 		"c-large8",
+		"e2-large8",
 		"e-large8",
 		"h2-large8",
 		"large8",
+		"e2-large16",
 		"e-large16",
 		"h2-large16",
 		"large16",
+		"e2-large24",
 		"e-large24",
 		"h2-large24",
 		"large24",
+		"e2-large32",
 		"e-large32",
 		"h2-large32",
 		"large32",
+		"e2-extra-large8",
 		"e-extra-large8",
 		"h2-extra-large8",
 		"extra-large8",
+		"e2-extra-large16",
 		"e-extra-large16",
 		"h2-extra-large16",
 		"extra-large16",
+		"e2-extra-large24",
 		"e-extra-large24",
 		"h2-extra-large24",
 		"extra-large24",
+		"e2-extra-large32",
 		"e-extra-large32",
 		"h2-extra-large32",
 		"extra-large32",
+		"e2-extra-large48",
 		"e-extra-large48",
 		"h2-extra-large48",
 		"extra-large48",
+		"e2-double-large16",
 		"e-double-large16",
 		"h2-double-large16",
 		"double-large16",
+		"e2-double-large24",
 		"e-double-large24",
 		"h2-double-large24",
 		"double-large24",
+		"e2-double-large32",
 		"e-double-large32",
 		"h2-double-large32",
 		"double-large32",
+		"e2-double-large48",
 		"e-double-large48",
 		"h2-double-large48",
 		"double-large48",
+		"e2-double-large64",
 		"e-double-large64",
 		"h2-double-large64",
 		"double-large64",
+		"e2-double-large96",
 		"e-double-large96",
 		"h2-double-large96",
 		"double-large96",
@@ -2158,98 +2754,163 @@ type InstanceTypeOfRunInstancesRequest string
 
 // Enum values for InstanceTypeOfRunInstancesRequest
 const (
+	InstanceTypeOfRunInstancesRequestE2Mini InstanceTypeOfRunInstancesRequest = "e2-mini"
 	InstanceTypeOfRunInstancesRequestEMini InstanceTypeOfRunInstancesRequest = "e-mini"
 	InstanceTypeOfRunInstancesRequestH2Mini InstanceTypeOfRunInstancesRequest = "h2-mini"
 	InstanceTypeOfRunInstancesRequestMini InstanceTypeOfRunInstancesRequest = "mini"
+	InstanceTypeOfRunInstancesRequestC2Small InstanceTypeOfRunInstancesRequest = "c2-small"
+	InstanceTypeOfRunInstancesRequestC2rSmall InstanceTypeOfRunInstancesRequest = "c2r-small"
 	InstanceTypeOfRunInstancesRequestCSmall InstanceTypeOfRunInstancesRequest = "c-small"
+	InstanceTypeOfRunInstancesRequestE2Small InstanceTypeOfRunInstancesRequest = "e2-small"
+	InstanceTypeOfRunInstancesRequestE2rSmall InstanceTypeOfRunInstancesRequest = "e2r-small"
 	InstanceTypeOfRunInstancesRequestESmall InstanceTypeOfRunInstancesRequest = "e-small"
 	InstanceTypeOfRunInstancesRequestH2Small InstanceTypeOfRunInstancesRequest = "h2-small"
+	InstanceTypeOfRunInstancesRequestH2rSmall InstanceTypeOfRunInstancesRequest = "h2r-small"
 	InstanceTypeOfRunInstancesRequestSmall InstanceTypeOfRunInstancesRequest = "small"
+	InstanceTypeOfRunInstancesRequestC2Small2 InstanceTypeOfRunInstancesRequest = "c2-small2"
+	InstanceTypeOfRunInstancesRequestC2rSmall2 InstanceTypeOfRunInstancesRequest = "c2r-small2"
 	InstanceTypeOfRunInstancesRequestCSmall2 InstanceTypeOfRunInstancesRequest = "c-small2"
+	InstanceTypeOfRunInstancesRequestE2Small2 InstanceTypeOfRunInstancesRequest = "e2-small2"
+	InstanceTypeOfRunInstancesRequestE2rSmall2 InstanceTypeOfRunInstancesRequest = "e2r-small2"
 	InstanceTypeOfRunInstancesRequestESmall2 InstanceTypeOfRunInstancesRequest = "e-small2"
 	InstanceTypeOfRunInstancesRequestH2Small2 InstanceTypeOfRunInstancesRequest = "h2-small2"
+	InstanceTypeOfRunInstancesRequestH2rSmall2 InstanceTypeOfRunInstancesRequest = "h2r-small2"
 	InstanceTypeOfRunInstancesRequestSmall2 InstanceTypeOfRunInstancesRequest = "small2"
+	InstanceTypeOfRunInstancesRequestC2Small4 InstanceTypeOfRunInstancesRequest = "c2-small4"
 	InstanceTypeOfRunInstancesRequestCSmall4 InstanceTypeOfRunInstancesRequest = "c-small4"
+	InstanceTypeOfRunInstancesRequestE2Small4 InstanceTypeOfRunInstancesRequest = "e2-small4"
 	InstanceTypeOfRunInstancesRequestESmall4 InstanceTypeOfRunInstancesRequest = "e-small4"
 	InstanceTypeOfRunInstancesRequestH2Small4 InstanceTypeOfRunInstancesRequest = "h2-small4"
+	InstanceTypeOfRunInstancesRequestH2rSmall4 InstanceTypeOfRunInstancesRequest = "h2r-small4"
 	InstanceTypeOfRunInstancesRequestSmall4 InstanceTypeOfRunInstancesRequest = "small4"
+	InstanceTypeOfRunInstancesRequestE2Small8 InstanceTypeOfRunInstancesRequest = "e2-small8"
 	InstanceTypeOfRunInstancesRequestESmall8 InstanceTypeOfRunInstancesRequest = "e-small8"
 	InstanceTypeOfRunInstancesRequestH2Small8 InstanceTypeOfRunInstancesRequest = "h2-small8"
 	InstanceTypeOfRunInstancesRequestSmall8 InstanceTypeOfRunInstancesRequest = "small8"
+	InstanceTypeOfRunInstancesRequestE2Small16 InstanceTypeOfRunInstancesRequest = "e2-small16"
 	InstanceTypeOfRunInstancesRequestESmall16 InstanceTypeOfRunInstancesRequest = "e-small16"
 	InstanceTypeOfRunInstancesRequestH2Small16 InstanceTypeOfRunInstancesRequest = "h2-small16"
 	InstanceTypeOfRunInstancesRequestSmall16 InstanceTypeOfRunInstancesRequest = "small16"
+	InstanceTypeOfRunInstancesRequestC2Medium InstanceTypeOfRunInstancesRequest = "c2-medium"
+	InstanceTypeOfRunInstancesRequestC2rMedium InstanceTypeOfRunInstancesRequest = "c2r-medium"
 	InstanceTypeOfRunInstancesRequestCMedium InstanceTypeOfRunInstancesRequest = "c-medium"
+	InstanceTypeOfRunInstancesRequestE2Medium InstanceTypeOfRunInstancesRequest = "e2-medium"
+	InstanceTypeOfRunInstancesRequestE2rMedium InstanceTypeOfRunInstancesRequest = "e2r-medium"
 	InstanceTypeOfRunInstancesRequestEMedium InstanceTypeOfRunInstancesRequest = "e-medium"
 	InstanceTypeOfRunInstancesRequestH2Medium InstanceTypeOfRunInstancesRequest = "h2-medium"
+	InstanceTypeOfRunInstancesRequestH2rMedium InstanceTypeOfRunInstancesRequest = "h2r-medium"
 	InstanceTypeOfRunInstancesRequestMedium InstanceTypeOfRunInstancesRequest = "medium"
+	InstanceTypeOfRunInstancesRequestC2Medium4 InstanceTypeOfRunInstancesRequest = "c2-medium4"
+	InstanceTypeOfRunInstancesRequestC2rMedium4 InstanceTypeOfRunInstancesRequest = "c2r-medium4"
 	InstanceTypeOfRunInstancesRequestCMedium4 InstanceTypeOfRunInstancesRequest = "c-medium4"
+	InstanceTypeOfRunInstancesRequestE2Medium4 InstanceTypeOfRunInstancesRequest = "e2-medium4"
+	InstanceTypeOfRunInstancesRequestE2rMedium4 InstanceTypeOfRunInstancesRequest = "e2r-medium4"
 	InstanceTypeOfRunInstancesRequestEMedium4 InstanceTypeOfRunInstancesRequest = "e-medium4"
 	InstanceTypeOfRunInstancesRequestH2Medium4 InstanceTypeOfRunInstancesRequest = "h2-medium4"
+	InstanceTypeOfRunInstancesRequestH2rMedium4 InstanceTypeOfRunInstancesRequest = "h2r-medium4"
 	InstanceTypeOfRunInstancesRequestMedium4 InstanceTypeOfRunInstancesRequest = "medium4"
+	InstanceTypeOfRunInstancesRequestC2Medium8 InstanceTypeOfRunInstancesRequest = "c2-medium8"
 	InstanceTypeOfRunInstancesRequestCMedium8 InstanceTypeOfRunInstancesRequest = "c-medium8"
+	InstanceTypeOfRunInstancesRequestE2Medium8 InstanceTypeOfRunInstancesRequest = "e2-medium8"
 	InstanceTypeOfRunInstancesRequestEMedium8 InstanceTypeOfRunInstancesRequest = "e-medium8"
 	InstanceTypeOfRunInstancesRequestH2Medium8 InstanceTypeOfRunInstancesRequest = "h2-medium8"
+	InstanceTypeOfRunInstancesRequestH2rMedium8 InstanceTypeOfRunInstancesRequest = "h2r-medium8"
 	InstanceTypeOfRunInstancesRequestMedium8 InstanceTypeOfRunInstancesRequest = "medium8"
+	InstanceTypeOfRunInstancesRequestE2Medium16 InstanceTypeOfRunInstancesRequest = "e2-medium16"
 	InstanceTypeOfRunInstancesRequestEMedium16 InstanceTypeOfRunInstancesRequest = "e-medium16"
 	InstanceTypeOfRunInstancesRequestH2Medium16 InstanceTypeOfRunInstancesRequest = "h2-medium16"
 	InstanceTypeOfRunInstancesRequestMedium16 InstanceTypeOfRunInstancesRequest = "medium16"
+	InstanceTypeOfRunInstancesRequestE2Medium24 InstanceTypeOfRunInstancesRequest = "e2-medium24"
 	InstanceTypeOfRunInstancesRequestEMedium24 InstanceTypeOfRunInstancesRequest = "e-medium24"
 	InstanceTypeOfRunInstancesRequestH2Medium24 InstanceTypeOfRunInstancesRequest = "h2-medium24"
 	InstanceTypeOfRunInstancesRequestMedium24 InstanceTypeOfRunInstancesRequest = "medium24"
+	InstanceTypeOfRunInstancesRequestC2Large InstanceTypeOfRunInstancesRequest = "c2-large"
+	InstanceTypeOfRunInstancesRequestC2rLarge InstanceTypeOfRunInstancesRequest = "c2r-large"
 	InstanceTypeOfRunInstancesRequestCLarge InstanceTypeOfRunInstancesRequest = "c-large"
+	InstanceTypeOfRunInstancesRequestE2Large InstanceTypeOfRunInstancesRequest = "e2-large"
+	InstanceTypeOfRunInstancesRequestE2rLarge InstanceTypeOfRunInstancesRequest = "e2r-large"
 	InstanceTypeOfRunInstancesRequestELarge InstanceTypeOfRunInstancesRequest = "e-large"
 	InstanceTypeOfRunInstancesRequestH2Large InstanceTypeOfRunInstancesRequest = "h2-large"
+	InstanceTypeOfRunInstancesRequestH2rLarge InstanceTypeOfRunInstancesRequest = "h2r-large"
 	InstanceTypeOfRunInstancesRequestLarge InstanceTypeOfRunInstancesRequest = "large"
+	InstanceTypeOfRunInstancesRequestC2Large8 InstanceTypeOfRunInstancesRequest = "c2-large8"
 	InstanceTypeOfRunInstancesRequestCLarge8 InstanceTypeOfRunInstancesRequest = "c-large8"
+	InstanceTypeOfRunInstancesRequestE2Large8 InstanceTypeOfRunInstancesRequest = "e2-large8"
+	InstanceTypeOfRunInstancesRequestE2rLarge8 InstanceTypeOfRunInstancesRequest = "e2r-large8"
 	InstanceTypeOfRunInstancesRequestELarge8 InstanceTypeOfRunInstancesRequest = "e-large8"
 	InstanceTypeOfRunInstancesRequestH2Large8 InstanceTypeOfRunInstancesRequest = "h2-large8"
+	InstanceTypeOfRunInstancesRequestH2rLarge8 InstanceTypeOfRunInstancesRequest = "h2r-large8"
 	InstanceTypeOfRunInstancesRequestLarge8 InstanceTypeOfRunInstancesRequest = "large8"
+	InstanceTypeOfRunInstancesRequestE2Large16 InstanceTypeOfRunInstancesRequest = "e2-large16"
 	InstanceTypeOfRunInstancesRequestELarge16 InstanceTypeOfRunInstancesRequest = "e-large16"
 	InstanceTypeOfRunInstancesRequestH2Large16 InstanceTypeOfRunInstancesRequest = "h2-large16"
+	InstanceTypeOfRunInstancesRequestH2rLarge16 InstanceTypeOfRunInstancesRequest = "h2r-large16"
 	InstanceTypeOfRunInstancesRequestLarge16 InstanceTypeOfRunInstancesRequest = "large16"
+	InstanceTypeOfRunInstancesRequestE2Large24 InstanceTypeOfRunInstancesRequest = "e2-large24"
 	InstanceTypeOfRunInstancesRequestELarge24 InstanceTypeOfRunInstancesRequest = "e-large24"
 	InstanceTypeOfRunInstancesRequestH2Large24 InstanceTypeOfRunInstancesRequest = "h2-large24"
 	InstanceTypeOfRunInstancesRequestLarge24 InstanceTypeOfRunInstancesRequest = "large24"
+	InstanceTypeOfRunInstancesRequestE2Large32 InstanceTypeOfRunInstancesRequest = "e2-large32"
 	InstanceTypeOfRunInstancesRequestELarge32 InstanceTypeOfRunInstancesRequest = "e-large32"
 	InstanceTypeOfRunInstancesRequestH2Large32 InstanceTypeOfRunInstancesRequest = "h2-large32"
 	InstanceTypeOfRunInstancesRequestLarge32 InstanceTypeOfRunInstancesRequest = "large32"
+	InstanceTypeOfRunInstancesRequestE2ExtraLarge8 InstanceTypeOfRunInstancesRequest = "e2-extra-large8"
+	InstanceTypeOfRunInstancesRequestE2rExtraLarge8 InstanceTypeOfRunInstancesRequest = "e2r-extra-large8"
 	InstanceTypeOfRunInstancesRequestEExtraLarge8 InstanceTypeOfRunInstancesRequest = "e-extra-large8"
 	InstanceTypeOfRunInstancesRequestH2ExtraLarge8 InstanceTypeOfRunInstancesRequest = "h2-extra-large8"
+	InstanceTypeOfRunInstancesRequestH2rExtraLarge8 InstanceTypeOfRunInstancesRequest = "h2r-extra-large8"
 	InstanceTypeOfRunInstancesRequestExtraLarge8 InstanceTypeOfRunInstancesRequest = "extra-large8"
+	InstanceTypeOfRunInstancesRequestE2ExtraLarge16 InstanceTypeOfRunInstancesRequest = "e2-extra-large16"
 	InstanceTypeOfRunInstancesRequestEExtraLarge16 InstanceTypeOfRunInstancesRequest = "e-extra-large16"
 	InstanceTypeOfRunInstancesRequestH2ExtraLarge16 InstanceTypeOfRunInstancesRequest = "h2-extra-large16"
+	InstanceTypeOfRunInstancesRequestH2rExtraLarge16 InstanceTypeOfRunInstancesRequest = "h2r-extra-large16"
 	InstanceTypeOfRunInstancesRequestExtraLarge16 InstanceTypeOfRunInstancesRequest = "extra-large16"
+	InstanceTypeOfRunInstancesRequestE2ExtraLarge24 InstanceTypeOfRunInstancesRequest = "e2-extra-large24"
 	InstanceTypeOfRunInstancesRequestEExtraLarge24 InstanceTypeOfRunInstancesRequest = "e-extra-large24"
 	InstanceTypeOfRunInstancesRequestH2ExtraLarge24 InstanceTypeOfRunInstancesRequest = "h2-extra-large24"
+	InstanceTypeOfRunInstancesRequestH2rExtraLarge24 InstanceTypeOfRunInstancesRequest = "h2r-extra-large24"
 	InstanceTypeOfRunInstancesRequestExtraLarge24 InstanceTypeOfRunInstancesRequest = "extra-large24"
+	InstanceTypeOfRunInstancesRequestE2ExtraLarge32 InstanceTypeOfRunInstancesRequest = "e2-extra-large32"
 	InstanceTypeOfRunInstancesRequestEExtraLarge32 InstanceTypeOfRunInstancesRequest = "e-extra-large32"
 	InstanceTypeOfRunInstancesRequestH2ExtraLarge32 InstanceTypeOfRunInstancesRequest = "h2-extra-large32"
 	InstanceTypeOfRunInstancesRequestExtraLarge32 InstanceTypeOfRunInstancesRequest = "extra-large32"
+	InstanceTypeOfRunInstancesRequestE2ExtraLarge48 InstanceTypeOfRunInstancesRequest = "e2-extra-large48"
 	InstanceTypeOfRunInstancesRequestEExtraLarge48 InstanceTypeOfRunInstancesRequest = "e-extra-large48"
 	InstanceTypeOfRunInstancesRequestH2ExtraLarge48 InstanceTypeOfRunInstancesRequest = "h2-extra-large48"
 	InstanceTypeOfRunInstancesRequestExtraLarge48 InstanceTypeOfRunInstancesRequest = "extra-large48"
+	InstanceTypeOfRunInstancesRequestE2DoubleLarge16 InstanceTypeOfRunInstancesRequest = "e2-double-large16"
+	InstanceTypeOfRunInstancesRequestE2rDoubleLarge16 InstanceTypeOfRunInstancesRequest = "e2r-double-large16"
 	InstanceTypeOfRunInstancesRequestEDoubleLarge16 InstanceTypeOfRunInstancesRequest = "e-double-large16"
 	InstanceTypeOfRunInstancesRequestH2DoubleLarge16 InstanceTypeOfRunInstancesRequest = "h2-double-large16"
+	InstanceTypeOfRunInstancesRequestH2rDoubleLarge16 InstanceTypeOfRunInstancesRequest = "h2r-double-large16"
 	InstanceTypeOfRunInstancesRequestDoubleLarge16 InstanceTypeOfRunInstancesRequest = "double-large16"
+	InstanceTypeOfRunInstancesRequestE2DoubleLarge24 InstanceTypeOfRunInstancesRequest = "e2-double-large24"
 	InstanceTypeOfRunInstancesRequestEDoubleLarge24 InstanceTypeOfRunInstancesRequest = "e-double-large24"
 	InstanceTypeOfRunInstancesRequestH2DoubleLarge24 InstanceTypeOfRunInstancesRequest = "h2-double-large24"
+	InstanceTypeOfRunInstancesRequestH2rDoubleLarge24 InstanceTypeOfRunInstancesRequest = "h2r-double-large24"
 	InstanceTypeOfRunInstancesRequestDoubleLarge24 InstanceTypeOfRunInstancesRequest = "double-large24"
+	InstanceTypeOfRunInstancesRequestE2DoubleLarge32 InstanceTypeOfRunInstancesRequest = "e2-double-large32"
 	InstanceTypeOfRunInstancesRequestEDoubleLarge32 InstanceTypeOfRunInstancesRequest = "e-double-large32"
 	InstanceTypeOfRunInstancesRequestH2DoubleLarge32 InstanceTypeOfRunInstancesRequest = "h2-double-large32"
+	InstanceTypeOfRunInstancesRequestH2rDoubleLarge32 InstanceTypeOfRunInstancesRequest = "h2r-double-large32"
 	InstanceTypeOfRunInstancesRequestDoubleLarge32 InstanceTypeOfRunInstancesRequest = "double-large32"
+	InstanceTypeOfRunInstancesRequestE2DoubleLarge48 InstanceTypeOfRunInstancesRequest = "e2-double-large48"
 	InstanceTypeOfRunInstancesRequestEDoubleLarge48 InstanceTypeOfRunInstancesRequest = "e-double-large48"
 	InstanceTypeOfRunInstancesRequestH2DoubleLarge48 InstanceTypeOfRunInstancesRequest = "h2-double-large48"
 	InstanceTypeOfRunInstancesRequestDoubleLarge48 InstanceTypeOfRunInstancesRequest = "double-large48"
+	InstanceTypeOfRunInstancesRequestE2DoubleLarge64 InstanceTypeOfRunInstancesRequest = "e2-double-large64"
 	InstanceTypeOfRunInstancesRequestEDoubleLarge64 InstanceTypeOfRunInstancesRequest = "e-double-large64"
 	InstanceTypeOfRunInstancesRequestH2DoubleLarge64 InstanceTypeOfRunInstancesRequest = "h2-double-large64"
 	InstanceTypeOfRunInstancesRequestDoubleLarge64 InstanceTypeOfRunInstancesRequest = "double-large64"
+	InstanceTypeOfRunInstancesRequestE2DoubleLarge96 InstanceTypeOfRunInstancesRequest = "e2-double-large96"
 	InstanceTypeOfRunInstancesRequestEDoubleLarge96 InstanceTypeOfRunInstancesRequest = "e-double-large96"
 	InstanceTypeOfRunInstancesRequestH2DoubleLarge96 InstanceTypeOfRunInstancesRequest = "h2-double-large96"
 	InstanceTypeOfRunInstancesRequestDoubleLarge96 InstanceTypeOfRunInstancesRequest = "double-large96"
 	InstanceTypeOfRunInstancesRequestH2TripleLarge32 InstanceTypeOfRunInstancesRequest = "h2-triple-large32"
+	InstanceTypeOfRunInstancesRequestH2rTripleLarge32 InstanceTypeOfRunInstancesRequest = "h2r-triple-large32"
 	InstanceTypeOfRunInstancesRequestTripleLarge32 InstanceTypeOfRunInstancesRequest = "triple-large32"
 	InstanceTypeOfRunInstancesRequestH2TripleLarge48 InstanceTypeOfRunInstancesRequest = "h2-triple-large48"
+	InstanceTypeOfRunInstancesRequestH2rTripleLarge48 InstanceTypeOfRunInstancesRequest = "h2r-triple-large48"
 	InstanceTypeOfRunInstancesRequestTripleLarge48 InstanceTypeOfRunInstancesRequest = "triple-large48"
 	InstanceTypeOfRunInstancesRequestH2TripleLarge64 InstanceTypeOfRunInstancesRequest = "h2-triple-large64"
 	InstanceTypeOfRunInstancesRequestTripleLarge64 InstanceTypeOfRunInstancesRequest = "triple-large64"
@@ -2258,13 +2919,24 @@ const (
 	InstanceTypeOfRunInstancesRequestH2TripleLarge128 InstanceTypeOfRunInstancesRequest = "h2-triple-large128"
 	InstanceTypeOfRunInstancesRequestTripleLarge128 InstanceTypeOfRunInstancesRequest = "triple-large128"
 	InstanceTypeOfRunInstancesRequestH2QuadLarge64 InstanceTypeOfRunInstancesRequest = "h2-quad-large64"
+	InstanceTypeOfRunInstancesRequestH2rQuadLarge64 InstanceTypeOfRunInstancesRequest = "h2r-quad-large64"
 	InstanceTypeOfRunInstancesRequestQuadLarge64 InstanceTypeOfRunInstancesRequest = "quad-large64"
 	InstanceTypeOfRunInstancesRequestH2QuadLarge96 InstanceTypeOfRunInstancesRequest = "h2-quad-large96"
 	InstanceTypeOfRunInstancesRequestQuadLarge96 InstanceTypeOfRunInstancesRequest = "quad-large96"
 	InstanceTypeOfRunInstancesRequestH2QuadLarge128 InstanceTypeOfRunInstancesRequest = "h2-quad-large128"
 	InstanceTypeOfRunInstancesRequestQuadLarge128 InstanceTypeOfRunInstancesRequest = "quad-large128"
+	InstanceTypeOfRunInstancesRequestH2QuadLarge256 InstanceTypeOfRunInstancesRequest = "h2-quad-large256"
+	InstanceTypeOfRunInstancesRequestQuadLarge256 InstanceTypeOfRunInstancesRequest = "quad-large256"
 	InstanceTypeOfRunInstancesRequestH2SeptaLarge128 InstanceTypeOfRunInstancesRequest = "h2-septa-large128"
 	InstanceTypeOfRunInstancesRequestSeptaLarge128 InstanceTypeOfRunInstancesRequest = "septa-large128"
+	InstanceTypeOfRunInstancesRequestH2SeptaLarge256 InstanceTypeOfRunInstancesRequest = "h2-septa-large256"
+	InstanceTypeOfRunInstancesRequestSeptaLarge256 InstanceTypeOfRunInstancesRequest = "septa-large256"
+	InstanceTypeOfRunInstancesRequestH2OctaLarge256 InstanceTypeOfRunInstancesRequest = "h2-octa-large256"
+	InstanceTypeOfRunInstancesRequestOctaLarge256 InstanceTypeOfRunInstancesRequest = "octa-large256"
+	InstanceTypeOfRunInstancesRequestH2OctaLarge384 InstanceTypeOfRunInstancesRequest = "h2-octa-large384"
+	InstanceTypeOfRunInstancesRequestOctaLarge384 InstanceTypeOfRunInstancesRequest = "octa-large384"
+	InstanceTypeOfRunInstancesRequestH2OctaLarge512 InstanceTypeOfRunInstancesRequest = "h2-octa-large512"
+	InstanceTypeOfRunInstancesRequestOctaLarge512 InstanceTypeOfRunInstancesRequest = "octa-large512"
 )
 
 // Values returns all known values for InstanceTypeOfRunInstancesRequest. Note
@@ -2273,98 +2945,163 @@ const (
 // updates.
 func (InstanceTypeOfRunInstancesRequest) Values() []InstanceTypeOfRunInstancesRequest {
 	return []InstanceTypeOfRunInstancesRequest{
+		"e2-mini",
 		"e-mini",
 		"h2-mini",
 		"mini",
+		"c2-small",
+		"c2r-small",
 		"c-small",
+		"e2-small",
+		"e2r-small",
 		"e-small",
 		"h2-small",
+		"h2r-small",
 		"small",
+		"c2-small2",
+		"c2r-small2",
 		"c-small2",
+		"e2-small2",
+		"e2r-small2",
 		"e-small2",
 		"h2-small2",
+		"h2r-small2",
 		"small2",
+		"c2-small4",
 		"c-small4",
+		"e2-small4",
 		"e-small4",
 		"h2-small4",
+		"h2r-small4",
 		"small4",
+		"e2-small8",
 		"e-small8",
 		"h2-small8",
 		"small8",
+		"e2-small16",
 		"e-small16",
 		"h2-small16",
 		"small16",
+		"c2-medium",
+		"c2r-medium",
 		"c-medium",
+		"e2-medium",
+		"e2r-medium",
 		"e-medium",
 		"h2-medium",
+		"h2r-medium",
 		"medium",
+		"c2-medium4",
+		"c2r-medium4",
 		"c-medium4",
+		"e2-medium4",
+		"e2r-medium4",
 		"e-medium4",
 		"h2-medium4",
+		"h2r-medium4",
 		"medium4",
+		"c2-medium8",
 		"c-medium8",
+		"e2-medium8",
 		"e-medium8",
 		"h2-medium8",
+		"h2r-medium8",
 		"medium8",
+		"e2-medium16",
 		"e-medium16",
 		"h2-medium16",
 		"medium16",
+		"e2-medium24",
 		"e-medium24",
 		"h2-medium24",
 		"medium24",
+		"c2-large",
+		"c2r-large",
 		"c-large",
+		"e2-large",
+		"e2r-large",
 		"e-large",
 		"h2-large",
+		"h2r-large",
 		"large",
+		"c2-large8",
 		"c-large8",
+		"e2-large8",
+		"e2r-large8",
 		"e-large8",
 		"h2-large8",
+		"h2r-large8",
 		"large8",
+		"e2-large16",
 		"e-large16",
 		"h2-large16",
+		"h2r-large16",
 		"large16",
+		"e2-large24",
 		"e-large24",
 		"h2-large24",
 		"large24",
+		"e2-large32",
 		"e-large32",
 		"h2-large32",
 		"large32",
+		"e2-extra-large8",
+		"e2r-extra-large8",
 		"e-extra-large8",
 		"h2-extra-large8",
+		"h2r-extra-large8",
 		"extra-large8",
+		"e2-extra-large16",
 		"e-extra-large16",
 		"h2-extra-large16",
+		"h2r-extra-large16",
 		"extra-large16",
+		"e2-extra-large24",
 		"e-extra-large24",
 		"h2-extra-large24",
+		"h2r-extra-large24",
 		"extra-large24",
+		"e2-extra-large32",
 		"e-extra-large32",
 		"h2-extra-large32",
 		"extra-large32",
+		"e2-extra-large48",
 		"e-extra-large48",
 		"h2-extra-large48",
 		"extra-large48",
+		"e2-double-large16",
+		"e2r-double-large16",
 		"e-double-large16",
 		"h2-double-large16",
+		"h2r-double-large16",
 		"double-large16",
+		"e2-double-large24",
 		"e-double-large24",
 		"h2-double-large24",
+		"h2r-double-large24",
 		"double-large24",
+		"e2-double-large32",
 		"e-double-large32",
 		"h2-double-large32",
+		"h2r-double-large32",
 		"double-large32",
+		"e2-double-large48",
 		"e-double-large48",
 		"h2-double-large48",
 		"double-large48",
+		"e2-double-large64",
 		"e-double-large64",
 		"h2-double-large64",
 		"double-large64",
+		"e2-double-large96",
 		"e-double-large96",
 		"h2-double-large96",
 		"double-large96",
 		"h2-triple-large32",
+		"h2r-triple-large32",
 		"triple-large32",
 		"h2-triple-large48",
+		"h2r-triple-large48",
 		"triple-large48",
 		"h2-triple-large64",
 		"triple-large64",
@@ -2373,13 +3110,24 @@ func (InstanceTypeOfRunInstancesRequest) Values() []InstanceTypeOfRunInstancesRe
 		"h2-triple-large128",
 		"triple-large128",
 		"h2-quad-large64",
+		"h2r-quad-large64",
 		"quad-large64",
 		"h2-quad-large96",
 		"quad-large96",
 		"h2-quad-large128",
 		"quad-large128",
+		"h2-quad-large256",
+		"quad-large256",
 		"h2-septa-large128",
 		"septa-large128",
+		"h2-septa-large256",
+		"septa-large256",
+		"h2-octa-large256",
+		"octa-large256",
+		"h2-octa-large384",
+		"octa-large384",
+		"h2-octa-large512",
+		"octa-large512",
 	}
 }
 
