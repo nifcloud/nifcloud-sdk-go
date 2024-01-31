@@ -1,5 +1,14 @@
 # Changelog
 
+## [v1.23.0](https://github.com/nifcloud/nifcloud-sdk-go/tree/v1.23.0) (2024-01-25)
+
+[Full Changelog](https://github.com/nifcloud/nifcloud-sdk-go/compare/v1.22.1...v1.23.0)
+
+**Merged pull requests:**
+
+- Delete Hatoba integration test [\#65](https://github.com/nifcloud/nifcloud-sdk-go/pull/65) ([aokumasan](https://github.com/aokumasan))
+- Update generated codes [\#61](https://github.com/nifcloud/nifcloud-sdk-go/pull/61) ([aokumasan](https://github.com/aokumasan))
+
 ## [v1.22.1](https://github.com/nifcloud/nifcloud-sdk-go/tree/v1.22.1) (2023-12-18)
 
 [Full Changelog](https://github.com/nifcloud/nifcloud-sdk-go/compare/v1.22.0...v1.22.1)
