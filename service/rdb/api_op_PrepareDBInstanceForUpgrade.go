@@ -9,82 +9,40 @@ import (
 	"github.com/aws/smithy-go/middleware"
 	smithyhttp "github.com/aws/smithy-go/transport/http"
 	"github.com/nifcloud/nifcloud-sdk-go/service/rdb/types"
-	"time"
 )
 
-func (c *Client) RestoreDBInstanceToPointInTime(ctx context.Context, params *RestoreDBInstanceToPointInTimeInput, optFns ...func(*Options)) (*RestoreDBInstanceToPointInTimeOutput, error) {
+func (c *Client) PrepareDBInstanceForUpgrade(ctx context.Context, params *PrepareDBInstanceForUpgradeInput, optFns ...func(*Options)) (*PrepareDBInstanceForUpgradeOutput, error) {
 	if params == nil {
-		params = &RestoreDBInstanceToPointInTimeInput{}
+		params = &PrepareDBInstanceForUpgradeInput{}
 	}
 
-	result, metadata, err := c.invokeOperation(ctx, "RestoreDBInstanceToPointInTime", params, optFns, c.addOperationRestoreDBInstanceToPointInTimeMiddlewares)
+	result, metadata, err := c.invokeOperation(ctx, "PrepareDBInstanceForUpgrade", params, optFns, c.addOperationPrepareDBInstanceForUpgradeMiddlewares)
 	if err != nil {
 		return nil, err
 	}
 
-	out := result.(*RestoreDBInstanceToPointInTimeOutput)
+	out := result.(*PrepareDBInstanceForUpgradeOutput)
 	out.ResultMetadata = metadata
 	return out, nil
 }
 
-type RestoreDBInstanceToPointInTimeInput struct {
+type PrepareDBInstanceForUpgradeInput struct {
 
 	// This member is required.
-	SourceDBInstanceIdentifier *string
+	DBInstanceIdentifier *string
 
-	// This member is required.
-	TargetDBInstanceIdentifier *string
+	TemporaryNiftyMasterPrivateAddress *string
 
-	AccountingType types.AccountingTypeOfRestoreDBInstanceToPointInTimeRequest
+	TemporaryNiftyReadReplicaPrivateAddresses *types.RequestTemporaryNiftyReadReplicaPrivateAddresses
 
-	AutoMinorVersionUpgrade *bool
+	TemporaryNiftySlavePrivateAddress *string
 
-	AvailabilityZone *string
-
-	DBInstanceClass types.DBInstanceClassOfRestoreDBInstanceToPointInTimeRequest
-
-	DBName *string
-
-	DBSubnetGroupName *string
-
-	DowngradeRestore *bool
-
-	Engine *string
-
-	Iops *int32
-
-	LicenseModel *string
-
-	MultiAZ *bool
-
-	NiftyDBParameterGroupName *string
-
-	NiftyDBSecurityGroups []string
-
-	NiftyMasterPrivateAddress *string
-
-	NiftyNetworkId *string
-
-	NiftySlavePrivateAddress *string
-
-	NiftyStorageType *int32
-
-	NiftyVirtualPrivateAddress *string
-
-	OptionGroupName *string
-
-	Port *int32
-
-	PubliclyAccessible *bool
-
-	RestoreTime *time.Time
-
-	UseLatestRestorableTime *bool
+	TemporaryNiftyVirtualPrivateAddress *string
 
 	noSmithyDocumentSerde
 }
 
-type RestoreDBInstanceToPointInTimeOutput struct {
+type PrepareDBInstanceForUpgradeOutput struct {
 	DBInstance *types.DBInstance
 
 	ResponseMetadata *types.ResponseMetadata
@@ -95,12 +53,12 @@ type RestoreDBInstanceToPointInTimeOutput struct {
 	noSmithyDocumentSerde
 }
 
-func (c *Client) addOperationRestoreDBInstanceToPointInTimeMiddlewares(stack *middleware.Stack, options Options) (err error) {
-	err = stack.Serialize.Add(&awsAwsquery_serializeOpRestoreDBInstanceToPointInTime{}, middleware.After)
+func (c *Client) addOperationPrepareDBInstanceForUpgradeMiddlewares(stack *middleware.Stack, options Options) (err error) {
+	err = stack.Serialize.Add(&awsAwsquery_serializeOpPrepareDBInstanceForUpgrade{}, middleware.After)
 	if err != nil {
 		return err
 	}
-	err = stack.Deserialize.Add(&awsAwsquery_deserializeOpRestoreDBInstanceToPointInTime{}, middleware.After)
+	err = stack.Deserialize.Add(&awsAwsquery_deserializeOpPrepareDBInstanceForUpgrade{}, middleware.After)
 	if err != nil {
 		return err
 	}
@@ -140,10 +98,10 @@ func (c *Client) addOperationRestoreDBInstanceToPointInTimeMiddlewares(stack *mi
 	if err = smithyhttp.AddCloseResponseBodyMiddleware(stack); err != nil {
 		return err
 	}
-	if err = addOpRestoreDBInstanceToPointInTimeValidationMiddleware(stack); err != nil {
+	if err = addOpPrepareDBInstanceForUpgradeValidationMiddleware(stack); err != nil {
 		return err
 	}
-	if err = stack.Initialize.Add(newServiceMetadataMiddleware_opRestoreDBInstanceToPointInTime(options.Region), middleware.Before); err != nil {
+	if err = stack.Initialize.Add(newServiceMetadataMiddleware_opPrepareDBInstanceForUpgrade(options.Region), middleware.Before); err != nil {
 		return err
 	}
 	if err = addRequestIDRetrieverMiddleware(stack); err != nil {
@@ -158,11 +116,11 @@ func (c *Client) addOperationRestoreDBInstanceToPointInTimeMiddlewares(stack *mi
 	return nil
 }
 
-func newServiceMetadataMiddleware_opRestoreDBInstanceToPointInTime(region string) *awsmiddleware.RegisterServiceMetadata {
+func newServiceMetadataMiddleware_opPrepareDBInstanceForUpgrade(region string) *awsmiddleware.RegisterServiceMetadata {
 	return &awsmiddleware.RegisterServiceMetadata{
 		Region:        region,
 		ServiceID:     ServiceID,
 		SigningName:   "rdb",
-		OperationName: "RestoreDBInstanceToPointInTime",
+		OperationName: "PrepareDBInstanceForUpgrade",
 	}
 }

@@ -393,6 +393,8 @@ structure DBInstance {
     DBInstanceIdentifier: String,
     @xmlName("DBInstanceStatus")
     DBInstanceStatus: String,
+    @xmlName("DBInstanceUpgradeStatus")
+    DBInstanceUpgradeStatus: String,
     @xmlName("DBName")
     DBName: String,
     @xmlName("DBParameterGroups")
@@ -975,6 +977,8 @@ structure DBInstances {
     DBInstanceIdentifier: String,
     @xmlName("DBInstanceStatus")
     DBInstanceStatus: String,
+    @xmlName("DBInstanceUpgradeStatus")
+    DBInstanceUpgradeStatus: String,
     @xmlName("DBName")
     DBName: String,
     @xmlName("DBParameterGroups")
@@ -2287,6 +2291,8 @@ structure RestoreDBInstanceFromDBSnapshotRequest {
     DBSnapshotIdentifier: String,
     @xmlName("DBSubnetGroupName")
     DBSubnetGroupName: String,
+    @xmlName("DowngradeRestore")
+    DowngradeRestore: Boolean,
     @xmlName("Engine")
     Engine: String,
     @xmlName("Iops")
@@ -2601,6 +2607,8 @@ structure RestoreDBInstanceToPointInTimeRequest {
     DBName: String,
     @xmlName("DBSubnetGroupName")
     DBSubnetGroupName: String,
+    @xmlName("DowngradeRestore")
+    DowngradeRestore: Boolean,
     @xmlName("Engine")
     Engine: String,
     @xmlName("Iops")
@@ -3735,6 +3743,66 @@ structure ResetExternalMasterResult {
     ResponseMetadata: ResponseMetadata,
 }
 
+list ListOfRequestMenber {
+    member: String,
+}
+
+structure RequestTemporaryNiftyReadReplicaPrivateAddresses {
+    @xmlName("menber")
+    ListOfRequestMenber: ListOfRequestMenber,
+}
+
+structure PrepareDBInstanceForUpgradeRequest {
+    @required
+    @xmlName("DBInstanceIdentifier")
+    DBInstanceIdentifier: String,
+    @xmlName("TemporaryNiftyMasterPrivateAddress")
+    TemporaryNiftyMasterPrivateAddress: String,
+    @xmlName("TemporaryNiftyReadReplicaPrivateAddresses")
+    TemporaryNiftyReadReplicaPrivateAddresses: RequestTemporaryNiftyReadReplicaPrivateAddresses,
+    @xmlName("TemporaryNiftySlavePrivateAddress")
+    TemporaryNiftySlavePrivateAddress: String,
+    @xmlName("TemporaryNiftyVirtualPrivateAddress")
+    TemporaryNiftyVirtualPrivateAddress: String,
+}
+
+structure PrepareDBInstanceForUpgradeResult {
+    @xmlName("DBInstance")
+    DBInstance: DBInstance,
+    @xmlName("ResponseMetadata")
+    ResponseMetadata: ResponseMetadata,
+}
+
+structure CancelDBInstanceForUpgradeRequest {
+    @required
+    @xmlName("DBInstanceIdentifier")
+    DBInstanceIdentifier: String,
+}
+
+structure CancelDBInstanceForUpgradeResult {
+    @xmlName("DBInstance")
+    DBInstance: DBInstance,
+    @xmlName("ResponseMetadata")
+    ResponseMetadata: ResponseMetadata,
+}
+
+structure UpgradeDBInstanceRequest {
+    @required
+    @xmlName("DBInstanceIdentifier")
+    DBInstanceIdentifier: String,
+    @xmlName("PreUpgradeDBSnapshotIdentifier")
+    PreUpgradeDBSnapshotIdentifier: String,
+    @xmlName("SkipPreUpgradeSnapshot")
+    SkipPreUpgradeSnapshot: Boolean,
+}
+
+structure UpgradeDBInstanceResult {
+    @xmlName("DBInstance")
+    DBInstance: DBInstance,
+    @xmlName("ResponseMetadata")
+    ResponseMetadata: ResponseMetadata,
+}
+
 @awsQuery
 @sigv4(name: "rdb")
 @xmlNamespace(uri: "https://rdb.api.nifcloud.com/")
@@ -3790,6 +3858,9 @@ service RDB {
         StartReplication,
         StopReplication,
         ResetExternalMaster,
+        PrepareDBInstanceForUpgrade,
+        CancelDBInstanceForUpgrade,
+        UpgradeDBInstance,
     ],
 }
 
@@ -4273,4 +4344,19 @@ operation StopReplication {
 operation ResetExternalMaster {
     input: ResetExternalMasterRequest,
     output: ResetExternalMasterResult,
+}
+
+operation PrepareDBInstanceForUpgrade {
+    input: PrepareDBInstanceForUpgradeRequest,
+    output: PrepareDBInstanceForUpgradeResult,
+}
+
+operation CancelDBInstanceForUpgrade {
+    input: CancelDBInstanceForUpgradeRequest,
+    output: CancelDBInstanceForUpgradeResult,
+}
+
+operation UpgradeDBInstance {
+    input: UpgradeDBInstanceRequest,
+    output: UpgradeDBInstanceResult,
 }
