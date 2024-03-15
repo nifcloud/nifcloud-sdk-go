@@ -88,6 +88,8 @@ type DBInstance struct {
 	
 	DBInstanceStatus *string
 	
+	DBInstanceUpgradeStatus *string
+	
 	DBName *string
 	
 	DBParameterGroups []DBParameterGroups
@@ -168,6 +170,8 @@ type DBInstances struct {
 	DBInstanceIdentifier *string
 	
 	DBInstanceStatus *string
+	
+	DBInstanceUpgradeStatus *string
 	
 	DBName *string
 	
@@ -628,6 +632,13 @@ type RequestParametersOfResetDBParameterGroup struct {
 	ApplyMethod ApplyMethodOfParametersForResetDBParameterGroup
 	
 	ParameterName *string
+	
+	noSmithyDocumentSerde
+}
+
+type RequestTemporaryNiftyReadReplicaPrivateAddresses struct {
+	
+	ListOfRequestMenber []string
 	
 	noSmithyDocumentSerde
 }

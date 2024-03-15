@@ -51,6 +51,26 @@ func (m *validateOpAuthorizeDBSecurityGroupIngress) HandleInitialize(ctx context
 	return next.HandleInitialize(ctx, in)
 }
 
+type validateOpCancelDBInstanceForUpgrade struct {
+}
+
+func (*validateOpCancelDBInstanceForUpgrade) ID() string {
+	return "OperationInputValidation"
+}
+
+func (m *validateOpCancelDBInstanceForUpgrade) HandleInitialize(ctx context.Context, in middleware.InitializeInput, next middleware.InitializeHandler) (
+	out middleware.InitializeOutput, metadata middleware.Metadata, err error,
+) {
+	input, ok := in.Parameters.(*CancelDBInstanceForUpgradeInput)
+	if !ok {
+		return out, metadata, fmt.Errorf("unknown input parameters type %T", in.Parameters)
+	}
+	if err := validateOpCancelDBInstanceForUpgradeInput(input); err != nil {
+		return out, metadata, err
+	}
+	return next.HandleInitialize(ctx, in)
+}
+
 type validateOpCopyDBSnapshot struct {
 }
 
@@ -471,6 +491,26 @@ func (m *validateOpNiftyGetMetricStatistics) HandleInitialize(ctx context.Contex
 	return next.HandleInitialize(ctx, in)
 }
 
+type validateOpPrepareDBInstanceForUpgrade struct {
+}
+
+func (*validateOpPrepareDBInstanceForUpgrade) ID() string {
+	return "OperationInputValidation"
+}
+
+func (m *validateOpPrepareDBInstanceForUpgrade) HandleInitialize(ctx context.Context, in middleware.InitializeInput, next middleware.InitializeHandler) (
+	out middleware.InitializeOutput, metadata middleware.Metadata, err error,
+) {
+	input, ok := in.Parameters.(*PrepareDBInstanceForUpgradeInput)
+	if !ok {
+		return out, metadata, fmt.Errorf("unknown input parameters type %T", in.Parameters)
+	}
+	if err := validateOpPrepareDBInstanceForUpgradeInput(input); err != nil {
+		return out, metadata, err
+	}
+	return next.HandleInitialize(ctx, in)
+}
+
 type validateOpRebootDBInstance struct {
 }
 
@@ -691,12 +731,36 @@ func (m *validateOpUpgradeDBEngineVersion) HandleInitialize(ctx context.Context,
 	return next.HandleInitialize(ctx, in)
 }
 
+type validateOpUpgradeDBInstance struct {
+}
+
+func (*validateOpUpgradeDBInstance) ID() string {
+	return "OperationInputValidation"
+}
+
+func (m *validateOpUpgradeDBInstance) HandleInitialize(ctx context.Context, in middleware.InitializeInput, next middleware.InitializeHandler) (
+	out middleware.InitializeOutput, metadata middleware.Metadata, err error,
+) {
+	input, ok := in.Parameters.(*UpgradeDBInstanceInput)
+	if !ok {
+		return out, metadata, fmt.Errorf("unknown input parameters type %T", in.Parameters)
+	}
+	if err := validateOpUpgradeDBInstanceInput(input); err != nil {
+		return out, metadata, err
+	}
+	return next.HandleInitialize(ctx, in)
+}
+
 func addOpAddSourceIdentifierToSubscriptionValidationMiddleware(stack *middleware.Stack) error {
 	return stack.Initialize.Add(&validateOpAddSourceIdentifierToSubscription{}, middleware.After)
 }
 
 func addOpAuthorizeDBSecurityGroupIngressValidationMiddleware(stack *middleware.Stack) error {
 	return stack.Initialize.Add(&validateOpAuthorizeDBSecurityGroupIngress{}, middleware.After)
+}
+
+func addOpCancelDBInstanceForUpgradeValidationMiddleware(stack *middleware.Stack) error {
+	return stack.Initialize.Add(&validateOpCancelDBInstanceForUpgrade{}, middleware.After)
 }
 
 func addOpCopyDBSnapshotValidationMiddleware(stack *middleware.Stack) error {
@@ -783,6 +847,10 @@ func addOpNiftyGetMetricStatisticsValidationMiddleware(stack *middleware.Stack) 
 	return stack.Initialize.Add(&validateOpNiftyGetMetricStatistics{}, middleware.After)
 }
 
+func addOpPrepareDBInstanceForUpgradeValidationMiddleware(stack *middleware.Stack) error {
+	return stack.Initialize.Add(&validateOpPrepareDBInstanceForUpgrade{}, middleware.After)
+}
+
 func addOpRebootDBInstanceValidationMiddleware(stack *middleware.Stack) error {
 	return stack.Initialize.Add(&validateOpRebootDBInstance{}, middleware.After)
 }
@@ -825,6 +893,10 @@ func addOpStopReplicationValidationMiddleware(stack *middleware.Stack) error {
 
 func addOpUpgradeDBEngineVersionValidationMiddleware(stack *middleware.Stack) error {
 	return stack.Initialize.Add(&validateOpUpgradeDBEngineVersion{}, middleware.After)
+}
+
+func addOpUpgradeDBInstanceValidationMiddleware(stack *middleware.Stack) error {
+	return stack.Initialize.Add(&validateOpUpgradeDBInstance{}, middleware.After)
 }
 
 func validateListOfRequestDimensions(v []types.RequestDimensions) error {
@@ -925,6 +997,21 @@ func validateOpAuthorizeDBSecurityGroupIngressInput(v *AuthorizeDBSecurityGroupI
 	invalidParams := smithy.InvalidParamsError{Context: "AuthorizeDBSecurityGroupIngressInput"}
 	if v.DBSecurityGroupName == nil {
 	invalidParams.Add(smithy.NewErrParamRequired("DBSecurityGroupName"))
+	}
+	if invalidParams.Len() > 0 {
+	return invalidParams
+	} else {
+	return nil
+	}
+}
+
+func validateOpCancelDBInstanceForUpgradeInput(v *CancelDBInstanceForUpgradeInput) error {
+	if v == nil {
+		return nil
+	}
+	invalidParams := smithy.InvalidParamsError{Context: "CancelDBInstanceForUpgradeInput"}
+	if v.DBInstanceIdentifier == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("DBInstanceIdentifier"))
 	}
 	if invalidParams.Len() > 0 {
 	return invalidParams
@@ -1301,6 +1388,21 @@ func validateOpNiftyGetMetricStatisticsInput(v *NiftyGetMetricStatisticsInput) e
 	}
 }
 
+func validateOpPrepareDBInstanceForUpgradeInput(v *PrepareDBInstanceForUpgradeInput) error {
+	if v == nil {
+		return nil
+	}
+	invalidParams := smithy.InvalidParamsError{Context: "PrepareDBInstanceForUpgradeInput"}
+	if v.DBInstanceIdentifier == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("DBInstanceIdentifier"))
+	}
+	if invalidParams.Len() > 0 {
+	return invalidParams
+	} else {
+	return nil
+	}
+}
+
 func validateOpRebootDBInstanceInput(v *RebootDBInstanceInput) error {
 	if v == nil {
 		return nil
@@ -1488,6 +1590,21 @@ func validateOpUpgradeDBEngineVersionInput(v *UpgradeDBEngineVersionInput) error
 	}
 	if v.EngineVersion == nil {
 	invalidParams.Add(smithy.NewErrParamRequired("EngineVersion"))
+	}
+	if invalidParams.Len() > 0 {
+	return invalidParams
+	} else {
+	return nil
+	}
+}
+
+func validateOpUpgradeDBInstanceInput(v *UpgradeDBInstanceInput) error {
+	if v == nil {
+		return nil
+	}
+	invalidParams := smithy.InvalidParamsError{Context: "UpgradeDBInstanceInput"}
+	if v.DBInstanceIdentifier == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("DBInstanceIdentifier"))
 	}
 	if invalidParams.Len() > 0 {
 	return invalidParams

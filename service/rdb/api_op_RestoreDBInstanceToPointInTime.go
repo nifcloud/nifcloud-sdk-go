@@ -47,6 +47,8 @@ type RestoreDBInstanceToPointInTimeInput struct {
 
 	DBSubnetGroupName *string
 
+	DowngradeRestore *bool
+
 	Engine *string
 
 	Iops *int32

@@ -145,6 +145,70 @@ func (m *awsAwsquery_serializeOpAuthorizeDBSecurityGroupIngress) HandleSerialize
 	return next.HandleSerialize(ctx, in)
 }
 
+type awsAwsquery_serializeOpCancelDBInstanceForUpgrade struct {
+}
+
+func (*awsAwsquery_serializeOpCancelDBInstanceForUpgrade) ID() string {
+	return "OperationSerializer"
+}
+
+func (m *awsAwsquery_serializeOpCancelDBInstanceForUpgrade) HandleSerialize(ctx context.Context, in middleware.SerializeInput, next middleware.SerializeHandler) (
+	out middleware.SerializeOutput, metadata middleware.Metadata, err error,
+) {
+	request, ok := in.Request.(*smithyhttp.Request)
+	if !ok {
+		return out, metadata, &smithy.SerializationError{Err: fmt.Errorf("unknown transport type %T", in.Request)}
+	}
+
+	input, ok := in.Parameters.(*CancelDBInstanceForUpgradeInput)
+	_ = input
+	if !ok {
+		return out, metadata, &smithy.SerializationError{Err: fmt.Errorf("unknown input parameters type %T", in.Parameters)}
+	}
+
+	operationPath := "/"
+	if len(request.Request.URL.Path) == 0 {
+		request.Request.URL.Path = operationPath
+	} else {
+		request.Request.URL.Path = path.Join(request.Request.URL.Path, operationPath)
+		if request.Request.URL.Path != "/" && operationPath[len(operationPath)-1] == '/' {
+			request.Request.URL.Path += "/"
+		}
+	}
+	request.Request.Method = "POST"
+	httpBindingEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	if err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+	httpBindingEncoder.SetHeader("Content-Type").String("application/x-www-form-urlencoded")
+
+	bodyWriter := bytes.NewBuffer(nil)
+	bodyEncoder := query.NewEncoder(bodyWriter)
+	body := bodyEncoder.Object()
+	body.Key("Action").String("CancelDBInstanceForUpgrade")
+	body.Key("Version").String("2013-05-15N2013-12-16")
+
+	if err := awsAwsquery_serializeOpDocumentCancelDBInstanceForUpgradeInput(input, bodyEncoder.Value); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	err = bodyEncoder.Encode()
+	if err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	if request, err = request.SetStream(bytes.NewReader(bodyWriter.Bytes())); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	if request.Request, err = httpBindingEncoder.Encode(request.Request); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+	in.Request = request
+
+	return next.HandleSerialize(ctx, in)
+}
+
 type awsAwsquery_serializeOpCopyDBSnapshot struct {
 }
 
@@ -2129,6 +2193,70 @@ func (m *awsAwsquery_serializeOpNiftyGetMetricStatistics) HandleSerialize(ctx co
 	return next.HandleSerialize(ctx, in)
 }
 
+type awsAwsquery_serializeOpPrepareDBInstanceForUpgrade struct {
+}
+
+func (*awsAwsquery_serializeOpPrepareDBInstanceForUpgrade) ID() string {
+	return "OperationSerializer"
+}
+
+func (m *awsAwsquery_serializeOpPrepareDBInstanceForUpgrade) HandleSerialize(ctx context.Context, in middleware.SerializeInput, next middleware.SerializeHandler) (
+	out middleware.SerializeOutput, metadata middleware.Metadata, err error,
+) {
+	request, ok := in.Request.(*smithyhttp.Request)
+	if !ok {
+		return out, metadata, &smithy.SerializationError{Err: fmt.Errorf("unknown transport type %T", in.Request)}
+	}
+
+	input, ok := in.Parameters.(*PrepareDBInstanceForUpgradeInput)
+	_ = input
+	if !ok {
+		return out, metadata, &smithy.SerializationError{Err: fmt.Errorf("unknown input parameters type %T", in.Parameters)}
+	}
+
+	operationPath := "/"
+	if len(request.Request.URL.Path) == 0 {
+		request.Request.URL.Path = operationPath
+	} else {
+		request.Request.URL.Path = path.Join(request.Request.URL.Path, operationPath)
+		if request.Request.URL.Path != "/" && operationPath[len(operationPath)-1] == '/' {
+			request.Request.URL.Path += "/"
+		}
+	}
+	request.Request.Method = "POST"
+	httpBindingEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	if err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+	httpBindingEncoder.SetHeader("Content-Type").String("application/x-www-form-urlencoded")
+
+	bodyWriter := bytes.NewBuffer(nil)
+	bodyEncoder := query.NewEncoder(bodyWriter)
+	body := bodyEncoder.Object()
+	body.Key("Action").String("PrepareDBInstanceForUpgrade")
+	body.Key("Version").String("2013-05-15N2013-12-16")
+
+	if err := awsAwsquery_serializeOpDocumentPrepareDBInstanceForUpgradeInput(input, bodyEncoder.Value); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	err = bodyEncoder.Encode()
+	if err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	if request, err = request.SetStream(bytes.NewReader(bodyWriter.Bytes())); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	if request.Request, err = httpBindingEncoder.Encode(request.Request); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+	in.Request = request
+
+	return next.HandleSerialize(ctx, in)
+}
+
 type awsAwsquery_serializeOpRebootDBInstance struct {
 }
 
@@ -2832,6 +2960,70 @@ func (m *awsAwsquery_serializeOpUpgradeDBEngineVersion) HandleSerialize(ctx cont
 
 	return next.HandleSerialize(ctx, in)
 }
+
+type awsAwsquery_serializeOpUpgradeDBInstance struct {
+}
+
+func (*awsAwsquery_serializeOpUpgradeDBInstance) ID() string {
+	return "OperationSerializer"
+}
+
+func (m *awsAwsquery_serializeOpUpgradeDBInstance) HandleSerialize(ctx context.Context, in middleware.SerializeInput, next middleware.SerializeHandler) (
+	out middleware.SerializeOutput, metadata middleware.Metadata, err error,
+) {
+	request, ok := in.Request.(*smithyhttp.Request)
+	if !ok {
+		return out, metadata, &smithy.SerializationError{Err: fmt.Errorf("unknown transport type %T", in.Request)}
+	}
+
+	input, ok := in.Parameters.(*UpgradeDBInstanceInput)
+	_ = input
+	if !ok {
+		return out, metadata, &smithy.SerializationError{Err: fmt.Errorf("unknown input parameters type %T", in.Parameters)}
+	}
+
+	operationPath := "/"
+	if len(request.Request.URL.Path) == 0 {
+		request.Request.URL.Path = operationPath
+	} else {
+		request.Request.URL.Path = path.Join(request.Request.URL.Path, operationPath)
+		if request.Request.URL.Path != "/" && operationPath[len(operationPath)-1] == '/' {
+			request.Request.URL.Path += "/"
+		}
+	}
+	request.Request.Method = "POST"
+	httpBindingEncoder, err := httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	if err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+	httpBindingEncoder.SetHeader("Content-Type").String("application/x-www-form-urlencoded")
+
+	bodyWriter := bytes.NewBuffer(nil)
+	bodyEncoder := query.NewEncoder(bodyWriter)
+	body := bodyEncoder.Object()
+	body.Key("Action").String("UpgradeDBInstance")
+	body.Key("Version").String("2013-05-15N2013-12-16")
+
+	if err := awsAwsquery_serializeOpDocumentUpgradeDBInstanceInput(input, bodyEncoder.Value); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	err = bodyEncoder.Encode()
+	if err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	if request, err = request.SetStream(bytes.NewReader(bodyWriter.Bytes())); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	if request.Request, err = httpBindingEncoder.Encode(request.Request); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+	in.Request = request
+
+	return next.HandleSerialize(ctx, in)
+}
 func awsAwsquery_serializeDocumentListOfRequestDBSecurityGroups(v []string, value query.Value) error {
 	array := value.Array("member")
 
@@ -2877,6 +3069,16 @@ func awsAwsquery_serializeDocumentListOfRequestFilter(v []types.RequestFilter, v
 }
 
 func awsAwsquery_serializeDocumentListOfRequestFilters(v []string, value query.Value) error {
+	array := value.Array("member")
+
+	for i := range v {
+		av := array.Value()
+		av.String(v[i])
+	}
+	return nil
+}
+
+func awsAwsquery_serializeDocumentListOfRequestMenber(v []string, value query.Value) error {
 	array := value.Array("member")
 
 	for i := range v {
@@ -3047,6 +3249,20 @@ func awsAwsquery_serializeDocumentRequestParametersOfResetDBParameterGroup(v *ty
 	return nil
 }
 
+func awsAwsquery_serializeDocumentRequestTemporaryNiftyReadReplicaPrivateAddresses(v *types.RequestTemporaryNiftyReadReplicaPrivateAddresses, value query.Value) error {
+	object := value.Object()
+	_ = object
+
+	if v.ListOfRequestMenber != nil {
+		objectKey := object.Key("menber")
+		if err := awsAwsquery_serializeDocumentListOfRequestMenber(v.ListOfRequestMenber, objectKey); err != nil {
+			return err
+		}
+	}
+
+	return nil
+}
+
 func awsAwsquery_serializeOpDocumentAddSourceIdentifierToSubscriptionInput(v *AddSourceIdentifierToSubscriptionInput, value query.Value) error {
 	object := value.Object()
 	_ = object
@@ -3091,6 +3307,18 @@ func awsAwsquery_serializeOpDocumentAuthorizeDBSecurityGroupIngressInput(v *Auth
 	if v.EC2SecurityGroupOwnerId != nil {
 		objectKey := object.Key("EC2SecurityGroupOwnerId")
 		objectKey.String(*v.EC2SecurityGroupOwnerId)
+	}
+
+	return nil
+}
+
+func awsAwsquery_serializeOpDocumentCancelDBInstanceForUpgradeInput(v *CancelDBInstanceForUpgradeInput, value query.Value) error {
+	object := value.Object()
+	_ = object
+
+	if v.DBInstanceIdentifier != nil {
+		objectKey := object.Key("DBInstanceIdentifier")
+		objectKey.String(*v.DBInstanceIdentifier)
 	}
 
 	return nil
@@ -4306,6 +4534,40 @@ func awsAwsquery_serializeOpDocumentNiftyGetMetricStatisticsInput(v *NiftyGetMet
 	return nil
 }
 
+func awsAwsquery_serializeOpDocumentPrepareDBInstanceForUpgradeInput(v *PrepareDBInstanceForUpgradeInput, value query.Value) error {
+	object := value.Object()
+	_ = object
+
+	if v.DBInstanceIdentifier != nil {
+		objectKey := object.Key("DBInstanceIdentifier")
+		objectKey.String(*v.DBInstanceIdentifier)
+	}
+
+	if v.TemporaryNiftyMasterPrivateAddress != nil {
+		objectKey := object.Key("TemporaryNiftyMasterPrivateAddress")
+		objectKey.String(*v.TemporaryNiftyMasterPrivateAddress)
+	}
+
+	if v.TemporaryNiftyReadReplicaPrivateAddresses != nil {
+		objectKey := object.Key("TemporaryNiftyReadReplicaPrivateAddresses")
+		if err := awsAwsquery_serializeDocumentRequestTemporaryNiftyReadReplicaPrivateAddresses(v.TemporaryNiftyReadReplicaPrivateAddresses, objectKey); err != nil {
+			return err
+		}
+	}
+
+	if v.TemporaryNiftySlavePrivateAddress != nil {
+		objectKey := object.Key("TemporaryNiftySlavePrivateAddress")
+		objectKey.String(*v.TemporaryNiftySlavePrivateAddress)
+	}
+
+	if v.TemporaryNiftyVirtualPrivateAddress != nil {
+		objectKey := object.Key("TemporaryNiftyVirtualPrivateAddress")
+		objectKey.String(*v.TemporaryNiftyVirtualPrivateAddress)
+	}
+
+	return nil
+}
+
 func awsAwsquery_serializeOpDocumentRebootDBInstanceInput(v *RebootDBInstanceInput, value query.Value) error {
 	object := value.Object()
 	_ = object
@@ -4425,6 +4687,11 @@ func awsAwsquery_serializeOpDocumentRestoreDBInstanceFromDBSnapshotInput(v *Rest
 		objectKey.String(*v.DBSubnetGroupName)
 	}
 
+	if v.DowngradeRestore != nil {
+		objectKey := object.Key("DowngradeRestore")
+		objectKey.Boolean(*v.DowngradeRestore)
+	}
+
 	if v.Engine != nil {
 		objectKey := object.Key("Engine")
 		objectKey.String(*v.Engine)
@@ -4532,6 +4799,11 @@ func awsAwsquery_serializeOpDocumentRestoreDBInstanceToPointInTimeInput(v *Resto
 	if v.DBSubnetGroupName != nil {
 		objectKey := object.Key("DBSubnetGroupName")
 		objectKey.String(*v.DBSubnetGroupName)
+	}
+
+	if v.DowngradeRestore != nil {
+		objectKey := object.Key("DowngradeRestore")
+		objectKey.Boolean(*v.DowngradeRestore)
 	}
 
 	if v.Engine != nil {
@@ -4749,6 +5021,28 @@ func awsAwsquery_serializeOpDocumentUpgradeDBEngineVersionInput(v *UpgradeDBEngi
 	if v.EngineVersion != nil {
 		objectKey := object.Key("EngineVersion")
 		objectKey.String(*v.EngineVersion)
+	}
+
+	if v.PreUpgradeDBSnapshotIdentifier != nil {
+		objectKey := object.Key("PreUpgradeDBSnapshotIdentifier")
+		objectKey.String(*v.PreUpgradeDBSnapshotIdentifier)
+	}
+
+	if v.SkipPreUpgradeSnapshot != nil {
+		objectKey := object.Key("SkipPreUpgradeSnapshot")
+		objectKey.Boolean(*v.SkipPreUpgradeSnapshot)
+	}
+
+	return nil
+}
+
+func awsAwsquery_serializeOpDocumentUpgradeDBInstanceInput(v *UpgradeDBInstanceInput, value query.Value) error {
+	object := value.Object()
+	_ = object
+
+	if v.DBInstanceIdentifier != nil {
+		objectKey := object.Key("DBInstanceIdentifier")
+		objectKey.String(*v.DBInstanceIdentifier)
 	}
 
 	if v.PreUpgradeDBSnapshotIdentifier != nil {
