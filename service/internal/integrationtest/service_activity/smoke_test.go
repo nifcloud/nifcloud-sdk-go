@@ -16,7 +16,8 @@ import (
 )
 
 func TestInteg_00_DescribeServiceStatuses(t *testing.T) {
-	ctx, cancelFn := context.WithTimeout(context.Background(), 5*time.Second)
+	// Set longer timeout seconds as DescribeServiceStatuses takes around 10 seconds.
+	ctx, cancelFn := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancelFn()
 
 	cfg := integrationtest.LoadConfigWithDefaultRegion("jp-east-1")
@@ -30,7 +31,8 @@ func TestInteg_00_DescribeServiceStatuses(t *testing.T) {
 }
 
 func TestInteg_01_DescribeEventCalendar(t *testing.T) {
-	ctx, cancelFn := context.WithTimeout(context.Background(), 5*time.Second)
+	// Set longer timeout seconds as DescribeServiceStatuses takes around 15 seconds.
+	ctx, cancelFn := context.WithTimeout(context.Background(), 15*time.Second)
 	defer cancelFn()
 
 	cfg := integrationtest.LoadConfigWithDefaultRegion("jp-east-1")
