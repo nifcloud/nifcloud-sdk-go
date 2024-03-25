@@ -1,0 +1,43 @@
+{
+    "dependencies": {
+        "github.com/aws/aws-sdk-go-v2": "v1.4.0",
+        "github.com/aws/aws-sdk-go-v2/internal/configsources": "v0.0.0-00010101000000-000000000000",
+        "github.com/aws/aws-sdk-go-v2/internal/endpoints/v2": "v2.0.0-00010101000000-000000000000",
+        "github.com/aws/smithy-go": "v1.4.0"
+    },
+    "files": [
+        "api_client.go",
+        "api_client_test.go",
+        "api_op_CreateRunner.go",
+        "api_op_CreateRunnerParameterGroup.go",
+        "api_op_DeleteRunner.go",
+        "api_op_DeleteRunnerParameterGroup.go",
+        "api_op_GetRunner.go",
+        "api_op_GetRunnerParameterGroup.go",
+        "api_op_ListRunnerParameterGroups.go",
+        "api_op_ListRunnerRegistrations.go",
+        "api_op_ListRunners.go",
+        "api_op_ModifyRunnerInstanceType.go",
+        "api_op_RegisterRunner.go",
+        "api_op_UnregisterRunner.go",
+        "api_op_UpdateRunner.go",
+        "api_op_UpdateRunnerParameter.go",
+        "api_op_UpdateRunnerParameterGroup.go",
+        "api_op_UpdateRunnerRegistration.go",
+        "deserializers.go",
+        "doc.go",
+        "endpoints.go",
+        "endpoints_test.go",
+        "generated.json",
+        "internal/endpoints/endpoints.go",
+        "internal/endpoints/endpoints_test.go",
+        "protocol_test.go",
+        "serializers.go",
+        "types/enums.go",
+        "types/types.go",
+        "validators.go"
+    ],
+    "go": "1.15",
+    "module": "github.com/nifcloud/nifcloud-sdk-go/service/devopsrunner",
+    "unstable": false
+}
