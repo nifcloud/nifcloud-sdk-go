@@ -140,7 +140,6 @@ type DBInstanceClassOfCreateDBInstanceReadReplicaRequest string
 
 // Enum values for DBInstanceClassOfCreateDBInstanceReadReplicaRequest
 const (
-	DBInstanceClassOfCreateDBInstanceReadReplicaRequestDbMini DBInstanceClassOfCreateDBInstanceReadReplicaRequest = "db.mini"
 	DBInstanceClassOfCreateDBInstanceReadReplicaRequestDbESmall DBInstanceClassOfCreateDBInstanceReadReplicaRequest = "db.e-small"
 	DBInstanceClassOfCreateDBInstanceReadReplicaRequestDbSmall DBInstanceClassOfCreateDBInstanceReadReplicaRequest = "db.small"
 	DBInstanceClassOfCreateDBInstanceReadReplicaRequestDbESmall2 DBInstanceClassOfCreateDBInstanceReadReplicaRequest = "db.e-small2"
@@ -210,7 +209,6 @@ const (
 // ordering of this slice is not guaranteed to be stable across updates.
 func (DBInstanceClassOfCreateDBInstanceReadReplicaRequest) Values() []DBInstanceClassOfCreateDBInstanceReadReplicaRequest {
 	return []DBInstanceClassOfCreateDBInstanceReadReplicaRequest{
-		"db.mini",
 		"db.e-small",
 		"db.small",
 		"db.e-small2",
@@ -279,7 +277,6 @@ type DBInstanceClassOfCreateDBInstanceRequest string
 
 // Enum values for DBInstanceClassOfCreateDBInstanceRequest
 const (
-	DBInstanceClassOfCreateDBInstanceRequestDbMini DBInstanceClassOfCreateDBInstanceRequest = "db.mini"
 	DBInstanceClassOfCreateDBInstanceRequestDbESmall DBInstanceClassOfCreateDBInstanceRequest = "db.e-small"
 	DBInstanceClassOfCreateDBInstanceRequestDbSmall DBInstanceClassOfCreateDBInstanceRequest = "db.small"
 	DBInstanceClassOfCreateDBInstanceRequestDbESmall2 DBInstanceClassOfCreateDBInstanceRequest = "db.e-small2"
@@ -349,7 +346,6 @@ const (
 // updates.
 func (DBInstanceClassOfCreateDBInstanceRequest) Values() []DBInstanceClassOfCreateDBInstanceRequest {
 	return []DBInstanceClassOfCreateDBInstanceRequest{
-		"db.mini",
 		"db.e-small",
 		"db.small",
 		"db.e-small2",
@@ -557,7 +553,6 @@ type DBInstanceClassOfModifyDBInstanceRequest string
 
 // Enum values for DBInstanceClassOfModifyDBInstanceRequest
 const (
-	DBInstanceClassOfModifyDBInstanceRequestDbMini DBInstanceClassOfModifyDBInstanceRequest = "db.mini"
 	DBInstanceClassOfModifyDBInstanceRequestDbESmall DBInstanceClassOfModifyDBInstanceRequest = "db.e-small"
 	DBInstanceClassOfModifyDBInstanceRequestDbSmall DBInstanceClassOfModifyDBInstanceRequest = "db.small"
 	DBInstanceClassOfModifyDBInstanceRequestDbESmall2 DBInstanceClassOfModifyDBInstanceRequest = "db.e-small2"
@@ -627,7 +622,6 @@ const (
 // updates.
 func (DBInstanceClassOfModifyDBInstanceRequest) Values() []DBInstanceClassOfModifyDBInstanceRequest {
 	return []DBInstanceClassOfModifyDBInstanceRequest{
-		"db.mini",
 		"db.e-small",
 		"db.small",
 		"db.e-small2",
@@ -696,7 +690,6 @@ type DBInstanceClassOfRestoreDBInstanceFromDBSnapshotRequest string
 
 // Enum values for DBInstanceClassOfRestoreDBInstanceFromDBSnapshotRequest
 const (
-	DBInstanceClassOfRestoreDBInstanceFromDBSnapshotRequestDbMini DBInstanceClassOfRestoreDBInstanceFromDBSnapshotRequest = "db.mini"
 	DBInstanceClassOfRestoreDBInstanceFromDBSnapshotRequestDbESmall DBInstanceClassOfRestoreDBInstanceFromDBSnapshotRequest = "db.e-small"
 	DBInstanceClassOfRestoreDBInstanceFromDBSnapshotRequestDbSmall DBInstanceClassOfRestoreDBInstanceFromDBSnapshotRequest = "db.small"
 	DBInstanceClassOfRestoreDBInstanceFromDBSnapshotRequestDbESmall2 DBInstanceClassOfRestoreDBInstanceFromDBSnapshotRequest = "db.e-small2"
@@ -766,7 +759,6 @@ const (
 // ordering of this slice is not guaranteed to be stable across updates.
 func (DBInstanceClassOfRestoreDBInstanceFromDBSnapshotRequest) Values() []DBInstanceClassOfRestoreDBInstanceFromDBSnapshotRequest {
 	return []DBInstanceClassOfRestoreDBInstanceFromDBSnapshotRequest{
-		"db.mini",
 		"db.e-small",
 		"db.small",
 		"db.e-small2",
@@ -835,7 +827,6 @@ type DBInstanceClassOfRestoreDBInstanceToPointInTimeRequest string
 
 // Enum values for DBInstanceClassOfRestoreDBInstanceToPointInTimeRequest
 const (
-	DBInstanceClassOfRestoreDBInstanceToPointInTimeRequestDbMini DBInstanceClassOfRestoreDBInstanceToPointInTimeRequest = "db.mini"
 	DBInstanceClassOfRestoreDBInstanceToPointInTimeRequestDbESmall DBInstanceClassOfRestoreDBInstanceToPointInTimeRequest = "db.e-small"
 	DBInstanceClassOfRestoreDBInstanceToPointInTimeRequestDbSmall DBInstanceClassOfRestoreDBInstanceToPointInTimeRequest = "db.small"
 	DBInstanceClassOfRestoreDBInstanceToPointInTimeRequestDbESmall2 DBInstanceClassOfRestoreDBInstanceToPointInTimeRequest = "db.e-small2"
@@ -905,7 +896,6 @@ const (
 // ordering of this slice is not guaranteed to be stable across updates.
 func (DBInstanceClassOfRestoreDBInstanceToPointInTimeRequest) Values() []DBInstanceClassOfRestoreDBInstanceToPointInTimeRequest {
 	return []DBInstanceClassOfRestoreDBInstanceToPointInTimeRequest{
-		"db.mini",
 		"db.e-small",
 		"db.small",
 		"db.e-small2",

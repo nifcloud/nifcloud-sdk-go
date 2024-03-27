@@ -24,10 +24,6 @@ string AccountingTypeOfCreateDBInstanceRequest
 
 @enum([
   {
-      name: "DB_MINI",
-      value: "db.mini",
-  },
-  {
       name: "DB_E_SMALL",
       value: "db.e-small",
   },
@@ -580,10 +576,6 @@ string AccountingTypeOfCreateDBInstanceReadReplicaRequest
 
 @enum([
   {
-      name: "DB_MINI",
-      value: "db.mini",
-  },
-  {
       name: "DB_E_SMALL",
       value: "db.e-small",
   },
@@ -1050,10 +1042,6 @@ structure DBInstances {
 string AccountingTypeOfModifyDBInstanceRequest
 
 @enum([
-  {
-      name: "DB_MINI",
-      value: "db.mini",
-  },
   {
       name: "DB_E_SMALL",
       value: "db.e-small",
@@ -2016,10 +2004,6 @@ string AccountingTypeOfRestoreDBInstanceFromDBSnapshotRequest
 
 @enum([
   {
-      name: "DB_MINI",
-      value: "db.mini",
-  },
-  {
       name: "DB_E_SMALL",
       value: "db.e-small",
   },
@@ -2343,10 +2327,6 @@ structure RestoreDBInstanceFromDBSnapshotResult {
 string AccountingTypeOfRestoreDBInstanceToPointInTimeRequest
 
 @enum([
-  {
-      name: "DB_MINI",
-      value: "db.mini",
-  },
   {
       name: "DB_E_SMALL",
       value: "db.e-small",
