@@ -1,5 +1,17 @@
 # Changelog
 
+## [v1.24.0](https://github.com/nifcloud/nifcloud-sdk-go/tree/v1.24.0) (2024-04-01)
+
+[Full Changelog](https://github.com/nifcloud/nifcloud-sdk-go/compare/v1.23.0...v1.24.0)
+
+**Merged pull requests:**
+
+- Remove db.mini from rdb service [\#71](https://github.com/nifcloud/nifcloud-sdk-go/pull/71) ([SogoKato](https://github.com/SogoKato))
+- Remove hatoba and script endpoints [\#69](https://github.com/nifcloud/nifcloud-sdk-go/pull/69) ([SogoKato](https://github.com/SogoKato))
+- Fix README.md [\#68](https://github.com/nifcloud/nifcloud-sdk-go/pull/68) ([SogoKato](https://github.com/SogoKato))
+- Feature/close hatoba [\#67](https://github.com/nifcloud/nifcloud-sdk-go/pull/67) ([SogoKato](https://github.com/SogoKato))
+- Update copyright [\#66](https://github.com/nifcloud/nifcloud-sdk-go/pull/66) ([tily](https://github.com/tily))
+
 ## [v1.23.0](https://github.com/nifcloud/nifcloud-sdk-go/tree/v1.23.0) (2024-01-25)
 
 [Full Changelog](https://github.com/nifcloud/nifcloud-sdk-go/compare/v1.22.1...v1.23.0)
