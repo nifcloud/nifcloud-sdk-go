@@ -105,5 +105,19 @@ var defaultPartitions = endpoints.Partitions{
 		},
 		RegionRegex:    partitionRegexp.Nifcloud,
 		IsRegionalized: true,
+		Endpoints: endpoints.Endpoints{
+			endpoints.EndpointKey{
+				Region: "jp-east-1",
+			}: endpoints.Endpoint{},
+			endpoints.EndpointKey{
+				Region: "jp-east-3",
+			}: endpoints.Endpoint{},
+			endpoints.EndpointKey{
+				Region: "jp-west-1",
+			}: endpoints.Endpoint{},
+			endpoints.EndpointKey{
+				Region: "jp-west-2",
+			}: endpoints.Endpoint{},
+		},
 	},
 }
