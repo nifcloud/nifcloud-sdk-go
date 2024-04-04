@@ -121,6 +121,22 @@
           },
           "isRegionalized" : false,
           "partitionEndpoint" : "aws-global"
+        },
+        "devops": {
+          "endpoints": {
+            "jp-east-1": {},
+            "jp-east-3": {},
+            "jp-west-1": {},
+            "jp-west-2": {}
+          }
+        },
+        "runner.devops": {
+          "endpoints": {
+            "jp-east-1": {},
+            "jp-east-3": {},
+            "jp-west-1": {},
+            "jp-west-2": {}
+          }
         }
       }
     }
