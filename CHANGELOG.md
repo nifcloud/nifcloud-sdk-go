@@ -1,5 +1,13 @@
 # Changelog
 
+## [v1.25.0](https://github.com/nifcloud/nifcloud-sdk-go/tree/v1.25.0) (2024-04-04)
+
+[Full Changelog](https://github.com/nifcloud/nifcloud-sdk-go/compare/v1.24.0...v1.25.0)
+
+**Merged pull requests:**
+
+- Add devops and devops-runner APIs [\#70](https://github.com/nifcloud/nifcloud-sdk-go/pull/70) ([SogoKato](https://github.com/SogoKato))
+
 ## [v1.24.0](https://github.com/nifcloud/nifcloud-sdk-go/tree/v1.24.0) (2024-04-01)
 
 [Full Changelog](https://github.com/nifcloud/nifcloud-sdk-go/compare/v1.23.0...v1.24.0)
