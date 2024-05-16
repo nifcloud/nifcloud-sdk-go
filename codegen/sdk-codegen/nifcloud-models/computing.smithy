@@ -18354,9 +18354,9 @@ structure NetworkInterfaceSetOfDescribeVpnGateways {
     @xmlName("cidrBlock")
     @ec2QueryName("cidrBlock")
     CidrBlock: String,
-    @xmlName("descriprion")
-    @ec2QueryName("descriprion")
-    Descriprion: String,
+    @xmlName("description")
+    @ec2QueryName("description")
+    Description: String,
     @xmlName("deviceIndex")
     @ec2QueryName("deviceIndex")
     DeviceIndex: String,

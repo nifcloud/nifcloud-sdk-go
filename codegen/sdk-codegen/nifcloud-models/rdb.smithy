@@ -1505,10 +1505,6 @@ structure ValidUpgradeTarget {
 
 @enum([
   {
-      name: "DB_MINI",
-      value: "db.mini",
-  },
-  {
       name: "DB_E_SMALL",
       value: "db.e-small",
   },

@@ -3356,7 +3356,7 @@ type NetworkInterfaceSetOfDescribeVpnGateways struct {
 	
 	CidrBlock *string
 	
-	Descriprion *string
+	Description *string
 	
 	DeviceIndex *string
 	
