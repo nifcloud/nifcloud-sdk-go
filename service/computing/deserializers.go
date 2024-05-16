@@ -56874,7 +56874,7 @@ func awsEc2query_deserializeDocumentNetworkInterfaceSetOfDescribeVpnGateways(v *
 				sv.CidrBlock = ptr.String(xtv)
 			}
 
-		case strings.EqualFold("descriprion", t.Name.Local):
+		case strings.EqualFold("description", t.Name.Local):
 			val, err := decoder.Value()
 			if err != nil {
 				return err
@@ -56884,7 +56884,7 @@ func awsEc2query_deserializeDocumentNetworkInterfaceSetOfDescribeVpnGateways(v *
 			}
 			{
 				xtv := string(val)
-				sv.Descriprion = ptr.String(xtv)
+				sv.Description = ptr.String(xtv)
 			}
 
 		case strings.EqualFold("deviceIndex", t.Name.Local):

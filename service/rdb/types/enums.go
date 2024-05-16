@@ -414,7 +414,6 @@ type DBInstanceClassOfDescribeOrderableDBInstanceOptionsRequest string
 
 // Enum values for DBInstanceClassOfDescribeOrderableDBInstanceOptionsRequest
 const (
-	DBInstanceClassOfDescribeOrderableDBInstanceOptionsRequestDbMini DBInstanceClassOfDescribeOrderableDBInstanceOptionsRequest = "db.mini"
 	DBInstanceClassOfDescribeOrderableDBInstanceOptionsRequestDbESmall DBInstanceClassOfDescribeOrderableDBInstanceOptionsRequest = "db.e-small"
 	DBInstanceClassOfDescribeOrderableDBInstanceOptionsRequestDbSmall DBInstanceClassOfDescribeOrderableDBInstanceOptionsRequest = "db.small"
 	DBInstanceClassOfDescribeOrderableDBInstanceOptionsRequestDbESmall2 DBInstanceClassOfDescribeOrderableDBInstanceOptionsRequest = "db.e-small2"
@@ -484,7 +483,6 @@ const (
 // ordering of this slice is not guaranteed to be stable across updates.
 func (DBInstanceClassOfDescribeOrderableDBInstanceOptionsRequest) Values() []DBInstanceClassOfDescribeOrderableDBInstanceOptionsRequest {
 	return []DBInstanceClassOfDescribeOrderableDBInstanceOptionsRequest{
-		"db.mini",
 		"db.e-small",
 		"db.small",
 		"db.e-small2",
