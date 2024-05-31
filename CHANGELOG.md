@@ -1,5 +1,13 @@
 # Changelog
 
+## [v1.26.0](https://github.com/nifcloud/nifcloud-sdk-go/tree/v1.26.0) (2024-05-16)
+
+[Full Changelog](https://github.com/nifcloud/nifcloud-sdk-go/compare/v1.25.0...v1.26.0)
+
+**Merged pull requests:**
+
+- fix typo [\#72](https://github.com/nifcloud/nifcloud-sdk-go/pull/72) ([fuku2014](https://github.com/fuku2014))
+
 ## [v1.25.0](https://github.com/nifcloud/nifcloud-sdk-go/tree/v1.25.0) (2024-04-04)
 
 [Full Changelog](https://github.com/nifcloud/nifcloud-sdk-go/compare/v1.24.0...v1.25.0)
