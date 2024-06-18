@@ -71,6 +71,17 @@ type Backups struct {
 	noSmithyDocumentSerde
 }
 
+type BucketUseObjects struct {
+	
+	ContainerRegistry *string
+	
+	Lfs *string
+	
+	Packages *string
+	
+	noSmithyDocumentSerde
+}
+
 type FirewallGroup struct {
 	
 	AvailabilityZone *string
@@ -127,6 +138,8 @@ type Instance struct {
 	
 	NetworkConfig *NetworkConfig
 	
+	ObjectStorageConfig *ObjectStorageConfig
+	
 	ParameterGroupName *string
 	
 	PublicIpAddress *string
@@ -138,6 +151,8 @@ type Instance struct {
 	State *string
 	
 	Status *Status
+	
+	To *string
 	
 	UpgradableGitlabVersions []string
 	
@@ -166,6 +181,8 @@ type Instances struct {
 	
 	NetworkConfig *NetworkConfig
 	
+	ObjectStorageConfig *ObjectStorageConfig
+	
 	ParameterGroupName *string
 	
 	PublicIpAddress *string
@@ -178,7 +195,24 @@ type Instances struct {
 	
 	Status *Status
 	
+	To *string
+	
 	UpgradableGitlabVersions []string
+	
+	noSmithyDocumentSerde
+}
+
+type Metrics struct {
+	
+	MaxValue *float64
+	
+	MinValue *float64
+	
+	Timestamp *string
+	
+	Timezone *string
+	
+	Value *float64
 	
 	noSmithyDocumentSerde
 }
@@ -188,6 +222,17 @@ type NetworkConfig struct {
 	NetworkId *string
 	
 	PrivateAddress *string
+	
+	noSmithyDocumentSerde
+}
+
+type ObjectStorageConfig struct {
+	
+	Account *string
+	
+	BucketUseObjects *BucketUseObjects
+	
+	Region *string
 	
 	noSmithyDocumentSerde
 }
@@ -241,11 +286,44 @@ type Parameters struct {
 	noSmithyDocumentSerde
 }
 
+type RequestBucketUseObjects struct {
+	
+	ContainerRegistry *string
+	
+	Lfs *string
+	
+	Packages *string
+	
+	noSmithyDocumentSerde
+}
+
 type RequestNetworkConfig struct {
 	
 	NetworkId *string
 	
 	PrivateAddress *string
+	
+	noSmithyDocumentSerde
+}
+
+type RequestObjectStorageConfig struct {
+	
+	Account *string
+	
+	Region RegionOfobjectStorageConfigForCreateInstance
+	
+	RequestBucketUseObjects *RequestBucketUseObjects
+	
+	noSmithyDocumentSerde
+}
+
+type RequestObjectStorageConfigOfRestoreInstance struct {
+	
+	Account *string
+	
+	Region RegionOfobjectStorageConfigForRestoreInstance
+	
+	RequestBucketUseObjects *RequestBucketUseObjects
 	
 	noSmithyDocumentSerde
 }

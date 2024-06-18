@@ -37,6 +37,8 @@ structure Instances {
     InstanceType: String,
     @jsonName("networkConfig")
     NetworkConfig: NetworkConfig,
+    @jsonName("objectStorageConfig")
+    ObjectStorageConfig: ObjectStorageConfig,
     @jsonName("parameterGroupName")
     ParameterGroupName: String,
     @jsonName("publicIpAddress")
@@ -49,6 +51,8 @@ structure Instances {
     State: String,
     @jsonName("status")
     Status: Status,
+    @jsonName("to")
+    To: String,
     @jsonName("upgradableGitlabVersions")
     UpgradableGitlabVersions: ListOfUpgradableGitlabVersions,
 }
@@ -62,6 +66,24 @@ structure NetworkConfig {
     NetworkId: String,
     @jsonName("privateAddress")
     PrivateAddress: String,
+}
+
+structure ObjectStorageConfig {
+    @jsonName("account")
+    Account: String,
+    @jsonName("bucketUseObjects")
+    BucketUseObjects: BucketUseObjects,
+    @jsonName("region")
+    Region: String,
+}
+
+structure BucketUseObjects {
+    @jsonName("containerRegistry")
+    ContainerRegistry: String,
+    @jsonName("lfs")
+    Lfs: String,
+    @jsonName("packages")
+    Packages: String,
 }
 
 structure Status {
@@ -259,6 +281,36 @@ structure RequestNetworkConfig {
     PrivateAddress: String,
 }
 
+structure RequestObjectStorageConfig {
+    @jsonName("account")
+    Account: String,
+    @jsonName("region")
+    Region: RegionOfobjectStorageConfigForCreateInstance,
+    @jsonName("bucketUseObjects")
+    RequestBucketUseObjects: RequestBucketUseObjects,
+}
+
+@enum([
+  {
+      name: "JP_EAST_1",
+      value: "jp-east-1",
+  },
+  {
+      name: "JP_WEST_2",
+      value: "jp-west-2",
+  },
+])
+string RegionOfobjectStorageConfigForCreateInstance
+
+structure RequestBucketUseObjects {
+    @jsonName("containerRegistry")
+    ContainerRegistry: String,
+    @jsonName("lfs")
+    Lfs: String,
+    @jsonName("packages")
+    Packages: String,
+}
+
 structure CreateInstanceRequest {
     @jsonName("availabilityZone")
     AvailabilityZone: AvailabilityZoneOfCreateInstanceRequest,
@@ -281,6 +333,8 @@ structure CreateInstanceRequest {
     InstanceType: InstanceTypeOfCreateInstanceRequest,
     @jsonName("networkConfig")
     NetworkConfig: RequestNetworkConfig,
+    @jsonName("objectStorageConfig")
+    ObjectStorageConfig: RequestObjectStorageConfig,
     @required
     @jsonName("parameterGroupName")
     ParameterGroupName: String,
@@ -307,6 +361,8 @@ structure Instance {
     InstanceType: String,
     @jsonName("networkConfig")
     NetworkConfig: NetworkConfig,
+    @jsonName("objectStorageConfig")
+    ObjectStorageConfig: ObjectStorageConfig,
     @jsonName("parameterGroupName")
     ParameterGroupName: String,
     @jsonName("publicIpAddress")
@@ -319,6 +375,8 @@ structure Instance {
     State: String,
     @jsonName("status")
     Status: Status,
+    @jsonName("to")
+    To: String,
     @jsonName("upgradableGitlabVersions")
     UpgradableGitlabVersions: ListOfUpgradableGitlabVersions,
 }
@@ -510,6 +568,47 @@ structure DeleteInstanceResult {
     Instance: Instance,
 }
 
+structure GetInstanceMetricsRequest {
+    @required
+    @httpQuery("endTime")
+    @jsonName("endTime")
+    EndTime: String,
+    @required
+    @httpLabel
+    @jsonName("InstanceId")
+    InstanceId: String,
+    @required
+    @httpLabel
+    @jsonName("MetricsName")
+    MetricsName: String,
+    @required
+    @httpQuery("startTime")
+    @jsonName("startTime")
+    StartTime: String,
+}
+
+list ListOfMetrics {
+    member: Metrics,
+}
+
+structure Metrics {
+    @jsonName("maxValue")
+    MaxValue: Double,
+    @jsonName("minValue")
+    MinValue: Double,
+    @jsonName("timestamp")
+    Timestamp: String,
+    @jsonName("timezone")
+    Timezone: String,
+    @jsonName("value")
+    Value: Double,
+}
+
+structure GetInstanceMetricsResult {
+    @jsonName("metrics")
+    Metrics: ListOfMetrics,
+}
+
 structure UpdateNetworkInterfaceRequest {
     @required
     @httpLabel
@@ -558,6 +657,21 @@ structure RebootInstanceRequest {
 }
 
 structure RebootInstanceResult {
+    @jsonName("instance")
+    Instance: Instance,
+}
+
+structure SetupAlertRequest {
+    @required
+    @httpLabel
+    @jsonName("InstanceId")
+    InstanceId: String,
+    @required
+    @jsonName("to")
+    To: String,
+}
+
+structure SetupAlertResult {
     @jsonName("instance")
     Instance: Instance,
 }
@@ -738,6 +852,27 @@ string InstanceTypeOfRestoreInstanceRequest
 ])
 string AvailabilityZoneOfRestoreInstanceRequest
 
+structure RequestObjectStorageConfigOfRestoreInstance {
+    @jsonName("account")
+    Account: String,
+    @jsonName("region")
+    Region: RegionOfobjectStorageConfigForRestoreInstance,
+    @jsonName("bucketUseObjects")
+    RequestBucketUseObjects: RequestBucketUseObjects,
+}
+
+@enum([
+  {
+      name: "JP_EAST_1",
+      value: "jp-east-1",
+  },
+  {
+      name: "JP_WEST_2",
+      value: "jp-west-2",
+  },
+])
+string RegionOfobjectStorageConfigForRestoreInstance
+
 structure RestoreInstanceRequest {
     @jsonName("availabilityZone")
     AvailabilityZone: AvailabilityZoneOfRestoreInstanceRequest,
@@ -760,6 +895,8 @@ structure RestoreInstanceRequest {
     InstanceType: InstanceTypeOfRestoreInstanceRequest,
     @jsonName("networkConfig")
     NetworkConfig: RequestNetworkConfig,
+    @jsonName("objectStorageConfig")
+    ObjectStorageConfig: RequestObjectStorageConfigOfRestoreInstance,
     @required
     @jsonName("parameterGroupName")
     ParameterGroupName: String,
@@ -1355,10 +1492,12 @@ service DevOpswithGitLab {
         GetInstance,
         UpdateInstance,
         DeleteInstance,
+        GetInstanceMetrics,
         UpdateNetworkInterface,
         ExtendDisk,
         UpgradeInstance,
         RebootInstance,
+        SetupAlert,
         RestoreInstance,
         ListParameterGroups,
         CreateParameterGroup,
@@ -1418,6 +1557,13 @@ operation DeleteInstance {
     output: DeleteInstanceResult,
 }
 
+@http(method: "GET", uri: "/v1/instances/{InstanceId}/metrics/{MetricsName}" )
+@readonly
+operation GetInstanceMetrics {
+    input: GetInstanceMetricsRequest,
+    output: GetInstanceMetricsResult,
+}
+
 @http(method: "POST", uri: "/v1/instances/{InstanceId}/:updateNetworkInterface" )
 operation UpdateNetworkInterface {
     input: UpdateNetworkInterfaceRequest,
@@ -1440,6 +1586,12 @@ operation UpgradeInstance {
 operation RebootInstance {
     input: RebootInstanceRequest,
     output: RebootInstanceResult,
+}
+
+@http(method: "POST", uri: "/v1/instances/{InstanceId}/:setupAlert" )
+operation SetupAlert {
+    input: SetupAlertRequest,
+    output: SetupAlertResult,
 }
 
 @http(method: "POST", uri: "/v1/instances:restore" )
