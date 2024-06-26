@@ -3,25 +3,6 @@
 
 package types
 
-type AccessLevelOfRegisterRunnerRequest string
-
-// Enum values for AccessLevelOfRegisterRunnerRequest
-const (
-	AccessLevelOfRegisterRunnerRequestNotProtected AccessLevelOfRegisterRunnerRequest = "not_protected"
-	AccessLevelOfRegisterRunnerRequestRefProtected AccessLevelOfRegisterRunnerRequest = "ref_protected"
-)
-
-// Values returns all known values for AccessLevelOfRegisterRunnerRequest. Note
-// that this can be expanded in the future, and so it is only as up to date as the
-// client. The ordering of this slice is not guaranteed to be stable across
-// updates.
-func (AccessLevelOfRegisterRunnerRequest) Values() []AccessLevelOfRegisterRunnerRequest {
-	return []AccessLevelOfRegisterRunnerRequest{
-		"not_protected",
-		"ref_protected",
-	}
-}
-
 type AvailabilityZoneOfCreateRunnerRequest string
 
 // Enum values for AvailabilityZoneOfCreateRunnerRequest

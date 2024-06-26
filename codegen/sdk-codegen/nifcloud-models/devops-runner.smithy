@@ -620,18 +620,6 @@ structure ListRunnerRegistrationsResult {
     Registrations: ListOfRegistrations,
 }
 
-@enum([
-  {
-      name: "NOT_PROTECTED",
-      value: "not_protected",
-  },
-  {
-      name: "REF_PROTECTED",
-      value: "ref_protected",
-  },
-])
-string AccessLevelOfRegisterRunnerRequest
-
 structure RequestExtraHosts {
     @jsonName("hostName")
     HostName: String,
@@ -643,13 +631,8 @@ list ListOfRequestExtraHosts {
     member: RequestExtraHosts,
 }
 
-list ListOfRequestTags {
-    member: String,
-}
-
 structure RegisterRunnerRequest {
-    @jsonName("accessLevel")
-    AccessLevel: AccessLevelOfRegisterRunnerRequest,
+    @required
     @jsonName("authenticationToken")
     AuthenticationToken: String,
     @jsonName("defaultDockerImage")
@@ -659,26 +642,14 @@ structure RegisterRunnerRequest {
     @required
     @jsonName("gitlabUrl")
     GitlabUrl: String,
-    @jsonName("locked")
-    Locked: Boolean,
-    @jsonName("maximumTimeout")
-    MaximumTimeout: Integer,
     @jsonName("parameterGroupName")
     ParameterGroupName: String,
-    @jsonName("paused")
-    Paused: Boolean,
     @jsonName("privileged")
     Privileged: Boolean,
-    @jsonName("registrationToken")
-    RegistrationToken: String,
     @required
     @httpLabel
     @jsonName("RunnerName")
     RunnerName: String,
-    @jsonName("runUntagged")
-    RunUntagged: Boolean,
-    @jsonName("tags")
-    Tags: ListOfRequestTags,
 }
 
 structure RegisterRunnerResult {
