@@ -383,6 +383,13 @@ func awsRestjson1_serializeOpDocumentCreateInstanceInput(v *CreateInstanceInput,
 		}
 	}
 
+	if v.ObjectStorageConfig != nil {
+		ok := object.Key("objectStorageConfig")
+		if err := awsRestjson1_serializeDocumentRequestObjectStorageConfig(v.ObjectStorageConfig, ok); err != nil {
+			return err
+		}
+	}
+
 	if v.ParameterGroupName != nil {
 		ok := object.Key("parameterGroupName")
 		ok.String(*v.ParameterGroupName)
@@ -1121,6 +1128,88 @@ func awsRestjson1_serializeOpHttpBindingsGetInstanceInput(v *GetInstanceInput, e
 	return nil
 }
 
+type awsRestjson1_serializeOpGetInstanceMetrics struct {
+}
+
+func (*awsRestjson1_serializeOpGetInstanceMetrics) ID() string {
+	return "OperationSerializer"
+}
+
+func (m *awsRestjson1_serializeOpGetInstanceMetrics) HandleSerialize(ctx context.Context, in middleware.SerializeInput, next middleware.SerializeHandler) (
+	out middleware.SerializeOutput, metadata middleware.Metadata, err error,
+) {
+	request, ok := in.Request.(*smithyhttp.Request)
+	if !ok {
+		return out, metadata, &smithy.SerializationError{Err: fmt.Errorf("unknown transport type %T", in.Request)}
+	}
+
+	input, ok := in.Parameters.(*GetInstanceMetricsInput)
+	_ = input
+	if !ok {
+		return out, metadata, &smithy.SerializationError{Err: fmt.Errorf("unknown input parameters type %T", in.Parameters)}
+	}
+
+	opPath, opQuery := httpbinding.SplitURI("/v1/instances/{InstanceId}/metrics/{MetricsName}")
+	request.URL.Path = smithyhttp.JoinPath(request.URL.Path, opPath)
+	request.URL.RawQuery = smithyhttp.JoinRawQuery(request.URL.RawQuery, opQuery)
+	request.Method = "GET"
+	var restEncoder *httpbinding.Encoder
+	if request.URL.RawPath == "" {
+		restEncoder, err = httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	} else {
+		request.URL.RawPath = smithyhttp.JoinPath(request.URL.RawPath, opPath)
+		restEncoder, err = httpbinding.NewEncoderWithRawPath(request.URL.Path, request.URL.RawPath, request.URL.RawQuery, request.Header)
+	}
+
+	if err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	if err := awsRestjson1_serializeOpHttpBindingsGetInstanceMetricsInput(input, restEncoder); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	if request.Request, err = restEncoder.Encode(request.Request); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+	in.Request = request
+
+	return next.HandleSerialize(ctx, in)
+}
+func awsRestjson1_serializeOpHttpBindingsGetInstanceMetricsInput(v *GetInstanceMetricsInput, encoder *httpbinding.Encoder) error {
+	if v == nil {
+		return fmt.Errorf("unsupported serialization of nil %T", v)
+	}
+
+	if v.EndTime != nil {
+		encoder.SetQuery("endTime").String(*v.EndTime)
+	}
+
+	if v.InstanceId == nil || len(*v.InstanceId) == 0 {
+		return &smithy.SerializationError{Err: fmt.Errorf("input member InstanceId must not be empty")}
+	}
+	if v.InstanceId != nil {
+		if err := encoder.SetURI("InstanceId").String(*v.InstanceId); err != nil {
+			return err
+		}
+	}
+
+	if v.MetricsName == nil || len(*v.MetricsName) == 0 {
+		return &smithy.SerializationError{Err: fmt.Errorf("input member MetricsName must not be empty")}
+	}
+	if v.MetricsName != nil {
+		if err := encoder.SetURI("MetricsName").String(*v.MetricsName); err != nil {
+			return err
+		}
+	}
+
+	if v.StartTime != nil {
+		encoder.SetQuery("startTime").String(*v.StartTime)
+	}
+
+	return nil
+}
+
 type awsRestjson1_serializeOpGetParameterGroup struct {
 }
 
@@ -1620,6 +1709,13 @@ func awsRestjson1_serializeOpDocumentRestoreInstanceInput(v *RestoreInstanceInpu
 		}
 	}
 
+	if v.ObjectStorageConfig != nil {
+		ok := object.Key("objectStorageConfig")
+		if err := awsRestjson1_serializeDocumentRequestObjectStorageConfigOfRestoreInstance(v.ObjectStorageConfig, ok); err != nil {
+			return err
+		}
+	}
+
 	if v.ParameterGroupName != nil {
 		ok := object.Key("parameterGroupName")
 		ok.String(*v.ParameterGroupName)
@@ -1692,6 +1788,94 @@ func awsRestjson1_serializeOpHttpBindingsRevokeFirewallRulesInput(v *RevokeFirew
 
 	if v.Ids != nil {
 		encoder.SetQuery("ids").String(*v.Ids)
+	}
+
+	return nil
+}
+
+type awsRestjson1_serializeOpSetupAlert struct {
+}
+
+func (*awsRestjson1_serializeOpSetupAlert) ID() string {
+	return "OperationSerializer"
+}
+
+func (m *awsRestjson1_serializeOpSetupAlert) HandleSerialize(ctx context.Context, in middleware.SerializeInput, next middleware.SerializeHandler) (
+	out middleware.SerializeOutput, metadata middleware.Metadata, err error,
+) {
+	request, ok := in.Request.(*smithyhttp.Request)
+	if !ok {
+		return out, metadata, &smithy.SerializationError{Err: fmt.Errorf("unknown transport type %T", in.Request)}
+	}
+
+	input, ok := in.Parameters.(*SetupAlertInput)
+	_ = input
+	if !ok {
+		return out, metadata, &smithy.SerializationError{Err: fmt.Errorf("unknown input parameters type %T", in.Parameters)}
+	}
+
+	opPath, opQuery := httpbinding.SplitURI("/v1/instances/{InstanceId}:setupAlert")
+	request.URL.Path = smithyhttp.JoinPath(request.URL.Path, opPath)
+	request.URL.RawQuery = smithyhttp.JoinRawQuery(request.URL.RawQuery, opQuery)
+	request.Method = "POST"
+	var restEncoder *httpbinding.Encoder
+	if request.URL.RawPath == "" {
+		restEncoder, err = httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	} else {
+		request.URL.RawPath = smithyhttp.JoinPath(request.URL.RawPath, opPath)
+		restEncoder, err = httpbinding.NewEncoderWithRawPath(request.URL.Path, request.URL.RawPath, request.URL.RawQuery, request.Header)
+	}
+
+	if err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	if err := awsRestjson1_serializeOpHttpBindingsSetupAlertInput(input, restEncoder); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	restEncoder.SetHeader("Content-Type").String("application/json")
+
+	jsonEncoder := smithyjson.NewEncoder()
+	if err := awsRestjson1_serializeOpDocumentSetupAlertInput(input, jsonEncoder.Value); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	if request, err = request.SetStream(bytes.NewReader(jsonEncoder.Bytes())); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	if request.Request, err = restEncoder.Encode(request.Request); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+	in.Request = request
+
+	return next.HandleSerialize(ctx, in)
+}
+func awsRestjson1_serializeOpHttpBindingsSetupAlertInput(v *SetupAlertInput, encoder *httpbinding.Encoder) error {
+	if v == nil {
+		return fmt.Errorf("unsupported serialization of nil %T", v)
+	}
+
+	if v.InstanceId == nil || len(*v.InstanceId) == 0 {
+		return &smithy.SerializationError{Err: fmt.Errorf("input member InstanceId must not be empty")}
+	}
+	if v.InstanceId != nil {
+		if err := encoder.SetURI("InstanceId").String(*v.InstanceId); err != nil {
+			return err
+		}
+	}
+
+	return nil
+}
+
+func awsRestjson1_serializeOpDocumentSetupAlertInput(v *SetupAlertInput, value smithyjson.Value) error {
+	object := value.Object()
+	defer object.Close()
+
+	if v.To != nil {
+		ok := object.Key("to")
+		ok.String(*v.To)
 	}
 
 	return nil
@@ -2272,6 +2456,28 @@ func awsRestjson1_serializeDocumentListOfRequestRules(v []types.RequestRules, va
 	return nil
 }
 
+func awsRestjson1_serializeDocumentRequestBucketUseObjects(v *types.RequestBucketUseObjects, value smithyjson.Value) error {
+	object := value.Object()
+	defer object.Close()
+
+	if v.ContainerRegistry != nil {
+		ok := object.Key("containerRegistry")
+		ok.String(*v.ContainerRegistry)
+	}
+
+	if v.Lfs != nil {
+		ok := object.Key("lfs")
+		ok.String(*v.Lfs)
+	}
+
+	if v.Packages != nil {
+		ok := object.Key("packages")
+		ok.String(*v.Packages)
+	}
+
+	return nil
+}
+
 func awsRestjson1_serializeDocumentRequestNetworkConfig(v *types.RequestNetworkConfig, value smithyjson.Value) error {
 	object := value.Object()
 	defer object.Close()
@@ -2284,6 +2490,54 @@ func awsRestjson1_serializeDocumentRequestNetworkConfig(v *types.RequestNetworkC
 	if v.PrivateAddress != nil {
 		ok := object.Key("privateAddress")
 		ok.String(*v.PrivateAddress)
+	}
+
+	return nil
+}
+
+func awsRestjson1_serializeDocumentRequestObjectStorageConfig(v *types.RequestObjectStorageConfig, value smithyjson.Value) error {
+	object := value.Object()
+	defer object.Close()
+
+	if v.Account != nil {
+		ok := object.Key("account")
+		ok.String(*v.Account)
+	}
+
+	if len(v.Region) > 0 {
+		ok := object.Key("region")
+		ok.String(string(v.Region))
+	}
+
+	if v.RequestBucketUseObjects != nil {
+		ok := object.Key("bucketUseObjects")
+		if err := awsRestjson1_serializeDocumentRequestBucketUseObjects(v.RequestBucketUseObjects, ok); err != nil {
+			return err
+		}
+	}
+
+	return nil
+}
+
+func awsRestjson1_serializeDocumentRequestObjectStorageConfigOfRestoreInstance(v *types.RequestObjectStorageConfigOfRestoreInstance, value smithyjson.Value) error {
+	object := value.Object()
+	defer object.Close()
+
+	if v.Account != nil {
+		ok := object.Key("account")
+		ok.String(*v.Account)
+	}
+
+	if len(v.Region) > 0 {
+		ok := object.Key("region")
+		ok.String(string(v.Region))
+	}
+
+	if v.RequestBucketUseObjects != nil {
+		ok := object.Key("bucketUseObjects")
+		if err := awsRestjson1_serializeDocumentRequestBucketUseObjects(v.RequestBucketUseObjects, ok); err != nil {
+			return err
+		}
 	}
 
 	return nil
@@ -2313,9 +2567,49 @@ func awsRestjson1_serializeDocumentRequestParameters(v *types.RequestParameters,
 		ok.String(*v.LdapServersActiveDirectory)
 	}
 
+	if v.LdapServersActiveDirectory2 != nil {
+		ok := object.Key("ldap_servers_active_directory_2")
+		ok.String(*v.LdapServersActiveDirectory2)
+	}
+
+	if v.LdapServersActiveDirectory3 != nil {
+		ok := object.Key("ldap_servers_active_directory_3")
+		ok.String(*v.LdapServersActiveDirectory3)
+	}
+
+	if v.LdapServersActiveDirectory4 != nil {
+		ok := object.Key("ldap_servers_active_directory_4")
+		ok.String(*v.LdapServersActiveDirectory4)
+	}
+
+	if v.LdapServersActiveDirectory5 != nil {
+		ok := object.Key("ldap_servers_active_directory_5")
+		ok.String(*v.LdapServersActiveDirectory5)
+	}
+
 	if v.LdapServersAllowUsernameOrEmailLogin != nil {
 		ok := object.Key("ldap_servers_allow_username_or_email_login")
 		ok.String(*v.LdapServersAllowUsernameOrEmailLogin)
+	}
+
+	if v.LdapServersAllowUsernameOrEmailLogin2 != nil {
+		ok := object.Key("ldap_servers_allow_username_or_email_login_2")
+		ok.String(*v.LdapServersAllowUsernameOrEmailLogin2)
+	}
+
+	if v.LdapServersAllowUsernameOrEmailLogin3 != nil {
+		ok := object.Key("ldap_servers_allow_username_or_email_login_3")
+		ok.String(*v.LdapServersAllowUsernameOrEmailLogin3)
+	}
+
+	if v.LdapServersAllowUsernameOrEmailLogin4 != nil {
+		ok := object.Key("ldap_servers_allow_username_or_email_login_4")
+		ok.String(*v.LdapServersAllowUsernameOrEmailLogin4)
+	}
+
+	if v.LdapServersAllowUsernameOrEmailLogin5 != nil {
+		ok := object.Key("ldap_servers_allow_username_or_email_login_5")
+		ok.String(*v.LdapServersAllowUsernameOrEmailLogin5)
 	}
 
 	if v.LdapServersAttributesEmail != nil {
@@ -2323,9 +2617,49 @@ func awsRestjson1_serializeDocumentRequestParameters(v *types.RequestParameters,
 		ok.String(*v.LdapServersAttributesEmail)
 	}
 
+	if v.LdapServersAttributesEmail2 != nil {
+		ok := object.Key("ldap_servers_attributes_email_2")
+		ok.String(*v.LdapServersAttributesEmail2)
+	}
+
+	if v.LdapServersAttributesEmail3 != nil {
+		ok := object.Key("ldap_servers_attributes_email_3")
+		ok.String(*v.LdapServersAttributesEmail3)
+	}
+
+	if v.LdapServersAttributesEmail4 != nil {
+		ok := object.Key("ldap_servers_attributes_email_4")
+		ok.String(*v.LdapServersAttributesEmail4)
+	}
+
+	if v.LdapServersAttributesEmail5 != nil {
+		ok := object.Key("ldap_servers_attributes_email_5")
+		ok.String(*v.LdapServersAttributesEmail5)
+	}
+
 	if v.LdapServersAttributesFirstName != nil {
 		ok := object.Key("ldap_servers_attributes_first_name")
 		ok.String(*v.LdapServersAttributesFirstName)
+	}
+
+	if v.LdapServersAttributesFirstName2 != nil {
+		ok := object.Key("ldap_servers_attributes_first_name_2")
+		ok.String(*v.LdapServersAttributesFirstName2)
+	}
+
+	if v.LdapServersAttributesFirstName3 != nil {
+		ok := object.Key("ldap_servers_attributes_first_name_3")
+		ok.String(*v.LdapServersAttributesFirstName3)
+	}
+
+	if v.LdapServersAttributesFirstName4 != nil {
+		ok := object.Key("ldap_servers_attributes_first_name_4")
+		ok.String(*v.LdapServersAttributesFirstName4)
+	}
+
+	if v.LdapServersAttributesFirstName5 != nil {
+		ok := object.Key("ldap_servers_attributes_first_name_5")
+		ok.String(*v.LdapServersAttributesFirstName5)
 	}
 
 	if v.LdapServersAttributesLastName != nil {
@@ -2333,9 +2667,49 @@ func awsRestjson1_serializeDocumentRequestParameters(v *types.RequestParameters,
 		ok.String(*v.LdapServersAttributesLastName)
 	}
 
+	if v.LdapServersAttributesLastName2 != nil {
+		ok := object.Key("ldap_servers_attributes_last_name_2")
+		ok.String(*v.LdapServersAttributesLastName2)
+	}
+
+	if v.LdapServersAttributesLastName3 != nil {
+		ok := object.Key("ldap_servers_attributes_last_name_3")
+		ok.String(*v.LdapServersAttributesLastName3)
+	}
+
+	if v.LdapServersAttributesLastName4 != nil {
+		ok := object.Key("ldap_servers_attributes_last_name_4")
+		ok.String(*v.LdapServersAttributesLastName4)
+	}
+
+	if v.LdapServersAttributesLastName5 != nil {
+		ok := object.Key("ldap_servers_attributes_last_name_5")
+		ok.String(*v.LdapServersAttributesLastName5)
+	}
+
 	if v.LdapServersAttributesName != nil {
 		ok := object.Key("ldap_servers_attributes_name")
 		ok.String(*v.LdapServersAttributesName)
+	}
+
+	if v.LdapServersAttributesName2 != nil {
+		ok := object.Key("ldap_servers_attributes_name_2")
+		ok.String(*v.LdapServersAttributesName2)
+	}
+
+	if v.LdapServersAttributesName3 != nil {
+		ok := object.Key("ldap_servers_attributes_name_3")
+		ok.String(*v.LdapServersAttributesName3)
+	}
+
+	if v.LdapServersAttributesName4 != nil {
+		ok := object.Key("ldap_servers_attributes_name_4")
+		ok.String(*v.LdapServersAttributesName4)
+	}
+
+	if v.LdapServersAttributesName5 != nil {
+		ok := object.Key("ldap_servers_attributes_name_5")
+		ok.String(*v.LdapServersAttributesName5)
 	}
 
 	if v.LdapServersAttributesUsername != nil {
@@ -2343,9 +2717,49 @@ func awsRestjson1_serializeDocumentRequestParameters(v *types.RequestParameters,
 		ok.String(*v.LdapServersAttributesUsername)
 	}
 
+	if v.LdapServersAttributesUsername2 != nil {
+		ok := object.Key("ldap_servers_attributes_username_2")
+		ok.String(*v.LdapServersAttributesUsername2)
+	}
+
+	if v.LdapServersAttributesUsername3 != nil {
+		ok := object.Key("ldap_servers_attributes_username_3")
+		ok.String(*v.LdapServersAttributesUsername3)
+	}
+
+	if v.LdapServersAttributesUsername4 != nil {
+		ok := object.Key("ldap_servers_attributes_username_4")
+		ok.String(*v.LdapServersAttributesUsername4)
+	}
+
+	if v.LdapServersAttributesUsername5 != nil {
+		ok := object.Key("ldap_servers_attributes_username_5")
+		ok.String(*v.LdapServersAttributesUsername5)
+	}
+
 	if v.LdapServersBase != nil {
 		ok := object.Key("ldap_servers_base")
 		ok.String(*v.LdapServersBase)
+	}
+
+	if v.LdapServersBase2 != nil {
+		ok := object.Key("ldap_servers_base_2")
+		ok.String(*v.LdapServersBase2)
+	}
+
+	if v.LdapServersBase3 != nil {
+		ok := object.Key("ldap_servers_base_3")
+		ok.String(*v.LdapServersBase3)
+	}
+
+	if v.LdapServersBase4 != nil {
+		ok := object.Key("ldap_servers_base_4")
+		ok.String(*v.LdapServersBase4)
+	}
+
+	if v.LdapServersBase5 != nil {
+		ok := object.Key("ldap_servers_base_5")
+		ok.String(*v.LdapServersBase5)
 	}
 
 	if v.LdapServersBindDn != nil {
@@ -2353,9 +2767,49 @@ func awsRestjson1_serializeDocumentRequestParameters(v *types.RequestParameters,
 		ok.String(*v.LdapServersBindDn)
 	}
 
+	if v.LdapServersBindDn2 != nil {
+		ok := object.Key("ldap_servers_bind_dn_2")
+		ok.String(*v.LdapServersBindDn2)
+	}
+
+	if v.LdapServersBindDn3 != nil {
+		ok := object.Key("ldap_servers_bind_dn_3")
+		ok.String(*v.LdapServersBindDn3)
+	}
+
+	if v.LdapServersBindDn4 != nil {
+		ok := object.Key("ldap_servers_bind_dn_4")
+		ok.String(*v.LdapServersBindDn4)
+	}
+
+	if v.LdapServersBindDn5 != nil {
+		ok := object.Key("ldap_servers_bind_dn_5")
+		ok.String(*v.LdapServersBindDn5)
+	}
+
 	if v.LdapServersBlockAutoCreatedUsers != nil {
 		ok := object.Key("ldap_servers_block_auto_created_users")
 		ok.String(*v.LdapServersBlockAutoCreatedUsers)
+	}
+
+	if v.LdapServersBlockAutoCreatedUsers2 != nil {
+		ok := object.Key("ldap_servers_block_auto_created_users_2")
+		ok.String(*v.LdapServersBlockAutoCreatedUsers2)
+	}
+
+	if v.LdapServersBlockAutoCreatedUsers3 != nil {
+		ok := object.Key("ldap_servers_block_auto_created_users_3")
+		ok.String(*v.LdapServersBlockAutoCreatedUsers3)
+	}
+
+	if v.LdapServersBlockAutoCreatedUsers4 != nil {
+		ok := object.Key("ldap_servers_block_auto_created_users_4")
+		ok.String(*v.LdapServersBlockAutoCreatedUsers4)
+	}
+
+	if v.LdapServersBlockAutoCreatedUsers5 != nil {
+		ok := object.Key("ldap_servers_block_auto_created_users_5")
+		ok.String(*v.LdapServersBlockAutoCreatedUsers5)
 	}
 
 	if v.LdapServersEncryption != nil {
@@ -2363,9 +2817,49 @@ func awsRestjson1_serializeDocumentRequestParameters(v *types.RequestParameters,
 		ok.String(*v.LdapServersEncryption)
 	}
 
+	if v.LdapServersEncryption2 != nil {
+		ok := object.Key("ldap_servers_encryption_2")
+		ok.String(*v.LdapServersEncryption2)
+	}
+
+	if v.LdapServersEncryption3 != nil {
+		ok := object.Key("ldap_servers_encryption_3")
+		ok.String(*v.LdapServersEncryption3)
+	}
+
+	if v.LdapServersEncryption4 != nil {
+		ok := object.Key("ldap_servers_encryption_4")
+		ok.String(*v.LdapServersEncryption4)
+	}
+
+	if v.LdapServersEncryption5 != nil {
+		ok := object.Key("ldap_servers_encryption_5")
+		ok.String(*v.LdapServersEncryption5)
+	}
+
 	if v.LdapServersHost != nil {
 		ok := object.Key("ldap_servers_host")
 		ok.String(*v.LdapServersHost)
+	}
+
+	if v.LdapServersHost2 != nil {
+		ok := object.Key("ldap_servers_host_2")
+		ok.String(*v.LdapServersHost2)
+	}
+
+	if v.LdapServersHost3 != nil {
+		ok := object.Key("ldap_servers_host_3")
+		ok.String(*v.LdapServersHost3)
+	}
+
+	if v.LdapServersHost4 != nil {
+		ok := object.Key("ldap_servers_host_4")
+		ok.String(*v.LdapServersHost4)
+	}
+
+	if v.LdapServersHost5 != nil {
+		ok := object.Key("ldap_servers_host_5")
+		ok.String(*v.LdapServersHost5)
 	}
 
 	if v.LdapServersLabel != nil {
@@ -2373,9 +2867,49 @@ func awsRestjson1_serializeDocumentRequestParameters(v *types.RequestParameters,
 		ok.String(*v.LdapServersLabel)
 	}
 
+	if v.LdapServersLabel2 != nil {
+		ok := object.Key("ldap_servers_label_2")
+		ok.String(*v.LdapServersLabel2)
+	}
+
+	if v.LdapServersLabel3 != nil {
+		ok := object.Key("ldap_servers_label_3")
+		ok.String(*v.LdapServersLabel3)
+	}
+
+	if v.LdapServersLabel4 != nil {
+		ok := object.Key("ldap_servers_label_4")
+		ok.String(*v.LdapServersLabel4)
+	}
+
+	if v.LdapServersLabel5 != nil {
+		ok := object.Key("ldap_servers_label_5")
+		ok.String(*v.LdapServersLabel5)
+	}
+
 	if v.LdapServersLowercaseUsernames != nil {
 		ok := object.Key("ldap_servers_lowercase_usernames")
 		ok.String(*v.LdapServersLowercaseUsernames)
+	}
+
+	if v.LdapServersLowercaseUsernames2 != nil {
+		ok := object.Key("ldap_servers_lowercase_usernames_2")
+		ok.String(*v.LdapServersLowercaseUsernames2)
+	}
+
+	if v.LdapServersLowercaseUsernames3 != nil {
+		ok := object.Key("ldap_servers_lowercase_usernames_3")
+		ok.String(*v.LdapServersLowercaseUsernames3)
+	}
+
+	if v.LdapServersLowercaseUsernames4 != nil {
+		ok := object.Key("ldap_servers_lowercase_usernames_4")
+		ok.String(*v.LdapServersLowercaseUsernames4)
+	}
+
+	if v.LdapServersLowercaseUsernames5 != nil {
+		ok := object.Key("ldap_servers_lowercase_usernames_5")
+		ok.String(*v.LdapServersLowercaseUsernames5)
 	}
 
 	if v.LdapServersName != nil {
@@ -2383,9 +2917,49 @@ func awsRestjson1_serializeDocumentRequestParameters(v *types.RequestParameters,
 		ok.String(*v.LdapServersName)
 	}
 
+	if v.LdapServersName2 != nil {
+		ok := object.Key("ldap_servers_name_2")
+		ok.String(*v.LdapServersName2)
+	}
+
+	if v.LdapServersName3 != nil {
+		ok := object.Key("ldap_servers_name_3")
+		ok.String(*v.LdapServersName3)
+	}
+
+	if v.LdapServersName4 != nil {
+		ok := object.Key("ldap_servers_name_4")
+		ok.String(*v.LdapServersName4)
+	}
+
+	if v.LdapServersName5 != nil {
+		ok := object.Key("ldap_servers_name_5")
+		ok.String(*v.LdapServersName5)
+	}
+
 	if v.LdapServersPassword != nil {
 		ok := object.Key("ldap_servers_password")
 		ok.String(*v.LdapServersPassword)
+	}
+
+	if v.LdapServersPassword2 != nil {
+		ok := object.Key("ldap_servers_password_2")
+		ok.String(*v.LdapServersPassword2)
+	}
+
+	if v.LdapServersPassword3 != nil {
+		ok := object.Key("ldap_servers_password_3")
+		ok.String(*v.LdapServersPassword3)
+	}
+
+	if v.LdapServersPassword4 != nil {
+		ok := object.Key("ldap_servers_password_4")
+		ok.String(*v.LdapServersPassword4)
+	}
+
+	if v.LdapServersPassword5 != nil {
+		ok := object.Key("ldap_servers_password_5")
+		ok.String(*v.LdapServersPassword5)
 	}
 
 	if v.LdapServersPort != nil {
@@ -2393,9 +2967,49 @@ func awsRestjson1_serializeDocumentRequestParameters(v *types.RequestParameters,
 		ok.String(*v.LdapServersPort)
 	}
 
+	if v.LdapServersPort2 != nil {
+		ok := object.Key("ldap_servers_port_2")
+		ok.String(*v.LdapServersPort2)
+	}
+
+	if v.LdapServersPort3 != nil {
+		ok := object.Key("ldap_servers_port_3")
+		ok.String(*v.LdapServersPort3)
+	}
+
+	if v.LdapServersPort4 != nil {
+		ok := object.Key("ldap_servers_port_4")
+		ok.String(*v.LdapServersPort4)
+	}
+
+	if v.LdapServersPort5 != nil {
+		ok := object.Key("ldap_servers_port_5")
+		ok.String(*v.LdapServersPort5)
+	}
+
 	if v.LdapServersTimeout != nil {
 		ok := object.Key("ldap_servers_timeout")
 		ok.String(*v.LdapServersTimeout)
+	}
+
+	if v.LdapServersTimeout2 != nil {
+		ok := object.Key("ldap_servers_timeout_2")
+		ok.String(*v.LdapServersTimeout2)
+	}
+
+	if v.LdapServersTimeout3 != nil {
+		ok := object.Key("ldap_servers_timeout_3")
+		ok.String(*v.LdapServersTimeout3)
+	}
+
+	if v.LdapServersTimeout4 != nil {
+		ok := object.Key("ldap_servers_timeout_4")
+		ok.String(*v.LdapServersTimeout4)
+	}
+
+	if v.LdapServersTimeout5 != nil {
+		ok := object.Key("ldap_servers_timeout_5")
+		ok.String(*v.LdapServersTimeout5)
 	}
 
 	if v.LdapServersUid != nil {
@@ -2403,14 +3017,74 @@ func awsRestjson1_serializeDocumentRequestParameters(v *types.RequestParameters,
 		ok.String(*v.LdapServersUid)
 	}
 
+	if v.LdapServersUid2 != nil {
+		ok := object.Key("ldap_servers_uid_2")
+		ok.String(*v.LdapServersUid2)
+	}
+
+	if v.LdapServersUid3 != nil {
+		ok := object.Key("ldap_servers_uid_3")
+		ok.String(*v.LdapServersUid3)
+	}
+
+	if v.LdapServersUid4 != nil {
+		ok := object.Key("ldap_servers_uid_4")
+		ok.String(*v.LdapServersUid4)
+	}
+
+	if v.LdapServersUid5 != nil {
+		ok := object.Key("ldap_servers_uid_5")
+		ok.String(*v.LdapServersUid5)
+	}
+
 	if v.LdapServersUserFilter != nil {
 		ok := object.Key("ldap_servers_user_filter")
 		ok.String(*v.LdapServersUserFilter)
 	}
 
+	if v.LdapServersUserFilter2 != nil {
+		ok := object.Key("ldap_servers_user_filter_2")
+		ok.String(*v.LdapServersUserFilter2)
+	}
+
+	if v.LdapServersUserFilter3 != nil {
+		ok := object.Key("ldap_servers_user_filter_3")
+		ok.String(*v.LdapServersUserFilter3)
+	}
+
+	if v.LdapServersUserFilter4 != nil {
+		ok := object.Key("ldap_servers_user_filter_4")
+		ok.String(*v.LdapServersUserFilter4)
+	}
+
+	if v.LdapServersUserFilter5 != nil {
+		ok := object.Key("ldap_servers_user_filter_5")
+		ok.String(*v.LdapServersUserFilter5)
+	}
+
 	if v.LdapServersVerifyCertificates != nil {
 		ok := object.Key("ldap_servers_verify_certificates")
 		ok.String(*v.LdapServersVerifyCertificates)
+	}
+
+	if v.LdapServersVerifyCertificates2 != nil {
+		ok := object.Key("ldap_servers_verify_certificates_2")
+		ok.String(*v.LdapServersVerifyCertificates2)
+	}
+
+	if v.LdapServersVerifyCertificates3 != nil {
+		ok := object.Key("ldap_servers_verify_certificates_3")
+		ok.String(*v.LdapServersVerifyCertificates3)
+	}
+
+	if v.LdapServersVerifyCertificates4 != nil {
+		ok := object.Key("ldap_servers_verify_certificates_4")
+		ok.String(*v.LdapServersVerifyCertificates4)
+	}
+
+	if v.LdapServersVerifyCertificates5 != nil {
+		ok := object.Key("ldap_servers_verify_certificates_5")
+		ok.String(*v.LdapServersVerifyCertificates5)
 	}
 
 	if v.OmniauthAllowSingleSignOn != nil {
@@ -2438,9 +3112,49 @@ func awsRestjson1_serializeDocumentRequestParameters(v *types.RequestParameters,
 		ok.String(*v.OmniauthProvidersSamlAdminGroups)
 	}
 
+	if v.OmniauthProvidersSamlAdminGroups2 != nil {
+		ok := object.Key("omniauth_providers_saml_admin_groups_2")
+		ok.String(*v.OmniauthProvidersSamlAdminGroups2)
+	}
+
+	if v.OmniauthProvidersSamlAdminGroups3 != nil {
+		ok := object.Key("omniauth_providers_saml_admin_groups_3")
+		ok.String(*v.OmniauthProvidersSamlAdminGroups3)
+	}
+
+	if v.OmniauthProvidersSamlAdminGroups4 != nil {
+		ok := object.Key("omniauth_providers_saml_admin_groups_4")
+		ok.String(*v.OmniauthProvidersSamlAdminGroups4)
+	}
+
+	if v.OmniauthProvidersSamlAdminGroups5 != nil {
+		ok := object.Key("omniauth_providers_saml_admin_groups_5")
+		ok.String(*v.OmniauthProvidersSamlAdminGroups5)
+	}
+
 	if v.OmniauthProvidersSamlAssertionConsumerServiceUrl != nil {
 		ok := object.Key("omniauth_providers_saml_assertion_consumer_service_url")
 		ok.String(*v.OmniauthProvidersSamlAssertionConsumerServiceUrl)
+	}
+
+	if v.OmniauthProvidersSamlAssertionConsumerServiceUrl2 != nil {
+		ok := object.Key("omniauth_providers_saml_assertion_consumer_service_url_2")
+		ok.String(*v.OmniauthProvidersSamlAssertionConsumerServiceUrl2)
+	}
+
+	if v.OmniauthProvidersSamlAssertionConsumerServiceUrl3 != nil {
+		ok := object.Key("omniauth_providers_saml_assertion_consumer_service_url_3")
+		ok.String(*v.OmniauthProvidersSamlAssertionConsumerServiceUrl3)
+	}
+
+	if v.OmniauthProvidersSamlAssertionConsumerServiceUrl4 != nil {
+		ok := object.Key("omniauth_providers_saml_assertion_consumer_service_url_4")
+		ok.String(*v.OmniauthProvidersSamlAssertionConsumerServiceUrl4)
+	}
+
+	if v.OmniauthProvidersSamlAssertionConsumerServiceUrl5 != nil {
+		ok := object.Key("omniauth_providers_saml_assertion_consumer_service_url_5")
+		ok.String(*v.OmniauthProvidersSamlAssertionConsumerServiceUrl5)
 	}
 
 	if v.OmniauthProvidersSamlAuditorGroups != nil {
@@ -2448,9 +3162,49 @@ func awsRestjson1_serializeDocumentRequestParameters(v *types.RequestParameters,
 		ok.String(*v.OmniauthProvidersSamlAuditorGroups)
 	}
 
+	if v.OmniauthProvidersSamlAuditorGroups2 != nil {
+		ok := object.Key("omniauth_providers_saml_auditor_groups_2")
+		ok.String(*v.OmniauthProvidersSamlAuditorGroups2)
+	}
+
+	if v.OmniauthProvidersSamlAuditorGroups3 != nil {
+		ok := object.Key("omniauth_providers_saml_auditor_groups_3")
+		ok.String(*v.OmniauthProvidersSamlAuditorGroups3)
+	}
+
+	if v.OmniauthProvidersSamlAuditorGroups4 != nil {
+		ok := object.Key("omniauth_providers_saml_auditor_groups_4")
+		ok.String(*v.OmniauthProvidersSamlAuditorGroups4)
+	}
+
+	if v.OmniauthProvidersSamlAuditorGroups5 != nil {
+		ok := object.Key("omniauth_providers_saml_auditor_groups_5")
+		ok.String(*v.OmniauthProvidersSamlAuditorGroups5)
+	}
+
 	if v.OmniauthProvidersSamlExternalGroups != nil {
 		ok := object.Key("omniauth_providers_saml_external_groups")
 		ok.String(*v.OmniauthProvidersSamlExternalGroups)
+	}
+
+	if v.OmniauthProvidersSamlExternalGroups2 != nil {
+		ok := object.Key("omniauth_providers_saml_external_groups_2")
+		ok.String(*v.OmniauthProvidersSamlExternalGroups2)
+	}
+
+	if v.OmniauthProvidersSamlExternalGroups3 != nil {
+		ok := object.Key("omniauth_providers_saml_external_groups_3")
+		ok.String(*v.OmniauthProvidersSamlExternalGroups3)
+	}
+
+	if v.OmniauthProvidersSamlExternalGroups4 != nil {
+		ok := object.Key("omniauth_providers_saml_external_groups_4")
+		ok.String(*v.OmniauthProvidersSamlExternalGroups4)
+	}
+
+	if v.OmniauthProvidersSamlExternalGroups5 != nil {
+		ok := object.Key("omniauth_providers_saml_external_groups_5")
+		ok.String(*v.OmniauthProvidersSamlExternalGroups5)
 	}
 
 	if v.OmniauthProvidersSamlGroupsAttribute != nil {
@@ -2458,9 +3212,49 @@ func awsRestjson1_serializeDocumentRequestParameters(v *types.RequestParameters,
 		ok.String(*v.OmniauthProvidersSamlGroupsAttribute)
 	}
 
+	if v.OmniauthProvidersSamlGroupsAttribute2 != nil {
+		ok := object.Key("omniauth_providers_saml_groups_attribute_2")
+		ok.String(*v.OmniauthProvidersSamlGroupsAttribute2)
+	}
+
+	if v.OmniauthProvidersSamlGroupsAttribute3 != nil {
+		ok := object.Key("omniauth_providers_saml_groups_attribute_3")
+		ok.String(*v.OmniauthProvidersSamlGroupsAttribute3)
+	}
+
+	if v.OmniauthProvidersSamlGroupsAttribute4 != nil {
+		ok := object.Key("omniauth_providers_saml_groups_attribute_4")
+		ok.String(*v.OmniauthProvidersSamlGroupsAttribute4)
+	}
+
+	if v.OmniauthProvidersSamlGroupsAttribute5 != nil {
+		ok := object.Key("omniauth_providers_saml_groups_attribute_5")
+		ok.String(*v.OmniauthProvidersSamlGroupsAttribute5)
+	}
+
 	if v.OmniauthProvidersSamlIdpCertFingerprint != nil {
 		ok := object.Key("omniauth_providers_saml_idp_cert_fingerprint")
 		ok.String(*v.OmniauthProvidersSamlIdpCertFingerprint)
+	}
+
+	if v.OmniauthProvidersSamlIdpCertFingerprint2 != nil {
+		ok := object.Key("omniauth_providers_saml_idp_cert_fingerprint_2")
+		ok.String(*v.OmniauthProvidersSamlIdpCertFingerprint2)
+	}
+
+	if v.OmniauthProvidersSamlIdpCertFingerprint3 != nil {
+		ok := object.Key("omniauth_providers_saml_idp_cert_fingerprint_3")
+		ok.String(*v.OmniauthProvidersSamlIdpCertFingerprint3)
+	}
+
+	if v.OmniauthProvidersSamlIdpCertFingerprint4 != nil {
+		ok := object.Key("omniauth_providers_saml_idp_cert_fingerprint_4")
+		ok.String(*v.OmniauthProvidersSamlIdpCertFingerprint4)
+	}
+
+	if v.OmniauthProvidersSamlIdpCertFingerprint5 != nil {
+		ok := object.Key("omniauth_providers_saml_idp_cert_fingerprint_5")
+		ok.String(*v.OmniauthProvidersSamlIdpCertFingerprint5)
 	}
 
 	if v.OmniauthProvidersSamlIdpSsoTargetUrl != nil {
@@ -2468,9 +3262,49 @@ func awsRestjson1_serializeDocumentRequestParameters(v *types.RequestParameters,
 		ok.String(*v.OmniauthProvidersSamlIdpSsoTargetUrl)
 	}
 
+	if v.OmniauthProvidersSamlIdpSsoTargetUrl2 != nil {
+		ok := object.Key("omniauth_providers_saml_idp_sso_target_url_2")
+		ok.String(*v.OmniauthProvidersSamlIdpSsoTargetUrl2)
+	}
+
+	if v.OmniauthProvidersSamlIdpSsoTargetUrl3 != nil {
+		ok := object.Key("omniauth_providers_saml_idp_sso_target_url_3")
+		ok.String(*v.OmniauthProvidersSamlIdpSsoTargetUrl3)
+	}
+
+	if v.OmniauthProvidersSamlIdpSsoTargetUrl4 != nil {
+		ok := object.Key("omniauth_providers_saml_idp_sso_target_url_4")
+		ok.String(*v.OmniauthProvidersSamlIdpSsoTargetUrl4)
+	}
+
+	if v.OmniauthProvidersSamlIdpSsoTargetUrl5 != nil {
+		ok := object.Key("omniauth_providers_saml_idp_sso_target_url_5")
+		ok.String(*v.OmniauthProvidersSamlIdpSsoTargetUrl5)
+	}
+
 	if v.OmniauthProvidersSamlIssuer != nil {
 		ok := object.Key("omniauth_providers_saml_issuer")
 		ok.String(*v.OmniauthProvidersSamlIssuer)
+	}
+
+	if v.OmniauthProvidersSamlIssuer2 != nil {
+		ok := object.Key("omniauth_providers_saml_issuer_2")
+		ok.String(*v.OmniauthProvidersSamlIssuer2)
+	}
+
+	if v.OmniauthProvidersSamlIssuer3 != nil {
+		ok := object.Key("omniauth_providers_saml_issuer_3")
+		ok.String(*v.OmniauthProvidersSamlIssuer3)
+	}
+
+	if v.OmniauthProvidersSamlIssuer4 != nil {
+		ok := object.Key("omniauth_providers_saml_issuer_4")
+		ok.String(*v.OmniauthProvidersSamlIssuer4)
+	}
+
+	if v.OmniauthProvidersSamlIssuer5 != nil {
+		ok := object.Key("omniauth_providers_saml_issuer_5")
+		ok.String(*v.OmniauthProvidersSamlIssuer5)
 	}
 
 	if v.OmniauthProvidersSamlLabel != nil {
@@ -2478,9 +3312,49 @@ func awsRestjson1_serializeDocumentRequestParameters(v *types.RequestParameters,
 		ok.String(*v.OmniauthProvidersSamlLabel)
 	}
 
+	if v.OmniauthProvidersSamlLabel2 != nil {
+		ok := object.Key("omniauth_providers_saml_label_2")
+		ok.String(*v.OmniauthProvidersSamlLabel2)
+	}
+
+	if v.OmniauthProvidersSamlLabel3 != nil {
+		ok := object.Key("omniauth_providers_saml_label_3")
+		ok.String(*v.OmniauthProvidersSamlLabel3)
+	}
+
+	if v.OmniauthProvidersSamlLabel4 != nil {
+		ok := object.Key("omniauth_providers_saml_label_4")
+		ok.String(*v.OmniauthProvidersSamlLabel4)
+	}
+
+	if v.OmniauthProvidersSamlLabel5 != nil {
+		ok := object.Key("omniauth_providers_saml_label_5")
+		ok.String(*v.OmniauthProvidersSamlLabel5)
+	}
+
 	if v.OmniauthProvidersSamlName != nil {
 		ok := object.Key("omniauth_providers_saml_name")
 		ok.String(*v.OmniauthProvidersSamlName)
+	}
+
+	if v.OmniauthProvidersSamlName2 != nil {
+		ok := object.Key("omniauth_providers_saml_name_2")
+		ok.String(*v.OmniauthProvidersSamlName2)
+	}
+
+	if v.OmniauthProvidersSamlName3 != nil {
+		ok := object.Key("omniauth_providers_saml_name_3")
+		ok.String(*v.OmniauthProvidersSamlName3)
+	}
+
+	if v.OmniauthProvidersSamlName4 != nil {
+		ok := object.Key("omniauth_providers_saml_name_4")
+		ok.String(*v.OmniauthProvidersSamlName4)
+	}
+
+	if v.OmniauthProvidersSamlName5 != nil {
+		ok := object.Key("omniauth_providers_saml_name_5")
+		ok.String(*v.OmniauthProvidersSamlName5)
 	}
 
 	if v.OmniauthProvidersSamlNameIdentifierFormat != nil {
@@ -2488,9 +3362,49 @@ func awsRestjson1_serializeDocumentRequestParameters(v *types.RequestParameters,
 		ok.String(*v.OmniauthProvidersSamlNameIdentifierFormat)
 	}
 
+	if v.OmniauthProvidersSamlNameIdentifierFormat2 != nil {
+		ok := object.Key("omniauth_providers_saml_name_identifier_format_2")
+		ok.String(*v.OmniauthProvidersSamlNameIdentifierFormat2)
+	}
+
+	if v.OmniauthProvidersSamlNameIdentifierFormat3 != nil {
+		ok := object.Key("omniauth_providers_saml_name_identifier_format_3")
+		ok.String(*v.OmniauthProvidersSamlNameIdentifierFormat3)
+	}
+
+	if v.OmniauthProvidersSamlNameIdentifierFormat4 != nil {
+		ok := object.Key("omniauth_providers_saml_name_identifier_format_4")
+		ok.String(*v.OmniauthProvidersSamlNameIdentifierFormat4)
+	}
+
+	if v.OmniauthProvidersSamlNameIdentifierFormat5 != nil {
+		ok := object.Key("omniauth_providers_saml_name_identifier_format_5")
+		ok.String(*v.OmniauthProvidersSamlNameIdentifierFormat5)
+	}
+
 	if v.OmniauthProvidersSamlRequiredGroups != nil {
 		ok := object.Key("omniauth_providers_saml_required_groups")
 		ok.String(*v.OmniauthProvidersSamlRequiredGroups)
+	}
+
+	if v.OmniauthProvidersSamlRequiredGroups2 != nil {
+		ok := object.Key("omniauth_providers_saml_required_groups_2")
+		ok.String(*v.OmniauthProvidersSamlRequiredGroups2)
+	}
+
+	if v.OmniauthProvidersSamlRequiredGroups3 != nil {
+		ok := object.Key("omniauth_providers_saml_required_groups_3")
+		ok.String(*v.OmniauthProvidersSamlRequiredGroups3)
+	}
+
+	if v.OmniauthProvidersSamlRequiredGroups4 != nil {
+		ok := object.Key("omniauth_providers_saml_required_groups_4")
+		ok.String(*v.OmniauthProvidersSamlRequiredGroups4)
+	}
+
+	if v.OmniauthProvidersSamlRequiredGroups5 != nil {
+		ok := object.Key("omniauth_providers_saml_required_groups_5")
+		ok.String(*v.OmniauthProvidersSamlRequiredGroups5)
 	}
 
 	if v.SmtpPassword != nil {

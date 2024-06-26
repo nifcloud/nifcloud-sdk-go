@@ -382,3 +382,41 @@ func (ProtocolOfrulesForAuthorizeFirewallRules) Values() []ProtocolOfrulesForAut
 		"ICMP",
 	}
 }
+
+type RegionOfobjectStorageConfigForCreateInstance string
+
+// Enum values for RegionOfobjectStorageConfigForCreateInstance
+const (
+	RegionOfobjectStorageConfigForCreateInstanceJpEast1 RegionOfobjectStorageConfigForCreateInstance = "jp-east-1"
+	RegionOfobjectStorageConfigForCreateInstanceJpWest2 RegionOfobjectStorageConfigForCreateInstance = "jp-west-2"
+)
+
+// Values returns all known values for
+// RegionOfobjectStorageConfigForCreateInstance. Note that this can be expanded in
+// the future, and so it is only as up to date as the client. The ordering of this
+// slice is not guaranteed to be stable across updates.
+func (RegionOfobjectStorageConfigForCreateInstance) Values() []RegionOfobjectStorageConfigForCreateInstance {
+	return []RegionOfobjectStorageConfigForCreateInstance{
+		"jp-east-1",
+		"jp-west-2",
+	}
+}
+
+type RegionOfobjectStorageConfigForRestoreInstance string
+
+// Enum values for RegionOfobjectStorageConfigForRestoreInstance
+const (
+	RegionOfobjectStorageConfigForRestoreInstanceJpEast1 RegionOfobjectStorageConfigForRestoreInstance = "jp-east-1"
+	RegionOfobjectStorageConfigForRestoreInstanceJpWest2 RegionOfobjectStorageConfigForRestoreInstance = "jp-west-2"
+)
+
+// Values returns all known values for
+// RegionOfobjectStorageConfigForRestoreInstance. Note that this can be expanded in
+// the future, and so it is only as up to date as the client. The ordering of this
+// slice is not guaranteed to be stable across updates.
+func (RegionOfobjectStorageConfigForRestoreInstance) Values() []RegionOfobjectStorageConfigForRestoreInstance {
+	return []RegionOfobjectStorageConfigForRestoreInstance{
+		"jp-east-1",
+		"jp-west-2",
+	}
+}

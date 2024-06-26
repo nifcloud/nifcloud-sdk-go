@@ -1403,6 +1403,10 @@ structure UpgradeDBEngineVersionResult {
       value: "mysql5.7",
   },
   {
+      name: "MYSQL8_0",
+      value: "mysql8.0",
+  },
+  {
       name: "POSTGRES9_3",
       value: "postgres9.3",
   },

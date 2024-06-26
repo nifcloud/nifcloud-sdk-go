@@ -477,6 +477,9 @@ func validateOpRegisterRunnerInput(v *RegisterRunnerInput) error {
 		return nil
 	}
 	invalidParams := smithy.InvalidParamsError{Context: "RegisterRunnerInput"}
+	if v.AuthenticationToken == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("AuthenticationToken"))
+	}
 	if v.GitlabUrl == nil {
 	invalidParams.Add(smithy.NewErrParamRequired("GitlabUrl"))
 	}

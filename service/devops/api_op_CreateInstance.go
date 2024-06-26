@@ -52,6 +52,8 @@ type CreateInstanceInput struct {
 
 	NetworkConfig *types.RequestNetworkConfig
 
+	ObjectStorageConfig *types.RequestObjectStorageConfig
+
 	noSmithyDocumentSerde
 }
 

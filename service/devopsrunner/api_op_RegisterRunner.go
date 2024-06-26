@@ -29,34 +29,21 @@ func (c *Client) RegisterRunner(ctx context.Context, params *RegisterRunnerInput
 type RegisterRunnerInput struct {
 
 	// This member is required.
+	AuthenticationToken *string
+
+	// This member is required.
 	GitlabUrl *string
 
 	// This member is required.
 	RunnerName *string
 
-	AccessLevel types.AccessLevelOfRegisterRunnerRequest
-
-	AuthenticationToken *string
-
 	DefaultDockerImage *string
 
 	ExtraHosts []types.RequestExtraHosts
 
-	Locked *bool
-
-	MaximumTimeout *int32
-
 	ParameterGroupName *string
 
-	Paused *bool
-
 	Privileged *bool
-
-	RegistrationToken *string
-
-	RunUntagged *bool
-
-	Tags []string
 
 	noSmithyDocumentSerde
 }

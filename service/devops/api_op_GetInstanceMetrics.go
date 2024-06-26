@@ -11,54 +11,40 @@ import (
 	"github.com/nifcloud/nifcloud-sdk-go/service/devops/types"
 )
 
-func (c *Client) RestoreInstance(ctx context.Context, params *RestoreInstanceInput, optFns ...func(*Options)) (*RestoreInstanceOutput, error) {
+func (c *Client) GetInstanceMetrics(ctx context.Context, params *GetInstanceMetricsInput, optFns ...func(*Options)) (*GetInstanceMetricsOutput, error) {
 	if params == nil {
-		params = &RestoreInstanceInput{}
+		params = &GetInstanceMetricsInput{}
 	}
 
-	result, metadata, err := c.invokeOperation(ctx, "RestoreInstance", params, optFns, c.addOperationRestoreInstanceMiddlewares)
+	result, metadata, err := c.invokeOperation(ctx, "GetInstanceMetrics", params, optFns, c.addOperationGetInstanceMetricsMiddlewares)
 	if err != nil {
 		return nil, err
 	}
 
-	out := result.(*RestoreInstanceOutput)
+	out := result.(*GetInstanceMetricsOutput)
 	out.ResultMetadata = metadata
 	return out, nil
 }
 
-type RestoreInstanceInput struct {
+type GetInstanceMetricsInput struct {
 
 	// This member is required.
-	BackupId *string
-
-	// This member is required.
-	DiskSize *int32
-
-	// This member is required.
-	FirewallGroupName *string
+	EndTime *string
 
 	// This member is required.
 	InstanceId *string
 
 	// This member is required.
-	InstanceType types.InstanceTypeOfRestoreInstanceRequest
+	MetricsName *string
 
 	// This member is required.
-	ParameterGroupName *string
-
-	AvailabilityZone types.AvailabilityZoneOfRestoreInstanceRequest
-
-	Description *string
-
-	NetworkConfig *types.RequestNetworkConfig
-
-	ObjectStorageConfig *types.RequestObjectStorageConfigOfRestoreInstance
+	StartTime *string
 
 	noSmithyDocumentSerde
 }
 
-type RestoreInstanceOutput struct {
-	Instance *types.Instance
+type GetInstanceMetricsOutput struct {
+	Metrics []types.Metrics
 
 	// Metadata pertaining to the operation's result.
 	ResultMetadata middleware.Metadata
@@ -66,12 +52,12 @@ type RestoreInstanceOutput struct {
 	noSmithyDocumentSerde
 }
 
-func (c *Client) addOperationRestoreInstanceMiddlewares(stack *middleware.Stack, options Options) (err error) {
-	err = stack.Serialize.Add(&awsRestjson1_serializeOpRestoreInstance{}, middleware.After)
+func (c *Client) addOperationGetInstanceMetricsMiddlewares(stack *middleware.Stack, options Options) (err error) {
+	err = stack.Serialize.Add(&awsRestjson1_serializeOpGetInstanceMetrics{}, middleware.After)
 	if err != nil {
 		return err
 	}
-	err = stack.Deserialize.Add(&awsRestjson1_deserializeOpRestoreInstance{}, middleware.After)
+	err = stack.Deserialize.Add(&awsRestjson1_deserializeOpGetInstanceMetrics{}, middleware.After)
 	if err != nil {
 		return err
 	}
@@ -111,10 +97,10 @@ func (c *Client) addOperationRestoreInstanceMiddlewares(stack *middleware.Stack,
 	if err = smithyhttp.AddCloseResponseBodyMiddleware(stack); err != nil {
 		return err
 	}
-	if err = addOpRestoreInstanceValidationMiddleware(stack); err != nil {
+	if err = addOpGetInstanceMetricsValidationMiddleware(stack); err != nil {
 		return err
 	}
-	if err = stack.Initialize.Add(newServiceMetadataMiddleware_opRestoreInstance(options.Region), middleware.Before); err != nil {
+	if err = stack.Initialize.Add(newServiceMetadataMiddleware_opGetInstanceMetrics(options.Region), middleware.Before); err != nil {
 		return err
 	}
 	if err = addRequestIDRetrieverMiddleware(stack); err != nil {
@@ -129,11 +115,11 @@ func (c *Client) addOperationRestoreInstanceMiddlewares(stack *middleware.Stack,
 	return nil
 }
 
-func newServiceMetadataMiddleware_opRestoreInstance(region string) *awsmiddleware.RegisterServiceMetadata {
+func newServiceMetadataMiddleware_opGetInstanceMetrics(region string) *awsmiddleware.RegisterServiceMetadata {
 	return &awsmiddleware.RegisterServiceMetadata{
 		Region:        region,
 		ServiceID:     ServiceID,
 		SigningName:   "devops",
-		OperationName: "RestoreInstance",
+		OperationName: "GetInstanceMetrics",
 	}
 }

@@ -793,11 +793,6 @@ func awsRestjson1_serializeOpDocumentRegisterRunnerInput(v *RegisterRunnerInput,
 	object := value.Object()
 	defer object.Close()
 
-	if len(v.AccessLevel) > 0 {
-		ok := object.Key("accessLevel")
-		ok.String(string(v.AccessLevel))
-	}
-
 	if v.AuthenticationToken != nil {
 		ok := object.Key("authenticationToken")
 		ok.String(*v.AuthenticationToken)
@@ -820,46 +815,14 @@ func awsRestjson1_serializeOpDocumentRegisterRunnerInput(v *RegisterRunnerInput,
 		ok.String(*v.GitlabUrl)
 	}
 
-	if v.Locked != nil {
-		ok := object.Key("locked")
-		ok.Boolean(*v.Locked)
-	}
-
-	if v.MaximumTimeout != nil {
-		ok := object.Key("maximumTimeout")
-		ok.Integer(*v.MaximumTimeout)
-	}
-
 	if v.ParameterGroupName != nil {
 		ok := object.Key("parameterGroupName")
 		ok.String(*v.ParameterGroupName)
 	}
 
-	if v.Paused != nil {
-		ok := object.Key("paused")
-		ok.Boolean(*v.Paused)
-	}
-
 	if v.Privileged != nil {
 		ok := object.Key("privileged")
 		ok.Boolean(*v.Privileged)
-	}
-
-	if v.RegistrationToken != nil {
-		ok := object.Key("registrationToken")
-		ok.String(*v.RegistrationToken)
-	}
-
-	if v.RunUntagged != nil {
-		ok := object.Key("runUntagged")
-		ok.Boolean(*v.RunUntagged)
-	}
-
-	if v.Tags != nil {
-		ok := object.Key("tags")
-		if err := awsRestjson1_serializeDocumentListOfRequestTags(v.Tags, ok); err != nil {
-			return err
-		}
 	}
 
 	return nil
@@ -1326,17 +1289,6 @@ func awsRestjson1_serializeDocumentListOfRequestExtraHosts(v []types.RequestExtr
 		if err := awsRestjson1_serializeDocumentRequestExtraHosts(&v[i], av); err != nil {
 			return err
 		}
-	}
-	return nil
-}
-
-func awsRestjson1_serializeDocumentListOfRequestTags(v []string, value smithyjson.Value) error {
-	array := value.Array()
-	defer array.Close()
-
-	for i := range v {
-		av := array.Value()
-		av.String(v[i])
 	}
 	return nil
 }

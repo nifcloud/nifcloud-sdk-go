@@ -311,6 +311,26 @@ func (m *validateOpGetInstance) HandleInitialize(ctx context.Context, in middlew
 	return next.HandleInitialize(ctx, in)
 }
 
+type validateOpGetInstanceMetrics struct {
+}
+
+func (*validateOpGetInstanceMetrics) ID() string {
+	return "OperationInputValidation"
+}
+
+func (m *validateOpGetInstanceMetrics) HandleInitialize(ctx context.Context, in middleware.InitializeInput, next middleware.InitializeHandler) (
+	out middleware.InitializeOutput, metadata middleware.Metadata, err error,
+) {
+	input, ok := in.Parameters.(*GetInstanceMetricsInput)
+	if !ok {
+		return out, metadata, fmt.Errorf("unknown input parameters type %T", in.Parameters)
+	}
+	if err := validateOpGetInstanceMetricsInput(input); err != nil {
+		return out, metadata, err
+	}
+	return next.HandleInitialize(ctx, in)
+}
+
 type validateOpGetParameterGroup struct {
 }
 
@@ -386,6 +406,26 @@ func (m *validateOpRevokeFirewallRules) HandleInitialize(ctx context.Context, in
 		return out, metadata, fmt.Errorf("unknown input parameters type %T", in.Parameters)
 	}
 	if err := validateOpRevokeFirewallRulesInput(input); err != nil {
+		return out, metadata, err
+	}
+	return next.HandleInitialize(ctx, in)
+}
+
+type validateOpSetupAlert struct {
+}
+
+func (*validateOpSetupAlert) ID() string {
+	return "OperationInputValidation"
+}
+
+func (m *validateOpSetupAlert) HandleInitialize(ctx context.Context, in middleware.InitializeInput, next middleware.InitializeHandler) (
+	out middleware.InitializeOutput, metadata middleware.Metadata, err error,
+) {
+	input, ok := in.Parameters.(*SetupAlertInput)
+	if !ok {
+		return out, metadata, fmt.Errorf("unknown input parameters type %T", in.Parameters)
+	}
+	if err := validateOpSetupAlertInput(input); err != nil {
 		return out, metadata, err
 	}
 	return next.HandleInitialize(ctx, in)
@@ -571,6 +611,10 @@ func addOpGetInstanceValidationMiddleware(stack *middleware.Stack) error {
 	return stack.Initialize.Add(&validateOpGetInstance{}, middleware.After)
 }
 
+func addOpGetInstanceMetricsValidationMiddleware(stack *middleware.Stack) error {
+	return stack.Initialize.Add(&validateOpGetInstanceMetrics{}, middleware.After)
+}
+
 func addOpGetParameterGroupValidationMiddleware(stack *middleware.Stack) error {
 	return stack.Initialize.Add(&validateOpGetParameterGroup{}, middleware.After)
 }
@@ -585,6 +629,10 @@ func addOpRestoreInstanceValidationMiddleware(stack *middleware.Stack) error {
 
 func addOpRevokeFirewallRulesValidationMiddleware(stack *middleware.Stack) error {
 	return stack.Initialize.Add(&validateOpRevokeFirewallRules{}, middleware.After)
+}
+
+func addOpSetupAlertValidationMiddleware(stack *middleware.Stack) error {
+	return stack.Initialize.Add(&validateOpSetupAlert{}, middleware.After)
 }
 
 func addOpUpdateBackupRuleValidationMiddleware(stack *middleware.Stack) error {
@@ -896,6 +944,30 @@ func validateOpGetInstanceInput(v *GetInstanceInput) error {
 	}
 }
 
+func validateOpGetInstanceMetricsInput(v *GetInstanceMetricsInput) error {
+	if v == nil {
+		return nil
+	}
+	invalidParams := smithy.InvalidParamsError{Context: "GetInstanceMetricsInput"}
+	if v.EndTime == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("EndTime"))
+	}
+	if v.InstanceId == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("InstanceId"))
+	}
+	if v.MetricsName == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("MetricsName"))
+	}
+	if v.StartTime == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("StartTime"))
+	}
+	if invalidParams.Len() > 0 {
+	return invalidParams
+	} else {
+	return nil
+	}
+}
+
 func validateOpGetParameterGroupInput(v *GetParameterGroupInput) error {
 	if v == nil {
 		return nil
@@ -966,6 +1038,24 @@ func validateOpRevokeFirewallRulesInput(v *RevokeFirewallRulesInput) error {
 	}
 	if v.Ids == nil {
 	invalidParams.Add(smithy.NewErrParamRequired("Ids"))
+	}
+	if invalidParams.Len() > 0 {
+	return invalidParams
+	} else {
+	return nil
+	}
+}
+
+func validateOpSetupAlertInput(v *SetupAlertInput) error {
+	if v == nil {
+		return nil
+	}
+	invalidParams := smithy.InvalidParamsError{Context: "SetupAlertInput"}
+	if v.InstanceId == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("InstanceId"))
+	}
+	if v.To == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("To"))
 	}
 	if invalidParams.Len() > 0 {
 	return invalidParams
