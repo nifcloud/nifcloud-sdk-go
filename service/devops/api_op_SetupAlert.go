@@ -11,53 +11,33 @@ import (
 	"github.com/nifcloud/nifcloud-sdk-go/service/devops/types"
 )
 
-func (c *Client) RestoreInstance(ctx context.Context, params *RestoreInstanceInput, optFns ...func(*Options)) (*RestoreInstanceOutput, error) {
+func (c *Client) SetupAlert(ctx context.Context, params *SetupAlertInput, optFns ...func(*Options)) (*SetupAlertOutput, error) {
 	if params == nil {
-		params = &RestoreInstanceInput{}
+		params = &SetupAlertInput{}
 	}
 
-	result, metadata, err := c.invokeOperation(ctx, "RestoreInstance", params, optFns, c.addOperationRestoreInstanceMiddlewares)
+	result, metadata, err := c.invokeOperation(ctx, "SetupAlert", params, optFns, c.addOperationSetupAlertMiddlewares)
 	if err != nil {
 		return nil, err
 	}
 
-	out := result.(*RestoreInstanceOutput)
+	out := result.(*SetupAlertOutput)
 	out.ResultMetadata = metadata
 	return out, nil
 }
 
-type RestoreInstanceInput struct {
-
-	// This member is required.
-	BackupId *string
-
-	// This member is required.
-	DiskSize *int32
-
-	// This member is required.
-	FirewallGroupName *string
+type SetupAlertInput struct {
 
 	// This member is required.
 	InstanceId *string
 
 	// This member is required.
-	InstanceType types.InstanceTypeOfRestoreInstanceRequest
-
-	// This member is required.
-	ParameterGroupName *string
-
-	AvailabilityZone types.AvailabilityZoneOfRestoreInstanceRequest
-
-	Description *string
-
-	NetworkConfig *types.RequestNetworkConfig
-
-	ObjectStorageConfig *types.RequestObjectStorageConfigOfRestoreInstance
+	To *string
 
 	noSmithyDocumentSerde
 }
 
-type RestoreInstanceOutput struct {
+type SetupAlertOutput struct {
 	Instance *types.Instance
 
 	// Metadata pertaining to the operation's result.
@@ -66,12 +46,12 @@ type RestoreInstanceOutput struct {
 	noSmithyDocumentSerde
 }
 
-func (c *Client) addOperationRestoreInstanceMiddlewares(stack *middleware.Stack, options Options) (err error) {
-	err = stack.Serialize.Add(&awsRestjson1_serializeOpRestoreInstance{}, middleware.After)
+func (c *Client) addOperationSetupAlertMiddlewares(stack *middleware.Stack, options Options) (err error) {
+	err = stack.Serialize.Add(&awsRestjson1_serializeOpSetupAlert{}, middleware.After)
 	if err != nil {
 		return err
 	}
-	err = stack.Deserialize.Add(&awsRestjson1_deserializeOpRestoreInstance{}, middleware.After)
+	err = stack.Deserialize.Add(&awsRestjson1_deserializeOpSetupAlert{}, middleware.After)
 	if err != nil {
 		return err
 	}
@@ -111,10 +91,10 @@ func (c *Client) addOperationRestoreInstanceMiddlewares(stack *middleware.Stack,
 	if err = smithyhttp.AddCloseResponseBodyMiddleware(stack); err != nil {
 		return err
 	}
-	if err = addOpRestoreInstanceValidationMiddleware(stack); err != nil {
+	if err = addOpSetupAlertValidationMiddleware(stack); err != nil {
 		return err
 	}
-	if err = stack.Initialize.Add(newServiceMetadataMiddleware_opRestoreInstance(options.Region), middleware.Before); err != nil {
+	if err = stack.Initialize.Add(newServiceMetadataMiddleware_opSetupAlert(options.Region), middleware.Before); err != nil {
 		return err
 	}
 	if err = addRequestIDRetrieverMiddleware(stack); err != nil {
@@ -129,11 +109,11 @@ func (c *Client) addOperationRestoreInstanceMiddlewares(stack *middleware.Stack,
 	return nil
 }
 
-func newServiceMetadataMiddleware_opRestoreInstance(region string) *awsmiddleware.RegisterServiceMetadata {
+func newServiceMetadataMiddleware_opSetupAlert(region string) *awsmiddleware.RegisterServiceMetadata {
 	return &awsmiddleware.RegisterServiceMetadata{
 		Region:        region,
 		ServiceID:     ServiceID,
 		SigningName:   "devops",
-		OperationName: "RestoreInstance",
+		OperationName: "SetupAlert",
 	}
 }

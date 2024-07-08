@@ -71,6 +71,17 @@ type Backups struct {
 	noSmithyDocumentSerde
 }
 
+type BucketUseObjects struct {
+	
+	ContainerRegistry *string
+	
+	Lfs *string
+	
+	Packages *string
+	
+	noSmithyDocumentSerde
+}
+
 type FirewallGroup struct {
 	
 	AvailabilityZone *string
@@ -127,6 +138,8 @@ type Instance struct {
 	
 	NetworkConfig *NetworkConfig
 	
+	ObjectStorageConfig *ObjectStorageConfig
+	
 	ParameterGroupName *string
 	
 	PublicIpAddress *string
@@ -138,6 +151,8 @@ type Instance struct {
 	State *string
 	
 	Status *Status
+	
+	To *string
 	
 	UpgradableGitlabVersions []string
 	
@@ -166,6 +181,8 @@ type Instances struct {
 	
 	NetworkConfig *NetworkConfig
 	
+	ObjectStorageConfig *ObjectStorageConfig
+	
 	ParameterGroupName *string
 	
 	PublicIpAddress *string
@@ -178,7 +195,24 @@ type Instances struct {
 	
 	Status *Status
 	
+	To *string
+	
 	UpgradableGitlabVersions []string
+	
+	noSmithyDocumentSerde
+}
+
+type Metrics struct {
+	
+	MaxValue *float64
+	
+	MinValue *float64
+	
+	Timestamp *string
+	
+	Timezone *string
+	
+	Value *float64
 	
 	noSmithyDocumentSerde
 }
@@ -188,6 +222,17 @@ type NetworkConfig struct {
 	NetworkId *string
 	
 	PrivateAddress *string
+	
+	noSmithyDocumentSerde
+}
+
+type ObjectStorageConfig struct {
+	
+	Account *string
+	
+	BucketUseObjects *BucketUseObjects
+	
+	Region *string
 	
 	noSmithyDocumentSerde
 }
@@ -241,11 +286,44 @@ type Parameters struct {
 	noSmithyDocumentSerde
 }
 
+type RequestBucketUseObjects struct {
+	
+	ContainerRegistry *string
+	
+	Lfs *string
+	
+	Packages *string
+	
+	noSmithyDocumentSerde
+}
+
 type RequestNetworkConfig struct {
 	
 	NetworkId *string
 	
 	PrivateAddress *string
+	
+	noSmithyDocumentSerde
+}
+
+type RequestObjectStorageConfig struct {
+	
+	Account *string
+	
+	Region RegionOfobjectStorageConfigForCreateInstance
+	
+	RequestBucketUseObjects *RequestBucketUseObjects
+	
+	noSmithyDocumentSerde
+}
+
+type RequestObjectStorageConfigOfRestoreInstance struct {
+	
+	Account *string
+	
+	Region RegionOfobjectStorageConfigForRestoreInstance
+	
+	RequestBucketUseObjects *RequestBucketUseObjects
 	
 	noSmithyDocumentSerde
 }
@@ -260,45 +338,213 @@ type RequestParameters struct {
 	
 	LdapServersActiveDirectory *string
 	
+	LdapServersActiveDirectory2 *string
+	
+	LdapServersActiveDirectory3 *string
+	
+	LdapServersActiveDirectory4 *string
+	
+	LdapServersActiveDirectory5 *string
+	
 	LdapServersAllowUsernameOrEmailLogin *string
+	
+	LdapServersAllowUsernameOrEmailLogin2 *string
+	
+	LdapServersAllowUsernameOrEmailLogin3 *string
+	
+	LdapServersAllowUsernameOrEmailLogin4 *string
+	
+	LdapServersAllowUsernameOrEmailLogin5 *string
 	
 	LdapServersAttributesEmail *string
 	
+	LdapServersAttributesEmail2 *string
+	
+	LdapServersAttributesEmail3 *string
+	
+	LdapServersAttributesEmail4 *string
+	
+	LdapServersAttributesEmail5 *string
+	
 	LdapServersAttributesFirstName *string
+	
+	LdapServersAttributesFirstName2 *string
+	
+	LdapServersAttributesFirstName3 *string
+	
+	LdapServersAttributesFirstName4 *string
+	
+	LdapServersAttributesFirstName5 *string
 	
 	LdapServersAttributesLastName *string
 	
+	LdapServersAttributesLastName2 *string
+	
+	LdapServersAttributesLastName3 *string
+	
+	LdapServersAttributesLastName4 *string
+	
+	LdapServersAttributesLastName5 *string
+	
 	LdapServersAttributesName *string
+	
+	LdapServersAttributesName2 *string
+	
+	LdapServersAttributesName3 *string
+	
+	LdapServersAttributesName4 *string
+	
+	LdapServersAttributesName5 *string
 	
 	LdapServersAttributesUsername *string
 	
+	LdapServersAttributesUsername2 *string
+	
+	LdapServersAttributesUsername3 *string
+	
+	LdapServersAttributesUsername4 *string
+	
+	LdapServersAttributesUsername5 *string
+	
 	LdapServersBase *string
+	
+	LdapServersBase2 *string
+	
+	LdapServersBase3 *string
+	
+	LdapServersBase4 *string
+	
+	LdapServersBase5 *string
 	
 	LdapServersBindDn *string
 	
+	LdapServersBindDn2 *string
+	
+	LdapServersBindDn3 *string
+	
+	LdapServersBindDn4 *string
+	
+	LdapServersBindDn5 *string
+	
 	LdapServersBlockAutoCreatedUsers *string
+	
+	LdapServersBlockAutoCreatedUsers2 *string
+	
+	LdapServersBlockAutoCreatedUsers3 *string
+	
+	LdapServersBlockAutoCreatedUsers4 *string
+	
+	LdapServersBlockAutoCreatedUsers5 *string
 	
 	LdapServersEncryption *string
 	
+	LdapServersEncryption2 *string
+	
+	LdapServersEncryption3 *string
+	
+	LdapServersEncryption4 *string
+	
+	LdapServersEncryption5 *string
+	
 	LdapServersHost *string
+	
+	LdapServersHost2 *string
+	
+	LdapServersHost3 *string
+	
+	LdapServersHost4 *string
+	
+	LdapServersHost5 *string
 	
 	LdapServersLabel *string
 	
+	LdapServersLabel2 *string
+	
+	LdapServersLabel3 *string
+	
+	LdapServersLabel4 *string
+	
+	LdapServersLabel5 *string
+	
 	LdapServersLowercaseUsernames *string
+	
+	LdapServersLowercaseUsernames2 *string
+	
+	LdapServersLowercaseUsernames3 *string
+	
+	LdapServersLowercaseUsernames4 *string
+	
+	LdapServersLowercaseUsernames5 *string
 	
 	LdapServersName *string
 	
+	LdapServersName2 *string
+	
+	LdapServersName3 *string
+	
+	LdapServersName4 *string
+	
+	LdapServersName5 *string
+	
 	LdapServersPassword *string
+	
+	LdapServersPassword2 *string
+	
+	LdapServersPassword3 *string
+	
+	LdapServersPassword4 *string
+	
+	LdapServersPassword5 *string
 	
 	LdapServersPort *string
 	
+	LdapServersPort2 *string
+	
+	LdapServersPort3 *string
+	
+	LdapServersPort4 *string
+	
+	LdapServersPort5 *string
+	
 	LdapServersTimeout *string
+	
+	LdapServersTimeout2 *string
+	
+	LdapServersTimeout3 *string
+	
+	LdapServersTimeout4 *string
+	
+	LdapServersTimeout5 *string
 	
 	LdapServersUid *string
 	
+	LdapServersUid2 *string
+	
+	LdapServersUid3 *string
+	
+	LdapServersUid4 *string
+	
+	LdapServersUid5 *string
+	
 	LdapServersUserFilter *string
 	
+	LdapServersUserFilter2 *string
+	
+	LdapServersUserFilter3 *string
+	
+	LdapServersUserFilter4 *string
+	
+	LdapServersUserFilter5 *string
+	
 	LdapServersVerifyCertificates *string
+	
+	LdapServersVerifyCertificates2 *string
+	
+	LdapServersVerifyCertificates3 *string
+	
+	LdapServersVerifyCertificates4 *string
+	
+	LdapServersVerifyCertificates5 *string
 	
 	OmniauthAllowSingleSignOn *string
 	
@@ -310,27 +556,123 @@ type RequestParameters struct {
 	
 	OmniauthProvidersSamlAdminGroups *string
 	
+	OmniauthProvidersSamlAdminGroups2 *string
+	
+	OmniauthProvidersSamlAdminGroups3 *string
+	
+	OmniauthProvidersSamlAdminGroups4 *string
+	
+	OmniauthProvidersSamlAdminGroups5 *string
+	
 	OmniauthProvidersSamlAssertionConsumerServiceUrl *string
+	
+	OmniauthProvidersSamlAssertionConsumerServiceUrl2 *string
+	
+	OmniauthProvidersSamlAssertionConsumerServiceUrl3 *string
+	
+	OmniauthProvidersSamlAssertionConsumerServiceUrl4 *string
+	
+	OmniauthProvidersSamlAssertionConsumerServiceUrl5 *string
 	
 	OmniauthProvidersSamlAuditorGroups *string
 	
+	OmniauthProvidersSamlAuditorGroups2 *string
+	
+	OmniauthProvidersSamlAuditorGroups3 *string
+	
+	OmniauthProvidersSamlAuditorGroups4 *string
+	
+	OmniauthProvidersSamlAuditorGroups5 *string
+	
 	OmniauthProvidersSamlExternalGroups *string
+	
+	OmniauthProvidersSamlExternalGroups2 *string
+	
+	OmniauthProvidersSamlExternalGroups3 *string
+	
+	OmniauthProvidersSamlExternalGroups4 *string
+	
+	OmniauthProvidersSamlExternalGroups5 *string
 	
 	OmniauthProvidersSamlGroupsAttribute *string
 	
+	OmniauthProvidersSamlGroupsAttribute2 *string
+	
+	OmniauthProvidersSamlGroupsAttribute3 *string
+	
+	OmniauthProvidersSamlGroupsAttribute4 *string
+	
+	OmniauthProvidersSamlGroupsAttribute5 *string
+	
 	OmniauthProvidersSamlIdpCertFingerprint *string
+	
+	OmniauthProvidersSamlIdpCertFingerprint2 *string
+	
+	OmniauthProvidersSamlIdpCertFingerprint3 *string
+	
+	OmniauthProvidersSamlIdpCertFingerprint4 *string
+	
+	OmniauthProvidersSamlIdpCertFingerprint5 *string
 	
 	OmniauthProvidersSamlIdpSsoTargetUrl *string
 	
+	OmniauthProvidersSamlIdpSsoTargetUrl2 *string
+	
+	OmniauthProvidersSamlIdpSsoTargetUrl3 *string
+	
+	OmniauthProvidersSamlIdpSsoTargetUrl4 *string
+	
+	OmniauthProvidersSamlIdpSsoTargetUrl5 *string
+	
 	OmniauthProvidersSamlIssuer *string
+	
+	OmniauthProvidersSamlIssuer2 *string
+	
+	OmniauthProvidersSamlIssuer3 *string
+	
+	OmniauthProvidersSamlIssuer4 *string
+	
+	OmniauthProvidersSamlIssuer5 *string
 	
 	OmniauthProvidersSamlLabel *string
 	
+	OmniauthProvidersSamlLabel2 *string
+	
+	OmniauthProvidersSamlLabel3 *string
+	
+	OmniauthProvidersSamlLabel4 *string
+	
+	OmniauthProvidersSamlLabel5 *string
+	
 	OmniauthProvidersSamlName *string
+	
+	OmniauthProvidersSamlName2 *string
+	
+	OmniauthProvidersSamlName3 *string
+	
+	OmniauthProvidersSamlName4 *string
+	
+	OmniauthProvidersSamlName5 *string
 	
 	OmniauthProvidersSamlNameIdentifierFormat *string
 	
+	OmniauthProvidersSamlNameIdentifierFormat2 *string
+	
+	OmniauthProvidersSamlNameIdentifierFormat3 *string
+	
+	OmniauthProvidersSamlNameIdentifierFormat4 *string
+	
+	OmniauthProvidersSamlNameIdentifierFormat5 *string
+	
 	OmniauthProvidersSamlRequiredGroups *string
+	
+	OmniauthProvidersSamlRequiredGroups2 *string
+	
+	OmniauthProvidersSamlRequiredGroups3 *string
+	
+	OmniauthProvidersSamlRequiredGroups4 *string
+	
+	OmniauthProvidersSamlRequiredGroups5 *string
 	
 	SmtpPassword *string
 	

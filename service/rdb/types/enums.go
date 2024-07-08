@@ -964,6 +964,7 @@ type DBParameterGroupFamilyOfDescribeDBEngineVersionsRequest string
 const (
 	DBParameterGroupFamilyOfDescribeDBEngineVersionsRequestMysql56 DBParameterGroupFamilyOfDescribeDBEngineVersionsRequest = "mysql5.6"
 	DBParameterGroupFamilyOfDescribeDBEngineVersionsRequestMysql57 DBParameterGroupFamilyOfDescribeDBEngineVersionsRequest = "mysql5.7"
+	DBParameterGroupFamilyOfDescribeDBEngineVersionsRequestMysql80 DBParameterGroupFamilyOfDescribeDBEngineVersionsRequest = "mysql8.0"
 	DBParameterGroupFamilyOfDescribeDBEngineVersionsRequestPostgres93 DBParameterGroupFamilyOfDescribeDBEngineVersionsRequest = "postgres9.3"
 	DBParameterGroupFamilyOfDescribeDBEngineVersionsRequestPostgres96 DBParameterGroupFamilyOfDescribeDBEngineVersionsRequest = "postgres9.6"
 	DBParameterGroupFamilyOfDescribeDBEngineVersionsRequestPostgres11 DBParameterGroupFamilyOfDescribeDBEngineVersionsRequest = "postgres11"
@@ -978,6 +979,7 @@ func (DBParameterGroupFamilyOfDescribeDBEngineVersionsRequest) Values() []DBPara
 	return []DBParameterGroupFamilyOfDescribeDBEngineVersionsRequest{
 		"mysql5.6",
 		"mysql5.7",
+		"mysql8.0",
 		"postgres9.3",
 		"postgres9.6",
 		"postgres11",
