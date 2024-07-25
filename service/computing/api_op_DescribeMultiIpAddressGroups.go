@@ -4,10 +4,16 @@ package computing
 
 import (
 	"context"
+	"fmt"
 	awsmiddleware "github.com/aws/aws-sdk-go-v2/aws/middleware"
 	"github.com/aws/smithy-go/middleware"
+	smithytime "github.com/aws/smithy-go/time"
 	smithyhttp "github.com/aws/smithy-go/transport/http"
+	smithywaiter "github.com/aws/smithy-go/waiter"
+	"github.com/jmespath/go-jmespath"
 	"github.com/nifcloud/nifcloud-sdk-go/service/computing/types"
+	"strconv"
+	"time"
 )
 
 func (c *Client) DescribeMultiIpAddressGroups(ctx context.Context, params *DescribeMultiIpAddressGroupsInput, optFns ...func(*Options)) (*DescribeMultiIpAddressGroupsOutput, error) {
@@ -97,6 +103,528 @@ func (c *Client) addOperationDescribeMultiIpAddressGroupsMiddlewares(stack *midd
 		return err
 	}
 	return nil
+}
+
+// DescribeMultiIpAddressGroupsAPIClient is a client that implements the
+// DescribeMultiIpAddressGroups operation.
+type DescribeMultiIpAddressGroupsAPIClient interface {
+	DescribeMultiIpAddressGroups(context.Context, *DescribeMultiIpAddressGroupsInput, ...func(*Options)) (*DescribeMultiIpAddressGroupsOutput, error)
+}
+
+var _ DescribeMultiIpAddressGroupsAPIClient = (*Client)(nil)
+
+// MultiIpAddressGroupExistsWaiterOptions are waiter options for
+// MultiIpAddressGroupExistsWaiter
+type MultiIpAddressGroupExistsWaiterOptions struct {
+
+	// Set of options to modify how an operation is invoked. These apply to all
+	// operations invoked for this client. Use functional options on operation call to
+	// modify this list for per operation behavior.
+	APIOptions []func(*middleware.Stack) error
+
+	// MinDelay is the minimum amount of time to delay between retries. If unset,
+	// MultiIpAddressGroupExistsWaiter will use default minimum delay of 20 seconds.
+	// Note that MinDelay must resolve to a value lesser than or equal to the MaxDelay.
+	MinDelay time.Duration
+
+	// MaxDelay is the maximum amount of time to delay between retries. If unset or
+	// set to zero, MultiIpAddressGroupExistsWaiter will use default max delay of 120
+	// seconds. Note that MaxDelay must resolve to value greater than or equal to the
+	// MinDelay.
+	MaxDelay time.Duration
+
+	// LogWaitAttempts is used to enable logging for waiter retry attempts
+	LogWaitAttempts bool
+
+	// Retryable is function that can be used to override the service defined
+	// waiter-behavior based on operation output, or returned error. This function is
+	// used by the waiter to decide if a state is retryable or a terminal state. By
+	// default service-modeled logic will populate this option. This option can thus be
+	// used to define a custom waiter state with fall-back to service-modeled waiter
+	// state mutators.The function returns an error in case of a failure state. In case
+	// of retry state, this function returns a bool value of true and nil error, while
+	// in case of success it returns a bool value of false and nil error.
+	Retryable func(context.Context, *DescribeMultiIpAddressGroupsInput, *DescribeMultiIpAddressGroupsOutput, error) (bool, error)
+}
+
+// MultiIpAddressGroupExistsWaiter defines the waiters for
+// MultiIpAddressGroupExists
+type MultiIpAddressGroupExistsWaiter struct {
+	client DescribeMultiIpAddressGroupsAPIClient
+
+	options MultiIpAddressGroupExistsWaiterOptions
+}
+
+// NewMultiIpAddressGroupExistsWaiter constructs a MultiIpAddressGroupExistsWaiter.
+func NewMultiIpAddressGroupExistsWaiter(client DescribeMultiIpAddressGroupsAPIClient, optFns ...func(*MultiIpAddressGroupExistsWaiterOptions)) *MultiIpAddressGroupExistsWaiter {
+	options := MultiIpAddressGroupExistsWaiterOptions{}
+	options.MinDelay = 20 * time.Second
+	options.MaxDelay = 120 * time.Second
+	options.Retryable = multiIpAddressGroupExistsStateRetryable
+
+	for _, fn := range optFns {
+		fn(&options)
+	}
+	return &MultiIpAddressGroupExistsWaiter{
+		client:  client,
+		options: options,
+	}
+}
+
+// Wait calls the waiter function for MultiIpAddressGroupExists waiter. The
+// maxWaitDur is the maximum wait duration the waiter will wait. The maxWaitDur is
+// required and must be greater than zero.
+func (w *MultiIpAddressGroupExistsWaiter) Wait(ctx context.Context, params *DescribeMultiIpAddressGroupsInput, maxWaitDur time.Duration, optFns ...func(*MultiIpAddressGroupExistsWaiterOptions)) error {
+	_, err := w.WaitForOutput(ctx, params, maxWaitDur, optFns...)
+	return err
+}
+
+// WaitForOutput calls the waiter function for MultiIpAddressGroupExists waiter
+// and returns the output of the successful operation. The maxWaitDur is the
+// maximum wait duration the waiter will wait. The maxWaitDur is required and must
+// be greater than zero.
+func (w *MultiIpAddressGroupExistsWaiter) WaitForOutput(ctx context.Context, params *DescribeMultiIpAddressGroupsInput, maxWaitDur time.Duration, optFns ...func(*MultiIpAddressGroupExistsWaiterOptions)) (*DescribeMultiIpAddressGroupsOutput, error) {
+	if maxWaitDur <= 0 {
+		return nil, fmt.Errorf("maximum wait time for waiter must be greater than zero")
+	}
+
+	options := w.options
+	for _, fn := range optFns {
+		fn(&options)
+	}
+
+	if options.MaxDelay <= 0 {
+		options.MaxDelay = 120 * time.Second
+	}
+
+	if options.MinDelay > options.MaxDelay {
+		return nil, fmt.Errorf("minimum waiter delay %v must be lesser than or equal to maximum waiter delay of %v.", options.MinDelay, options.MaxDelay)
+	}
+
+	ctx, cancelFn := context.WithTimeout(ctx, maxWaitDur)
+	defer cancelFn()
+
+	logger := smithywaiter.Logger{}
+	remainingTime := maxWaitDur
+
+	var attempt int64
+	for {
+
+		attempt++
+		apiOptions := options.APIOptions
+		start := time.Now()
+
+		if options.LogWaitAttempts {
+			logger.Attempt = attempt
+			apiOptions = append([]func(*middleware.Stack) error{}, options.APIOptions...)
+			apiOptions = append(apiOptions, logger.AddLogger)
+		}
+
+		out, err := w.client.DescribeMultiIpAddressGroups(ctx, params, func(o *Options) {
+			o.APIOptions = append(o.APIOptions, apiOptions...)
+		})
+
+		retryable, err := options.Retryable(ctx, params, out, err)
+		if err != nil {
+			return nil, err
+		}
+		if !retryable {
+			return out, nil
+		}
+
+		remainingTime -= time.Since(start)
+		if remainingTime < options.MinDelay || remainingTime <= 0 {
+			break
+		}
+
+		// compute exponential backoff between waiter retries
+		delay, err := smithywaiter.ComputeDelay(
+			attempt, options.MinDelay, options.MaxDelay, remainingTime,
+		)
+		if err != nil {
+			return nil, fmt.Errorf("error computing waiter delay, %w", err)
+		}
+
+		remainingTime -= delay
+		// sleep for the delay amount before invoking a request
+		if err := smithytime.SleepWithContext(ctx, delay); err != nil {
+			return nil, fmt.Errorf("request cancelled while waiting, %w", err)
+		}
+	}
+	return nil, fmt.Errorf("exceeded max wait time for MultiIpAddressGroupExists waiter")
+}
+
+func multiIpAddressGroupExistsStateRetryable(ctx context.Context, input *DescribeMultiIpAddressGroupsInput, output *DescribeMultiIpAddressGroupsOutput, err error) (bool, error) {
+
+	if err == nil {
+		pathValue, err := jmespath.Search("length(MultiIpAddressGroupsSet[]) > `0`", output)
+		if err != nil {
+			return false, fmt.Errorf("error evaluating waiter state: %w", err)
+		}
+
+		expectedValue := "true"
+		bv, err := strconv.ParseBool(expectedValue)
+		if err != nil {
+			return false, fmt.Errorf("error parsing boolean from string %w", err)
+		}
+		value, ok := pathValue.(bool)
+		if !ok {
+			return false, fmt.Errorf("waiter comparator expected bool value got %T", pathValue)
+		}
+
+		if value == bv {
+			return false, nil
+		}
+	}
+
+	return true, nil
+}
+
+// MultiIpAddressGroupAvailableWaiterOptions are waiter options for
+// MultiIpAddressGroupAvailableWaiter
+type MultiIpAddressGroupAvailableWaiterOptions struct {
+
+	// Set of options to modify how an operation is invoked. These apply to all
+	// operations invoked for this client. Use functional options on operation call to
+	// modify this list for per operation behavior.
+	APIOptions []func(*middleware.Stack) error
+
+	// MinDelay is the minimum amount of time to delay between retries. If unset,
+	// MultiIpAddressGroupAvailableWaiter will use default minimum delay of 20 seconds.
+	// Note that MinDelay must resolve to a value lesser than or equal to the MaxDelay.
+	MinDelay time.Duration
+
+	// MaxDelay is the maximum amount of time to delay between retries. If unset or
+	// set to zero, MultiIpAddressGroupAvailableWaiter will use default max delay of
+	// 120 seconds. Note that MaxDelay must resolve to value greater than or equal to
+	// the MinDelay.
+	MaxDelay time.Duration
+
+	// LogWaitAttempts is used to enable logging for waiter retry attempts
+	LogWaitAttempts bool
+
+	// Retryable is function that can be used to override the service defined
+	// waiter-behavior based on operation output, or returned error. This function is
+	// used by the waiter to decide if a state is retryable or a terminal state. By
+	// default service-modeled logic will populate this option. This option can thus be
+	// used to define a custom waiter state with fall-back to service-modeled waiter
+	// state mutators.The function returns an error in case of a failure state. In case
+	// of retry state, this function returns a bool value of true and nil error, while
+	// in case of success it returns a bool value of false and nil error.
+	Retryable func(context.Context, *DescribeMultiIpAddressGroupsInput, *DescribeMultiIpAddressGroupsOutput, error) (bool, error)
+}
+
+// MultiIpAddressGroupAvailableWaiter defines the waiters for
+// MultiIpAddressGroupAvailable
+type MultiIpAddressGroupAvailableWaiter struct {
+	client DescribeMultiIpAddressGroupsAPIClient
+
+	options MultiIpAddressGroupAvailableWaiterOptions
+}
+
+// NewMultiIpAddressGroupAvailableWaiter constructs a
+// MultiIpAddressGroupAvailableWaiter.
+func NewMultiIpAddressGroupAvailableWaiter(client DescribeMultiIpAddressGroupsAPIClient, optFns ...func(*MultiIpAddressGroupAvailableWaiterOptions)) *MultiIpAddressGroupAvailableWaiter {
+	options := MultiIpAddressGroupAvailableWaiterOptions{}
+	options.MinDelay = 20 * time.Second
+	options.MaxDelay = 120 * time.Second
+	options.Retryable = multiIpAddressGroupAvailableStateRetryable
+
+	for _, fn := range optFns {
+		fn(&options)
+	}
+	return &MultiIpAddressGroupAvailableWaiter{
+		client:  client,
+		options: options,
+	}
+}
+
+// Wait calls the waiter function for MultiIpAddressGroupAvailable waiter. The
+// maxWaitDur is the maximum wait duration the waiter will wait. The maxWaitDur is
+// required and must be greater than zero.
+func (w *MultiIpAddressGroupAvailableWaiter) Wait(ctx context.Context, params *DescribeMultiIpAddressGroupsInput, maxWaitDur time.Duration, optFns ...func(*MultiIpAddressGroupAvailableWaiterOptions)) error {
+	_, err := w.WaitForOutput(ctx, params, maxWaitDur, optFns...)
+	return err
+}
+
+// WaitForOutput calls the waiter function for MultiIpAddressGroupAvailable waiter
+// and returns the output of the successful operation. The maxWaitDur is the
+// maximum wait duration the waiter will wait. The maxWaitDur is required and must
+// be greater than zero.
+func (w *MultiIpAddressGroupAvailableWaiter) WaitForOutput(ctx context.Context, params *DescribeMultiIpAddressGroupsInput, maxWaitDur time.Duration, optFns ...func(*MultiIpAddressGroupAvailableWaiterOptions)) (*DescribeMultiIpAddressGroupsOutput, error) {
+	if maxWaitDur <= 0 {
+		return nil, fmt.Errorf("maximum wait time for waiter must be greater than zero")
+	}
+
+	options := w.options
+	for _, fn := range optFns {
+		fn(&options)
+	}
+
+	if options.MaxDelay <= 0 {
+		options.MaxDelay = 120 * time.Second
+	}
+
+	if options.MinDelay > options.MaxDelay {
+		return nil, fmt.Errorf("minimum waiter delay %v must be lesser than or equal to maximum waiter delay of %v.", options.MinDelay, options.MaxDelay)
+	}
+
+	ctx, cancelFn := context.WithTimeout(ctx, maxWaitDur)
+	defer cancelFn()
+
+	logger := smithywaiter.Logger{}
+	remainingTime := maxWaitDur
+
+	var attempt int64
+	for {
+
+		attempt++
+		apiOptions := options.APIOptions
+		start := time.Now()
+
+		if options.LogWaitAttempts {
+			logger.Attempt = attempt
+			apiOptions = append([]func(*middleware.Stack) error{}, options.APIOptions...)
+			apiOptions = append(apiOptions, logger.AddLogger)
+		}
+
+		out, err := w.client.DescribeMultiIpAddressGroups(ctx, params, func(o *Options) {
+			o.APIOptions = append(o.APIOptions, apiOptions...)
+		})
+
+		retryable, err := options.Retryable(ctx, params, out, err)
+		if err != nil {
+			return nil, err
+		}
+		if !retryable {
+			return out, nil
+		}
+
+		remainingTime -= time.Since(start)
+		if remainingTime < options.MinDelay || remainingTime <= 0 {
+			break
+		}
+
+		// compute exponential backoff between waiter retries
+		delay, err := smithywaiter.ComputeDelay(
+			attempt, options.MinDelay, options.MaxDelay, remainingTime,
+		)
+		if err != nil {
+			return nil, fmt.Errorf("error computing waiter delay, %w", err)
+		}
+
+		remainingTime -= delay
+		// sleep for the delay amount before invoking a request
+		if err := smithytime.SleepWithContext(ctx, delay); err != nil {
+			return nil, fmt.Errorf("request cancelled while waiting, %w", err)
+		}
+	}
+	return nil, fmt.Errorf("exceeded max wait time for MultiIpAddressGroupAvailable waiter")
+}
+
+func multiIpAddressGroupAvailableStateRetryable(ctx context.Context, input *DescribeMultiIpAddressGroupsInput, output *DescribeMultiIpAddressGroupsOutput, err error) (bool, error) {
+
+	if err == nil {
+		pathValue, err := jmespath.Search("MultiIpAddressGroupsSet[].Status", output)
+		if err != nil {
+			return false, fmt.Errorf("error evaluating waiter state: %w", err)
+		}
+
+		expectedValue := "available"
+		var match = true
+		listOfValues, ok := pathValue.([]interface{})
+		if !ok {
+			return false, fmt.Errorf("waiter comparator expected list got %T", pathValue)
+		}
+
+		if len(listOfValues) == 0 {
+			match = false
+		}
+		for _, v := range listOfValues {
+			value, ok := v.(*string)
+			if !ok {
+				return false, fmt.Errorf("waiter comparator expected *string value, got %T", pathValue)
+			}
+
+			if string(*value) != expectedValue {
+				match = false
+			}
+		}
+
+		if match {
+			return false, nil
+		}
+	}
+
+	return true, nil
+}
+
+// MultiIpAddressGroupDeletedWaiterOptions are waiter options for
+// MultiIpAddressGroupDeletedWaiter
+type MultiIpAddressGroupDeletedWaiterOptions struct {
+
+	// Set of options to modify how an operation is invoked. These apply to all
+	// operations invoked for this client. Use functional options on operation call to
+	// modify this list for per operation behavior.
+	APIOptions []func(*middleware.Stack) error
+
+	// MinDelay is the minimum amount of time to delay between retries. If unset,
+	// MultiIpAddressGroupDeletedWaiter will use default minimum delay of 20 seconds.
+	// Note that MinDelay must resolve to a value lesser than or equal to the MaxDelay.
+	MinDelay time.Duration
+
+	// MaxDelay is the maximum amount of time to delay between retries. If unset or
+	// set to zero, MultiIpAddressGroupDeletedWaiter will use default max delay of 120
+	// seconds. Note that MaxDelay must resolve to value greater than or equal to the
+	// MinDelay.
+	MaxDelay time.Duration
+
+	// LogWaitAttempts is used to enable logging for waiter retry attempts
+	LogWaitAttempts bool
+
+	// Retryable is function that can be used to override the service defined
+	// waiter-behavior based on operation output, or returned error. This function is
+	// used by the waiter to decide if a state is retryable or a terminal state. By
+	// default service-modeled logic will populate this option. This option can thus be
+	// used to define a custom waiter state with fall-back to service-modeled waiter
+	// state mutators.The function returns an error in case of a failure state. In case
+	// of retry state, this function returns a bool value of true and nil error, while
+	// in case of success it returns a bool value of false and nil error.
+	Retryable func(context.Context, *DescribeMultiIpAddressGroupsInput, *DescribeMultiIpAddressGroupsOutput, error) (bool, error)
+}
+
+// MultiIpAddressGroupDeletedWaiter defines the waiters for
+// MultiIpAddressGroupDeleted
+type MultiIpAddressGroupDeletedWaiter struct {
+	client DescribeMultiIpAddressGroupsAPIClient
+
+	options MultiIpAddressGroupDeletedWaiterOptions
+}
+
+// NewMultiIpAddressGroupDeletedWaiter constructs a
+// MultiIpAddressGroupDeletedWaiter.
+func NewMultiIpAddressGroupDeletedWaiter(client DescribeMultiIpAddressGroupsAPIClient, optFns ...func(*MultiIpAddressGroupDeletedWaiterOptions)) *MultiIpAddressGroupDeletedWaiter {
+	options := MultiIpAddressGroupDeletedWaiterOptions{}
+	options.MinDelay = 20 * time.Second
+	options.MaxDelay = 120 * time.Second
+	options.Retryable = multiIpAddressGroupDeletedStateRetryable
+
+	for _, fn := range optFns {
+		fn(&options)
+	}
+	return &MultiIpAddressGroupDeletedWaiter{
+		client:  client,
+		options: options,
+	}
+}
+
+// Wait calls the waiter function for MultiIpAddressGroupDeleted waiter. The
+// maxWaitDur is the maximum wait duration the waiter will wait. The maxWaitDur is
+// required and must be greater than zero.
+func (w *MultiIpAddressGroupDeletedWaiter) Wait(ctx context.Context, params *DescribeMultiIpAddressGroupsInput, maxWaitDur time.Duration, optFns ...func(*MultiIpAddressGroupDeletedWaiterOptions)) error {
+	_, err := w.WaitForOutput(ctx, params, maxWaitDur, optFns...)
+	return err
+}
+
+// WaitForOutput calls the waiter function for MultiIpAddressGroupDeleted waiter
+// and returns the output of the successful operation. The maxWaitDur is the
+// maximum wait duration the waiter will wait. The maxWaitDur is required and must
+// be greater than zero.
+func (w *MultiIpAddressGroupDeletedWaiter) WaitForOutput(ctx context.Context, params *DescribeMultiIpAddressGroupsInput, maxWaitDur time.Duration, optFns ...func(*MultiIpAddressGroupDeletedWaiterOptions)) (*DescribeMultiIpAddressGroupsOutput, error) {
+	if maxWaitDur <= 0 {
+		return nil, fmt.Errorf("maximum wait time for waiter must be greater than zero")
+	}
+
+	options := w.options
+	for _, fn := range optFns {
+		fn(&options)
+	}
+
+	if options.MaxDelay <= 0 {
+		options.MaxDelay = 120 * time.Second
+	}
+
+	if options.MinDelay > options.MaxDelay {
+		return nil, fmt.Errorf("minimum waiter delay %v must be lesser than or equal to maximum waiter delay of %v.", options.MinDelay, options.MaxDelay)
+	}
+
+	ctx, cancelFn := context.WithTimeout(ctx, maxWaitDur)
+	defer cancelFn()
+
+	logger := smithywaiter.Logger{}
+	remainingTime := maxWaitDur
+
+	var attempt int64
+	for {
+
+		attempt++
+		apiOptions := options.APIOptions
+		start := time.Now()
+
+		if options.LogWaitAttempts {
+			logger.Attempt = attempt
+			apiOptions = append([]func(*middleware.Stack) error{}, options.APIOptions...)
+			apiOptions = append(apiOptions, logger.AddLogger)
+		}
+
+		out, err := w.client.DescribeMultiIpAddressGroups(ctx, params, func(o *Options) {
+			o.APIOptions = append(o.APIOptions, apiOptions...)
+		})
+
+		retryable, err := options.Retryable(ctx, params, out, err)
+		if err != nil {
+			return nil, err
+		}
+		if !retryable {
+			return out, nil
+		}
+
+		remainingTime -= time.Since(start)
+		if remainingTime < options.MinDelay || remainingTime <= 0 {
+			break
+		}
+
+		// compute exponential backoff between waiter retries
+		delay, err := smithywaiter.ComputeDelay(
+			attempt, options.MinDelay, options.MaxDelay, remainingTime,
+		)
+		if err != nil {
+			return nil, fmt.Errorf("error computing waiter delay, %w", err)
+		}
+
+		remainingTime -= delay
+		// sleep for the delay amount before invoking a request
+		if err := smithytime.SleepWithContext(ctx, delay); err != nil {
+			return nil, fmt.Errorf("request cancelled while waiting, %w", err)
+		}
+	}
+	return nil, fmt.Errorf("exceeded max wait time for MultiIpAddressGroupDeleted waiter")
+}
+
+func multiIpAddressGroupDeletedStateRetryable(ctx context.Context, input *DescribeMultiIpAddressGroupsInput, output *DescribeMultiIpAddressGroupsOutput, err error) (bool, error) {
+
+	if err == nil {
+		pathValue, err := jmespath.Search("length(MultiIpAddressGroupsSet[]) == `0`", output)
+		if err != nil {
+			return false, fmt.Errorf("error evaluating waiter state: %w", err)
+		}
+
+		expectedValue := "true"
+		bv, err := strconv.ParseBool(expectedValue)
+		if err != nil {
+			return false, fmt.Errorf("error parsing boolean from string %w", err)
+		}
+		value, ok := pathValue.(bool)
+		if !ok {
+			return false, fmt.Errorf("waiter comparator expected bool value got %T", pathValue)
+		}
+
+		if value == bv {
+			return false, nil
+		}
+	}
+
+	return true, nil
 }
 
 func newServiceMetadataMiddleware_opDescribeMultiIpAddressGroups(region string) *awsmiddleware.RegisterServiceMetadata {
