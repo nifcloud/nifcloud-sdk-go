@@ -23735,6 +23735,53 @@ operation DeleteMultiIpAddressGroup {
     output: DeleteMultiIpAddressGroupResult,
 }
 
+@waitable(
+    MultiIpAddressGroupExists: {
+        acceptors: [
+            {
+                state: "success",
+                matcher: {
+                    output: {
+                         path: "length(MultiIpAddressGroupsSet[]) > `0`",
+                         comparator: "booleanEquals",
+                         expected: "true",
+                    },
+                },
+            },
+        ],
+        minDelay: 20,
+    },
+    MultiIpAddressGroupAvailable: {
+        acceptors: [
+            {
+                state: "success",
+                matcher: {
+                    output: {
+                         path: "MultiIpAddressGroupsSet[].Status",
+                         comparator: "allStringEquals",
+                         expected: "available",
+                    },
+                },
+            },
+        ],
+        minDelay: 20,
+    },
+    MultiIpAddressGroupDeleted: {
+        acceptors: [
+            {
+                state: "success",
+                matcher: {
+                    output: {
+                         path: "length(MultiIpAddressGroupsSet[]) == `0`",
+                         comparator: "booleanEquals",
+                         expected: "true",
+                    },
+                },
+            },
+        ],
+        minDelay: 20,
+    },
+)
 operation DescribeMultiIpAddressGroups {
     input: DescribeMultiIpAddressGroupsRequest,
     output: DescribeMultiIpAddressGroupsResult,
