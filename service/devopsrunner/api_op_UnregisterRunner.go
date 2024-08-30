@@ -34,6 +34,8 @@ type UnregisterRunnerInput struct {
 	// This member is required.
 	RunnerName *string
 
+	DisableTokenRevocation *bool
+
 	noSmithyDocumentSerde
 }
 
