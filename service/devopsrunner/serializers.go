@@ -881,6 +881,10 @@ func awsRestjson1_serializeOpHttpBindingsUnregisterRunnerInput(v *UnregisterRunn
 		return fmt.Errorf("unsupported serialization of nil %T", v)
 	}
 
+	if v.DisableTokenRevocation != nil {
+		encoder.SetQuery("disableTokenRevocation").Boolean(*v.DisableTokenRevocation)
+	}
+
 	if v.RegistrationId == nil || len(*v.RegistrationId) == 0 {
 		return &smithy.SerializationError{Err: fmt.Errorf("input member RegistrationId must not be empty")}
 	}

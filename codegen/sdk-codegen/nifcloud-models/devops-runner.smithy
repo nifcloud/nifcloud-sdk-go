@@ -677,6 +677,9 @@ structure UpdateRunnerRegistrationResult {
 }
 
 structure UnregisterRunnerRequest {
+    @httpQuery("disableTokenRevocation")
+    @jsonName("disableTokenRevocation")
+    DisableTokenRevocation: Boolean,
     @required
     @httpLabel
     @jsonName("RegistrationId")
