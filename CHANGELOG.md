@@ -1,5 +1,14 @@
 # Changelog
 
+## [v1.28.0](https://github.com/nifcloud/nifcloud-sdk-go/tree/v1.28.0) (2024-08-30)
+
+[Full Changelog](https://github.com/nifcloud/nifcloud-sdk-go/compare/v1.27.0...v1.28.0)
+
+**Merged pull requests:**
+
+- Update devops-runner model [\#75](https://github.com/nifcloud/nifcloud-sdk-go/pull/75) ([SogoKato](https://github.com/SogoKato))
+- Add MultiIpAddressGroup waiter [\#74](https://github.com/nifcloud/nifcloud-sdk-go/pull/74) ([aokumasan](https://github.com/aokumasan))
+
 ## [v1.27.0](https://github.com/nifcloud/nifcloud-sdk-go/tree/v1.27.0) (2024-07-08)
 
 [Full Changelog](https://github.com/nifcloud/nifcloud-sdk-go/compare/v1.26.0...v1.27.0)
