@@ -36,7 +36,7 @@ type GetBucketLifecycleConfigurationInput struct {
 }
 
 type GetBucketLifecycleConfigurationOutput struct {
-	Rule *types.Rule
+	Rule []types.Rule
 
 	// Metadata pertaining to the operation's result.
 	ResultMetadata middleware.Metadata

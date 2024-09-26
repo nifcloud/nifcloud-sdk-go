@@ -1576,9 +1576,14 @@ structure GetBucketLifecycleConfigurationRequest {
     Bucket: String,
 }
 
+list ListOfRule {
+    member: Rule,
+}
+
 structure GetBucketLifecycleConfigurationResult {
+    @xmlFlattened
     @xmlName("Rule")
-    Rule: Rule,
+    Rule: ListOfRule,
 }
 
 structure Rule {
