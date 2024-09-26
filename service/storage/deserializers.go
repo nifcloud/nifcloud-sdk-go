@@ -1857,7 +1857,7 @@ func awsRestxml_deserializeOpDocumentGetBucketLifecycleConfigurationOutput(v **G
 		switch {
 		case strings.EqualFold("Rule", t.Name.Local):
 			nodeDecoder := smithyxml.WrapNodeDecoder(decoder.Decoder, t)
-			if err := awsRestxml_deserializeDocumentRule(&sv.Rule, nodeDecoder); err != nil {
+			if err := awsRestxml_deserializeDocumentListOfRuleUnwrapped(&sv.Rule, nodeDecoder); err != nil {
 				return err
 			}
 
@@ -6858,6 +6858,74 @@ func awsRestxml_deserializeDocumentListOfPartUnwrapped(v *[]types.Part, decoder 
 		nodeDecoder := smithyxml.WrapNodeDecoder(decoder.Decoder, t)
 		destAddr := &mv
 		if err := awsRestxml_deserializeDocumentPart(&destAddr, nodeDecoder); err != nil {
+			return err
+		}
+		mv = *destAddr
+		sv = append(sv, mv)
+	}
+	*v = sv
+	return nil
+}
+func awsRestxml_deserializeDocumentListOfRule(v *[]types.Rule, decoder smithyxml.NodeDecoder) error {
+	if v == nil {
+		return fmt.Errorf("unexpected nil of type %T", v)
+	}
+	var sv []types.Rule
+	if *v == nil {
+		sv = make([]types.Rule, 0)
+	} else {
+		sv = *v
+	}
+
+	originalDecoder := decoder
+	for {
+		t, done, err := decoder.Token()
+		if err != nil {
+			return err
+		}
+		if done {
+			break
+		}
+		switch {
+		case strings.EqualFold("member", t.Name.Local):
+			var col types.Rule
+			nodeDecoder := smithyxml.WrapNodeDecoder(decoder.Decoder, t)
+			destAddr := &col
+			if err := awsRestxml_deserializeDocumentRule(&destAddr, nodeDecoder); err != nil {
+				return err
+			}
+			col = *destAddr
+			sv = append(sv, col)
+
+		default:
+			err = decoder.Decoder.Skip()
+			if err != nil {
+				return err
+			}
+
+		}
+		decoder = originalDecoder
+	}
+	*v = sv
+	return nil
+}
+
+func awsRestxml_deserializeDocumentListOfRuleUnwrapped(v *[]types.Rule, decoder smithyxml.NodeDecoder) error {
+	var sv []types.Rule
+	if *v == nil {
+		sv = make([]types.Rule, 0)
+	} else {
+		sv = *v
+	}
+
+	switch {
+	default:
+		var mv types.Rule
+		t := decoder.StartEl
+		_ = t
+		nodeDecoder := smithyxml.WrapNodeDecoder(decoder.Decoder, t)
+		destAddr := &mv
+		if err := awsRestxml_deserializeDocumentRule(&destAddr, nodeDecoder); err != nil {
 			return err
 		}
 		mv = *destAddr
