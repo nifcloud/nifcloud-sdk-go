@@ -39,6 +39,21 @@ type ExtraHosts struct {
 	noSmithyDocumentSerde
 }
 
+type Metrics struct {
+	
+	MaxValue *float64
+	
+	MinValue *float64
+	
+	Timestamp *string
+	
+	Timezone *string
+	
+	Value *float64
+	
+	noSmithyDocumentSerde
+}
+
 type NetworkConfig struct {
 	
 	NetworkId *string
@@ -164,6 +179,8 @@ type Runner struct {
 	
 	SystemId *string
 	
+	To *string
+	
 	noSmithyDocumentSerde
 }
 
@@ -192,6 +209,8 @@ type Runners struct {
 	Status *Status
 	
 	SystemId *string
+	
+	To *string
 	
 	noSmithyDocumentSerde
 }

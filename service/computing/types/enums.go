@@ -596,10 +596,6 @@ type DiskTypeOfCreateVolumeRequest string
 
 // Enum values for DiskTypeOfCreateVolumeRequest
 const (
-	DiskTypeOfCreateVolumeRequestStandardStorage DiskTypeOfCreateVolumeRequest = "2"
-	DiskTypeOfCreateVolumeRequestHighSpeedStorageA DiskTypeOfCreateVolumeRequest = "3"
-	DiskTypeOfCreateVolumeRequestHighSpeedStorageB DiskTypeOfCreateVolumeRequest = "4"
-	DiskTypeOfCreateVolumeRequestFlashDrive DiskTypeOfCreateVolumeRequest = "5"
 	DiskTypeOfCreateVolumeRequestStandardFlashStorageA DiskTypeOfCreateVolumeRequest = "6"
 	DiskTypeOfCreateVolumeRequestStandardFlashStorageB DiskTypeOfCreateVolumeRequest = "7"
 	DiskTypeOfCreateVolumeRequestHighSpeedFlashStorageA DiskTypeOfCreateVolumeRequest = "8"
@@ -612,10 +608,6 @@ const (
 // updates.
 func (DiskTypeOfCreateVolumeRequest) Values() []DiskTypeOfCreateVolumeRequest {
 	return []DiskTypeOfCreateVolumeRequest{
-		"2",
-		"3",
-		"4",
-		"5",
 		"6",
 		"7",
 		"8",

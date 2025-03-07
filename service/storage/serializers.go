@@ -3607,6 +3607,21 @@ func awsRestxml_serializeDocumentListOfRequestRule(v []types.RequestRule, value 
 	return nil
 }
 
+func awsRestxml_serializeDocumentListOfRequestTag(v []types.RequestTag, value smithyxml.Value) error {
+	var array *smithyxml.Array
+	if !value.IsFlattened() {
+		defer value.Close()
+	}
+	array = value.Array()
+	for i := range v {
+		am := array.Member()
+		if err := awsRestxml_serializeDocumentRequestTag(&v[i], am); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
 func awsRestxml_serializeDocumentListOfRequestTagSet(v []types.RequestTagSet, value smithyxml.Value) error {
 	var array *smithyxml.Array
 	if !value.IsFlattened() {
@@ -3624,7 +3639,7 @@ func awsRestxml_serializeDocumentListOfRequestTagSet(v []types.RequestTagSet, va
 
 func awsRestxml_serializeDocumentRequestAnd(v *types.RequestAnd, value smithyxml.Value) error {
 	defer value.Close()
-	if v.RequestTag != nil {
+	if v.ListOfRequestTag != nil {
 		rootAttr := []smithyxml.Attr{}
 		root := smithyxml.StartElement{
 			Name: smithyxml.Name{
@@ -3632,8 +3647,8 @@ func awsRestxml_serializeDocumentRequestAnd(v *types.RequestAnd, value smithyxml
 			},
 			Attr: rootAttr,
 		}
-		el := value.MemberElement(root)
-		if err := awsRestxml_serializeDocumentRequestTag(v.RequestTag, el); err != nil {
+		el := value.FlattenedElement(root)
+		if err := awsRestxml_serializeDocumentListOfRequestTag(v.ListOfRequestTag, el); err != nil {
 			return err
 		}
 	}

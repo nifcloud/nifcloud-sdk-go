@@ -4427,22 +4427,6 @@ structure AttachVolumeResult {
 
 @enum([
   {
-      name: "STANDARD_STORAGE",
-      value: "2",
-  },
-  {
-      name: "HIGH_SPEED_STORAGE_A",
-      value: "3",
-  },
-  {
-      name: "HIGH_SPEED_STORAGE_B",
-      value: "4",
-  },
-  {
-      name: "FLASH_DRIVE",
-      value: "5",
-  },
-  {
       name: "STANDARD_FLASH_STORAGE_A",
       value: "6",
   },
