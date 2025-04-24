@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - main
+      - feature/update-go
   pull_request:
 env:
   GOPROXY: https://proxy.golang.org
@@ -15,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        go: [ '1.20' ]
+        go: [ '1.24' ]
     name: Go ${{ matrix.go }} integration-test
     steps:
       - name: Checkout
