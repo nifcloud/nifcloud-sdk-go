@@ -35,7 +35,7 @@ type CreateVolumeInput struct {
 
 	Description *string
 
-	DiskType types.DiskTypeOfCreateVolumeRequest
+	DiskType *string
 
 	InstanceId *string
 

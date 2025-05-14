@@ -791,7 +791,7 @@ func awsRestxml_serializeDocumentRequestResourceRecordSet(v *types.RequestResour
 			Attr: rootAttr,
 		}
 		el := value.MemberElement(root)
-		el.String(*v.SetIdentifier)
+		el.Integer(*v.SetIdentifier)
 	}
 	if v.TTL != nil {
 		rootAttr := []smithyxml.Attr{}

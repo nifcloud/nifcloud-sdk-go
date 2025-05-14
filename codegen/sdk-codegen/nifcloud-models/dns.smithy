@@ -218,7 +218,7 @@ structure ResourceRecordSets {
     @xmlName("ResourceRecords")
     ResourceRecords: ListOfResourceRecords,
     @xmlName("SetIdentifier")
-    SetIdentifier: String,
+    SetIdentifier: Integer,
     @xmlName("TTL")
     TTL: Integer,
     @xmlName("Type")
@@ -316,7 +316,7 @@ structure RequestResourceRecordSet {
     @xmlName("XniftyHealthCheckConfig")
     RequestXniftyHealthCheckConfig: RequestXniftyHealthCheckConfig,
     @xmlName("SetIdentifier")
-    SetIdentifier: String,
+    SetIdentifier: Integer,
     @xmlName("TTL")
     TTL: Integer,
     @xmlName("Type")

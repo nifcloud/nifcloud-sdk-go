@@ -592,29 +592,6 @@ func (ClientTunnelModeOfModifyRemoteAccessVpnGatewayAttributeRequest) Values() [
 	}
 }
 
-type DiskTypeOfCreateVolumeRequest string
-
-// Enum values for DiskTypeOfCreateVolumeRequest
-const (
-	DiskTypeOfCreateVolumeRequestStandardFlashStorageA DiskTypeOfCreateVolumeRequest = "6"
-	DiskTypeOfCreateVolumeRequestStandardFlashStorageB DiskTypeOfCreateVolumeRequest = "7"
-	DiskTypeOfCreateVolumeRequestHighSpeedFlashStorageA DiskTypeOfCreateVolumeRequest = "8"
-	DiskTypeOfCreateVolumeRequestHighSpeedFlashStorageB DiskTypeOfCreateVolumeRequest = "9"
-)
-
-// Values returns all known values for DiskTypeOfCreateVolumeRequest. Note that
-// this can be expanded in the future, and so it is only as up to date as the
-// client. The ordering of this slice is not guaranteed to be stable across
-// updates.
-func (DiskTypeOfCreateVolumeRequest) Values() []DiskTypeOfCreateVolumeRequest {
-	return []DiskTypeOfCreateVolumeRequest{
-		"6",
-		"7",
-		"8",
-		"9",
-	}
-}
-
 type EncapsulationOfNiftyTunnelForCreateVpnConnection string
 
 // Enum values for EncapsulationOfNiftyTunnelForCreateVpnConnection
