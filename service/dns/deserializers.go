@@ -1880,7 +1880,11 @@ func awsRestxml_deserializeDocumentResourceRecordSets(v **types.ResourceRecordSe
 			}
 			{
 				xtv := string(val)
-				sv.SetIdentifier = ptr.String(xtv)
+				i64, err := strconv.ParseInt(xtv, 10, 64)
+				if err != nil {
+					return err
+				}
+				sv.SetIdentifier = ptr.Int32(int32(i64))
 			}
 
 		case strings.EqualFold("TTL", t.Name.Local):

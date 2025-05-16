@@ -4427,42 +4427,6 @@ structure AttachVolumeResult {
 
 @enum([
   {
-      name: "STANDARD_STORAGE",
-      value: "2",
-  },
-  {
-      name: "HIGH_SPEED_STORAGE_A",
-      value: "3",
-  },
-  {
-      name: "HIGH_SPEED_STORAGE_B",
-      value: "4",
-  },
-  {
-      name: "FLASH_DRIVE",
-      value: "5",
-  },
-  {
-      name: "STANDARD_FLASH_STORAGE_A",
-      value: "6",
-  },
-  {
-      name: "STANDARD_FLASH_STORAGE_B",
-      value: "7",
-  },
-  {
-      name: "HIGH_SPEED_FLASH_STORAGE_A",
-      value: "8",
-  },
-  {
-      name: "HIGH_SPEED_FLASH_STORAGE_B",
-      value: "9",
-  },
-])
-string DiskTypeOfCreateVolumeRequest
-
-@enum([
-  {
       name: "MONTHLY",
       value: "1",
   },
@@ -4482,7 +4446,7 @@ structure CreateVolumeRequest {
     Description: String,
     @xmlName("DiskType")
     @ec2QueryName("DiskType")
-    DiskType: DiskTypeOfCreateVolumeRequest,
+    DiskType: String,
     @xmlName("InstanceId")
     @ec2QueryName("InstanceId")
     InstanceId: String,

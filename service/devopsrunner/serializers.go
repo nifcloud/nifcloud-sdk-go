@@ -391,6 +391,88 @@ func awsRestjson1_serializeOpHttpBindingsGetRunnerInput(v *GetRunnerInput, encod
 	return nil
 }
 
+type awsRestjson1_serializeOpGetRunnerMetrics struct {
+}
+
+func (*awsRestjson1_serializeOpGetRunnerMetrics) ID() string {
+	return "OperationSerializer"
+}
+
+func (m *awsRestjson1_serializeOpGetRunnerMetrics) HandleSerialize(ctx context.Context, in middleware.SerializeInput, next middleware.SerializeHandler) (
+	out middleware.SerializeOutput, metadata middleware.Metadata, err error,
+) {
+	request, ok := in.Request.(*smithyhttp.Request)
+	if !ok {
+		return out, metadata, &smithy.SerializationError{Err: fmt.Errorf("unknown transport type %T", in.Request)}
+	}
+
+	input, ok := in.Parameters.(*GetRunnerMetricsInput)
+	_ = input
+	if !ok {
+		return out, metadata, &smithy.SerializationError{Err: fmt.Errorf("unknown input parameters type %T", in.Parameters)}
+	}
+
+	opPath, opQuery := httpbinding.SplitURI("/v1/runners/{RunnerName}/metrics/{MetricsName}")
+	request.URL.Path = smithyhttp.JoinPath(request.URL.Path, opPath)
+	request.URL.RawQuery = smithyhttp.JoinRawQuery(request.URL.RawQuery, opQuery)
+	request.Method = "GET"
+	var restEncoder *httpbinding.Encoder
+	if request.URL.RawPath == "" {
+		restEncoder, err = httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	} else {
+		request.URL.RawPath = smithyhttp.JoinPath(request.URL.RawPath, opPath)
+		restEncoder, err = httpbinding.NewEncoderWithRawPath(request.URL.Path, request.URL.RawPath, request.URL.RawQuery, request.Header)
+	}
+
+	if err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	if err := awsRestjson1_serializeOpHttpBindingsGetRunnerMetricsInput(input, restEncoder); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	if request.Request, err = restEncoder.Encode(request.Request); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+	in.Request = request
+
+	return next.HandleSerialize(ctx, in)
+}
+func awsRestjson1_serializeOpHttpBindingsGetRunnerMetricsInput(v *GetRunnerMetricsInput, encoder *httpbinding.Encoder) error {
+	if v == nil {
+		return fmt.Errorf("unsupported serialization of nil %T", v)
+	}
+
+	if v.EndTime != nil {
+		encoder.SetQuery("endTime").String(*v.EndTime)
+	}
+
+	if v.MetricsName == nil || len(*v.MetricsName) == 0 {
+		return &smithy.SerializationError{Err: fmt.Errorf("input member MetricsName must not be empty")}
+	}
+	if v.MetricsName != nil {
+		if err := encoder.SetURI("MetricsName").String(*v.MetricsName); err != nil {
+			return err
+		}
+	}
+
+	if v.RunnerName == nil || len(*v.RunnerName) == 0 {
+		return &smithy.SerializationError{Err: fmt.Errorf("input member RunnerName must not be empty")}
+	}
+	if v.RunnerName != nil {
+		if err := encoder.SetURI("RunnerName").String(*v.RunnerName); err != nil {
+			return err
+		}
+	}
+
+	if v.StartTime != nil {
+		encoder.SetQuery("startTime").String(*v.StartTime)
+	}
+
+	return nil
+}
+
 type awsRestjson1_serializeOpGetRunnerParameterGroup struct {
 }
 
@@ -823,6 +905,94 @@ func awsRestjson1_serializeOpDocumentRegisterRunnerInput(v *RegisterRunnerInput,
 	if v.Privileged != nil {
 		ok := object.Key("privileged")
 		ok.Boolean(*v.Privileged)
+	}
+
+	return nil
+}
+
+type awsRestjson1_serializeOpSetupRunnerAlert struct {
+}
+
+func (*awsRestjson1_serializeOpSetupRunnerAlert) ID() string {
+	return "OperationSerializer"
+}
+
+func (m *awsRestjson1_serializeOpSetupRunnerAlert) HandleSerialize(ctx context.Context, in middleware.SerializeInput, next middleware.SerializeHandler) (
+	out middleware.SerializeOutput, metadata middleware.Metadata, err error,
+) {
+	request, ok := in.Request.(*smithyhttp.Request)
+	if !ok {
+		return out, metadata, &smithy.SerializationError{Err: fmt.Errorf("unknown transport type %T", in.Request)}
+	}
+
+	input, ok := in.Parameters.(*SetupRunnerAlertInput)
+	_ = input
+	if !ok {
+		return out, metadata, &smithy.SerializationError{Err: fmt.Errorf("unknown input parameters type %T", in.Parameters)}
+	}
+
+	opPath, opQuery := httpbinding.SplitURI("/v1/runners/{RunnerName}:setupAlert")
+	request.URL.Path = smithyhttp.JoinPath(request.URL.Path, opPath)
+	request.URL.RawQuery = smithyhttp.JoinRawQuery(request.URL.RawQuery, opQuery)
+	request.Method = "POST"
+	var restEncoder *httpbinding.Encoder
+	if request.URL.RawPath == "" {
+		restEncoder, err = httpbinding.NewEncoder(request.URL.Path, request.URL.RawQuery, request.Header)
+	} else {
+		request.URL.RawPath = smithyhttp.JoinPath(request.URL.RawPath, opPath)
+		restEncoder, err = httpbinding.NewEncoderWithRawPath(request.URL.Path, request.URL.RawPath, request.URL.RawQuery, request.Header)
+	}
+
+	if err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	if err := awsRestjson1_serializeOpHttpBindingsSetupRunnerAlertInput(input, restEncoder); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	restEncoder.SetHeader("Content-Type").String("application/json")
+
+	jsonEncoder := smithyjson.NewEncoder()
+	if err := awsRestjson1_serializeOpDocumentSetupRunnerAlertInput(input, jsonEncoder.Value); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	if request, err = request.SetStream(bytes.NewReader(jsonEncoder.Bytes())); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+
+	if request.Request, err = restEncoder.Encode(request.Request); err != nil {
+		return out, metadata, &smithy.SerializationError{Err: err}
+	}
+	in.Request = request
+
+	return next.HandleSerialize(ctx, in)
+}
+func awsRestjson1_serializeOpHttpBindingsSetupRunnerAlertInput(v *SetupRunnerAlertInput, encoder *httpbinding.Encoder) error {
+	if v == nil {
+		return fmt.Errorf("unsupported serialization of nil %T", v)
+	}
+
+	if v.RunnerName == nil || len(*v.RunnerName) == 0 {
+		return &smithy.SerializationError{Err: fmt.Errorf("input member RunnerName must not be empty")}
+	}
+	if v.RunnerName != nil {
+		if err := encoder.SetURI("RunnerName").String(*v.RunnerName); err != nil {
+			return err
+		}
+	}
+
+	return nil
+}
+
+func awsRestjson1_serializeOpDocumentSetupRunnerAlertInput(v *SetupRunnerAlertInput, value smithyjson.Value) error {
+	object := value.Object()
+	defer object.Close()
+
+	if v.To != nil {
+		ok := object.Key("to")
+		ok.String(*v.To)
 	}
 
 	return nil

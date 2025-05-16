@@ -1857,7 +1857,7 @@ func awsRestxml_deserializeOpDocumentGetBucketLifecycleConfigurationOutput(v **G
 		switch {
 		case strings.EqualFold("Rule", t.Name.Local):
 			nodeDecoder := smithyxml.WrapNodeDecoder(decoder.Decoder, t)
-			if err := awsRestxml_deserializeDocumentRule(&sv.Rule, nodeDecoder); err != nil {
+			if err := awsRestxml_deserializeDocumentListOfRuleUnwrapped(&sv.Rule, nodeDecoder); err != nil {
 				return err
 			}
 
@@ -5706,7 +5706,7 @@ func awsRestxml_deserializeDocumentAnd(v **types.And, decoder smithyxml.NodeDeco
 		switch {
 		case strings.EqualFold("Tag", t.Name.Local):
 			nodeDecoder := smithyxml.WrapNodeDecoder(decoder.Decoder, t)
-			if err := awsRestxml_deserializeDocumentTag(&sv.Tag, nodeDecoder); err != nil {
+			if err := awsRestxml_deserializeDocumentListOfTagUnwrapped(&sv.Tag, nodeDecoder); err != nil {
 				return err
 			}
 
@@ -5812,19 +5812,6 @@ func awsRestxml_deserializeDocumentContents(v **types.Contents, decoder smithyxm
 		originalDecoder := decoder
 		decoder = smithyxml.WrapNodeDecoder(originalDecoder.Decoder, t)
 		switch {
-		case strings.EqualFold("DisplayName", t.Name.Local):
-			val, err := decoder.Value()
-			if err != nil {
-				return err
-			}
-			if val == nil {
-				break
-			}
-			{
-				xtv := string(val)
-				sv.DisplayName = ptr.String(xtv)
-			}
-
 		case strings.EqualFold("ETag", t.Name.Local):
 			val, err := decoder.Value()
 			if err != nil {
@@ -5836,19 +5823,6 @@ func awsRestxml_deserializeDocumentContents(v **types.Contents, decoder smithyxm
 			{
 				xtv := string(val)
 				sv.ETag = ptr.String(xtv)
-			}
-
-		case strings.EqualFold("ID", t.Name.Local):
-			val, err := decoder.Value()
-			if err != nil {
-				return err
-			}
-			if val == nil {
-				break
-			}
-			{
-				xtv := string(val)
-				sv.ID = ptr.String(xtv)
 			}
 
 		case strings.EqualFold("Key", t.Name.Local):
@@ -6866,6 +6840,142 @@ func awsRestxml_deserializeDocumentListOfPartUnwrapped(v *[]types.Part, decoder 
 	*v = sv
 	return nil
 }
+func awsRestxml_deserializeDocumentListOfRule(v *[]types.Rule, decoder smithyxml.NodeDecoder) error {
+	if v == nil {
+		return fmt.Errorf("unexpected nil of type %T", v)
+	}
+	var sv []types.Rule
+	if *v == nil {
+		sv = make([]types.Rule, 0)
+	} else {
+		sv = *v
+	}
+
+	originalDecoder := decoder
+	for {
+		t, done, err := decoder.Token()
+		if err != nil {
+			return err
+		}
+		if done {
+			break
+		}
+		switch {
+		case strings.EqualFold("member", t.Name.Local):
+			var col types.Rule
+			nodeDecoder := smithyxml.WrapNodeDecoder(decoder.Decoder, t)
+			destAddr := &col
+			if err := awsRestxml_deserializeDocumentRule(&destAddr, nodeDecoder); err != nil {
+				return err
+			}
+			col = *destAddr
+			sv = append(sv, col)
+
+		default:
+			err = decoder.Decoder.Skip()
+			if err != nil {
+				return err
+			}
+
+		}
+		decoder = originalDecoder
+	}
+	*v = sv
+	return nil
+}
+
+func awsRestxml_deserializeDocumentListOfRuleUnwrapped(v *[]types.Rule, decoder smithyxml.NodeDecoder) error {
+	var sv []types.Rule
+	if *v == nil {
+		sv = make([]types.Rule, 0)
+	} else {
+		sv = *v
+	}
+
+	switch {
+	default:
+		var mv types.Rule
+		t := decoder.StartEl
+		_ = t
+		nodeDecoder := smithyxml.WrapNodeDecoder(decoder.Decoder, t)
+		destAddr := &mv
+		if err := awsRestxml_deserializeDocumentRule(&destAddr, nodeDecoder); err != nil {
+			return err
+		}
+		mv = *destAddr
+		sv = append(sv, mv)
+	}
+	*v = sv
+	return nil
+}
+func awsRestxml_deserializeDocumentListOfTag(v *[]types.Tag, decoder smithyxml.NodeDecoder) error {
+	if v == nil {
+		return fmt.Errorf("unexpected nil of type %T", v)
+	}
+	var sv []types.Tag
+	if *v == nil {
+		sv = make([]types.Tag, 0)
+	} else {
+		sv = *v
+	}
+
+	originalDecoder := decoder
+	for {
+		t, done, err := decoder.Token()
+		if err != nil {
+			return err
+		}
+		if done {
+			break
+		}
+		switch {
+		case strings.EqualFold("member", t.Name.Local):
+			var col types.Tag
+			nodeDecoder := smithyxml.WrapNodeDecoder(decoder.Decoder, t)
+			destAddr := &col
+			if err := awsRestxml_deserializeDocumentTag(&destAddr, nodeDecoder); err != nil {
+				return err
+			}
+			col = *destAddr
+			sv = append(sv, col)
+
+		default:
+			err = decoder.Decoder.Skip()
+			if err != nil {
+				return err
+			}
+
+		}
+		decoder = originalDecoder
+	}
+	*v = sv
+	return nil
+}
+
+func awsRestxml_deserializeDocumentListOfTagUnwrapped(v *[]types.Tag, decoder smithyxml.NodeDecoder) error {
+	var sv []types.Tag
+	if *v == nil {
+		sv = make([]types.Tag, 0)
+	} else {
+		sv = *v
+	}
+
+	switch {
+	default:
+		var mv types.Tag
+		t := decoder.StartEl
+		_ = t
+		nodeDecoder := smithyxml.WrapNodeDecoder(decoder.Decoder, t)
+		destAddr := &mv
+		if err := awsRestxml_deserializeDocumentTag(&destAddr, nodeDecoder); err != nil {
+			return err
+		}
+		mv = *destAddr
+		sv = append(sv, mv)
+	}
+	*v = sv
+	return nil
+}
 func awsRestxml_deserializeDocumentListOfTagSetOfGetBucketTagging(v *[]types.TagSetOfGetBucketTagging, decoder smithyxml.NodeDecoder) error {
 	if v == nil {
 		return fmt.Errorf("unexpected nil of type %T", v)
@@ -7566,32 +7676,6 @@ func awsRestxml_deserializeDocumentUpload(v **types.Upload, decoder smithyxml.No
 		originalDecoder := decoder
 		decoder = smithyxml.WrapNodeDecoder(originalDecoder.Decoder, t)
 		switch {
-		case strings.EqualFold("DisplayName", t.Name.Local):
-			val, err := decoder.Value()
-			if err != nil {
-				return err
-			}
-			if val == nil {
-				break
-			}
-			{
-				xtv := string(val)
-				sv.DisplayName = ptr.String(xtv)
-			}
-
-		case strings.EqualFold("ID", t.Name.Local):
-			val, err := decoder.Value()
-			if err != nil {
-				return err
-			}
-			if val == nil {
-				break
-			}
-			{
-				xtv := string(val)
-				sv.ID = ptr.String(xtv)
-			}
-
 		case strings.EqualFold("Initiated", t.Name.Local):
 			val, err := decoder.Value()
 			if err != nil {
@@ -7696,19 +7780,6 @@ func awsRestxml_deserializeDocumentVersion(v **types.Version, decoder smithyxml.
 		originalDecoder := decoder
 		decoder = smithyxml.WrapNodeDecoder(originalDecoder.Decoder, t)
 		switch {
-		case strings.EqualFold("DisplayName", t.Name.Local):
-			val, err := decoder.Value()
-			if err != nil {
-				return err
-			}
-			if val == nil {
-				break
-			}
-			{
-				xtv := string(val)
-				sv.DisplayName = ptr.String(xtv)
-			}
-
 		case strings.EqualFold("ETag", t.Name.Local):
 			val, err := decoder.Value()
 			if err != nil {
@@ -7720,19 +7791,6 @@ func awsRestxml_deserializeDocumentVersion(v **types.Version, decoder smithyxml.
 			{
 				xtv := string(val)
 				sv.ETag = ptr.String(xtv)
-			}
-
-		case strings.EqualFold("ID", t.Name.Local):
-			val, err := decoder.Value()
-			if err != nil {
-				return err
-			}
-			if val == nil {
-				break
-			}
-			{
-				xtv := string(val)
-				sv.ID = ptr.String(xtv)
 			}
 
 		case strings.EqualFold("IsLatest", t.Name.Local):

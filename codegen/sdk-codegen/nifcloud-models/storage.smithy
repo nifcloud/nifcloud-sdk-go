@@ -1062,12 +1062,8 @@ structure GetBucketResult {
 }
 
 structure Contents {
-    @xmlName("DisplayName")
-    DisplayName: String,
     @xmlName("ETag")
     ETag: String,
-    @xmlName("ID")
-    ID: String,
     @xmlName("Key")
     Key: String,
     @xmlName("LastModified")
@@ -1197,12 +1193,8 @@ structure GetBucketObjectVersionsResult {
 }
 
 structure Version {
-    @xmlName("DisplayName")
-    DisplayName: String,
     @xmlName("ETag")
     ETag: String,
-    @xmlName("ID")
-    ID: String,
     @xmlName("IsLatest")
     IsLatest: Boolean,
     @xmlName("Key")
@@ -1269,10 +1261,6 @@ structure ListMultipartUploadsResult {
 }
 
 structure Upload {
-    @xmlName("DisplayName")
-    DisplayName: String,
-    @xmlName("ID")
-    ID: String,
     @xmlName("Initiated")
     Initiated: Timestamp,
     @xmlName("Initiator")
@@ -1543,9 +1531,14 @@ structure RequestExpiration {
     Days: Integer,
 }
 
+list ListOfRequestTag {
+    member: RequestTag,
+}
+
 structure RequestAnd {
+    @xmlFlattened
     @xmlName("Tag")
-    RequestTag: RequestTag,
+    ListOfRequestTag: ListOfRequestTag,
 }
 
 structure RequestFilter {
@@ -1577,8 +1570,9 @@ structure GetBucketLifecycleConfigurationRequest {
 }
 
 structure GetBucketLifecycleConfigurationResult {
+    @xmlFlattened
     @xmlName("Rule")
-    Rule: Rule,
+    Rule: ListOfRule,
 }
 
 structure Rule {
@@ -1596,6 +1590,10 @@ structure Rule {
     Status: String,
 }
 
+list ListOfRule {
+    member: Rule,
+}
+
 structure Expiration {
     @xmlName("Date")
     Date: Timestamp,
@@ -1609,8 +1607,13 @@ structure Filter {
 }
 
 structure And {
+    @xmlFlattened
     @xmlName("Tag")
-    Tag: Tag,
+    Tag: ListOfTag,
+}
+
+list ListOfTag {
+    member: Tag,
 }
 
 structure NoncurrentVersionExpiration {

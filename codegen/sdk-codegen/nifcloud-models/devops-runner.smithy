@@ -41,6 +41,8 @@ structure Runners {
     Status: Status,
     @jsonName("systemId")
     SystemId: String,
+    @jsonName("to")
+    To: String,
 }
 
 structure NetworkConfig {
@@ -339,6 +341,8 @@ structure Runner {
     Status: Status,
     @jsonName("systemId")
     SystemId: String,
+    @jsonName("to")
+    To: String,
 }
 
 structure CreateRunnerResult {
@@ -695,6 +699,61 @@ structure UnregisterRunnerResult {
     Runner: Runner,
 }
 
+structure GetRunnerMetricsRequest {
+    @required
+    @httpQuery("endTime")
+    @jsonName("endTime")
+    EndTime: String,
+    @required
+    @httpLabel
+    @jsonName("MetricsName")
+    MetricsName: String,
+    @required
+    @httpLabel
+    @jsonName("RunnerName")
+    RunnerName: String,
+    @required
+    @httpQuery("startTime")
+    @jsonName("startTime")
+    StartTime: String,
+}
+
+list ListOfMetrics {
+    member: Metrics,
+}
+
+structure Metrics {
+    @jsonName("maxValue")
+    MaxValue: Double,
+    @jsonName("minValue")
+    MinValue: Double,
+    @jsonName("timestamp")
+    Timestamp: String,
+    @jsonName("timezone")
+    Timezone: String,
+    @jsonName("value")
+    Value: Double,
+}
+
+structure GetRunnerMetricsResult {
+    @jsonName("metrics")
+    Metrics: ListOfMetrics,
+}
+
+structure SetupRunnerAlertRequest {
+    @required
+    @httpLabel
+    @jsonName("RunnerName")
+    RunnerName: String,
+    @jsonName("to")
+    To: String,
+}
+
+structure SetupRunnerAlertResult {
+    @jsonName("runner")
+    Runner: Runner,
+}
+
 structure ListRunnerParameterGroupsRequest {}
 
 list ListOfParameterGroups {
@@ -883,6 +942,8 @@ service DevOpswithGitLabRunner {
         RegisterRunner,
         UpdateRunnerRegistration,
         UnregisterRunner,
+        GetRunnerMetrics,
+        SetupRunnerAlert,
         ListRunnerParameterGroups,
         CreateRunnerParameterGroup,
         GetRunnerParameterGroup,
@@ -958,6 +1019,19 @@ operation UpdateRunnerRegistration {
 operation UnregisterRunner {
     input: UnregisterRunnerRequest,
     output: UnregisterRunnerResult,
+}
+
+@http(method: "GET", uri: "/v1/runners/{RunnerName}/metrics/{MetricsName}" )
+@readonly
+operation GetRunnerMetrics {
+    input: GetRunnerMetricsRequest,
+    output: GetRunnerMetricsResult,
+}
+
+@http(method: "POST", uri: "/v1/runners/{RunnerName}/:setupAlert" )
+operation SetupRunnerAlert {
+    input: SetupRunnerAlertRequest,
+    output: SetupRunnerAlertResult,
 }
 
 @http(method: "GET", uri: "/v1/parameterGroups" )

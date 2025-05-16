@@ -20713,9 +20713,9 @@ func awsEc2query_serializeOpDocumentCreateVolumeInput(v *CreateVolumeInput, valu
 		objectKey.String(*v.Description)
 	}
 
-	if len(v.DiskType) > 0 {
+	if v.DiskType != nil {
 		objectKey := object.Key("DiskType")
-		objectKey.String(string(v.DiskType))
+		objectKey.String(*v.DiskType)
 	}
 
 	if v.InstanceId != nil {

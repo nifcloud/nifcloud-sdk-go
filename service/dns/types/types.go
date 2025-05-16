@@ -121,7 +121,7 @@ type RequestResourceRecordSet struct {
 	
 	RequestXniftyHealthCheckConfig *RequestXniftyHealthCheckConfig
 	
-	SetIdentifier *string
+	SetIdentifier *int32
 	
 	TTL *int32
 	
@@ -166,7 +166,7 @@ type ResourceRecordSets struct {
 	
 	ResourceRecords []ResourceRecords
 	
-	SetIdentifier *string
+	SetIdentifier *int32
 	
 	TTL *int32
 	

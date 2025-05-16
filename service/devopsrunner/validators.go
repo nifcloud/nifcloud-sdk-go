@@ -110,6 +110,26 @@ func (m *validateOpGetRunner) HandleInitialize(ctx context.Context, in middlewar
 	return next.HandleInitialize(ctx, in)
 }
 
+type validateOpGetRunnerMetrics struct {
+}
+
+func (*validateOpGetRunnerMetrics) ID() string {
+	return "OperationInputValidation"
+}
+
+func (m *validateOpGetRunnerMetrics) HandleInitialize(ctx context.Context, in middleware.InitializeInput, next middleware.InitializeHandler) (
+	out middleware.InitializeOutput, metadata middleware.Metadata, err error,
+) {
+	input, ok := in.Parameters.(*GetRunnerMetricsInput)
+	if !ok {
+		return out, metadata, fmt.Errorf("unknown input parameters type %T", in.Parameters)
+	}
+	if err := validateOpGetRunnerMetricsInput(input); err != nil {
+		return out, metadata, err
+	}
+	return next.HandleInitialize(ctx, in)
+}
+
 type validateOpGetRunnerParameterGroup struct {
 }
 
@@ -185,6 +205,26 @@ func (m *validateOpRegisterRunner) HandleInitialize(ctx context.Context, in midd
 		return out, metadata, fmt.Errorf("unknown input parameters type %T", in.Parameters)
 	}
 	if err := validateOpRegisterRunnerInput(input); err != nil {
+		return out, metadata, err
+	}
+	return next.HandleInitialize(ctx, in)
+}
+
+type validateOpSetupRunnerAlert struct {
+}
+
+func (*validateOpSetupRunnerAlert) ID() string {
+	return "OperationInputValidation"
+}
+
+func (m *validateOpSetupRunnerAlert) HandleInitialize(ctx context.Context, in middleware.InitializeInput, next middleware.InitializeHandler) (
+	out middleware.InitializeOutput, metadata middleware.Metadata, err error,
+) {
+	input, ok := in.Parameters.(*SetupRunnerAlertInput)
+	if !ok {
+		return out, metadata, fmt.Errorf("unknown input parameters type %T", in.Parameters)
+	}
+	if err := validateOpSetupRunnerAlertInput(input); err != nil {
 		return out, metadata, err
 	}
 	return next.HandleInitialize(ctx, in)
@@ -310,6 +350,10 @@ func addOpGetRunnerValidationMiddleware(stack *middleware.Stack) error {
 	return stack.Initialize.Add(&validateOpGetRunner{}, middleware.After)
 }
 
+func addOpGetRunnerMetricsValidationMiddleware(stack *middleware.Stack) error {
+	return stack.Initialize.Add(&validateOpGetRunnerMetrics{}, middleware.After)
+}
+
 func addOpGetRunnerParameterGroupValidationMiddleware(stack *middleware.Stack) error {
 	return stack.Initialize.Add(&validateOpGetRunnerParameterGroup{}, middleware.After)
 }
@@ -324,6 +368,10 @@ func addOpModifyRunnerInstanceTypeValidationMiddleware(stack *middleware.Stack) 
 
 func addOpRegisterRunnerValidationMiddleware(stack *middleware.Stack) error {
 	return stack.Initialize.Add(&validateOpRegisterRunner{}, middleware.After)
+}
+
+func addOpSetupRunnerAlertValidationMiddleware(stack *middleware.Stack) error {
+	return stack.Initialize.Add(&validateOpSetupRunnerAlert{}, middleware.After)
 }
 
 func addOpUnregisterRunnerValidationMiddleware(stack *middleware.Stack) error {
@@ -424,6 +472,30 @@ func validateOpGetRunnerInput(v *GetRunnerInput) error {
 	}
 }
 
+func validateOpGetRunnerMetricsInput(v *GetRunnerMetricsInput) error {
+	if v == nil {
+		return nil
+	}
+	invalidParams := smithy.InvalidParamsError{Context: "GetRunnerMetricsInput"}
+	if v.EndTime == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("EndTime"))
+	}
+	if v.MetricsName == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("MetricsName"))
+	}
+	if v.RunnerName == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("RunnerName"))
+	}
+	if v.StartTime == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("StartTime"))
+	}
+	if invalidParams.Len() > 0 {
+	return invalidParams
+	} else {
+	return nil
+	}
+}
+
 func validateOpGetRunnerParameterGroupInput(v *GetRunnerParameterGroupInput) error {
 	if v == nil {
 		return nil
@@ -483,6 +555,21 @@ func validateOpRegisterRunnerInput(v *RegisterRunnerInput) error {
 	if v.GitlabUrl == nil {
 	invalidParams.Add(smithy.NewErrParamRequired("GitlabUrl"))
 	}
+	if v.RunnerName == nil {
+	invalidParams.Add(smithy.NewErrParamRequired("RunnerName"))
+	}
+	if invalidParams.Len() > 0 {
+	return invalidParams
+	} else {
+	return nil
+	}
+}
+
+func validateOpSetupRunnerAlertInput(v *SetupRunnerAlertInput) error {
+	if v == nil {
+		return nil
+	}
+	invalidParams := smithy.InvalidParamsError{Context: "SetupRunnerAlertInput"}
 	if v.RunnerName == nil {
 	invalidParams.Add(smithy.NewErrParamRequired("RunnerName"))
 	}

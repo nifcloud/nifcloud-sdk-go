@@ -26,7 +26,7 @@ type AccessControlListOfGetBucketACL struct {
 
 type And struct {
 	
-	Tag *Tag
+	Tag []Tag
 	
 	noSmithyDocumentSerde
 }
@@ -42,11 +42,7 @@ type Buckets struct {
 
 type Contents struct {
 	
-	DisplayName *string
-	
 	ETag *string
-	
-	ID *string
 	
 	Key *string
 	
@@ -159,7 +155,7 @@ type Part struct {
 
 type RequestAnd struct {
 	
-	RequestTag *RequestTag
+	ListOfRequestTag []RequestTag
 	
 	noSmithyDocumentSerde
 }
@@ -360,10 +356,6 @@ type TagSetOfGetBucketTagging struct {
 
 type Upload struct {
 	
-	DisplayName *string
-	
-	ID *string
-	
 	Initiated *time.Time
 	
 	Initiator *Initiator
@@ -381,11 +373,7 @@ type Upload struct {
 
 type Version struct {
 	
-	DisplayName *string
-	
 	ETag *string
-	
-	ID *string
 	
 	IsLatest *bool
 	
