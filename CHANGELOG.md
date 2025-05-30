@@ -1,5 +1,13 @@
 # Changelog
 
+## [v1.29.0](https://github.com/nifcloud/nifcloud-sdk-go/tree/v1.29.0) (2025-05-16)
+
+[Full Changelog](https://github.com/nifcloud/nifcloud-sdk-go/compare/v1.28.0...v1.29.0)
+
+**Merged pull requests:**
+
+- update smithy model [\#77](https://github.com/nifcloud/nifcloud-sdk-go/pull/77) ([fuku2014](https://github.com/fuku2014))
+
 ## [v1.28.0](https://github.com/nifcloud/nifcloud-sdk-go/tree/v1.28.0) (2024-08-30)
 
 [Full Changelog](https://github.com/nifcloud/nifcloud-sdk-go/compare/v1.27.0...v1.28.0)
